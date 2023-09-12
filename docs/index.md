@@ -1,14 +1,19 @@
 ---
-  layout: default.md
-  title: ""
+layout: default.md
+title: "SEPlendid"
 ---
 
-# AddressBook Level-3
+# SEPlendid
 
-[![CI Status](https://github.com/se-edu/addressbook-level3/workflows/Java%20CI/badge.svg)](https://github.com/se-edu/addressbook-level3/actions)
-[![codecov](https://codecov.io/gh/se-edu/addressbook-level3/branch/master/graph/badge.svg)](https://codecov.io/gh/se-edu/addressbook-level3)
-
+> **CI & Codecov status** \
+> [![Java CI](https://github.com/AY2324S1-CS2103T-W10-2/tp/actions/workflows/gradle.yml/badge.svg)](https://github.com/AY2324S1-CS2103T-W10-2/tp/actions/workflows/gradle.yml)
+[![MarkBind Action](https://github.com/AY2324S1-CS2103T-W10-2/tp/actions/workflows/docs.yml/badge.svg)](https://github.com/AY2324S1-CS2103T-W10-2/tp/actions/workflows/docs.yml)
+[![pages-build-deployment](https://github.com/AY2324S1-CS2103T-W10-2/tp/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/AY2324S1-CS2103T-W10-2/tp/actions/workflows/pages/pages-build-deployment)
+[![codecov](https://codecov.io/gh/AY2324S1-CS2103T-W10-2/tp/graph/badge.svg?token=6GEPWNR01R)](https://codecov.io/gh/AY2324S1-CS2103T-W10-2/tp)
+> 
 ![Ui](images/Ui.png)
+
+
 
 **AddressBook is a desktop application for managing your contact details.** While it has a GUI, most of the user interactions happen using a CLI (Command Line Interface).
 

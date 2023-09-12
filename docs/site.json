@@ -1,7 +1,7 @@
 {
-  "baseUrl": "",
-  "titlePrefix": "",
-  "titleSuffix": "SEPlendid",
+  "baseUrl": "/tp",
+  "titlePrefix": "SEPlendid User Guide",
+  "titleSuffix": "",
   "faviconPath": "images/SeEduLogo.png",
   "style": {
     "codeTheme": "light"

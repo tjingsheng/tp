@@ -17,7 +17,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 [[homepage](http://www.comp.nus.edu.sg/~damithch)]
 [[github](https://github.com/lamchenghou)]
-[[portfolio](https://team/johndoe.md)]
+[[portfolio](https://team/lamchenghou.md)]
 
 * Role: Team Lead
 * Responsibilities: Deliverables and Deadlines, Parsing

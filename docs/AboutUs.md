@@ -19,7 +19,8 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](https://github.com/lamchenghou)]
 [[portfolio](https://team/johndoe.md)]
 
-* Role: Project Advisor
+* Role: Team Lead
+* Responsibilities: Deliverables and Deadlines, Parsing
 
 ### Jane Doe
 

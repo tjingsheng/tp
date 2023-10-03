@@ -5,7 +5,7 @@
 # Introduction
 SEPlendid is your passport to a seamless and enriched Student Exchange Programme (SEP) planning experience.
 
-## Example usages:
+## Example usages
 1. listing local/partner university courses
 2. sorting courses by various attributes
 3. searching for courses using keywords

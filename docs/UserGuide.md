@@ -145,7 +145,10 @@ Adds mapping for local course identified by `localcode`, offered by partner `uni
 
 Format: `mapping add [localcode] [university] [partnercode]`
 
-Example: `[coming soon]`
+Example:
+|`mapping add [CS3230] [University of Toronto] [CSC373H1]`|
+|--|
+|![mapping-add-ui](images/MappingAddUi.png)
 
 ### Delete a mapping : `mapping delete`
 
@@ -154,7 +157,10 @@ Deletes mapping for local course identified by `localcode`, offered by partner `
 
 Format: `mapping delete [localcode] [university] [partnercode]`
 
-Example: `[coming soon]`
+Example:
+|`mapping delete [CS3230] [University of Toronto] [CSC373H1]`|
+|--|
+|![mapping-delete-ui](images/MappingDeleteUi.png)
 
 ### Saving the data
 

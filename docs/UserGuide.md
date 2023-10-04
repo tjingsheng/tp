@@ -127,6 +127,84 @@ Displays the help menu.
 
 Format: `help`
 
+### List all local courses: `localcourse list`
+
+Lists all available local courses, paginated if dataset is too huge.
+
+Format: `localcourse list`
+
+Example:
+|`localcourse list`|
+|--|
+|![localcourse-list-ui](images/LocalcourseListUi.png)
+
+### Add a local course: `localcourse add`
+
+Adds local course with course code identified by `localcode` and course name identified by `localname`.
+
+Format: `localcourse add [localcode] [localname]`
+
+Example:
+|`localcourse add [CS1234] [Programming Fun]`|
+|--|
+|![localcourse-add-ui](images/LocalcourseAddUi.png)
+
+### Delete a local course: `localcourse delete`
+
+Deletes local course with course code identified by `localcode`.
+
+Format: `localcourse delete [localcode]`
+
+Example:
+|`localcourse delete [CS1234]`|
+|--|
+|![localcourse-delete-ui](images/LocalcourseDeleteUi.png)
+
+### List all partner courses: `partnercourse list`
+
+Lists all available partner courses, paginated if dataset is too huge.
+
+Format: `partnercourse list`
+
+Example:
+|`partnercourse list`|
+|--|
+|![partnercourse-list-ui](images/PartnercourseListUi.png)
+
+### Add a partner course: `partnercourse add`
+
+Adds partner course with course code identified by `partnercode` and course name identified by `partnername`, 
+which is offered by partner `university`.
+
+Format: `partnercourse add [university] [partnercode] [partnername]`
+
+Example:
+|`partnercourse add [University of Toronto] [ROB311] [Artificial Intelligence]`|
+|--|
+|![partnercourse-add-ui](images/PartnercourseAddUi.png)
+
+### Delete a partner course: `partnercourse delete`
+
+Deletes partner course with course code identified by `partnercode` and offered by partner `university`.
+
+Format: `partnercourse delete [university] [partnercode]`
+
+Example:
+|`partnercourse delete [University of Toronto] [ROB311]`|
+|--|
+|![partnercourse-delete-ui](images/PartnercourseDeleteUi.png)
+
+### List all universities: `university list`
+
+Lists all available partner universities, paginated if dataset is too huge.
+
+Format: `university list`
+
+Example:
+|`university list`|
+|--|
+|![university-list-ui](images/UniversityListUi.png)
+
 ### List all mappings: `mapping list`
 
 Lists all available mappings, paginated if dataset is too huge.
@@ -145,7 +223,10 @@ Adds mapping for local course identified by `localcode`, offered by partner `uni
 
 Format: `mapping add [localcode] [university] [partnercode]`
 
-Example: `[coming soon]`
+Example:
+|`mapping add [CS3230] [University of Toronto] [CSC373H1]`|
+|--|
+|![mapping-add-ui](images/MappingAddUi.png)
 
 ### Delete a mapping : `mapping delete`
 
@@ -154,7 +235,10 @@ Deletes mapping for local course identified by `localcode`, offered by partner `
 
 Format: `mapping delete [localcode] [university] [partnercode]`
 
-Example: `[coming soon]`
+Example:
+|`mapping delete [CS3230] [University of Toronto] [CSC373H1]`|
+|--|
+|![mapping-delete-ui](images/MappingDeleteUi.png)
 
 ### Saving the data
 

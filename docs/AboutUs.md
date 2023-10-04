@@ -38,7 +38,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/alyssaong.png" width="200px">
 
-[[github](http://github.com/alyssaongyx)] [[portfolio](team/alyssaong.md)]
+[[github](http://github.com/alyssaongyx)] [[portfolio](team/alyssaongyx.md)]
 
 * Role: Developer
 * Responsibilities: UI, Code Quality
@@ -48,7 +48,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/johndoe.png" width="200px">
 
 [[github](http://github.com/johndoe)]
-[[portfolio](team/alyssaong.md)]
+[[portfolio](team/alyssaongyx.md)]
 
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
@@ -58,7 +58,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/johndoe.png" width="200px">
 
 [[github](http://github.com/johndoe)]
-[[portfolio](team/alyssaong.md)]
+[[portfolio](team/alyssaongyx.md)]
 
 * Role: Developer
 * Responsibilities: UI

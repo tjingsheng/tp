@@ -3,9 +3,11 @@
   title: "Alyssa Ong's Project Portfolio Page"
 ---
 
-### Project: AddressBook Level 3
+### Project: SEPlendid
 
-AddressBook - Level 3 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+**SEPlendid** is a versatile application used by prospective exchangers to plan their Student Exchange Programme (SEP)
+study plans. Students from NUS Computing can use this CLI-based application, with a beautiful GUI, to view partner
+universities and course mappings. The application is also bundled with many other useful features.
 
 Given below are my contributions to the project.
 

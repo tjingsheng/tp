@@ -4,6 +4,10 @@
 ---
 
 # Project: SEPlendid
+**SEPlendid** is a versatile application used by prospective exchangers to plan their Student Exchange Programme (SEP)
+study plans. Students from NUS Computing can use this CLI-based application, with a beautiful GUI, to view partner
+universities and course mappings.
+
 ## Introduction
 SEPlendid is splendid!
 

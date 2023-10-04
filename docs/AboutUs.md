@@ -16,17 +16,19 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/lamchenghou.png" width="200px">
 
 [[homepage](http://www.comp.nus.edu.sg/~damithch)]
+=======
 [[github](https://github.com/lamchenghou)]
 [[portfolio](https://team/lamchenghou.md)]
+
 
 * Role: Team Lead
 * Responsibilities: Deliverables and Deadlines, Parsing
 
-### Jane Doe
+### Yim Sohyun
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/dlathyun.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](http://github.com/dlathyun)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Team Lead
@@ -39,7 +41,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/alyssaongyx)] [[portfolio](team/alyssaong.md)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: UI, Code Quality
 
 ### Jean Doe
 

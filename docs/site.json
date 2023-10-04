@@ -1,8 +1,8 @@
 {
   "baseUrl": "/tp",
-  "titlePrefix": "SEPlendid User Guide",
+  "titlePrefix": "SEPlendid",
   "titleSuffix": "",
-  "faviconPath": "images/SeEduLogo.png",
+  "faviconPath": "images/SeplendidLogo.png",
   "style": {
     "codeTheme": "light"
   },
@@ -16,10 +16,15 @@
     ".git/*",
     "node_modules/*"
   ],
-  "pagesExclude": ["node_modules/*"],
+  "pagesExclude": [
+    "node_modules/*"
+  ],
   "pages": [
     {
-      "glob": ["**/index.md", "**/*.md"]
+      "glob": [
+        "**/index.md",
+        "**/*.md"
+      ]
     }
   ],
   "deploy": {

@@ -42,6 +42,16 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: UI, Code Quality
 
+### Alicia Michelle Wang
+
+<img src="images/aliciamichellew.png" width="200px">
+
+[[github](http://github.com/aliciamichellew)]
+[[portfolio](team/aliciamichellew.md)]
+
+* Role: Developer
+* Responsibilities: Command + Errors
+
 ### Tan Jing Sheng
 
 <img src="images/tjingsheng.png" width="200px">
@@ -51,13 +61,3 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Developer
 * Responsibilities: Storage, Ui, Testing
-
-### James Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/alyssaong.md)]
-
-* Role: Developer
-* Responsibilities: UI

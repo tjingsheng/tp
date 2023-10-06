@@ -340,15 +340,16 @@ noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) 
 should be able to accomplish most of the tasks faster using commands than using the mouse.
 4.  The response to any use action should become visible within 5 seconds.
-5.  The user interface should be intuitive enough for users who are not IT-savvy
+5.  The user interface should be intuitive enough for users who are not IT-savvy.
 6.  The application should be designed to handle a growing database of course mappings and related data.
-
-*{More to be added}*
 
 ### Glossary
 
-* **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Mainstream OS**: Windows, Linux, Unix, OS-X.
+* **Course Mapping**: A course offered by a partner university, which NUS Computing students going on exchange can 
+take, and is an equivalent course to one offered in NUS.
+* **CLI**: Command-Line Interface is a means of interacting with a computer program b inputting lines of text called 
+command-lines.
 
 --------------------------------------------------------------------------------------------------------------------
 

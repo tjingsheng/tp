@@ -60,4 +60,4 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/tjingsheng.md)]
 
 * Role: Developer
-* Responsibilities: Storage, UI, Testing
+* Responsibilities: Storage, Ui, Testing

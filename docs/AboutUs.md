@@ -27,7 +27,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/dlathyun.png" width="200px">
 
 [[github](http://github.com/dlathyun)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/dlathyun.md)]
 
 * Role: Developer
 * Responsibilities: UI

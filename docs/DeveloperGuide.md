@@ -317,32 +317,273 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `SEPlendid` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+#### Local Course
+**Use case: List local course**
+
+**MSS**
+1. User requests to list local courses.
+2. SEPlendid shows all available local courses.
+Use case ends.
+
+**Use case: Add a local course**
+
+**MSS:**
+1. User requests to add a local course.
+2. SEPlendid adds and shows the local course.
+Use case ends.
+
+**Extension:**
+* 1a. The command format is invalid. 
+  * 1a1. SEPlendid shows an error message. 
+  
+  Use case resumes at step 1.
+* 1b. The local course is already added.
+  * 1b1. SEPlendid shows an error message.
+  
+  Use case resumes at step 1.
+
+**Use case: Delete a local course**
+
+**MSS:**
+1. User requests to delete a local course.
+2. SEPlendid deletes and shows the local course deleted.
+Use case ends.
+
+**Extension:**
+* 1a. The command format is invalid. 
+  * 1a1. SEPlendid shows an error message.
+  
+  Use case resumes at step 1.
+* 1b. The local course does not exist.
+  * 1b1. SEPlendid shows an error message.
+  
+  Use case resumes at step 1.
+
+#### Partner course
+**Use case: List partner course**
+
+**MSS:**
+1. User requests to list partner courses.
+2. SEPlendid shows all available partner courses.
+Use case ends.
+
+**Use case: Add a partner course**
+
+**MSS:**
+1. User requests to add a partner course.
+2. SEPlendid adds and shows the local course.
+Use case ends.
+
+**Extension:**
+* 1a. The command format is invalid. 
+  * 1a1. SEPlendid shows an error message.
+  
+  Use case resumes at step 1.
+* 1b. The partner course is already added. 
+  * 1b1. SEPlendid shows an error message.
+    
+  Use case resumes at step 1.
+
+**Use case: Delete a partner course**
+
+**MSS:**
+1. User requests to delete a partner course. 
+2. SEPlendid deletes and shows the partner course deleted.
+
+Use case ends.
+    
+**Extension:**
+* 1a. The command format is invalid. 
+  * 1a1. SEPlendid shows an error message.
+  
+  Use case resumes at step 1.
+* 1b. The partner course does not exist. 
+  * 1b1. SEPlendid shows an error message.
+  
+  Use case resumes at step 1.
+
+
+#### Mapping
+**Use case: List mappings**
+
+**MSS:**
+1. User requests to list available mappings.
+2. SEPlendid shows all available mappings.
+
+3. Use case ends.
+
+**Use case: Add mappings**
+
+**MSS:**
+1. User requests to add a mapping.
+2. SEPlendid adds and show the mappings.
+
+Use case ends.
+
+**Extension:**
+
+* 1a. The command format is invalid. 
+  * 1a1. SEPlendid shows an error message.
+  
+  Use case resumes at step 1.
+* 1b. The mappingis already added.
+  * 1b1. SEPlendid shows an error message.
+  
+  Use case resumes at step 1.
+
+**Use case: Delete mappings**
+
+**MSS:**
+1. User requests to delete a mapping.
+2. SEPlendid deletes and shows the mappings deleted.
+
+Use case ends.
+
+**Extension:**
+
+* 1a. The command format is invalid. 
+  * 1a1. SEPlendid shows an error message.
+  
+  Use case resumes at step 1.
+* 1b. The mappings does not exist.
+  * 1b1. SEPlendid shows an error message.
+  
+  Use case resumes at step 1.
+
+
+#### Universities
+
+**Use case: List universities**
+
+**MSS:**
+
+1. User requests to list the universities.
+2. SEPlendid shows all available universities.
+
+Use case ends.
+
+**Use case: Search universities**
+
+**MSS:**
+
+1. User requests to search for a university.
+2. SEPlendid shows the specified university.
+
+Use case ends.
+
+**Use case: Sort universities**
+
+**MSS:**
+1. User requests to sort the list of universities.
+2. SEPlendid shows the universities sorted alphabetically.
+
+Use case ends.
+
+#### Note
+
+**Use case: Add a note**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1. User requests to add a note.
+2. SEPlendid adds and shows the note.
+
+Use case ends
+
+**Extension:**
+
+* 1a. The command format is invalid. 
+  * 1a1. SEPlendid shows an error message.
+  
+  Use case resumes at step 1.
+
+**Use case: List notes**
+
+**MSS**
+
+1. User requests to list notes.
+2. SEPlendid shows all available notes.
+
+Use case ends
+
+**Use case: Update a note**
+
+**MSS**
+
+1. User requests to list notes.
+2. SEPlendid shows all available notes.
+3. User requests to update a specific note in the list
+4. SEPlendid updates and shows the note.
+
+Use case ends
+
+**Extension:**
+
+* 2a. The list is empty. 
+  Use case ends.
+
+* 3a. The command format is invalid. 
+  * 3a1. SEPlendid shows an error message.
+  
+    Use case resumes at step 2. 
+* 3b. The task does not exist. 
+  * 3b1. SEPlendid shows an error message.
+      
+  Use case resumes at step 2.
+
+**Use case: Delete a note**
+
+**MSS**
+
+1. User requests to list notes.
+2. SEPlendid shows all available notes.
+3. User requests to delete a specific note in the list
+4. SEPlendid deletes the note.
+
+Use case ends
+
+**Extension:**
+
+* 2a. The list is empty. 
+
+Use case ends.
+* 3a. The command format is invalid. 
+  * 3a1. SEPlendid shows an error message.
+  
+  Use case resumes at step 2. 
+* 3b. The task does not exist. 
+  * 3b1. SEPlendid shows an error message.
+  
+  Use case resumes at step 2.
+
+**Use case: Tag a note**
+
+**MSS**
+
+1. User requests to list notes.
+2. SEPlendid shows all available notes.
+3. User requests to tag a specific note in the list
+4. SEPlendid tags and shows the note.
+
+Use case ends
+
+**Extension:**
+
+* 2a. The list is empty. 
 
     Use case ends.
 
-**Extensions**
+* 3a. The command format is invalid. 
+  * 3a1. SEPlendid shows an error message.
 
-* 2a. The list is empty.
+  Use case resumes at step 2.
+* 3b. The task does not exist.
+  * 3b1. SEPlendid shows an error message.
+  
+  Use case resumes at step 2.
 
-  Use case ends.
-
-* 3a. The given index is invalid.
-
-    * 3a1. AddressBook shows an error message.
-
-      Use case resumes at step 2.
-
-*{More to be added}*
 
 ### Non-Functional Requirements
 

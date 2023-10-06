@@ -269,14 +269,24 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+This product is for NUS Computing students who are applying for Student Exchange Programme (SEP), who prefer a 
+faster and more versatile tool to access SEP-related information, compared to the current EduRec system. Seniors who 
+had underwent the exchange program, or students who learn about courses through their research can also contribute 
+course mappings.
+
+The following further describes our target users:
+* has a need to view course mappings offered by partner universities
+* is keen to contribute course mappings
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
 
+**Value proposition**
+SEPlendid aims to provide an advanced search, allowing users to search for mappings by various attributes such
+as partner universities' course names, and NUS course codes. We aim to also include features such as the ability to 
+contribute course mappings, and note-taking. 
 
 ### User stories
 
@@ -325,15 +335,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-
-*{More to be added}*
+2.  Should be able to hold up to 1000 course mappings, along with its dependent data such as local courses, without a 
+noticeable sluggishness in performance for typical usage.
+3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) 
+should be able to accomplish most of the tasks faster using commands than using the mouse.
+4.  The response to any use action should become visible within 5 seconds.
+5.  The user interface should be intuitive enough for users who are not IT-savvy.
+6.  The application should be designed to handle a growing database of course mappings and related data.
 
 ### Glossary
 
-* **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Mainstream OS**: Windows, Linux, Unix, OS-X.
+* **Course Mapping**: A course offered by a partner university, which NUS Computing students going on exchange can 
+take, and is an equivalent course to one offered in NUS.
+* **CLI**: Command-Line Interface is a means of interacting with a computer program b inputting lines of text called 
+command-lines.
 
 --------------------------------------------------------------------------------------------------------------------
 

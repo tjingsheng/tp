@@ -269,71 +269,340 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+This product is for NUS Computing students who are applying for Student Exchange Programme (SEP), who prefer a 
+faster and more versatile tool to access SEP-related information, compared to the current EduRec system. Seniors who 
+had underwent the exchange program, or students who learn about courses through their research can also contribute 
+course mappings.
+
+The following further describes our target users:
+* has a need to view course mappings offered by partner universities
+* is keen to contribute course mappings
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
 
+**Value proposition**
+SEPlendid aims to provide an advanced search, allowing users to search for mappings by various attributes such
+as partner universities' course names, and NUS course codes. We aim to also include features such as the ability to 
+contribute course mappings, and note-taking. 
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                 | So that I can…​                                                        |
-|----------|--------------------------------------------|------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions       | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person             |                                                                        |
-| `* * *`  | user                                       | delete a person              | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name        | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name         | locate a person easily                                                 |
+| Priority | As a …​ | I want to …​                                                          | So that I can…​                                            |
+|----------|---------|-----------------------------------------------------------------------|------------------------------------------------------------|
+| `* * *`  | student | view the list of local courses offered by NUS                         | plan my study guide to map my local courses for exchange   |
+| `* * *`  | student | view the list of partner courses offered by NUS' partner universities | plan my study guide to map to partner courses for exchange |
+| `* * *`  | student | search a local course                                                 | find the local course I am interested to map               |
+| `* * *`  | student | search a partner course                                               | find the partner course I am interested to map             |
+| `* * *`  | student | search a university                                                   | find the university I am interested to exchange in         |
+| `* * *`  | student | view the list of universities                                         | see what universities I am interested in                   |
+| `* *`    | student | sort the list of local courses by coursename or coursecode            | easily review the local courses                            |
+| `* *`    | student | sort the list of partner courses by coursename or coursecode          | easily review the partner courses                          |
+| `* *`    | student | sort the list of universities alphabetically                          | easily review the universities                             |
+| `* *`    | student | delete a local course                                                 | remove local courses that can no longer be mapped          |
+| `* *`    | junior  | delete a partner course                                               | remove partner courses that can no longer be mapped        |
+| `* *`    | student | delete a mapping                                                      | remove mappings that are obsolete                          |
+| `* *`    | student | update a local course                                                 | update the mapping list based on new information           |
+| `* * *`  | student | add notes                                                             | take note of the things I want to remember                 |
+| `* *`    | student | view the list of my notes                                             | easily view my notes that I have taken                     |
+| `* *`    | student | delete my notes                                                       | remove my note                                             |
+| `* `     | student | update the list of my notes                                           | edit any mistakes or update new information                |
+| `* `     | student | tag my notes                                                          | to organise my notes                                       |
 
 *{More to be added}*
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `SEPlendid` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+#### Local Course
+**Use case: List local course**
+
+**MSS**
+1. User requests to list local courses.
+2. SEPlendid shows all available local courses.
+Use case ends.
+
+**Use case: Add a local course**
+
+**MSS:**
+1. User requests to add a local course.
+2. SEPlendid adds and shows the local course.
+Use case ends.
+
+**Extension:**
+* 1a. The command format is invalid. 
+  * 1a1. SEPlendid shows an error message. 
+  
+  Use case resumes at step 1.
+* 1b. The local course is already added.
+  * 1b1. SEPlendid shows an error message.
+  
+  Use case resumes at step 1.
+
+**Use case: Delete a local course**
+
+**MSS:**
+1. User requests to delete a local course.
+2. SEPlendid deletes and shows the local course deleted.
+Use case ends.
+
+**Extension:**
+* 1a. The command format is invalid. 
+  * 1a1. SEPlendid shows an error message.
+  
+  Use case resumes at step 1.
+* 1b. The local course does not exist.
+  * 1b1. SEPlendid shows an error message.
+  
+  Use case resumes at step 1.
+
+#### Partner course
+**Use case: List partner course**
+
+**MSS:**
+1. User requests to list partner courses.
+2. SEPlendid shows all available partner courses.
+Use case ends.
+
+**Use case: Add a partner course**
+
+**MSS:**
+1. User requests to add a partner course.
+2. SEPlendid adds and shows the local course.
+Use case ends.
+
+**Extension:**
+* 1a. The command format is invalid. 
+  * 1a1. SEPlendid shows an error message.
+  
+  Use case resumes at step 1.
+* 1b. The partner course is already added. 
+  * 1b1. SEPlendid shows an error message.
+    
+  Use case resumes at step 1.
+
+**Use case: Delete a partner course**
+
+**MSS:**
+1. User requests to delete a partner course. 
+2. SEPlendid deletes and shows the partner course deleted.
+
+Use case ends.
+    
+**Extension:**
+* 1a. The command format is invalid. 
+  * 1a1. SEPlendid shows an error message.
+  
+  Use case resumes at step 1.
+* 1b. The partner course does not exist. 
+  * 1b1. SEPlendid shows an error message.
+  
+  Use case resumes at step 1.
+
+
+#### Mapping
+**Use case: List mappings**
+
+**MSS:**
+1. User requests to list available mappings.
+2. SEPlendid shows all available mappings.
+
+3. Use case ends.
+
+**Use case: Add mappings**
+
+**MSS:**
+1. User requests to add a mapping.
+2. SEPlendid adds and show the mappings.
+
+Use case ends.
+
+**Extension:**
+
+* 1a. The command format is invalid. 
+  * 1a1. SEPlendid shows an error message.
+  
+  Use case resumes at step 1.
+* 1b. The mappingis already added.
+  * 1b1. SEPlendid shows an error message.
+  
+  Use case resumes at step 1.
+
+**Use case: Delete mappings**
+
+**MSS:**
+1. User requests to delete a mapping.
+2. SEPlendid deletes and shows the mappings deleted.
+
+Use case ends.
+
+**Extension:**
+
+* 1a. The command format is invalid. 
+  * 1a1. SEPlendid shows an error message.
+  
+  Use case resumes at step 1.
+* 1b. The mappings does not exist.
+  * 1b1. SEPlendid shows an error message.
+  
+  Use case resumes at step 1.
+
+
+#### Universities
+
+**Use case: List universities**
+
+**MSS:**
+
+1. User requests to list the universities.
+2. SEPlendid shows all available universities.
+
+Use case ends.
+
+**Use case: Search universities**
+
+**MSS:**
+
+1. User requests to search for a university.
+2. SEPlendid shows the specified university.
+
+Use case ends.
+
+**Use case: Sort universities**
+
+**MSS:**
+1. User requests to sort the list of universities.
+2. SEPlendid shows the universities sorted alphabetically.
+
+Use case ends.
+
+#### Note
+
+**Use case: Add a note**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1. User requests to add a note.
+2. SEPlendid adds and shows the note.
+
+Use case ends
+
+**Extension:**
+
+* 1a. The command format is invalid. 
+  * 1a1. SEPlendid shows an error message.
+  
+  Use case resumes at step 1.
+
+**Use case: List notes**
+
+**MSS**
+
+1. User requests to list notes.
+2. SEPlendid shows all available notes.
+
+Use case ends
+
+**Use case: Update a note**
+
+**MSS**
+
+1. User requests to list notes.
+2. SEPlendid shows all available notes.
+3. User requests to update a specific note in the list
+4. SEPlendid updates and shows the note.
+
+Use case ends
+
+**Extension:**
+
+* 2a. The list is empty. 
+  Use case ends.
+
+* 3a. The command format is invalid. 
+  * 3a1. SEPlendid shows an error message.
+  
+    Use case resumes at step 2. 
+* 3b. The task does not exist. 
+  * 3b1. SEPlendid shows an error message.
+      
+  Use case resumes at step 2.
+
+**Use case: Delete a note**
+
+**MSS**
+
+1. User requests to list notes.
+2. SEPlendid shows all available notes.
+3. User requests to delete a specific note in the list
+4. SEPlendid deletes the note.
+
+Use case ends
+
+**Extension:**
+
+* 2a. The list is empty. 
+
+Use case ends.
+* 3a. The command format is invalid. 
+  * 3a1. SEPlendid shows an error message.
+  
+  Use case resumes at step 2. 
+* 3b. The task does not exist. 
+  * 3b1. SEPlendid shows an error message.
+  
+  Use case resumes at step 2.
+
+**Use case: Tag a note**
+
+**MSS**
+
+1. User requests to list notes.
+2. SEPlendid shows all available notes.
+3. User requests to tag a specific note in the list
+4. SEPlendid tags and shows the note.
+
+Use case ends
+
+**Extension:**
+
+* 2a. The list is empty. 
 
     Use case ends.
 
-**Extensions**
+* 3a. The command format is invalid. 
+  * 3a1. SEPlendid shows an error message.
 
-* 2a. The list is empty.
+  Use case resumes at step 2.
+* 3b. The task does not exist.
+  * 3b1. SEPlendid shows an error message.
+  
+  Use case resumes at step 2.
 
-  Use case ends.
-
-* 3a. The given index is invalid.
-
-    * 3a1. AddressBook shows an error message.
-
-      Use case resumes at step 2.
-
-*{More to be added}*
 
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-
-*{More to be added}*
+2.  Should be able to hold up to 1000 course mappings, along with its dependent data such as local courses, without a 
+noticeable sluggishness in performance for typical usage.
+3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) 
+should be able to accomplish most of the tasks faster using commands than using the mouse.
+4.  The response to any use action should become visible within 5 seconds.
+5.  The user interface should be intuitive enough for users who are not IT-savvy.
+6.  The application should be designed to handle a growing database of course mappings and related data.
 
 ### Glossary
 
-* **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Mainstream OS**: Windows, Linux, Unix, OS-X.
+* **Course Mapping**: A course offered by a partner university, which NUS Computing students going on exchange can 
+take, and is an equivalent course to one offered in NUS.
+* **CLI**: Command-Line Interface is a means of interacting with a computer program b inputting lines of text called 
+command-lines.
 
 --------------------------------------------------------------------------------------------------------------------
 

@@ -331,12 +331,12 @@ contains the data of your previous SEPlendid home folder.
     <tr>
         <td rowspan="1"><code>university</code></td>
         <td><code>list</code></td>
-        <td> None.</td>
+        <td>None.</td>
     </tr>
     <tr>
-        <td rowspan="3"><code>note</code></td>
-        <td><code>list [tag]</code></td>
-        <td> None.</td>
+        <td rowspan="5"><code>note</code></td>
+        <td><code>list</code></td>
+        <td>None.</td>
     </tr>
     <tr>
         <td><code>add</code></td>
@@ -345,6 +345,14 @@ contains the data of your previous SEPlendid home folder.
     <tr>
         <td><code>delete</code></td>
         <td><code>[index]</code></td>
+    </tr>
+    <tr>
+        <td><code>update</code></td>
+        <td><code>[index] [content]</code></td>
+    </tr>
+    <tr>
+        <td><code>tag</code></td>
+        <td><code>[index] [tagname]</code></td>
     </tr>
 </table>
 

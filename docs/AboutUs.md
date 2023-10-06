@@ -36,20 +36,21 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/alyssaongyx.png" width="200px">
 
-[[github](http://github.com/alyssaongyx)] [[portfolio](team/alyssaongyx.md)]
+[[github](http://github.com/alyssaongyx)] 
+[[portfolio](team/alyssaongyx.md)]
 
 * Role: Developer
 * Responsibilities: UI, Code Quality
 
-### Jean Doe
+### Alicia Michelle Wang
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/aliciamichellew.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/alyssaongyx.md)]
+[[github](http://github.com/aliciamichellew)]
+[[portfolio](team/aliciamichellew.md)]
 
 * Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Responsibilities: Command + Errors
 
 ### James Doe
 

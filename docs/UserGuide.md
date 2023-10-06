@@ -58,44 +58,48 @@ management and query features, SEPlendid can be your quick and versatile tool in
 begins a command, which can be coupled with an attribute, to narrow down to a specific functionality. \
 e.g. `localcourse sort [localname]` will sort the list of local courses by their `localname`.
 
-|Command Word|Description|
-|--|--|
-|`localcourse`|Courses offered by NUS Computing|
-|`partnercourse`|Courses offered by NUS’ partner universities|
-|`mapping`|Mappings between local courses and partner courses|
-|`university`|NUS’ partner universities|
-|`note`|A note to keep track of items|
+| Command Word    | Description                                        |
+|-----------------|----------------------------------------------------|
+| `localcourse`   | Courses offered by NUS Computing                   |
+| `partnercourse` | Courses offered by NUS’ partner universities       |
+| `mapping`       | Mappings between local courses and partner courses |
+| `university`    | NUS’ partner universities                          |
+| `note`          | A note to keep track of items                      |
 
 Each of these data types have certain attributes. These are the columns or data that will be displayed for each 
 command group: \
 `localcourse`:
-|Attribute|Description|
-|--|--|
-|`localcode`|Course Code for the local course|
-|`localname`|Name of the local course|
+
+| Attribute   | Description                      |
+|-------------|----------------------------------|
+| `localcode` | Course code for the local course |
+| `localname` | Name of the local course         |
 
 `partnercourse`:
-|Attribute|Description|
-|--|--|
-|`partnercode`|Course Code for the partner course|
-|`partnername`|Name of the partner course|
+
+| Attribute     | Description                        |
+|---------------|------------------------------------|
+| `partnercode` | Course code for the partner course |
+| `partnername` | Name of the partner course         |
 
 
 `mapping`:
-|Attribute|Description|
-|--|--|
-|`localcode`|Course Code for the local course|
-|`localname`|Name of the local course|
-|`partnercode`|Course Code for the partner course|
-|`partnername`|Name of the partner course|
-|`university`|The partner university offering the partner course|
+
+| Attribute     | Description                                        |
+|---------------|----------------------------------------------------|
+| `localcode`   | Course code for the local course                   |
+| `localname`   | Name of the local course                           |
+| `partnercode` | Course code for the partner course                 |
+| `partnername` | Name of the partner course                         |
+| `university`  | The partner university offering the partner course |
 
 `note`:
-|Attribute|Description|
-|--|--|
-|`index`|Index for the particular note|
-|`content`|The content of the note|
-|`tag`|Tag used to organise notes|
+
+|Attribute| Description                   |
+|--|-------------------------------|
+|`index`| Index for the particular note |
+|`content`| The content of the note       |
+|`tag`| Tag used to organise notes    |
 
 
 * The command format is `command-word action-word [parameters]`. <br /> `action-word`s include `sort`, `search`, `add`, 
@@ -134,9 +138,10 @@ Lists all available local courses, paginated if dataset is too huge.
 Format: `localcourse list`
 
 Example:
-|`localcourse list`|
-|--|
-|![localcourse-list-ui](images/LocalcourseListUi.png)
+
+| `localcourse list`                                   |
+|------------------------------------------------------|
+| ![localcourse-list-ui](images/LocalcourseListUi.png) |
 
 ### Add a local course: `localcourse add`
 
@@ -145,9 +150,10 @@ Adds local course with course code identified by `localcode` and course name ide
 Format: `localcourse add [localcode] [localname]`
 
 Example:
-|`localcourse add [CS1234] [Programming Fun]`|
-|--|
-|![localcourse-add-ui](images/LocalcourseAddUi.png)
+
+| `localcourse add [CS1234] [Programming Fun]`       |
+|----------------------------------------------------|
+| ![localcourse-add-ui](images/LocalcourseAddUi.png) |
 
 ### Delete a local course: `localcourse delete`
 
@@ -156,9 +162,10 @@ Deletes local course with course code identified by `localcode`.
 Format: `localcourse delete [localcode]`
 
 Example:
-|`localcourse delete [CS1234]`|
-|--|
-|![localcourse-delete-ui](images/LocalcourseDeleteUi.png)
+
+| `localcourse delete [CS1234]`                            |
+|----------------------------------------------------------|
+| ![localcourse-delete-ui](images/LocalcourseDeleteUi.png) |
 
 ### List all partner courses: `partnercourse list`
 
@@ -167,9 +174,10 @@ Lists all available partner courses, paginated if dataset is too huge.
 Format: `partnercourse list`
 
 Example:
-|`partnercourse list`|
-|--|
-|![partnercourse-list-ui](images/PartnercourseListUi.png)
+
+| `partnercourse list`                                     |
+|----------------------------------------------------------|
+| ![partnercourse-list-ui](images/PartnercourseListUi.png) |
 
 ### Add a partner course: `partnercourse add`
 
@@ -179,9 +187,10 @@ which is offered by partner `university`.
 Format: `partnercourse add [university] [partnercode] [partnername]`
 
 Example:
-|`partnercourse add [University of Toronto] [ROB311] [Artificial Intelligence]`|
-|--|
-|![partnercourse-add-ui](images/PartnercourseAddUi.png)
+
+| `partnercourse add [University of Toronto] [ROB311] [Artificial Intelligence]` |
+|--------------------------------------------------------------------------------|
+| ![partnercourse-add-ui](images/PartnercourseAddUi.png)                         |
 
 ### Delete a partner course: `partnercourse delete`
 
@@ -190,9 +199,10 @@ Deletes partner course with course code identified by `partnercode` and offered 
 Format: `partnercourse delete [university] [partnercode]`
 
 Example:
-|`partnercourse delete [University of Toronto] [ROB311]`|
-|--|
-|![partnercourse-delete-ui](images/PartnercourseDeleteUi.png)
+
+| `partnercourse delete [University of Toronto] [ROB311]`      |
+|--------------------------------------------------------------|
+| ![partnercourse-delete-ui](images/PartnercourseDeleteUi.png) |
 
 ### List all universities: `university list`
 
@@ -201,9 +211,10 @@ Lists all available partner universities, paginated if dataset is too huge.
 Format: `university list`
 
 Example:
-|`university list`|
-|--|
-|![university-list-ui](images/UniversityListUi.png)
+
+| `university list`                                  |
+|----------------------------------------------------|
+| ![university-list-ui](images/UniversityListUi.png) |
 
 ### List all mappings: `mapping list`
 
@@ -212,9 +223,10 @@ Lists all available mappings, paginated if dataset is too huge.
 Format: `mapping list`
 
 Example:
-|`mapping list`|
-|--|
-|![mapping-list-ui](images/MappingListUi.png)
+
+| `mapping list`                               |
+|----------------------------------------------|
+| ![mapping-list-ui](images/MappingListUi.png) |
 
 ### Add a mapping: `mapping add`
 
@@ -224,9 +236,10 @@ Adds mapping for local course identified by `localcode`, offered by partner `uni
 Format: `mapping add [localcode] [university] [partnercode]`
 
 Example:
-|`mapping add [CS3230] [University of Toronto] [CSC373H1]`|
-|--|
-|![mapping-add-ui](images/MappingAddUi.png)
+
+| `mapping add [CS3230] [University of Toronto] [CSC373H1]` |
+|-----------------------------------------------------------|
+| ![mapping-add-ui](images/MappingAddUi.png)                |
 
 ### Delete a mapping : `mapping delete`
 
@@ -236,9 +249,10 @@ Deletes mapping for local course identified by `localcode`, offered by partner `
 Format: `mapping delete [localcode] [university] [partnercode]`
 
 Example:
-|`mapping delete [CS3230] [University of Toronto] [CSC373H1]`|
-|--|
-|![mapping-delete-ui](images/MappingDeleteUi.png)
+
+| `mapping delete [CS3230] [University of Toronto] [CSC373H1]` |
+|--------------------------------------------------------------|
+| ![mapping-delete-ui](images/MappingDeleteUi.png)             |
 
 ### Saving the data
 

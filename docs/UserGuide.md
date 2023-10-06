@@ -254,6 +254,60 @@ Example:
 |--------------------------------------------------------------|
 | ![mapping-delete-ui](images/MappingDeleteUi.png)             |
 
+### List all notes: `note list`
+
+Lists all notes, paginated if dataset is too huge.
+
+Format: `note list`
+
+Example:
+
+| `note list`                            |
+|----------------------------------------|
+| ![note-list-ui](images/NoteListUi.png) |
+
+### Add a note: `note add`
+
+Adds note with content as `[content]` and tags it with `[tag]`. 
+
+Format: `note add [content] [tag]`
+
+Example:
+
+| `note add [You can do this!] [self-motivation]` |
+|-------------------------------------------------|
+| ![note-add-ui](images/NoteAddUi.png)            |
+
+### Delete a note : `note delete`
+
+Deletes note with index of `index`.
+
+Format: `note delete [index]`
+
+### Update a note: `note update`
+
+Updates note with index `[index]` and changes its content to be `[content]`.
+
+Format: `note update [index] [content]`
+
+Example:
+
+| `note update [1] [Exchange Application Deadline\n 25 September 2023]` |
+|-----------------------------------------------------------------------|
+| ![note-update-ui](images/NoteUpdateUi.png)                            |
+
+### Tag a note: `note tag`
+
+Updates note with index `[index]` and changes its tags to be `[tag]`.
+
+Format: `note update [index] [tag]`
+
+Example:
+
+| `note tag [1] [important]`          |
+|-------------------------------------|
+| ![note-tag-ui](images/NoteTagUi.png) |
+
 ### Saving the data
 
 SEPlendid's data are saved in the hard disk automatically after any command that changes the data. There is no need to
@@ -308,8 +362,7 @@ contains the data of your previous SEPlendid home folder.
     </tr>
     <tr>
         <td><code>add</code></td>
-        <td><code>[university] [partnercode] [partnername]
-</code></td>
+        <td><code>[university] [partnercode] [partnername]</code></td>
     </tr>
     <tr>
         <td><code>delete</code></td>

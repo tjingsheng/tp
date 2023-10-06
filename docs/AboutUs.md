@@ -15,9 +15,8 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/lamchenghou.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
 [[github](https://github.com/lamchenghou)]
-[[portfolio](https://team/lamchenghou.md)]
+[[portfolio](team/lamchenghou.md)]
 
 
 * Role: Team Lead
@@ -35,7 +34,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Alyssa Ong 
 
-<img src="images/alyssaong.png" width="200px">
+<img src="images/alyssaongyx.png" width="200px">
 
 [[github](http://github.com/alyssaongyx)] [[portfolio](team/alyssaongyx.md)]
 

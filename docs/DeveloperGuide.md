@@ -269,14 +269,24 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+This product is for NUS Computing students who are applying for Student Exchange Programme (SEP), who prefer a 
+faster and more versatile tool to access SEP-related information, compared to the current EduRec system. Seniors who 
+had underwent the exchange program, or students who learn about courses through their research can also contribute 
+course mappings.
+
+The following further describes our target users:
+* has a need to view course mappings offered by partner universities
+* is keen to contribute course mappings
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
 
+**Value proposition**
+SEPlendid aims to provide an advanced search, allowing users to search for mappings by various attributes such
+as partner universities' course names, and NUS course codes. We aim to also include features such as the ability to 
+contribute course mappings, and note-taking. 
 
 ### User stories
 

@@ -292,14 +292,25 @@ contribute course mappings, and note-taking.
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                 | So that I can…​                                                        |
-|----------|--------------------------------------------|------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions       | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person             |                                                                        |
-| `* * *`  | user                                       | delete a person              | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name        | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name         | locate a person easily                                                 |
+| Priority | As a …​ | I want to …​                                                          | So that I can…​                                            |
+|----------|---------|-----------------------------------------------------------------------|------------------------------------------------------------|
+| `* * *`  | junior  | view the list of local courses offered by NUS                         | plan my study guide to map my local courses for exchange   |
+| `* * *`  | junior  | view the list of partner courses offered by NUS' partner universities | plan my study guide to map to partner courses for exchange |
+| `* * *`  | junior  | search a local course                                                 | find the local course I am interested to map               |
+| `* * *`  | junior  | search a partner course                                               | find the partner course I am interested to map             |
+| `* * *`  | junior  | search a university                                                   | find the university I am interested to exchange in         |
+| `* * *`  | junior  | view the list of universities                                         | see what universities I am interested in                   |
+| `* *`    | junior  | sort the list of local courses by coursename or coursecode            | easily review the local courses                            |
+| `* *`    | junior  | sort the list of partner courses by coursename or coursecode          | easily review the partner courses                          |
+| `* *`    | junior  | sort the list of universities alphabetically                          | easily review the universities                             |
+| `* *`    | junior  | delete a local course                                                 | remove local courses that can no longer be mapped          |
+| `* *`    | junior  | delete a partner course                                               | remove partner courses that can no longer be mapped        |
+| `* *`    | senior  | delete a mapping                                                      | remove mappings that are obsolete                          |
+| `* *`    | senior  | update a local course                                                 | update the mapping list based on new information           |
+| `* *`    | junior  | view the list of my notes                                             | easily view my notes that I have taken                     |
+| `* *`    | junior  | delete my notes                                                       | remove my note                                             |
+| `* `     | junior  | update the list of my notes                                           | edit any mistakes or update new information                |
+| `* `     | junior  | tag my notes                                                          | to organise my notes                                       |
 
 *{More to be added}*
 

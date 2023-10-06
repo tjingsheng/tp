@@ -52,12 +52,12 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Command + Errors
 
-### James Doe
+### Tan Jing Sheng
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/tjingsheng.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/alyssaongyx.md)]
+[[github](http://github.com/tjingsheng)]
+[[portfolio](team/tjingsheng.md)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: Storage, UI, Testing

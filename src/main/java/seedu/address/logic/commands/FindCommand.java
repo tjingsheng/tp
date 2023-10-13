@@ -4,7 +4,9 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.SeplendidModel;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 
 /**
@@ -32,6 +34,18 @@ public class FindCommand extends Command {
         model.updateFilteredPersonList(predicate);
         return new CommandResult(
                 String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));
+    }
+
+    /**
+     * TBD: This stub is to be removed after morphing is complete.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return Nothing.
+     * @throws CommandException Always.
+     */
+    @Override
+    public CommandResult execute(SeplendidModel model) throws CommandException {
+        throw new CommandException("TBD: this is a stub and should be removed after morph.");
     }
 
     @Override

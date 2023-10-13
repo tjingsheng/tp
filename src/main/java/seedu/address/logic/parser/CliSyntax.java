@@ -12,4 +12,8 @@ public class CliSyntax {
     public static final Prefix PREFIX_ADDRESS = new Prefix("a/");
     public static final Prefix PREFIX_TAG = new Prefix("t/");
 
+    /* Seplendid parameters */
+    public static final SeplendidParameter PARAMETER_LOCALCODE = new SeplendidParameter("localcode");
+    public static final SeplendidParameter PARAMETER_LOCALNAME = new SeplendidParameter("localname");
+
 }

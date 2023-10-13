@@ -1,7 +1,8 @@
 package seedu.address.logic.commands;
 
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -25,6 +26,10 @@ public class AddNoteCommand extends Command {
     private final Index index;
     private final String remark;
 
+    public AddNoteCommand() {
+        this.index = null;
+        this.remark = null;
+    }
     /**
      * @param index of the person in the filtered person list to edit the remark
      * @param remark of the person to be updated to

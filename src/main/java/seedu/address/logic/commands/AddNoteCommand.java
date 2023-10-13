@@ -1,0 +1,65 @@
+package seedu.address.logic.commands;
+
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE;
+
+import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.Model;
+
+/**
+ * Adds a node.
+ */
+public class AddNoteCommand extends Command {
+    public static final String COMMAND_WORD = "addnote";
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds note "
+            + "Parameters: "
+            + PREFIX_NOTE + "[NOTE]\n"
+            + "Example: " + COMMAND_WORD + " 1 "
+            + PREFIX_NOTE + "Likes to swim.";
+
+    public static final String MESSAGE_NOT_IMPLEMENTED_YET = "Remark command not implemented yet";
+
+    public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Remark: %2$s";
+
+    private final Index index;
+    private final String remark;
+
+    public AddNoteCommand() {
+        this.index = null;
+        this.remark = null;
+    }
+    /**
+     * @param index of the person in the filtered person list to edit the remark
+     * @param remark of the person to be updated to
+     */
+    public AddNoteCommand(Index index, String remark) {
+        requireAllNonNull(index, remark);
+
+        this.index = index;
+        this.remark = remark;
+    }
+    @Override
+    public CommandResult execute(Model model) throws CommandException {
+        throw new CommandException(String.format(MESSAGE_ARGUMENTS, index.getOneBased(), remark));
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        // short circuit if same object
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof AddNoteCommand)) {
+            return false;
+        }
+
+        // state check
+        AddNoteCommand e = (AddNoteCommand) other;
+        return index.equals(e.index)
+                && remark.equals(e.remark);
+    }
+}

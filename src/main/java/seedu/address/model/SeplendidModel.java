@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.notes.Note;
 
 /**
  * The API of the SeplendidModel component.
@@ -93,4 +94,9 @@ public interface SeplendidModel {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredLocalCourseList(Predicate<LocalCourse> predicate);
+
+    /**
+     * Adds the given Note.
+     */
+    void addNote(Note note);
 }

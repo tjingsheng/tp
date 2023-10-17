@@ -12,6 +12,8 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.SeplendidLogsCenter;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.notes.Note;
+import seedu.address.model.notes.NoteList;
 
 /**
  * Represents the in-memory model of SEPlendid.
@@ -23,6 +25,7 @@ public class SeplendidModelManager implements SeplendidModel {
     private final LocalCourseCatalogue localCourseCatalogue;
     private final UserPrefs userPrefs;
     private final FilteredList<LocalCourse> filteredLocalCourseCatalogue;
+    private final NoteList noteList;
 
     /**
      * Initializes a SeplendidModelManager with the given localCourseCatalogue, userPrefs,
@@ -37,6 +40,7 @@ public class SeplendidModelManager implements SeplendidModel {
         this.localCourseCatalogue = new LocalCourseCatalogue(localCourseCatalogue);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredLocalCourseCatalogue = new FilteredList<>(this.localCourseCatalogue.getLocalCourseList());
+        this.noteList = new NoteList();
     }
 
     public SeplendidModelManager() {
@@ -146,5 +150,11 @@ public class SeplendidModelManager implements SeplendidModel {
         return localCourseCatalogue.equals(otherSeplendidModelManager.localCourseCatalogue)
                 && userPrefs.equals(otherSeplendidModelManager.userPrefs)
                 && filteredLocalCourseCatalogue.equals(otherSeplendidModelManager.filteredLocalCourseCatalogue);
+    }
+
+    //=========== NoteCatalouge ================================================================================
+    @Override
+    public void addNote(Note note) {
+        noteList.addNote(note);
     }
 }

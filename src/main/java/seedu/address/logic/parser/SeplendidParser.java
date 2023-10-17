@@ -8,10 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.address.commons.core.SeplendidLogsCenter;
-import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.LocalCourseAddCommand;
-import seedu.address.logic.commands.LocalCourseCommand;
+import seedu.address.logic.commands.*;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -54,6 +51,8 @@ public class SeplendidParser {
 
         case LocalCourseCommand.COMMAND_WORD:
             return getLocalCourseCommand(userInput, actionWord, arguments);
+        case NoteCommand.COMMAND_WORD:
+            return getNoteCommand(userInput, actionWord, arguments);
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
@@ -69,6 +68,17 @@ public class SeplendidParser {
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+        }
+    }
+
+    private NoteAddCommand getNoteCommand(String userInput, String actionWord, String arguments)
+            throws ParseException {
+        switch (actionWord) {
+            case NoteAddCommand.ACTION_WORD:
+                return new NoteAddCommandParser().parse(arguments);
+            default:
+                logger.finer("This user input caused a ParseException: " + userInput);
+                throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
 

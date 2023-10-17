@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.SeplendidModel;
 
 /**
  * Adds a node.
@@ -30,8 +31,9 @@ public class AddNoteCommand extends Command {
         this.index = null;
         this.remark = null;
     }
+
     /**
-     * @param index of the person in the filtered person list to edit the remark
+     * @param index  of the person in the filtered person list to edit the remark
      * @param remark of the person to be updated to
      */
     public AddNoteCommand(Index index, String remark) {
@@ -40,9 +42,22 @@ public class AddNoteCommand extends Command {
         this.index = index;
         this.remark = remark;
     }
+
+    @Override
+    public CommandResult execute(SeplendidModel model) throws CommandException {
+        throw new CommandException(String.format(MESSAGE_ARGUMENTS, index.getOneBased(), remark));
+    }
+
+    /**
+     * TBD: This stub is to be removed after morphing is complete.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return Nothing.
+     * @throws CommandException Always.
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        throw new CommandException(String.format(MESSAGE_ARGUMENTS, index.getOneBased(), remark));
+        throw new CommandException("TBD: this is a stub and should be removed after morph.");
     }
 
     @Override

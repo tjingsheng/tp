@@ -34,7 +34,7 @@ public class SeplendidParser {
     private static final Logger logger = SeplendidLogsCenter.getLogger(SeplendidParser.class);
 
     public Command parseNonArgumentCommand(String userInput) throws ParseException {
-        final Matcher matcher = COMMAND_FORMAT_WITH_ARG.matcher(userInput.trim());
+        final Matcher matcher = COMMAND_FORMAT_WITHOUT_ARG.matcher(userInput.trim());
         if (!matcher.matches()) {
             // Note that we are using HelpCommand from ab3
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));

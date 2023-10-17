@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 import seedu.address.commons.core.SeplendidLogsCenter;
 import seedu.address.logic.commands.*;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.partnercourse.PartnerCourse;
 
 /**
  * Parses user input into the SEPlendid CLI.
@@ -65,6 +66,17 @@ public class SeplendidParser {
         switch (actionWord) {
         case LocalCourseAddCommand.ACTION_WORD:
             return new LocalCourseAddCommandParser().parse(arguments);
+        default:
+            logger.finer("This user input caused a ParseException: " + userInput);
+            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+        }
+    }
+
+    private PartnerCourseAddCommand getPartnerCourseCommand(String userInput, String actionWord, String arguments)
+            throws ParseException{
+        switch(actionWord) {
+        case PartnerCourseAddCommand.ACTION_WORD:
+            return new PartnerCourseAddCommandParser().parse(arguments);
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

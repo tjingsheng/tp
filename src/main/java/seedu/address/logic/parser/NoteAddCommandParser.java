@@ -1,7 +1,8 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PARAMETER_CONTENT;
+import static seedu.address.logic.parser.CliSyntax.PARAMETER_TAGS;
 
 import java.util.stream.Stream;
 
@@ -32,7 +33,7 @@ public class NoteAddCommandParser implements Parser<NoteAddCommand> {
 
         if (!areArgumentsPresent(parameterToArgMap, PARAMETER_CONTENT, PARAMETER_TAGS)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    NoteAddCommand.NOTE_ADD_MESSAGE_USAGE);
+                    NoteAddCommand.NOTE_ADD_MESSAGE_USAGE));
         }
 
         // All arguments should be a non-empty {@code Optional}

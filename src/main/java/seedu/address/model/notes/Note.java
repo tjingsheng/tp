@@ -28,6 +28,20 @@ public class Note {
         this.tags = tags;
     }
 
+    /**
+     * Gets the tags of the note.
+     */
+    public String getTags() {
+        return tags;
+    }
+
+    /**
+     * Gets the content of the note.
+     */
+    public String getContent() {
+        return content;
+    }
+
     @Override
     public String toString() {
         return content + "\n tags: " + tags;

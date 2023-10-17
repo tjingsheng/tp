@@ -22,12 +22,12 @@ public class LocalName {
     /**
      * Constructs an {@code LocalName}.
      *
-     * @param localname A valid localname.
+     * @param localName A valid localname.
      */
-    public LocalName(String localname) {
-        requireNonNull(localname);
-        checkArgument(isValidLocalName(localname), MESSAGE_CONSTRAINTS);
-        value = localname;
+    public LocalName(String localName) {
+        requireNonNull(localName);
+        checkArgument(isValidLocalName(localName), MESSAGE_CONSTRAINTS);
+        value = localName;
     }
 
     public static boolean isValidLocalName(String test) {

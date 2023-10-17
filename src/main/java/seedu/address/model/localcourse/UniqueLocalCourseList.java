@@ -86,16 +86,16 @@ public class UniqueLocalCourseList implements Iterable<LocalCourse> {
     }
 
     /**
-     * Replaces the contents of this list with {@code localcourses}.
-     * {@code localcourses} must not contain duplicate LocalCourses.
+     * Replaces the contents of this list with {@code localCourses}.
+     * {@code localCourses} must not contain duplicate LocalCourses.
      */
-    public void setLocalCourses(List<LocalCourse> localcourses) {
-        requireAllNonNull(localcourses);
-        if (!localCoursesAreUnique(localcourses)) {
+    public void setLocalCourses(List<LocalCourse> localCourses) {
+        requireAllNonNull(localCourses);
+        if (!localCoursesAreUnique(localCourses)) {
             throw new DuplicateLocalCourseException();
         }
 
-        internalList.setAll(localcourses);
+        internalList.setAll(localCourses);
     }
 
     /**

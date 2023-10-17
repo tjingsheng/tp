@@ -53,14 +53,19 @@ public class SeplendidParser {
         switch (commandWord) {
 
         case LocalCourseCommand.COMMAND_WORD:
-            switch (actionWord) {
-            case LocalCourseAddCommand.ACTION_WORD:
-                return new LocalCourseAddCommandParser().parse(arguments);
-            default:
-                logger.finer("This user input caused a ParseException: " + userInput);
-                throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
-            }
+            return getLocalCourseCommand(userInput, actionWord, arguments);
 
+        default:
+            logger.finer("This user input caused a ParseException: " + userInput);
+            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+        }
+    }
+
+    private LocalCourseAddCommand getLocalCourseCommand(String userInput, String actionWord, String arguments)
+            throws ParseException {
+        switch (actionWord) {
+        case LocalCourseAddCommand.ACTION_WORD:
+            return new LocalCourseAddCommandParser().parse(arguments);
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

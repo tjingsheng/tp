@@ -13,7 +13,6 @@ import seedu.address.model.localcourse.UniqueLocalCourseList;
  * Wraps local course data at the catalogue level
  * Duplicates are not allowed (by .isSameLocalCourse comparison)
  */
-@SuppressWarnings("checkstyle:CommentsIndentation")
 public class LocalCourseCatalogue implements ReadOnlyLocalCourseCatalogue {
 
     private final UniqueLocalCourseList localCourses;

@@ -55,28 +55,29 @@ public class LocalCourseAddCommandParser implements Parser<LocalCourseAddCommand
      * @return true if in correct format.
      */
     private static boolean areValuesEnclosedAndNonEmpty(String args) {
-        int count = 0;
+        // The number of unclosed open square brackets, used to validate input.
+        int bracketCount = 0;
         StringBuilder currValue = new StringBuilder();
 
         for (int i = 0; i < args.length(); i++) {
             Character currChar = args.charAt(i);
             if (currChar.equals('[')) {
                 currValue.setLength(0);
-                count++;
+                bracketCount++;
             } else if (currChar.equals(']') && currValue.toString().trim().isEmpty()) {
                 return false;
             } else if (currChar.equals(']')) {
-                count--;
+                bracketCount--;
             } else {
                 currValue.append(currChar);
             }
 
-            if (count < 0 || count > 1) {
+            if (bracketCount < 0 || bracketCount > 1) {
                 return false;
             }
         }
 
-        return count == 0;
+        return bracketCount == 0;
     }
 
     /**

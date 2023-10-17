@@ -36,8 +36,8 @@ import seedu.address.storage.LocalCourseCatalogueStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
 import seedu.address.storage.UserPrefsStorage;
-import seedu.address.ui.Ui;
-import seedu.address.ui.UiManager;
+import seedu.address.seplendidui.Ui;
+import seedu.address.seplendidui.UiManager;
 
 /**
  * Runs the application.

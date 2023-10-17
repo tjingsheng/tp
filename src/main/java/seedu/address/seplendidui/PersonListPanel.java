@@ -18,14 +18,20 @@ public class PersonListPanel extends UiPart<Region> {
 
     @FXML
     private ListView<Person> personListView;
+    private PersonDetailPanel personDetailPanel;
 
     /**
      * Creates a {@code PersonListPanel} with the given {@code ObservableList}.
      */
-    public PersonListPanel(ObservableList<Person> personList) {
+    public PersonListPanel(ObservableList<Person> personList, PersonDetailPanel personDetailPanel) {
         super(FXML);
+        this.personDetailPanel = personDetailPanel;
         personListView.setItems(personList);
         personListView.setCellFactory(listView -> new PersonListViewCell());
+
+        // Add selection listener to update the PersonDetailPanel
+        personListView.getSelectionModel().selectedItemProperty().addListener(
+            (observable, oldValue, newValue) -> showPersonDetails(newValue));
     }
 
     /**
@@ -45,4 +51,11 @@ public class PersonListPanel extends UiPart<Region> {
         }
     }
 
+    /**
+     * Show the details of the selected person in the PersonDetailPanel.
+     * @param person The selected person
+     */
+    private void showPersonDetails(Person person) {
+        personDetailPanel.setPersonDetails(person);
+    }
 }

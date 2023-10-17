@@ -8,11 +8,18 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.address.commons.core.SeplendidLogsCenter;
-import seedu.address.logic.commands.*;
+import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.HelpCommand;
+import seedu.address.logic.commands.LocalCourseAddCommand;
+import seedu.address.logic.commands.LocalCourseCommand;
+import seedu.address.logic.commands.NoteAddCommand;
+import seedu.address.logic.commands.NoteCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
  * Parses user input into the SEPlendid CLI.
+ * <p>
+ * TBD: Add parsing for help command
  */
 public class SeplendidParser {
 
@@ -37,9 +44,9 @@ public class SeplendidParser {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
         }
 
-        final String commandWord = matcher.group("commandWord");
-        final String actionWord = matcher.group("actionWord");
-        final String arguments = matcher.group("arguments");
+        final String commandWord = matcher.group("commandWord").trim();
+        final String actionWord = matcher.group("actionWord").trim();
+        final String arguments = matcher.group("arguments").trim();
 
         // Note to developers: Change the log level in config.json to enable lower level (i.e., FINE, FINER and lower)
         // log messages such as the one below.
@@ -74,11 +81,11 @@ public class SeplendidParser {
     private NoteAddCommand getNoteCommand(String userInput, String actionWord, String arguments)
             throws ParseException {
         switch (actionWord) {
-            case NoteAddCommand.ACTION_WORD:
-                return new NoteAddCommandParser().parse(arguments);
-            default:
-                logger.finer("This user input caused a ParseException: " + userInput);
-                throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+        case NoteAddCommand.ACTION_WORD:
+            return new NoteAddCommandParser().parse(arguments);
+        default:
+            logger.finer("This user input caused a ParseException: " + userInput);
+            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
 

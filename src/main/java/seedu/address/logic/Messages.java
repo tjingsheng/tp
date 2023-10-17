@@ -6,6 +6,7 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.parser.Prefix;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.notes.Note;
 import seedu.address.model.person.Person;
 
 /**
@@ -59,6 +60,14 @@ public class Messages {
                 .append("; LocalName: ")
                 .append(localCourse.getLocalName());
         return builder.toString();
+    }
+
+    /**
+     * Formats the {@code note} for display to the user.
+     * Overloaded method.
+     */
+    public static String format(Note note) {
+        return note.toString();
     }
 
 }

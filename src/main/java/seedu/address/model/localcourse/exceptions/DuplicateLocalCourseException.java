@@ -9,4 +9,3 @@ public class DuplicateLocalCourseException extends RuntimeException {
         super("Operation would result in duplicate local courses");
     }
 }
-

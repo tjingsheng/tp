@@ -5,4 +5,3 @@ package seedu.address.model.localcourse.exceptions;
  */
 public class LocalCourseNotFoundException extends RuntimeException {
 }
-

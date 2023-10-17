@@ -11,7 +11,7 @@ public class NoteList {
     /**
      * Constructs an {@code NoteList}.
      */
-    NoteList() {
+    public NoteList() {
         this.notesList = new ArrayList<>();
     }
 

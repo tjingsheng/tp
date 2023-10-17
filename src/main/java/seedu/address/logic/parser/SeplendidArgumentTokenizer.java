@@ -83,10 +83,11 @@ public class SeplendidArgumentTokenizer {
             SeplendidParameter param = parameterPosition.getParameter();
             if (startPosition == -1) {
                 parameterToArgMap.put(param, "");
+            } else {
+                int closingSquareBracketPosition = argsString.indexOf("]", startPosition);
+                String argumentValue = argsString.substring(startPosition + 1, closingSquareBracketPosition);
+                parameterToArgMap.put(param, argumentValue);
             }
-            int closingSquareBracketPosition = argsString.indexOf("]", startPosition);
-            String argumentValue = argsString.substring(startPosition + 1, closingSquareBracketPosition);
-            parameterToArgMap.put(param, argumentValue);
         });
         return parameterToArgMap;
     }

@@ -14,4 +14,8 @@ public class CliSyntax {
     public static final Prefix PREFIX_NOTE = new Prefix("note/");
 
 
+    /* Seplendid parameters */
+    public static final SeplendidParameter PARAMETER_LOCALCODE = new SeplendidParameter("localcode");
+    public static final SeplendidParameter PARAMETER_LOCALNAME = new SeplendidParameter("localname");
+
 }

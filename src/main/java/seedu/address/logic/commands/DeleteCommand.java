@@ -9,6 +9,7 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.SeplendidModel;
 import seedu.address.model.person.Person;
 
 /**
@@ -43,6 +44,18 @@ public class DeleteCommand extends Command {
         Person personToDelete = lastShownList.get(targetIndex.getZeroBased());
         model.deletePerson(personToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, Messages.format(personToDelete)));
+    }
+
+    /**
+     * TBD: This stub is to be removed after morphing is complete.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return Nothing.
+     * @throws CommandException Always.
+     */
+    @Override
+    public CommandResult execute(SeplendidModel model) throws CommandException {
+        throw new CommandException("TBD: this is a stub and should be removed after morph.");
     }
 
     @Override

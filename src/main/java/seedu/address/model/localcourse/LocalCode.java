@@ -23,12 +23,12 @@ public class LocalCode {
     /**
      * Constructs an {@code LocalCode}.
      *
-     * @param localcode A valid localcode.
+     * @param localCode A valid localCode.
      */
-    public LocalCode(String localcode) {
-        requireNonNull(localcode);
-        checkArgument(isValidLocalCode(localcode), MESSAGE_CONSTRAINTS);
-        value = localcode;
+    public LocalCode(String localCode) {
+        requireNonNull(localCode);
+        checkArgument(isValidLocalCode(localCode), MESSAGE_CONSTRAINTS);
+        value = localCode;
     }
 
     public static boolean isValidLocalCode(String test) {

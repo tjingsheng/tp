@@ -174,4 +174,42 @@ public class ParserUtil {
         String trimmedTags = tags.trim();
         return trimmedTags;
     }
+
+    // SEPlendid ParserUtil starts here
+
+    /**
+     * Returns true if all arguments are enclosed in square brackets, and are non-empty.
+     * The input string must be non-empty.
+     *
+     * @param args Arguments in the format of {@code [args1] [args2] ...}.
+     * @return true if in correct format.
+     */
+    public static boolean areValuesEnclosedAndNonEmpty(String args) {
+        if (args.isEmpty()) {
+            return false;
+        }
+        // The number of unclosed open square brackets, used to validate input.
+        int bracketCount = 0;
+        StringBuilder currValue = new StringBuilder();
+
+        for (int i = 0; i < args.length(); i++) {
+            Character currChar = args.charAt(i);
+            if (currChar.equals('[')) {
+                currValue.setLength(0);
+                bracketCount++;
+            } else if (currChar.equals(']') && currValue.toString().trim().isEmpty()) {
+                return false;
+            } else if (currChar.equals(']')) {
+                bracketCount--;
+            } else {
+                currValue.append(currChar);
+            }
+
+            if (bracketCount < 0 || bracketCount > 1) {
+                return false;
+            }
+        }
+
+        return bracketCount == 0;
+    }
 }

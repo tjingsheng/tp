@@ -12,6 +12,7 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.LocalCourseAddCommand;
 import seedu.address.logic.commands.LocalCourseCommand;
+import seedu.address.logic.commands.LocalCourseListCommand;
 import seedu.address.logic.commands.NoteAddCommand;
 import seedu.address.logic.commands.NoteCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -26,9 +27,38 @@ public class SeplendidParser {
     /**
      * Used for initial separation of command, action word and arguments.
      */
-    private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile(
+    private static final Pattern COMMAND_FORMAT_WITHOUT_ARG = Pattern.compile(
+            "(?<commandWord>\\S+)\\s(?<actionWord>\\S+)");
+    private static final Pattern COMMAND_FORMAT_WITH_ARG = Pattern.compile(
             "(?<commandWord>\\S+)\\s(?<actionWord>\\S+)\\s(?<arguments>.*)");
     private static final Logger logger = SeplendidLogsCenter.getLogger(SeplendidParser.class);
+
+    public Command parseNonArgumentCommand(String userInput) throws ParseException {
+        final Matcher matcher = COMMAND_FORMAT_WITH_ARG.matcher(userInput.trim());
+        if (!matcher.matches()) {
+            // Note that we are using HelpCommand from ab3
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
+        }
+
+        final String commandWord = matcher.group("commandWord").trim();
+        final String actionWord = matcher.group("actionWord").trim();
+
+        // Note to developers: Change the log level in config.json to enable lower level (i.e., FINE, FINER and lower)
+        // log messages such as the one below.
+        // Lower level log messages are used sparingly to minimize noise in the code.
+        logger.fine("Command word: " + commandWord + "; Action word: " + actionWord);
+
+        switch (commandWord) {
+
+        case LocalCourseCommand.COMMAND_WORD:
+            return getLocalCourseCommandWithoutArg(userInput, actionWord);
+        // TBD: for Note
+
+        default:
+            logger.finer("This user input caused a ParseException: " + userInput);
+            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+        }
+    }
 
     /**
      * Parses user input into command for execution.
@@ -38,10 +68,10 @@ public class SeplendidParser {
      * @throws ParseException if the user input does not conform the expected format.
      */
     public Command parseCommand(String userInput) throws ParseException {
-        final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
+        final Matcher matcher = COMMAND_FORMAT_WITH_ARG.matcher(userInput.trim());
         if (!matcher.matches()) {
             // Note that we are using HelpCommand from ab3
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
+            return parseNonArgumentCommand(userInput);
         }
 
         final String commandWord = matcher.group("commandWord").trim();
@@ -57,7 +87,7 @@ public class SeplendidParser {
         switch (commandWord) {
 
         case LocalCourseCommand.COMMAND_WORD:
-            return getLocalCourseCommand(userInput, actionWord, arguments);
+            return getLocalCourseCommandWithArg(userInput, actionWord, arguments);
         case NoteCommand.COMMAND_WORD:
             return getNoteCommand(userInput, actionWord, arguments);
 
@@ -67,11 +97,22 @@ public class SeplendidParser {
         }
     }
 
-    private LocalCourseAddCommand getLocalCourseCommand(String userInput, String actionWord, String arguments)
+    private LocalCourseCommand getLocalCourseCommandWithArg(String userInput, String actionWord, String arguments)
             throws ParseException {
         switch (actionWord) {
         case LocalCourseAddCommand.ACTION_WORD:
             return new LocalCourseAddCommandParser().parse(arguments);
+        default:
+            logger.finer("This user input caused a ParseException: " + userInput);
+            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+        }
+    }
+
+    private LocalCourseCommand getLocalCourseCommandWithoutArg(String userInput, String actionWord)
+            throws ParseException {
+        switch (actionWord) {
+        case LocalCourseListCommand.ACTION_WORD:
+            return new LocalCourseListCommand();
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

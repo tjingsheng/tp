@@ -154,4 +154,24 @@ public class ParserUtil {
         }
         return new LocalName(localName);
     }
+
+    /**
+     * Parses a {@code String content}.
+     * Leading and trailing whitespaces will be trimmed.
+     */
+    public static String parseContent(String content) throws ParseException {
+        requireNonNull(content);
+        String trimmedContent = content.trim();
+        return trimmedContent;
+    }
+
+    /**
+     * Parses a {@code String tags}.
+     * Leading and trailing whitespaces will be trimmed.
+     */
+    public static String parseNoteTags(String tags) throws ParseException {
+        requireNonNull(tags);
+        String trimmedTags = tags.trim();
+        return trimmedTags;
+    }
 }

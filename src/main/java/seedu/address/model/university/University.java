@@ -3,14 +3,14 @@ package seedu.address.model.university;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 public class University {
-    private final University universityName;
-    public University(University uN) {
+    private final UniversityName universityName;
+    public University(UniversityName uN) {
         requireAllNonNull(uN);
         universityName = uN;
     }
 
     //Getters
-    public University getUniversityName() {
+    public UniversityName getUniversityName() {
         return universityName;
     }
 

@@ -24,29 +24,6 @@ public class UniqueUniversityList implements Iterable<University> {
         return internalList.stream().anyMatch(toCheck::isSameUniversity);
     }
 
-//    public void add(University toAdd) {
-//        requireNonNull(toAdd);
-//        if (contains(toAdd)) {
-//            throw new DuplicateUniversityException();
-//        }
-//        internalList.add(toAdd);
-//    }
-
-//    public void setLocalCourse(University target, University editeduniversity) {
-//        requireAllNonNull(target,editeduniversity);
-//
-//        int index = internalList.indexOf(target);
-//        if (index == -1) {
-//            throw new UniversityNotFoundException();
-//        }
-//
-//        if (!target.isSameUniversity(editeduniversity) && contains(editeduniversity)) {
-//            throw new DuplicateLocalCourseException();
-//        }
-//
-//            internalList.set(index, editeduniversity);
-//    }
-
     public void remove(LocalCourse toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
@@ -58,15 +35,6 @@ public class UniqueUniversityList implements Iterable<University> {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
     }
-
-//    public void setUniversities(List<University> universities) {
-//        requireAllNonNull(universities);
-//        if (!universitiesAreUnique(universities)) {
-//            throw new DuplicateLocalCourseException();
-//        }
-//
-//        internalList.setAll(universities);
-//    }
 
     public ObservableList<University> asUnmodifiableObservableList() {
         return internalUnmodifiableList;

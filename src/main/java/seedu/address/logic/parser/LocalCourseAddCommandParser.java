@@ -5,8 +5,6 @@ import static seedu.address.logic.parser.CliSyntax.PARAMETER_LOCALCODE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_LOCALNAME;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
-import java.util.stream.Stream;
-
 import seedu.address.logic.commands.LocalCourseAddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.localcourse.LocalCode;
@@ -34,7 +32,7 @@ public class LocalCourseAddCommandParser implements Parser<LocalCourseAddCommand
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_LOCALCODE, PARAMETER_LOCALNAME);
 
-        if (!areArgumentsPresent(parameterToArgMap, PARAMETER_LOCALCODE, PARAMETER_LOCALNAME)) {
+        if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_LOCALCODE, PARAMETER_LOCALNAME)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     LocalCourseAddCommand.LOCAL_COURSE_ADD_MESSAGE_USAGE));
         }
@@ -46,14 +44,6 @@ public class LocalCourseAddCommandParser implements Parser<LocalCourseAddCommand
         LocalCourse localCourse = new LocalCourse(localCode, localName);
 
         return new LocalCourseAddCommand(localCourse);
-    }
-
-    /**
-     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
-     * {@code SeplendidArgumentMap}.
-     */
-    private static boolean areArgumentsPresent(SeplendidArgumentMap argumentMap, SeplendidParameter... parameters) {
-        return Stream.of(parameters).allMatch(parameter -> argumentMap.getValue(parameter).isPresent());
     }
 
 }

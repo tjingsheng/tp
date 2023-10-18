@@ -1,11 +1,10 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
-import seedu.address.model.university.University;
-
-import static java.util.Objects.requireNonNull;
 
 public class UniversityListCommand extends UniversityCommand {
     public static final String UNIVERSITY_LIST_MESSAGE_USAGE = COMMAND_WORD

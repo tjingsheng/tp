@@ -5,7 +5,6 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
 import java.util.function.Predicate;
-import java.util.logging.Filter;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -14,7 +13,6 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.SeplendidLogsCenter;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.notes.Note;
-import seedu.address.model.notes.UniqueNoteList;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
 

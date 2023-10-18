@@ -1,14 +1,18 @@
 package seedu.address.model;
 
+import static java.util.Objects.requireNonNull;
+
+import java.util.List;
+
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.notes.Note;
 import seedu.address.model.notes.UniqueNoteList;
 
-import java.util.List;
-
-import static java.util.Objects.requireNonNull;
-
+/**
+ * Wraps note data at the catalogue level
+ * Duplicates are not allowed (by .isSameNote comparison)
+ */
 public class NoteCatalogue implements ReadOnlyNoteCatalogue {
     private final UniqueNoteList notes;
 

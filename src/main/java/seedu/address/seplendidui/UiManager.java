@@ -2,9 +2,14 @@ package seedu.address.seplendidui;
 
 import java.util.logging.Logger;
 import javafx.application.Platform;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Control;
+import javafx.scene.control.Labeled;
 import javafx.scene.image.Image;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import seedu.address.MainApp;
 import seedu.address.commons.core.LogsCenter;
@@ -42,10 +47,30 @@ public class UiManager implements Ui {
             mainWindow = new MainWindow(primaryStage, logic);
             mainWindow.show(); //This should be called before creating other UI parts
             mainWindow.fillInnerParts();
+            Font font = Font.loadFont(getClass().getResourceAsStream("/font/sono/static/Sono-Light.ttf"),13);
+            setDefaultFont(mainWindow.getPrimaryStage().getScene().getRoot(), font);
 
         } catch (Throwable e) {
             logger.severe(StringUtil.getDetails(e));
             showFatalErrorDialogAndShutdown("Fatal error during initializing", e);
+        }
+    }
+
+    private void setDefaultFont(Node node, Font font) {
+        if (node instanceof Labeled) {
+            ((Labeled) node).setFont(font);
+        }
+        if (node instanceof Control) {
+            System.out.println(font.getFamily());
+            (node).setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: " + font.getSize() + ";");
+        }
+        if (node instanceof StackPane || node instanceof javafx.scene.layout.GridPane || node instanceof javafx.scene.layout.VBox ||
+            node instanceof javafx.scene.layout.HBox || node instanceof javafx.scene.layout.AnchorPane ||
+            node instanceof javafx.scene.layout.BorderPane || node instanceof javafx.scene.layout.FlowPane) {
+            // If it's a container, iterate through its children
+            for (Node child : ((javafx.scene.Parent) node).getChildrenUnmodifiable()) {
+                setDefaultFont(child, font);
+            }
         }
     }
 

@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 import javafx.application.Application;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import seedu.address.commons.core.Config;
 import seedu.address.commons.core.LogsCenter;
@@ -59,6 +60,7 @@ public class MainApp extends Application {
     // New model class
     protected SeplendidModel seplendidModel;
     protected Config config;
+    protected Font font;
 
     @Override
     public void init() throws Exception {

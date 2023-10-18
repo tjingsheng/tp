@@ -16,12 +16,8 @@ import seedu.address.model.university.University;
  * Add appropriate methods for respective sub-models.
  */
 public interface SeplendidModel {
-    /**
-     * {@code Predicate} that always evaluate to true
-     */
-    Predicate<LocalCourse> PREDICATE_SHOW_ALL_LOCAL_COURSES = unused -> true;
 
-    Predicate<University> PREDICATE_SHOW_ALL_UNIVERSITIES = unused -> true;
+    //=========== UserPrefs ==================================================================================
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */
@@ -52,13 +48,20 @@ public interface SeplendidModel {
      */
     void setLocalCourseCatalogueFilePath(Path localCourseCatalogueFilePath);
 
+    //=========== LocalCourseCatalogue ================================================================================
+
     /**
-     * Replaces address book data with the data in {@code addressBook}.
+     * {@code Predicate} that always evaluate to true
+     */
+    Predicate<LocalCourse> PREDICATE_SHOW_ALL_LOCAL_COURSES = unused -> true;
+
+    /**
+     * Replaces localcourse list data with the data in {@code localCourseCatalogue}.
      */
     void setLocalCourseCatalogue(ReadOnlyLocalCourseCatalogue localCourseCatalogue);
 
     /**
-     * Returns the AddressBook
+     * Returns the LocalCourse list.
      */
     ReadOnlyLocalCourseCatalogue getLocalCourseCatalogue();
 
@@ -87,6 +90,8 @@ public interface SeplendidModel {
      */
     void setLocalCourse(LocalCourse localCourse, LocalCourse editedLocalCourse);
 
+    //=========== FilteredLocalCourseList Accessors =============================================================
+
     /**
      * Returns an unmodifiable view of the filtered local course list
      */
@@ -99,7 +104,10 @@ public interface SeplendidModel {
      */
     void updateFilteredLocalCourseList(Predicate<LocalCourse> predicate);
 
-    void updateUniversityList(Predicate<University> predicate);
+    //=========== PartnerCourseCatalouge ============================================================================
+
+    Predicate<PartnerCourse> PREDICATE_SHOW_ALL_PARTNER_COURSES = unused -> true;
+    ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue();
     /**
      * Returns true if a partner course with the same identity as {@code partnerCourse} exists in the PartnerCourseCatalogue.
      */
@@ -111,6 +119,19 @@ public interface SeplendidModel {
      */
     void addPartnerCourse(PartnerCourse partnerCourse);
 
+    /**
+     * Returns an unmodifiable view of the filtered partner course list
+     */
+    ObservableList<PartnerCourse> getFilteredPartnerCourseList();
+
+    void updateFilteredPartnerCourseList(Predicate<PartnerCourse> predicate);
+
+    //=========== UniversityCatalouge ================================================================================
+    Predicate<University> PREDICATE_SHOW_ALL_UNIVERSITIES = unused -> true;
+
+    void updateUniversityList(Predicate<University> predicate);
+
+    //=========== NoteCatalouge ================================================================================
     /**
      * Adds the given Note.
      */

@@ -15,6 +15,7 @@ import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.notes.Note;
 import seedu.address.model.notes.NoteList;
 import seedu.address.model.partnercourse.PartnerCourse;
+import seedu.address.model.university.University;
 
 /**
  * Represents the in-memory model of SEPlendid.
@@ -190,9 +191,18 @@ public class SeplendidModelManager implements SeplendidModel {
         requireNonNull(predicate);
         filteredPartnerCourseCatalogue.setPredicate(predicate);
     }
-    //=========== NoteCatalouge ================================================================================
+
+
+    //=========== NoteCatalogue ================================================================================
     @Override
     public void addNote(Note note) {
         noteList.addNote(note);
     }
+
+    //=========== UniversityCatalogue ================================================================================
+    @Override
+    public void updateUniversityList(Predicate<University> predicate) {
+
+    }
+
 }

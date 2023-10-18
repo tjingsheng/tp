@@ -1,16 +1,9 @@
 package seedu.address.model;
 
-import seedu.address.logic.commands.UniversityListCommand;
-import static java.util.Objects.requireNonNull;
-
-import java.util.List;
-
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.localcourse.LocalCourse;
-import seedu.address.model.university.University;
 import seedu.address.model.university.UniqueUniversityList;
-import seedu.address.model.university.UniversityName;
+import seedu.address.model.university.University;
 
 public class UniversityCatalogue implements ReadOnlyUniversityCatalogue {
 
@@ -54,7 +47,7 @@ public class UniversityCatalogue implements ReadOnlyUniversityCatalogue {
         return universities.equals(otherUniversityCatalogue.universities);
     }
     @Override
-    public int hashcode() {
+    public int hashCode() {
         return universities.hashCode();
     }
 }

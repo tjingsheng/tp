@@ -9,44 +9,44 @@
 <?import javafx.scene.layout.HBox?>
 
 <fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-         title="Address App" minWidth="500" minHeight="600" onCloseRequest="#handleExit">
+         title="SEPlendid" minWidth="700" minHeight="600" onCloseRequest="#handleExit">
   <icons>
-    <Image url="@/images/address_book_32.png" />
+    <Image url="@/images/test_logo.png" />
   </icons>
   <scene>
     <Scene>
       <stylesheets>
-        <URL value="@DarkTheme.css" />
+        <URL value="@LightTheme.css" />
         <URL value="@Extensions.css" />
       </stylesheets>
 
       <VBox>
-        <StackPane VBox.vgrow="NEVER" fx:id="commandBoxPlaceholder" styleClass="pane-with-border">
+        <StackPane VBox.vgrow="NEVER" fx:id="commandBoxPlaceholder" styleClass="background-color">
           <padding>
-            <Insets top="5" right="10" bottom="5" left="10" />
+            <Insets top="20" right="20" bottom="10" left="20"/>
           </padding>
         </StackPane>
 
-        <StackPane VBox.vgrow="NEVER" fx:id="resultDisplayPlaceholder" styleClass="pane-with-border"
+        <StackPane VBox.vgrow="NEVER" fx:id="resultBoxPlaceholder" styleClass="background-color"
                    minHeight="100" prefHeight="100" maxHeight="100">
           <padding>
-            <Insets top="5" right="10" bottom="5" left="10" />
+            <Insets top="10" right="20" bottom="10" left="20" />
           </padding>
         </StackPane>
 
-        <HBox HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
-          <VBox fx:id="personList" styleClass="pane-with-border" minWidth="340" prefWidth="340" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+        <HBox HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" styleClass="background-color">
+          <VBox fx:id="personList"  minWidth="200" prefWidth="200" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
             <padding>
-              <Insets top="10" right="10" bottom="10" left="10" />
+              <Insets top="10" right="10" bottom="20" left="20" />
             </padding>
-            <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+            <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS" />
           </VBox>
 
-          <VBox fx:id="personDetail" styleClass="pane-with-border" minWidth="340" prefWidth="340" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+          <VBox fx:id="personDetail" styleClass="background-color" minWidth="200" prefWidth="200" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" >
             <padding>
-              <Insets top="10" right="10" bottom="10" left="10" />
+              <Insets top="10" right="20" bottom="20" left="10" />
             </padding>
-            <StackPane fx:id="personDetailPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+            <StackPane fx:id="personDetailPanelPlaceholder" VBox.vgrow="ALWAYS" styleClass="background-color" />
           </VBox>
         </HBox>
 

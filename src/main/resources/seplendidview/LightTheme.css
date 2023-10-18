@@ -1,0 +1,109 @@
+/* Scroll Bar*/
+.scroll-bar {
+    -fx-background-color: transparent;
+    -fx-overflow: overlay;
+}
+
+.scroll-bar .track {
+    -fx-fill: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: derive(#CCDDFF, 50%);
+    -fx-background-insets: 3;
+}
+
+.scroll-bar .increment-button, .scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0 0 0 0;
+}
+
+.scroll-bar .increment-arrow, .scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+}
+
+.scroll-bar:vertical .increment-arrow, .scroll-bar:vertical .decrement-arrow {
+    -fx-padding: 1 8 1 8;
+}
+
+.scroll-bar:horizontal .increment-arrow, .scroll-bar:horizontal .decrement-arrow {
+    -fx-padding: 8 1 8 1;
+}
+
+/* List Cells */
+.list-view {
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+}
+
+.list-cell {
+    -fx-label-padding: 0 0 0 0;
+    -fx-graphic-text-gap : 0;
+    -fx-padding: 0 0 0 0;
+}
+
+.list-cell:filled:even {
+    -fx-background-color: #A3B0CC;
+}
+
+.list-cell:filled:odd {
+    -fx-background-color: #B7C6E5;
+}
+
+.list-cell:filled:selected {
+    -fx-background-color: #D1E0FF;
+}
+
+.list-cell:filled:selected #cardPane {
+    -fx-border-color: #000000;
+    -fx-border-width: 1;
+}
+
+.list-cell .label {
+    -fx-text-fill: black;
+}
+
+.cell_big_label {
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-size: 16px;
+    -fx-text-fill: #CCDDFF;
+}
+
+.cell_small_label {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 13px;
+    -fx-text-fill: #CCDDFF;
+}
+
+.text-field {
+    -fx-font-size: 13pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-color: black;
+}
+
+.background-color {
+     -fx-background-color: #CCDDFF;
+}
+
+.round-border {
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-border-width: 1;
+    -fx-border-color: black;
+}
+
+#cardPane {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+
+#commandTextField {
+    -fx-background-color: white;
+    -fx-max-height: 100;
+}
+
+#resultTextField {
+    -fx-background-color: white;
+    -fx-max-height: 200;
+}

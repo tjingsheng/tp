@@ -7,8 +7,10 @@ import java.util.logging.Logger;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataLoadingException;
+import seedu.address.model.PartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
+import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 
@@ -20,6 +22,7 @@ public class StorageManager implements Storage {
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
     private AddressBookStorage addressBookStorage;
     private LocalCourseCatalogueStorage localCourseCatalogueStorage;
+    private PartnerCourseCatalogueStorage partnerCourseCatalogueStorage;
     private UserPrefsStorage userPrefsStorage;
 
     /**
@@ -27,10 +30,12 @@ public class StorageManager implements Storage {
      */
     public StorageManager(AddressBookStorage addressBookStorage,
                           LocalCourseCatalogueStorage localCourseCatalogueStorage,
-                          UserPrefsStorage userPrefsStorage) {
+                          UserPrefsStorage userPrefsStorage,
+                          PartnerCourseCatalogueStorage partnerCourseCatalogueStorage) {
         this.addressBookStorage = addressBookStorage;
         this.localCourseCatalogueStorage = localCourseCatalogueStorage;
         this.userPrefsStorage = userPrefsStorage;
+        this.partnerCourseCatalogueStorage = partnerCourseCatalogueStorage;
     }
 
     // ================ UserPrefs methods ==============================
@@ -108,6 +113,35 @@ public class StorageManager implements Storage {
                                          Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
         localCourseCatalogueStorage.saveLocalCourseCatalogue(localCourseCatalogue, filePath);
+    }
+
+    // ================ PartnerCourseCatalogue methods ==============================
+    @Override
+    public Path getPartnerCourseCatalogueFilePath() {
+        return partnerCourseCatalogueStorage.getPartnerCourseCatalogueFilePath();
+    }
+
+    @Override
+    public Optional<ReadOnlyPartnerCourseCatalogue> readPartnerCourseCatalogue() throws DataLoadingException {
+        return readPartnerCourseCatalogue(partnerCourseCatalogueStorage.getPartnerCourseCatalogueFilePath());
+    }
+
+    @Override
+    public Optional<ReadOnlyPartnerCourseCatalogue> readPartnerCourseCatalogue(Path filePath) throws DataLoadingException {
+        logger.fine("Attempting to read data from file: " + filePath);
+        return partnerCourseCatalogueStorage.readPartnerCourseCatalogue(filePath);
+    }
+
+    @Override
+    public void savePartnerCourseCatalogue(ReadOnlyPartnerCourseCatalogue partnerCourseCatalogue) throws IOException {
+        savePartnerCourseCatalogue(partnerCourseCatalogue, partnerCourseCatalogueStorage.getPartnerCourseCatalogueFilePath());
+    }
+
+    @Override
+    public void savePartnerCourseCatalogue(ReadOnlyPartnerCourseCatalogue partnerCourseCatalogue,
+                                         Path filePath) throws IOException {
+        logger.fine("Attempting to write to data file: " + filePath);
+        partnerCourseCatalogueStorage.savePartnerCourseCatalogue(partnerCourseCatalogue, filePath);
     }
 
 }

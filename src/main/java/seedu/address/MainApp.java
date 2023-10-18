@@ -33,8 +33,10 @@ import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.AddressBookStorage;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonLocalCourseCatalogueStorage;
+import seedu.address.storage.JsonPartnerCourseCatalogueStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.LocalCourseCatalogueStorage;
+import seedu.address.storage.PartnerCourseCatalogueStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
 import seedu.address.storage.UserPrefsStorage;
@@ -77,7 +79,10 @@ public class MainApp extends Application {
         LocalCourseCatalogueStorage localCourseCatalogueStorage =
                 new JsonLocalCourseCatalogueStorage(userPrefs.getLocalCourseCatalogueFilePath());
 
-        storage = new StorageManager(addressBookStorage, localCourseCatalogueStorage, userPrefsStorage);
+        PartnerCourseCatalogueStorage partnerCourseCatalogue =
+                new JsonPartnerCourseCatalogueStorage(userPrefs.getPartnerCourseCatalogueFilePath());
+        storage = new StorageManager(addressBookStorage, localCourseCatalogueStorage, userPrefsStorage,
+                partnerCourseCatalogue);
         // AB3 model
         model = initAddressBookModelManager(storage, userPrefs);
         // SEPlendid model
@@ -125,12 +130,12 @@ public class MainApp extends Application {
      */
     private SeplendidModelManager initSeplendidModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         // The below needs to be repeated several times for the different data types
-        logger.info("Using data file : " + storage.getLocalCourseCatalogueFilePath());
 
         Optional<ReadOnlyLocalCourseCatalogue> localCourseCatalogueOptional;
         ReadOnlyLocalCourseCatalogue initialLocalCourseCatalogue;
         Optional<ReadOnlyPartnerCourseCatalogue> partnerCourseCatalogueOptional;
         ReadOnlyPartnerCourseCatalogue initialPartnerCourseCatalogue;
+        logger.info("Using data file : " + storage.getLocalCourseCatalogueFilePath());
         try {
             localCourseCatalogueOptional = storage.readLocalCourseCatalogue();
             if (!localCourseCatalogueOptional.isPresent()) {
@@ -140,18 +145,24 @@ public class MainApp extends Application {
             initialLocalCourseCatalogue = localCourseCatalogueOptional.orElseGet(
                     SampleDataUtil::getSampleLocalCourseCatalogue);
 
-            initialPartnerCourseCatalogue = new PartnerCourseCatalogue();
-            // partnerCourseCatalogueOptional = storage.readPartnerCourseCatalogue();
-            // if (!partnerCourseCatalogueOptional.isPresent()) {
-            //     logger.info("Creating a new data file " + storage.getLocalCourseCatalogueFilePath()
-            //             + " populated with a sample LocalCourseCatalogue.");
-            // }
-            // initialPartnerCourseCatalogue = partnerCourseCatalogueOptional.orElseGet(
-            //         SampleDataUtil::getSamplePartnerCourseCatalogue);
         } catch (DataLoadingException e) {
             logger.warning("Data file at " + storage.getLocalCourseCatalogueFilePath() + " could not be loaded."
-                    + " Will be starting with an empty AddressBook.");
+                    + " Will be starting with an empty Local courses list.");
             initialLocalCourseCatalogue = new LocalCourseCatalogue();
+        }
+
+        logger.info("Using data file : " + storage.getPartnerCourseCatalogueFilePath());
+        try {
+            partnerCourseCatalogueOptional = storage.readPartnerCourseCatalogue();
+            if (!partnerCourseCatalogueOptional.isPresent()) {
+                logger.info("Creating a new data file " + storage.getPartnerCourseCatalogueFilePath()
+                        + " populated with a sample PartnerCourseCatalogue.");
+            }
+            initialPartnerCourseCatalogue = partnerCourseCatalogueOptional.orElseGet(
+                    SampleDataUtil::getSamplePartnerCourseCatalogue);
+        } catch (DataLoadingException e) {
+            logger.warning("Data file at " + storage.getPartnerCourseCatalogueFilePath() + " could not be loaded."
+                    + " Will be starting with an empty Partner courses list.");
             initialPartnerCourseCatalogue = new PartnerCourseCatalogue();
         }
 

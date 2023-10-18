@@ -7,4 +7,5 @@ import seedu.address.model.university.University;
 public interface ReadOnlyUniversityCatalogue {
 
     ObservableList<University> getUniversityList();
+
 }

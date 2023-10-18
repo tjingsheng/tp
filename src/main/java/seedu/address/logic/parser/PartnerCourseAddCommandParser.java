@@ -5,10 +5,7 @@ import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERCODE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERNAME;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_UNIVERSITY;
 
-import java.util.stream.Stream;
-
 import seedu.address.logic.commands.PartnerCourseAddCommand;
-import seedu.address.logic.commands.PartnerCourseCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;

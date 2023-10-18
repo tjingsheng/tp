@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
@@ -257,5 +258,13 @@ public class ParserUtil {
         }
 
         return bracketCount == 0;
+    }
+
+    /**
+     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
+     * {@code SeplendidArgumentMap}.
+     */
+    public static boolean areArgumentsPresent(SeplendidArgumentMap argumentMap, SeplendidParameter... parameters) {
+        return Stream.of(parameters).allMatch(parameter -> argumentMap.getValue(parameter).isPresent());
     }
 }

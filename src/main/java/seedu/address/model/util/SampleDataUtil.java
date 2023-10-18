@@ -4,19 +4,21 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import seedu.address.model.AddressBook;
-import seedu.address.model.LocalCourseCatalogue;
-import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.ReadOnlyLocalCourseCatalogue;
+import seedu.address.model.*;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.localcourse.LocalName;
+import seedu.address.model.partnercourse.PartnerCode;
+import seedu.address.model.partnercourse.PartnerCourse;
+import seedu.address.model.partnercourse.PartnerName;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.university.University;
+import seedu.address.model.university.UniversityName;
 
 /**
  * Contains utility methods for populating {@code AddressBook} with sample data.
@@ -78,6 +80,22 @@ public class SampleDataUtil {
             sampleLocalCourseCatalogue.addLocalCourse(sampleLocalCourse);
         }
         return sampleLocalCourseCatalogue;
+    }
+
+    public static PartnerCourse[] getSamplePartnerCourses() {
+        return new PartnerCourse[] {new PartnerCourse(new University(new UniversityName("")), new PartnerCode("CS1101S"),
+                new PartnerName("Programming Methodology I")),
+                new PartnerCourse(new University(new UniversityName("")), new PartnerCode("CS1231S"),
+                        new PartnerName("Discrete Structures"))
+        };
+    }
+
+    public static ReadOnlyPartnerCourseCatalogue getSamplePartnerCourseCatalogue() {
+        PartnerCourseCatalogue samplePartnerCourseCatalogue = new PartnerCourseCatalogue();
+        for (PartnerCourse samplePartnerCourse : getSamplePartnerCourses()) {
+            samplePartnerCourseCatalogue.addPartnerCourse(samplePartnerCourse);
+        }
+        return samplePartnerCourseCatalogue;
     }
 
 }

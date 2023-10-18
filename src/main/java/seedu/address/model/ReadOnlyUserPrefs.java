@@ -14,7 +14,8 @@ public interface ReadOnlyUserPrefs {
     Path getAddressBookFilePath();
 
     Path getLocalCourseCatalogueFilePath();
+  
+    Path getPartnerCourseCatalogueFilePath();
 
     Path getUniversityCatalogueFilePath();
-
 }

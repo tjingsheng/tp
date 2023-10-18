@@ -5,17 +5,21 @@ import static java.util.Objects.requireNonNull;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalName;
+import seedu.address.model.partnercourse.PartnerCode;
+import seedu.address.model.partnercourse.PartnerName;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.university.UniversityName;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -156,6 +160,48 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String partnerCode} into an {@code PartnerCode}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code partnerCode} is invalid.
+     */
+    public static PartnerCode parsePartnerCode(String partnerCode) throws ParseException {
+        requireNonNull(partnerCode);
+        String trimmedPartnerCode = partnerCode.trim();
+        if (!PartnerCode.isValidPartnerCode(trimmedPartnerCode)) {
+            throw new ParseException(PartnerCode.MESSAGE_CONSTRAINTS);
+        }
+        return new PartnerCode(partnerCode);
+    }
+
+    /**
+     * Parses a {@code String partnerName} into an {@code PartnerName}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code partnerName} is invalid.
+     */
+    public static PartnerName parsePartnerName(String partnerName) throws ParseException {
+        requireNonNull(partnerName);
+        String trimmedPartnerName = partnerName.trim();
+        if (!PartnerName.isValidPartnerName(trimmedPartnerName)) {
+            throw new ParseException(PartnerName.MESSAGE_CONSTRAINTS);
+        }
+        return new PartnerName(partnerName);
+    }
+
+    /**
+     * Parses a {@code String universityName}.
+     * Leading and trailing whitespaces will be trimmed.
+     */
+    public static UniversityName parseUniversityName(String universityName) throws ParseException {
+        requireNonNull(universityName);
+        String trimmedUniversityName = universityName.trim();
+        if (!UniversityName.isValidUniversityName(trimmedUniversityName)) {
+            throw new ParseException(UniversityName.MESSAGE_CONSTRAINTS);
+        }
+        return new UniversityName(universityName);
+    }
+    /**
      * Parses a {@code String content}.
      * Leading and trailing whitespaces will be trimmed.
      */
@@ -211,5 +257,13 @@ public class ParserUtil {
         }
 
         return bracketCount == 0;
+    }
+
+    /**
+     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
+     * {@code SeplendidArgumentMap}.
+     */
+    public static boolean areArgumentsPresent(SeplendidArgumentMap argumentMap, SeplendidParameter... parameters) {
+        return Stream.of(parameters).allMatch(parameter -> argumentMap.getValue(parameter).isPresent());
     }
 }

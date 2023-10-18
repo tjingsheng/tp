@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.notes.Note;
+import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.person.Person;
 import seedu.address.model.university.University;
 
@@ -66,6 +67,20 @@ public class Messages {
     public static String format(University university) {
         final StringBuilder builder = new StringBuilder("UniversityName: ");
         builder.append(university.getUniversityName());
+        return builder.toString();
+    }
+
+    /**
+     * Formats the {@code partnerCourse} for display to the user.
+     * Overloaded method.
+     */
+    public static String format(PartnerCourse partnerCourse) {
+        final StringBuilder builder = new StringBuilder("University: ");
+        builder.append(partnerCourse.getPartnerUniversity())
+                .append("; PartnerCode: ")
+                .append(partnerCourse.getPartnerCode())
+                .append("; PartnerName: ")
+                .append(partnerCourse.getPartnerName());
         return builder.toString();
     }
 

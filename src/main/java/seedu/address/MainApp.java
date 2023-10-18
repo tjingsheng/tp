@@ -20,6 +20,29 @@ import seedu.address.logic.SeplendidLogicManager;
 import seedu.address.model.*;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.*;
+import seedu.address.model.AddressBook;
+import seedu.address.model.LocalCourseCatalogue;
+import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
+import seedu.address.model.PartnerCourseCatalogue;
+import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyLocalCourseCatalogue;
+import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
+import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.SeplendidModel;
+import seedu.address.model.SeplendidModelManager;
+import seedu.address.model.UserPrefs;
+import seedu.address.model.util.SampleDataUtil;
+import seedu.address.storage.AddressBookStorage;
+import seedu.address.storage.JsonAddressBookStorage;
+import seedu.address.storage.JsonLocalCourseCatalogueStorage;
+import seedu.address.storage.JsonPartnerCourseCatalogueStorage;
+import seedu.address.storage.JsonUserPrefsStorage;
+import seedu.address.storage.LocalCourseCatalogueStorage;
+import seedu.address.storage.PartnerCourseCatalogueStorage;
+import seedu.address.storage.Storage;
+import seedu.address.storage.StorageManager;
+import seedu.address.storage.UserPrefsStorage;
 import seedu.address.ui.Ui;
 import seedu.address.ui.UiManager;
 
@@ -63,7 +86,11 @@ public class MainApp extends Application {
         UniversityCatalogueStorage universityCatalogueStorage =
                 new JsonUniversityCatalogueStorage(userPrefs.getUniversityCatalogueFilePath());
 
-        storage = new StorageManager(addressBookStorage, localCourseCatalogueStorage, userPrefsStorage, universityCatalogueStorage);
+        PartnerCourseCatalogueStorage partnerCourseCatalogue =
+                new JsonPartnerCourseCatalogueStorage(userPrefs.getPartnerCourseCatalogueFilePath());
+        storage = new StorageManager(addressBookStorage, localCourseCatalogueStorage, userPrefsStorage,
+                partnerCourseCatalogue, universityCatalogueStorage);
+      
         // AB3 model
         model = initAddressBookModelManager(storage, userPrefs);
         // SEPlendid model
@@ -111,35 +138,52 @@ public class MainApp extends Application {
      */
     private SeplendidModelManager initSeplendidModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         // The below needs to be repeated several times for the different data types
-        logger.info("Using data file : " + storage.getLocalCourseCatalogueFilePath());
 
         Optional<ReadOnlyLocalCourseCatalogue> localCourseCatalogueOptional;
+        Optional<ReadOnlyPartnerCourseCatalogue> partnerCourseCatalogueOptional;
         Optional<ReadOnlyUniversityCatalogue> universityCatalogueOptional;
-        ReadOnlyLocalCourseCatalogue intiialLocalCourseCatalogue;
+      
+        ReadOnlyPartnerCourseCatalogue initialPartnerCourseCatalogue;
+        ReadOnlyLocalCourseCatalogue initialLocalCourseCatalogue;
         ReadOnlyUniversityCatalogue initialUniversityCatalogue;
+        
+        logger.info("Using data file : " + storage.getLocalCourseCatalogueFilePath());
         try {
             localCourseCatalogueOptional = storage.readLocalCourseCatalogue();
+            partnerCourseCatalogueOptional = storage.readPartnerCourseCatalogue();
             universityCatalogueOptional = storage.readUniversityCatalogue();
+          
             if (!localCourseCatalogueOptional.isPresent()) {
                 logger.info("Creating a new data file " + storage.getLocalCourseCatalogueFilePath()
                         + " populated with a sample LocalCourseCatalogue.");
             }
-            intiialLocalCourseCatalogue = localCourseCatalogueOptional.orElseGet(
+            initialLocalCourseCatalogue = localCourseCatalogueOptional.orElseGet(
                     SampleDataUtil::getSampleLocalCourseCatalogue);
+          
+            if (!partnerCourseCatalogueOptional.isPresent()) {
+                logger.info("Creating a new data file " + storage.getPartnerCourseCatalogueFilePath()
+                        + " populated with a sample PartnerCourseCatalogue.");
+            }
+            initialPartnerCourseCatalogue = partnerCourseCatalogueOptional.orElseGet(
+                    SampleDataUtil::getSamplePartnerCourseCatalogue);
+          
             if (!universityCatalogueOptional.isPresent()) {
                 logger.info("Creating a new data file " + storage.getUniversityCatalogueFilePath()
                         + " populated with a sample UniversityCatalogue.");
             }
             initialUniversityCatalogue = universityCatalogueOptional.orElseGet(
                     SampleDataUtil::getSampleUniversityCatalogue);
+            
         } catch (DataLoadingException e) {
             logger.warning("Data file at " + storage.getLocalCourseCatalogueFilePath() + " could not be loaded."
                     + " Will be starting with an empty AddressBook.");
             intiialLocalCourseCatalogue = new LocalCourseCatalogue();
+            initialPartnerCourseCatalogue = new PartnerCourseCatalogue();
             initialUniversityCatalogue = new UniversityCatalogue();
-;        }
+        }
 
-        return new SeplendidModelManager(intiialLocalCourseCatalogue, userPrefs, initialUniversityCatalogue);
+        return new SeplendidModelManager(intiialLocalCourseCatalogue, userPrefs, initialPartnerCourseCatalogue, 
+                                         initialUniversityCatalogue);
     }
 
     private void initLogging(Config config) {

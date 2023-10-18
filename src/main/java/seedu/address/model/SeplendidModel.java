@@ -8,6 +8,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.UniversityListCommand;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.notes.Note;
+import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
 
 /**
@@ -99,6 +100,17 @@ public interface SeplendidModel {
     void updateFilteredLocalCourseList(Predicate<LocalCourse> predicate);
 
     void updateUniversityList(Predicate<University> predicate);
+    /**
+     * Returns true if a partner course with the same identity as {@code partnerCourse} exists in the PartnerCourseCatalogue.
+     */
+    boolean hasPartnerCourse(PartnerCourse partnerCourse);
+
+    /**
+     * Adds the given PartnerCourse.
+     * {@code partnerCourse} must not already exist in the PartnerCourseCatalogue.
+     */
+    void addPartnerCourse(PartnerCourse partnerCourse);
+
     /**
      * Adds the given Note.
      */

@@ -5,8 +5,6 @@ import static seedu.address.logic.parser.CliSyntax.PARAMETER_LOCALCODE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_LOCALNAME;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
-import java.util.stream.Stream;
-
 import seedu.address.logic.commands.LocalCourseAddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.localcourse.LocalCode;

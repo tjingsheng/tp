@@ -1,7 +1,6 @@
 package seedu.address.model.university;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;
@@ -9,9 +8,6 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.localcourse.LocalCourse;
-import seedu.address.model.localcourse.UniqueLocalCourseList;
-import seedu.address.model.localcourse.exceptions.DuplicateLocalCourseException;
-import seedu.address.model.localcourse.exceptions.LocalCourseNotFoundException;
 import seedu.address.model.university.exceptions.UniversityNotFoundException;
 
 public class UniqueUniversityList implements Iterable<University> {

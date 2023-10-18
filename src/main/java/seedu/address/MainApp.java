@@ -17,7 +17,18 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
 import seedu.address.logic.SeplendidLogic;
 import seedu.address.logic.SeplendidLogicManager;
-import seedu.address.model.*;
+import seedu.address.model.AddressBook;
+import seedu.address.model.LocalCourseCatalogue;
+import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
+import seedu.address.model.PartnerCourseCatalogue;
+import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyLocalCourseCatalogue;
+import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
+import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.SeplendidModel;
+import seedu.address.model.SeplendidModelManager;
+import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.AddressBookStorage;
 import seedu.address.storage.JsonAddressBookStorage;
@@ -130,13 +141,13 @@ public class MainApp extends Application {
                     SampleDataUtil::getSampleLocalCourseCatalogue);
 
             initialPartnerCourseCatalogue = new PartnerCourseCatalogue();
-//            partnerCourseCatalogueOptional = storage.readPartnerCourseCatalogue();
-//            if (!partnerCourseCatalogueOptional.isPresent()) {
-//                logger.info("Creating a new data file " + storage.getLocalCourseCatalogueFilePath()
-//                        + " populated with a sample LocalCourseCatalogue.");
-//            }
-//            initialPartnerCourseCatalogue = partnerCourseCatalogueOptional.orElseGet(
-//                    SampleDataUtil::getSamplePartnerCourseCatalogue);
+            // partnerCourseCatalogueOptional = storage.readPartnerCourseCatalogue();
+            // if (!partnerCourseCatalogueOptional.isPresent()) {
+            //     logger.info("Creating a new data file " + storage.getLocalCourseCatalogueFilePath()
+            //             + " populated with a sample LocalCourseCatalogue.");
+            // }
+            // initialPartnerCourseCatalogue = partnerCourseCatalogueOptional.orElseGet(
+            //         SampleDataUtil::getSamplePartnerCourseCatalogue);
         } catch (DataLoadingException e) {
             logger.warning("Data file at " + storage.getLocalCourseCatalogueFilePath() + " could not be loaded."
                     + " Will be starting with an empty AddressBook.");

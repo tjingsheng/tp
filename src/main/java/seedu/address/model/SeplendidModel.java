@@ -5,7 +5,6 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.logic.commands.UniversityListCommand;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCourse;
@@ -109,7 +108,8 @@ public interface SeplendidModel {
     Predicate<PartnerCourse> PREDICATE_SHOW_ALL_PARTNER_COURSES = unused -> true;
     ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue();
     /**
-     * Returns true if a partner course with the same identity as {@code partnerCourse} exists in the PartnerCourseCatalogue.
+     * Returns true if a partner course with the same identity as {@code partnerCourse} exists in the
+     * PartnerCourseCatalogue.
      */
     boolean hasPartnerCourse(PartnerCourse partnerCourse);
 

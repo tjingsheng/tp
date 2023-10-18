@@ -13,7 +13,8 @@ import seedu.address.model.partnercourse.exceptions.PartnerCourseNotFoundExcepti
 
 public class UniquePartnerCourseList implements Iterable<PartnerCourse> {
     private final ObservableList<PartnerCourse> internalList = FXCollections.observableArrayList();
-    private final ObservableList<PartnerCourse> internalUnmodifiableList = FXCollections.unmodifiableObservableList(internalList);
+    private final ObservableList<PartnerCourse> internalUnmodifiableList =
+            FXCollections.unmodifiableObservableList(internalList);
 
     public boolean contains(PartnerCourse toCheck) {
         requireNonNull(toCheck);

@@ -1,11 +1,9 @@
 package seedu.address.model;
 
-import static java.util.Objects.requireNonNull;
-
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.university.University;
 import seedu.address.model.university.UniqueUniversityList;
+import seedu.address.model.university.University;
 
 public class UniversityCatalogue implements ReadOnlyUniversityCatalogue {
 

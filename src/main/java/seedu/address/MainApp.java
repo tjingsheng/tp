@@ -17,6 +17,9 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
 import seedu.address.logic.SeplendidLogic;
 import seedu.address.logic.SeplendidLogicManager;
+import seedu.address.model.*;
+import seedu.address.model.util.SampleDataUtil;
+import seedu.address.storage.*;
 import seedu.address.model.AddressBook;
 import seedu.address.model.LocalCourseCatalogue;
 import seedu.address.model.Model;
@@ -42,6 +45,8 @@ import seedu.address.storage.StorageManager;
 import seedu.address.storage.UserPrefsStorage;
 import seedu.address.ui.Ui;
 import seedu.address.ui.UiManager;
+
+import javax.swing.text.html.Option;
 
 /**
  * Runs the application.
@@ -78,11 +83,14 @@ public class MainApp extends Application {
         AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
         LocalCourseCatalogueStorage localCourseCatalogueStorage =
                 new JsonLocalCourseCatalogueStorage(userPrefs.getLocalCourseCatalogueFilePath());
+        UniversityCatalogueStorage universityCatalogueStorage =
+                new JsonUniversityCatalogueStorage(userPrefs.getUniversityCatalogueFilePath());
 
         PartnerCourseCatalogueStorage partnerCourseCatalogue =
                 new JsonPartnerCourseCatalogueStorage(userPrefs.getPartnerCourseCatalogueFilePath());
         storage = new StorageManager(addressBookStorage, localCourseCatalogueStorage, userPrefsStorage,
-                partnerCourseCatalogue);
+                partnerCourseCatalogue, universityCatalogueStorage);
+      
         // AB3 model
         model = initAddressBookModelManager(storage, userPrefs);
         // SEPlendid model
@@ -132,41 +140,50 @@ public class MainApp extends Application {
         // The below needs to be repeated several times for the different data types
 
         Optional<ReadOnlyLocalCourseCatalogue> localCourseCatalogueOptional;
-        ReadOnlyLocalCourseCatalogue initialLocalCourseCatalogue;
         Optional<ReadOnlyPartnerCourseCatalogue> partnerCourseCatalogueOptional;
+        Optional<ReadOnlyUniversityCatalogue> universityCatalogueOptional;
+      
         ReadOnlyPartnerCourseCatalogue initialPartnerCourseCatalogue;
+        ReadOnlyLocalCourseCatalogue initialLocalCourseCatalogue;
+        ReadOnlyUniversityCatalogue initialUniversityCatalogue;
+        
         logger.info("Using data file : " + storage.getLocalCourseCatalogueFilePath());
         try {
             localCourseCatalogueOptional = storage.readLocalCourseCatalogue();
+            partnerCourseCatalogueOptional = storage.readPartnerCourseCatalogue();
+            universityCatalogueOptional = storage.readUniversityCatalogue();
+          
             if (!localCourseCatalogueOptional.isPresent()) {
                 logger.info("Creating a new data file " + storage.getLocalCourseCatalogueFilePath()
                         + " populated with a sample LocalCourseCatalogue.");
             }
             initialLocalCourseCatalogue = localCourseCatalogueOptional.orElseGet(
                     SampleDataUtil::getSampleLocalCourseCatalogue);
-
-        } catch (DataLoadingException e) {
-            logger.warning("Data file at " + storage.getLocalCourseCatalogueFilePath() + " could not be loaded."
-                    + " Will be starting with an empty Local courses list.");
-            initialLocalCourseCatalogue = new LocalCourseCatalogue();
-        }
-
-        logger.info("Using data file : " + storage.getPartnerCourseCatalogueFilePath());
-        try {
-            partnerCourseCatalogueOptional = storage.readPartnerCourseCatalogue();
+          
             if (!partnerCourseCatalogueOptional.isPresent()) {
                 logger.info("Creating a new data file " + storage.getPartnerCourseCatalogueFilePath()
                         + " populated with a sample PartnerCourseCatalogue.");
             }
             initialPartnerCourseCatalogue = partnerCourseCatalogueOptional.orElseGet(
                     SampleDataUtil::getSamplePartnerCourseCatalogue);
+          
+            if (!universityCatalogueOptional.isPresent()) {
+                logger.info("Creating a new data file " + storage.getUniversityCatalogueFilePath()
+                        + " populated with a sample UniversityCatalogue.");
+            }
+            initialUniversityCatalogue = universityCatalogueOptional.orElseGet(
+                    SampleDataUtil::getSampleUniversityCatalogue);
+            
         } catch (DataLoadingException e) {
-            logger.warning("Data file at " + storage.getPartnerCourseCatalogueFilePath() + " could not be loaded."
-                    + " Will be starting with an empty Partner courses list.");
+            logger.warning("Data file at " + storage.getLocalCourseCatalogueFilePath() + " could not be loaded."
+                    + " Will be starting with an empty AddressBook.");
+            intiialLocalCourseCatalogue = new LocalCourseCatalogue();
             initialPartnerCourseCatalogue = new PartnerCourseCatalogue();
+            initialUniversityCatalogue = new UniversityCatalogue();
         }
 
-        return new SeplendidModelManager(initialLocalCourseCatalogue, userPrefs, initialPartnerCourseCatalogue);
+        return new SeplendidModelManager(intiialLocalCourseCatalogue, userPrefs, initialPartnerCourseCatalogue, 
+                                         initialUniversityCatalogue);
     }
 
     private void initLogging(Config config) {

@@ -8,6 +8,10 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.localcourse.UniqueLocalCourseList;
+import seedu.address.model.localcourse.exceptions.DuplicateLocalCourseException;
+import seedu.address.model.localcourse.exceptions.LocalCourseNotFoundException;
+import seedu.address.model.university.exceptions.DuplicateUniversityException;
 import seedu.address.model.university.exceptions.UniversityNotFoundException;
 
 public class UniqueUniversityList implements Iterable<University> {
@@ -32,6 +36,14 @@ public class UniqueUniversityList implements Iterable<University> {
         internalList.setAll(replacement.internalList);
     }
 
+    public void setUniversities(List<University> universities) {
+        requireAllNonNull(universities);
+        if (!universitiesAreUnique(universities)) {
+            throw new DuplicateLocalCourseException();
+        }
+
+        internalList.setAll(universities);
+    }
 
     public ObservableList<University> asUnmodifiableObservableList() {
         return internalUnmodifiableList;
@@ -81,5 +93,13 @@ public class UniqueUniversityList implements Iterable<University> {
             }
         }
         return true;
+    }
+
+    public void add(University toAdd) {
+        requireNonNull(toAdd);
+        if (contains(toAdd)) {
+            throw new DuplicateUniversityException();
+        }
+        internalList.add(toAdd);
     }
 }

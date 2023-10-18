@@ -20,6 +20,15 @@ public class UniversityCatalogue implements ReadOnlyUniversityCatalogue {
         this();
     }
 
+    public boolean hasUniversity(University universityQuery) {
+        requireNonNull(universityQuery);
+        return universities.contains(universityQuery);
+    }
+
+    public void addUniversity(University uN) {
+        universities.add(uN);
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this)
@@ -32,6 +41,13 @@ public class UniversityCatalogue implements ReadOnlyUniversityCatalogue {
         return universities.asUnmodifiableObservableList();
     }
 
+    public void setUniversities(List<University> universities) {
+        this.universities.setUniversities(universities);
+    }
+    public void resetData(ReadOnlyUniversityCatalogue newData) {
+        requireNonNull(newData);
+        setUniversities(newData.getUniversityList());
+    }
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -46,6 +62,7 @@ public class UniversityCatalogue implements ReadOnlyUniversityCatalogue {
         UniversityCatalogue otherUniversityCatalogue = (UniversityCatalogue) other;
         return universities.equals(otherUniversityCatalogue.universities);
     }
+
     @Override
     public int hashCode() {
         return universities.hashCode();

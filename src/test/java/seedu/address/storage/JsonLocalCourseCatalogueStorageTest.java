@@ -22,7 +22,7 @@ import seedu.address.model.ReadOnlyLocalCourseCatalogue;
 
 public class JsonLocalCourseCatalogueStorageTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data",
-            "JsonLocalCourseCatalogueStorage");
+            "JsonLocalCourseCatalogueStorageTest");
 
     @TempDir
     public Path testFolder;
@@ -123,6 +123,7 @@ public class JsonLocalCourseCatalogueStorageTest {
 
     @Test
     public void saveLocalCourseCatalogue_nullFilePath_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> saveLocalCourseCatalogue(new LocalCourseCatalogue(), null));
+        assertThrows(NullPointerException.class, () ->
+                saveLocalCourseCatalogue(new LocalCourseCatalogue(), null));
     }
 }

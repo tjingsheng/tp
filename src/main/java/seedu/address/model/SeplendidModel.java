@@ -5,7 +5,6 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.logic.commands.UniversityListCommand;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.notes.Note;
 import seedu.address.model.university.University;
@@ -21,6 +20,7 @@ public interface SeplendidModel {
     Predicate<LocalCourse> PREDICATE_SHOW_ALL_LOCAL_COURSES = unused -> true;
 
     Predicate<University> PREDICATE_SHOW_ALL_UNIVERSITIES = unused -> true;
+
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */
@@ -98,7 +98,6 @@ public interface SeplendidModel {
      */
     void updateFilteredLocalCourseList(Predicate<LocalCourse> predicate);
 
-    void updateUniversityList(Predicate<University> predicate);
     /**
      * Adds the given Note.
      */

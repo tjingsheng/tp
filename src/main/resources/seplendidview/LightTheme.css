@@ -33,14 +33,16 @@
 /* List Cells */
 .list-view {
     -fx-background-insets: 0;
-    -fx-padding: 0;
+    -fx-padding: 0 10 0 10;
     -fx-background-color: transparent;
 }
 
 .list-cell {
-    -fx-label-padding: 0 0 0 0;
-    -fx-graphic-text-gap : 0;
-    -fx-padding: 0 0 0 0;
+    -fx-background-insets: 5;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-padding: 5;
+    -fx-graphic-text-gap: 0;
 }
 
 .list-cell:filled:even {
@@ -52,12 +54,11 @@
 }
 
 .list-cell:filled:selected {
-    -fx-background-color: #D1E0FF;
-}
-
-.list-cell:filled:selected #cardPane {
-    -fx-border-color: #000000;
+    -fx-border-insets: 5;
+    -fx-padding: 0;
+    -fx-border-color: black;
     -fx-border-width: 1;
+    -fx-background-color: #D1E0FF;
 }
 
 .list-cell .label {

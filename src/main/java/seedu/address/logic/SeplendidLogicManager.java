@@ -14,9 +14,11 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.SeplendidParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
+import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyUniversityCatalogue;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
 import seedu.address.storage.Storage;
 
@@ -57,6 +59,7 @@ public class SeplendidLogicManager implements SeplendidLogic {
 
         try {
             storage.saveLocalCourseCatalogue(model.getLocalCourseCatalogue());
+            storage.savePartnerCourseCatalogue(model.getPartnerCourseCatalogue());
             storage.saveUniversityCatalogue(model.getUniversityCatalogue());
         } catch (AccessDeniedException e) {
             throw new CommandException(String.format(FILE_OPS_PERMISSION_ERROR_FORMAT, e.getMessage()), e);
@@ -68,6 +71,17 @@ public class SeplendidLogicManager implements SeplendidLogic {
     }
 
     @Override
+    public GuiSettings getGuiSettings() {
+        return model.getGuiSettings();
+    }
+
+    @Override
+    public void setGuiSettings(GuiSettings guiSettings) {
+        model.setGuiSettings(guiSettings);
+    }
+
+    //=========== LocalCourseCatalogue ================================================================================
+    @Override
     public ReadOnlyLocalCourseCatalogue getLocalCourseCatalogue() {
         return model.getLocalCourseCatalogue();
     }
@@ -77,6 +91,26 @@ public class SeplendidLogicManager implements SeplendidLogic {
         return model.getFilteredLocalCourseList();
     }
 
+    @Override
+    public Path getLocalCourseCatalogueFilePath() {
+        return model.getLocalCourseCatalogueFilePath();
+    }
+
+    //=========== PartnerCourseCatalouge ============================================================================
+    @Override
+    public ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue() {
+        return model.getPartnerCourseCatalogue();
+    }
+
+    @Override
+    public ObservableList<PartnerCourse> getFilteredPartnerCourseCatalogue() {
+        return model.getFilteredPartnerCourseList();
+    }
+
+    @Override
+    public Path getPartnerCourseCatalogueFilePath() {
+        return model.getPartnerCourseCatalogueFilePath();
+    }
     public ReadOnlyUniversityCatalogue getUniversityCatalogue() {
         return model.getUniversityCatalogue();
     }
@@ -89,18 +123,7 @@ public class SeplendidLogicManager implements SeplendidLogic {
         return model.getUniversityCatalogueFilePath();
     }
 
-    @Override
-    public Path getLocalCourseCatalogueFilePath() {
-        return model.getLocalCourseCatalogueFilePath();
-    }
 
-    @Override
-    public GuiSettings getGuiSettings() {
-        return model.getGuiSettings();
-    }
 
-    @Override
-    public void setGuiSettings(GuiSettings guiSettings) {
-        model.setGuiSettings(guiSettings);
-    }
+
 }

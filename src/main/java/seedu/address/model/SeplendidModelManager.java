@@ -92,6 +92,7 @@ public class SeplendidModelManager implements SeplendidModel {
         return userPrefs.getAddressBookFilePath();
     }
 
+
     @Override
     public Path getUniversityCatalogueFilePath() {
         return userPrefs.getAddressBookFilePath();
@@ -248,6 +249,11 @@ public class SeplendidModelManager implements SeplendidModel {
     public void updateFilteredPartnerCourseList(Predicate<PartnerCourse> predicate) {
         requireNonNull(predicate);
         filteredPartnerCourseCatalogue.setPredicate(predicate);
+    }
+
+    @Override
+    public Path getPartnerCourseCatalogueFilePath() {
+        return userPrefs.getPartnerCourseCatalogueFilePath();
     }
 
 

@@ -100,7 +100,7 @@ public interface SeplendidModel {
      */
     ObservableList<LocalCourse> getFilteredLocalCourseList();
 
-    ObservableList<University> getFilteredUniversityList();
+
 
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
@@ -130,7 +130,10 @@ public interface SeplendidModel {
 
     void updateFilteredPartnerCourseList(Predicate<PartnerCourse> predicate);
 
+    Path getPartnerCourseCatalogueFilePath();
+
     //=========== UniversityCatalouge ================================================================================
+    ObservableList<University> getFilteredUniversityList();
     void updateUniversityList(Predicate<University> predicate);
   
     void updateFilteredUniversityList(Predicate<University> predicate);

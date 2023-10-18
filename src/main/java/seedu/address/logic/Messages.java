@@ -8,6 +8,7 @@ import seedu.address.logic.parser.Prefix;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.notes.Note;
 import seedu.address.model.person.Person;
+import seedu.address.model.university.University;
 
 /**
  * Container for user visible messages.
@@ -59,6 +60,12 @@ public class Messages {
         builder.append(localCourse.getLocalCode())
                 .append("; LocalName: ")
                 .append(localCourse.getLocalName());
+        return builder.toString();
+    }
+
+    public static String format(University university) {
+        final StringBuilder builder = new StringBuilder("UniversityName: ");
+        builder.append(university.getUniversityName());
         return builder.toString();
     }
 

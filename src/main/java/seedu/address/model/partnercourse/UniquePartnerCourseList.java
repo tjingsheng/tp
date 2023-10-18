@@ -28,12 +28,19 @@ public class UniquePartnerCourseList implements Iterable<PartnerCourse> {
     private final ObservableList<PartnerCourse> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
 
+    /**
+     * Returns true if the list contains an equivalent PartnerCourse as the given argument.
+     */
     public boolean contains(PartnerCourse toCheck) {
         requireNonNull(toCheck);
         return internalList.stream().anyMatch(toCheck::isSamePartnerCourse);
         //why not equal?
     }
 
+    /**
+     * Adds a PartnerCourse to the list.
+     * The PartnerCourse must not already exist in the list.
+     */
     public void add(PartnerCourse toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
@@ -57,6 +64,10 @@ public class UniquePartnerCourseList implements Iterable<PartnerCourse> {
         internalList.set(index, editedPartnerCourse);
     }
 
+    /**
+     * Removes the equivalent (as per {@code PartnerCourse#equals(Object)})LocalCourse from the list.
+     * The PartnerCourse must exist in the list.
+     */
     public void remove(PartnerCourse toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {

@@ -5,10 +5,10 @@ import java.nio.file.Path;
 import java.util.Optional;
 
 import seedu.address.commons.exceptions.DataLoadingException;
-import seedu.address.model.*;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
 import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
+import seedu.address.model.ReadOnlyUniversityCatalogue;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 
@@ -59,5 +59,5 @@ public interface Storage extends AddressBookStorage, LocalCourseCatalogueStorage
     void savePartnerCourseCatalogue(ReadOnlyPartnerCourseCatalogue partnerCourseCatalogue) throws IOException;
 
     @Override
-    void saveUniversityCatalogue(ReadOnlyUniversityCatalogue universityCatalogue) throws IOException;      
+    void saveUniversityCatalogue(ReadOnlyUniversityCatalogue universityCatalogue) throws IOException;
 }

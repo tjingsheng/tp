@@ -6,6 +6,9 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 
+/**
+ * Lists all universities in the UniversitiesCatalogue.
+ */
 public class UniversityListCommand extends UniversityCommand {
     public static final String UNIVERSITY_LIST_MESSAGE_USAGE = COMMAND_WORD
             + "list: Lists all universities";

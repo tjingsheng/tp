@@ -132,7 +132,6 @@ public interface SeplendidModel {
 
     //=========== UniversityCatalouge ================================================================================
     void updateUniversityList(Predicate<University> predicate);
-  
     void updateFilteredUniversityList(Predicate<University> predicate);
 
     //=========== NoteCatalouge ================================================================================

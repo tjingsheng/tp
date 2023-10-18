@@ -3,6 +3,9 @@ package seedu.address.model;
 import javafx.collections.ObservableList;
 import seedu.address.model.partnercourse.PartnerCourse;
 
+/**
+ * Unmodifiable view of an address book
+ */
 public interface ReadOnlyPartnerCourseCatalogue {
     /**
      * Returns an unmodifiable view of the partner course list.

@@ -12,7 +12,17 @@ import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.partnercourse.PartnerName;
 import seedu.address.model.university.University;
 
+/**
+ * Parses input arguments and creates a new PartnerCourse object.
+ */
 public class PartnerCourseAddCommandParser implements Parser<PartnerCourseAddCommand> {
+
+    /**
+     * Parses the given {@code String} of arguments in the context of the PartnerCourseAddCommand
+     * and returns an PartnerCourseAddCommand object for execution.
+     *
+     * @throws ParseException if the user input does not conform the expected format
+     */
     public PartnerCourseAddCommand parse(String args) throws ParseException {
         if (!ParserUtil.areValuesEnclosedAndNonEmpty(args)) {
             throw new ParseException(

@@ -13,16 +13,35 @@ import seedu.address.model.localcourse.exceptions.DuplicateLocalCourseException;
 import seedu.address.model.university.exceptions.DuplicateUniversityException;
 import seedu.address.model.university.exceptions.UniversityNotFoundException;
 
+/**
+ * A list of universities that enforces uniqueness between its elements and does not allow nulls.
+ * Note that a University is considered unique by {@code University#isSameUniversity(University)},
+ * which concerns adding and updating. On the other hand, the removal of a University uses
+ * University#equals(Object) to ensure that the university with exact matching fields is
+ * removed.
+ * <p>
+ * Implements {@code Iterable<University>} amd thus needs an iterator. Able to utilise in for-each.
+ * <p>
+ * Note that this is the list containing the records, and the internal list must be an
+ * {@code ObservableList<University>} to return in ReadOnlyUniversityCatalogue#getUniversityList.
+ */
 public class UniqueUniversityList implements Iterable<University> {
     private final ObservableList<University> internalList = FXCollections.observableArrayList();
     private final ObservableList<University> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
 
+    /**
+     * Returns true if the list contains an equivalent University as the given argument.
+     */
     public boolean contains(University toCheck) {
         requireNonNull(toCheck);
         return internalList.stream().anyMatch(toCheck::isSameUniversity);
     }
 
+    /**
+     * Removes the equivalent (as per {@code University#equals(Object)})University from the list.
+     * The University must exist in the list.
+     */
     public void remove(LocalCourse toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
@@ -94,6 +113,10 @@ public class UniqueUniversityList implements Iterable<University> {
         return true;
     }
 
+    /**
+     * Adds a university to the list.
+     * The University must not already exist in the list.
+     */
     public void add(University toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {

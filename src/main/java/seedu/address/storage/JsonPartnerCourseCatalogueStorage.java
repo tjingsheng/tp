@@ -43,7 +43,8 @@ public class JsonPartnerCourseCatalogueStorage implements PartnerCourseCatalogue
      * @param filePath location of the data. Cannot be null.
      * @throws DataLoadingException if loading the data from storage failed.
      */
-    public Optional<ReadOnlyPartnerCourseCatalogue> readPartnerCourseCatalogue(Path filePath) throws DataLoadingException {
+    public Optional<ReadOnlyPartnerCourseCatalogue> readPartnerCourseCatalogue(Path filePath)
+            throws DataLoadingException {
         requireNonNull(filePath);
 
         Optional<JsonSerializablePartnerCourseCatalogue> jsonPartnerCourseCatalogue =

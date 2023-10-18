@@ -1,13 +1,18 @@
 package seedu.address.model;
 
+import static java.util.Objects.requireNonNull;
+
+import java.util.List;
+
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.university.UniqueUniversityList;
 import seedu.address.model.university.University;
 
-import java.util.List;
-
-import static java.util.Objects.requireNonNull;
+/**
+ * Wraps universities data at the catalogue level
+ * Duplicates are not allowed (by .isSameUniversities comparison)
+ */
 
 public class UniversityCatalogue implements ReadOnlyUniversityCatalogue {
 
@@ -24,6 +29,9 @@ public class UniversityCatalogue implements ReadOnlyUniversityCatalogue {
         this();
     }
 
+    /**
+     * Returns true if a University with the same identity as {@code universityQuery} exists in the catalogue.
+     */
     public boolean hasUniversity(University universityQuery) {
         requireNonNull(universityQuery);
         return universities.contains(universityQuery);
@@ -48,6 +56,10 @@ public class UniversityCatalogue implements ReadOnlyUniversityCatalogue {
     public void setUniversities(List<University> universities) {
         this.universities.setUniversities(universities);
     }
+
+    /**
+     * Resets the existing data of this {@code UniversityeCatalogue} with {@code newData}.
+     */
     public void resetData(ReadOnlyUniversityCatalogue newData) {
         requireNonNull(newData);
         setUniversities(newData.getUniversityList());

@@ -8,6 +8,10 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.partnercourse.PartnerCourse;
+
+/**
+ * Adds a partner course to the PartnerCourseCatalogue.
+ */
 public class PartnerCourseAddCommand extends PartnerCourseCommand {
     public static final String PARTNER_COURSE_ADD_MESSAGE_USAGE = COMMAND_WORD
             + "add [university] [partnercode] [partnername]: Adds a partner course.";
@@ -17,6 +21,11 @@ public class PartnerCourseAddCommand extends PartnerCourseCommand {
 
     private final PartnerCourse partnerCourseToAdd;
 
+    /**
+     * Creates a PartnerCourseAddCommand to add the specified {@code partnerCourse}
+     *
+     * @param partnerCourse The partnerCourse to be added into Storage.
+     */
     public PartnerCourseAddCommand(PartnerCourse partnerCourse) {
         super();
         requireNonNull(partnerCourse);

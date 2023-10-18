@@ -11,6 +11,7 @@ public class UniversityName {
     public final String value;
 
     public UniversityName(String universityname) {
+        universityname = universityname.trim();
         requireNonNull(universityname);
         checkArgument(isValidUniversityName(universityname), MESSAGE_CONSTRAINTS);
         value = universityname;

@@ -13,6 +13,8 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.LocalCourseAddCommand;
 import seedu.address.logic.commands.LocalCourseCommand;
 import seedu.address.logic.commands.LocalCourseListCommand;
+import seedu.address.logic.commands.UniversityCommand;
+import seedu.address.logic.commands.UniversityListCommand;
 import seedu.address.logic.commands.NoteAddCommand;
 import seedu.address.logic.commands.NoteCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -54,6 +56,9 @@ public class SeplendidParser {
             return getLocalCourseCommandWithoutArg(userInput, actionWord);
         // TBD: for Note
 
+        case UniversityCommand.COMMAND_WORD:
+            return getUniversityCommandWithoutArg(userInput, actionWord);
+
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
@@ -88,6 +93,7 @@ public class SeplendidParser {
 
         case LocalCourseCommand.COMMAND_WORD:
             return getLocalCourseCommandWithArg(userInput, actionWord, arguments);
+
         case NoteCommand.COMMAND_WORD:
             return getNoteCommand(userInput, actionWord, arguments);
 
@@ -116,6 +122,16 @@ public class SeplendidParser {
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+        }
+    }
+
+    private UniversityCommand getUniversityCommandWithoutArg(String userInput, String actionWord) throws ParseException {
+        switch (actionWord) {
+        case UniversityListCommand.ACTION_WORD:
+            return new UniversityListCommand();
+        default:
+           logger.finer("This user input caused a ParseException: " + userInput);
+           throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
 

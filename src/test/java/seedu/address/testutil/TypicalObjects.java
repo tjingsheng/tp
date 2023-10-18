@@ -24,6 +24,10 @@ public class TypicalObjects {
             .withLocalName("Data Structures & Algorithms").build();
     public static final LocalCourse CS3230 = new LocalCourseBuilder().withLocalCode("CS3230")
             .withLocalName("Design & Analysis of Algorithms").build();
+    public static final LocalCourse CS1231S = new LocalCourseBuilder().withLocalCode("CS1231S")
+            .withLocalName("Discrete Structures").build();
+    public static final LocalCourse CS2030S = new LocalCourseBuilder().withLocalCode("CS2030S")
+            .withLocalName("Programming Methodology II").build();
     public static final LocalCourse EDGE_CASE_VALID_LOCAL_COURSE = new LocalCourseBuilder()
             .withLocalCode(EDGE_CASE_VALID_LOCAL_COURSE_CODE).withLocalName(EDGE_CASE_VALID_LOCAL_COURSE_NAME).build();
 

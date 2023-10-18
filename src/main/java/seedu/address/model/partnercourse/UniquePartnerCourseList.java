@@ -11,6 +11,18 @@ import javafx.collections.ObservableList;
 import seedu.address.model.partnercourse.exceptions.DuplicatePartnerCourseException;
 import seedu.address.model.partnercourse.exceptions.PartnerCourseNotFoundException;
 
+/**
+ * A list of partner courses that enforces uniqueness between its elements and does not allow nulls.
+ * Note that a PartnerCourse is considered unique by {@code PartnerCourse#isSamePartnerCourse(PartnerCourse)},
+ * which concerns adding and updating. On the other hand, the removal of a PartnerCourse uses
+ * PartnerCourse#equals(Object) to ensure that the local course with exact matching fields is
+ * removed.
+ * <p>
+ * Implements {@code Iterable<PartnerCourse>} amd thus needs an iterator. Able to utilise in for-each.
+ * <p>
+ * Note that this is the list containing the records, and the internal list must be an
+ * {@code ObservableList<PartnerCourse>} to return in ReadOnlyLocalCourseCatalogue#getPartnerCourseList.
+ */
 public class UniquePartnerCourseList implements Iterable<PartnerCourse> {
     private final ObservableList<PartnerCourse> internalList = FXCollections.observableArrayList();
     private final ObservableList<PartnerCourse> internalUnmodifiableList =

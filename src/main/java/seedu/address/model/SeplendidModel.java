@@ -15,6 +15,13 @@ import seedu.address.model.university.University;
  * Add appropriate methods for respective sub-models.
  */
 public interface SeplendidModel {
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
+    Predicate<LocalCourse> PREDICATE_SHOW_ALL_LOCAL_COURSES = unused -> true;
+    Predicate<PartnerCourse> PREDICATE_SHOW_ALL_PARTNER_COURSES = unused -> true;
+    Predicate<University> PREDICATE_SHOW_ALL_UNIVERSITIES = unused -> true;
+
 
     //=========== UserPrefs ==================================================================================
     /**
@@ -48,11 +55,6 @@ public interface SeplendidModel {
     void setLocalCourseCatalogueFilePath(Path localCourseCatalogueFilePath);
 
     //=========== LocalCourseCatalogue ================================================================================
-
-    /**
-     * {@code Predicate} that always evaluate to true
-     */
-    Predicate<LocalCourse> PREDICATE_SHOW_ALL_LOCAL_COURSES = unused -> true;
 
     /**
      * Replaces localcourse list data with the data in {@code localCourseCatalogue}.
@@ -105,7 +107,6 @@ public interface SeplendidModel {
 
     //=========== PartnerCourseCatalouge ============================================================================
 
-    Predicate<PartnerCourse> PREDICATE_SHOW_ALL_PARTNER_COURSES = unused -> true;
     ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue();
     /**
      * Returns true if a partner course with the same identity as {@code partnerCourse} exists in the
@@ -127,8 +128,6 @@ public interface SeplendidModel {
     void updateFilteredPartnerCourseList(Predicate<PartnerCourse> predicate);
 
     //=========== UniversityCatalouge ================================================================================
-    Predicate<University> PREDICATE_SHOW_ALL_UNIVERSITIES = unused -> true;
-
     void updateUniversityList(Predicate<University> predicate);
 
     //=========== NoteCatalouge ================================================================================

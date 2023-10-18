@@ -5,6 +5,10 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.university.UniqueUniversityList;
 import seedu.address.model.university.University;
 
+import java.util.List;
+
+import static java.util.Objects.requireNonNull;
+
 public class UniversityCatalogue implements ReadOnlyUniversityCatalogue {
 
     private final UniqueUniversityList universities;

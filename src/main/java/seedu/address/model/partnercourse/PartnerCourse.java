@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.university.University;
+import seedu.address.model.university.UniversityName;
 
 public class PartnerCourse {
     private final University partnerUniversity;

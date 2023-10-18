@@ -177,12 +177,12 @@ public class MainApp extends Application {
         } catch (DataLoadingException e) {
             logger.warning("Data file at " + storage.getLocalCourseCatalogueFilePath() + " could not be loaded."
                     + " Will be starting with an empty AddressBook.");
-            intiialLocalCourseCatalogue = new LocalCourseCatalogue();
+            initialLocalCourseCatalogue = new LocalCourseCatalogue();
             initialPartnerCourseCatalogue = new PartnerCourseCatalogue();
             initialUniversityCatalogue = new UniversityCatalogue();
         }
 
-        return new SeplendidModelManager(intiialLocalCourseCatalogue, userPrefs, initialPartnerCourseCatalogue, 
+        return new SeplendidModelManager(initialLocalCourseCatalogue, userPrefs, initialPartnerCourseCatalogue,
                                          initialUniversityCatalogue);
     }
 

@@ -34,7 +34,7 @@ public class NoteAddCommandParser implements Parser<NoteAddCommand> {
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_CONTENT, PARAMETER_TAGS);
 
-        if (!areArgumentsPresent(parameterToArgMap, PARAMETER_CONTENT, PARAMETER_TAGS)) {
+        if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_CONTENT, PARAMETER_TAGS)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     NoteAddCommand.NOTE_ADD_MESSAGE_USAGE));
         }
@@ -46,14 +46,6 @@ public class NoteAddCommandParser implements Parser<NoteAddCommand> {
         Note note = new Note(content, tags);
 
         return new NoteAddCommand(note);
-    }
-
-    /**
-     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
-     * {@code SeplendidArgumentMap}.
-     */
-    private static boolean areArgumentsPresent(SeplendidArgumentMap argumentMap, SeplendidParameter... parameters) {
-        return Stream.of(parameters).allMatch(parameter -> argumentMap.getValue(parameter).isPresent());
     }
 
 }

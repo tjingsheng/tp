@@ -1,18 +1,17 @@
 package seedu.address.model;
 
 import javafx.collections.ObservableList;
-import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.notes.Note;
 
 /**
- * Unmodifiable view of local course catalogue.
+ * Unmodifiable view of note catalogue.
  */
-public interface ReadOnlyLocalCourseCatalogue {
+public interface ReadOnlyNoteCatalogue {
 
     /**
      * Returns an unmodifiable view of the local course list.
      * This list will not contain any duplicate local courses.
      * ObservableList will aid interoperability.
      */
-    ObservableList<LocalCourse> getLocalCourseList();
-
+    ObservableList<Note> getNoteList();
 }

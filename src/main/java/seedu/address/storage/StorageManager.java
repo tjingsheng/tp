@@ -25,6 +25,7 @@ public class StorageManager implements Storage {
     private UniversityCatalogueStorage universityCatalogueStorage;
     private PartnerCourseCatalogueStorage partnerCourseCatalogueStorage;
     private UserPrefsStorage userPrefsStorage;
+    private NoteCatalogueStorage noteCatalogueStorage;
 
     /**
      * Creates a {@code StorageManager} with the given {@code AddressBookStorage} and {@code UserPrefStorage}.
@@ -176,4 +177,34 @@ public class StorageManager implements Storage {
         logger.fine("Attempting to write to data file: " + filePath);
         partnerCourseCatalogueStorage.savePartnerCourseCatalogue(partnerCourseCatalogue, filePath);
     }
+    // ================ NoteCatalogue methods ==============================
+
+    @Override
+    public Path getNoteCatalogueFilePath() {
+        return noteCatalogueStorage.getNoteCatalogueFilePath();
+    }
+
+    @Override
+    public Optional<ReadOnlyNoteCatalogue> readNoteCatalogue() throws DataLoadingException {
+        return readNoteCatalogue(noteCatalogueStorage.getNoteCatalogueFilePath());
+    }
+
+    @Override
+    public Optional<ReadOnlyNoteCatalogue> readNoteCatalogue(Path filePath) throws DataLoadingException {
+        logger.fine("Attempting to read data from file: " + filePath);
+        return noteCatalogueStorage.readNoteCatalogue(filePath);
+    }
+
+    @Override
+    public void saveNoteCatalogue(ReadOnlyNoteCatalogue noteCatalogue) throws IOException {
+        saveNoteCatalogue(noteCatalogue, noteCatalogueStorage.getNoteCatalogueFilePath());
+    }
+
+    @Override
+    public void saveNoteCatalogue(ReadOnlyNoteCatalogue noteCatalogue,
+                                         Path filePath) throws IOException {
+        logger.fine("Attempting to write to data file: " + filePath);
+        noteCatalogueStorage.saveNoteCatalogue(noteCatalogue, filePath);
+    }
+
 }

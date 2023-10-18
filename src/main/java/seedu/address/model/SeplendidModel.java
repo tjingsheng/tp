@@ -21,7 +21,7 @@ public interface SeplendidModel {
     Predicate<LocalCourse> PREDICATE_SHOW_ALL_LOCAL_COURSES = unused -> true;
     Predicate<PartnerCourse> PREDICATE_SHOW_ALL_PARTNER_COURSES = unused -> true;
     Predicate<University> PREDICATE_SHOW_ALL_UNIVERSITIES = unused -> true;
-
+    Predicate<Note> PREDICATE_SHOW_ALL_NOTES = unused -> true;
 
     //=========== UserPrefs ==================================================================================
     /**
@@ -139,7 +139,51 @@ public interface SeplendidModel {
 
     //=========== NoteCatalouge ================================================================================
     /**
+     * Replaces note list data with the data in {@code noteCatalogue}.
+     */
+    void setNoteCatalogue(ReadOnlyNoteCatalogue noteCatalogue);
+
+    /**
+     * Returns the Note list.
+     */
+    ReadOnlyNoteCatalogue getNoteCatalogue();
+
+    /**
+     * Returns true if a local course with the same identity as {@code note} exists in the NoteCatalogue.
+     */
+    boolean hasNote(Note note);
+
+    /**
+     * Deletes the given Note.
+     * The note must exist in the NoteCatalogue.
+     */
+    void deleteNote(Note note);
+
+    /**
      * Adds the given Note.
+     * {@code note} must not already exist in the NoteCatalogue.
      */
     void addNote(Note note);
+
+    /**
+     * Replaces the given note {@code target} with {@code editedNote}.
+     * {@code target} must exist in the note catalogue.
+     * The note identity of {@code editedNote} must not be the same as another
+     * existing note in the NoteCatalogue.
+     */
+    void setNote(Note note, Note editedNote);
+
+    //=========== FilteredLocalCourseList Accessors =============================================================
+
+    /**
+     * Returns an unmodifiable view of the filtered note list
+     */
+    ObservableList<Note> getFilteredNoteList();
+
+    /**
+     * Updates the filter of the filtered note list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredNoteList(Predicate<Note> predicate);
 }

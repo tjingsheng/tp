@@ -144,6 +144,8 @@ public class MainApp extends Application {
         ReadOnlyLocalCourseCatalogue initialLocalCourseCatalogue;
         ReadOnlyUniversityCatalogue initialUniversityCatalogue;
         logger.info("Using data file : " + storage.getLocalCourseCatalogueFilePath());
+        Optional<ReadOnlyNoteCatalogue> noteCatalogueOptional;
+        ReadOnlyNoteCatalogue initialNoteCatalogue;
         try {
             localCourseCatalogueOptional = storage.readLocalCourseCatalogue();
             partnerCourseCatalogueOptional = storage.readPartnerCourseCatalogue();
@@ -166,15 +168,25 @@ public class MainApp extends Application {
             }
             initialUniversityCatalogue = universityCatalogueOptional.orElseGet(
                     SampleDataUtil::getSampleUniversityCatalogue);
+
+            noteCatalogueOptional = storage.readNoteCatalogue();
+            if (!noteCatalogueOptional.isPresent()) {
+                logger.info("Creating a new data file " + storage.getNoteCatalogueFilePath()
+                        + " populated with a sample LocalCourseCatalogue.");
+            }
+            initialNoteCatalogue = noteCatalogueOptional.orElseGet(
+                    SampleDataUtil::getSampleNoteCatalogue);
         } catch (DataLoadingException e) {
             logger.warning("Data file at " + storage.getLocalCourseCatalogueFilePath() + " could not be loaded."
                     + " Will be starting with an empty AddressBook.");
             initialLocalCourseCatalogue = new LocalCourseCatalogue();
             initialPartnerCourseCatalogue = new PartnerCourseCatalogue();
             initialUniversityCatalogue = new UniversityCatalogue();
+            initialNoteCatalogue = new NoteCatalogue();
         }
         return new SeplendidModelManager(initialLocalCourseCatalogue, userPrefs, initialPartnerCourseCatalogue,
-                                         initialUniversityCatalogue);
+                                         initialUniversityCatalogue, initialNoteCatalogue);
+        }
     }
 
     private void initLogging(Config config) {

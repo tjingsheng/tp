@@ -21,12 +21,24 @@ public class Note {
      * Constructs an {@code Note}.
      * Every field must be present and not null.
      * @param content Content for the Note
+     * @param tag Tag for the note
+     */
+    public Note(Content content, Tag tag) {
+        requireAllNonNull(content, tag);
+        this.content = content;
+        this.tags.add(tag);
+    }
+
+    /**
+     * Constructs an {@code Note}.
+     * Every field must be present and not null.
+     * @param content Content for the Note
      * @param tags Tags for the note
      */
-    public Note(Content content, Tag tags) {
+    public Note(Content content, Set<Tag> tags) {
         requireAllNonNull(content, tags);
         this.content = content;
-        this.tags.add(tags);
+        this.tags.addAll(tags);
     }
 
     /**

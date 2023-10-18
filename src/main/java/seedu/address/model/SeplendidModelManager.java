@@ -5,6 +5,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
 import java.util.function.Predicate;
+import java.util.logging.Filter;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -14,6 +15,7 @@ import seedu.address.commons.core.SeplendidLogsCenter;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.notes.Note;
 import seedu.address.model.notes.NoteList;
+import seedu.address.model.university.University;
 
 /**
  * Represents the in-memory model of SEPlendid.
@@ -25,14 +27,16 @@ public class SeplendidModelManager implements SeplendidModel {
     private final LocalCourseCatalogue localCourseCatalogue;
     private final UserPrefs userPrefs;
     private final FilteredList<LocalCourse> filteredLocalCourseCatalogue;
+    private final UniversityCatalogue universityCatalogue;
+    private final FilteredList<University> filteredUniversityCatalogue;
     private final NoteList noteList;
 
     /**
      * Initializes a SeplendidModelManager with the given localCourseCatalogue, userPrefs,
      * partnerCourseCatalogue, universityCatalogue, mappingCatalogue, noteCatalogue.
      */
-    public SeplendidModelManager(ReadOnlyLocalCourseCatalogue localCourseCatalogue, ReadOnlyUserPrefs userPrefs) {
-        requireAllNonNull(localCourseCatalogue, userPrefs);
+    public SeplendidModelManager(ReadOnlyLocalCourseCatalogue localCourseCatalogue, ReadOnlyUserPrefs userPrefs, ReadOnlyUniversityCatalogue universityCatalogue) {
+        requireAllNonNull(localCourseCatalogue, userPrefs, universityCatalogue);
 
         logger.fine("Initializing with local course catalogue: " + localCourseCatalogue
                 + " and user prefs " + userPrefs);
@@ -41,10 +45,12 @@ public class SeplendidModelManager implements SeplendidModel {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredLocalCourseCatalogue = new FilteredList<>(this.localCourseCatalogue.getLocalCourseList());
         this.noteList = new NoteList();
+        this.universityCatalogue = new UniversityCatalogue(universityCatalogue);
+        filteredUniversityCatalogue = new FilteredList<>(this.universityCatalogue.getUniversityList());
     }
 
     public SeplendidModelManager() {
-        this(new LocalCourseCatalogue(), new UserPrefs());
+        this(new LocalCourseCatalogue(), new UserPrefs(), new UniversityCatalogue());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -77,9 +83,18 @@ public class SeplendidModelManager implements SeplendidModel {
     }
 
     @Override
+    public Path getUniversityCatalogueFilePath() {
+        return userPrefs.getAddressBookFilePath();
+    }
+    @Override
     public void setLocalCourseCatalogueFilePath(Path localCourseCatalogueFilePath) {
         requireNonNull(localCourseCatalogueFilePath);
         userPrefs.setAddressBookFilePath(localCourseCatalogueFilePath);
+    }
+
+    public void setUniversityCatalogueFilePath(Path universityCatalogueFilePath) {
+        requireNonNull(universityCatalogueFilePath);
+        userPrefs.setAddressBookFilePath(universityCatalogueFilePath);
     }
 
     //=========== LocalCourseCatalogue ================================================================================
@@ -133,6 +148,47 @@ public class SeplendidModelManager implements SeplendidModel {
     public void updateFilteredLocalCourseList(Predicate<LocalCourse> predicate) {
         requireNonNull(predicate);
         filteredLocalCourseCatalogue.setPredicate(predicate);
+    }
+
+    //=========== UniversityCatalogue ================================================================================
+
+    public void setUniversityCatalogue(ReadOnlyUniversityCatalogue universityCatalogue) {
+        this.universityCatalogue.resetData(universityCatalogue);
+    }
+
+    @Override
+    public ReadOnlyUniversityCatalogue getUniversityCatalogue() {
+        return universityCatalogue;
+    }
+
+    public boolean hasUniversity(University university) {
+        requireNonNull(university);
+        return universityCatalogue.hasUniversity(university);
+    }
+
+//    @Override
+//    public void addLocalCourse(LocalCourse localCourse) {
+//        localCourseCatalogue.addLocalCourse(localCourse);
+//        updateFilteredLocalCourseList(PREDICATE_SHOW_ALL_LOCAL_COURSES);
+//    }
+
+//    @Override
+//    public void setUniversity(University target, University editedUniversity) {
+//        requireAllNonNull(target, editedUniversity);
+//
+//        universityCatalogue.setUniversities(target, editedUniversity);
+//    }
+    //=========== FilteredUniversityList Accessors =============================================================
+
+    @Override
+    public void updateFilteredUniversityList(Predicate<University> predicate) {
+        requireNonNull(predicate);
+        filteredUniversityCatalogue.setPredicate(predicate);
+    }
+
+    @Override
+    public ObservableList<University> getFilteredUniversityList() {
+        return filteredUniversityCatalogue;
     }
 
     @Override

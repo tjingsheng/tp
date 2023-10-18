@@ -5,15 +5,12 @@ import java.nio.file.Path;
 import java.util.Optional;
 
 import seedu.address.commons.exceptions.DataLoadingException;
-import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.ReadOnlyLocalCourseCatalogue;
-import seedu.address.model.ReadOnlyUserPrefs;
-import seedu.address.model.UserPrefs;
+import seedu.address.model.*;
 
 /**
  * API of the Storage component
  */
-public interface Storage extends AddressBookStorage, LocalCourseCatalogueStorage, UserPrefsStorage {
+public interface Storage extends AddressBookStorage, LocalCourseCatalogueStorage, UserPrefsStorage, UniversityCatalogueStorage{
 
     @Override
     Optional<UserPrefs> readUserPrefs() throws DataLoadingException;
@@ -37,6 +34,12 @@ public interface Storage extends AddressBookStorage, LocalCourseCatalogueStorage
     Optional<ReadOnlyLocalCourseCatalogue> readLocalCourseCatalogue() throws DataLoadingException;
 
     @Override
+    Optional<ReadOnlyUniversityCatalogue> readUniversityCatalogue() throws DataLoadingException;
+
+    @Override
     void saveLocalCourseCatalogue(ReadOnlyLocalCourseCatalogue localCourseCatalogue) throws IOException;
+
+    @Override
+    void saveUniversityCatalogue(ReadOnlyUniversityCatalogue universityCatalogue) throws IOException;
 
 }

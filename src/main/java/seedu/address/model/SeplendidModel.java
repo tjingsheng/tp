@@ -46,6 +46,7 @@ public interface SeplendidModel {
      */
     Path getLocalCourseCatalogueFilePath();
 
+    Path getUniversityCatalogueFilePath();
     /**
      * Sets the user prefs' LocalCourseCatalogue file path.
      */
@@ -60,6 +61,7 @@ public interface SeplendidModel {
      * Returns the AddressBook
      */
     ReadOnlyLocalCourseCatalogue getLocalCourseCatalogue();
+    ReadOnlyUniversityCatalogue getUniversityCatalogue();
 
     /**
      * Returns true if a local course with the same identity as {@code localCourse} exists in the LocalCourseCatalogue.
@@ -91,6 +93,8 @@ public interface SeplendidModel {
      */
     ObservableList<LocalCourse> getFilteredLocalCourseList();
 
+    ObservableList<University> getFilteredUniversityList();
+
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
      *
@@ -98,7 +102,7 @@ public interface SeplendidModel {
      */
     void updateFilteredLocalCourseList(Predicate<LocalCourse> predicate);
 
-    void updateUniversityList(Predicate<University> predicate);
+    void updateFilteredUniversityList(Predicate<University> predicate);
     /**
      * Adds the given Note.
      */

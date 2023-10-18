@@ -23,7 +23,7 @@ public class UniversityListCommand extends UniversityCommand {
     @Override
     public CommandResult execute(SeplendidModel seplendidModel) throws CommandException {
         requireNonNull(seplendidModel);
-        seplendidModel.updateUniversityList(SeplendidModel.PREDICATE_SHOW_ALL_UNIVERSITIES);
+        seplendidModel.updateFilteredUniversityList(SeplendidModel.PREDICATE_SHOW_ALL_UNIVERSITIES);
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

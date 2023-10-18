@@ -14,8 +14,10 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.SeplendidParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
+import seedu.address.model.ReadOnlyUniversityCatalogue;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.university.University;
 import seedu.address.storage.Storage;
 
 /**
@@ -55,6 +57,7 @@ public class SeplendidLogicManager implements SeplendidLogic {
 
         try {
             storage.saveLocalCourseCatalogue(model.getLocalCourseCatalogue());
+            storage.saveUniversityCatalogue(model.getUniversityCatalogue());
         } catch (AccessDeniedException e) {
             throw new CommandException(String.format(FILE_OPS_PERMISSION_ERROR_FORMAT, e.getMessage()), e);
         } catch (IOException ioe) {
@@ -72,6 +75,18 @@ public class SeplendidLogicManager implements SeplendidLogic {
     @Override
     public ObservableList<LocalCourse> getFilteredLocalCourseCatalogue() {
         return model.getFilteredLocalCourseList();
+    }
+
+    public ReadOnlyUniversityCatalogue getUniversityCatalogue() {
+        return model.getUniversityCatalogue();
+    }
+
+    public ObservableList<University> getFilteredUniversityCatalogue() {
+        return model.getFilteredUniversityList();
+    }
+
+    public Path getUniversityeCatalogueFilePath() {
+        return model.getUniversityCatalogueFilePath();
     }
 
     @Override

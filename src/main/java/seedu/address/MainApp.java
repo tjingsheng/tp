@@ -17,27 +17,13 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
 import seedu.address.logic.SeplendidLogic;
 import seedu.address.logic.SeplendidLogicManager;
-import seedu.address.model.AddressBook;
-import seedu.address.model.LocalCourseCatalogue;
-import seedu.address.model.Model;
-import seedu.address.model.ModelManager;
-import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.ReadOnlyLocalCourseCatalogue;
-import seedu.address.model.ReadOnlyUserPrefs;
-import seedu.address.model.SeplendidModel;
-import seedu.address.model.SeplendidModelManager;
-import seedu.address.model.UserPrefs;
+import seedu.address.model.*;
 import seedu.address.model.util.SampleDataUtil;
-import seedu.address.storage.AddressBookStorage;
-import seedu.address.storage.JsonAddressBookStorage;
-import seedu.address.storage.JsonLocalCourseCatalogueStorage;
-import seedu.address.storage.JsonUserPrefsStorage;
-import seedu.address.storage.LocalCourseCatalogueStorage;
-import seedu.address.storage.Storage;
-import seedu.address.storage.StorageManager;
-import seedu.address.storage.UserPrefsStorage;
+import seedu.address.storage.*;
 import seedu.address.ui.Ui;
 import seedu.address.ui.UiManager;
+
+import javax.swing.text.html.Option;
 
 /**
  * Runs the application.
@@ -74,8 +60,10 @@ public class MainApp extends Application {
         AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
         LocalCourseCatalogueStorage localCourseCatalogueStorage =
                 new JsonLocalCourseCatalogueStorage(userPrefs.getLocalCourseCatalogueFilePath());
+        UniversityCatalogueStorage universityCatalogueStorage =
+                new JsonUniversityCatalogueStorage(userPrefs.getUniversityCatalogueFilePath());
 
-        storage = new StorageManager(addressBookStorage, localCourseCatalogueStorage, userPrefsStorage);
+        storage = new StorageManager(addressBookStorage, localCourseCatalogueStorage, userPrefsStorage, universityCatalogueStorage);
         // AB3 model
         model = initAddressBookModelManager(storage, userPrefs);
         // SEPlendid model
@@ -126,22 +114,32 @@ public class MainApp extends Application {
         logger.info("Using data file : " + storage.getLocalCourseCatalogueFilePath());
 
         Optional<ReadOnlyLocalCourseCatalogue> localCourseCatalogueOptional;
+        Optional<ReadOnlyUniversityCatalogue> universityCatalogueOptional;
         ReadOnlyLocalCourseCatalogue intiialLocalCourseCatalogue;
+        ReadOnlyUniversityCatalogue initialUniversityCatalogue;
         try {
             localCourseCatalogueOptional = storage.readLocalCourseCatalogue();
+            universityCatalogueOptional = storage.readUniversityCatalogue();
             if (!localCourseCatalogueOptional.isPresent()) {
                 logger.info("Creating a new data file " + storage.getLocalCourseCatalogueFilePath()
                         + " populated with a sample LocalCourseCatalogue.");
             }
             intiialLocalCourseCatalogue = localCourseCatalogueOptional.orElseGet(
                     SampleDataUtil::getSampleLocalCourseCatalogue);
+            if (!universityCatalogueOptional.isPresent()) {
+                logger.info("Creating a new data file " + storage.getUniversityCatalogueFilePath()
+                        + " populated with a sample UniversityCatalogue.");
+            }
+            initialUniversityCatalogue = universityCatalogueOptional.orElseGet(
+                    SampleDataUtil::getSampleUniversityCatalogue);
         } catch (DataLoadingException e) {
             logger.warning("Data file at " + storage.getLocalCourseCatalogueFilePath() + " could not be loaded."
                     + " Will be starting with an empty AddressBook.");
             intiialLocalCourseCatalogue = new LocalCourseCatalogue();
-        }
+            initialUniversityCatalogue = new UniversityCatalogue();
+;        }
 
-        return new SeplendidModelManager(intiialLocalCourseCatalogue, userPrefs);
+        return new SeplendidModelManager(intiialLocalCourseCatalogue, userPrefs, initialUniversityCatalogue);
     }
 
     private void initLogging(Config config) {

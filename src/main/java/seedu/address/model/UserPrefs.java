@@ -16,6 +16,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     private GuiSettings guiSettings = new GuiSettings();
     private Path addressBookFilePath = Paths.get("data", "addressbook.json");
     private Path localCourseCatalogueFilePath = Paths.get("data", "localcoursecatalogue.json");
+    private Path universitiesCatalogueFilePath = Paths.get("data", "universitycatalogue.json");
 
     /**
      * Creates a {@code UserPrefs} with default values.
@@ -39,6 +40,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         setGuiSettings(newUserPrefs.getGuiSettings());
         setAddressBookFilePath(newUserPrefs.getAddressBookFilePath());
         setLocalCourseCatalogueFilePath(newUserPrefs.getLocalCourseCatalogueFilePath());
+        setUniversitiesCatalogueFilePath(newUserPrefs.getUniversityCatalogueFilePath());
     }
 
     public GuiSettings getGuiSettings() {
@@ -61,6 +63,15 @@ public class UserPrefs implements ReadOnlyUserPrefs {
 
     public Path getLocalCourseCatalogueFilePath() {
         return localCourseCatalogueFilePath;
+    }
+
+    public void setUniversitiesCatalogueFilePath(Path universitiesCatalogueFilePath) {
+        requireNonNull(universitiesCatalogueFilePath);
+        this.universitiesCatalogueFilePath = universitiesCatalogueFilePath;
+    }
+
+    public Path getUniversityCatalogueFilePath() {
+        return universitiesCatalogueFilePath;
     }
 
     public void setLocalCourseCatalogueFilePath(Path localCourseCatalogueFilePath) {

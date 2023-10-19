@@ -16,7 +16,7 @@ public class LocalCourseListCommand extends LocalCourseCommand {
             + "list: Lists all local courses.";
     public static final String ACTION_WORD = "list";
 
-    public static final String MESSAGE_SUCCESS = "Listed all persons";
+    public static final String MESSAGE_SUCCESS = "Listed all local courses";
 
     /**
      * TBD: This stub is to be removed after morphing is complete.

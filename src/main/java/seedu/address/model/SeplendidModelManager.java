@@ -87,7 +87,7 @@ public class SeplendidModelManager implements SeplendidModel {
 
     @Override
     public Path getLocalCourseCatalogueFilePath() {
-        return userPrefs.getAddressBookFilePath();
+        return userPrefs.getLocalCourseCatalogueFilePath();
     }
 
 
@@ -95,12 +95,20 @@ public class SeplendidModelManager implements SeplendidModel {
     public Path getUniversityCatalogueFilePath() {
         return userPrefs.getAddressBookFilePath();
     }
+
     @Override
     public void setLocalCourseCatalogueFilePath(Path localCourseCatalogueFilePath) {
         requireNonNull(localCourseCatalogueFilePath);
-        userPrefs.setAddressBookFilePath(localCourseCatalogueFilePath);
+        userPrefs.setLocalCourseCatalogueFilePath(localCourseCatalogueFilePath);
     }
 
+    @Override
+    public void setPartnerCourseCatalogueFilePath(Path partnerCourseCatalogueFilePath) {
+        requireNonNull(partnerCourseCatalogueFilePath);
+        userPrefs.setPartnerCourseCatalogueFilePath(partnerCourseCatalogueFilePath);
+    }
+
+    @Override
     public void setUniversityCatalogueFilePath(Path universityCatalogueFilePath) {
         requireNonNull(universityCatalogueFilePath);
         userPrefs.setAddressBookFilePath(universityCatalogueFilePath);
@@ -172,6 +180,7 @@ public class SeplendidModelManager implements SeplendidModel {
 
     /**
      * Check if there exist the same university in the catalogue.
+     *
      * @param university
      * @return
      */
@@ -214,6 +223,7 @@ public class SeplendidModelManager implements SeplendidModel {
     public ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue() {
         return partnerCourseCatalogue;
     }
+
     @Override
     public boolean hasPartnerCourse(PartnerCourse partnerCourse) {
         requireNonNull(partnerCourse);

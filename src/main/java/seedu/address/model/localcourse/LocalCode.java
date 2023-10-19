@@ -27,6 +27,7 @@ public class LocalCode {
      * @param localCode A valid localCode.
      */
     public LocalCode(String localCode) {
+        localCode = localCode.trim();
         requireNonNull(localCode);
         checkArgument(isValidLocalCode(localCode), MESSAGE_CONSTRAINTS);
         value = localCode;

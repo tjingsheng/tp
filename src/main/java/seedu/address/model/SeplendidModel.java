@@ -24,6 +24,7 @@ public interface SeplendidModel {
 
 
     //=========== UserPrefs ==================================================================================
+
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */
@@ -49,7 +50,6 @@ public interface SeplendidModel {
      */
     Path getLocalCourseCatalogueFilePath();
 
-    Path getUniversityCatalogueFilePath();
     /**
      * Sets the user prefs' LocalCourseCatalogue file path.
      */
@@ -66,7 +66,6 @@ public interface SeplendidModel {
      * Returns the LocalCourse list.
      */
     ReadOnlyLocalCourseCatalogue getLocalCourseCatalogue();
-    ReadOnlyUniversityCatalogue getUniversityCatalogue();
 
     /**
      * Returns true if a local course with the same identity as {@code localCourse} exists in the LocalCourseCatalogue.
@@ -100,8 +99,6 @@ public interface SeplendidModel {
      */
     ObservableList<LocalCourse> getFilteredLocalCourseList();
 
-
-
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
      *
@@ -111,6 +108,7 @@ public interface SeplendidModel {
     //=========== PartnerCourseCatalouge ============================================================================
 
     ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue();
+
     /**
      * Returns true if a partner course with the same identity as {@code partnerCourse} exists in the
      * PartnerCourseCatalogue.
@@ -132,12 +130,24 @@ public interface SeplendidModel {
 
     Path getPartnerCourseCatalogueFilePath();
 
+    void setPartnerCourseCatalogueFilePath(Path partnerCourseCatalogueFilePath);
+
     //=========== UniversityCatalouge ================================================================================
+
+    void setUniversityCatalogueFilePath(Path universityCatalogueFilePath);
+
     ObservableList<University> getFilteredUniversityList();
+
     void updateUniversityList(Predicate<University> predicate);
+
     void updateFilteredUniversityList(Predicate<University> predicate);
 
+    Path getUniversityCatalogueFilePath();
+
+    ReadOnlyUniversityCatalogue getUniversityCatalogue();
+
     //=========== NoteCatalouge ================================================================================
+
     /**
      * Adds the given Note.
      */

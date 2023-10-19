@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.notes.Note;
+import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
 
 /**
@@ -18,9 +19,11 @@ public interface SeplendidModel {
      * {@code Predicate} that always evaluate to true
      */
     Predicate<LocalCourse> PREDICATE_SHOW_ALL_LOCAL_COURSES = unused -> true;
-
+    Predicate<PartnerCourse> PREDICATE_SHOW_ALL_PARTNER_COURSES = unused -> true;
     Predicate<University> PREDICATE_SHOW_ALL_UNIVERSITIES = unused -> true;
 
+
+    //=========== UserPrefs ==================================================================================
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */
@@ -46,20 +49,24 @@ public interface SeplendidModel {
      */
     Path getLocalCourseCatalogueFilePath();
 
+    Path getUniversityCatalogueFilePath();
     /**
      * Sets the user prefs' LocalCourseCatalogue file path.
      */
     void setLocalCourseCatalogueFilePath(Path localCourseCatalogueFilePath);
 
+    //=========== LocalCourseCatalogue ================================================================================
+
     /**
-     * Replaces address book data with the data in {@code addressBook}.
+     * Replaces localcourse list data with the data in {@code localCourseCatalogue}.
      */
     void setLocalCourseCatalogue(ReadOnlyLocalCourseCatalogue localCourseCatalogue);
 
     /**
-     * Returns the AddressBook
+     * Returns the LocalCourse list.
      */
     ReadOnlyLocalCourseCatalogue getLocalCourseCatalogue();
+    ReadOnlyUniversityCatalogue getUniversityCatalogue();
 
     /**
      * Returns true if a local course with the same identity as {@code localCourse} exists in the LocalCourseCatalogue.
@@ -86,6 +93,8 @@ public interface SeplendidModel {
      */
     void setLocalCourse(LocalCourse localCourse, LocalCourse editedLocalCourse);
 
+    //=========== FilteredLocalCourseList Accessors =============================================================
+
     /**
      * Returns an unmodifiable view of the filtered local course list
      */
@@ -97,7 +106,36 @@ public interface SeplendidModel {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredLocalCourseList(Predicate<LocalCourse> predicate);
+    //=========== PartnerCourseCatalouge ============================================================================
 
+    ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue();
+    /**
+     * Returns true if a partner course with the same identity as {@code partnerCourse} exists in the
+     * PartnerCourseCatalogue.
+     */
+    boolean hasPartnerCourse(PartnerCourse partnerCourse);
+
+    /**
+     * Adds the given PartnerCourse.
+     * {@code partnerCourse} must not already exist in the PartnerCourseCatalogue.
+     */
+    void addPartnerCourse(PartnerCourse partnerCourse);
+
+    /**
+     * Returns an unmodifiable view of the filtered partner course list
+     */
+    ObservableList<PartnerCourse> getFilteredPartnerCourseList();
+
+    void updateFilteredPartnerCourseList(Predicate<PartnerCourse> predicate);
+
+    Path getPartnerCourseCatalogueFilePath();
+
+    //=========== UniversityCatalouge ================================================================================
+    ObservableList<University> getFilteredUniversityList();
+    void updateUniversityList(Predicate<University> predicate);
+    void updateFilteredUniversityList(Predicate<University> predicate);
+
+    //=========== NoteCatalouge ================================================================================
     /**
      * Adds the given Note.
      */

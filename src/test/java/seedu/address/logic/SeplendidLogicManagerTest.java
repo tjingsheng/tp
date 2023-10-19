@@ -24,11 +24,15 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
+import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
+import seedu.address.model.ReadOnlyUniversityCatalogue;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.SeplendidModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonLocalCourseCatalogueStorage;
+import seedu.address.storage.JsonPartnerCourseCatalogueStorage;
+import seedu.address.storage.JsonUniversityCatalogueStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.StorageManager;
 
@@ -50,7 +54,12 @@ public class SeplendidLogicManagerTest {
                 new JsonLocalCourseCatalogueStorage(temporaryFolder.resolve("localcoursecatalogue.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(
                 temporaryFolder.resolve("userPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, localCourseCatalogueStorage, userPrefsStorage);
+        JsonPartnerCourseCatalogueStorage partnerCourseCatalogueStorage =
+                new JsonPartnerCourseCatalogueStorage(temporaryFolder.resolve("partnercoursecatalogue.json"));
+        JsonUniversityCatalogueStorage universityCatalogueStorage =
+                new JsonUniversityCatalogueStorage(temporaryFolder.resolve("universitycatalogue"));
+        StorageManager storage = new StorageManager(addressBookStorage, localCourseCatalogueStorage, userPrefsStorage,
+                partnerCourseCatalogueStorage, universityCatalogueStorage);
         logic = new SeplendidLogicManager(model, storage);
     }
 
@@ -124,7 +133,8 @@ public class SeplendidLogicManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
                                       String expectedMessage) {
-        SeplendidModel expectedModel = new SeplendidModelManager(model.getLocalCourseCatalogue(), new UserPrefs());
+        SeplendidModel expectedModel = new SeplendidModelManager(model.getLocalCourseCatalogue(), new UserPrefs(),
+                model.getPartnerCourseCatalogue(), model.getUniversityCatalogue());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 
@@ -168,9 +178,28 @@ public class SeplendidLogicManagerTest {
             }
         };
 
+        JsonPartnerCourseCatalogueStorage partnerCourseCatalogueStorage =
+                new JsonPartnerCourseCatalogueStorage(prefPath) {
+                    @Override
+                    public void savePartnerCourseCatalogue(ReadOnlyPartnerCourseCatalogue partnerCourseCatalogue,
+                                                           Path filePath)
+                            throws IOException {
+                        throw e;
+                    }
+                };
+
+        JsonUniversityCatalogueStorage universityCatalogueStorage = new JsonUniversityCatalogueStorage(prefPath) {
+            @Override
+            public void saveUniversityCatalogue(ReadOnlyUniversityCatalogue universityCatalogue, Path filePath)
+                    throws IOException {
+                throw e;
+            }
+        };
+
         JsonUserPrefsStorage userPrefsStorage =
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ExceptionUserPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, localCourseCatalogueStorage, userPrefsStorage);
+        StorageManager storage = new StorageManager(addressBookStorage, localCourseCatalogueStorage, userPrefsStorage,
+                partnerCourseCatalogueStorage, universityCatalogueStorage);
 
         logic = new SeplendidLogicManager(model, storage);
 
@@ -181,7 +210,13 @@ public class SeplendidLogicManagerTest {
         SeplendidModelManager expectedModel = new SeplendidModelManager();
         expectedModel.addLocalCourse(TYPICAL_LOCAL_COURSE);
         assertCommandFailure(localCourseAddCommand, CommandException.class, expectedMessage, expectedModel);
-    }
 
+        // TBD: sohyun to uncomment
+        //        String partnerCourseAddCommand = String.format("%s %s [%s] [%s] [%s]",
+        //                PartnerCourseCommand.COMMAND_WORD, PartnerCourseAddCommand.ACTION_WORD,
+        //                TYPICAL_UNIVERSITY_NAME, TYPICAL_PARTNER_COURSE_CODE, TYPICAL_PARTNER_COURSE_NAME);
+        //        expectedModel.addPartnerCourse(TYPICAL_PARTNER_COURSE);
+        //        assertCommandFailure(partnerCourseAddCommand, CommandException.class, expectedMessage, expectedModel);
+    }
     // TBD: Refer to LogicManagerTest to include more appropriate tests after adding future commands
 }

@@ -102,6 +102,13 @@ public class SeplendidModelManager implements SeplendidModel {
         userPrefs.setLocalCourseCatalogueFilePath(localCourseCatalogueFilePath);
     }
 
+    @Override
+    public void setPartnerCourseCatalogueFilePath(Path partnerCourseCatalogueFilePath) {
+        requireNonNull(partnerCourseCatalogueFilePath);
+        userPrefs.setPartnerCourseCatalogueFilePath(partnerCourseCatalogueFilePath);
+    }
+
+    @Override
     public void setUniversityCatalogueFilePath(Path universityCatalogueFilePath) {
         requireNonNull(universityCatalogueFilePath);
         userPrefs.setAddressBookFilePath(universityCatalogueFilePath);

@@ -3,6 +3,8 @@ package seedu.address.logic.commands;
 import static seedu.address.logic.commands.CommandTestUtil.assertSeplendidCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertSeplendidCommandSuccess;
 import static seedu.address.testutil.TypicalObjects.getTypicalLocalCourseCatalogue;
+import static seedu.address.testutil.TypicalObjects.getTypicalPartnerCourseCatalogue;
+import static seedu.address.testutil.TypicalObjects.getTypicalUniversityCatalogue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,14 +25,16 @@ public class LocalCourseAddCommandIntegrationTest {
 
     @BeforeEach
     public void setUp() {
-        model = new SeplendidModelManager(getTypicalLocalCourseCatalogue(), new UserPrefs());
+        model = new SeplendidModelManager(getTypicalLocalCourseCatalogue(), new UserPrefs(),
+                getTypicalPartnerCourseCatalogue(), getTypicalUniversityCatalogue());
     }
 
     @Test
     public void execute_newLocalCourse_success() {
         LocalCourse validLocalCourse = new LocalCourseBuilder().build();
 
-        SeplendidModel expectedModel = new SeplendidModelManager(model.getLocalCourseCatalogue(), new UserPrefs());
+        SeplendidModel expectedModel = new SeplendidModelManager(model.getLocalCourseCatalogue(), new UserPrefs(),
+                model.getPartnerCourseCatalogue(), model.getUniversityCatalogue());
         expectedModel.addLocalCourse(validLocalCourse);
 
         assertSeplendidCommandSuccess(new LocalCourseAddCommand(validLocalCourse), model,

@@ -4,6 +4,8 @@ import static seedu.address.logic.commands.CommandTestUtil.assertSeplendidComman
 import static seedu.address.logic.commands.CommandTestUtil.showLocalCourseAtIndex;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalObjects.getTypicalLocalCourseCatalogue;
+import static seedu.address.testutil.TypicalObjects.getTypicalPartnerCourseCatalogue;
+import static seedu.address.testutil.TypicalObjects.getTypicalUniversityCatalogue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,8 +24,10 @@ public class LocalCourseListCommandTest {
 
     @BeforeEach
     public void setUp() {
-        model = new SeplendidModelManager(getTypicalLocalCourseCatalogue(), new UserPrefs());
-        expectedModel = new SeplendidModelManager(model.getLocalCourseCatalogue(), new UserPrefs());
+        model = new SeplendidModelManager(getTypicalLocalCourseCatalogue(), new UserPrefs(),
+                getTypicalPartnerCourseCatalogue(), getTypicalUniversityCatalogue());
+        expectedModel = new SeplendidModelManager(model.getLocalCourseCatalogue(), new UserPrefs(),
+                getTypicalPartnerCourseCatalogue(), getTypicalUniversityCatalogue());
     }
 
     @Test

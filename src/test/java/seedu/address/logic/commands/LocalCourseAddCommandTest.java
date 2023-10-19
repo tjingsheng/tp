@@ -20,10 +20,14 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.LocalCourseCatalogue;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
+import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
+import seedu.address.model.ReadOnlyUniversityCatalogue;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.notes.Note;
+import seedu.address.model.partnercourse.PartnerCourse;
+import seedu.address.model.university.University;
 import seedu.address.testutil.LocalCourseBuilder;
 
 /**
@@ -113,6 +117,7 @@ public class LocalCourseAddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        // LocalCourse
         @Override
         public Path getLocalCourseCatalogueFilePath() {
             throw new AssertionError("This method should not be called.");
@@ -163,10 +168,79 @@ public class LocalCourseAddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        // PartnerCourse
+        @Override
+        public Path getPartnerCourseCatalogueFilePath() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setPartnerCourseCatalogueFilePath(Path partnerCourseCatalogueFilePath) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addPartnerCourse(PartnerCourse partnerCourse) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasPartnerCourse(PartnerCourse partnerCourse) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<PartnerCourse> getFilteredPartnerCourseList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredPartnerCourseList(Predicate<PartnerCourse> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        // University
+        @Override
+        public Path getUniversityCatalogueFilePath() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyUniversityCatalogue getUniversityCatalogue() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setUniversityCatalogueFilePath(Path universityCatalogueFilePath) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<University> getFilteredUniversityList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateUniversityList(Predicate<University> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredUniversityList(Predicate<University> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        // Note
         @Override
         public void addNote(Note note) {
             throw new AssertionError("This method should not be called.");
         }
+
     }
 
     /**

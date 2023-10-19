@@ -85,12 +85,12 @@ public class SeplendidModelManagerTest {
     }
 
     @Test
-    public void hasLocalCourse_personNotInLocalCourseCatalogue_returnsFalse() {
+    public void hasLocalCourse_localCourseNotInLocalCourseCatalogue_returnsFalse() {
         assertFalse(modelManager.hasLocalCourse(CS3230));
     }
 
     @Test
-    public void hasLocalCourse_personInLocalCourseCatalogue_returnsTrue() {
+    public void hasLocalCourse_localCourseInLocalCourseCatalogue_returnsTrue() {
         modelManager.addLocalCourse(CS3230);
         assertTrue(modelManager.hasLocalCourse(CS3230));
     }

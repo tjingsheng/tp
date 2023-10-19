@@ -46,7 +46,7 @@ public class LocalCourseCatalogueTest {
 
     @Test
     public void resetData_withDuplicateLocalCourses_throwsDuplicateLocalCourseException() {
-        // Two persons with the same identity fields
+        // Two local courses with the same identity fields
         LocalCourse editedCS2030S =
                 new LocalCourseBuilder(CS2030S).withLocalName(TYPICAL_LOCAL_COURSE_NAME).build();
         List<LocalCourse> newLocalCourses = Arrays.asList(CS2030S, editedCS2030S);
@@ -66,7 +66,7 @@ public class LocalCourseCatalogueTest {
     }
 
     @Test
-    public void hasLocalCourse_personInLocalCourseCatalogue_returnsTrue() {
+    public void hasLocalCourse_localCourseInLocalCourseCatalogue_returnsTrue() {
         localCourseCatalogue.addLocalCourse(CS2040S);
         assertTrue(localCourseCatalogue.hasLocalCourse(CS2040S));
     }
@@ -93,7 +93,7 @@ public class LocalCourseCatalogueTest {
     }
 
     /**
-     * A stub ReadOnlyLocalCourseCatalogue whose persons list can violate interface constraints.
+     * A stub ReadOnlyLocalCourseCatalogue whose local course list can violate interface constraints.
      */
     private static class LocalCourseCatalogueStub implements ReadOnlyLocalCourseCatalogue {
         private final ObservableList<LocalCourse> localCourses = FXCollections.observableArrayList();

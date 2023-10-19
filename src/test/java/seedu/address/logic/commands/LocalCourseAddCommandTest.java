@@ -66,24 +66,24 @@ public class LocalCourseAddCommandTest {
     public void equals() {
         LocalCourse cs2030s = new LocalCourseBuilder().withLocalCode("CS2030S").build();
         LocalCourse cs2040s = new LocalCourseBuilder().withLocalCode("CS2040S").build();
-        LocalCourseAddCommand addCS2030SComamnd = new LocalCourseAddCommand(cs2030s);
+        LocalCourseAddCommand addCS2030SCommand = new LocalCourseAddCommand(cs2030s);
         LocalCourseAddCommand addCS2040SCommand = new LocalCourseAddCommand(cs2040s);
 
         // same object -> returns true
-        assertTrue(addCS2030SComamnd.equals(addCS2030SComamnd));
+        assertTrue(addCS2030SCommand.equals(addCS2030SCommand));
 
         // same values -> returns true
-        LocalCourseAddCommand addCS2030SComamndCopy = new LocalCourseAddCommand(cs2030s);
-        assertTrue(addCS2030SComamnd.equals(addCS2030SComamndCopy));
+        LocalCourseAddCommand addCS2030SCommandCopy = new LocalCourseAddCommand(cs2030s);
+        assertTrue(addCS2030SCommand.equals(addCS2030SCommandCopy));
 
         // different types -> returns false
-        assertFalse(addCS2030SComamnd.equals(1));
+        assertFalse(addCS2030SCommand.equals(1));
 
         // null -> returns false
-        assertFalse(addCS2030SComamnd.equals(null));
+        assertFalse(addCS2030SCommand.equals(null));
 
-        // different person -> returns false
-        assertFalse(addCS2030SComamnd.equals(addCS2040SCommand));
+        // different local course -> returns false
+        assertFalse(addCS2030SCommand.equals(addCS2040SCommand));
     }
 
     @Test
@@ -262,7 +262,7 @@ public class LocalCourseAddCommandTest {
     }
 
     /**
-     * A Model stub that always accept the person being added.
+     * A Model stub that always accept the local course being added.
      */
     private class ModelStubAcceptingLocalCourseAdded extends SeplendidModelStub {
         final ArrayList<LocalCourse> localCoursesAdded = new ArrayList<>();

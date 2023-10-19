@@ -24,6 +24,7 @@ public class Content {
      * @param content A valid content.
      */
     public Content(String content) {
+        content = content.trim();
         requireNonNull(content);
         checkArgument(isValidContent(content), MESSAGE_CONSTRAINTS);
         this.content = content;

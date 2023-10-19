@@ -9,8 +9,8 @@ import seedu.address.model.notes.Note;
 public interface ReadOnlyNoteCatalogue {
 
     /**
-     * Returns an unmodifiable view of the local course list.
-     * This list will not contain any duplicate local courses.
+     * Returns an unmodifiable view of the note list.
+     * This list will not contain any duplicate note.
      * ObservableList will aid interoperability.
      */
     ObservableList<Note> getNoteList();

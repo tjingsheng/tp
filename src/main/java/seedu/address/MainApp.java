@@ -179,12 +179,12 @@ public class MainApp extends Application {
             noteCatalogueOptional = storage.readNoteCatalogue();
             if (!noteCatalogueOptional.isPresent()) {
                 logger.info("Creating a new data file " + storage.getNoteCatalogueFilePath()
-                        + " populated with a sample LocalCourseCatalogue.");
+                        + " populated with a sample NoteCatalogue.");
             }
             initialNoteCatalogue = noteCatalogueOptional.orElseGet(
                     SampleDataUtil::getSampleNoteCatalogue);
         } catch (DataLoadingException e) {
-            logger.warning("Data file at " + storage.getLocalCourseCatalogueFilePath() + " could not be loaded."
+            logger.warning("Data file at " + storage.getNoteCatalogueFilePath() + " could not be loaded."
                     + " Will be starting with an empty AddressBook.");
             initialLocalCourseCatalogue = new LocalCourseCatalogue();
             initialPartnerCourseCatalogue = new PartnerCourseCatalogue();

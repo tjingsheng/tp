@@ -9,7 +9,7 @@
 }
 
 .scroll-bar .thumb {
-    -fx-background-color: derive(#CCDDFF, 50%);
+    -fx-background-color: derive(#FFE3C7, 50%);
     -fx-background-insets: 3;
 }
 
@@ -46,11 +46,11 @@
 }
 
 .list-cell:filled:even {
-    -fx-background-color: #A3B0CC;
+    -fx-background-color: #E5CCB3;
 }
 
 .list-cell:filled:odd {
-    -fx-background-color: #B7C6E5;
+    -fx-background-color: #CCB59F;
 }
 
 .list-cell:filled:selected {
@@ -58,7 +58,7 @@
     -fx-padding: 0;
     -fx-border-color: black;
     -fx-border-width: 1;
-    -fx-background-color: #D1E0FF;
+    -fx-background-color: #FFE5CC;
 }
 
 .list-cell .label {
@@ -67,12 +67,12 @@
 
 .cell_big_label {
     -fx-font-size: 16px;
-    -fx-text-fill: #CCDDFF;
+    -fx-text-fill: #FFE3C7;
 }
 
 .cell_small_label {
     -fx-font-size: 13px;
-    -fx-text-fill: #CCDDFF;
+    -fx-text-fill: #FFE3C7;
 }
 
 .text-field {
@@ -81,7 +81,7 @@
 }
 
 .background-color {
-     -fx-background-color: #CCDDFF;
+     -fx-background-color: #FFE3C7;
 }
 
 .round-border {

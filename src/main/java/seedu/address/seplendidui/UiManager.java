@@ -1,14 +1,13 @@
 package seedu.address.seplendidui;
 
 import java.util.logging.Logger;
+
 import javafx.application.Platform;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Control;
-import javafx.scene.control.Labeled;
 import javafx.scene.image.Image;
-import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import seedu.address.MainApp;
@@ -20,11 +19,10 @@ import seedu.address.logic.Logic;
  * The manager of the UI component.
  */
 public class UiManager implements Ui {
-
     public static final String ALERT_DIALOG_PANE_FIELD_ID = "alertDialogPane";
-
     private static final Logger logger = LogsCenter.getLogger(UiManager.class);
     private static final String ICON_APPLICATION = "/images/address_book_32.png";
+    private static final String SONO_FONT_TTF = "/font/sono/static/Sono-Light.ttf";
 
     private Logic logic;
     private MainWindow mainWindow;
@@ -47,7 +45,7 @@ public class UiManager implements Ui {
             mainWindow = new MainWindow(primaryStage, logic);
             mainWindow.show(); //This should be called before creating other UI parts
             mainWindow.fillInnerParts();
-            Font font = Font.loadFont(getClass().getResourceAsStream("/font/sono/static/Sono-Light.ttf"),13);
+            Font font = Font.loadFont(getClass().getResourceAsStream(SONO_FONT_TTF), 13);
             setDefaultFont(mainWindow.getPrimaryStage().getScene().getRoot(), font);
 
         } catch (Throwable e) {
@@ -56,19 +54,16 @@ public class UiManager implements Ui {
         }
     }
 
+    /**
+     * Sets the default font for the given node and its children recursively.
+     *
+     * @param node  The JavaFX node for which to set the default font.
+     * @param font  The font to be set.
+     */
     private void setDefaultFont(Node node, Font font) {
-        if (node instanceof Labeled) {
-            ((Labeled) node).setFont(font);
-        }
-        if (node instanceof Control) {
-            System.out.println(font.getFamily());
-            (node).setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: " + font.getSize() + ";");
-        }
-        if (node instanceof StackPane || node instanceof javafx.scene.layout.GridPane || node instanceof javafx.scene.layout.VBox ||
-            node instanceof javafx.scene.layout.HBox || node instanceof javafx.scene.layout.AnchorPane ||
-            node instanceof javafx.scene.layout.BorderPane || node instanceof javafx.scene.layout.FlowPane) {
-            // If it's a container, iterate through its children
-            for (Node child : ((javafx.scene.Parent) node).getChildrenUnmodifiable()) {
+        node.setStyle(String.format("-fx-font-family: '%s';", font.getFamily()));
+        if (node instanceof Parent) {
+            for (Node child : ((Parent) node).getChildrenUnmodifiable()) {
                 setDefaultFont(child, font);
             }
         }

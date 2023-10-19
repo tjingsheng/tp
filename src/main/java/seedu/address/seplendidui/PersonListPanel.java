@@ -1,6 +1,7 @@
 package seedu.address.seplendidui;
 
 import java.util.logging.Logger;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
@@ -30,8 +31,9 @@ public class PersonListPanel extends UiPart<Region> {
         personListView.setCellFactory(listView -> new PersonListViewCell());
 
         // Add selection listener to update the PersonDetailPanel
-        personListView.getSelectionModel().selectedItemProperty().addListener(
-            (observable, oldValue, newValue) -> showPersonDetails(newValue));
+        personListView.getSelectionModel()
+            .selectedItemProperty()
+            .addListener((observable, oldValue, newValue) -> showPersonDetails(newValue));
     }
 
     /**

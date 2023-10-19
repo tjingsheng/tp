@@ -29,6 +29,8 @@ import seedu.address.model.SeplendidModel;
 import seedu.address.model.SeplendidModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
+import seedu.address.seplendidui.Ui;
+import seedu.address.seplendidui.UiManager;
 import seedu.address.storage.AddressBookStorage;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonLocalCourseCatalogueStorage;
@@ -37,8 +39,6 @@ import seedu.address.storage.LocalCourseCatalogueStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
 import seedu.address.storage.UserPrefsStorage;
-import seedu.address.seplendidui.Ui;
-import seedu.address.seplendidui.UiManager;
 
 /**
  * Runs the application.

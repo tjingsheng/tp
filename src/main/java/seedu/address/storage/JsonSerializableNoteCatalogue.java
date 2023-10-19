@@ -55,6 +55,7 @@ public class JsonSerializableNoteCatalogue {
             if (noteCatalogue.hasNote(note)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_LOCAL_COURSE);
             }
+            noteCatalogue.addNote(note);
         }
         return noteCatalogue;
     }

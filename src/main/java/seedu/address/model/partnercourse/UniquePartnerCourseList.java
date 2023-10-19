@@ -65,7 +65,7 @@ public class UniquePartnerCourseList implements Iterable<PartnerCourse> {
     }
 
     /**
-     * Removes the equivalent (as per {@code PartnerCourse#equals(Object)})LocalCourse from the list.
+     * Removes the equivalent (as per {@code PartnerCourse#equals(Object)})PartnerCourse from the list.
      * The PartnerCourse must exist in the list.
      */
     public void remove(PartnerCourse toRemove) {

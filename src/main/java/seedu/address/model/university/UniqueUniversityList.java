@@ -8,7 +8,6 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.localcourse.exceptions.DuplicateLocalCourseException;
 import seedu.address.model.university.exceptions.DuplicateUniversityException;
 import seedu.address.model.university.exceptions.UniversityNotFoundException;
@@ -42,7 +41,7 @@ public class UniqueUniversityList implements Iterable<University> {
      * Removes the equivalent (as per {@code University#equals(Object)})University from the list.
      * The University must exist in the list.
      */
-    public void remove(LocalCourse toRemove) {
+    public void remove(University toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
             throw new UniversityNotFoundException();

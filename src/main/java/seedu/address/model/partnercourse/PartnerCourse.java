@@ -42,7 +42,7 @@ public class PartnerCourse {
      * Assumption: partnerCode is the primary key i.e. there exists
      * no two distinct PartnerCourses with the same partnerCode.
      *
-     * @param otherPartnerCourse This is the other local course.
+     * @param otherPartnerCourse This is the other partner course.
      */
     public boolean isSamePartnerCourse(PartnerCourse otherPartnerCourse) {
         if (otherPartnerCourse == this) {

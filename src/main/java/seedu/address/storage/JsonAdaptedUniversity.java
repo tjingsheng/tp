@@ -45,7 +45,7 @@ class JsonAdaptedUniversity {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     UniversityName.class.getSimpleName()));
         }
-        if (!LocalName.isValidLocalName(universityName)) {
+        if (!UniversityName.isValidUniversityName(universityName)) {
             throw new IllegalValueException(LocalName.MESSAGE_CONSTRAINTS);
         }
         final UniversityName modelUniversityName = new UniversityName(universityName);

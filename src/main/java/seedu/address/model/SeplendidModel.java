@@ -124,6 +124,12 @@ public interface SeplendidModel {
     void addPartnerCourse(PartnerCourse partnerCourse);
 
     /**
+     * Deletes the given PartnerCourse.
+     * @param partnerCourse must exist in the PartnerCourseCatalogue.
+     */
+    void deletePartnerCourse(PartnerCourse partnerCourse);
+
+    /**
      * Returns an unmodifiable view of the filtered partner course list
      */
     ObservableList<PartnerCourse> getFilteredPartnerCourseList();

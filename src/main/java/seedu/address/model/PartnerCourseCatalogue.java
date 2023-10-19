@@ -71,6 +71,15 @@ public class PartnerCourseCatalogue implements ReadOnlyPartnerCourseCatalogue {
         partnerCourses.add(pc);
     }
 
+    /**
+     * Deletes a PartnerCourse in the PartnerCourseCatalogue.
+     * The PartnerCourse must exist in the list.
+     * @param pc PartnerCourse to be deleted.
+     */
+    public void removePartnerCourse(PartnerCourse pc) {
+        partnerCourses.remove(pc);
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this)

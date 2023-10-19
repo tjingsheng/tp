@@ -17,7 +17,7 @@ public class PartnerCourseAddCommand extends PartnerCourseCommand {
             + "add [university] [partnercode] [partnername]: Adds a partner course.";
     public static final String ACTION_WORD = "add";
     public static final String MESSAGE_SUCCESS = "New partner course added: %1$s";
-    public static final String MESSAGE_DUPLICATE_LOCAL_COURSE = "This partner course already exists in SEPlendid.";
+    public static final String MESSAGE_DUPLICATE_PARTNER_COURSE = "This partner course already exists in SEPlendid.";
 
     private final PartnerCourse partnerCourseToAdd;
 
@@ -42,7 +42,7 @@ public class PartnerCourseAddCommand extends PartnerCourseCommand {
         requireNonNull(seplendidModel);
 
         if (seplendidModel.hasPartnerCourse(partnerCourseToAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_LOCAL_COURSE);
+            throw new CommandException(MESSAGE_DUPLICATE_PARTNER_COURSE);
         }
 
         seplendidModel.addPartnerCourse(partnerCourseToAdd);

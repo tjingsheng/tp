@@ -175,6 +175,12 @@ public class SeplendidModelManager implements SeplendidModel {
         updateFilteredUniversityList(PREDICATE_SHOW_ALL_UNIVERSITIES);
     }
 
+    @Override
+    public void deletePartnerCourse(PartnerCourse partnerCourse) {
+        partnerCourseCatalogue.removePartnerCourse(partnerCourse);
+        updateFilteredPartnerCourseList(PREDICATE_SHOW_ALL_PARTNER_COURSES);
+    }
+
     /**
      * Returns an unmodifiable view of the list of {@code LocalCourse} backed by the internal list of
      * {@code versionedLocalCourseCatalogue}

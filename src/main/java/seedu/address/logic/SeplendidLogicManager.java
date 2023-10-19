@@ -111,6 +111,9 @@ public class SeplendidLogicManager implements SeplendidLogic {
     public Path getPartnerCourseCatalogueFilePath() {
         return model.getPartnerCourseCatalogueFilePath();
     }
+
+    //=========== UniversityCatalouge ================================================================================
+
     public ReadOnlyUniversityCatalogue getUniversityCatalogue() {
         return model.getUniversityCatalogue();
     }

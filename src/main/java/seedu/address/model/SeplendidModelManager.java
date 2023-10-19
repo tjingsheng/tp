@@ -171,14 +171,18 @@ public class SeplendidModelManager implements SeplendidModel {
         updateFilteredPartnerCourseList(PREDICATE_SHOW_ALL_PARTNER_COURSES);
 
         //need to update the university catalogue when a partner course is added.
-        universityCatalogue.addUniversity(partnerCourse.getPartnerUniversity());
-        updateFilteredUniversityList(PREDICATE_SHOW_ALL_UNIVERSITIES);
+        if (!universityCatalogue.hasUniversity(partnerCourse.getPartnerUniversity())) {
+            universityCatalogue.addUniversity(partnerCourse.getPartnerUniversity());
+            updateFilteredUniversityList(PREDICATE_SHOW_ALL_UNIVERSITIES);
+        }
     }
 
     @Override
     public void deletePartnerCourse(PartnerCourse partnerCourse) {
         partnerCourseCatalogue.removePartnerCourse(partnerCourse);
         updateFilteredPartnerCourseList(PREDICATE_SHOW_ALL_PARTNER_COURSES);
+
+        //how about university? - TBD: find a way to see whether the university has other courses
     }
 
     /**

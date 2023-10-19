@@ -2,11 +2,13 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
+import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 
 /**
@@ -19,17 +21,18 @@ public class PartnerCourseDeleteCommand extends PartnerCourseCommand {
     public static final String MESSAGE_SUCCESS = "Partner course deleted: %1$s";
     public static final String MESSAGE_NONEXISTENT_PARTNER_COURSE = "This partner course does not exist in SEPlendid.";
 
-    private final PartnerCourse partnerCourseToDelete;
+    private final PartnerCode partnerCodeToDelete;
+    private PartnerCourse partnerCourseToDelete;
 
     /**
      * Creates a PartnerCourseDeleteCommand to delete the specified {@code partnerCourse}
      *
-     * @param partnerCourse The partnerCourse to be deleted in Storage.
+     * @param partnerCode The partnerCourse to be deleted in Storage.
      */
-    public PartnerCourseDeleteCommand(PartnerCourse partnerCourse) {
+    public PartnerCourseDeleteCommand(PartnerCode partnerCode) {
         super();
-        requireNonNull(partnerCourse);
-        partnerCourseToDelete = partnerCourse;
+        requireNonNull(partnerCode);
+        partnerCodeToDelete = partnerCode;
     }
 
     @Override
@@ -40,6 +43,13 @@ public class PartnerCourseDeleteCommand extends PartnerCourseCommand {
     @Override
     public CommandResult execute(SeplendidModel seplendidModel) throws CommandException {
         requireNonNull(seplendidModel);
+
+        ObservableList<PartnerCourse> partnerCourseObservableList = seplendidModel.getFilteredPartnerCourseList();
+
+        partnerCourseToDelete = partnerCourseObservableList.filtered(
+                partnerCourse -> partnerCourse.getPartnerCode().equals(partnerCodeToDelete)).get(0);
+
+        requireNonNull(partnerCourseToDelete);
 
         if (!seplendidModel.hasPartnerCourse(partnerCourseToDelete)) {
             throw new CommandException(MESSAGE_NONEXISTENT_PARTNER_COURSE);

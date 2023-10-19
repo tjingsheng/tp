@@ -66,7 +66,7 @@ public interface SeplendidModel {
      * Returns the LocalCourse list.
      */
     ReadOnlyLocalCourseCatalogue getLocalCourseCatalogue();
-    ReadOnlyUniversityCatalogue getUniversityCatalogue();
+
 
     /**
      * Returns true if a local course with the same identity as {@code localCourse} exists in the LocalCourseCatalogue.
@@ -133,7 +133,10 @@ public interface SeplendidModel {
     Path getPartnerCourseCatalogueFilePath();
 
     //=========== UniversityCatalouge ================================================================================
+    ReadOnlyUniversityCatalogue getUniversityCatalogue();
     ObservableList<University> getFilteredUniversityList();
+    void addUniversity(University university);
+    void setUniversity(University target, University editedUniversity);
     void updateUniversityList(Predicate<University> predicate);
     void updateFilteredUniversityList(Predicate<University> predicate);
 

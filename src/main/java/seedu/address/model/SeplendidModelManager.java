@@ -85,28 +85,22 @@ public class SeplendidModelManager implements SeplendidModel {
         userPrefs.setGuiSettings(guiSettings);
     }
 
+
+
+
+
+    //=========== LocalCourseCatalogue ================================================================================
+
     @Override
     public Path getLocalCourseCatalogueFilePath() {
         return userPrefs.getAddressBookFilePath();
     }
 
-
-    @Override
-    public Path getUniversityCatalogueFilePath() {
-        return userPrefs.getAddressBookFilePath();
-    }
     @Override
     public void setLocalCourseCatalogueFilePath(Path localCourseCatalogueFilePath) {
         requireNonNull(localCourseCatalogueFilePath);
         userPrefs.setAddressBookFilePath(localCourseCatalogueFilePath);
     }
-
-    public void setUniversityCatalogueFilePath(Path universityCatalogueFilePath) {
-        requireNonNull(universityCatalogueFilePath);
-        userPrefs.setAddressBookFilePath(universityCatalogueFilePath);
-    }
-
-    //=========== LocalCourseCatalogue ================================================================================
 
     @Override
     public void setLocalCourseCatalogue(ReadOnlyLocalCourseCatalogue localCourseCatalogue) {
@@ -159,7 +153,60 @@ public class SeplendidModelManager implements SeplendidModel {
         filteredLocalCourseCatalogue.setPredicate(predicate);
     }
 
+
+    //=========== PartnerCourseCatalouge ============================================================================
+    @Override
+    public ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue() {
+        return partnerCourseCatalogue;
+    }
+    @Override
+    public boolean hasPartnerCourse(PartnerCourse partnerCourse) {
+        requireNonNull(partnerCourse);
+        return partnerCourseCatalogue.hasPartnerCourse(partnerCourse);
+    }
+
+    @Override
+    public void addPartnerCourse(PartnerCourse partnerCourse) {
+        partnerCourseCatalogue.addPartnerCourse(partnerCourse);
+        updateFilteredPartnerCourseList(PREDICATE_SHOW_ALL_PARTNER_COURSES);
+
+        //need to update the university catalogue when a partner course is added.
+        universityCatalogue.addUniversity(partnerCourse.getPartnerUniversity());
+        updateFilteredUniversityList(PREDICATE_SHOW_ALL_UNIVERSITIES);
+    }
+
+    /**
+     * Returns an unmodifiable view of the list of {@code LocalCourse} backed by the internal list of
+     * {@code versionedLocalCourseCatalogue}
+     */
+    @Override
+    public ObservableList<PartnerCourse> getFilteredPartnerCourseList() {
+        return filteredPartnerCourseCatalogue;
+    }
+
+    @Override
+    public void updateFilteredPartnerCourseList(Predicate<PartnerCourse> predicate) {
+        requireNonNull(predicate);
+        filteredPartnerCourseCatalogue.setPredicate(predicate);
+    }
+
+    @Override
+    public Path getPartnerCourseCatalogueFilePath() {
+        return userPrefs.getPartnerCourseCatalogueFilePath();
+    }
+
+
     //=========== UniversityCatalogue ================================================================================
+
+    @Override
+    public Path getUniversityCatalogueFilePath() {
+        return userPrefs.getAddressBookFilePath();
+    }
+
+    public void setUniversityCatalogueFilePath(Path universityCatalogueFilePath) {
+        requireNonNull(universityCatalogueFilePath);
+        userPrefs.setAddressBookFilePath(universityCatalogueFilePath);
+    }
 
     public void setUniversityCatalogue(ReadOnlyUniversityCatalogue universityCatalogue) {
         this.universityCatalogue.resetData(universityCatalogue);
@@ -173,12 +220,31 @@ public class SeplendidModelManager implements SeplendidModel {
     /**
      * Check if there exist the same university in the catalogue.
      * @param university
-     * @return
+     * @return boolean
      */
     public boolean hasUniversity(University university) {
         requireNonNull(university);
         return universityCatalogue.hasUniversity(university);
     }
+
+    @Override
+    public void addUniversity(University university) {
+        universityCatalogue.addUniversity(university);
+        updateFilteredUniversityList(PREDICATE_SHOW_ALL_UNIVERSITIES);
+    }
+
+    @Override
+    public void setUniversity(University target, University editedUniversity) {
+        requireAllNonNull(target, editedUniversity);
+
+        universityCatalogue.setUniversity(target, editedUniversity);
+    }
+
+    @Override
+    public void updateUniversityList(Predicate<University> predicate) {
+
+    }
+
     //=========== FilteredUniversityList Accessors =============================================================
 
     @Override
@@ -209,54 +275,10 @@ public class SeplendidModelManager implements SeplendidModel {
                 && filteredLocalCourseCatalogue.equals(otherSeplendidModelManager.filteredLocalCourseCatalogue);
     }
 
-    //=========== PartnerCourseCatalouge ============================================================================
-    @Override
-    public ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue() {
-        return partnerCourseCatalogue;
-    }
-    @Override
-    public boolean hasPartnerCourse(PartnerCourse partnerCourse) {
-        requireNonNull(partnerCourse);
-        return partnerCourseCatalogue.hasPartnerCourse(partnerCourse);
-    }
-
-    @Override
-    public void addPartnerCourse(PartnerCourse partnerCourse) {
-        partnerCourseCatalogue.addPartnerCourse(partnerCourse);
-        updateFilteredPartnerCourseList(PREDICATE_SHOW_ALL_PARTNER_COURSES);
-    }
-
-    /**
-     * Returns an unmodifiable view of the list of {@code LocalCourse} backed by the internal list of
-     * {@code versionedLocalCourseCatalogue}
-     */
-    @Override
-    public ObservableList<PartnerCourse> getFilteredPartnerCourseList() {
-        return filteredPartnerCourseCatalogue;
-    }
-
-    @Override
-    public void updateFilteredPartnerCourseList(Predicate<PartnerCourse> predicate) {
-        requireNonNull(predicate);
-        filteredPartnerCourseCatalogue.setPredicate(predicate);
-    }
-
-    @Override
-    public Path getPartnerCourseCatalogueFilePath() {
-        return userPrefs.getPartnerCourseCatalogueFilePath();
-    }
-
-
     //=========== NoteCatalogue ================================================================================
     @Override
     public void addNote(Note note) {
         noteList.addNote(note);
-    }
-
-    //=========== UniversityCatalogue ================================================================================
-    @Override
-    public void updateUniversityList(Predicate<University> predicate) {
-
     }
 
 }

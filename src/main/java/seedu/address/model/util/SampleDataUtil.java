@@ -4,13 +4,14 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import seedu.address.model.*;
 import seedu.address.model.AddressBook;
 import seedu.address.model.LocalCourseCatalogue;
 import seedu.address.model.PartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
 import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
+import seedu.address.model.ReadOnlyUniversityCatalogue;
+import seedu.address.model.UniversityCatalogue;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.localcourse.LocalName;
@@ -80,11 +81,6 @@ public class SampleDataUtil {
         };
     }
 
-    public static University[] getSampleUniversities() {
-        return new University[] {new University(new UniversityName("Imperial College of London")),
-                new University(new UniversityName("Harvard University"))
-        };
-    }
     public static ReadOnlyLocalCourseCatalogue getSampleLocalCourseCatalogue() {
         LocalCourseCatalogue sampleLocalCourseCatalogue = new LocalCourseCatalogue();
         for (LocalCourse sampleLocalCourse : getSampleLocalCourses()) {
@@ -93,6 +89,12 @@ public class SampleDataUtil {
         return sampleLocalCourseCatalogue;
     }
 
+    public static University[] getSampleUniversities() {
+        return new University[] {
+            new University(new UniversityName("Imperial College of London")),
+            new University(new UniversityName("Harvard University"))
+        };
+    }
 
     public static ReadOnlyUniversityCatalogue getSampleUniversityCatalogue() {
         UniversityCatalogue sampleUniversityCatalogue = new UniversityCatalogue();
@@ -100,13 +102,15 @@ public class SampleDataUtil {
             sampleUniversityCatalogue.addUniversity(sampleUniversity);
         }
         return sampleUniversityCatalogue;
+    }
 
     public static PartnerCourse[] getSamplePartnerCourses() {
-        return new PartnerCourse[] {new PartnerCourse(new University(new UniversityName("")),
-            new PartnerCode("CS1101S"),
-            new PartnerName("Programming Methodology I")),
-            new PartnerCourse(new University(new UniversityName("")), new PartnerCode("CS1231S"),
-                    new PartnerName("Discrete Structures"))
+        return new PartnerCourse[] {new PartnerCourse(new University(new UniversityName("Boston College")),
+            new PartnerCode("COM1231"),
+            new PartnerName("Discrete Mathematics")),
+            new PartnerCourse(new University(new UniversityName("Harvard University")),
+                new PartnerCode("COM3041"),
+                new PartnerName("Computer Networks"))
         };
     }
 

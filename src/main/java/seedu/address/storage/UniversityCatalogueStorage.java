@@ -33,7 +33,6 @@ public interface UniversityCatalogueStorage {
     /**
      * Saves the given {@link ReadOnlyUniversityCatalogue} to the storage.
      *
-     * @param UniversityCatalogue cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */
     void saveUniversityCatalogue(ReadOnlyUniversityCatalogue universityCatalogue) throws IOException;

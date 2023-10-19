@@ -5,7 +5,6 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
 import java.util.function.Predicate;
-import java.util.logging.Filter;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -41,11 +40,10 @@ public class SeplendidModelManager implements SeplendidModel {
      * Initializes a SeplendidModelManager with the given localCourseCatalogue, userPrefs,
      * partnerCourseCatalogue, universityCatalogue, mappingCatalogue, noteCatalogue.
      */
-    public SeplendidModelManager(ReadOnlyLocalCourseCatalogue localCourseCatalogue, ReadOnlyUserPrefs userPrefs, 
-                                 ReadOnlyPartnerCourseCatalogue partnerCourseCatalogue, 
+    public SeplendidModelManager(ReadOnlyLocalCourseCatalogue localCourseCatalogue, ReadOnlyUserPrefs userPrefs,
+                                 ReadOnlyPartnerCourseCatalogue partnerCourseCatalogue,
                                  ReadOnlyUniversityCatalogue universityCatalogue) {
         requireAllNonNull(localCourseCatalogue, userPrefs, partnerCourseCatalogue, universityCatalogue);
-  
         logger.fine("Initializing with local course catalogue: " + localCourseCatalogue
                 + " and user prefs " + userPrefs);
 
@@ -172,23 +170,15 @@ public class SeplendidModelManager implements SeplendidModel {
         return universityCatalogue;
     }
 
+    /**
+     * Check if there exist the same university in the catalogue.
+     * @param university
+     * @return
+     */
     public boolean hasUniversity(University university) {
         requireNonNull(university);
         return universityCatalogue.hasUniversity(university);
     }
-
-//    @Override
-//    public void addLocalCourse(LocalCourse localCourse) {
-//        localCourseCatalogue.addLocalCourse(localCourse);
-//        updateFilteredLocalCourseList(PREDICATE_SHOW_ALL_LOCAL_COURSES);
-//    }
-
-//    @Override
-//    public void setUniversity(University target, University editedUniversity) {
-//        requireAllNonNull(target, editedUniversity);
-//
-//        universityCatalogue.setUniversities(target, editedUniversity);
-//    }
     //=========== FilteredUniversityList Accessors =============================================================
 
     @Override

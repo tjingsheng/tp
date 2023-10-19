@@ -10,7 +10,9 @@ import seedu.address.model.partnercourse.PartnerName;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityName;
 
-
+/**
+ * Jackson-friendly version of {@link PartnerCourse}.
+ */
 public class JsonAdaptedPartnerCourse {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "PartnerCourse's %s field is missing!";
 

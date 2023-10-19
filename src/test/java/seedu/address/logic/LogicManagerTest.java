@@ -27,10 +27,14 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
+import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
+import seedu.address.model.ReadOnlyUniversityCatalogue;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonLocalCourseCatalogueStorage;
+import seedu.address.storage.JsonPartnerCourseCatalogueStorage;
+import seedu.address.storage.JsonUniversityCatalogueStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.StorageManager;
 import seedu.address.testutil.PersonBuilder;
@@ -52,7 +56,12 @@ public class LogicManagerTest {
         JsonLocalCourseCatalogueStorage localCourseCatalogueStorage =
                 new JsonLocalCourseCatalogueStorage(temporaryFolder.resolve("localcoursecatalogue.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, localCourseCatalogueStorage, userPrefsStorage);
+        JsonPartnerCourseCatalogueStorage partnerCourseCatalogueStorage =
+                new JsonPartnerCourseCatalogueStorage(temporaryFolder.resolve("partnercoursecatalogue.json"));
+        JsonUniversityCatalogueStorage universityCatalogueStorage =
+                new JsonUniversityCatalogueStorage(temporaryFolder.resolve("universitycatalogue.json"));
+        StorageManager storage = new StorageManager(addressBookStorage, localCourseCatalogueStorage, userPrefsStorage,
+                partnerCourseCatalogueStorage, universityCatalogueStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -175,9 +184,27 @@ public class LogicManagerTest {
             }
         };
 
+        JsonPartnerCourseCatalogueStorage partnerCourseCatalogueStorage = new
+                JsonPartnerCourseCatalogueStorage(prefPath) {
+            @Override
+            public void savePartnerCourseCatalogue(ReadOnlyPartnerCourseCatalogue partnerCourseCatalogue, Path filePath)
+                    throws IOException {
+                throw e;
+            }
+        };
+
+        JsonUniversityCatalogueStorage universityCatalogueStorage = new JsonUniversityCatalogueStorage(prefPath) {
+            @Override
+            public void saveUniversityCatalogue(ReadOnlyUniversityCatalogue universityCatalogue, Path filePath)
+                    throws IOException {
+                throw e;
+            }
+        };
+
         JsonUserPrefsStorage userPrefsStorage =
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ExceptionUserPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, localCourseCatalogueStorage, userPrefsStorage);
+        StorageManager storage = new StorageManager(addressBookStorage, localCourseCatalogueStorage, userPrefsStorage,
+                partnerCourseCatalogueStorage, universityCatalogueStorage);
 
         logic = new LogicManager(model, storage);
 

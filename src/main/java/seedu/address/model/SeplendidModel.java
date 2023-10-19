@@ -135,7 +135,6 @@ public interface SeplendidModel {
     //=========== UniversityCatalouge ================================================================================
     ObservableList<University> getFilteredUniversityList();
     void updateUniversityList(Predicate<University> predicate);
-  
     void updateFilteredUniversityList(Predicate<University> predicate);
 
     //=========== NoteCatalouge ================================================================================

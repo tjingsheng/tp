@@ -1,0 +1,12 @@
+{
+  "localCourses": [
+    {
+      "localCode": "CS1231S",
+      "localName": "Discrete Structures"
+    },
+    {
+      "localCode": "CS1231S",
+      "localName": "Continuous Structures"
+    }
+  ]
+}

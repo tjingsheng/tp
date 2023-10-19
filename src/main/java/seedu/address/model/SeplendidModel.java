@@ -24,6 +24,7 @@ public interface SeplendidModel {
 
 
     //=========== UserPrefs ==================================================================================
+
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */
@@ -111,6 +112,7 @@ public interface SeplendidModel {
     //=========== PartnerCourseCatalouge ============================================================================
 
     ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue();
+
     /**
      * Returns true if a partner course with the same identity as {@code partnerCourse} exists in the
      * PartnerCourseCatalogue.
@@ -138,15 +140,24 @@ public interface SeplendidModel {
 
     Path getPartnerCourseCatalogueFilePath();
 
+    void setPartnerCourseCatalogueFilePath(Path partnerCourseCatalogueFilePath);
+
     //=========== UniversityCatalouge ================================================================================
-    ReadOnlyUniversityCatalogue getUniversityCatalogue();
+
+    void setUniversityCatalogueFilePath(Path universityCatalogueFilePath);
+
     ObservableList<University> getFilteredUniversityList();
+
     void addUniversity(University university);
     void setUniversity(University target, University editedUniversity);
     void updateUniversityList(Predicate<University> predicate);
+
     void updateFilteredUniversityList(Predicate<University> predicate);
 
+    ReadOnlyUniversityCatalogue getUniversityCatalogue();
+
     //=========== NoteCatalouge ================================================================================
+
     /**
      * Adds the given Note.
      */

@@ -1,0 +1,13 @@
+{
+  "_comment": "LocalCourseCatalogue save file which mirrors TypicalPersons#getTypicalLocalCourseCatalogue()",
+  "localCourses": [
+    {
+      "localCode": "CS2040S",
+      "localName": "Data Structures & Algorithms"
+    },
+    {
+      "localCode": "CS3230",
+      "localName": "Design & Analysis of Algorithms"
+    }
+  ]
+}

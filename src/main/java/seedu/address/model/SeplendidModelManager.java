@@ -85,22 +85,38 @@ public class SeplendidModelManager implements SeplendidModel {
         userPrefs.setGuiSettings(guiSettings);
     }
 
-
-
-
-
     //=========== LocalCourseCatalogue ================================================================================
 
     @Override
     public Path getLocalCourseCatalogueFilePath() {
+        return userPrefs.getLocalCourseCatalogueFilePath();
+    }
+
+
+    @Override
+    public Path getUniversityCatalogueFilePath() {
         return userPrefs.getAddressBookFilePath();
     }
 
     @Override
     public void setLocalCourseCatalogueFilePath(Path localCourseCatalogueFilePath) {
         requireNonNull(localCourseCatalogueFilePath);
-        userPrefs.setAddressBookFilePath(localCourseCatalogueFilePath);
+        userPrefs.setLocalCourseCatalogueFilePath(localCourseCatalogueFilePath);
     }
+
+    @Override
+    public void setPartnerCourseCatalogueFilePath(Path partnerCourseCatalogueFilePath) {
+        requireNonNull(partnerCourseCatalogueFilePath);
+        userPrefs.setPartnerCourseCatalogueFilePath(partnerCourseCatalogueFilePath);
+    }
+
+    @Override
+    public void setUniversityCatalogueFilePath(Path universityCatalogueFilePath) {
+        requireNonNull(universityCatalogueFilePath);
+        userPrefs.setAddressBookFilePath(universityCatalogueFilePath);
+    }
+
+    //=========== LocalCourseCatalogue ================================================================================
 
     @Override
     public void setLocalCourseCatalogue(ReadOnlyLocalCourseCatalogue localCourseCatalogue) {
@@ -208,16 +224,6 @@ public class SeplendidModelManager implements SeplendidModel {
 
     //=========== UniversityCatalogue ================================================================================
 
-    @Override
-    public Path getUniversityCatalogueFilePath() {
-        return userPrefs.getAddressBookFilePath();
-    }
-
-    public void setUniversityCatalogueFilePath(Path universityCatalogueFilePath) {
-        requireNonNull(universityCatalogueFilePath);
-        userPrefs.setAddressBookFilePath(universityCatalogueFilePath);
-    }
-
     public void setUniversityCatalogue(ReadOnlyUniversityCatalogue universityCatalogue) {
         this.universityCatalogue.resetData(universityCatalogue);
     }
@@ -229,8 +235,9 @@ public class SeplendidModelManager implements SeplendidModel {
 
     /**
      * Check if there exist the same university in the catalogue.
+     *
      * @param university
-     * @return boolean
+     * @return
      */
     public boolean hasUniversity(University university) {
         requireNonNull(university);
@@ -290,5 +297,4 @@ public class SeplendidModelManager implements SeplendidModel {
     public void addNote(Note note) {
         noteList.addNote(note);
     }
-
 }

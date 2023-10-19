@@ -98,7 +98,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
 
     public void setNoteCatalogueFilePath(Path noteCatalogueFilePath) {
         requireNonNull(noteCatalogueFilePath);
-        this.noteCatalogueFilePath = parterCourseCatalogueFilePath;
+        this.noteCatalogueFilePath = noteCatalogueFilePath;
     }
 
     @Override

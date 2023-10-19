@@ -185,6 +185,11 @@ public class LocalCourseAddCommandTest {
         }
 
         @Override
+        public void deletePartnerCourse(PartnerCourse partnerCourse) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue() {
             throw new AssertionError("This method should not be called.");
         }
@@ -217,6 +222,16 @@ public class LocalCourseAddCommandTest {
 
         @Override
         public void setUniversityCatalogueFilePath(Path universityCatalogueFilePath) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addUniversity(University university) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setUniversity(University target, University editedUniversity) {
             throw new AssertionError("This method should not be called.");
         }
 

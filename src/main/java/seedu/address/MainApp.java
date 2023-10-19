@@ -21,33 +21,28 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.LocalCourseCatalogue;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
-import seedu.address.model.PartnerCourseCatalogue;
-import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.ReadOnlyLocalCourseCatalogue;
-import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
-import seedu.address.model.ReadOnlyUniversityCatalogue;
-import seedu.address.model.ReadOnlyUserPrefs;
-import seedu.address.model.SeplendidModel;
-import seedu.address.model.SeplendidModelManager;
-import seedu.address.model.UniversityCatalogue;
 import seedu.address.model.NoteCatalogue;
 import seedu.address.model.PartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
 import seedu.address.model.ReadOnlyNoteCatalogue;
 import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
+import seedu.address.model.ReadOnlyUniversityCatalogue;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.SeplendidModelManager;
+import seedu.address.model.UniversityCatalogue;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.AddressBookStorage;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonLocalCourseCatalogueStorage;
+import seedu.address.storage.JsonNoteCatalogueStorage;
 import seedu.address.storage.JsonPartnerCourseCatalogueStorage;
 import seedu.address.storage.JsonUniversityCatalogueStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.LocalCourseCatalogueStorage;
+import seedu.address.storage.NoteCatalogueStorage;
 import seedu.address.storage.PartnerCourseCatalogueStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
@@ -96,10 +91,13 @@ public class MainApp extends Application {
 
         PartnerCourseCatalogueStorage partnerCourseCatalogue =
                 new JsonPartnerCourseCatalogueStorage(userPrefs.getPartnerCourseCatalogueFilePath());
+        NoteCatalogueStorage noteCatalogueStorage =
+                new JsonNoteCatalogueStorage(userPrefs.getNoteCatalogueFilePath());
         storage = new StorageManager(addressBookStorage, localCourseCatalogueStorage, userPrefsStorage,
-                partnerCourseCatalogue, universityCatalogueStorage);
+                partnerCourseCatalogue, universityCatalogueStorage, noteCatalogueStorage);
         // AB3 model
         model = initAddressBookModelManager(storage, userPrefs);
+
         // SEPlendid model
         seplendidModel = initSeplendidModelManager(storage, userPrefs);
 
@@ -195,7 +193,6 @@ public class MainApp extends Application {
         }
         return new SeplendidModelManager(initialLocalCourseCatalogue, userPrefs, initialPartnerCourseCatalogue,
                                          initialUniversityCatalogue, initialNoteCatalogue);
-        }
     }
 
     private void initLogging(Config config) {

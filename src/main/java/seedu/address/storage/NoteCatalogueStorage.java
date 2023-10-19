@@ -7,6 +7,9 @@ import java.util.Optional;
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.ReadOnlyNoteCatalogue;
 
+/**
+ * Represents a storage for {@link seedu.address.model.NoteCatalogue}.
+ */
 public interface NoteCatalogueStorage {
     /**
      * Returns the file path of the data file.

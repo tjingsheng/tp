@@ -9,6 +9,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
+import seedu.address.model.ReadOnlyNoteCatalogue;
 import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyUniversityCatalogue;
 import seedu.address.model.ReadOnlyUserPrefs;
@@ -34,12 +35,14 @@ public class StorageManager implements Storage {
                           LocalCourseCatalogueStorage localCourseCatalogueStorage,
                           UserPrefsStorage userPrefsStorage,
                           PartnerCourseCatalogueStorage partnerCourseCatalogueStorage,
-                          UniversityCatalogueStorage universityCatalogueStorage) {
+                          UniversityCatalogueStorage universityCatalogueStorage,
+                          NoteCatalogueStorage noteCatalogueStorage) {
         this.addressBookStorage = addressBookStorage;
         this.localCourseCatalogueStorage = localCourseCatalogueStorage;
         this.universityCatalogueStorage = universityCatalogueStorage;
         this.userPrefsStorage = userPrefsStorage;
         this.partnerCourseCatalogueStorage = partnerCourseCatalogueStorage;
+        this.noteCatalogueStorage = noteCatalogueStorage;
     }
 
     // ================ UserPrefs methods ==============================

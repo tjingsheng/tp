@@ -42,7 +42,7 @@ public class SeplendidModelManager implements SeplendidModel {
      */
     public SeplendidModelManager(ReadOnlyLocalCourseCatalogue localCourseCatalogue, ReadOnlyUserPrefs userPrefs,
                                  ReadOnlyPartnerCourseCatalogue partnerCourseCatalogue,
-                                 ReadOnlyUniversityCatalogue universityCatalogue, 
+                                 ReadOnlyUniversityCatalogue universityCatalogue,
                                  ReadOnlyNoteCatalogue noteCatalogue) {
         requireAllNonNull(localCourseCatalogue, userPrefs, partnerCourseCatalogue, universityCatalogue, noteCatalogue);
 
@@ -60,8 +60,12 @@ public class SeplendidModelManager implements SeplendidModel {
         filteredNoteCatalogue = new FilteredList<>(this.noteCatalogue.getNoteList());
     }
 
+    /**
+     * Contructs Seplendid Model Manager.
+     */
     public SeplendidModelManager() {
-        this(new LocalCourseCatalogue(), new UserPrefs(), new PartnerCourseCatalogue(), new UniversityCatalogue(), new NoteCatalogue());
+        this(new LocalCourseCatalogue(), new UserPrefs(), new PartnerCourseCatalogue(), new UniversityCatalogue(),
+                new NoteCatalogue());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -252,11 +256,9 @@ public class SeplendidModelManager implements SeplendidModel {
     public Path getPartnerCourseCatalogueFilePath() {
         return userPrefs.getPartnerCourseCatalogueFilePath();
     }
-    
     //=========== UniversityCatalogue ================================================================================
     @Override
     public void updateUniversityList(Predicate<University> predicate) {
-
     }
 
     //=========== NoteCatalogue ================================================================================

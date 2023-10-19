@@ -14,6 +14,9 @@ import seedu.address.model.notes.Content;
 import seedu.address.model.notes.Note;
 import seedu.address.model.tag.Tag;
 
+/**
+ * Jackson-friendly version of {@link Note}.
+ */
 public class JsonAdaptedNote {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Note's %s field is missing!";
 

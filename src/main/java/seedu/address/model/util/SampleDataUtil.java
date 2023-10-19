@@ -6,18 +6,14 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.AddressBook;
 import seedu.address.model.LocalCourseCatalogue;
-import seedu.address.model.PartnerCourseCatalogue;
-import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.ReadOnlyLocalCourseCatalogue;
-import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
-import seedu.address.model.ReadOnlyUniversityCatalogue;
-import seedu.address.model.UniversityCatalogue;
 import seedu.address.model.NoteCatalogue;
 import seedu.address.model.PartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
 import seedu.address.model.ReadOnlyNoteCatalogue;
 import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
+import seedu.address.model.ReadOnlyUniversityCatalogue;
+import seedu.address.model.UniversityCatalogue;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.localcourse.LocalName;
@@ -132,8 +128,8 @@ public class SampleDataUtil {
 
     public static Note[] getSampleNotes() {
         return new Note[] {new Note(new Content("Dummy Note 1"),
-                new Tag("dummy")),
-                new Note(new Content("Dummy Note 2"), new Tag("dummy"))
+            new Tag("dummy")),
+            new Note(new Content("Dummy Note 2"), new Tag("dummy"))
         };
     }
 

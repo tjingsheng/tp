@@ -31,9 +31,11 @@ public class StorageManagerTest {
                 new JsonPartnerCourseCatalogueStorage(getTempFilePath("partnercourse"));
         JsonUniversityCatalogueStorage universityCatalogueStorage =
                 new JsonUniversityCatalogueStorage(getTempFilePath("university"));
+        JsonNoteCatalogueStorage noteCatalogueStorage =
+                new JsonNoteCatalogueStorage(getTempFilePath("note"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
         storageManager = new StorageManager(addressBookStorage, localCourseCatalogueStorage, userPrefsStorage,
-                partnerCourseCatalogueStorage, universityCatalogueStorage);
+                partnerCourseCatalogueStorage, universityCatalogueStorage, noteCatalogueStorage);
     }
 
     private Path getTempFilePath(String fileName) {

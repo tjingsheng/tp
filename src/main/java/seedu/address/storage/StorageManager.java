@@ -7,11 +7,10 @@ import java.util.logging.Logger;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataLoadingException;
-import seedu.address.model.*;
-import seedu.address.model.PartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
 import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
+import seedu.address.model.ReadOnlyUniversityCatalogue;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 
@@ -34,7 +33,7 @@ public class StorageManager implements Storage {
                           LocalCourseCatalogueStorage localCourseCatalogueStorage,
                           UserPrefsStorage userPrefsStorage,
                           PartnerCourseCatalogueStorage partnerCourseCatalogueStorage,
-                          UniversityCatalogueStorage universityCatalogueStorage ) {
+                          UniversityCatalogueStorage universityCatalogueStorage) {
         this.addressBookStorage = addressBookStorage;
         this.localCourseCatalogueStorage = localCourseCatalogueStorage;
         this.universityCatalogueStorage = universityCatalogueStorage;
@@ -147,7 +146,6 @@ public class StorageManager implements Storage {
         logger.fine("Attempting to write to data file: " + filePath);
         universityCatalogueStorage.saveUniversityCatalogue(universityCatalogue, filePath);
     }
-  
     // ================ PartnerCourseCatalogue methods ==============================
     @Override
     public Path getPartnerCourseCatalogueFilePath() {
@@ -160,14 +158,16 @@ public class StorageManager implements Storage {
     }
 
     @Override
-    public Optional<ReadOnlyPartnerCourseCatalogue> readPartnerCourseCatalogue(Path filePath) throws DataLoadingException {
+    public Optional<ReadOnlyPartnerCourseCatalogue> readPartnerCourseCatalogue(Path filePath)
+            throws DataLoadingException {
         logger.fine("Attempting to read data from file: " + filePath);
         return partnerCourseCatalogueStorage.readPartnerCourseCatalogue(filePath);
     }
 
     @Override
     public void savePartnerCourseCatalogue(ReadOnlyPartnerCourseCatalogue partnerCourseCatalogue) throws IOException {
-        savePartnerCourseCatalogue(partnerCourseCatalogue, partnerCourseCatalogueStorage.getPartnerCourseCatalogueFilePath());
+        savePartnerCourseCatalogue(partnerCourseCatalogue, partnerCourseCatalogueStorage
+                .getPartnerCourseCatalogueFilePath());
     }
 
     @Override

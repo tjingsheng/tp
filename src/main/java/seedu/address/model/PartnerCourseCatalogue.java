@@ -9,6 +9,10 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.partnercourse.UniquePartnerCourseList;
 
+/**
+ * Wraps partner course data at the catalogue level
+ * Duplicates are not allowed (by .isSamePartnerCourse comparison)
+ */
 public class PartnerCourseCatalogue implements ReadOnlyPartnerCourseCatalogue {
     private final UniquePartnerCourseList partnerCourses;
 

@@ -2,6 +2,11 @@ package seedu.address.model.partnercourse;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
+
+/**
+ * Represents a Partner Course's partner name in SEPlendid.
+ * Guarantees: immutable; is valid as declared in {@link #isValidPartnerName(String)}
+ */
 public class PartnerName {
 
     public static final String MESSAGE_CONSTRAINTS = "PartnerName can take any values, and it should not be blank";
@@ -10,6 +15,12 @@ public class PartnerName {
 
     public final String value;
 
+    /**
+     * Constructs an {@code PartnerName}.
+     * partnerName is trimmed before checkArgument, as a standardisation.
+     *
+     * @param partnerName A valid partnername.
+     */
     public PartnerName(String partnerName) {
         requireNonNull(partnerName);
         checkArgument(isValidPartnerName(partnerName), MESSAGE_CONSTRAINTS);

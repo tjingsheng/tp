@@ -1,2 +1,2 @@
-package seedu.address.model.localcourse;public class LocalCourseTest {
+package seedu.address.model.localcourse; public class LocalCourseTest {
 }

@@ -2,6 +2,9 @@ package seedu.address.logic.commands;
 
 import seedu.address.commons.util.ToStringBuilder;
 
+/**
+ * Abstract class for UniversityCommands.
+ */
 public abstract class UniversityCommand extends Command {
     public static final String COMMAND_WORD = "university";
 

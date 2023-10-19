@@ -7,6 +7,9 @@ import java.util.Optional;
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
 
+/**
+ * Represents a storage for {@link seedu.address.model.PartnerCourseCatalogue}.
+ */
 public interface PartnerCourseCatalogueStorage {
     /**
      * Returns the file path of the data file.
@@ -34,6 +37,7 @@ public interface PartnerCourseCatalogueStorage {
     /**
      * @see #savePartnerCourseCatalogue(ReadOnlyPartnerCourseCatalogue)
      */
-    void savePartnerCourseCatalogue(ReadOnlyPartnerCourseCatalogue partnerCourseCatalogue, Path filePath) throws IOException;
+    void savePartnerCourseCatalogue(ReadOnlyPartnerCourseCatalogue partnerCourseCatalogue, Path filePath)
+            throws IOException;
 
 }

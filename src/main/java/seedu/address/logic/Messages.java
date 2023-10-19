@@ -64,6 +64,12 @@ public class Messages {
         return builder.toString();
     }
 
+    /**
+     * Formats the {@code university} for display to the user.
+     * Overloaded method.
+     * @param university
+     * @return
+     */
     public static String format(University university) {
         final StringBuilder builder = new StringBuilder("UniversityName: ");
         builder.append(university.getUniversityName());

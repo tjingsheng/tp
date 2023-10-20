@@ -22,7 +22,7 @@ public class UiManager implements Ui {
     public static final String ALERT_DIALOG_PANE_FIELD_ID = "alertDialogPane";
     private static final Logger logger = LogsCenter.getLogger(UiManager.class);
     private static final String ICON_APPLICATION = "/images/address_book_32.png";
-    private static final String SONO_FONT_TTF = "/font/sono/static/Sono-Light.ttf";
+    private static final String SONO_FONT_TTF = "/font/Sono-Light.ttf";
 
     private Logic logic;
     private MainWindow mainWindow;

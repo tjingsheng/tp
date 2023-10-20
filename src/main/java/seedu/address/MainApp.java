@@ -21,9 +21,11 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.LocalCourseCatalogue;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.NoteCatalogue;
 import seedu.address.model.PartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
+import seedu.address.model.ReadOnlyNoteCatalogue;
 import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyUniversityCatalogue;
 import seedu.address.model.ReadOnlyUserPrefs;
@@ -35,10 +37,12 @@ import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.AddressBookStorage;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonLocalCourseCatalogueStorage;
+import seedu.address.storage.JsonNoteCatalogueStorage;
 import seedu.address.storage.JsonPartnerCourseCatalogueStorage;
 import seedu.address.storage.JsonUniversityCatalogueStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.LocalCourseCatalogueStorage;
+import seedu.address.storage.NoteCatalogueStorage;
 import seedu.address.storage.PartnerCourseCatalogueStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
@@ -87,10 +91,13 @@ public class MainApp extends Application {
 
         PartnerCourseCatalogueStorage partnerCourseCatalogue =
                 new JsonPartnerCourseCatalogueStorage(userPrefs.getPartnerCourseCatalogueFilePath());
+        NoteCatalogueStorage noteCatalogueStorage =
+                new JsonNoteCatalogueStorage(userPrefs.getNoteCatalogueFilePath());
         storage = new StorageManager(addressBookStorage, localCourseCatalogueStorage, userPrefsStorage,
-                partnerCourseCatalogue, universityCatalogueStorage);
+                partnerCourseCatalogue, universityCatalogueStorage, noteCatalogueStorage);
         // AB3 model
         model = initAddressBookModelManager(storage, userPrefs);
+
         // SEPlendid model
         seplendidModel = initSeplendidModelManager(storage, userPrefs);
 
@@ -144,6 +151,8 @@ public class MainApp extends Application {
         ReadOnlyLocalCourseCatalogue initialLocalCourseCatalogue;
         ReadOnlyUniversityCatalogue initialUniversityCatalogue;
         logger.info("Using data file : " + storage.getLocalCourseCatalogueFilePath());
+        Optional<ReadOnlyNoteCatalogue> noteCatalogueOptional;
+        ReadOnlyNoteCatalogue initialNoteCatalogue;
         try {
             localCourseCatalogueOptional = storage.readLocalCourseCatalogue();
             partnerCourseCatalogueOptional = storage.readPartnerCourseCatalogue();
@@ -166,15 +175,24 @@ public class MainApp extends Application {
             }
             initialUniversityCatalogue = universityCatalogueOptional.orElseGet(
                     SampleDataUtil::getSampleUniversityCatalogue);
+
+            noteCatalogueOptional = storage.readNoteCatalogue();
+            if (!noteCatalogueOptional.isPresent()) {
+                logger.info("Creating a new data file " + storage.getNoteCatalogueFilePath()
+                        + " populated with a sample NoteCatalogue.");
+            }
+            initialNoteCatalogue = noteCatalogueOptional.orElseGet(
+                    SampleDataUtil::getSampleNoteCatalogue);
         } catch (DataLoadingException e) {
-            logger.warning("Data file at " + storage.getLocalCourseCatalogueFilePath() + " could not be loaded."
+            logger.warning("Data file at " + storage.getNoteCatalogueFilePath() + " could not be loaded."
                     + " Will be starting with an empty AddressBook.");
             initialLocalCourseCatalogue = new LocalCourseCatalogue();
             initialPartnerCourseCatalogue = new PartnerCourseCatalogue();
             initialUniversityCatalogue = new UniversityCatalogue();
+            initialNoteCatalogue = new NoteCatalogue();
         }
         return new SeplendidModelManager(initialLocalCourseCatalogue, userPrefs, initialPartnerCourseCatalogue,
-                                         initialUniversityCatalogue);
+                                         initialUniversityCatalogue, initialNoteCatalogue);
     }
 
     private void initLogging(Config config) {

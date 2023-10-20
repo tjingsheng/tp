@@ -5,11 +5,11 @@ import static seedu.address.logic.parser.CliSyntax.PARAMETER_CONTENT;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_TAGS;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
-import java.util.stream.Stream;
-
 import seedu.address.logic.commands.NoteAddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.notes.Content;
 import seedu.address.model.notes.Note;
+import seedu.address.model.tag.Tag;
 
 /**
  * Parses input arguments and creates a new Note object.
@@ -32,26 +32,18 @@ public class NoteAddCommandParser implements Parser<NoteAddCommand> {
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_CONTENT, PARAMETER_TAGS);
 
-        if (!areArgumentsPresent(parameterToArgMap, PARAMETER_CONTENT, PARAMETER_TAGS)) {
+        if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_CONTENT, PARAMETER_TAGS)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     NoteAddCommand.NOTE_ADD_MESSAGE_USAGE));
         }
 
         // All arguments should be a non-empty {@code Optional}
-        String content = ParserUtil.parseContent(parameterToArgMap.getValue(PARAMETER_CONTENT).get());
-        String tags = ParserUtil.parseNoteTags(parameterToArgMap.getValue(PARAMETER_TAGS).get());
+        Content content = ParserUtil.parseContent(parameterToArgMap.getValue(PARAMETER_CONTENT).get());
+        Tag tags = ParserUtil.parseTag(parameterToArgMap.getValue(PARAMETER_TAGS).get());
 
         Note note = new Note(content, tags);
 
         return new NoteAddCommand(note);
-    }
-
-    /**
-     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
-     * {@code SeplendidArgumentMap}.
-     */
-    private static boolean areArgumentsPresent(SeplendidArgumentMap argumentMap, SeplendidParameter... parameters) {
-        return Stream.of(parameters).allMatch(parameter -> argumentMap.getValue(parameter).isPresent());
     }
 
 }

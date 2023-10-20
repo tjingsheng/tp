@@ -4,7 +4,7 @@ import javafx.collections.ObservableList;
 import seedu.address.model.localcourse.LocalCourse;
 
 /**
- * Unmodifiable view of an address book
+ * Unmodifiable view of local course catalogue.
  */
 public interface ReadOnlyLocalCourseCatalogue {
 

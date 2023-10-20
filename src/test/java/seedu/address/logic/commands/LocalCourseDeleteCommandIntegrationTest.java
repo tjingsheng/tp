@@ -5,6 +5,7 @@ import static seedu.address.logic.commands.CommandTestUtil.assertSeplendidComman
 import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE;
 import static seedu.address.testutil.TypicalObjects.getTypicalLocalCourseCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalLocalCourses;
+import static seedu.address.testutil.TypicalObjects.getTypicalNoteCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalPartnerCourseCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalUniversityCatalogue;
 
@@ -27,7 +28,7 @@ public class LocalCourseDeleteCommandIntegrationTest {
     @BeforeEach
     public void setUp() {
         model = new SeplendidModelManager(getTypicalLocalCourseCatalogue(), new UserPrefs(),
-                getTypicalPartnerCourseCatalogue(), getTypicalUniversityCatalogue());
+                getTypicalPartnerCourseCatalogue(), getTypicalUniversityCatalogue(), getTypicalNoteCatalogue());
     }
 
     @Test
@@ -35,7 +36,7 @@ public class LocalCourseDeleteCommandIntegrationTest {
         LocalCourse validExistingLocalCourse = getTypicalLocalCourses().get(0);
 
         SeplendidModel expectedModel = new SeplendidModelManager(model.getLocalCourseCatalogue(), new UserPrefs(),
-                model.getPartnerCourseCatalogue(), model.getUniversityCatalogue());
+                model.getPartnerCourseCatalogue(), model.getUniversityCatalogue(), model.getNoteCatalogue());
         expectedModel.deleteLocalCourse(validExistingLocalCourse);
 
         assertSeplendidCommandSuccess(new LocalCourseDeleteCommand(validExistingLocalCourse.getLocalCode()), model,

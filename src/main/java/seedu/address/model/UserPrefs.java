@@ -18,6 +18,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     private Path localCourseCatalogueFilePath = Paths.get("data", "localcoursecatalogue.json");
     private Path universitiesCatalogueFilePath = Paths.get("data", "universitycatalogue.json");
     private Path parterCourseCatalogueFilePath = Paths.get("data", "partnercoursecatalogue.json");
+    private Path noteCatalogueFilePath = Paths.get("data", "note.json");
 
     /**
      * Creates a {@code UserPrefs} with default values.
@@ -43,6 +44,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         setLocalCourseCatalogueFilePath(newUserPrefs.getLocalCourseCatalogueFilePath());
         setPartnerCourseCatalogueFilePath(newUserPrefs.getPartnerCourseCatalogueFilePath());
         setUniversitiesCatalogueFilePath(newUserPrefs.getUniversityCatalogueFilePath());
+        setNoteCatalogueFilePath(newUserPrefs.getNoteCatalogueFilePath());
     }
 
     public GuiSettings getGuiSettings() {
@@ -90,6 +92,15 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         this.parterCourseCatalogueFilePath = parterCourseCatalogueFilePath;
     }
 
+    public Path getNoteCatalogueFilePath() {
+        return noteCatalogueFilePath;
+    }
+
+    public void setNoteCatalogueFilePath(Path noteCatalogueFilePath) {
+        requireNonNull(noteCatalogueFilePath);
+        this.noteCatalogueFilePath = noteCatalogueFilePath;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -105,13 +116,14 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         return guiSettings.equals(otherUserPrefs.guiSettings)
                 && addressBookFilePath.equals(otherUserPrefs.addressBookFilePath)
                 && localCourseCatalogueFilePath.equals(otherUserPrefs.localCourseCatalogueFilePath)
-                && parterCourseCatalogueFilePath.equals(otherUserPrefs.parterCourseCatalogueFilePath);
+                && parterCourseCatalogueFilePath.equals(otherUserPrefs.parterCourseCatalogueFilePath)
+                && noteCatalogueFilePath.equals(otherUserPrefs.noteCatalogueFilePath);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(guiSettings, addressBookFilePath, localCourseCatalogueFilePath,
-                parterCourseCatalogueFilePath);
+                parterCourseCatalogueFilePath, noteCatalogueFilePath);
     }
 
     @Override
@@ -121,6 +133,8 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         sb.append("\nLocal data file location : " + addressBookFilePath);
         sb.append("\nLocal data file location (LocalCourseCatalogue): " + localCourseCatalogueFilePath);
         sb.append("\nLocal data file location (PartnerCourseCatalogue): " + parterCourseCatalogueFilePath);
+        sb.append("\nLocal data file location (UniversityCatalogue): " + universitiesCatalogueFilePath);
+        sb.append("\nLocal data file location (NoteCatalogue): " + noteCatalogueFilePath);
         return sb.toString();
     }
 

@@ -12,6 +12,7 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalName;
+import seedu.address.model.notes.Content;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerName;
 import seedu.address.model.person.Address;
@@ -205,10 +206,13 @@ public class ParserUtil {
      * Parses a {@code String content}.
      * Leading and trailing whitespaces will be trimmed.
      */
-    public static String parseContent(String content) throws ParseException {
+    public static Content parseContent(String content) throws ParseException {
         requireNonNull(content);
         String trimmedContent = content.trim();
-        return trimmedContent;
+        if (!Content.isValidContent(trimmedContent)) {
+            throw new ParseException(Name.MESSAGE_CONSTRAINTS);
+        }
+        return new Content(trimmedContent);
     }
 
     /**

@@ -2,6 +2,7 @@ package seedu.address.seplendidui;
 
 import java.util.logging.Logger;
 
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.SeplendidDataType;
+import seedu.address.model.localcourse.LocalCourse;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -74,8 +76,11 @@ public class MainWindow extends UiPart<Stage> {
         itemDetailPanel = new ItemDetailPanel<>();
         itemDetailPanelPlaceholder.getChildren().add(itemDetailPanel.getRoot());
 
-        ObservableList<SeplendidDataType> emptyList = FXCollections.observableArrayList();
-        itemListPanel = new ItemListPanel<>(emptyList, itemDetailPanel);
+        ObservableList<LocalCourse> localCourseList = seplendidLogic.getFilteredLocalCourseCatalogue();
+        ObservableList<SeplendidDataType> itemList = FXCollections.observableArrayList(localCourseList);
+        Bindings.bindContent(itemList, localCourseList);
+
+        itemListPanel = new ItemListPanel<>(itemList, itemDetailPanel);
         itemListPanelPlaceholder.getChildren().add(itemListPanel.getRoot());
 
         resultBox = new ResultBox();
@@ -83,15 +88,6 @@ public class MainWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
-    }
-
-    /**
-     * Update the placeholders in the window.
-     */
-    void updateItemList(ObservableList<SeplendidDataType> newItems) {
-        itemListPanelPlaceholder.getChildren().clear();
-        itemListPanel = new ItemListPanel<>(newItems, itemDetailPanel);
-        itemListPanelPlaceholder.getChildren().add(itemListPanel.getRoot());
     }
 
     /**
@@ -133,8 +129,6 @@ public class MainWindow extends UiPart<Stage> {
     private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
         try {
             CommandResult commandResult = seplendidLogic.execute(commandText);
-            // TODO: fix this to update the item list to the appropriate data. This is a horrible implementation.
-            this.updateItemList(FXCollections.observableArrayList(seplendidLogic.getFilteredLocalCourseCatalogue()));
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultBox.setFeedbackToUser(commandResult.getFeedbackToUser());
 

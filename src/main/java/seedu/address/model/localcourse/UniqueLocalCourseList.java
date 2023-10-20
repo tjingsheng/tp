@@ -5,6 +5,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,6 +35,19 @@ public class UniqueLocalCourseList implements Iterable<LocalCourse> {
     public boolean contains(LocalCourse toCheck) {
         requireNonNull(toCheck);
         return internalList.stream().anyMatch(toCheck::isSameLocalCourse);
+    }
+
+    /**
+     * Returns an Optional containing first occurrence of desired LocalCourse.
+     * An empty Optional is returned if LocalCourse is not found.
+     *
+     * @param localCode This is the LocalCode to check.
+     * @return Optional containing first occurrence of desired LocalCourse, if any.
+     */
+    public Optional<LocalCourse> getLocalCourseIfExists(LocalCode localCode) {
+        requireNonNull(localCode);
+        return internalList.stream().filter(lc -> lc.getLocalCode().equals(localCode))
+                .findFirst();
     }
 
     /**

@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 
@@ -77,6 +78,17 @@ public class LocalCourseCatalogueTest {
         LocalCourse editedCS3230 =
                 new LocalCourseBuilder(CS3230).withLocalName(TYPICAL_LOCAL_COURSE_NAME).build();
         assertTrue(localCourseCatalogue.hasLocalCourse(editedCS3230));
+    }
+
+    @Test
+    public void getLocalCourseIfExists_localCourseExists_returnsLocalCourse() {
+        localCourseCatalogue.addLocalCourse(CS3230);
+        assertEquals(CS3230, localCourseCatalogue.getLocalCourseIfExists(CS3230.getLocalCode()).get());
+    }
+
+    @Test
+    public void getLocalCourseIfExists_localCourseNotExists_returnsEmpty() {
+        assertEquals(Optional.empty(), localCourseCatalogue.getLocalCourseIfExists(CS3230.getLocalCode()));
     }
 
     @Test

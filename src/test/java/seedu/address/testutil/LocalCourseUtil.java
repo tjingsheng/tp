@@ -1,6 +1,7 @@
 package seedu.address.testutil;
 
 import seedu.address.logic.commands.LocalCourseAddCommand;
+import seedu.address.logic.commands.LocalCourseDeleteCommand;
 import seedu.address.model.localcourse.LocalCourse;
 
 /**
@@ -16,18 +17,39 @@ public class LocalCourseUtil {
                 + " "
                 + LocalCourseAddCommand.ACTION_WORD
                 + " "
-                + getLocalCourseArgumentsForCommand(localCourse);
+                + getLocalCourseArgumentsForAddCommand(localCourse);
     }
 
     /**
-     * Returns the part of command string for the given {@code localCourse}'s details.
+     * Returns the part of add command string for the given {@code localCourse}'s details.
      */
-    public static String getLocalCourseArgumentsForCommand(LocalCourse localCourse) {
+    public static String getLocalCourseArgumentsForAddCommand(LocalCourse localCourse) {
         StringBuilder sb = new StringBuilder("[");
         sb.append(localCourse.getLocalCode()).append("] [");
         sb.append(localCourse.getLocalName()).append("]");
         return sb.toString();
     }
+
+    /**
+     * Returns a delete command string for adding the {@code LocalCode}.
+     */
+    public static String getLocalCourseDeleteCommandFrom(LocalCourse localCourse) {
+        return LocalCourseDeleteCommand.COMMAND_WORD
+                + " "
+                + LocalCourseDeleteCommand.ACTION_WORD
+                + " "
+                + getLocalCourseArgumentsForDeleteCommand(localCourse);
+    }
+
+    /**
+     * Returns the part of delete command string for the given {@code localCourse}'s details.
+     */
+    public static String getLocalCourseArgumentsForDeleteCommand(LocalCourse localCourse) {
+        StringBuilder sb = new StringBuilder("[");
+        sb.append(localCourse.getLocalCode()).append("]");
+        return sb.toString();
+    }
+
 
     // TBD: modify for the purpose of seplendid
     //    /**

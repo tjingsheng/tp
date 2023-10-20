@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -11,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.SeplendidLogsCenter;
+import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.notes.Note;
 import seedu.address.model.notes.NoteList;
@@ -130,6 +132,12 @@ public class SeplendidModelManager implements SeplendidModel {
     public boolean hasLocalCourse(LocalCourse localCourse) {
         requireNonNull(localCourse);
         return localCourseCatalogue.hasLocalCourse(localCourse);
+    }
+
+    @Override
+    public Optional<LocalCourse> getLocalCourseIfExists(LocalCode localCode) {
+        requireNonNull(localCode);
+        return localCourseCatalogue.getLocalCourseIfExists(localCode);
     }
 
     @Override

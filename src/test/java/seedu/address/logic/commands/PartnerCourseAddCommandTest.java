@@ -20,6 +20,7 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.PartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
+import seedu.address.model.ReadOnlyNoteCatalogue;
 import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyUniversityCatalogue;
 import seedu.address.model.ReadOnlyUserPrefs;
@@ -227,6 +228,26 @@ public class PartnerCourseAddCommandTest {
         }
 
         @Override
+        public void setNoteCatalogue(ReadOnlyNoteCatalogue noteCatalogue) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyNoteCatalogue getNoteCatalogue() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasNote(Note note) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteNote(Note note) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void setUniversityCatalogueFilePath(Path universityCatalogueFilePath) {
             throw new AssertionError("This method should not be called.");
         }
@@ -267,6 +288,21 @@ public class PartnerCourseAddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        @Override
+        public void setNote(Note note, Note editedNote) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Note> getFilteredNoteList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredNoteList(Predicate<Note> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
     }
 
     /**
@@ -284,6 +320,12 @@ public class PartnerCourseAddCommandTest {
         public boolean hasPartnerCourse(PartnerCourse pc) {
             requireNonNull(pc);
             return partnerCourse.isSamePartnerCourse(pc);
+        }
+
+        @Override
+        public boolean hasUniversity(University university) {
+            requireNonNull(university);
+            return partnerCourse.getPartnerUniversity().isSameUniversity(university);
         }
     }
 
@@ -303,6 +345,13 @@ public class PartnerCourseAddCommandTest {
         public void addPartnerCourse(PartnerCourse partnerCourse) {
             requireNonNull(partnerCourse);
             partnerCoursesAdded.add(partnerCourse);
+        }
+
+        @Override
+        public boolean hasUniversity(University university) {
+            requireNonNull(university);
+            //assume that the university exists
+            return true;
         }
 
         @Override

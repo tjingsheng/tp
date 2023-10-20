@@ -22,9 +22,9 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.LocalCourseCatalogue;
 import seedu.address.model.PartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
+import seedu.address.model.ReadOnlyNoteCatalogue;
 import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyUniversityCatalogue;
 import seedu.address.model.ReadOnlyUserPrefs;
@@ -73,24 +73,24 @@ public class PartnerCourseDeleteCommandTest {
     public void equals() {
         PartnerCode comp1000 = new PartnerCode("COMP1000");
         PartnerCode comp2000 = new PartnerCode("COMP2000");
-        PartnerCourseDeleteCommand deleteCOMP1000Command = new PartnerCourseDeleteCommand(comp1000);
-        PartnerCourseDeleteCommand deleteCOMP2000Command = new PartnerCourseDeleteCommand(comp2000);
+        PartnerCourseDeleteCommand deleteComp1000Command = new PartnerCourseDeleteCommand(comp1000);
+        PartnerCourseDeleteCommand deleteComp2000Command = new PartnerCourseDeleteCommand(comp2000);
 
         // same object -> returns true
-        assertTrue(deleteCOMP1000Command.equals(deleteCOMP1000Command));
+        assertTrue(deleteComp1000Command.equals(deleteComp1000Command));
 
         // same values -> returns true
-        PartnerCourseDeleteCommand deleteCOMP1000CommandCopy = new PartnerCourseDeleteCommand(comp1000);
-        assertTrue(deleteCOMP1000Command.equals(deleteCOMP1000CommandCopy));
+        PartnerCourseDeleteCommand deleteComp1000CommandCopy = new PartnerCourseDeleteCommand(comp1000);
+        assertTrue(deleteComp1000Command.equals(deleteComp1000CommandCopy));
 
         // different types -> returns false
-        assertFalse(deleteCOMP1000Command.equals(1));
+        assertFalse(deleteComp1000Command.equals(1));
 
         // null -> returns false
-        assertFalse(deleteCOMP1000Command.equals(null));
+        assertFalse(deleteComp1000Command.equals(null));
 
         // different local course -> returns false
-        assertFalse(deleteCOMP1000Command.equals(deleteCOMP2000Command));
+        assertFalse(deleteComp1000Command.equals(deleteComp2000Command));
     }
 
     /**
@@ -231,6 +231,26 @@ public class PartnerCourseDeleteCommandTest {
         }
 
         @Override
+        public void setNoteCatalogue(ReadOnlyNoteCatalogue noteCatalogue) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyNoteCatalogue getNoteCatalogue() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasNote(Note note) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteNote(Note note) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void setUniversityCatalogueFilePath(Path universityCatalogueFilePath) {
             throw new AssertionError("This method should not be called.");
         }
@@ -268,6 +288,21 @@ public class PartnerCourseDeleteCommandTest {
         // Note
         @Override
         public void addNote(Note note) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setNote(Note note, Note editedNote) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Note> getFilteredNoteList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredNoteList(Predicate<Note> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 

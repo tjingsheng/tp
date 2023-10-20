@@ -13,7 +13,7 @@ import seedu.address.model.partnercourse.PartnerName;
 import seedu.address.model.university.University;
 
 /**
- * Parses input arguments and creates a new PartnerCourse object.
+ * Parses input arguments and creates a new PartnerCourseCommand object.
  */
 public class PartnerCourseAddCommandParser implements Parser<PartnerCourseAddCommand> {
 

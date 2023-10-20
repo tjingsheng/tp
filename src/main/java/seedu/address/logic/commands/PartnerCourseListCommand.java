@@ -7,16 +7,14 @@ import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 
 /**
- * Lists all local courses in the LocalCourseCatalogue.
+ * Lists all partner courses in the PartnerCourseCatalogue
  */
-public class LocalCourseListCommand extends LocalCourseCommand {
-
-    // Also available in abstract class LocalCourseCommand to support polymorphism
-    public static final String LOCAL_COURSE_LIST_MESSAGE_USAGE = COMMAND_WORD
-            + " list: Lists all local courses.";
+public class PartnerCourseListCommand extends PartnerCourseCommand {
+    public static final String PARTNER_COURSE_LIST_MESSAGE_USAGE = COMMAND_WORD
+            + "list: Lists all partner courses.";
     public static final String ACTION_WORD = "list";
 
-    public static final String MESSAGE_SUCCESS = "Listed all local courses";
+    public static final String MESSAGE_SUCCESS = "Listed all partner courses";
 
     /**
      * TBD: This stub is to be removed after morphing is complete.
@@ -33,8 +31,8 @@ public class LocalCourseListCommand extends LocalCourseCommand {
     @Override
     public CommandResult execute(SeplendidModel seplendidModel) throws CommandException {
         requireNonNull(seplendidModel);
-        seplendidModel.updateFilteredLocalCourseList(SeplendidModel.PREDICATE_SHOW_ALL_LOCAL_COURSES);
+        seplendidModel.updateFilteredPartnerCourseList(SeplendidModel.PREDICATE_SHOW_ALL_PARTNER_COURSES);
         return new CommandResult(MESSAGE_SUCCESS);
     }
-
 }
+

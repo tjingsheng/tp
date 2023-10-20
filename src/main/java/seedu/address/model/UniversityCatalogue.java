@@ -64,6 +64,17 @@ public class UniversityCatalogue implements ReadOnlyUniversityCatalogue {
         requireNonNull(newData);
         setUniversities(newData.getUniversityList());
     }
+
+    /**
+     * Replaces the given University {@code target} in the list with {@code editedUniversity}.
+     * {@code target} must exist in the UniversityCatalogue.
+     * The University identity of {@code editedUniversity} must not be the same as another existing University.
+     */
+    public void setUniversity(University target, University editedUniversity) {
+        requireNonNull(editedUniversity);
+
+        universities.setUniversity(target, editedUniversity);
+    }
     @Override
     public boolean equals(Object other) {
         if (other == this) {

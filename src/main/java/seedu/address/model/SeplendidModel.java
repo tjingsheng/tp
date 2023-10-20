@@ -1,12 +1,15 @@
 package seedu.address.model;
 
 import java.nio.file.Path;
+import java.util.Optional;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.notes.Note;
+import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
 
@@ -50,6 +53,7 @@ public interface SeplendidModel {
      */
     Path getLocalCourseCatalogueFilePath();
 
+    Path getUniversityCatalogueFilePath();
     /**
      * Sets the user prefs' LocalCourseCatalogue file path.
      */
@@ -67,10 +71,16 @@ public interface SeplendidModel {
      */
     ReadOnlyLocalCourseCatalogue getLocalCourseCatalogue();
 
+
     /**
      * Returns true if a local course with the same identity as {@code localCourse} exists in the LocalCourseCatalogue.
      */
     boolean hasLocalCourse(LocalCourse localCourse);
+
+    /**
+     * Returns a LocalCourse in an Optional if exists, else return empty Optional.
+     */
+    Optional<LocalCourse> getLocalCourseIfExists(LocalCode localCode);
 
     /**
      * Deletes the given local course.
@@ -99,6 +109,8 @@ public interface SeplendidModel {
      */
     ObservableList<LocalCourse> getFilteredLocalCourseList();
 
+
+
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
      *
@@ -116,10 +128,21 @@ public interface SeplendidModel {
     boolean hasPartnerCourse(PartnerCourse partnerCourse);
 
     /**
+     * Returns a LocalCourse in an Optional if exists, else return empty Optional.
+     */
+    Optional<PartnerCourse> getPartnerCourseIfExists(PartnerCode partnerCode);
+
+    /**
      * Adds the given PartnerCourse.
      * {@code partnerCourse} must not already exist in the PartnerCourseCatalogue.
      */
     void addPartnerCourse(PartnerCourse partnerCourse);
+
+    /**
+     * Deletes the given PartnerCourse.
+     * @param partnerCourse must exist in the PartnerCourseCatalogue.
+     */
+    void deletePartnerCourse(PartnerCourse partnerCourse);
 
     /**
      * Returns an unmodifiable view of the filtered partner course list
@@ -137,12 +160,13 @@ public interface SeplendidModel {
     void setUniversityCatalogueFilePath(Path universityCatalogueFilePath);
 
     ObservableList<University> getFilteredUniversityList();
+    boolean hasUniversity(University university);
 
+    void addUniversity(University university);
+    void setUniversity(University target, University editedUniversity);
     void updateUniversityList(Predicate<University> predicate);
 
     void updateFilteredUniversityList(Predicate<University> predicate);
-
-    Path getUniversityCatalogueFilePath();
 
     ReadOnlyUniversityCatalogue getUniversityCatalogue();
 

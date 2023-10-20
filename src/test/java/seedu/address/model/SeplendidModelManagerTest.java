@@ -10,10 +10,12 @@ import static seedu.address.testutil.TypicalObjects.COMP2000;
 import static seedu.address.testutil.TypicalObjects.CS2030S;
 import static seedu.address.testutil.TypicalObjects.CS2040S;
 import static seedu.address.testutil.TypicalObjects.CS3230;
+import static seedu.address.testutil.TypicalObjects.MA2001;
 import static seedu.address.testutil.TypicalObjects.getTypicalUniversityCatalogue;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 
@@ -93,6 +95,17 @@ public class SeplendidModelManagerTest {
     public void hasLocalCourse_localCourseInLocalCourseCatalogue_returnsTrue() {
         modelManager.addLocalCourse(CS3230);
         assertTrue(modelManager.hasLocalCourse(CS3230));
+    }
+
+    @Test
+    public void getLocalCourseIfExists_localCourseInLocalCourseCatalogue_returnsLocalCourse() {
+        modelManager.addLocalCourse(MA2001);
+        assertEquals(MA2001, modelManager.getLocalCourseIfExists(MA2001.getLocalCode()).get());
+    }
+
+    @Test
+    public void getLocalCourseIfExists_localCourseNotInLocalCourseCatalogue_returnsEmpty() {
+        assertEquals(Optional.empty(), modelManager.getLocalCourseIfExists(MA2001.getLocalCode()));
     }
 
     @Test

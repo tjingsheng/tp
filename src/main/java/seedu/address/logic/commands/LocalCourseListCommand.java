@@ -13,7 +13,7 @@ public class LocalCourseListCommand extends LocalCourseCommand {
 
     // Also available in abstract class LocalCourseCommand to support polymorphism
     public static final String LOCAL_COURSE_LIST_MESSAGE_USAGE = COMMAND_WORD
-            + "list: Lists all local courses.";
+            + " list: Lists all local courses.";
     public static final String ACTION_WORD = "list";
 
     public static final String MESSAGE_SUCCESS = "Listed all local courses";

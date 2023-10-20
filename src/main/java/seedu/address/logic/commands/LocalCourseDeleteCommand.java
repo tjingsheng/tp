@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Optional;
 
-import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -28,6 +27,7 @@ public class LocalCourseDeleteCommand extends LocalCourseCommand {
     private final LocalCode localCodeToDelete;
 
     public LocalCourseDeleteCommand(LocalCode localCode) {
+        requireNonNull(localCode);
         this.localCodeToDelete = localCode;
     }
 
@@ -46,7 +46,6 @@ public class LocalCourseDeleteCommand extends LocalCourseCommand {
     @Override
     public CommandResult execute(SeplendidModel seplendidModel) throws CommandException {
         requireNonNull(seplendidModel);
-        ObservableList<LocalCourse> lastShownList = seplendidModel.getFilteredLocalCourseList();
 
         // There should be no duplicates
         Optional<LocalCourse> localCourseToDelete = seplendidModel.getLocalCourseIfExists(localCodeToDelete);

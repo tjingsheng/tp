@@ -32,7 +32,7 @@ public class NoteCatalogue implements ReadOnlyNoteCatalogue {
     }
 
     /**
-     * Creates an NoteCatalogue using the LocalCourses in the {@code toBeCopied}
+     * Creates an NoteCatalogue using the Notes in the {@code toBeCopied}
      */
     public NoteCatalogue(ReadOnlyNoteCatalogue toBeCopied) {
         this();

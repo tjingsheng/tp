@@ -51,10 +51,11 @@ class JsonSerializableUniversityCatalogue {
     public UniversityCatalogue toModelType() throws IllegalValueException {
         UniversityCatalogue universityCatalogue = new UniversityCatalogue();
         for (JsonAdaptedUniversity jsonAdaptedUniversity : universities) {
-            University localCourse = jsonAdaptedUniversity.toModelType();
-            if (universityCatalogue.hasUniversity(localCourse)) {
+            University university = jsonAdaptedUniversity.toModelType();
+            if (universityCatalogue.hasUniversity(university)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_UNIVERSITY);
             }
+            universityCatalogue.addUniversity(university);
         }
         return universityCatalogue;
     }

@@ -22,6 +22,7 @@ public class PartnerName {
      * @param partnerName A valid partnername.
      */
     public PartnerName(String partnerName) {
+        partnerName = partnerName.trim();
         requireNonNull(partnerName);
         checkArgument(isValidPartnerName(partnerName), MESSAGE_CONSTRAINTS);
         value = partnerName;

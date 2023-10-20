@@ -35,6 +35,10 @@ public class TypicalObjects {
     public static final String INVALID_LOCAL_COURSE_CODE = "$HOW2BECOMERICH";
     public static final String INVALID_LOCAL_COURSE_NAME = " ";
 
+    public static final String EDGE_CASE_VALID_PARTNER_COURSE_CODE = "V";
+    public static final String EDGE_CASE_VALID_PARTNER_COURSE_NAME = " Game Development";
+    public static final String EDGE_CASE_VALID_UNIVERSITY_NAME = " School";
+
     public static final LocalCourse CS2040S = new LocalCourseBuilder().withLocalCode("CS2040S")
             .withLocalName("Data Structures & Algorithms").build();
     public static final LocalCourse CS3230 = new LocalCourseBuilder().withLocalCode("CS3230")

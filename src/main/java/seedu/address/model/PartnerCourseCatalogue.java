@@ -3,9 +3,11 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.Optional;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.partnercourse.UniquePartnerCourseList;
 
@@ -64,11 +66,28 @@ public class PartnerCourseCatalogue implements ReadOnlyPartnerCourseCatalogue {
     }
 
     /**
+     * Gets the partner course if it exists.
+     */
+    public Optional<PartnerCourse> getPartnerCourseIfExists(PartnerCode partnerCodeQuery) {
+        requireNonNull(partnerCodeQuery);
+        return partnerCourses.getPartnerCourseIfExists(partnerCodeQuery);
+    }
+
+    /**
      * Adds a PartnerCourse to the PartnerCourseCatalogue.
      * The PartnerCourse must not already exist in the list.
      */
     public void addPartnerCourse(PartnerCourse pc) {
         partnerCourses.add(pc);
+    }
+
+    /**
+     * Deletes a PartnerCourse in the PartnerCourseCatalogue.
+     * The PartnerCourse must exist in the list.
+     * @param pc PartnerCourse to be deleted.
+     */
+    public void removePartnerCourse(PartnerCourse pc) {
+        partnerCourses.remove(pc);
     }
 
     @Override

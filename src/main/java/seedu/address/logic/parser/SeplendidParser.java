@@ -17,6 +17,9 @@ import seedu.address.logic.commands.LocalCourseListCommand;
 import seedu.address.logic.commands.NoteAddCommand;
 import seedu.address.logic.commands.NoteCommand;
 import seedu.address.logic.commands.PartnerCourseAddCommand;
+import seedu.address.logic.commands.PartnerCourseCommand;
+import seedu.address.logic.commands.PartnerCourseDeleteCommand;
+import seedu.address.logic.commands.PartnerCourseListCommand;
 import seedu.address.logic.commands.UniversityCommand;
 import seedu.address.logic.commands.UniversityListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -42,7 +45,7 @@ public class SeplendidParser {
      *
      * @param userInput String of userInput
      * @return a Command
-     * @throws ParseException
+     * @throws ParseException If the input is invalid.
      */
     public Command parseNonArgumentCommand(String userInput) throws ParseException {
         final Matcher matcher = COMMAND_FORMAT_WITHOUT_ARG.matcher(userInput.trim());
@@ -64,6 +67,9 @@ public class SeplendidParser {
         case LocalCourseCommand.COMMAND_WORD:
             return getLocalCourseCommandWithoutArg(userInput, actionWord);
         // TBD: for Note
+
+        case PartnerCourseCommand.COMMAND_WORD:
+            return getPartnerCourseCommandWithoutArg(userInput, actionWord);
 
         case UniversityCommand.COMMAND_WORD:
             return getUniversityCommandWithoutArg(userInput, actionWord);
@@ -103,6 +109,9 @@ public class SeplendidParser {
         case LocalCourseCommand.COMMAND_WORD:
             return getLocalCourseCommandWithArg(userInput, actionWord, arguments);
 
+        case PartnerCourseCommand.COMMAND_WORD:
+            return getPartnerCourseCommandWithArg(userInput, actionWord, arguments);
+
         case NoteCommand.COMMAND_WORD:
             return getNoteCommand(userInput, actionWord, arguments);
 
@@ -136,11 +145,24 @@ public class SeplendidParser {
         }
     }
 
-    private PartnerCourseAddCommand getPartnerCourseCommand(String userInput, String actionWord, String arguments)
+    private PartnerCourseCommand getPartnerCourseCommandWithArg(String userInput, String actionWord, String arguments)
             throws ParseException {
         switch (actionWord) {
         case PartnerCourseAddCommand.ACTION_WORD:
             return new PartnerCourseAddCommandParser().parse(arguments);
+        case PartnerCourseDeleteCommand.ACTION_WORD:
+            return new PartnerCourseDeleteCommandParser().parse(arguments);
+        default:
+            logger.finer("This user input caused a ParseException: " + userInput);
+            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+        }
+    }
+
+    private PartnerCourseCommand getPartnerCourseCommandWithoutArg(String userInput, String actionWord)
+            throws ParseException {
+        switch (actionWord) {
+        case PartnerCourseListCommand.ACTION_WORD:
+            return new PartnerCourseListCommand();
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

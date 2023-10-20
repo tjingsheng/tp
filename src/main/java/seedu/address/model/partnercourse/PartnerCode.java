@@ -30,6 +30,9 @@ public class PartnerCode {
         return test.matches(VALIDATION_REGEX);
     }
 
+    public String getValue() {
+        return value;
+    }
     @Override
     public String toString() {
         return value;

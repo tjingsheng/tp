@@ -31,6 +31,7 @@ import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.notes.Note;
+import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
 import seedu.address.testutil.LocalCourseBuilder;
@@ -195,12 +196,22 @@ public class LocalCourseDeleteCommandTest {
         }
 
         @Override
+        public void deletePartnerCourse(PartnerCourse partnerCourse) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public boolean hasPartnerCourse(PartnerCourse partnerCourse) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Optional<PartnerCourse> getPartnerCourseIfExists(PartnerCode partnerCode) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -232,6 +243,21 @@ public class LocalCourseDeleteCommandTest {
 
         @Override
         public ObservableList<University> getFilteredUniversityList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasUniversity(University university) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addUniversity(University university) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setUniversity(University target, University editedUniversity) {
             throw new AssertionError("This method should not be called.");
         }
 

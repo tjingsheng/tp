@@ -123,4 +123,19 @@ public class UniqueUniversityList implements Iterable<University> {
         }
         internalList.add(toAdd);
     }
+
+    public void setUniversity(University target, University editedUniversity) {
+        requireAllNonNull(target, editedUniversity);
+
+        int index = internalList.indexOf(target);
+        if (index == -1) {
+            throw new UniversityNotFoundException();
+        }
+
+        if (!target.isSameUniversity(editedUniversity) && contains(editedUniversity)) {
+            throw new DuplicateUniversityException();
+        }
+
+        internalList.set(index, editedUniversity);
+    }
 }

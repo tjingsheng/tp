@@ -15,7 +15,6 @@ import seedu.address.commons.core.SeplendidLogsCenter;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.notes.Note;
-import seedu.address.model.notes.NoteList;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
@@ -37,7 +36,8 @@ public class SeplendidModelManager implements SeplendidModel {
     private final PartnerCourseCatalogue partnerCourseCatalogue;
     private final FilteredList<PartnerCourse> filteredPartnerCourseCatalogue;
 
-    private final NoteList noteList;
+    private final NoteCatalogue noteCatalogue;
+    private final FilteredList<Note> filteredNoteCatalogue;
 
     /**
      * Initializes a SeplendidModelManager with the given localCourseCatalogue, userPrefs,
@@ -45,8 +45,10 @@ public class SeplendidModelManager implements SeplendidModel {
      */
     public SeplendidModelManager(ReadOnlyLocalCourseCatalogue localCourseCatalogue, ReadOnlyUserPrefs userPrefs,
                                  ReadOnlyPartnerCourseCatalogue partnerCourseCatalogue,
-                                 ReadOnlyUniversityCatalogue universityCatalogue) {
-        requireAllNonNull(localCourseCatalogue, userPrefs, partnerCourseCatalogue, universityCatalogue);
+                                 ReadOnlyUniversityCatalogue universityCatalogue,
+                                 ReadOnlyNoteCatalogue noteCatalogue) {
+        requireAllNonNull(localCourseCatalogue, userPrefs, partnerCourseCatalogue, universityCatalogue, noteCatalogue);
+
         logger.fine("Initializing with local course catalogue: " + localCourseCatalogue
                 + " and user prefs " + userPrefs);
 
@@ -55,13 +57,18 @@ public class SeplendidModelManager implements SeplendidModel {
         filteredLocalCourseCatalogue = new FilteredList<>(this.localCourseCatalogue.getLocalCourseList());
         this.partnerCourseCatalogue = new PartnerCourseCatalogue(partnerCourseCatalogue);
         filteredPartnerCourseCatalogue = new FilteredList<>(this.partnerCourseCatalogue.getPartnerCourseList());
-        this.noteList = new NoteList();
         this.universityCatalogue = new UniversityCatalogue(universityCatalogue);
         filteredUniversityCatalogue = new FilteredList<>(this.universityCatalogue.getUniversityList());
+        this.noteCatalogue = new NoteCatalogue(noteCatalogue);
+        filteredNoteCatalogue = new FilteredList<>(this.noteCatalogue.getNoteList());
     }
 
+    /**
+     * Contructs Seplendid Model Manager.
+     */
     public SeplendidModelManager() {
-        this(new LocalCourseCatalogue(), new UserPrefs(), new PartnerCourseCatalogue(), new UniversityCatalogue());
+        this(new LocalCourseCatalogue(), new UserPrefs(), new PartnerCourseCatalogue(), new UniversityCatalogue(),
+                new NoteCatalogue());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -177,7 +184,6 @@ public class SeplendidModelManager implements SeplendidModel {
         requireNonNull(predicate);
         filteredLocalCourseCatalogue.setPredicate(predicate);
     }
-
 
     //=========== PartnerCourseCatalouge ============================================================================
     @Override
@@ -305,12 +311,63 @@ public class SeplendidModelManager implements SeplendidModel {
         SeplendidModelManager otherSeplendidModelManager = (SeplendidModelManager) other;
         return localCourseCatalogue.equals(otherSeplendidModelManager.localCourseCatalogue)
                 && userPrefs.equals(otherSeplendidModelManager.userPrefs)
-                && filteredLocalCourseCatalogue.equals(otherSeplendidModelManager.filteredLocalCourseCatalogue);
+                && filteredLocalCourseCatalogue.equals(otherSeplendidModelManager.filteredLocalCourseCatalogue)
+                && partnerCourseCatalogue.equals(otherSeplendidModelManager.partnerCourseCatalogue)
+                && filteredPartnerCourseCatalogue.equals(otherSeplendidModelManager.filteredPartnerCourseCatalogue)
+                && noteCatalogue.equals(otherSeplendidModelManager.noteCatalogue)
+                && filteredNoteCatalogue.equals(otherSeplendidModelManager.filteredNoteCatalogue);
     }
 
     //=========== NoteCatalogue ================================================================================
+
+    @Override
+    public void setNoteCatalogue(ReadOnlyNoteCatalogue noteCatalogue) {
+        this.noteCatalogue.resetData(noteCatalogue);
+    }
+
+    @Override
+    public ReadOnlyNoteCatalogue getNoteCatalogue() {
+        return noteCatalogue;
+    }
+
+    @Override
+    public boolean hasNote(Note note) {
+        requireNonNull(note);
+        return noteCatalogue.hasNote(note);
+    }
+
+    @Override
+    public void deleteNote(Note target) {
+        noteCatalogue.removeNote(target);
+    }
+
     @Override
     public void addNote(Note note) {
-        noteList.addNote(note);
+        noteCatalogue.addNote(note);
+        updateFilteredNoteList(PREDICATE_SHOW_ALL_NOTES);
+    }
+
+    @Override
+    public void setNote(Note target, Note editedNote) {
+        requireAllNonNull(target, editedNote);
+
+        noteCatalogue.setNote(target, editedNote);
+    }
+
+    //=========== FilteredNoteList Accessors =============================================================
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Note} backed by the internal list of
+     * {@code versionedNoteCatalogue}
+     */
+    @Override
+    public ObservableList<Note> getFilteredNoteList() {
+        return filteredNoteCatalogue;
+    }
+
+    @Override
+    public void updateFilteredNoteList(Predicate<Note> predicate) {
+        requireNonNull(predicate);
+        filteredNoteCatalogue.setPredicate(predicate);
     }
 }

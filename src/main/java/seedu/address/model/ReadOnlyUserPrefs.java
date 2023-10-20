@@ -15,6 +15,6 @@ public interface ReadOnlyUserPrefs {
 
     Path getLocalCourseCatalogueFilePath();
     Path getPartnerCourseCatalogueFilePath();
-
     Path getUniversityCatalogueFilePath();
+    Path getNoteCatalogueFilePath();
 }

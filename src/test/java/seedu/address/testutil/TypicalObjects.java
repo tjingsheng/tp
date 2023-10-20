@@ -5,10 +5,14 @@ import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.model.LocalCourseCatalogue;
+import seedu.address.model.NoteCatalogue;
 import seedu.address.model.PartnerCourseCatalogue;
 import seedu.address.model.UniversityCatalogue;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.notes.Content;
+import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCourse;
+import seedu.address.model.tag.Tag;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityName;
 
@@ -66,6 +70,11 @@ public class TypicalObjects {
     public static final University STANFORD = new University(new UniversityName("Stanford University"));
 
     public static final University WATERLOO = new University(new UniversityName("University of Waterloo"));
+    // Note
+    public static final Note NOTE1 = new Note(new Content("Nanyang Technological University"),
+            new Tag("university"));
+    public static final Note NOTE2 = new Note(new Content("Application Deadline 1 December 2023"),
+            new Tag("deadline"));
     private TypicalObjects() {
     } // prevents instantiation
 
@@ -92,7 +101,7 @@ public class TypicalObjects {
     }
 
     /**
-     * Returns an {@code UniversityCatalogue} with all the typical partnerCourses.
+     * Returns an {@code UniversityCatalogue} with all the typical universities.
      */
     public static UniversityCatalogue getTypicalUniversityCatalogue() {
         UniversityCatalogue universityCatalogue = new UniversityCatalogue();
@@ -100,6 +109,17 @@ public class TypicalObjects {
             universityCatalogue.addUniversity(university);
         }
         return universityCatalogue;
+    }
+
+    /**
+     * Returns an {@code NoteCatalogue} with all the typical notes.
+     */
+    public static NoteCatalogue getTypicalNoteCatalogue() {
+        NoteCatalogue noteCatalogue = new NoteCatalogue();
+        for (Note note : getTypicalNotes()) {
+            noteCatalogue.addNote(note);
+        }
+        return noteCatalogue;
     }
 
     public static List<LocalCourse> getTypicalLocalCourses() {
@@ -112,5 +132,8 @@ public class TypicalObjects {
 
     public static List<University> getTypicalUniversities() {
         return new ArrayList<>(Arrays.asList(NTU, STANFORD));
+    }
+    public static List<Note> getTypicalNotes() {
+        return new ArrayList<>(Arrays.asList(NOTE1, NOTE2));
     }
 }

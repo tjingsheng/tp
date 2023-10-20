@@ -24,6 +24,7 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.LocalCourseCatalogue;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
+import seedu.address.model.ReadOnlyNoteCatalogue;
 import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyUniversityCatalogue;
 import seedu.address.model.ReadOnlyUserPrefs;
@@ -237,6 +238,26 @@ public class LocalCourseDeleteCommandTest {
         }
 
         @Override
+        public void setNoteCatalogue(ReadOnlyNoteCatalogue noteCatalogue) {
+
+        }
+
+        @Override
+        public ReadOnlyNoteCatalogue getNoteCatalogue() {
+            return null;
+        }
+
+        @Override
+        public boolean hasNote(Note note) {
+            return false;
+        }
+
+        @Override
+        public void deleteNote(Note note) {
+
+        }
+
+        @Override
         public void setUniversityCatalogueFilePath(Path universityCatalogueFilePath) {
             throw new AssertionError("This method should not be called.");
         }
@@ -274,6 +295,21 @@ public class LocalCourseDeleteCommandTest {
         // Note
         @Override
         public void addNote(Note note) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setNote(Note note, Note editedNote) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Note> getFilteredNoteList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredNoteList(Predicate<Note> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 

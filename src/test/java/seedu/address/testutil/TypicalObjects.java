@@ -68,7 +68,6 @@ public class TypicalObjects {
     // University
     public static final University NTU = new University(new UniversityName("Nanyang Technological University"));
     public static final University STANFORD = new University(new UniversityName("Stanford University"));
-
     public static final University WATERLOO = new University(new UniversityName("University of Waterloo"));
     // Note
     public static final Note NOTE1 = new Note(new Content("Nanyang Technological University"),

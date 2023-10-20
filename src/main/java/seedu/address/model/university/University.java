@@ -30,7 +30,7 @@ public class University {
      * @param otherUniversity This is the other university.
      */
     public boolean isSameUniversity(University otherUniversity) {
-        if (otherUniversity == null) {
+        if (otherUniversity == this) {
             return true;
         }
         return otherUniversity != null

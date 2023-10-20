@@ -5,6 +5,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -37,6 +38,18 @@ public class UniquePartnerCourseList implements Iterable<PartnerCourse> {
         //why not equal?
     }
 
+    /**
+     * Returns an Optional containing first occurrence of desired PartnerCourse.
+     * An empty Optional is returned if PartnerCourse is not found.
+     *
+     * @param partnerCode This is the PartnerCode to check.
+     * @return Optional containing first occurrence of desired PartnerCourse, if any.
+     */
+    public Optional<PartnerCourse> getPartnerCourseIfExists(PartnerCode partnerCode) {
+        requireNonNull(partnerCode);
+        return internalList.stream().filter(pc -> pc.getPartnerCode().equals(partnerCode))
+                .findFirst();
+    }
     /**
      * Adds a PartnerCourse to the list.
      * The PartnerCourse must not already exist in the list.

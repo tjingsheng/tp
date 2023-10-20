@@ -55,6 +55,7 @@ class JsonSerializableLocalCourseCatalogue {
             if (localCourseCatalogue.hasLocalCourse(localCourse)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_LOCAL_COURSE);
             }
+            localCourseCatalogue.addLocalCourse(localCourse);
         }
         return localCourseCatalogue;
     }

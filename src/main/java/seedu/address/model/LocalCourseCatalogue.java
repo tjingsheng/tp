@@ -3,9 +3,11 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.Optional;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.localcourse.UniqueLocalCourseList;
 
@@ -66,6 +68,14 @@ public class LocalCourseCatalogue implements ReadOnlyLocalCourseCatalogue {
     public boolean hasLocalCourse(LocalCourse localCourseQuery) {
         requireNonNull(localCourseQuery);
         return localCourses.contains(localCourseQuery);
+    }
+
+    /**
+     * Gets the local course if it exists.
+     */
+    public Optional<LocalCourse> getLocalCourseIfExists(LocalCode localCodeQuery) {
+        requireNonNull(localCodeQuery);
+        return localCourses.getLocalCourseIfExists(localCodeQuery);
     }
 
     /**

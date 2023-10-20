@@ -1,10 +1,16 @@
 package seedu.address.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
+import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.address.testutil.TypicalObjects.INVALID_LOCAL_COURSE_CODE;
+import static seedu.address.testutil.TypicalObjects.INVALID_LOCAL_COURSE_NAME;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE_CODE;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE_NAME;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -14,6 +20,8 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.localcourse.LocalCode;
+import seedu.address.model.localcourse.LocalName;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -44,7 +52,7 @@ public class ParserUtilTest {
     @Test
     public void parseIndex_outOfRangeInput_throwsParseException() {
         assertThrows(ParseException.class, MESSAGE_INVALID_INDEX, ()
-            -> ParserUtil.parseIndex(Long.toString(Integer.MAX_VALUE + 1)));
+                -> ParserUtil.parseIndex(Long.toString(Integer.MAX_VALUE + 1)));
     }
 
     @Test
@@ -192,5 +200,88 @@ public class ParserUtilTest {
         Set<Tag> expectedTagSet = new HashSet<Tag>(Arrays.asList(new Tag(VALID_TAG_1), new Tag(VALID_TAG_2)));
 
         assertEquals(expectedTagSet, actualTagSet);
+    }
+
+    @Test
+    public void parseLocalCode_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseLocalCode((String) null));
+    }
+
+    @Test
+    public void parseLocalCode_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCode(INVALID_LOCAL_COURSE_CODE));
+    }
+
+    @Test
+    public void parseLocalCode_validValueWithoutWhitespace_returnsLocalCode() throws Exception {
+        LocalCode expectedLocalCode = new LocalCode(TYPICAL_LOCAL_COURSE_CODE);
+        assertEquals(expectedLocalCode, ParserUtil.parseLocalCode(TYPICAL_LOCAL_COURSE_CODE));
+    }
+
+    @Test
+    public void parseLocalCode_validValueWithWhitespace_returnsTrimmedLocalCode() throws Exception {
+        String localCodeWithWhitespace = WHITESPACE + TYPICAL_LOCAL_COURSE_CODE + WHITESPACE;
+        LocalCode expectedLocalCode = new LocalCode(TYPICAL_LOCAL_COURSE_CODE);
+        assertEquals(expectedLocalCode, ParserUtil.parseLocalCode(localCodeWithWhitespace));
+    }
+
+    @Test
+    public void parseLocalName_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseLocalName((String) null));
+    }
+
+    @Test
+    public void parseLocalName_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalName(INVALID_LOCAL_COURSE_NAME));
+    }
+
+    @Test
+    public void parseLocalName_validValueWithoutWhitespace_returnsLocalName() throws Exception {
+        LocalName expectedLocalName = new LocalName(TYPICAL_LOCAL_COURSE_NAME);
+        assertEquals(expectedLocalName, ParserUtil.parseLocalName(TYPICAL_LOCAL_COURSE_NAME));
+    }
+
+    @Test
+    public void parseLocalName_validValueWithWhitespace_returnsTrimmedLocalName() throws Exception {
+        String localNameWithWhitespace = WHITESPACE + TYPICAL_LOCAL_COURSE_NAME + WHITESPACE;
+        LocalName expectedLocalName = new LocalName(TYPICAL_LOCAL_COURSE_NAME);
+        assertEquals(expectedLocalName, ParserUtil.parseLocalName(localNameWithWhitespace));
+    }
+
+    @Test
+    public void areValuesEnclosedAndNonEmpty_emptyArgs_returnsFalse() throws Exception {
+        assertFalse(areValuesEnclosedAndNonEmpty(""));
+    }
+
+    @Test
+    public void areValuesEnclosedAndNonEmpty_invalidValueWithMismatchBrackets1_returnsFalse() throws Exception {
+        assertFalse(areValuesEnclosedAndNonEmpty("[CS2103T [Software Engineering]"));
+    }
+
+    @Test
+    public void areValuesEnclosedAndNonEmpty_validValue1_returnsTrue() throws Exception {
+        assertTrue(areValuesEnclosedAndNonEmpty("[CS2103T] [Software Engineering]"));
+    }
+
+    @Test
+    public void areValuesEnclosedAndNonEmpty_invalidValueWithMismatchBrackets2_returnsFalse() throws Exception {
+        assertFalse(areValuesEnclosedAndNonEmpty("[CS2103T] [Software Engineering [potato tomato]"));
+    }
+
+    @Test
+    public void areValuesEnclosedAndNonEmpty_validValue2_returnsTrue() throws Exception {
+        assertTrue(areValuesEnclosedAndNonEmpty("[CS2103T] [Software Engineering] [potato tomato]"));
+    }
+
+    // This shouldn't happen though, due to initial trim in SeplendidParser.
+    @Test
+    public void areValuesEnclosedAndNonEmpty_precedingWhiteSpaceValue_returnsTrue() throws Exception {
+        assertTrue(areValuesEnclosedAndNonEmpty("      [CS2103T] [Software Engineering]"));
+    }
+
+    // This shouldn't happen though, due to initial trim in SeplendidParser.
+    @Test
+    public void areValuesEnclosedAndNonEmpty_trailingWhiteSpaceValue_returnsTrue() throws Exception {
+        assertTrue(areValuesEnclosedAndNonEmpty("[CS2103T] [Software Engineering]       "));
     }
 }

@@ -3,6 +3,7 @@ package seedu.address.logic.parser;
 /**
  * A parameter acting as a placeholder for an argument following a command.
  * E.g. [localcode] in localcourse add [localcode] [localname]
+ * E.g. [localcode] in localcourse delete [localcode]
  */
 public class SeplendidParameter {
 

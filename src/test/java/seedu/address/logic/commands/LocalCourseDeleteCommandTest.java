@@ -6,10 +6,13 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalObjects.CS2030S;
+import static seedu.address.testutil.TypicalObjects.CS2040S;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE_CODE;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
@@ -33,66 +36,66 @@ import seedu.address.model.university.University;
 import seedu.address.testutil.LocalCourseBuilder;
 
 /**
- * Unit testing of LocalCourseAddCommand, with stubs / dependency injection.
+ * Unit testing of LocalCourseDeleteCommandTest, with stubs / dependency injection.
  */
-public class LocalCourseAddCommandTest {
+public class LocalCourseDeleteCommandTest {
 
     @Test
-    public void constructor_nullLocalCourse_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new LocalCourseAddCommand(null));
+    public void constructor_nullLocalCode_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> new LocalCourseDeleteCommand(null));
     }
 
     @Test
-    public void execute_localCourseAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingLocalCourseAdded modelStub = new ModelStubAcceptingLocalCourseAdded();
-        LocalCourse validLocalCourse = new LocalCourseBuilder().build();
+    public void execute_localCourseAcceptedByModel_deleteSuccessful() throws Exception {
+        ModelStubAcceptingLocalCourseDeleted modelStub = new ModelStubAcceptingLocalCourseDeleted();
         // Tests interactions with model
-        CommandResult commandResult = new LocalCourseAddCommand(validLocalCourse).execute(modelStub);
+        CommandResult commandResult = new LocalCourseDeleteCommand(CS2030S.getLocalCode()).execute(modelStub);
 
-        assertEquals(String.format(LocalCourseAddCommand.MESSAGE_SUCCESS, Messages.format(validLocalCourse)),
+        assertEquals(String.format(LocalCourseDeleteCommand.MESSAGE_SUCCESS, Messages.format(CS2030S)),
                 commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validLocalCourse), modelStub.localCoursesAdded);
+        assertEquals(Arrays.asList(CS2040S), modelStub.localCoursesAdded);
     }
 
     @Test
-    public void execute_duplicateLocalCourse_throwsCommandException() {
+    public void execute_localCourseDoesNotExist_throwsCommandException() {
         LocalCourse validLocalCourse = new LocalCourseBuilder().build();
-        LocalCourseAddCommand localCourseAddCommand = new LocalCourseAddCommand(validLocalCourse);
+        LocalCourseDeleteCommand localCourseDeleteCommand = new LocalCourseDeleteCommand(
+                new LocalCode(TYPICAL_LOCAL_COURSE_CODE));
         SeplendidModelStub modelStub = new SeplendidModelStubWithLocalCourse(validLocalCourse);
 
-        assertThrows(CommandException.class, LocalCourseAddCommand.MESSAGE_DUPLICATE_LOCAL_COURSE, () ->
-                localCourseAddCommand.execute(modelStub));
+        assertThrows(CommandException.class, LocalCourseDeleteCommand.MESSAGE_NONEXISTENT_LOCAL_COURSE, () ->
+                localCourseDeleteCommand.execute(modelStub));
     }
 
     @Test
     public void equals() {
-        LocalCourse cs2030s = new LocalCourseBuilder().withLocalCode("CS2030S").build();
-        LocalCourse cs2040s = new LocalCourseBuilder().withLocalCode("CS2040S").build();
-        LocalCourseAddCommand addCS2030SCommand = new LocalCourseAddCommand(cs2030s);
-        LocalCourseAddCommand addCS2040SCommand = new LocalCourseAddCommand(cs2040s);
+        LocalCode cs2030s = new LocalCode("CS2030S");
+        LocalCode cs2040s = new LocalCode("CS2040S");
+        LocalCourseDeleteCommand deleteCS2030SCommand = new LocalCourseDeleteCommand(cs2030s);
+        LocalCourseDeleteCommand deleteCS2040SCommand = new LocalCourseDeleteCommand(cs2040s);
 
         // same object -> returns true
-        assertTrue(addCS2030SCommand.equals(addCS2030SCommand));
+        assertTrue(deleteCS2030SCommand.equals(deleteCS2030SCommand));
 
         // same values -> returns true
-        LocalCourseAddCommand addCS2030SCommandCopy = new LocalCourseAddCommand(cs2030s);
-        assertTrue(addCS2030SCommand.equals(addCS2030SCommandCopy));
+        LocalCourseDeleteCommand deleteCS2030SCommandCopy = new LocalCourseDeleteCommand(cs2030s);
+        assertTrue(deleteCS2030SCommand.equals(deleteCS2030SCommandCopy));
 
         // different types -> returns false
-        assertFalse(addCS2030SCommand.equals(1));
+        assertFalse(deleteCS2030SCommand.equals(1));
 
         // null -> returns false
-        assertFalse(addCS2030SCommand.equals(null));
+        assertFalse(deleteCS2030SCommand.equals(null));
 
         // different local course -> returns false
-        assertFalse(addCS2030SCommand.equals(addCS2040SCommand));
+        assertFalse(deleteCS2030SCommand.equals(deleteCS2040SCommand));
     }
 
     @Test
     public void toStringMethod() {
-        LocalCourseAddCommand localCourseAddCommand = new LocalCourseAddCommand(CS2030S);
-        String expected = LocalCourseAddCommand.class.getCanonicalName() + "{localCourseToAdd=" + CS2030S + "}";
-        assertEquals(expected, localCourseAddCommand.toString());
+        LocalCourseDeleteCommand localCourseDeleteCommand = new LocalCourseDeleteCommand(CS2030S.getLocalCode());
+        String expected = LocalCourseDeleteCommand.class.getCanonicalName() + "{localCourseToDelete=CS2030S}";
+        assertEquals(expected, localCourseDeleteCommand.toString());
     }
 
     /**
@@ -192,11 +195,6 @@ public class LocalCourseAddCommandTest {
         }
 
         @Override
-        public void deletePartnerCourse(PartnerCourse partnerCourse) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue() {
             throw new AssertionError("This method should not be called.");
         }
@@ -229,16 +227,6 @@ public class LocalCourseAddCommandTest {
 
         @Override
         public void setUniversityCatalogueFilePath(Path universityCatalogueFilePath) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void addUniversity(University university) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void setUniversity(University target, University editedUniversity) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -281,13 +269,27 @@ public class LocalCourseAddCommandTest {
             requireNonNull(lc);
             return localCourse.isSameLocalCourse(lc);
         }
+
+        @Override
+        public void deleteLocalCourse(LocalCourse localCourse) {
+            requireNonNull(localCourse);
+            // do nothing, in particular, throw nothing
+        }
+
+        @Override
+        public Optional<LocalCourse> getLocalCourseIfExists(LocalCode localCode) {
+            if (!localCourse.getLocalCode().equals(localCode)) {
+                return Optional.empty();
+            }
+            return Optional.of(localCourse);
+        }
     }
 
     /**
-     * A Model stub that always accept the local course being added.
+     * A Model stub that always accept the local course being deleted.
      */
-    private class ModelStubAcceptingLocalCourseAdded extends SeplendidModelStub {
-        final ArrayList<LocalCourse> localCoursesAdded = new ArrayList<>();
+    private class ModelStubAcceptingLocalCourseDeleted extends SeplendidModelStub {
+        final ArrayList<LocalCourse> localCoursesAdded = new ArrayList<>(List.of(CS2030S, CS2040S));
 
         @Override
         public boolean hasLocalCourse(LocalCourse localCourse) {
@@ -296,14 +298,19 @@ public class LocalCourseAddCommandTest {
         }
 
         @Override
-        public void addLocalCourse(LocalCourse localCourse) {
+        public void deleteLocalCourse(LocalCourse localCourse) {
             requireNonNull(localCourse);
-            localCoursesAdded.add(localCourse);
+            localCoursesAdded.remove(localCourse);
         }
 
         @Override
         public ReadOnlyLocalCourseCatalogue getLocalCourseCatalogue() {
             return new LocalCourseCatalogue();
+        }
+
+        @Override
+        public Optional<LocalCourse> getLocalCourseIfExists(LocalCode localCode) {
+            return localCoursesAdded.stream().filter(lc -> lc.getLocalCode().equals(localCode)).findFirst();
         }
     }
 

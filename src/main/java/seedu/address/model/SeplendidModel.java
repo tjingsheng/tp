@@ -1,10 +1,12 @@
 package seedu.address.model;
 
 import java.nio.file.Path;
+import java.util.Optional;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCourse;
@@ -73,6 +75,11 @@ public interface SeplendidModel {
      * Returns true if a local course with the same identity as {@code localCourse} exists in the LocalCourseCatalogue.
      */
     boolean hasLocalCourse(LocalCourse localCourse);
+
+    /**
+     * Returns a LocalCourse in an Optional if exists, else return empty Optional.
+     */
+    Optional<LocalCourse> getLocalCourseIfExists(LocalCode localCode);
 
     /**
      * Deletes the given local course.

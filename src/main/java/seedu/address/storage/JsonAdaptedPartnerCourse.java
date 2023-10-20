@@ -24,7 +24,7 @@ public class JsonAdaptedPartnerCourse {
      * Constructs a {@code JsonAdaptedPartnerCourse} with the given partnerCourse details.
      */
     @JsonCreator
-    public JsonAdaptedPartnerCourse(@JsonProperty("university") String universityName,
+    public JsonAdaptedPartnerCourse(@JsonProperty("universityName") String universityName,
                                     @JsonProperty("partnerCode") String partnerCode,
                                     @JsonProperty("partnerName") String partnerName) {
         this.universityName = universityName;

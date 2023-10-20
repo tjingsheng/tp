@@ -12,6 +12,7 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.LocalCourseAddCommand;
 import seedu.address.logic.commands.LocalCourseCommand;
+import seedu.address.logic.commands.LocalCourseDeleteCommand;
 import seedu.address.logic.commands.LocalCourseListCommand;
 import seedu.address.logic.commands.NoteAddCommand;
 import seedu.address.logic.commands.NoteCommand;
@@ -41,6 +42,7 @@ public class SeplendidParser {
 
     /**
      * TBD: Parses Non Argument Command
+     *
      * @param userInput String of userInput
      * @return a Command
      * @throws ParseException If the input is invalid.
@@ -124,6 +126,8 @@ public class SeplendidParser {
         switch (actionWord) {
         case LocalCourseAddCommand.ACTION_WORD:
             return new LocalCourseAddCommandParser().parse(arguments);
+        case LocalCourseDeleteCommand.ACTION_WORD:
+            return new LocalCourseDeleteCommandParser().parse(arguments);
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
@@ -141,9 +145,9 @@ public class SeplendidParser {
         }
     }
 
-    private PartnerCourseCommand getPartnerCourseCommandWithArg(
-            String userInput, String actionWord, String arguments) throws ParseException {
-        switch(actionWord) {
+    private PartnerCourseCommand getPartnerCourseCommand(String userInput, String actionWord, String arguments)
+            throws ParseException {
+        switch (actionWord) {
         case PartnerCourseAddCommand.ACTION_WORD:
             return new PartnerCourseAddCommandParser().parse(arguments);
         case PartnerCourseDeleteCommand.ACTION_WORD:

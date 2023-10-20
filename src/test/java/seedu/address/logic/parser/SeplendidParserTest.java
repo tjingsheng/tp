@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.LocalCourseAddCommand;
+import seedu.address.logic.commands.LocalCourseDeleteCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.testutil.LocalCourseBuilder;
@@ -28,6 +29,15 @@ public class SeplendidParserTest {
         LocalCourseAddCommand command = (LocalCourseAddCommand) parser
                 .parseCommand(LocalCourseUtil.getLocalCourseAddCommandFrom(localCourse));
         assertEquals(new LocalCourseAddCommand(localCourse), command);
+    }
+
+    @Test
+    public void parseCommand_deleteLocalCourse() throws Exception {
+        LocalCourse localCourse = new LocalCourseBuilder().build();
+        // This narrow typecast is safe as LocalCourseAddCommand is a known subtype of Command
+        LocalCourseDeleteCommand command = (LocalCourseDeleteCommand) parser
+                .parseCommand(LocalCourseUtil.getLocalCourseDeleteCommandFrom(localCourse));
+        assertEquals(new LocalCourseDeleteCommand(localCourse.getLocalCode()), command);
     }
 
 

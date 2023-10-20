@@ -54,7 +54,7 @@ public class LocalCourseAddCommandParserTest {
 
         // missing open bracket
         assertParseFailure(parser, commandActionWord
-                + LocalCourseUtil.getLocalCourseArgumentsForCommand(TypicalObjects.CS3230).substring(
+                + LocalCourseUtil.getLocalCourseArgumentsForAddCommand(TypicalObjects.CS3230).substring(
                 1), expectedMessage);
 
         // empty argument

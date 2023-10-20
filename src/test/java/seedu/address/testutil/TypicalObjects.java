@@ -39,6 +39,8 @@ public class TypicalObjects {
             .withLocalName("Discrete Structures").build();
     public static final LocalCourse CS2030S = new LocalCourseBuilder().withLocalCode("CS2030S")
             .withLocalName("Programming Methodology II").build();
+    public static final LocalCourse MA2001 = new LocalCourseBuilder().withLocalCode("MA2001")
+            .withLocalName("Linear Algebra").build();
     public static final LocalCourse TYPICAL_LOCAL_COURSE = new LocalCourseBuilder()
             .withLocalCode(TYPICAL_LOCAL_COURSE_CODE).withLocalName(TYPICAL_LOCAL_COURSE_NAME).build();
     public static final LocalCourse EDGE_CASE_VALID_LOCAL_COURSE = new LocalCourseBuilder()

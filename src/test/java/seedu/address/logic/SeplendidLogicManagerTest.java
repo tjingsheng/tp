@@ -10,7 +10,6 @@ import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE_CODE;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE_NAME;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_UNIVERSITY_NAME;
-import static seedu.address.testutil.TypicalObjects.TYPICAL_UNIVERSITY_NAME;
 
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
@@ -38,7 +37,6 @@ import seedu.address.model.SeplendidModel;
 import seedu.address.model.SeplendidModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.university.University;
-import seedu.address.model.university.UniversityName;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonLocalCourseCatalogueStorage;
 import seedu.address.storage.JsonNoteCatalogueStorage;

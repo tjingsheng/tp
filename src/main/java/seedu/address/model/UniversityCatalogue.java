@@ -25,8 +25,12 @@ public class UniversityCatalogue implements ReadOnlyUniversityCatalogue {
     public UniversityCatalogue() {
     }
 
+    /**
+     * Creates an UniversityCatalogue using the Universities in the {@code toBeCopied}
+     */
     public UniversityCatalogue(ReadOnlyUniversityCatalogue toBeCopied) {
         this();
+        resetData(toBeCopied);
     }
 
     /**

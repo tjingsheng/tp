@@ -20,8 +20,10 @@ import seedu.address.model.LocalCourseCatalogue;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
+import seedu.address.model.university.University;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
 /**
@@ -192,6 +194,33 @@ public class CommandTestUtil {
         model.updateFilteredLocalCourseList(lc -> lc.getLocalCode().getValue().equals(queryLocalCode));
 
         assertEquals(1, model.getFilteredLocalCourseList().size());
+    }
+
+    /**
+     * Updates {@code model}'s filtered list to show only the PartnerCourse at the given {@code targetIndex} in the
+     * {@code model}'s partner course catalogue.
+     */
+    public static void showPartnerCourseAtIndex(SeplendidModel model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredPartnerCourseList().size());
+
+        PartnerCourse partnerCourse = model.getFilteredPartnerCourseList().get(targetIndex.getZeroBased());
+        final String queryPartnerCode = partnerCourse.getPartnerCode().getValue();
+        model.updateFilteredPartnerCourseList(pc -> pc.getPartnerCode().getValue().equals(queryPartnerCode));
+
+        assertEquals(1, model.getFilteredPartnerCourseList().size());
+    }
+
+    /**
+     * Updates {@code model}'s filtered list to show only the University at the given {@code targetIndex} in the
+     * {@code model}'s university catalogue.
+     */
+    public static void showUniversityAtIndex(SeplendidModel model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredUniversityList().size());
+        University university = model.getFilteredUniversityList().get(targetIndex.getZeroBased());
+        final String queryUniversity = university.getUniversityName().getValue();
+        model.updateFilteredUniversityList(u -> u.getUniversityName().getValue().equals(queryUniversity));
+
+        assertEquals(1, model.getFilteredUniversityList().size());
     }
 
 }

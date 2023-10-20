@@ -280,12 +280,12 @@ public class LocalCourseAddCommandTest {
         }
 
         @Override
-        public void updateUniversityList(Predicate<University> predicate) {
+        public void updateFilteredUniversityList(Predicate<University> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void updateFilteredUniversityList(Predicate<University> predicate) {
+        public void setUniversityCatalogue(ReadOnlyUniversityCatalogue universityCatalogue) {
             throw new AssertionError("This method should not be called.");
         }
 

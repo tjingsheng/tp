@@ -5,6 +5,7 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalObjects.getTypicalLocalCourseCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalNoteCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalPartnerCourseCatalogue;
+import static seedu.address.testutil.TypicalObjects.getTypicalPartnerCourses;
 import static seedu.address.testutil.TypicalObjects.getTypicalUniversityCatalogue;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -28,20 +29,19 @@ public class PartnerCourseDeleteCommandTest {
     public void setUp() {
         model = new SeplendidModelManager(getTypicalLocalCourseCatalogue(), new UserPrefs(),
                 getTypicalPartnerCourseCatalogue(), getTypicalUniversityCatalogue(), getTypicalNoteCatalogue());
-        expectedModel = new SeplendidModelManager(getTypicalLocalCourseCatalogue(), new UserPrefs(),
-                model.getPartnerCourseCatalogue(), getTypicalUniversityCatalogue(), getTypicalNoteCatalogue());
     }
 
     @Test
     public void execute_partnerCourseDelete_success() {
-        PartnerCourse partnerCourseToDelete = model.getFilteredPartnerCourseList().get(
-                INDEX_FIRST_PERSON.getZeroBased());
-        PartnerCourseDeleteCommand partnerCourseDeleteCommand =
-                new PartnerCourseDeleteCommand(partnerCourseToDelete.getPartnerCode());
+        PartnerCourse partnerCourseToDelete = getTypicalPartnerCourses().get(0);
+        SeplendidModel expectedModel = new SeplendidModelManager(model.getLocalCourseCatalogue(), new UserPrefs(),
+                model.getPartnerCourseCatalogue(), model.getUniversityCatalogue(), model.getNoteCatalogue());
 
-        assertSeplendidCommandSuccess(partnerCourseDeleteCommand, model, String.format(
-                PartnerCourseDeleteCommand.MESSAGE_SUCCESS, Messages.format(partnerCourseToDelete)), expectedModel);
+        expectedModel.deletePartnerCourse(partnerCourseToDelete);
 
+        assertSeplendidCommandSuccess(new PartnerCourseDeleteCommand(partnerCourseToDelete.getPartnerCode()), model,
+                String.format(PartnerCourseDeleteCommand.MESSAGE_SUCCESS, Messages.format(partnerCourseToDelete)),
+                expectedModel);
     }
 
     //more to be added.

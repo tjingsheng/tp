@@ -71,9 +71,9 @@ public class TypicalObjects {
 
     // Note
     public static final Note NOTE1 = new Note(new Content("Nanyang Technological University"),
-            new Tag("University Name"));
+            new Tag("university"));
     public static final Note NOTE2 = new Note(new Content("Application Deadline 1 December 2023"),
-            new Tag("Deadline"));
+            new Tag("deadline"));
     private TypicalObjects() {
     } // prevents instantiation
 

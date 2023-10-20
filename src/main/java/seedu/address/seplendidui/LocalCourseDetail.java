@@ -16,7 +16,7 @@ public class LocalCourseDetail extends UiPart<Region> {
     public final LocalCourse localCourse;
 
     @FXML
-    private HBox cardPane;
+    private HBox localCourseDetailPane;
     @FXML
     private Label localName;
     @FXML

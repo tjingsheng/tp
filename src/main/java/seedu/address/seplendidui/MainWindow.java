@@ -72,13 +72,12 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        System.out.println("HERER");
         itemDetailPanel = new ItemDetailPanel<>();
         itemDetailPanelPlaceholder.getChildren().add(itemDetailPanel.getRoot());
 
-        ObservableList<LocalCourse> localCourseList = seplendidLogic.getFilteredLocalCourseCatalogue();
-        ObservableList<SeplendidDataType> itemList = FXCollections.observableArrayList(localCourseList);
-        Bindings.bindContent(itemList, localCourseList);
+        ObservableList<LocalCourse> localList = seplendidLogic.getFilteredLocalCourseCatalogue();
+        ObservableList<SeplendidDataType> itemList = FXCollections.observableArrayList(localList);
+        Bindings.bindContent(itemList, localList);
 
         itemListPanel = new ItemListPanel<>(itemList, itemDetailPanel);
         itemListPanelPlaceholder.getChildren().add(itemListPanel.getRoot());

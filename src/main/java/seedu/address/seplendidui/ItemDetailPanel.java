@@ -8,6 +8,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.partnercourse.PartnerCourse;
 
 /**
  * Panel containing the details of an item.
@@ -51,8 +52,10 @@ public class ItemDetailPanel<SeplendidDataType> extends UiPart<Region> {
             if (empty || item == null) {
                 setGraphic(null);
                 setText(null);
-            } else {
+            } else if (item instanceof LocalCourse) {
                 setGraphic(new LocalCourseDetail((LocalCourse) item).getRoot());
+            } else if (item instanceof PartnerCourse) {
+                setGraphic(new PartnerCourseDetail((PartnerCourse) item).getRoot());
             }
         }
     }

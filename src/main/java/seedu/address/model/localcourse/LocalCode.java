@@ -14,10 +14,11 @@ public class LocalCode {
             + "10 alphanumeric characters";
 
     /*
-     * This matches a string that starts with a non-whitespace character.
+     * This matches alphanumeric string of length 1-10, starting with an alphabet.
      */
     public static final String VALIDATION_REGEX = "[a-zA-Z][a-zA-Z0-9]{0,9}";
 
+    // TBD: refactor codebase to allow this to be set to private
     public final String value;
 
     /**
@@ -26,6 +27,7 @@ public class LocalCode {
      * @param localCode A valid localCode.
      */
     public LocalCode(String localCode) {
+        localCode = localCode.trim();
         requireNonNull(localCode);
         checkArgument(isValidLocalCode(localCode), MESSAGE_CONSTRAINTS);
         value = localCode;
@@ -35,6 +37,12 @@ public class LocalCode {
         return test.matches(VALIDATION_REGEX);
     }
 
+    public String getValue() {
+        return this.value;
+    }
+
+    // Note: be careful not to modify this, as it is used in auto-invocation of toString
+    // in places where string is expected
     @Override
     public String toString() {
         return value;

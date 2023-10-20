@@ -11,16 +11,36 @@ import javafx.collections.ObservableList;
 import seedu.address.model.partnercourse.exceptions.DuplicatePartnerCourseException;
 import seedu.address.model.partnercourse.exceptions.PartnerCourseNotFoundException;
 
+/**
+ * A list of partner courses that enforces uniqueness between its elements and does not allow nulls.
+ * Note that a PartnerCourse is considered unique by {@code PartnerCourse#isSamePartnerCourse(PartnerCourse)},
+ * which concerns adding and updating. On the other hand, the removal of a PartnerCourse uses
+ * PartnerCourse#equals(Object) to ensure that the local course with exact matching fields is
+ * removed.
+ * <p>
+ * Implements {@code Iterable<PartnerCourse>} amd thus needs an iterator. Able to utilise in for-each.
+ * <p>
+ * Note that this is the list containing the records, and the internal list must be an
+ * {@code ObservableList<PartnerCourse>} to return in ReadOnlyLocalCourseCatalogue#getPartnerCourseList.
+ */
 public class UniquePartnerCourseList implements Iterable<PartnerCourse> {
     private final ObservableList<PartnerCourse> internalList = FXCollections.observableArrayList();
-    private final ObservableList<PartnerCourse> internalUnmodifiableList = FXCollections.unmodifiableObservableList(internalList);
+    private final ObservableList<PartnerCourse> internalUnmodifiableList =
+            FXCollections.unmodifiableObservableList(internalList);
 
+    /**
+     * Returns true if the list contains an equivalent PartnerCourse as the given argument.
+     */
     public boolean contains(PartnerCourse toCheck) {
         requireNonNull(toCheck);
         return internalList.stream().anyMatch(toCheck::isSamePartnerCourse);
         //why not equal?
     }
 
+    /**
+     * Adds a PartnerCourse to the list.
+     * The PartnerCourse must not already exist in the list.
+     */
     public void add(PartnerCourse toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
@@ -44,6 +64,10 @@ public class UniquePartnerCourseList implements Iterable<PartnerCourse> {
         internalList.set(index, editedPartnerCourse);
     }
 
+    /**
+     * Removes the equivalent (as per {@code PartnerCourse#equals(Object)})PartnerCourse from the list.
+     * The PartnerCourse must exist in the list.
+     */
     public void remove(PartnerCourse toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {

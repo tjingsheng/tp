@@ -21,6 +21,7 @@ public class JsonLocalCourseCatalogueStorage implements LocalCourseCatalogueStor
 
     private static final Logger logger = LogsCenter.getLogger(JsonLocalCourseCatalogueStorage.class);
 
+    // Default filePath from root if filePath is not passed into method
     private Path filePath;
 
     public JsonLocalCourseCatalogueStorage(Path filePath) {

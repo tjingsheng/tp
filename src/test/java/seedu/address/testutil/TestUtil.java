@@ -52,4 +52,14 @@ public class TestUtil {
     public static Person getPerson(Model model, Index index) {
         return model.getFilteredPersonList().get(index.getZeroBased());
     }
+
+    /**
+     * Wraps {@code arg} in square brackets for argument form.
+     *
+     * @param arg This is the argument to be wrapped.
+     * @return The wrapped version of {@code arg}.
+     */
+    public static String getSquareBracketWrappedArgument(String arg) {
+        return String.format("[%s]", arg);
+    }
 }

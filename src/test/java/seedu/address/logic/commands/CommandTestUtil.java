@@ -16,7 +16,10 @@ import java.util.List;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
+import seedu.address.model.LocalCourseCatalogue;
 import seedu.address.model.Model;
+import seedu.address.model.SeplendidModel;
+import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
@@ -60,6 +63,9 @@ public class CommandTestUtil {
     public static final EditCommand.EditPersonDescriptor DESC_AMY;
     public static final EditCommand.EditPersonDescriptor DESC_BOB;
 
+    // SEPlendid
+    public static final String UNNCESSARY_WHITESPACE = "  \t  ";
+
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
@@ -75,7 +81,7 @@ public class CommandTestUtil {
      * - the {@code actualModel} matches {@code expectedModel}
      */
     public static void assertCommandSuccess(Command command, Model actualModel, CommandResult expectedCommandResult,
-            Model expectedModel) {
+                                            Model expectedModel) {
         try {
             CommandResult result = command.execute(actualModel);
             assertEquals(expectedCommandResult, result);
@@ -90,9 +96,36 @@ public class CommandTestUtil {
      * that takes a string {@code expectedMessage}.
      */
     public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,
-            Model expectedModel) {
+                                            Model expectedModel) {
         CommandResult expectedCommandResult = new CommandResult(expectedMessage);
         assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
+    }
+
+    /**
+     * Executes the given {@code command}, confirms that <br>
+     * - the returned {@link CommandResult} matches {@code expectedCommandResult} <br>
+     * - the {@code actualModel} matches {@code expectedModel}
+     */
+    public static void assertSeplendidCommandSuccess(Command command, SeplendidModel actualModel,
+                                                     CommandResult expectedCommandResult,
+                                                     SeplendidModel expectedModel) {
+        try {
+            CommandResult result = command.execute(actualModel);
+            assertEquals(expectedCommandResult, result);
+            assertEquals(expectedModel, actualModel);
+        } catch (CommandException ce) {
+            throw new AssertionError("Execution of command should not fail.", ce);
+        }
+    }
+
+    /**
+     * Convenience wrapper to {@link #assertSeplendidCommandSuccess(Command, SeplendidModel, CommandResult,
+     * SeplendidModel)} that takes a string {@code expectedMessage}.
+     */
+    public static void assertSeplendidCommandSuccess(Command command, SeplendidModel actualModel,
+                                                     String expectedMessage, SeplendidModel expectedModel) {
+        CommandResult expectedCommandResult = new CommandResult(expectedMessage);
+        assertSeplendidCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
     }
 
     /**
@@ -111,6 +144,28 @@ public class CommandTestUtil {
         assertEquals(expectedAddressBook, actualModel.getAddressBook());
         assertEquals(expectedFilteredList, actualModel.getFilteredPersonList());
     }
+
+    /**
+     * Executes the given {@code command}, confirms that <br>
+     * - a {@code CommandException} is thrown <br>
+     * - the CommandException message matches {@code expectedMessage} <br>
+     * - the catalogues, filtered lists and selected objects in {@code actualModel} remain unchanged
+     */
+    public static void assertSeplendidCommandFailure(Command command, SeplendidModel actualModel,
+                                                     String expectedMessage) {
+        // we are unable to defensively copy the model for comparison later, so we can
+        // only do so by copying its components.
+
+        // TBD: To other developers: please add on other data types appropriately
+        LocalCourseCatalogue expectedLocalCourseCatalogue =
+                new LocalCourseCatalogue(actualModel.getLocalCourseCatalogue());
+        List<LocalCourse> expectedFilteredLocalCourseList = new ArrayList<>(actualModel.getFilteredLocalCourseList());
+
+        assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
+        assertEquals(expectedLocalCourseCatalogue, actualModel.getLocalCourseCatalogue());
+        assertEquals(expectedFilteredLocalCourseList, actualModel.getFilteredLocalCourseList());
+    }
+
     /**
      * Updates {@code model}'s filtered list to show only the person at the given {@code targetIndex} in the
      * {@code model}'s address book.
@@ -123,6 +178,20 @@ public class CommandTestUtil {
         model.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getFilteredPersonList().size());
+    }
+
+    /**
+     * Updates {@code model}'s filtered list to show only the LocalCourse at the given {@code targetIndex} in the
+     * {@code model}'s local course catalogue.
+     */
+    public static void showLocalCourseAtIndex(SeplendidModel model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredLocalCourseList().size());
+
+        LocalCourse localCourse = model.getFilteredLocalCourseList().get(targetIndex.getZeroBased());
+        final String queryLocalCode = localCourse.getLocalCode().getValue();
+        model.updateFilteredLocalCourseList(lc -> lc.getLocalCode().getValue().equals(queryLocalCode));
+
+        assertEquals(1, model.getFilteredLocalCourseList().size());
     }
 
 }

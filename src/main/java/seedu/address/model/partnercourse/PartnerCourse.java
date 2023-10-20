@@ -7,11 +7,18 @@ import java.util.Objects;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.university.University;
 
+/**
+ * Represents a Partner Course in SEPlendid.
+ * Guarantees: details are present and not null, field values are validated and immutable.
+ */
 public class PartnerCourse {
     private final University partnerUniversity;
     private final PartnerCode partnerCode;
     private final PartnerName partnerName;
 
+    /**
+     * Every field must be present and not null
+     */
     public PartnerCourse(University pu, PartnerCode pc, PartnerName pn) {
         requireAllNonNull(pu, pc, pn);
         partnerUniversity = pu;
@@ -30,6 +37,13 @@ public class PartnerCourse {
         return partnerName;
     }
 
+    /**
+     * Returns true if both PartnerCourses have the same partnerCode.
+     * Assumption: partnerCode is the primary key i.e. there exists
+     * no two distinct PartnerCourses with the same partnerCode.
+     *
+     * @param otherPartnerCourse This is the other partner course.
+     */
     public boolean isSamePartnerCourse(PartnerCourse otherPartnerCourse) {
         if (otherPartnerCourse == this) {
             return true;

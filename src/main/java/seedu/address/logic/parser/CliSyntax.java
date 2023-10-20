@@ -16,6 +16,9 @@ public class CliSyntax {
     /* Seplendid parameters */
     public static final SeplendidParameter PARAMETER_LOCALCODE = new SeplendidParameter("localcode");
     public static final SeplendidParameter PARAMETER_LOCALNAME = new SeplendidParameter("localname");
+    public static final SeplendidParameter PARAMETER_PARTNERCODE = new SeplendidParameter("partnercode");
+    public static final SeplendidParameter PARAMETER_PARTNERNAME = new SeplendidParameter("partnername");
+    public static final SeplendidParameter PARAMETER_UNIVERSITY = new SeplendidParameter("university");
     public static final SeplendidParameter PARAMETER_CONTENT = new SeplendidParameter("content");
     public static final SeplendidParameter PARAMETER_TAGS = new SeplendidParameter("tags");
 

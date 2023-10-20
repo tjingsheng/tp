@@ -3,8 +3,7 @@ package seedu.address.logic.parser;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_LOCALCODE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_LOCALNAME;
-
-import java.util.stream.Stream;
+import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
 import seedu.address.logic.commands.LocalCourseAddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -33,7 +32,7 @@ public class LocalCourseAddCommandParser implements Parser<LocalCourseAddCommand
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_LOCALCODE, PARAMETER_LOCALNAME);
 
-        if (!areArgumentsPresent(parameterToArgMap, PARAMETER_LOCALCODE, PARAMETER_LOCALNAME)) {
+        if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_LOCALCODE, PARAMETER_LOCALNAME)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     LocalCourseAddCommand.LOCAL_COURSE_ADD_MESSAGE_USAGE));
         }
@@ -45,47 +44,6 @@ public class LocalCourseAddCommandParser implements Parser<LocalCourseAddCommand
         LocalCourse localCourse = new LocalCourse(localCode, localName);
 
         return new LocalCourseAddCommand(localCourse);
-    }
-
-
-    /**
-     * Returns true if all arguments are enclosed in square brackets, and are non-empty.
-     *
-     * @param args Arguments in the format of {@code [args1] [args2] ...}.
-     * @return true if in correct format.
-     */
-    private static boolean areValuesEnclosedAndNonEmpty(String args) {
-        // The number of unclosed open square brackets, used to validate input.
-        int bracketCount = 0;
-        StringBuilder currValue = new StringBuilder();
-
-        for (int i = 0; i < args.length(); i++) {
-            Character currChar = args.charAt(i);
-            if (currChar.equals('[')) {
-                currValue.setLength(0);
-                bracketCount++;
-            } else if (currChar.equals(']') && currValue.toString().trim().isEmpty()) {
-                return false;
-            } else if (currChar.equals(']')) {
-                bracketCount--;
-            } else {
-                currValue.append(currChar);
-            }
-
-            if (bracketCount < 0 || bracketCount > 1) {
-                return false;
-            }
-        }
-
-        return bracketCount == 0;
-    }
-
-    /**
-     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
-     * {@code SeplendidArgumentMap}.
-     */
-    private static boolean areArgumentsPresent(SeplendidArgumentMap argumentMap, SeplendidParameter... parameters) {
-        return Stream.of(parameters).allMatch(parameter -> argumentMap.getValue(parameter).isPresent());
     }
 
 }

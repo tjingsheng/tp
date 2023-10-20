@@ -8,8 +8,10 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
+import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.partnercourse.PartnerCourse;
 
 /**
  * API of the SeplendidLogic component.
@@ -25,6 +27,17 @@ public interface SeplendidLogic {
      */
     CommandResult execute(String commandText) throws CommandException, ParseException;
 
+    /**
+     * Returns the user prefs' GUI settings.
+     */
+    GuiSettings getGuiSettings();
+
+    /**
+     * Set the user prefs' GUI settings.
+     */
+    void setGuiSettings(GuiSettings guiSettings);
+
+    //=========== LocalCourseCatalogue ================================================================================
     /**
      * Returns the LocalCourseCatalogue.
      *
@@ -42,13 +55,10 @@ public interface SeplendidLogic {
      */
     Path getLocalCourseCatalogueFilePath();
 
-    /**
-     * Returns the user prefs' GUI settings.
-     */
-    GuiSettings getGuiSettings();
+    //=========== PartnerCourseCatalouge ============================================================================
+    ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue();
 
-    /**
-     * Set the user prefs' GUI settings.
-     */
-    void setGuiSettings(GuiSettings guiSettings);
+    ObservableList<PartnerCourse> getFilteredPartnerCourseCatalogue();
+
+    Path getPartnerCourseCatalogueFilePath();
 }

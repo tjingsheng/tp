@@ -2,6 +2,7 @@ package seedu.address.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static seedu.address.testutil.TypicalObjects.getTypicalLocalCourseCatalogue;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.nio.file.Path;
@@ -12,7 +13,9 @@ import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.AddressBook;
+import seedu.address.model.LocalCourseCatalogue;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyLocalCourseCatalogue;
 import seedu.address.model.UserPrefs;
 
 public class StorageManagerTest {
@@ -27,8 +30,13 @@ public class StorageManagerTest {
         JsonAddressBookStorage addressBookStorage = new JsonAddressBookStorage(getTempFilePath("ab"));
         JsonLocalCourseCatalogueStorage localCourseCatalogueStorage =
                 new JsonLocalCourseCatalogueStorage(getTempFilePath("localcourse"));
+        JsonPartnerCourseCatalogueStorage partnerCourseCatalogueStorage =
+                new JsonPartnerCourseCatalogueStorage(getTempFilePath("partnercourse"));
+        JsonUniversityCatalogueStorage universityCatalogueStorage =
+                new JsonUniversityCatalogueStorage(getTempFilePath("university"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
-        storageManager = new StorageManager(addressBookStorage, localCourseCatalogueStorage, userPrefsStorage);
+        storageManager = new StorageManager(addressBookStorage, localCourseCatalogueStorage, userPrefsStorage,
+                partnerCourseCatalogueStorage, universityCatalogueStorage);
     }
 
     private Path getTempFilePath(String fileName) {
@@ -65,6 +73,23 @@ public class StorageManagerTest {
     @Test
     public void getAddressBookFilePath() {
         assertNotNull(storageManager.getAddressBookFilePath());
+    }
+
+    @Test
+    public void localCourseCatalogueReadSave() throws Exception {
+        /*
+         * Note: This is an integration test that verifies the StorageManager is properly wired to the
+         * {@link JsonLocalCourseCatalogueStorage} class.
+         */
+        LocalCourseCatalogue original = getTypicalLocalCourseCatalogue();
+        storageManager.saveLocalCourseCatalogue(original);
+        ReadOnlyLocalCourseCatalogue retrieved = storageManager.readLocalCourseCatalogue().get();
+        assertEquals(original, new LocalCourseCatalogue(retrieved));
+    }
+
+    @Test
+    public void getLocalCourseCatalogueFilePath() {
+        assertNotNull(storageManager.getLocalCourseCatalogueFilePath());
     }
 
 }

@@ -2,6 +2,11 @@ package seedu.address.model.partnercourse;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
+
+/**
+ * Represents a Partner Course's partner code in SEPlendid.
+ * Guarantees: immutable; is valid as declared in {@link #isValidPartnerCode(String)}
+ */
 public class PartnerCode {
     public static final String MESSAGE_CONSTRAINTS = "PartnerCode must start with an alphabet, and be no mor than "
         + "10 alphanumeric characters";
@@ -10,6 +15,11 @@ public class PartnerCode {
 
     public final String value;
 
+    /**
+     * Constructs an {@code partnerCode}.
+     *
+     * @param partnerCode A valid localCode.
+     */
     public PartnerCode(String partnerCode) {
         requireNonNull(partnerCode);
         checkArgument(isValidPartnerCode(partnerCode), MESSAGE_CONSTRAINTS);

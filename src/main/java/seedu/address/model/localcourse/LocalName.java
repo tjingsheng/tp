@@ -10,7 +10,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class LocalName {
 
     // Used in AppUtil#checkArgument and ParserUtil, JsonAdaptedXXX exceptions
-    public static final String MESSAGE_CONSTRAINTS = "LocalName can take any values, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "LocalName can take any values, given it starts with a "
+            + "whitespace, and it should not be blank";
 
     /*
      * This matches a string that starts with a non-whitespace character.
@@ -21,10 +22,12 @@ public class LocalName {
 
     /**
      * Constructs an {@code LocalName}.
+     * localName is trimmed before checkArgument, as a standardisation.
      *
      * @param localName A valid localname.
      */
     public LocalName(String localName) {
+        localName = localName.trim();
         requireNonNull(localName);
         checkArgument(isValidLocalName(localName), MESSAGE_CONSTRAINTS);
         value = localName;
@@ -32,6 +35,10 @@ public class LocalName {
 
     public static boolean isValidLocalName(String test) {
         return test.matches(VALIDATION_REGEX);
+    }
+
+    public String getValue() {
+        return this.value;
     }
 
     @Override

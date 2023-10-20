@@ -25,3 +25,6 @@ docs/_markbind/logs/
 
 
 /node_modules/
+
+# Coverage report files
+/htmlReport/

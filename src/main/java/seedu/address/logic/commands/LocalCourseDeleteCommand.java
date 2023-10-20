@@ -26,6 +26,11 @@ public class LocalCourseDeleteCommand extends LocalCourseCommand {
 
     private final LocalCode localCodeToDelete;
 
+    /**
+     * Creates a LocalCourseDeleteCommand to delete  the specified {@code LocalCode}
+     *
+     * @param localCode The localCode that identifies the localCourse to be deleted.
+     */
     public LocalCourseDeleteCommand(LocalCode localCode) {
         requireNonNull(localCode);
         this.localCodeToDelete = localCode;

@@ -10,6 +10,7 @@ import static seedu.address.testutil.TypicalObjects.CS2030S;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -24,6 +25,7 @@ import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyUniversityCatalogue;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.SeplendidModel;
+import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCourse;
@@ -145,6 +147,11 @@ public class LocalCourseAddCommandTest {
 
         @Override
         public boolean hasLocalCourse(LocalCourse localCourse) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Optional<LocalCourse> getLocalCourseIfExists(LocalCode localCode) {
             throw new AssertionError("This method should not be called.");
         }
 

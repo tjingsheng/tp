@@ -9,6 +9,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.notes.Note;
+import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
 
@@ -127,6 +128,11 @@ public interface SeplendidModel {
     boolean hasPartnerCourse(PartnerCourse partnerCourse);
 
     /**
+     * Returns a LocalCourse in an Optional if exists, else return empty Optional.
+     */
+    Optional<PartnerCourse> getPartnerCourseIfExists(PartnerCode partnerCode);
+
+    /**
      * Adds the given PartnerCourse.
      * {@code partnerCourse} must not already exist in the PartnerCourseCatalogue.
      */
@@ -154,6 +160,7 @@ public interface SeplendidModel {
     void setUniversityCatalogueFilePath(Path universityCatalogueFilePath);
 
     ObservableList<University> getFilteredUniversityList();
+    boolean hasUniversity(University university);
 
     void addUniversity(University university);
     void setUniversity(University target, University editedUniversity);

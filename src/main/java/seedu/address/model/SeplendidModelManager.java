@@ -16,6 +16,7 @@ import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.notes.Note;
 import seedu.address.model.notes.NoteList;
+import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
 
@@ -190,11 +191,17 @@ public class SeplendidModelManager implements SeplendidModel {
     }
 
     @Override
+    public Optional<PartnerCourse> getPartnerCourseIfExists(PartnerCode partnerCode) {
+        requireNonNull(partnerCode);
+        return partnerCourseCatalogue.getPartnerCourseIfExists(partnerCode);
+    }
+
+    @Override
     public void addPartnerCourse(PartnerCourse partnerCourse) {
         partnerCourseCatalogue.addPartnerCourse(partnerCourse);
         updateFilteredPartnerCourseList(PREDICATE_SHOW_ALL_PARTNER_COURSES);
 
-        //need to update the university catalogue when a partner course is added.
+        //need to update the university catalogue when a partner course is added. - might not be needed at all
         if (!universityCatalogue.hasUniversity(partnerCourse.getPartnerUniversity())) {
             universityCatalogue.addUniversity(partnerCourse.getPartnerUniversity());
             updateFilteredUniversityList(PREDICATE_SHOW_ALL_UNIVERSITIES);
@@ -244,9 +251,10 @@ public class SeplendidModelManager implements SeplendidModel {
     /**
      * Check if there exist the same university in the catalogue.
      *
-     * @param university
-     * @return
+     * @param university University to be checked.
+     * @return Boolean.
      */
+    @Override
     public boolean hasUniversity(University university) {
         requireNonNull(university);
         return universityCatalogue.hasUniversity(university);

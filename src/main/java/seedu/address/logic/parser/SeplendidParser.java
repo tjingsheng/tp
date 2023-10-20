@@ -145,7 +145,7 @@ public class SeplendidParser {
         }
     }
 
-    private PartnerCourseCommand getPartnerCourseCommand(String userInput, String actionWord, String arguments)
+    private PartnerCourseCommand getPartnerCourseCommandWithArg(String userInput, String actionWord, String arguments)
             throws ParseException {
         switch (actionWord) {
         case PartnerCourseAddCommand.ACTION_WORD:

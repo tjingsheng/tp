@@ -5,12 +5,13 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.Objects;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.SeplendidDataType;
 
 /**
  * Represents a Local Course in SEPlendid.
  * Guarantees: details are present and not null, field values are validated and immutable.
  */
-public class LocalCourse {
+public class LocalCourse implements SeplendidDataType {
 
     // Identity fields
     private final LocalCode localCode;

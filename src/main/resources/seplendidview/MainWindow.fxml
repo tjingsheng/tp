@@ -35,22 +35,20 @@
         </StackPane>
 
         <HBox HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" styleClass="background-color">
-          <VBox fx:id="personList"  minWidth="200" prefWidth="200" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+          <VBox fx:id="itemList"  minWidth="200" prefWidth="200" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
             <padding>
               <Insets top="10" right="10" bottom="20" left="20" />
             </padding>
-            <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS" />
+            <StackPane fx:id="itemListPanelPlaceholder" VBox.vgrow="ALWAYS" />
           </VBox>
 
-          <VBox fx:id="personDetail" styleClass="background-color" minWidth="200" prefWidth="200" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" >
+          <VBox fx:id="itemDetail" styleClass="background-color" minWidth="200" prefWidth="200" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" >
             <padding>
               <Insets top="10" right="20" bottom="20" left="10" />
             </padding>
-            <StackPane fx:id="personDetailPanelPlaceholder" VBox.vgrow="ALWAYS" styleClass="background-color" />
+            <StackPane fx:id="itemDetailPanelPlaceholder" VBox.vgrow="ALWAYS" styleClass="background-color" />
           </VBox>
         </HBox>
-
-        <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
       </VBox>
     </Scene>
   </scene>

@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import seedu.address.MainApp;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.util.StringUtil;
-import seedu.address.logic.Logic;
+import seedu.address.logic.SeplendidLogic;
 
 /**
  * The manager of the UI component.
@@ -24,14 +24,14 @@ public class UiManager implements Ui {
     private static final String ICON_APPLICATION = "/images/address_book_32.png";
     private static final String SONO_FONT_TTF = "/font/Sono-Light.ttf";
 
-    private Logic logic;
+    private SeplendidLogic seplendidLogic;
     private MainWindow mainWindow;
 
     /**
      * Creates a {@code UiManager} with the given {@code Logic}.
      */
-    public UiManager(Logic logic) {
-        this.logic = logic;
+    public UiManager(SeplendidLogic seplendidLogic) {
+        this.seplendidLogic = seplendidLogic;
     }
 
     @Override
@@ -42,7 +42,7 @@ public class UiManager implements Ui {
         primaryStage.getIcons().add(getImage(ICON_APPLICATION));
 
         try {
-            mainWindow = new MainWindow(primaryStage, logic);
+            mainWindow = new MainWindow(primaryStage, seplendidLogic);
             mainWindow.show(); //This should be called before creating other UI parts
             mainWindow.fillInnerParts();
             Font font = Font.loadFont(getClass().getResourceAsStream(SONO_FONT_TTF), 13);
@@ -103,5 +103,4 @@ public class UiManager implements Ui {
         Platform.exit();
         System.exit(1);
     }
-
 }

@@ -2,15 +2,20 @@ package seedu.address.seplendidui;
 
 import java.util.logging.Logger;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
+import seedu.address.logic.SeplendidLogic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.SeplendidDataType;
+import seedu.address.model.localcourse.LocalCourse;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -23,11 +28,11 @@ public class MainWindow extends UiPart<Stage> {
     private final Logger logger = LogsCenter.getLogger(getClass());
 
     private Stage primaryStage;
-    private Logic logic;
+    private SeplendidLogic seplendidLogic;
 
     // Independent Ui parts residing in this Ui container
-    private PersonListPanel personListPanel;
-    private PersonDetailPanel personDetailPanel;
+    private ItemListPanel<SeplendidDataType> itemListPanel;
+    private ItemDetailPanel<SeplendidDataType> itemDetailPanel;
 
     private ResultBox resultBox;
 
@@ -38,24 +43,24 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane resultBoxPlaceholder;
 
     @FXML
-    private StackPane personListPanelPlaceholder;
+    private StackPane itemListPanelPlaceholder;
 
     @FXML
-    private StackPane personDetailPanelPlaceholder;
+    private StackPane itemDetailPanelPlaceholder;
 
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
-    public MainWindow(Stage primaryStage, Logic logic) {
+    public MainWindow(Stage primaryStage, SeplendidLogic seplendidLogic) {
         super(FXML, primaryStage);
 
         // Set dependencies
         this.primaryStage = primaryStage;
-        this.logic = logic;
+        this.seplendidLogic = seplendidLogic;
 
         // Configure the UI
-        setWindowDefaultSize(logic.getGuiSettings());
+        setWindowDefaultSize(seplendidLogic.getGuiSettings());
     }
 
     public Stage getPrimaryStage() {
@@ -66,11 +71,14 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        personDetailPanel = new PersonDetailPanel();
-        personDetailPanelPlaceholder.getChildren().add(personDetailPanel.getRoot());
+        itemDetailPanel = new ItemDetailPanel<>();
+        itemDetailPanelPlaceholder.getChildren().add(itemDetailPanel.getRoot());
 
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList(), personDetailPanel);
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+        ObservableList<LocalCourse> localCourseList = seplendidLogic.getFilteredLocalCourseCatalogue();
+        ObservableList<SeplendidDataType> itemList = convertList(localCourseList);
+
+        itemListPanel = new ItemListPanel<>(itemList, itemDetailPanel);
+        itemListPanelPlaceholder.getChildren().add(itemListPanel.getRoot());
 
         resultBox = new ResultBox();
         resultBoxPlaceholder.getChildren().add(resultBox.getRoot());
@@ -78,6 +86,11 @@ public class MainWindow extends UiPart<Stage> {
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
+    public static <T extends SeplendidDataType> ObservableList<SeplendidDataType>
+        convertList(ObservableList<T> sourceList) {
+        return FXCollections.observableArrayList(sourceList);
+    }
+
 
     /**
      * Sets the default size based on {@code guiSettings}.
@@ -102,12 +115,12 @@ public class MainWindow extends UiPart<Stage> {
     private void handleExit() {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
                 (int) primaryStage.getX(), (int) primaryStage.getY());
-        logic.setGuiSettings(guiSettings);
+        seplendidLogic.setGuiSettings(guiSettings);
         primaryStage.hide();
     }
 
-    public PersonListPanel getPersonListPanel() {
-        return personListPanel;
+    public ItemListPanel<? extends SeplendidDataType> getItemListPanel() {
+        return itemListPanel;
     }
 
     /**
@@ -117,7 +130,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
         try {
-            CommandResult commandResult = logic.execute(commandText);
+            CommandResult commandResult = seplendidLogic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultBox.setFeedbackToUser(commandResult.getFeedbackToUser());
 

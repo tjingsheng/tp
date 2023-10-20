@@ -100,7 +100,7 @@ public class MainApp extends Application {
         // Developer's note: UI is able to use seplendidLogic to execute commands
         seplendidLogic = new SeplendidLogicManager(seplendidModel, storage);
 
-        ui = new UiManager(ab3Logic);
+        ui = new UiManager(seplendidLogic);
     }
 
     /**

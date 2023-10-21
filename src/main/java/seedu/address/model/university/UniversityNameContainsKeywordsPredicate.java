@@ -18,8 +18,8 @@ public class UniversityNameContainsKeywordsPredicate implements Predicate<Univer
     @Override
     public boolean test(University university) {
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(university.getUniversityName().getName(),
-                        keyword));
+                .anyMatch(keyword -> university.getUniversityName().getName().toLowerCase()
+                        .contains(keyword.toLowerCase()));
     }
 
     @Override

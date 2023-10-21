@@ -21,6 +21,7 @@ public class PartnerCode {
      * @param partnerCode A valid localCode.
      */
     public PartnerCode(String partnerCode) {
+        partnerCode = partnerCode.trim();
         requireNonNull(partnerCode);
         checkArgument(isValidPartnerCode(partnerCode), MESSAGE_CONSTRAINTS);
         value = partnerCode;

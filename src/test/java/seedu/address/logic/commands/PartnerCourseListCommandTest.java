@@ -1,7 +1,7 @@
 package seedu.address.logic.commands;
 
 import static seedu.address.logic.commands.CommandTestUtil.assertSeplendidCommandSuccess;
-import static seedu.address.logic.commands.CommandTestUtil.showLocalCourseAtIndex;
+import static seedu.address.logic.commands.CommandTestUtil.showPartnerCourseAtIndex;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_OBJECT;
 import static seedu.address.testutil.TypicalObjects.getTypicalLocalCourseCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalNoteCatalogue;
@@ -18,8 +18,7 @@ import seedu.address.model.UserPrefs;
 /**
  * Contains integration tests (interaction with the Model) and unit tests for ListCommand.
  */
-public class LocalCourseListCommandTest {
-
+public class PartnerCourseListCommandTest {
     private SeplendidModel model;
     private SeplendidModel expectedModel;
 
@@ -27,21 +26,20 @@ public class LocalCourseListCommandTest {
     public void setUp() {
         model = new SeplendidModelManager(getTypicalLocalCourseCatalogue(), new UserPrefs(),
                 getTypicalPartnerCourseCatalogue(), getTypicalUniversityCatalogue(), getTypicalNoteCatalogue());
-        expectedModel = new SeplendidModelManager(model.getLocalCourseCatalogue(), new UserPrefs(),
-                getTypicalPartnerCourseCatalogue(), getTypicalUniversityCatalogue(), getTypicalNoteCatalogue());
+        expectedModel = new SeplendidModelManager(getTypicalLocalCourseCatalogue(), new UserPrefs(),
+                model.getPartnerCourseCatalogue(), getTypicalUniversityCatalogue(), getTypicalNoteCatalogue());
     }
 
     @Test
-    public void execute_listIsNotFiltered_showsSameList() {
-        assertSeplendidCommandSuccess(new LocalCourseListCommand(), model, LocalCourseListCommand.MESSAGE_SUCCESS,
+    public void execute_listNotFiltered_showsSameList() {
+        assertSeplendidCommandSuccess(new PartnerCourseListCommand(), model, PartnerCourseListCommand.MESSAGE_SUCCESS,
                 expectedModel);
     }
 
     @Test
     public void execute_listIsFiltered_showsEverything() {
-        showLocalCourseAtIndex(model, INDEX_FIRST_OBJECT);
-        assertSeplendidCommandSuccess(new LocalCourseListCommand(), model,
-                LocalCourseListCommand.MESSAGE_SUCCESS,
-                expectedModel);
+        showPartnerCourseAtIndex(model, INDEX_FIRST_OBJECT);
+        assertSeplendidCommandSuccess(new PartnerCourseListCommand(), model,
+                PartnerCourseListCommand.MESSAGE_SUCCESS, expectedModel);
     }
 }

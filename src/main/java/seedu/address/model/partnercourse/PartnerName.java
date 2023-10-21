@@ -22,6 +22,7 @@ public class PartnerName {
      * @param partnerName A valid partnername.
      */
     public PartnerName(String partnerName) {
+        partnerName = partnerName.trim();
         requireNonNull(partnerName);
         checkArgument(isValidPartnerName(partnerName), MESSAGE_CONSTRAINTS);
         value = partnerName;
@@ -31,6 +32,9 @@ public class PartnerName {
         return test.matches(VALIDATION_REGEX);
     }
 
+    public String getValue() {
+        return value;
+    }
     @Override
     public String toString() {
         return value;

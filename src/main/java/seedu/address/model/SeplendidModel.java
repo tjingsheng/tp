@@ -164,9 +164,10 @@ public interface SeplendidModel {
 
     void addUniversity(University university);
     void setUniversity(University target, University editedUniversity);
-    void updateUniversityList(Predicate<University> predicate);
 
     void updateFilteredUniversityList(Predicate<University> predicate);
+
+    void setUniversityCatalogue(ReadOnlyUniversityCatalogue universityCatalogue);
 
     ReadOnlyUniversityCatalogue getUniversityCatalogue();
 

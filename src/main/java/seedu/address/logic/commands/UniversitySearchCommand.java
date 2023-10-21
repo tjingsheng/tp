@@ -7,16 +7,20 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
-import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
-import seedu.address.seplendidui.UiUtil;
+
+/**
+ * Finds and lists all universities in SEPlendid whose name contains any of the argument keywords.
+ * Keyword matching is case insensitive.
+ */
 public class UniversitySearchCommand extends UniversityCommand {
 
     public static final String ACTION_WORD = "search";
 
     public static final String MESSAGE_SUCCESS = "Search [university_keyword]";
 
-    public static final String UNIVERSITY_SEARCH_MESSAGE_USAGE = COMMAND_WORD + ": Finds all universities whose names contain any of "
+    public static final String UNIVERSITY_SEARCH_MESSAGE_USAGE = COMMAND_WORD
+            + ": Finds all universities whose names contain any of "
             + "the specified keywords (case-insensitive) and displays them as a list.\n"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " harv";

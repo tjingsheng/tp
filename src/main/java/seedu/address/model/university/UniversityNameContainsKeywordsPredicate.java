@@ -1,11 +1,10 @@
 package seedu.address.model.university;
 
-import seedu.address.commons.util.StringUtil;
-import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.person.Person;
-
 import java.util.List;
 import java.util.function.Predicate;
+
+import seedu.address.commons.util.StringUtil;
+import seedu.address.commons.util.ToStringBuilder;
 
 /**
  * Tests that a {@code University}'s {@code UniversityName} matches any of the keywords given.
@@ -19,7 +18,8 @@ public class UniversityNameContainsKeywordsPredicate implements Predicate<Univer
     @Override
     public boolean test(University university) {
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(university.getName().fullName, keyword));
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(university.getUniversityName().getName(),
+                        keyword));
     }
 
     @Override

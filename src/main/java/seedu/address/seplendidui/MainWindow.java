@@ -49,7 +49,6 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private StackPane itemDetailPanelPlaceholder;
 
-
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
@@ -130,6 +129,23 @@ public class MainWindow extends UiPart<Stage> {
             CommandResult commandResult = seplendidLogic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultBox.setFeedbackToUser(commandResult.getFeedbackToUser());
+
+            switch (commandResult.getUiView()) {
+            case LOCAL_COURSE_LIST:
+                itemListPanel.setDisplayList(seplendidLogic.getFilteredLocalCourseCatalogue());
+                break;
+            case PARTNER_COURSE_LIST:
+                itemListPanel.setDisplayList(seplendidLogic.getFilteredPartnerCourseCatalogue());
+                break;
+            case UNIVERSITY_LIST:
+                itemListPanel.setDisplayList(seplendidLogic.getFilteredUniversityCatalogue());
+                break;
+            case NOTE_LIST:
+                itemListPanel.setDisplayList(seplendidLogic.getFilteredNoteCatalogue());
+                break;
+            default:
+                // do nothing
+            }
 
             if (commandResult.isExit()) {
                 handleExit();

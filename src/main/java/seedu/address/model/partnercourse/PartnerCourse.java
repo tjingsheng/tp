@@ -5,13 +5,14 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.Objects;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.SeplendidDataType;
 import seedu.address.model.university.University;
 
 /**
  * Represents a Partner Course in SEPlendid.
  * Guarantees: details are present and not null, field values are validated and immutable.
  */
-public class PartnerCourse {
+public class PartnerCourse implements SeplendidDataType {
     private final University partnerUniversity;
     private final PartnerCode partnerCode;
     private final PartnerName partnerName;
@@ -36,6 +37,7 @@ public class PartnerCourse {
     public PartnerName getPartnerName() {
         return partnerName;
     }
+
 
     /**
      * Returns true if both PartnerCourses have the same partnerCode.

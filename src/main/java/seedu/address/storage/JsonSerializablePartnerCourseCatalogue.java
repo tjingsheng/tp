@@ -52,6 +52,7 @@ class JsonSerializablePartnerCourseCatalogue {
             if (partnerCourseCatalogue.hasPartnerCourse(partnerCourse)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_PARTNER_COURSE);
             }
+            partnerCourseCatalogue.addPartnerCourse(partnerCourse);
         }
         return partnerCourseCatalogue;
     }

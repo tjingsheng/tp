@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 import javafx.application.Application;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import seedu.address.commons.core.Config;
 import seedu.address.commons.core.LogsCenter;
@@ -34,6 +35,8 @@ import seedu.address.model.SeplendidModelManager;
 import seedu.address.model.UniversityCatalogue;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
+import seedu.address.seplendidui.Ui;
+import seedu.address.seplendidui.UiManager;
 import seedu.address.storage.AddressBookStorage;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonLocalCourseCatalogueStorage;
@@ -48,8 +51,6 @@ import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
 import seedu.address.storage.UniversityCatalogueStorage;
 import seedu.address.storage.UserPrefsStorage;
-import seedu.address.ui.Ui;
-import seedu.address.ui.UiManager;
 
 /**
  * Runs the application.
@@ -71,6 +72,7 @@ public class MainApp extends Application {
     // New model class
     protected SeplendidModel seplendidModel;
     protected Config config;
+    protected Font font;
 
     @Override
     public void init() throws Exception {
@@ -105,7 +107,7 @@ public class MainApp extends Application {
         // Developer's note: UI is able to use seplendidLogic to execute commands
         seplendidLogic = new SeplendidLogicManager(seplendidModel, storage);
 
-        ui = new UiManager(ab3Logic);
+        ui = new UiManager(seplendidLogic);
     }
 
     /**

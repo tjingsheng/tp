@@ -2,11 +2,13 @@ package seedu.address.model.university;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import seedu.address.model.SeplendidDataType;
+
 /**
  * Represents a University in SEPlendid.
  * Guarantees: details are present and not null, field values are validated and immutable.
  */
-public class University {
+public class University implements SeplendidDataType {
     private final UniversityName universityName;
 
     /**

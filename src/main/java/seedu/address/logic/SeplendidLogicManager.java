@@ -18,8 +18,10 @@ import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyUniversityCatalogue;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
+import seedu.address.seplendidui.Ui;
 import seedu.address.storage.Storage;
 
 /**
@@ -39,6 +41,7 @@ public class SeplendidLogicManager implements SeplendidLogic {
     private final SeplendidModel model;
     private final Storage storage;
     private final SeplendidParser seplendidParser;
+    private Ui ui;
 
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
@@ -47,6 +50,11 @@ public class SeplendidLogicManager implements SeplendidLogic {
         this.model = model;
         this.storage = storage;
         seplendidParser = new SeplendidParser();
+    }
+
+    @Override
+    public void setUi(Ui ui) {
+        this.ui = ui;
     }
 
     @Override
@@ -126,7 +134,8 @@ public class SeplendidLogicManager implements SeplendidLogic {
         return model.getUniversityCatalogueFilePath();
     }
 
-
-
+    public ObservableList<Note> getFilteredNoteCatalogue() {
+        return model.getFilteredNoteList();
+    }
 
 }

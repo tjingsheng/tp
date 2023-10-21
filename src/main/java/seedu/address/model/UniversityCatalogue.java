@@ -27,6 +27,7 @@ public class UniversityCatalogue implements ReadOnlyUniversityCatalogue {
 
     public UniversityCatalogue(ReadOnlyUniversityCatalogue toBeCopied) {
         this();
+        resetData(toBeCopied);
     }
 
     /**
@@ -75,6 +76,7 @@ public class UniversityCatalogue implements ReadOnlyUniversityCatalogue {
 
         universities.setUniversity(target, editedUniversity);
     }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {

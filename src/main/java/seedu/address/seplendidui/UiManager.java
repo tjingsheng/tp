@@ -57,8 +57,8 @@ public class UiManager implements Ui {
     /**
      * Sets the default font for the given node and its children recursively.
      *
-     * @param node  The JavaFX node for which to set the default font.
-     * @param font  The font to be set.
+     * @param node The JavaFX node for which to set the default font.
+     * @param font The font to be set.
      */
     private void setDefaultFont(Node node, Font font) {
         node.setStyle(String.format("-fx-font-family: '%s';", font.getFamily()));

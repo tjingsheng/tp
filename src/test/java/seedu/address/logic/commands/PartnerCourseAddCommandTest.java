@@ -329,9 +329,6 @@ public class PartnerCourseAddCommandTest {
         }
     }
 
-    /**
-     * A Model stub that always accept the partner course being added.
-     */
     private class ModelStubAcceptingPartnerCourseAdded extends PartnerCourseAddCommandTest.SeplendidModelStub {
         final ArrayList<PartnerCourse> partnerCoursesAdded = new ArrayList<>();
 

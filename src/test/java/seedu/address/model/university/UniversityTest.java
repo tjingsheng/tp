@@ -41,7 +41,7 @@ public class UniversityTest {
         // different type -> returns false
         assertFalse(NTU.equals(5));
 
-        // different person -> returns false
+        // different university -> returns false
         assertFalse(NTU.equals(STANFORD));
 
         // different name -> returns false

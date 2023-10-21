@@ -23,15 +23,15 @@ public class UniversityNameTest {
 
     @Test
     public void isValidUniversityName() {
-        // null localName
+        // null universityName
         assertThrows(NullPointerException.class, () -> UniversityName.isValidUniversityName(null));
 
-        // invalid localName
+        // invalid universityName
         assertFalse(UniversityName.isValidUniversityName("")); // empty string
         assertFalse(UniversityName.isValidUniversityName(" ")); // spaces only
         assertFalse(UniversityName.isValidUniversityName(" How to Cook Potatoes")); // first character space
 
-        // valid localName`
+        // valid universityName`
         assertTrue(UniversityName.isValidUniversityName("How to Eat Potatoes")); // alphabets only
         assertTrue(UniversityName.isValidUniversityName("Decoding with Alyssa :D")); // alphanumeric, with symbols
         assertTrue(UniversityName.isValidUniversityName(TYPICAL_UNIVERSITY_NAME)); // alphanumeric characters

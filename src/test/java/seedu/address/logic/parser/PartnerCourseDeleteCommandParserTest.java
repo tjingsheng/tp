@@ -68,7 +68,7 @@ public class PartnerCourseDeleteCommandParserTest {
 
     @Test
     public void parse_invalidValue_failure() {
-        // invalid localCode
+        // invalid partnerCode
         assertParseFailure(parser, commandActionWord
                         + getSquareBracketWrappedArgument(INVALID_PARTNER_COURSE_CODE),
                 PartnerCode.MESSAGE_CONSTRAINTS);

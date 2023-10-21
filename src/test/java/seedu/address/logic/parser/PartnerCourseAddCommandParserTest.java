@@ -79,7 +79,7 @@ public class PartnerCourseAddCommandParserTest {
                         + getSquareBracketWrappedArgument(TYPICAL_PARTNER_COURSE_NAME),
                 expectedMessage);
 
-        // missing partnername prefix
+        // missing partnername argument
         assertParseFailure(parser, commandActionWord
                         + getSquareBracketWrappedArgument(TYPICAL_PARTNER_COURSE_CODE),
                 expectedMessage);

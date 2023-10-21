@@ -2,7 +2,7 @@ package seedu.address.logic.commands;
 
 import static seedu.address.logic.commands.CommandTestUtil.assertSeplendidCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showLocalCourseAtIndex;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_OBJECT;
 import static seedu.address.testutil.TypicalObjects.getTypicalLocalCourseCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalNoteCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalPartnerCourseCatalogue;
@@ -39,7 +39,7 @@ public class LocalCourseListCommandTest {
 
     @Test
     public void execute_listIsFiltered_showsEverything() {
-        showLocalCourseAtIndex(model, INDEX_FIRST_PERSON);
+        showLocalCourseAtIndex(model, INDEX_FIRST_OBJECT);
         assertSeplendidCommandSuccess(new LocalCourseListCommand(), model,
                 LocalCourseListCommand.MESSAGE_SUCCESS,
                 expectedModel);

@@ -11,9 +11,11 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.SeplendidDataType;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.partnercourse.PartnerCourse;
+import seedu.address.model.university.University;
 
 /**
  * Panel containing the list of items.
+ *
  * @param <T> The type of items in the list.
  */
 public class ItemListPanel<T extends SeplendidDataType> extends UiPart<Region> {
@@ -35,8 +37,19 @@ public class ItemListPanel<T extends SeplendidDataType> extends UiPart<Region> {
 
         // Add selection listener to update the ItemDetailPanel
         itemListView.getSelectionModel()
-            .selectedItemProperty()
-            .addListener((observable, oldValue, newValue) -> showItemDetails(newValue));
+                .selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> showItemDetails(newValue));
+    }
+
+    /**
+     * Sets the appropriate ObservableList to display.
+     */
+    public void setDisplayList(ObservableList<? extends T> displayList) {
+        // This typecast is safe as T is a subtype of SeplendidDataType
+        // and displayList is a list containing subtypes of T.
+        @SuppressWarnings("unchecked")
+        ObservableList<T> listView = (ObservableList<T>) displayList;
+        itemListView.setItems(listView);
     }
 
     /**
@@ -54,6 +67,8 @@ public class ItemListPanel<T extends SeplendidDataType> extends UiPart<Region> {
                 setGraphic(new LocalCourseItem((LocalCourse) item, getIndex() + 1).getRoot());
             } else if (item instanceof PartnerCourse) {
                 setGraphic(new PartnerCourseItem((PartnerCourse) item, getIndex() + 1).getRoot());
+            } else if (item instanceof University) {
+                setGraphic(new UniversityItem((University) item, getIndex() + 1).getRoot());
             }
         }
     }
@@ -61,6 +76,7 @@ public class ItemListPanel<T extends SeplendidDataType> extends UiPart<Region> {
 
     /**
      * Show the details of the selected item in the ItemDetailPanel.
+     *
      * @param item The selected item
      */
     private void showItemDetails(T item) {

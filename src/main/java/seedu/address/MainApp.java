@@ -108,6 +108,7 @@ public class MainApp extends Application {
         seplendidLogic = new SeplendidLogicManager(seplendidModel, storage);
 
         ui = new UiManager(seplendidLogic);
+        seplendidLogic.setUi(ui);
     }
 
     /**
@@ -194,7 +195,7 @@ public class MainApp extends Application {
             initialNoteCatalogue = new NoteCatalogue();
         }
         return new SeplendidModelManager(initialLocalCourseCatalogue, userPrefs, initialPartnerCourseCatalogue,
-                                         initialUniversityCatalogue, initialNoteCatalogue);
+                initialUniversityCatalogue, initialNoteCatalogue);
     }
 
     private void initLogging(Config config) {

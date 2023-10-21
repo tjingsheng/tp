@@ -9,6 +9,7 @@ import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.partnercourse.PartnerCourse;
+import seedu.address.model.university.University;
 
 /**
  * Panel containing the details of an item.
@@ -30,6 +31,7 @@ public class ItemDetailPanel<SeplendidDataType> extends UiPart<Region> {
 
     /**
      * Set the details of the selected item.
+     *
      * @param item The selected item
      */
     public void setItemDetail(SeplendidDataType item) {
@@ -41,6 +43,7 @@ public class ItemDetailPanel<SeplendidDataType> extends UiPart<Region> {
     }
 
     //TODO: Convert it to single item instead of list, detail panel should always be a single item.
+
     /**
      * Custom {@code ListCell} that displays the details of an {@code Item}.
      */
@@ -56,6 +59,8 @@ public class ItemDetailPanel<SeplendidDataType> extends UiPart<Region> {
                 setGraphic(new LocalCourseDetail((LocalCourse) item).getRoot());
             } else if (item instanceof PartnerCourse) {
                 setGraphic(new PartnerCourseDetail((PartnerCourse) item).getRoot());
+            } else if (item instanceof University) {
+                setGraphic(new UniversityDetail((University) item).getRoot());
             }
         }
     }

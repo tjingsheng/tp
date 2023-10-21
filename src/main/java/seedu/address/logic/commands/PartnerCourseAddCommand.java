@@ -8,6 +8,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.partnercourse.PartnerCourse;
+import seedu.address.seplendidui.UiUtil;
 
 /**
  * Adds a partner course to the PartnerCourseCatalogue.
@@ -51,7 +52,8 @@ public class PartnerCourseAddCommand extends PartnerCourseCommand {
         }
 
         seplendidModel.addPartnerCourse(partnerCourseToAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(partnerCourseToAdd)));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(partnerCourseToAdd)),
+                UiUtil.ListViewModel.PARTNER_COURSE_LIST);
     }
 
     @Override

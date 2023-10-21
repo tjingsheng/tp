@@ -7,20 +7,22 @@ import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.SeplendidDataType;
 import seedu.address.model.tag.Tag;
 
 /**
  * Represents a note in SEPlendid
  */
-public class Note {
+public class Note implements SeplendidDataType {
     private final Content content;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Constructs an {@code Note}.
      * Every field must be present and not null.
+     *
      * @param content Content for the Note
-     * @param tag Tag for the note
+     * @param tag     Tag for the note
      */
     public Note(Content content, Tag tag) {
         requireAllNonNull(content, tag);
@@ -31,8 +33,9 @@ public class Note {
     /**
      * Constructs an {@code Note}.
      * Every field must be present and not null.
+     *
      * @param content Content for the Note
-     * @param tags Tags for the note
+     * @param tags    Tags for the note
      */
     public Note(Content content, Set<Tag> tags) {
         requireAllNonNull(content, tags);

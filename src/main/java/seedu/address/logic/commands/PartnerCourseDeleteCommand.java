@@ -11,6 +11,7 @@ import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
+import seedu.address.seplendidui.UiUtil;
 
 /**
  * Deletes a partner course in PartnerCourseCatalogue.
@@ -49,7 +50,8 @@ public class PartnerCourseDeleteCommand extends PartnerCourseCommand {
         }
         partnerCourseToDelete.ifPresent(seplendidModel::deletePartnerCourse);
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(partnerCourseToDelete.get())));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(partnerCourseToDelete.get())),
+                UiUtil.ListViewModel.PARTNER_COURSE_LIST);
     }
 
     @Override

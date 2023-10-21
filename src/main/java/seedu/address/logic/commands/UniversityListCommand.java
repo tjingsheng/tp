@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
+import seedu.address.seplendidui.UiUtil;
 
 /**
  * Lists all universities in the UniversitiesCatalogue.
@@ -26,6 +27,6 @@ public class UniversityListCommand extends UniversityCommand {
     public CommandResult execute(SeplendidModel seplendidModel) throws CommandException {
         requireNonNull(seplendidModel);
         seplendidModel.updateFilteredUniversityList(SeplendidModel.PREDICATE_SHOW_ALL_UNIVERSITIES);
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(MESSAGE_SUCCESS, UiUtil.ListViewModel.UNIVERSITY_LIST);
     }
 }

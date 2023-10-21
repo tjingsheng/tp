@@ -11,6 +11,7 @@ import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.seplendidui.UiUtil;
 
 /**
  * Deletes a local course identified using its local code from the address book.
@@ -59,7 +60,8 @@ public class LocalCourseDeleteCommand extends LocalCourseCommand {
         }
         localCourseToDelete.ifPresent(seplendidModel::deleteLocalCourse);
         // At this point we can already assume localCourseToDelete is not empty.
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(localCourseToDelete.get())));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(localCourseToDelete.get())),
+                UiUtil.ListViewModel.LOCAL_COURSE_LIST);
     }
 
     @Override

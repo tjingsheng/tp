@@ -8,6 +8,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.notes.Note;
+import seedu.address.seplendidui.UiUtil;
 
 /**
  * Adds a note to the NoteList.
@@ -51,7 +52,8 @@ public class NoteAddCommand extends NoteCommand {
         requireNonNull(seplendidModel);
 
         seplendidModel.addNote(noteToAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(noteToAdd)));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(noteToAdd)),
+                UiUtil.ListViewModel.NOTE_LIST);
 
     }
 

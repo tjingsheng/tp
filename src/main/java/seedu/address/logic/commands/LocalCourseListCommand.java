@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
+import seedu.address.seplendidui.UiUtil;
 
 /**
  * Lists all local courses in the LocalCourseCatalogue.
@@ -34,7 +35,8 @@ public class LocalCourseListCommand extends LocalCourseCommand {
     public CommandResult execute(SeplendidModel seplendidModel) throws CommandException {
         requireNonNull(seplendidModel);
         seplendidModel.updateFilteredLocalCourseList(SeplendidModel.PREDICATE_SHOW_ALL_LOCAL_COURSES);
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(MESSAGE_SUCCESS,
+                UiUtil.ListViewModel.LOCAL_COURSE_LIST);
     }
 
 }

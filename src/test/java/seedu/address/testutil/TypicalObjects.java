@@ -37,6 +37,10 @@ public class TypicalObjects {
 
     public static final String EDGE_CASE_VALID_PARTNER_COURSE_CODE = "V";
     public static final String EDGE_CASE_VALID_PARTNER_COURSE_NAME = " Game Development";
+
+
+    public static final String INVALID_PARTNER_COURSE_CODE = "$H23Y1";
+    public static final String INVALID_PARTNER_COURSE_NAME = " ";
     public static final String EDGE_CASE_VALID_UNIVERSITY_NAME = " School";
 
     public static final LocalCourse CS2040S = new LocalCourseBuilder().withLocalCode("CS2040S")
@@ -58,6 +62,11 @@ public class TypicalObjects {
     public static final PartnerCourse TYPICAL_PARTNER_COURSE = new PartnerCourseBuilder()
             .withPartnerUniversity(TYPICAL_PARTNER_UNIVERSITY_NAME).withPartnerCode(TYPICAL_PARTNER_COURSE_CODE)
             .withPartnerName(TYPICAL_PARTNER_COURSE_NAME).build();
+
+    public static final PartnerCourse EDGE_CASE_VALID_PARTNER_COURSE = new PartnerCourseBuilder()
+            .withPartnerUniversity(new UniversityName(EDGE_CASE_VALID_UNIVERSITY_NAME))
+            .withPartnerCode(EDGE_CASE_VALID_PARTNER_COURSE_CODE)
+            .withPartnerName(EDGE_CASE_VALID_PARTNER_COURSE_NAME).build();
 
     public static final PartnerCourse COMP1000 = new PartnerCourseBuilder()
             .withPartnerUniversity(new UniversityName("University of Edinburgh"))

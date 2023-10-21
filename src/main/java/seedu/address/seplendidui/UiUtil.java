@@ -1,5 +1,8 @@
 package seedu.address.seplendidui;
 
+/**
+ * Utility class for the UI.
+ */
 public class UiUtil {
 
     /**

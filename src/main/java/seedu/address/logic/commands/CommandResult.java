@@ -39,6 +39,9 @@ public class CommandResult {
         this.uiView = uiView;
     }
 
+    /**
+     * This is the overloaded constructor, which defaults to LOCAL_COURSE_LIST view.
+     */
     public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;

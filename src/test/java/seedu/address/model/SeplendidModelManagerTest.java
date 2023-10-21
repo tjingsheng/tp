@@ -140,7 +140,7 @@ public class SeplendidModelManagerTest {
     }
 
     @Test
-    public void hasPartnerCourse_PartnerCourseInPartnerCourseCatalogue_returnsTrue() {
+    public void hasPartnerCourse_partnerCourseInPartnerCourseCatalogue_returnsTrue() {
         modelManager.addPartnerCourse(COMP1000);
         assertTrue(modelManager.hasPartnerCourse(COMP1000));
     }

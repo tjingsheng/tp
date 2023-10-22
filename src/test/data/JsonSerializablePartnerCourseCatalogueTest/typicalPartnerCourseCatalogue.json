@@ -1,0 +1,11 @@
+{
+  "partnerCourses" : [ {
+    "universityName" : "University of Edinburgh",
+    "partnerCode" : "COMP1000",
+    "partnerName" : "Introduction to Programming"
+  }, {
+    "universityName" : "University of Leeds",
+    "partnerCode" : "COMP2000",
+    "partnerName" : "Introduction to Databases"
+  } ]
+}

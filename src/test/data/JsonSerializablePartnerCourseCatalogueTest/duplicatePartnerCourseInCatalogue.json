@@ -1,0 +1,14 @@
+{
+  "partnerCourses" : [
+    {
+      "universityName" : "University of Leeds",
+      "partnerCode" : "COMP2000",
+      "partnerName" : "Introduction to Databases"
+    },
+    {
+      "universityName" : "University of Leeds",
+      "partnerCode" : "COMP2000",
+      "partnerName" : "Introduction to Databases"
+    }
+  ]
+}

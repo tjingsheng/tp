@@ -20,6 +20,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityName;
 
 /**
@@ -202,6 +203,7 @@ public class ParserUtil {
         }
         return new UniversityName(universityName);
     }
+
     /**
      * Parses a {@code String content}.
      * Leading and trailing whitespaces will be trimmed.

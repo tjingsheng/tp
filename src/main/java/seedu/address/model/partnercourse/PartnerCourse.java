@@ -82,7 +82,7 @@ public class PartnerCourse implements SeplendidDataType {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("partnerUniversity", partnerUniversity)
+                .add("partnerUniversity", partnerUniversity.getUniversityName().toString())
                 .add("partnerCode", partnerCode)
                 .add("partnerName", partnerName)
                 .toString();

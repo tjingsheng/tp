@@ -11,6 +11,7 @@ import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.partnercourse.PartnerName;
 import seedu.address.model.university.University;
+import seedu.address.model.university.UniversityName;
 
 /**
  * Parses input arguments and creates a new PartnerCourseCommand object.
@@ -42,12 +43,12 @@ public class PartnerCourseAddCommandParser implements Parser<PartnerCourseAddCom
         }
 
 
-        University university = new University(ParserUtil.parseUniversityName(parameterToArgMap
-                .getValue(PARAMETER_UNIVERSITY).get()));
+        UniversityName universityName = ParserUtil.parseUniversityName(parameterToArgMap
+                .getValue(PARAMETER_UNIVERSITY).get());
         PartnerCode partnerCode = ParserUtil.parsePartnerCode(parameterToArgMap.getValue(PARAMETER_PARTNERCODE).get());
         PartnerName partnerName = ParserUtil.parsePartnerName(parameterToArgMap.getValue(PARAMETER_PARTNERNAME).get());
 
-        PartnerCourse partnerCourse = new PartnerCourse(university, partnerCode, partnerName);
+        PartnerCourse partnerCourse = new PartnerCourse(new University(universityName), partnerCode, partnerName);
 
         return new PartnerCourseAddCommand(partnerCourse);
     }

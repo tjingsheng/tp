@@ -24,6 +24,7 @@ public class PartnerCourseUtil {
      */
     public static String getPartnerCourseArgumentsForAddCommand(PartnerCourse partnerCourse) {
         StringBuilder sb = new StringBuilder("[");
+        sb.append(partnerCourse.getPartnerUniversity()).append("] [");
         sb.append(partnerCourse.getPartnerCode()).append("] [");
         sb.append(partnerCourse.getPartnerName()).append("]");
         return sb.toString();

@@ -9,8 +9,14 @@ import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_OBJECT;
 import static seedu.address.testutil.TypicalObjects.INVALID_LOCAL_COURSE_CODE;
 import static seedu.address.testutil.TypicalObjects.INVALID_LOCAL_COURSE_NAME;
+import static seedu.address.testutil.TypicalObjects.INVALID_PARTNER_COURSE_CODE;
+import static seedu.address.testutil.TypicalObjects.INVALID_PARTNER_COURSE_NAME;
+import static seedu.address.testutil.TypicalObjects.INVALID_UNIVERSITY_NAME;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE_CODE;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE_NAME;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE_CODE;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE_NAME;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_UNIVERSITY_NAME;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -22,11 +28,14 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalName;
+import seedu.address.model.partnercourse.PartnerCode;
+import seedu.address.model.partnercourse.PartnerName;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.university.UniversityName;
 
 public class ParserUtilTest {
     private static final String INVALID_NAME = "R@chel";
@@ -202,6 +211,8 @@ public class ParserUtilTest {
         assertEquals(expectedTagSet, actualTagSet);
     }
 
+    //localcourse
+
     @Test
     public void parseLocalCode_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> ParserUtil.parseLocalCode((String) null));
@@ -246,6 +257,77 @@ public class ParserUtilTest {
         String localNameWithWhitespace = WHITESPACE + TYPICAL_LOCAL_COURSE_NAME + WHITESPACE;
         LocalName expectedLocalName = new LocalName(TYPICAL_LOCAL_COURSE_NAME);
         assertEquals(expectedLocalName, ParserUtil.parseLocalName(localNameWithWhitespace));
+    }
+
+    //partner course
+
+    @Test
+    public void parseUniversityName_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseUniversityName((String) null));
+    }
+
+    @Test
+    public void parseUniversityName_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityName(INVALID_UNIVERSITY_NAME));
+    }
+
+    @Test
+    public void parseUniversityName_validValueWithoutWhitespace_returnsUniversityName() throws Exception {
+        UniversityName expectedUniversityName = new UniversityName(TYPICAL_UNIVERSITY_NAME);
+        assertEquals(expectedUniversityName, ParserUtil.parseUniversityName(TYPICAL_UNIVERSITY_NAME));
+    }
+
+    @Test
+    public void parseUniversityName_validValueWithWhitespace_returnsTrimmedUniversityName() throws Exception {
+        String universityNameWithWhitespace = WHITESPACE + TYPICAL_UNIVERSITY_NAME + WHITESPACE;
+        UniversityName expectedUniversityName = new UniversityName(TYPICAL_UNIVERSITY_NAME);
+        assertEquals(expectedUniversityName, ParserUtil.parseUniversityName(universityNameWithWhitespace));
+    }
+
+    @Test
+    public void parsePartnerCode_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parsePartnerCode((String) null));
+    }
+
+    @Test
+    public void parsePartnerCode_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCode(INVALID_PARTNER_COURSE_CODE));
+    }
+
+    @Test
+    public void parsePartnerCode_validValueWithoutWhitespace_returnsPartnerCode() throws Exception {
+        PartnerCode expectedPartnerCode = new PartnerCode(TYPICAL_PARTNER_COURSE_CODE);
+        assertEquals(expectedPartnerCode, ParserUtil.parsePartnerCode(TYPICAL_PARTNER_COURSE_CODE));
+    }
+
+    @Test
+    public void parsePartnerCode_validValueWithWhitespace_returnsTrimmedPartnerCode() throws Exception {
+        String partnerCodeWithWhitespace = WHITESPACE + TYPICAL_PARTNER_COURSE_CODE + WHITESPACE;
+        PartnerCode expectedPartnerCode = new PartnerCode(TYPICAL_PARTNER_COURSE_CODE);
+        assertEquals(expectedPartnerCode, ParserUtil.parsePartnerCode(partnerCodeWithWhitespace));
+    }
+
+    @Test
+    public void parsePartnerName_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parsePartnerName((String) null));
+    }
+
+    @Test
+    public void parsePartnerName_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerName(INVALID_PARTNER_COURSE_NAME));
+    }
+
+    @Test
+    public void parsePartnerName_validValueWithoutWhitespace_returnsPartnerName() throws Exception {
+        PartnerName expectedPartnerName = new PartnerName(TYPICAL_PARTNER_COURSE_NAME);
+        assertEquals(expectedPartnerName, ParserUtil.parsePartnerName(TYPICAL_PARTNER_COURSE_NAME));
+    }
+
+    @Test
+    public void parsePartnerName_validValueWithWhitespace_returnsTrimmedPartnerName() throws Exception {
+        String partnerNameWithWhitespace = WHITESPACE + TYPICAL_PARTNER_COURSE_NAME + WHITESPACE;
+        PartnerName expectedPartnerName = new PartnerName(TYPICAL_PARTNER_COURSE_NAME);
+        assertEquals(expectedPartnerName, ParserUtil.parsePartnerName(partnerNameWithWhitespace));
     }
 
     @Test

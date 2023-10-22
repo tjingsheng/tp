@@ -69,7 +69,7 @@ public class JsonLocalCourseCatalogueStorageTest {
     }
 
     @Test
-    public void readLocalCourseCatalogue_invalidAndValidPersonLocalCourseCatalogue_throwDataLoadingException() {
+    public void readLocalCourseCatalogue_invalidAndValidLocalCourseCatalogue_throwDataLoadingException() {
         assertThrows(DataLoadingException.class, () ->
                 readLocalCourseCatalogue("invalidAndValidLocalCourseCatalogue.json"));
     }

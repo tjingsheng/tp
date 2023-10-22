@@ -79,10 +79,16 @@ public class TypicalObjects {
             .withPartnerUniversity(new UniversityName("University of Zurich"))
             .withPartnerCode("COMP3000").withPartnerName("Introduction to Networks").build();
 
+    public static final PartnerCourse COMP4000 = new PartnerCourseBuilder()
+            .withPartnerUniversity(new UniversityName("Seoul National University"))
+            .withPartnerCode("COMP4000").withPartnerName("Introduction to Game Development").build();
+
+
     // University
     public static final University NTU = new University(new UniversityName("Nanyang Technological University"));
     public static final University STANFORD = new University(new UniversityName("Stanford University"));
     public static final University WATERLOO = new University(new UniversityName("University of Waterloo"));
+    public static final University SNU = new University(new UniversityName("Seoul National University"));
     // Note
     public static final Note NOTE1 = new Note(new Content("Nanyang Technological University"),
             new Tag("university"));

@@ -4,13 +4,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.localcourse.LocalCourse;
-import seedu.address.model.localcourse.LocalName;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityName;
 
 /**
- * Jackson-friendly version of {@link LocalCourse}.
+ * Jackson-friendly version of {@link University}.
  */
 class JsonAdaptedUniversity {
 
@@ -20,7 +18,7 @@ class JsonAdaptedUniversity {
 
 
     /**
-     * Constructs a {@code JsonAdaptedUniversity} with the given localCourse details.
+     * Constructs a {@code JsonAdaptedUniversity} with the given university details.
      */
     @JsonCreator
     public JsonAdaptedUniversity(@JsonProperty("university") String universityName) {
@@ -46,7 +44,7 @@ class JsonAdaptedUniversity {
                     UniversityName.class.getSimpleName()));
         }
         if (!UniversityName.isValidUniversityName(universityName)) {
-            throw new IllegalValueException(LocalName.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(UniversityName.MESSAGE_CONSTRAINTS);
         }
         final UniversityName modelUniversityName = new UniversityName(universityName);
 

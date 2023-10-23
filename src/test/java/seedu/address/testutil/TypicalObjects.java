@@ -115,25 +115,18 @@ public class TypicalObjects {
             .withPartnerUnit(5.0)
             .build();
 
-    public static final PartnerCourse COMP1000 = new PartnerCourseBuilder()
-            .withPartnerUniversity(new UniversityName("University of Edinburgh"))
-            .withPartnerCode("COMP1000").withPartnerName("Introduction to Programming").build();
-    public static final PartnerCourse COMP2000 = new PartnerCourseBuilder()
-            .withPartnerUniversity(new UniversityName("University of Leeds"))
-            .withPartnerCode("COMP2000").withPartnerName("Introduction to Databases").build();
-    public static final PartnerCourse COMP3000 = new PartnerCourseBuilder()
-            .withPartnerUniversity(new UniversityName("University of Zurich"))
-            .withPartnerCode("COMP3000").withPartnerName("Introduction to Networks").build();
 
     // University
     public static final University NTU = new University(new UniversityName("Nanyang Technological University"));
     public static final University STANFORD = new University(new UniversityName("Stanford University"));
     public static final University WATERLOO = new University(new UniversityName("University of Waterloo"));
     // Note
-    public static final Note NOTE1 = new Note(new Content("Nanyang Technological University"),
-            new Tag("university"));
-    public static final Note NOTE2 = new Note(new Content("Application Deadline 1 December 2023"),
-            new Tag("deadline"));
+    public static final Note NOTE1 =
+        new Note(new Content("Nanyang Technological University"),
+                 new Tag("university"));
+    public static final Note NOTE2 =
+        new Note(new Content("Application Deadline 1 December 2023"),
+                 new Tag("deadline"));
     private TypicalObjects() {
     } // prevents instantiation
 

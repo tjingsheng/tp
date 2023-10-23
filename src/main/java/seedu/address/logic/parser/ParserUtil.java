@@ -234,6 +234,7 @@ public class ParserUtil {
         }
         return new UniversityName(universityName);
     }
+
     /**
      * Parses a {@code String content}.
      * Leading and trailing whitespaces will be trimmed.

@@ -95,8 +95,8 @@ public class SampleDataUtil {
 
     public static University[] getSampleUniversities() {
         return new University[] {
-            new University(new UniversityName("Imperial College of London")),
-            new University(new UniversityName("Harvard University"))
+                new University(new UniversityName("Imperial College of London")),
+                new University(new UniversityName("Harvard University"))
         };
     }
 
@@ -110,11 +110,11 @@ public class SampleDataUtil {
 
     public static PartnerCourse[] getSamplePartnerCourses() {
         return new PartnerCourse[] {new PartnerCourse(new University(new UniversityName("Boston College")),
-            new PartnerCode("COM1231"),
-            new PartnerName("Discrete Mathematics")),
-            new PartnerCourse(new University(new UniversityName("Harvard University")),
-                new PartnerCode("COM3041"),
-                new PartnerName("Computer Networks"))
+                new PartnerCode("COM1231"),
+                new PartnerName("Discrete Mathematics")),
+                                    new PartnerCourse(new University(new UniversityName("Harvard University")),
+                                            new PartnerCode("COM3041"),
+                                            new PartnerName("Computer Networks"))
         };
     }
 
@@ -128,8 +128,8 @@ public class SampleDataUtil {
 
     public static Note[] getSampleNotes() {
         return new Note[] {new Note(new Content("Dummy Note 1"),
-            new Tag("dummy")),
-            new Note(new Content("Dummy Note 2"), new Tag("dummy"))
+                new Tag("dummy")),
+                           new Note(new Content("Dummy Note 2"), new Tag("dummy"))
         };
     }
 

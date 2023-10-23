@@ -6,6 +6,7 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.parser.Prefix;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.person.Person;
@@ -67,6 +68,7 @@ public class Messages {
     /**
      * Formats the {@code university} for display to the user.
      * Overloaded method.
+     *
      * @param university
      * @return
      */
@@ -87,6 +89,20 @@ public class Messages {
                 .append(partnerCourse.getPartnerCode())
                 .append("; PartnerName: ")
                 .append(partnerCourse.getPartnerName());
+        return builder.toString();
+    }
+
+    /**
+     * Formast the {@code mapping} for display to the user.
+     * Overloaded method.
+     */
+    public static String format(Mapping mapping) {
+        final StringBuilder builder = new StringBuilder("LocalCode: ");
+        builder.append(mapping.getLocalCode())
+                .append("; UniversityName: ")
+                .append(mapping.getUniversityName())
+                .append("; PartnerCode: ")
+                .append(mapping.getPartnerCode());
         return builder.toString();
     }
 

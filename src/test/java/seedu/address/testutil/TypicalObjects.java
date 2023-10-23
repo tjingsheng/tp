@@ -35,6 +35,14 @@ public class TypicalObjects {
     public static final String INVALID_LOCAL_COURSE_CODE = "$HOW2BECOMERICH";
     public static final String INVALID_LOCAL_COURSE_NAME = " ";
 
+    public static final String EDGE_CASE_VALID_PARTNER_COURSE_CODE = "V";
+    public static final String EDGE_CASE_VALID_PARTNER_COURSE_NAME = " Game Development";
+
+
+    public static final String INVALID_PARTNER_COURSE_CODE = "$H23Y1";
+    public static final String INVALID_PARTNER_COURSE_NAME = " ";
+    public static final String EDGE_CASE_VALID_UNIVERSITY_NAME = " School";
+
     public static final LocalCourse CS2040S = new LocalCourseBuilder().withLocalCode("CS2040S")
             .withLocalName("Data Structures & Algorithms").build();
     public static final LocalCourse CS3230 = new LocalCourseBuilder().withLocalCode("CS3230")
@@ -55,6 +63,11 @@ public class TypicalObjects {
             .withPartnerUniversity(TYPICAL_PARTNER_UNIVERSITY_NAME).withPartnerCode(TYPICAL_PARTNER_COURSE_CODE)
             .withPartnerName(TYPICAL_PARTNER_COURSE_NAME).build();
 
+    public static final PartnerCourse EDGE_CASE_VALID_PARTNER_COURSE = new PartnerCourseBuilder()
+            .withPartnerUniversity(new UniversityName(EDGE_CASE_VALID_UNIVERSITY_NAME))
+            .withPartnerCode(EDGE_CASE_VALID_PARTNER_COURSE_CODE)
+            .withPartnerName(EDGE_CASE_VALID_PARTNER_COURSE_NAME).build();
+
     public static final PartnerCourse COMP1000 = new PartnerCourseBuilder()
             .withPartnerUniversity(new UniversityName("University of Edinburgh"))
             .withPartnerCode("COMP1000").withPartnerName("Introduction to Programming").build();
@@ -68,7 +81,7 @@ public class TypicalObjects {
     // University
     public static final University NTU = new University(new UniversityName("Nanyang Technological University"));
     public static final University STANFORD = new University(new UniversityName("Stanford University"));
-
+    public static final University WATERLOO = new University(new UniversityName("University of Waterloo"));
     // Note
     public static final Note NOTE1 = new Note(new Content("Nanyang Technological University"),
             new Tag("university"));

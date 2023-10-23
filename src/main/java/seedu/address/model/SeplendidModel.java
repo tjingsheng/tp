@@ -170,6 +170,8 @@ public interface SeplendidModel {
 
     void updateFilteredUniversityList(Predicate<University> predicate);
 
+    void setUniversityCatalogue(ReadOnlyUniversityCatalogue universityCatalogue);
+
     ReadOnlyUniversityCatalogue getUniversityCatalogue();
 
     //=========== NoteCatalouge ================================================================================

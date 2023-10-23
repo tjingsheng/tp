@@ -35,7 +35,7 @@ public class LocalCourseCatalogue implements ReadOnlyLocalCourseCatalogue {
     }
 
     /**
-     * Creates an LocalCourseCatalogue using the LocalCourses in the {@code toBeCopied}
+     * Creates a LocalCourseCatalogue using the LocalCourses in the {@code toBeCopied}
      */
     public LocalCourseCatalogue(ReadOnlyLocalCourseCatalogue toBeCopied) {
         this();

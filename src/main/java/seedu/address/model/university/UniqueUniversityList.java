@@ -8,7 +8,6 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.localcourse.exceptions.DuplicateLocalCourseException;
 import seedu.address.model.university.exceptions.DuplicateUniversityException;
 import seedu.address.model.university.exceptions.UniversityNotFoundException;
 
@@ -56,7 +55,7 @@ public class UniqueUniversityList implements Iterable<University> {
     public void setUniversities(List<University> universities) {
         requireAllNonNull(universities);
         if (!universitiesAreUnique(universities)) {
-            throw new DuplicateLocalCourseException();
+            throw new DuplicateUniversityException();
         }
 
         internalList.setAll(universities);

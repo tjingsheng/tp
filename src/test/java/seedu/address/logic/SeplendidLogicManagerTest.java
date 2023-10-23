@@ -6,6 +6,10 @@ import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE_CODE;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE_NAME;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE_CODE;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE_NAME;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_UNIVERSITY_NAME;
 
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
@@ -20,6 +24,8 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.LocalCourseAddCommand;
 import seedu.address.logic.commands.LocalCourseCommand;
 import seedu.address.logic.commands.LocalCourseListCommand;
+import seedu.address.logic.commands.PartnerCourseAddCommand;
+import seedu.address.logic.commands.PartnerCourseCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyAddressBook;
@@ -30,6 +36,7 @@ import seedu.address.model.ReadOnlyUniversityCatalogue;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.SeplendidModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.university.University;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonLocalCourseCatalogueStorage;
 import seedu.address.storage.JsonNoteCatalogueStorage;
@@ -64,6 +71,7 @@ public class SeplendidLogicManagerTest {
                 new JsonNoteCatalogueStorage(temporaryFolder.resolve("notecatalogue"));
         StorageManager storage = new StorageManager(addressBookStorage, localCourseCatalogueStorage, userPrefsStorage,
                 partnerCourseCatalogueStorage, universityCatalogueStorage, noteCatalogueStorage);
+        model.addUniversity(new University(TYPICAL_PARTNER_UNIVERSITY_NAME));
         logic = new SeplendidLogicManager(model, storage);
     }
 
@@ -223,12 +231,12 @@ public class SeplendidLogicManagerTest {
         expectedModel.addLocalCourse(TYPICAL_LOCAL_COURSE);
         assertCommandFailure(localCourseAddCommand, CommandException.class, expectedMessage, expectedModel);
 
-        // TBD: sohyun to uncomment
-        //        String partnerCourseAddCommand = String.format("%s %s [%s] [%s] [%s]",
-        //                PartnerCourseCommand.COMMAND_WORD, PartnerCourseAddCommand.ACTION_WORD,
-        //                TYPICAL_UNIVERSITY_NAME, TYPICAL_PARTNER_COURSE_CODE, TYPICAL_PARTNER_COURSE_NAME);
-        //        expectedModel.addPartnerCourse(TYPICAL_PARTNER_COURSE);
-        //        assertCommandFailure(partnerCourseAddCommand, CommandException.class, expectedMessage, expectedModel);
+        String partnerCourseAddCommand = String.format("%s %s [%s] [%s] [%s]",
+                PartnerCourseCommand.COMMAND_WORD, PartnerCourseAddCommand.ACTION_WORD,
+                TYPICAL_PARTNER_UNIVERSITY_NAME, TYPICAL_PARTNER_COURSE_CODE, TYPICAL_PARTNER_COURSE_NAME);
+        expectedModel.addUniversity(new University(TYPICAL_PARTNER_UNIVERSITY_NAME));
+        expectedModel.addPartnerCourse(TYPICAL_PARTNER_COURSE);
+        assertCommandFailure(partnerCourseAddCommand, CommandException.class, expectedMessage, expectedModel);
     }
     // TBD: Refer to LogicManagerTest to include more appropriate tests after adding future commands
 }

@@ -293,8 +293,14 @@ public class LocalCourseDeleteCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+
         @Override
         public void updateFilteredUniversityList(Predicate<University> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setUniversityCatalogue(ReadOnlyUniversityCatalogue universityCatalogue) {
             throw new AssertionError("This method should not be called.");
         }
 

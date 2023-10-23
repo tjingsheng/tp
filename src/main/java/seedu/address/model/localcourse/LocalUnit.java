@@ -72,7 +72,7 @@ public class LocalUnit {
         return false;
     }
 
-    public double getValue() {
+    public Double getValue() {
         return this.value;
     }
 

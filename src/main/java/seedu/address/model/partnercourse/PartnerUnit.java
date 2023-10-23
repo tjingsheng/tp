@@ -73,7 +73,7 @@ public class PartnerUnit {
         return false;
     }
 
-    public double getValue() {
+    public Double getValue() {
         return this.value;
     }
 

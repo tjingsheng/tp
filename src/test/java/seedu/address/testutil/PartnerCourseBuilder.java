@@ -39,6 +39,7 @@ public class PartnerCourseBuilder {
         partnerCode = partnerCourseToCopy.getPartnerCode();
         partnerName = partnerCourseToCopy.getPartnerName();
         partnerUniversity = partnerCourseToCopy.getPartnerUniversity();
+        partnerUnit = partnerCourseToCopy.getPartnerUnit();
     }
 
     /**

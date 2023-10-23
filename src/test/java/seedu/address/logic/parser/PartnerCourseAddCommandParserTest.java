@@ -8,11 +8,13 @@ import static seedu.address.testutil.TestUtil.getSquareBracketWrappedArgument;
 import static seedu.address.testutil.TypicalObjects.EDGE_CASE_VALID_PARTNER_COURSE;
 import static seedu.address.testutil.TypicalObjects.EDGE_CASE_VALID_PARTNER_COURSE_CODE;
 import static seedu.address.testutil.TypicalObjects.EDGE_CASE_VALID_PARTNER_COURSE_NAME;
+import static seedu.address.testutil.TypicalObjects.EDGE_CASE_VALID_PARTNER_COURSE_UNIT;
 import static seedu.address.testutil.TypicalObjects.EDGE_CASE_VALID_UNIVERSITY_NAME;
 import static seedu.address.testutil.TypicalObjects.INVALID_PARTNER_COURSE_CODE;
 import static seedu.address.testutil.TypicalObjects.INVALID_PARTNER_COURSE_NAME;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE_CODE;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE_NAME;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE_UNIT;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_UNIVERSITY_NAME;
 
 import org.junit.jupiter.api.Test;
@@ -42,12 +44,13 @@ public class PartnerCourseAddCommandParserTest {
                         + PartnerCourseAddCommand.ACTION_WORD
                         + UNNCESSARY_WHITESPACE
                         + getSquareBracketWrappedArgument(
-                                expectedPartnerCourse.getPartnerUniversity().getUniversityName().getValue())
+                            expectedPartnerCourse.getPartnerUniversity().getUniversityName().getValue())
                         + UNNCESSARY_WHITESPACE
                         + getSquareBracketWrappedArgument(expectedPartnerCourse.getPartnerCode().getValue())
                         + UNNCESSARY_WHITESPACE
                         + getSquareBracketWrappedArgument(expectedPartnerCourse.getPartnerName().getValue())
-                        + UNNCESSARY_WHITESPACE,
+                        + UNNCESSARY_WHITESPACE
+                        + getSquareBracketWrappedArgument(expectedPartnerCourse.getPartnerUnit().toString()),
                 new PartnerCourseAddCommand(expectedPartnerCourse));
     }
 
@@ -94,7 +97,8 @@ public class PartnerCourseAddCommandParserTest {
         assertParseFailure(parser, commandActionWord
                         + getSquareBracketWrappedArgument(TYPICAL_UNIVERSITY_NAME)
                         + " " + getSquareBracketWrappedArgument(INVALID_PARTNER_COURSE_CODE)
-                        + " " + getSquareBracketWrappedArgument(TYPICAL_PARTNER_COURSE_NAME),
+                        + " " + getSquareBracketWrappedArgument(TYPICAL_PARTNER_COURSE_NAME)
+                        + " " + getSquareBracketWrappedArgument(TYPICAL_PARTNER_COURSE_UNIT.toString()),
                 PartnerCode.MESSAGE_CONSTRAINTS);
 
         // invalid partnerName
@@ -115,7 +119,8 @@ public class PartnerCourseAddCommandParserTest {
         assertParseSuccess(parser, commandActionWord
                         + getSquareBracketWrappedArgument(EDGE_CASE_VALID_UNIVERSITY_NAME) + " "
                         + getSquareBracketWrappedArgument(EDGE_CASE_VALID_PARTNER_COURSE_CODE)
-                        + " " + getSquareBracketWrappedArgument(EDGE_CASE_VALID_PARTNER_COURSE_NAME),
+                        + " " + getSquareBracketWrappedArgument(EDGE_CASE_VALID_PARTNER_COURSE_NAME)
+                        + getSquareBracketWrappedArgument(EDGE_CASE_VALID_PARTNER_COURSE_UNIT.toString()),
                 new PartnerCourseAddCommand(EDGE_CASE_VALID_PARTNER_COURSE));
     }
 }

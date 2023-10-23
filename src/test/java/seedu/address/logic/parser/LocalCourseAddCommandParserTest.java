@@ -8,10 +8,12 @@ import static seedu.address.testutil.TestUtil.getSquareBracketWrappedArgument;
 import static seedu.address.testutil.TypicalObjects.EDGE_CASE_VALID_LOCAL_COURSE;
 import static seedu.address.testutil.TypicalObjects.EDGE_CASE_VALID_LOCAL_COURSE_CODE;
 import static seedu.address.testutil.TypicalObjects.EDGE_CASE_VALID_LOCAL_COURSE_NAME;
+import static seedu.address.testutil.TypicalObjects.EDGE_CASE_VALID_LOCAL_COURSE_UNIT;
 import static seedu.address.testutil.TypicalObjects.INVALID_LOCAL_COURSE_CODE;
 import static seedu.address.testutil.TypicalObjects.INVALID_LOCAL_COURSE_NAME;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE_CODE;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE_NAME;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE_UNIT;
 
 import org.junit.jupiter.api.Test;
 
@@ -43,7 +45,8 @@ public class LocalCourseAddCommandParserTest {
                         + getSquareBracketWrappedArgument(expectedLocalCourse.getLocalCode().getValue())
                         + UNNCESSARY_WHITESPACE
                         + getSquareBracketWrappedArgument(expectedLocalCourse.getLocalName().getValue())
-                        + UNNCESSARY_WHITESPACE,
+                        + UNNCESSARY_WHITESPACE
+                        + getSquareBracketWrappedArgument(expectedLocalCourse.getLocalUnit().getValue().toString()),
                 new LocalCourseAddCommand(expectedLocalCourse));
     }
 
@@ -89,7 +92,8 @@ public class LocalCourseAddCommandParserTest {
         // invalid localCode
         assertParseFailure(parser, commandActionWord
                         + getSquareBracketWrappedArgument(INVALID_LOCAL_COURSE_CODE)
-                        + " " + getSquareBracketWrappedArgument(TYPICAL_LOCAL_COURSE_NAME),
+                        + " " + getSquareBracketWrappedArgument(TYPICAL_LOCAL_COURSE_NAME)
+                        + getSquareBracketWrappedArgument(TYPICAL_LOCAL_COURSE_UNIT.toString()),
                 LocalCode.MESSAGE_CONSTRAINTS);
 
         // invalid localName
@@ -109,7 +113,8 @@ public class LocalCourseAddCommandParserTest {
     public void parse_edgeCaseLocalNameValue_success() {
         assertParseSuccess(parser, commandActionWord
                         + getSquareBracketWrappedArgument(EDGE_CASE_VALID_LOCAL_COURSE_CODE)
-                        + " " + getSquareBracketWrappedArgument(EDGE_CASE_VALID_LOCAL_COURSE_NAME),
+                        + " " + getSquareBracketWrappedArgument(EDGE_CASE_VALID_LOCAL_COURSE_NAME)
+                        + getSquareBracketWrappedArgument(EDGE_CASE_VALID_LOCAL_COURSE_UNIT.toString()),
                 new LocalCourseAddCommand(EDGE_CASE_VALID_LOCAL_COURSE));
     }
 }

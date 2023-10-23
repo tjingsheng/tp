@@ -27,6 +27,7 @@ public class TypicalObjects {
 
     public static final String TYPICAL_PARTNER_COURSE_CODE = "CS50";
     public static final String TYPICAL_PARTNER_COURSE_NAME = "Introduction to Computer Science";
+    public static final Double TYPICAL_PARTNER_COURSE_UNIT = 5.0;
 
     public static final String TYPICAL_UNIVERSITY_NAME = "Typical University";
     public static final UniversityName TYPICAL_PARTNER_UNIVERSITY_NAME = new UniversityName("Harvard University");
@@ -39,6 +40,7 @@ public class TypicalObjects {
 
     public static final String EDGE_CASE_VALID_PARTNER_COURSE_CODE = "V";
     public static final String EDGE_CASE_VALID_PARTNER_COURSE_NAME = " Game Development";
+    public static final Double EDGE_CASE_VALID_PARTNER_COURSE_UNIT = 0.0;
 
 
     public static final String INVALID_PARTNER_COURSE_CODE = "$H23Y1";
@@ -82,14 +84,36 @@ public class TypicalObjects {
             .build();
 
     // PartnerCourse
-    public static final PartnerCourse TYPICAL_PARTNER_COURSE = new PartnerCourseBuilder()
-            .withPartnerUniversity(TYPICAL_PARTNER_UNIVERSITY_NAME).withPartnerCode(TYPICAL_PARTNER_COURSE_CODE)
-            .withPartnerName(TYPICAL_PARTNER_COURSE_NAME).build();
-
-    public static final PartnerCourse EDGE_CASE_VALID_PARTNER_COURSE = new PartnerCourseBuilder()
-            .withPartnerUniversity(new UniversityName(EDGE_CASE_VALID_UNIVERSITY_NAME))
+    public static final PartnerCourse TYPICAL_PARTNER_COURSE =
+        new PartnerCourseBuilder().withPartnerUniversity(TYPICAL_PARTNER_UNIVERSITY_NAME)
+            .withPartnerCode(TYPICAL_PARTNER_COURSE_CODE)
+            .withPartnerName(TYPICAL_PARTNER_COURSE_NAME)
+            .withPartnerUnit(TYPICAL_PARTNER_COURSE_UNIT)
+            .build();
+    public static final PartnerCourse EDGE_CASE_VALID_PARTNER_COURSE =
+        new PartnerCourseBuilder().withPartnerUniversity(new UniversityName(EDGE_CASE_VALID_UNIVERSITY_NAME))
             .withPartnerCode(EDGE_CASE_VALID_PARTNER_COURSE_CODE)
-            .withPartnerName(EDGE_CASE_VALID_PARTNER_COURSE_NAME).build();
+            .withPartnerName(EDGE_CASE_VALID_PARTNER_COURSE_NAME)
+            .withPartnerUnit(EDGE_CASE_VALID_PARTNER_COURSE_UNIT)
+            .build();
+    public static final PartnerCourse COMP1000 =
+        new PartnerCourseBuilder().withPartnerUniversity(new UniversityName("University of Edinburgh"))
+            .withPartnerCode("COMP1000")
+            .withPartnerName("Introduction to Programming")
+            .withPartnerUnit(5.0)
+            .build();
+    public static final PartnerCourse COMP2000 =
+        new PartnerCourseBuilder().withPartnerUniversity(new UniversityName("University of Leeds"))
+            .withPartnerCode("COMP2000")
+            .withPartnerName("Introduction to Databases")
+            .withPartnerUnit(5.0)
+            .build();
+    public static final PartnerCourse COMP3000 =
+        new PartnerCourseBuilder().withPartnerUniversity(new UniversityName("University of Zurich"))
+            .withPartnerCode("COMP3000")
+            .withPartnerName("Introduction to Networks")
+            .withPartnerUnit(5.0)
+            .build();
 
     public static final PartnerCourse COMP1000 = new PartnerCourseBuilder()
             .withPartnerUniversity(new UniversityName("University of Edinburgh"))

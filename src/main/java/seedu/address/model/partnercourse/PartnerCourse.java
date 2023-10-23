@@ -16,15 +16,21 @@ public class PartnerCourse implements SeplendidDataType {
     private final University partnerUniversity;
     private final PartnerCode partnerCode;
     private final PartnerName partnerName;
+    private final PartnerUnit partnerUnit;
 
     /**
      * Every field must be present and not null
      */
-    public PartnerCourse(University pu, PartnerCode pc, PartnerName pn) {
-        requireAllNonNull(pu, pc, pn);
-        partnerUniversity = pu;
-        partnerCode = pc;
-        partnerName = pn;
+    public PartnerCourse(
+        University partnerUniversity,
+        PartnerCode partnerCode,
+        PartnerName partnerName,
+        PartnerUnit partnerUnit) {
+        requireAllNonNull(partnerUniversity, partnerCode, partnerName, partnerUnit);
+        this.partnerUniversity = partnerUniversity;
+        this.partnerCode = partnerCode;
+        this.partnerName = partnerName;
+        this.partnerUnit = partnerUnit;
     }
     public University getPartnerUniversity() {
         return partnerUniversity;
@@ -38,6 +44,9 @@ public class PartnerCourse implements SeplendidDataType {
         return partnerName;
     }
 
+    public PartnerUnit getPartnerUnit() {
+        return partnerUnit;
+    }
 
     /**
      * Returns true if both PartnerCourses have the same partnerCode.
@@ -71,7 +80,8 @@ public class PartnerCourse implements SeplendidDataType {
         PartnerCourse otherPartnerCourse = (PartnerCourse) other;
         return partnerUniversity.equals(otherPartnerCourse.partnerUniversity)
                 && partnerCode.equals(otherPartnerCourse.partnerCode)
-                && partnerName.equals(otherPartnerCourse.partnerName);
+                && partnerName.equals(otherPartnerCourse.partnerName)
+                && partnerUnit.equals(otherPartnerCourse.partnerUnit);
     }
 
     @Override
@@ -85,6 +95,7 @@ public class PartnerCourse implements SeplendidDataType {
                 .add("partnerUniversity", partnerUniversity)
                 .add("partnerCode", partnerCode)
                 .add("partnerName", partnerName)
+                .add("partnerUnit", partnerUnit)
                 .toString();
     }
 }

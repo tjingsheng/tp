@@ -16,6 +16,7 @@ import seedu.address.model.localcourse.LocalUnit;
 import seedu.address.model.notes.Content;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerName;
+import seedu.address.model.partnercourse.PartnerUnit;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -204,6 +205,21 @@ public class ParserUtil {
             throw new ParseException(PartnerName.MESSAGE_CONSTRAINTS);
         }
         return new PartnerName(partnerName);
+    }
+
+    /**
+     * Parses a {@code String partnerUnit} into an {@code PartnerUnit}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code localName} is invalid.
+     */
+    public static PartnerUnit parsePartnerUnit(String partnerUnit) throws ParseException {
+        requireNonNull(partnerUnit);
+        String trimmedPartnerUnit = partnerUnit.trim();
+        if (!PartnerUnit.isValidPartnerUnit(trimmedPartnerUnit)) {
+            throw new ParseException(PartnerUnit.MESSAGE_CONSTRAINTS);
+        }
+        return new PartnerUnit(partnerUnit);
     }
 
     /**

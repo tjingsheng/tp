@@ -23,6 +23,7 @@ import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.partnercourse.PartnerName;
+import seedu.address.model.partnercourse.PartnerUnit;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -120,12 +121,22 @@ public class SampleDataUtil {
     }
 
     public static PartnerCourse[] getSamplePartnerCourses() {
-        return new PartnerCourse[] {new PartnerCourse(new University(new UniversityName("Boston College")),
-            new PartnerCode("COM1231"),
-            new PartnerName("Discrete Mathematics")),
-            new PartnerCourse(new University(new UniversityName("Harvard University")),
-                new PartnerCode("COM3041"),
-                new PartnerName("Computer Networks"))
+        return new PartnerCourse[]{
+            new PartnerCourse(
+                new University(new UniversityName("Boston College")),
+                new PartnerCode("COM1231"),
+                new PartnerName("Discrete Mathematics"),
+                new PartnerUnit(5.0)),
+            new PartnerCourse(
+                new University(new UniversityName("University of Waterloo")),
+                new PartnerCode("CS3041"),
+                new PartnerName("Computer Networks"),
+                new PartnerUnit(5.0)),
+            new PartnerCourse(
+                new University(new UniversityName("Harvard University")),
+                new PartnerCode("CS50"),
+                new PartnerName("Introduction to Computer Science"),
+                new PartnerUnit(2.0))
         };
     }
 

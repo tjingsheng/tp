@@ -1,6 +1,5 @@
 package seedu.address.testutil;
 
-import java.util.StringJoiner;
 import seedu.address.logic.commands.LocalCourseAddCommand;
 import seedu.address.logic.commands.LocalCourseDeleteCommand;
 import seedu.address.model.localcourse.LocalCourse;

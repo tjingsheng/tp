@@ -4,6 +4,7 @@ import java.nio.file.Path;
 import java.util.Optional;
 import java.util.function.Predicate;
 
+import javafx.collections.ObservableArrayBase;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.localcourse.LocalCode;
@@ -12,6 +13,8 @@ import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
+import seedu.address.model.university.UniversityName;
+import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
 
 /**
  * The API of the SeplendidModel component.
@@ -155,16 +158,17 @@ public interface SeplendidModel {
 
     void setPartnerCourseCatalogueFilePath(Path partnerCourseCatalogueFilePath);
 
-    //=========== UniversityCatalouge ================================================================================
+    //=========== UniversityCatalogue ================================================================================
 
     void setUniversityCatalogueFilePath(Path universityCatalogueFilePath);
 
     ObservableList<University> getFilteredUniversityList();
     boolean hasUniversity(University university);
 
+    ObservableList<University> getSearchResults(University university);
+    void getSearchUniversityIfExists(UniversityNameContainsKeywordsPredicate universityPredicate);
     void addUniversity(University university);
     void setUniversity(University target, University editedUniversity);
-    void updateUniversityList(Predicate<University> predicate);
 
     void updateFilteredUniversityList(Predicate<University> predicate);
 

@@ -45,6 +45,10 @@ public class UniversityCatalogue implements ReadOnlyUniversityCatalogue {
         universities.add(uN);
     }
 
+    public void addSearchUniversity(List<University> universities) {
+        requireNonNull(universities);
+
+    }
     @Override
     public String toString() {
         return new ToStringBuilder(this)

@@ -25,7 +25,7 @@ public class UniversitySearchCommandParserTest {
         // no leading and trailing whitespaces
         UniversitySearchCommand expectedUniversitySearchCommand =
                 new UniversitySearchCommand(new UniversityNameContainsKeywordsPredicate(
-                        Arrays.asList("Stanford", "Seoul")));
+                        "Stanford"));
         assertParseSuccess(parser, "Stanford Seoul", expectedUniversitySearchCommand);
 
         // multiple whitespaces between keywords

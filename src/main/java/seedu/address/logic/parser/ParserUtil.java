@@ -202,6 +202,12 @@ public class ParserUtil {
         }
         return new UniversityName(universityName);
     }
+
+    public static String parseKeyWord(String keyword) throws ParseException {
+        requireNonNull(keyword);
+        String trimmedKeyWord = keyword.trim();
+        return trimmedKeyWord;
+    }
     /**
      * Parses a {@code String content}.
      * Leading and trailing whitespaces will be trimmed.

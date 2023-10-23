@@ -95,7 +95,7 @@ public class SampleDataUtil {
 
     public static University[] getSampleUniversities() {
         return new University[] {
-            new University(new UniversityName("Imperial College of London")),
+            new University(new UniversityName("University of Pennsylvania")),
             new University(new UniversityName("Harvard University"))
         };
     }

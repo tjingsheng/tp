@@ -9,16 +9,15 @@ import seedu.address.commons.util.ToStringBuilder;
  * Tests that a {@code University}'s {@code UniversityName} matches any of the keywords given.
  */
 public class UniversityNameContainsKeywordsPredicate implements Predicate<University> {
-    private final List<String> keywords;
-    public UniversityNameContainsKeywordsPredicate(List<String> keywords) {
-        this.keywords = keywords;
+    private final String keyword;
+    public UniversityNameContainsKeywordsPredicate(String keywords) {
+        this.keyword = keywords;
     }
 
     @Override
     public boolean test(University university) {
-        return keywords.stream()
-                .anyMatch(keyword -> university.getUniversityName().getName().toLowerCase()
-                        .contains(keyword.toLowerCase()));
+        return university.getUniversityName().getName().toLowerCase()
+                        .contains(keyword.toLowerCase());
     }
 
     @Override
@@ -34,12 +33,12 @@ public class UniversityNameContainsKeywordsPredicate implements Predicate<Univer
 
         seedu.address.model.university.UniversityNameContainsKeywordsPredicate otherNameContainsKeywordsPredicate =
                 (seedu.address.model.university.UniversityNameContainsKeywordsPredicate) other;
-        return keywords.equals(otherNameContainsKeywordsPredicate.keywords);
+        return keyword.equals(otherNameContainsKeywordsPredicate.keyword);
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).add("keywords", keywords).toString();
+        return new ToStringBuilder(this).add("keyword", keyword).toString();
     }
 }
 

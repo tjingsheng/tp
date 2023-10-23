@@ -18,6 +18,7 @@ import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
+import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
 
 /**
  * Represents the in-memory model of SEPlendid.
@@ -267,6 +268,19 @@ public class SeplendidModelManager implements SeplendidModel {
     }
 
     @Override
+    public ObservableList<University> getSearchResults(University university) {
+        requireNonNull(university);
+        return filteredUniversityCatalogue;
+
+    }
+
+    @Override
+    public void getSearchUniversityIfExists(UniversityNameContainsKeywordsPredicate universityPredicate) {
+        requireNonNull(universityPredicate);
+        filteredUniversityCatalogue.setPredicate(universityPredicate);
+    }
+
+    @Override
     public void addUniversity(University university) {
         universityCatalogue.addUniversity(university);
         updateFilteredUniversityList(PREDICATE_SHOW_ALL_UNIVERSITIES);
@@ -277,11 +291,6 @@ public class SeplendidModelManager implements SeplendidModel {
         requireAllNonNull(target, editedUniversity);
 
         universityCatalogue.setUniversity(target, editedUniversity);
-    }
-
-    @Override
-    public void updateUniversityList(Predicate<University> predicate) {
-
     }
 
     //=========== FilteredUniversityList Accessors =============================================================

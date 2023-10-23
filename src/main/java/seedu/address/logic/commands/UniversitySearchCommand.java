@@ -7,7 +7,10 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
+import seedu.address.model.university.University;
+import seedu.address.model.university.UniversityName;
 import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
+import seedu.address.seplendidui.UiUtil;
 
 /**
  * Finds and lists all universities in SEPlendid whose name contains any of the argument keywords.
@@ -17,14 +20,16 @@ public class UniversitySearchCommand extends UniversityCommand {
 
     public static final String ACTION_WORD = "search";
 
-    public static final String MESSAGE_SUCCESS = "Search [university_keyword]";
+    public static final String MESSAGE_SUCCESS = "Universities searched: %1$s";
 
+    public static final String MESSAGE_NONEXISTENT_UNIVERSITIES = "This university does not exist in SEPlendid";
+//    public static final String UNIVERSITY_SEARCH_MESSAGE_USAGE = COMMAND_WORD
+//            + ": Finds all universities whose names contain any of "
+//            + "the specified keywords (case-insensitive) and displays them as a list.\n"
+//            + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
+//            + "Example: " + COMMAND_WORD + " [harv]";
     public static final String UNIVERSITY_SEARCH_MESSAGE_USAGE = COMMAND_WORD
-            + ": Finds all universities whose names contain any of "
-            + "the specified keywords (case-insensitive) and displays them as a list.\n"
-            + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-            + "Example: " + COMMAND_WORD + " harv";
-
+        + " search [university_keyword]: Search universities with the same keyword";
     private final UniversityNameContainsKeywordsPredicate predicate;
 
     public UniversitySearchCommand(UniversityNameContainsKeywordsPredicate predicate) {
@@ -32,11 +37,17 @@ public class UniversitySearchCommand extends UniversityCommand {
     }
 
     @Override
-    public CommandResult execute(SeplendidModel model) {
+    public CommandResult execute(SeplendidModel model) throws CommandException {
         requireNonNull(model);
-        model.updateFilteredUniversityList(predicate);
-        return new CommandResult(
-                String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredUniversityList().size()));
+
+        model.getSearchUniversityIfExists(predicate);
+
+        if (model.getFilteredUniversityList().isEmpty()) {
+            throw new CommandException(MESSAGE_NONEXISTENT_UNIVERSITIES);
+        }
+
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.formatList(model.getFilteredUniversityList())),
+                UiUtil.ListViewModel.UNIVERSITY_LIST);
     }
 
     @Override

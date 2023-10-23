@@ -1,11 +1,21 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERCODE;
+import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERNAME;
+import static seedu.address.logic.parser.CliSyntax.PARAMETER_UNIVERSITY;
+import static seedu.address.logic.parser.CliSyntax.PARAMETER_UNIVERSITYNAME;
 
 import java.util.Arrays;
 
+import seedu.address.logic.commands.PartnerCourseAddCommand;
 import seedu.address.logic.commands.UniversitySearchCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.partnercourse.PartnerCode;
+import seedu.address.model.partnercourse.PartnerCourse;
+import seedu.address.model.partnercourse.PartnerName;
+import seedu.address.model.university.University;
+import seedu.address.model.university.UniversityName;
 import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
 
 /**
@@ -22,14 +32,26 @@ public class UniversitySearchCommandParser implements Parser<UniversitySearchCom
      */
     public UniversitySearchCommand parse(String args) throws ParseException {
         String trimmedArgs = args.trim();
-        if (trimmedArgs.isEmpty()) {
+        if (!ParserUtil.areValuesEnclosedAndNonEmpty(args)) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                            UniversitySearchCommand.UNIVERSITY_SEARCH_MESSAGE_USAGE));
+                            UniversitySearchCommand.UNIVERSITY_SEARCH_MESSAGE_USAGE)
+            );
         }
-        String[] nameKeywords = trimmedArgs.split("\\s+");
 
-        return new UniversitySearchCommand(new UniversityNameContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
+        SeplendidArgumentMap parameterToArgMap =
+                SeplendidArgumentTokenizer.tokenize(args,
+                        PARAMETER_UNIVERSITYNAME);
+
+        if (!ParserUtil.areArgumentsPresent(parameterToArgMap,
+                PARAMETER_UNIVERSITYNAME)) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    UniversitySearchCommand.UNIVERSITY_SEARCH_MESSAGE_USAGE));
+        }
+
+        UniversityName universityName = ParserUtil.parseUniversityName(parameterToArgMap.getValue(PARAMETER_UNIVERSITYNAME).get());
+        return new UniversitySearchCommand(new UniversityNameContainsKeywordsPredicate(universityName.getName()));
+
     }
 }
 

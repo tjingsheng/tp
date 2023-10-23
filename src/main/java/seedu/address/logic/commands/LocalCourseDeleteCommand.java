@@ -24,6 +24,8 @@ public class LocalCourseDeleteCommand extends LocalCourseCommand {
 
     public static final String MESSAGE_SUCCESS = "Deleted Local Course: %1$s";
     public static final String MESSAGE_NONEXISTENT_LOCAL_COURSE = "This local course does not exist in SEPlendid.";
+    public static final String MESSAGE_MAPPING_DEPENDENT_ON_LOCAL_COURSE = "This local course is mapped to a partner "
+            + "course. Please delete the mapping first.";
 
     private final LocalCode localCodeToDelete;
 
@@ -58,7 +60,8 @@ public class LocalCourseDeleteCommand extends LocalCourseCommand {
         if (localCourseToDelete.isEmpty()) {
             throw new CommandException(MESSAGE_NONEXISTENT_LOCAL_COURSE);
         }
-        localCourseToDelete.ifPresent(seplendidModel::deleteLocalCourse);
+        seplendidModel.deleteLocalCourse(localCourseToDelete.get());
+
         // At this point we can already assume localCourseToDelete is not empty.
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(localCourseToDelete.get())),
                 UiUtil.ListViewModel.LOCAL_COURSE_LIST);

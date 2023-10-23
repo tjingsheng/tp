@@ -74,6 +74,22 @@ public class MappingCatalogue implements ReadOnlyMappingCatalogue {
     }
 
     /**
+     * Returns true is a mapping with {@code localCode} exists in the MappingCatalogue.
+     */
+    public boolean hasMappingWithLocalCode(LocalCode localCode) {
+        requireNonNull(localCode);
+        return mappings.hasMappingWithLocalCode(localCode);
+    }
+
+    /**
+     * Returns true is a mapping with {@code partnerCode} exists in the MappingCatalogue.
+     */
+    public boolean hasMappingWithPartnerCode(PartnerCode partnerCode) {
+        requireNonNull(partnerCode);
+        return mappings.hasMappingWithPartnerCode(partnerCode);
+    }
+
+    /**
      * Gets the mapping if it exists.
      */
     public Optional<Mapping> getMappingIfExists(LocalCode localCodeQuery, UniversityName universityNameQuery,

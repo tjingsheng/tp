@@ -2,6 +2,8 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.logic.commands.LocalCourseDeleteCommand.MESSAGE_MAPPING_DEPENDENT_ON_LOCAL_COURSE;
+import static seedu.address.logic.commands.PartnerCourseDeleteCommand.MESSAGE_MAPPING_DEPENDENT_ON_PARTNER_COURSE;
 
 import java.nio.file.Path;
 import java.util.Optional;
@@ -12,6 +14,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.SeplendidLogsCenter;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.mapping.Mapping;
@@ -172,8 +175,13 @@ public class SeplendidModelManager implements SeplendidModel {
     }
 
     @Override
-    public void deleteLocalCourse(LocalCourse target) {
+    public void deleteLocalCourse(LocalCourse target) throws CommandException {
+        // Block delete if it exists in a mapping
+        if (mappingCatalogue.hasMappingWithLocalCode(target.getLocalCode())) {
+            throw new CommandException(MESSAGE_MAPPING_DEPENDENT_ON_LOCAL_COURSE);
+        }
         localCourseCatalogue.removeLocalCourse(target);
+        updateFilteredLocalCourseList(PREDICATE_SHOW_ALL_LOCAL_COURSES);
     }
 
     @Override
@@ -244,7 +252,12 @@ public class SeplendidModelManager implements SeplendidModel {
     }
 
     @Override
-    public void deletePartnerCourse(PartnerCourse partnerCourse) {
+    public void deletePartnerCourse(PartnerCourse partnerCourse) throws CommandException {
+        // Block delete if it exists in a mapping
+        if (mappingCatalogue.hasMappingWithPartnerCode(partnerCourse.getPartnerCode())) {
+            throw new CommandException(MESSAGE_MAPPING_DEPENDENT_ON_PARTNER_COURSE);
+        }
+
         partnerCourseCatalogue.removePartnerCourse(partnerCourse);
         updateFilteredPartnerCourseList(PREDICATE_SHOW_ALL_PARTNER_COURSES);
 
@@ -453,8 +466,6 @@ public class SeplendidModelManager implements SeplendidModel {
         return maybeMapping.isPresent();
     }
 
-    ;
-
     /**
      * Returns a Mapping in an Optional if exists, else return empty Optional.
      */
@@ -466,6 +477,24 @@ public class SeplendidModelManager implements SeplendidModel {
     }
 
     /**
+     * Returns true is a mapping with {@code localCode} exists in the MappingCatalogue.
+     */
+    @Override
+    public boolean hasMappingWithLocalCode(LocalCode localCode) {
+        requireNonNull(localCode);
+        return mappingCatalogue.hasMappingWithLocalCode(localCode);
+    }
+
+    /**
+     * Returns true is a mapping with {@code partnerCode} exists in the MappingCatalogue.
+     */
+    @Override
+    public boolean hasMappingWithPartnerCode(PartnerCode partnerCode) {
+        requireNonNull(partnerCode);
+        return mappingCatalogue.hasMappingWithPartnerCode(partnerCode);
+    }
+
+    /**
      * Deletes the given mapping.
      * The mapping must exist in the MappingCatalogue.
      */
@@ -474,7 +503,6 @@ public class SeplendidModelManager implements SeplendidModel {
         mappingCatalogue.removeMapping(mapping);
     }
 
-    ;
 
     /**
      * Adds the given Mapping.
@@ -486,7 +514,6 @@ public class SeplendidModelManager implements SeplendidModel {
         updateFilteredMappingList(PREDICATE_SHOW_ALL_MAPPINGS);
     }
 
-    ;
 
     /**
      * Replaces the given mapping {@code target} with {@code editedMapping}.
@@ -501,7 +528,6 @@ public class SeplendidModelManager implements SeplendidModel {
         mappingCatalogue.setMapping(mapping, editedMapping);
     }
 
-    ;
 
     //=========== FilteredNMappingList Accessors =============================================================
 

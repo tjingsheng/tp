@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.mapping.Mapping;
@@ -95,7 +96,7 @@ public interface SeplendidModel {
      * Deletes the given local course.
      * The local course must exist in the LocalCourseCatalogue.
      */
-    void deleteLocalCourse(LocalCourse localCourse);
+    void deleteLocalCourse(LocalCourse localCourse) throws CommandException;
 
     /**
      * Adds the given LocalCourse.
@@ -156,7 +157,7 @@ public interface SeplendidModel {
      *
      * @param partnerCourse must exist in the PartnerCourseCatalogue.
      */
-    void deletePartnerCourse(PartnerCourse partnerCourse);
+    void deletePartnerCourse(PartnerCourse partnerCourse) throws CommandException;
 
     /**
      * Returns an unmodifiable view of the filtered partner course list
@@ -275,6 +276,16 @@ public interface SeplendidModel {
      * Returns a Mapping in an Optional if exists, else return empty Optional.
      */
     Optional<Mapping> getMappingIfExists(LocalCode localCode, UniversityName universityName, PartnerCode partnerCode);
+
+    /**
+     * Returns true is a mapping with {@code localCode} exists in the MappingCatalogue.
+     */
+    boolean hasMappingWithLocalCode(LocalCode localCode);
+
+    /**
+     * Returns true is a mapping with {@code partnerCode} exists in the MappingCatalogue.
+     */
+    boolean hasMappingWithPartnerCode(PartnerCode partnerCode);
 
     /**
      * Deletes the given mapping.

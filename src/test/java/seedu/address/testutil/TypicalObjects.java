@@ -5,10 +5,13 @@ import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.model.LocalCourseCatalogue;
+import seedu.address.model.MappingCatalogue;
 import seedu.address.model.NoteCatalogue;
 import seedu.address.model.PartnerCourseCatalogue;
 import seedu.address.model.UniversityCatalogue;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.mapping.Mapping;
+import seedu.address.model.mapping.MappingMiscInformation;
 import seedu.address.model.notes.Content;
 import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCourse;
@@ -77,6 +80,13 @@ public class TypicalObjects {
     public static final PartnerCourse COMP3000 = new PartnerCourseBuilder()
             .withPartnerUniversity(new UniversityName("University of Zurich"))
             .withPartnerCode("COMP3000").withPartnerName("Introduction to Networks").build();
+    public static final PartnerCourse S0402SC = new PartnerCourseBuilder()
+            .withPartnerUniversity(new UniversityName("Nanyang Technological University"))
+            .withPartnerCode("S0402SC").withPartnerName("Algorithms").build();
+    public static final PartnerCourse STAN3230 = new PartnerCourseBuilder()
+            .withPartnerUniversity(new UniversityName("Stanford University"))
+            .withPartnerCode("STAN3230").withPartnerName("Design & Analysis of Algorithms").build();
+
 
     // University
     public static final University NTU = new University(new UniversityName("Nanyang Technological University"));
@@ -87,6 +97,13 @@ public class TypicalObjects {
             new Tag("university"));
     public static final Note NOTE2 = new Note(new Content("Application Deadline 1 December 2023"),
             new Tag("deadline"));
+
+    // Mapping
+    public static final Mapping CS2040S_TO_NTU_S0402SC = new Mapping(CS2040S.getLocalCode(), NTU.getUniversityName(),
+            S0402SC.getPartnerCode(), new MappingMiscInformation("NIL"));
+    public static final Mapping CS3230S_TO_STANFORD_STAN3230 = new Mapping(CS3230.getLocalCode(),
+            STANFORD.getUniversityName(), STAN3230.getPartnerCode(), new MappingMiscInformation("NIL"));
+
     private TypicalObjects() {
     } // prevents instantiation
 
@@ -134,18 +151,34 @@ public class TypicalObjects {
         return noteCatalogue;
     }
 
+    /**
+     * Returns an {@code MappingCatalogue} with all the typical mappings.
+     */
+    public static MappingCatalogue getTypicalMappingCatalogue() {
+        MappingCatalogue mappingCatalogue = new MappingCatalogue();
+        for (Mapping mapping : getTypicalMappings()) {
+            mappingCatalogue.addMapping(mapping);
+        }
+        return mappingCatalogue;
+    }
+
     public static List<LocalCourse> getTypicalLocalCourses() {
         return new ArrayList<>(Arrays.asList(CS2040S, CS3230));
     }
 
     public static List<PartnerCourse> getTypicalPartnerCourses() {
-        return new ArrayList<>(Arrays.asList(COMP1000, COMP2000));
+        return new ArrayList<>(Arrays.asList(COMP1000, COMP2000, S0402SC, STAN3230));
     }
 
     public static List<University> getTypicalUniversities() {
         return new ArrayList<>(Arrays.asList(NTU, STANFORD));
     }
+
     public static List<Note> getTypicalNotes() {
         return new ArrayList<>(Arrays.asList(NOTE1, NOTE2));
+    }
+
+    public static List<Mapping> getTypicalMappings() {
+        return new ArrayList<>(Arrays.asList(CS3230S_TO_STANFORD_STAN3230));
     }
 }

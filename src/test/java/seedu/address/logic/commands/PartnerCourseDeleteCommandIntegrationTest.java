@@ -4,6 +4,7 @@ import static seedu.address.logic.commands.CommandTestUtil.assertSeplendidComman
 import static seedu.address.logic.commands.CommandTestUtil.assertSeplendidCommandSuccess;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE;
 import static seedu.address.testutil.TypicalObjects.getTypicalLocalCourseCatalogue;
+import static seedu.address.testutil.TypicalObjects.getTypicalMappingCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalNoteCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalPartnerCourseCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalPartnerCourses;
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.Messages;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.SeplendidModelManager;
 import seedu.address.model.UserPrefs;
@@ -28,19 +30,21 @@ public class PartnerCourseDeleteCommandIntegrationTest {
     @BeforeEach
     public void setUp() {
         model = new SeplendidModelManager(getTypicalLocalCourseCatalogue(), new UserPrefs(),
-                getTypicalPartnerCourseCatalogue(), getTypicalUniversityCatalogue(), getTypicalNoteCatalogue());
+                getTypicalPartnerCourseCatalogue(), getTypicalUniversityCatalogue(), getTypicalNoteCatalogue(),
+                getTypicalMappingCatalogue());
     }
 
     @Test
-    public void execute_deletePartnerCourse_success() {
+    public void execute_deletePartnerCourse_success() throws CommandException {
         PartnerCourse validExistingPartnerCourse = getTypicalPartnerCourses().get(0);
 
         SeplendidModel expectedModel = new SeplendidModelManager(model.getLocalCourseCatalogue(), new UserPrefs(),
-                model.getPartnerCourseCatalogue(), model.getUniversityCatalogue(), getTypicalNoteCatalogue());
+                model.getPartnerCourseCatalogue(), model.getUniversityCatalogue(), getTypicalNoteCatalogue(),
+                getTypicalMappingCatalogue());
         expectedModel.deletePartnerCourse(validExistingPartnerCourse);
 
         assertSeplendidCommandSuccess(new PartnerCourseDeleteCommand(
-                validExistingPartnerCourse.getPartnerCode()), model,
+                        validExistingPartnerCourse.getPartnerCode()), model,
                 String.format(PartnerCourseDeleteCommand.MESSAGE_SUCCESS, Messages.format(validExistingPartnerCourse)),
                 expectedModel);
     }

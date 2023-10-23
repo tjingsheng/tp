@@ -5,6 +5,7 @@ import static seedu.address.logic.commands.CommandTestUtil.assertSeplendidComman
 import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE;
 import static seedu.address.testutil.TypicalObjects.getTypicalLocalCourseCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalLocalCourses;
+import static seedu.address.testutil.TypicalObjects.getTypicalMappingCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalNoteCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalPartnerCourseCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalUniversityCatalogue;
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.Messages;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.SeplendidModelManager;
 import seedu.address.model.UserPrefs;
@@ -28,15 +30,17 @@ public class LocalCourseDeleteCommandIntegrationTest {
     @BeforeEach
     public void setUp() {
         model = new SeplendidModelManager(getTypicalLocalCourseCatalogue(), new UserPrefs(),
-                getTypicalPartnerCourseCatalogue(), getTypicalUniversityCatalogue(), getTypicalNoteCatalogue());
+                getTypicalPartnerCourseCatalogue(), getTypicalUniversityCatalogue(), getTypicalNoteCatalogue(),
+                getTypicalMappingCatalogue());
     }
 
     @Test
-    public void execute_deleteLocalCourse_success() {
+    public void execute_deleteLocalCourse_success() throws CommandException {
         LocalCourse validExistingLocalCourse = getTypicalLocalCourses().get(0);
 
         SeplendidModel expectedModel = new SeplendidModelManager(model.getLocalCourseCatalogue(), new UserPrefs(),
-                model.getPartnerCourseCatalogue(), model.getUniversityCatalogue(), model.getNoteCatalogue());
+                model.getPartnerCourseCatalogue(), model.getUniversityCatalogue(), model.getNoteCatalogue(),
+                getTypicalMappingCatalogue());
         expectedModel.deleteLocalCourse(validExistingLocalCourse);
 
         assertSeplendidCommandSuccess(new LocalCourseDeleteCommand(validExistingLocalCourse.getLocalCode()), model,

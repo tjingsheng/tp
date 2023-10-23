@@ -132,7 +132,7 @@ public class UniquePartnerCourseListTest {
         assertEquals(expectedUniquePartnerCourseList, uniquePartnerCourseList);
     }
 
-    // Tests setLocalCourses
+    // Tests setPartnerCourses
 
     @Test
     public void setPartnerCourses_nullUniquePartnerCourseList_throwsNullPointerException() {

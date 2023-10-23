@@ -3,7 +3,7 @@ package seedu.address.model.localcourse;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalObjects.EDGE_CASE_VALID_LOCAL_COURSE_CODE;
+import static seedu.address.testutil.TypicalObjects.EDGE_CASE_VALID_LOCAL_COURSE_NAME;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE_NAME;
 
 import org.junit.jupiter.api.Test;
@@ -54,6 +54,6 @@ public class LocalNameTest {
         assertFalse(localName.equals(5.0f));
 
         // different values -> returns false
-        assertFalse(localName.equals(new LocalName(EDGE_CASE_VALID_LOCAL_COURSE_CODE)));
+        assertFalse(localName.equals(new LocalName(EDGE_CASE_VALID_LOCAL_COURSE_NAME)));
     }
 }

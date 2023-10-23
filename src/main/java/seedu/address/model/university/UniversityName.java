@@ -27,6 +27,10 @@ public class UniversityName {
         value = universityname;
     }
 
+    public String getValue() {
+        return value;
+    }
+
     public static boolean isValidUniversityName(String test) {
         return test.matches(VALIDATION_REGEX);
     }

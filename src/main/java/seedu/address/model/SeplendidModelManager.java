@@ -246,6 +246,7 @@ public class SeplendidModelManager implements SeplendidModel {
 
     //=========== UniversityCatalogue ================================================================================
 
+    @Override
     public void setUniversityCatalogue(ReadOnlyUniversityCatalogue universityCatalogue) {
         this.universityCatalogue.resetData(universityCatalogue);
     }
@@ -303,6 +304,7 @@ public class SeplendidModelManager implements SeplendidModel {
 
     @Override
     public ObservableList<University> getFilteredUniversityList() {
+
         return filteredUniversityCatalogue;
     }
 

@@ -11,6 +11,7 @@ import static seedu.address.testutil.TypicalObjects.CS2030S;
 import static seedu.address.testutil.TypicalObjects.CS2040S;
 import static seedu.address.testutil.TypicalObjects.CS3230;
 import static seedu.address.testutil.TypicalObjects.MA2001;
+import static seedu.address.testutil.TypicalObjects.NTU;
 import static seedu.address.testutil.TypicalObjects.getTypicalNoteCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalUniversityCatalogue;
 
@@ -112,6 +113,87 @@ public class SeplendidModelManagerTest {
     @Test
     public void getFilteredLocalCourseList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredLocalCourseList()
+                .remove(0));
+    }
+
+    //partner courses
+    @Test
+    public void setPartnerCourseCatalogueFilePath_nullPath_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.setPartnerCourseCatalogueFilePath(null));
+    }
+
+    @Test
+    public void setPartnerCourseCatalogueFilePath_validPath_setsPartnerCourseCatalogueFilePath() {
+        Path path = Paths.get("partner/course/catalogue/file/path");
+        modelManager.setPartnerCourseCatalogueFilePath(path);
+        assertEquals(path, modelManager.getPartnerCourseCatalogueFilePath());
+    }
+
+    @Test
+    public void hasPartnerCourse_nullPartnerCourse_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.hasPartnerCourse(null));
+    }
+
+    @Test
+    public void hasPartnerCourse_partnerCourseNotInPartnerCourseCatalogue_returnsFalse() {
+        assertFalse(modelManager.hasPartnerCourse(COMP1000));
+    }
+
+    @Test
+    public void hasPartnerCourse_partnerCourseInPartnerCourseCatalogue_returnsTrue() {
+        modelManager.addPartnerCourse(COMP1000);
+        assertTrue(modelManager.hasPartnerCourse(COMP1000));
+    }
+
+    @Test
+    public void getPartnerCourseIfExists_partnerCourseInPartnerCourseCatalogue_returnsPartnerCourse() {
+        modelManager.addPartnerCourse(COMP2000);
+        assertEquals(COMP2000, modelManager.getPartnerCourseIfExists(COMP2000.getPartnerCode()).get());
+    }
+
+    @Test
+    public void getPartnerCourseIfExists_partnerCourseNotInPartnerCourseCatalogue_returnsEmpty() {
+        assertEquals(Optional.empty(), modelManager.getPartnerCourseIfExists(COMP2000.getPartnerCode()));
+    }
+
+    @Test
+    public void getFilteredPartnerCourseList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredPartnerCourseList()
+                .remove(0));
+    }
+
+    //university
+    @Test
+    public void setUniversityCatalogueFilePath_nullPath_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.setUniversityCatalogueFilePath(null));
+    }
+
+    @Test
+    public void setUniversityCatalogueFilePath_validPath_setsUniversityCatalogueFilePath() {
+        Path path = Paths.get("university/catalogue/file/path");
+        modelManager.setUniversityCatalogueFilePath(path);
+        assertEquals(path, modelManager.getUniversityCatalogueFilePath());
+    }
+
+    @Test
+    public void hasUniversity_nullUniversityCourse_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.hasUniversity(null));
+    }
+
+    @Test
+    public void hasUniversity_universityNotInUniversityCourseCatalogue_returnsFalse() {
+        assertFalse(modelManager.hasUniversity(NTU));
+    }
+
+    @Test
+    public void hasUniversity_universityInUniversityCatalogue_returnsTrue() {
+        modelManager.addUniversity(NTU);
+        assertTrue(modelManager.hasUniversity(NTU));
+    }
+
+    @Test
+    public void getFilteredUniversityList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredUniversityList()
                 .remove(0));
     }
 

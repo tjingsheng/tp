@@ -20,12 +20,14 @@ import seedu.address.logic.SeplendidLogic;
 import seedu.address.logic.SeplendidLogicManager;
 import seedu.address.model.AddressBook;
 import seedu.address.model.LocalCourseCatalogue;
+import seedu.address.model.MappingCatalogue;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.NoteCatalogue;
 import seedu.address.model.PartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
+import seedu.address.model.ReadOnlyMappingCatalogue;
 import seedu.address.model.ReadOnlyNoteCatalogue;
 import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyUniversityCatalogue;
@@ -40,11 +42,13 @@ import seedu.address.seplendidui.UiManager;
 import seedu.address.storage.AddressBookStorage;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonLocalCourseCatalogueStorage;
+import seedu.address.storage.JsonMappingCatalogueStorage;
 import seedu.address.storage.JsonNoteCatalogueStorage;
 import seedu.address.storage.JsonPartnerCourseCatalogueStorage;
 import seedu.address.storage.JsonUniversityCatalogueStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.LocalCourseCatalogueStorage;
+import seedu.address.storage.MappingCatalogueStorage;
 import seedu.address.storage.NoteCatalogueStorage;
 import seedu.address.storage.PartnerCourseCatalogueStorage;
 import seedu.address.storage.Storage;
@@ -95,8 +99,10 @@ public class MainApp extends Application {
                 new JsonPartnerCourseCatalogueStorage(userPrefs.getPartnerCourseCatalogueFilePath());
         NoteCatalogueStorage noteCatalogueStorage =
                 new JsonNoteCatalogueStorage(userPrefs.getNoteCatalogueFilePath());
+        MappingCatalogueStorage mappingCatalogueStorage =
+                new JsonMappingCatalogueStorage(userPrefs.getMappingCatalogueFilePath());
         storage = new StorageManager(addressBookStorage, localCourseCatalogueStorage, userPrefsStorage,
-                partnerCourseCatalogue, universityCatalogueStorage, noteCatalogueStorage);
+                partnerCourseCatalogue, universityCatalogueStorage, noteCatalogueStorage, mappingCatalogueStorage);
         // AB3 model
         model = initAddressBookModelManager(storage, userPrefs);
 
@@ -150,16 +156,27 @@ public class MainApp extends Application {
         Optional<ReadOnlyLocalCourseCatalogue> localCourseCatalogueOptional;
         Optional<ReadOnlyPartnerCourseCatalogue> partnerCourseCatalogueOptional;
         Optional<ReadOnlyUniversityCatalogue> universityCatalogueOptional;
+        Optional<ReadOnlyNoteCatalogue> noteCatalogueOptional;
+        Optional<ReadOnlyMappingCatalogue> mappingCatalogueOptional;
+
         ReadOnlyPartnerCourseCatalogue initialPartnerCourseCatalogue;
         ReadOnlyLocalCourseCatalogue initialLocalCourseCatalogue;
         ReadOnlyUniversityCatalogue initialUniversityCatalogue;
-        logger.info("Using data file : " + storage.getLocalCourseCatalogueFilePath());
-        Optional<ReadOnlyNoteCatalogue> noteCatalogueOptional;
         ReadOnlyNoteCatalogue initialNoteCatalogue;
+        ReadOnlyMappingCatalogue initialMappingCatalogue;
+
+        logger.info("Using data file : " + storage.getLocalCourseCatalogueFilePath());
+        logger.info("Using data file : " + storage.getPartnerCourseCatalogueFilePath());
+        logger.info("Using data file : " + storage.getUniversityCatalogueFilePath());
+        logger.info("Using data file : " + storage.getNoteCatalogueFilePath());
+        logger.info("Using data file : " + storage.getMappingCatalogueFilePath());
+
         try {
             localCourseCatalogueOptional = storage.readLocalCourseCatalogue();
             partnerCourseCatalogueOptional = storage.readPartnerCourseCatalogue();
             universityCatalogueOptional = storage.readUniversityCatalogue();
+            mappingCatalogueOptional = storage.readMappingCatalogue();
+
             if (!localCourseCatalogueOptional.isPresent()) {
                 logger.info("Creating a new data file " + storage.getLocalCourseCatalogueFilePath()
                         + " populated with a sample LocalCourseCatalogue.");
@@ -186,16 +203,23 @@ public class MainApp extends Application {
             }
             initialNoteCatalogue = noteCatalogueOptional.orElseGet(
                     SampleDataUtil::getSampleNoteCatalogue);
+            if (!mappingCatalogueOptional.isPresent()) {
+                logger.info("Creating a new data file " + storage.getMappingCatalogueFilePath()
+                        + " populated with a sample MappingCatalogue.");
+            }
+            // We add no sample mappings, as mapping depends on other data types.
+            initialMappingCatalogue = mappingCatalogueOptional.orElseGet(MappingCatalogue::new);
         } catch (DataLoadingException e) {
-            logger.warning("Data file at " + storage.getNoteCatalogueFilePath() + " could not be loaded."
+            logger.warning("Data file(s) could not be loaded."
                     + " Will be starting with an empty AddressBook.");
             initialLocalCourseCatalogue = new LocalCourseCatalogue();
             initialPartnerCourseCatalogue = new PartnerCourseCatalogue();
             initialUniversityCatalogue = new UniversityCatalogue();
             initialNoteCatalogue = new NoteCatalogue();
+            initialMappingCatalogue = new MappingCatalogue();
         }
         return new SeplendidModelManager(initialLocalCourseCatalogue, userPrefs, initialPartnerCourseCatalogue,
-                initialUniversityCatalogue, initialNoteCatalogue);
+                initialUniversityCatalogue, initialNoteCatalogue, initialMappingCatalogue);
     }
 
     private void initLogging(Config config) {

@@ -9,6 +9,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
+import seedu.address.model.ReadOnlyMappingCatalogue;
 import seedu.address.model.ReadOnlyNoteCatalogue;
 import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyUniversityCatalogue;
@@ -27,6 +28,7 @@ public class StorageManager implements Storage {
     private PartnerCourseCatalogueStorage partnerCourseCatalogueStorage;
     private UserPrefsStorage userPrefsStorage;
     private NoteCatalogueStorage noteCatalogueStorage;
+    private MappingCatalogueStorage mappingCatalogueStorage;
 
     /**
      * Creates a {@code StorageManager} with the given {@code AddressBookStorage} and {@code UserPrefStorage}.
@@ -36,13 +38,15 @@ public class StorageManager implements Storage {
                           UserPrefsStorage userPrefsStorage,
                           PartnerCourseCatalogueStorage partnerCourseCatalogueStorage,
                           UniversityCatalogueStorage universityCatalogueStorage,
-                          NoteCatalogueStorage noteCatalogueStorage) {
+                          NoteCatalogueStorage noteCatalogueStorage,
+                          MappingCatalogueStorage mappingCatalogueStorage) {
         this.addressBookStorage = addressBookStorage;
         this.localCourseCatalogueStorage = localCourseCatalogueStorage;
         this.universityCatalogueStorage = universityCatalogueStorage;
         this.userPrefsStorage = userPrefsStorage;
         this.partnerCourseCatalogueStorage = partnerCourseCatalogueStorage;
         this.noteCatalogueStorage = noteCatalogueStorage;
+        this.mappingCatalogueStorage = mappingCatalogueStorage;
     }
 
     // ================ UserPrefs methods ==============================
@@ -146,10 +150,11 @@ public class StorageManager implements Storage {
 
     @Override
     public void saveUniversityCatalogue(ReadOnlyUniversityCatalogue universityCatalogue,
-                                         Path filePath) throws IOException {
+                                        Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
         universityCatalogueStorage.saveUniversityCatalogue(universityCatalogue, filePath);
     }
+
     // ================ PartnerCourseCatalogue methods ==============================
     @Override
     public Path getPartnerCourseCatalogueFilePath() {
@@ -176,7 +181,7 @@ public class StorageManager implements Storage {
 
     @Override
     public void savePartnerCourseCatalogue(ReadOnlyPartnerCourseCatalogue partnerCourseCatalogue,
-                                         Path filePath) throws IOException {
+                                           Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
         partnerCourseCatalogueStorage.savePartnerCourseCatalogue(partnerCourseCatalogue, filePath);
     }
@@ -205,9 +210,38 @@ public class StorageManager implements Storage {
 
     @Override
     public void saveNoteCatalogue(ReadOnlyNoteCatalogue noteCatalogue,
-                                         Path filePath) throws IOException {
+                                  Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
         noteCatalogueStorage.saveNoteCatalogue(noteCatalogue, filePath);
+    }
+
+    // ================ MappingCatalogue methods ==============================
+    @Override
+    public Path getMappingCatalogueFilePath() {
+        return mappingCatalogueStorage.getMappingCatalogueFilePath();
+    }
+
+    @Override
+    public Optional<ReadOnlyMappingCatalogue> readMappingCatalogue() throws DataLoadingException {
+        return readMappingCatalogue(mappingCatalogueStorage.getMappingCatalogueFilePath());
+    }
+
+    @Override
+    public Optional<ReadOnlyMappingCatalogue> readMappingCatalogue(Path filePath) throws DataLoadingException {
+        logger.fine("Attempting to read data from file: " + filePath);
+        return mappingCatalogueStorage.readMappingCatalogue(filePath);
+    }
+
+    @Override
+    public void saveMappingCatalogue(ReadOnlyMappingCatalogue mappingCatalogue) throws IOException {
+        saveMappingCatalogue(mappingCatalogue, mappingCatalogueStorage.getMappingCatalogueFilePath());
+    }
+
+    @Override
+    public void saveMappingCatalogue(ReadOnlyMappingCatalogue mappingCatalogue,
+                                     Path filePath) throws IOException {
+        logger.fine("Attempting to write to data file: " + filePath);
+        mappingCatalogueStorage.saveMappingCatalogue(mappingCatalogue, filePath);
     }
 
 }

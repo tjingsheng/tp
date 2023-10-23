@@ -12,40 +12,35 @@ public class PartnerCourseUtil {
      * Returns an add command string for adding the {@code PartnerCourse}.
      */
     public static String getPartnerCourseAddCommandFrom(PartnerCourse partnerCourse) {
-        return PartnerCourseAddCommand.COMMAND_WORD
-                + " "
-                + PartnerCourseAddCommand.ACTION_WORD
-                + " "
-                + getPartnerCourseArgumentsForAddCommand(partnerCourse);
+        return String.format("%s %s %s",
+            PartnerCourseAddCommand.COMMAND_WORD,
+            PartnerCourseAddCommand.ACTION_WORD,
+            getPartnerCourseArgumentsForAddCommand(partnerCourse));
     }
 
     /**
      * Returns the part of add command string for the given {@code PartnerCourse}'s details.
      */
     public static String getPartnerCourseArgumentsForAddCommand(PartnerCourse partnerCourse) {
-        StringBuilder sb = new StringBuilder("[");
-        sb.append(partnerCourse.getPartnerCode()).append("] [");
-        sb.append(partnerCourse.getPartnerName()).append("]");
-        return sb.toString();
+        return String.format("[%s] [%s]",
+            partnerCourse.getPartnerCode(),
+            partnerCourse.getPartnerName());
     }
 
     /**
-     * Returns a delete command string for adding the {@code PartnerCode}.
+     * Returns a delete command string for deleting the {@code PartnerCourse}.
      */
     public static String getPartnerCourseDeleteCommandFrom(PartnerCourse partnerCourse) {
-        return PartnerCourseDeleteCommand.COMMAND_WORD
-                + " "
-                + PartnerCourseDeleteCommand.ACTION_WORD
-                + " "
-                + getPartnerCourseArgumentsForDeleteCommand(partnerCourse);
+        return String.format("%s %s %s",
+            PartnerCourseDeleteCommand.COMMAND_WORD,
+            PartnerCourseDeleteCommand.ACTION_WORD,
+            getPartnerCourseArgumentsForDeleteCommand(partnerCourse));
     }
 
     /**
      * Returns the part of delete command string for the given {@code PartnerCourse}'s details.
      */
     public static String getPartnerCourseArgumentsForDeleteCommand(PartnerCourse partnerCourse) {
-        StringBuilder sb = new StringBuilder("[");
-        sb.append(partnerCourse.getPartnerCode()).append("]");
-        return sb.toString();
+        return String.format("[%s]", partnerCourse.getPartnerCode());
     }
 }

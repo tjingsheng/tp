@@ -23,6 +23,7 @@ public class TypicalObjects {
 
     public static final String TYPICAL_LOCAL_COURSE_CODE = "CS2103";
     public static final String TYPICAL_LOCAL_COURSE_NAME = "Software Engineering";
+    public static final Double TYPICAL_LOCAL_COURSE_UNIT = 4.0;
 
     public static final String TYPICAL_PARTNER_COURSE_CODE = "CS50";
     public static final String TYPICAL_PARTNER_COURSE_NAME = "Introduction to Computer Science";
@@ -32,6 +33,7 @@ public class TypicalObjects {
 
     public static final String EDGE_CASE_VALID_LOCAL_COURSE_CODE = "S";
     public static final String EDGE_CASE_VALID_LOCAL_COURSE_NAME = " Software Testing";
+    public static final Double EDGE_CASE_VALID_LOCAL_COURSE_UNIT = 0.0;
     public static final String INVALID_LOCAL_COURSE_CODE = "$HOW2BECOMERICH";
     public static final String INVALID_LOCAL_COURSE_NAME = " ";
 
@@ -43,20 +45,41 @@ public class TypicalObjects {
     public static final String INVALID_PARTNER_COURSE_NAME = " ";
     public static final String EDGE_CASE_VALID_UNIVERSITY_NAME = " School";
 
-    public static final LocalCourse CS2040S = new LocalCourseBuilder().withLocalCode("CS2040S")
-            .withLocalName("Data Structures & Algorithms").build();
-    public static final LocalCourse CS3230 = new LocalCourseBuilder().withLocalCode("CS3230")
-            .withLocalName("Design & Analysis of Algorithms").build();
-    public static final LocalCourse CS1231S = new LocalCourseBuilder().withLocalCode("CS1231S")
-            .withLocalName("Discrete Structures").build();
-    public static final LocalCourse CS2030S = new LocalCourseBuilder().withLocalCode("CS2030S")
-            .withLocalName("Programming Methodology II").build();
-    public static final LocalCourse MA2001 = new LocalCourseBuilder().withLocalCode("MA2001")
-            .withLocalName("Linear Algebra").build();
-    public static final LocalCourse TYPICAL_LOCAL_COURSE = new LocalCourseBuilder()
-            .withLocalCode(TYPICAL_LOCAL_COURSE_CODE).withLocalName(TYPICAL_LOCAL_COURSE_NAME).build();
-    public static final LocalCourse EDGE_CASE_VALID_LOCAL_COURSE = new LocalCourseBuilder()
-            .withLocalCode(EDGE_CASE_VALID_LOCAL_COURSE_CODE).withLocalName(EDGE_CASE_VALID_LOCAL_COURSE_NAME).build();
+    public static final LocalCourse CS2040S =
+        new LocalCourseBuilder().withLocalCode("CS2040S")
+            .withLocalName("Data Structures & Algorithms")
+            .withLocalUnit(4.0)
+            .build();
+    public static final LocalCourse CS3230 =
+        new LocalCourseBuilder().withLocalCode("CS3230")
+            .withLocalName("Design & Analysis of Algorithms")
+            .withLocalUnit(4.0)
+            .build();
+    public static final LocalCourse CS1231S =
+        new LocalCourseBuilder().withLocalCode("CS1231S")
+            .withLocalName("Discrete Structures")
+            .withLocalUnit(4.0)
+            .build();
+    public static final LocalCourse CS2030S =
+        new LocalCourseBuilder().withLocalCode("CS2030S")
+            .withLocalName("Programming Methodology II")
+            .withLocalUnit(4.0)
+            .build();
+    public static final LocalCourse MA2001 =
+        new LocalCourseBuilder().withLocalCode("MA2001")
+            .withLocalName("Linear Algebra")
+            .withLocalUnit(4.0)
+            .build();
+    public static final LocalCourse TYPICAL_LOCAL_COURSE =
+        new LocalCourseBuilder().withLocalCode(TYPICAL_LOCAL_COURSE_CODE)
+            .withLocalName(TYPICAL_LOCAL_COURSE_NAME)
+            .withLocalUnit(TYPICAL_LOCAL_COURSE_UNIT)
+            .build();
+    public static final LocalCourse EDGE_CASE_VALID_LOCAL_COURSE =
+        new LocalCourseBuilder().withLocalCode(EDGE_CASE_VALID_LOCAL_COURSE_CODE)
+            .withLocalName(EDGE_CASE_VALID_LOCAL_COURSE_NAME)
+            .withLocalUnit(EDGE_CASE_VALID_LOCAL_COURSE_UNIT)
+            .build();
 
     // PartnerCourse
     public static final PartnerCourse TYPICAL_PARTNER_COURSE = new PartnerCourseBuilder()

@@ -57,16 +57,20 @@ public class Messages {
      * Overloaded method.
      */
     public static String format(LocalCourse localCourse) {
-        final StringBuilder builder = new StringBuilder("LocalCode: ");
-        builder.append(localCourse.getLocalCode())
-                .append("; LocalName: ")
-                .append(localCourse.getLocalName());
+        final StringBuilder builder = new StringBuilder();
+        builder.append("LocalCode: ")
+            .append(localCourse.getLocalCode())
+            .append("; LocalName: ")
+            .append(localCourse.getLocalName())
+            .append("; LocalUnit: ")
+            .append(localCourse.getLocalUnit());
         return builder.toString();
     }
 
     /**
      * Formats the {@code university} for display to the user.
      * Overloaded method.
+     *
      * @param university
      * @return
      */

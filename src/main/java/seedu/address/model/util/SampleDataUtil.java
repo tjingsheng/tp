@@ -17,6 +17,7 @@ import seedu.address.model.UniversityCatalogue;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.localcourse.LocalName;
+import seedu.address.model.localcourse.LocalUnit;
 import seedu.address.model.notes.Content;
 import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCode;
@@ -79,9 +80,19 @@ public class SampleDataUtil {
     }
 
     public static LocalCourse[] getSampleLocalCourses() {
-        return new LocalCourse[] {new LocalCourse(new LocalCode("CS1101S"),
-                new LocalName("Programming Methodology I")),
-                                  new LocalCourse(new LocalCode("CS1231S"), new LocalName("Discrete Structures"))
+        return new LocalCourse[]{
+            new LocalCourse(
+                new LocalCode("CS1101S"),
+                new LocalName("Programming Methodology I"),
+                new LocalUnit(4.0)),
+            new LocalCourse(
+                new LocalCode("CS1231S"),
+                new LocalName("Discrete Structures"),
+                new LocalUnit(4.0)),
+            new LocalCourse(
+                new LocalCode("IS1108"),
+                new LocalName("Digital Ethics and Data Privacy"),
+                new LocalUnit(4.0)),
         };
     }
 

@@ -18,14 +18,16 @@ public class LocalCourse implements SeplendidDataType {
 
     // Data fields
     private final LocalName localName;
+    private final LocalUnit localUnit;
 
     /**
      * Every field must be present and not null
      */
-    public LocalCourse(LocalCode lc, LocalName ln) {
-        requireAllNonNull(lc, ln);
-        localCode = lc;
-        localName = ln;
+    public LocalCourse(LocalCode localCode, LocalName localName, LocalUnit localUnit) {
+        requireAllNonNull(localCode, localName, localUnit);
+        this.localCode = localCode;
+        this.localName = localName;
+        this.localUnit = localUnit;
     }
 
     // Getters
@@ -35,6 +37,10 @@ public class LocalCourse implements SeplendidDataType {
 
     public LocalName getLocalName() {
         return localName;
+    }
+
+    public LocalUnit getLocalUnit() {
+        return localUnit;
     }
 
     /**
@@ -73,7 +79,8 @@ public class LocalCourse implements SeplendidDataType {
 
         LocalCourse otherLocalCourse = (LocalCourse) other;
         return localCode.equals(otherLocalCourse.localCode)
-                && localName.equals(otherLocalCourse.localName);
+                && localName.equals(otherLocalCourse.localName)
+                && localUnit.equals(otherLocalCourse.localUnit);
     }
 
     @Override
@@ -87,6 +94,7 @@ public class LocalCourse implements SeplendidDataType {
         return new ToStringBuilder(this)
                 .add("localCode", localCode)
                 .add("localName", localName)
+                .add("localunit", localUnit)
                 .toString();
     }
 }

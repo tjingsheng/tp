@@ -8,6 +8,7 @@ import static seedu.address.testutil.TypicalObjects.INVALID_LOCAL_COURSE_CODE;
 import static seedu.address.testutil.TypicalObjects.INVALID_LOCAL_COURSE_NAME;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE_CODE;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE_NAME;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE_UNIT;
 
 import org.junit.jupiter.api.Test;
 
@@ -26,14 +27,20 @@ public class JsonAdaptedLocalCourseTest {
     @Test
     public void toModelType_invalidLocalCode_throwsIllegalValueException() {
         JsonAdaptedLocalCourse localCourse =
-                new JsonAdaptedLocalCourse(INVALID_LOCAL_COURSE_CODE, TYPICAL_LOCAL_COURSE_NAME);
+                new JsonAdaptedLocalCourse(
+                    INVALID_LOCAL_COURSE_CODE,
+                    TYPICAL_LOCAL_COURSE_NAME,
+                    TYPICAL_LOCAL_COURSE_UNIT);
         String expectedMessage = LocalCode.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, localCourse::toModelType);
     }
 
     @Test
     public void toModelType_nullLocalCode_throwsIllegalValueException() {
-        JsonAdaptedLocalCourse localCourse = new JsonAdaptedLocalCourse(null, TYPICAL_LOCAL_COURSE_NAME);
+        JsonAdaptedLocalCourse localCourse = new JsonAdaptedLocalCourse(
+            null,
+            TYPICAL_LOCAL_COURSE_NAME,
+            TYPICAL_LOCAL_COURSE_UNIT);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, LocalCode.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, localCourse::toModelType);
     }
@@ -41,16 +48,31 @@ public class JsonAdaptedLocalCourseTest {
     @Test
     public void toModelType_invalidLocalName_throwsIllegalValueException() {
         JsonAdaptedLocalCourse localCourse =
-                new JsonAdaptedLocalCourse(TYPICAL_LOCAL_COURSE_CODE, INVALID_LOCAL_COURSE_NAME);
+                new JsonAdaptedLocalCourse(
+                    TYPICAL_LOCAL_COURSE_CODE,
+                    INVALID_LOCAL_COURSE_NAME,
+                    TYPICAL_LOCAL_COURSE_UNIT);
         String expectedMessage = LocalName.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, localCourse::toModelType);
     }
 
     @Test
     public void toModelType_nullLocalName_throwsIllegalValueException() {
-        JsonAdaptedLocalCourse localCourse = new JsonAdaptedLocalCourse(TYPICAL_LOCAL_COURSE_CODE, null);
+        JsonAdaptedLocalCourse localCourse = new JsonAdaptedLocalCourse(
+            TYPICAL_LOCAL_COURSE_CODE,
+            null,
+            TYPICAL_LOCAL_COURSE_UNIT);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, LocalName.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, localCourse::toModelType);
     }
 
+    @Test
+    public void toModelType_negativeLocalUnit_throwsIllegalValueException() {
+        JsonAdaptedLocalCourse localCourse = new JsonAdaptedLocalCourse(
+            TYPICAL_LOCAL_COURSE_CODE,
+            null,
+            TYPICAL_LOCAL_COURSE_UNIT);
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, LocalName.class.getSimpleName());
+        assertThrows(IllegalValueException.class, expectedMessage, localCourse::toModelType);
+    }
 }

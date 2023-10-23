@@ -12,6 +12,7 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalName;
+import seedu.address.model.localcourse.LocalUnit;
 import seedu.address.model.notes.Content;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerName;
@@ -158,6 +159,21 @@ public class ParserUtil {
             throw new ParseException(LocalName.MESSAGE_CONSTRAINTS);
         }
         return new LocalName(localName);
+    }
+
+    /**
+     * Parses a {@code String localUnit} into an {@code LocalUnit}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code localName} is invalid.
+     */
+    public static LocalUnit parseLocalUnit(String localUnit) throws ParseException {
+        requireNonNull(localUnit);
+        String trimmedLocalUnit = localUnit.trim();
+        if (!LocalUnit.isValidLocalUnit(trimmedLocalUnit)) {
+            throw new ParseException(LocalUnit.MESSAGE_CONSTRAINTS);
+        }
+        return new LocalUnit(localUnit);
     }
 
     /**

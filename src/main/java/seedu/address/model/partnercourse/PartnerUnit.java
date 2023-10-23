@@ -66,7 +66,7 @@ public class PartnerUnit {
 
         if (test instanceof Number) {
             // If the input is a Number, check if its double value is greater than 0
-            return ((Number) test).doubleValue() > 0;
+            return ((Number) test).doubleValue() >= 0;
         }
 
         // If the input is neither a String nor a Number, return false

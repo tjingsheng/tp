@@ -1,20 +1,10 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERCODE;
-import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERNAME;
-import static seedu.address.logic.parser.CliSyntax.PARAMETER_UNIVERSITY;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_UNIVERSITYNAME;
 
-import java.util.Arrays;
-
-import seedu.address.logic.commands.PartnerCourseAddCommand;
 import seedu.address.logic.commands.UniversitySearchCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.partnercourse.PartnerCode;
-import seedu.address.model.partnercourse.PartnerCourse;
-import seedu.address.model.partnercourse.PartnerName;
-import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityName;
 import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
 
@@ -49,7 +39,8 @@ public class UniversitySearchCommandParser implements Parser<UniversitySearchCom
                     UniversitySearchCommand.UNIVERSITY_SEARCH_MESSAGE_USAGE));
         }
 
-        UniversityName universityName = ParserUtil.parseUniversityName(parameterToArgMap.getValue(PARAMETER_UNIVERSITYNAME).get());
+        UniversityName universityName = ParserUtil.parseUniversityName(
+                parameterToArgMap.getValue(PARAMETER_UNIVERSITYNAME).get());
         return new UniversitySearchCommand(new UniversityNameContainsKeywordsPredicate(universityName.getName()));
 
     }

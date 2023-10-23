@@ -78,7 +78,13 @@ public class Messages {
         return builder.toString();
     }
 
-    public static String formatList(ObservableList<University> universityObservableList) {
+    /**
+     * Formats the {@code university} for display to the user.
+     * Overloaded method.
+     * @param universityObservableList
+     * @return
+     */
+    public static String format(ObservableList<University> universityObservableList) {
         final StringBuilder builder = new StringBuilder("UniversityName: ");
         String universityNames = universityObservableList.stream()
                 .map(University::getUniversityName).map(UniversityName::getName).collect(Collectors.joining(", "));

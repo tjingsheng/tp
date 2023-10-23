@@ -7,8 +7,6 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
-import seedu.address.model.university.University;
-import seedu.address.model.university.UniversityName;
 import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
 import seedu.address.seplendidui.UiUtil;
 
@@ -23,11 +21,7 @@ public class UniversitySearchCommand extends UniversityCommand {
     public static final String MESSAGE_SUCCESS = "Universities searched: %1$s";
 
     public static final String MESSAGE_NONEXISTENT_UNIVERSITIES = "This university does not exist in SEPlendid";
-//    public static final String UNIVERSITY_SEARCH_MESSAGE_USAGE = COMMAND_WORD
-//            + ": Finds all universities whose names contain any of "
-//            + "the specified keywords (case-insensitive) and displays them as a list.\n"
-//            + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-//            + "Example: " + COMMAND_WORD + " [harv]";
+
     public static final String UNIVERSITY_SEARCH_MESSAGE_USAGE = COMMAND_WORD
         + " search [university_keyword]: Search universities with the same keyword";
     private final UniversityNameContainsKeywordsPredicate predicate;
@@ -46,7 +40,7 @@ public class UniversitySearchCommand extends UniversityCommand {
             throw new CommandException(MESSAGE_NONEXISTENT_UNIVERSITIES);
         }
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.formatList(model.getFilteredUniversityList())),
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(model.getFilteredUniversityList())),
                 UiUtil.ListViewModel.UNIVERSITY_LIST);
     }
 

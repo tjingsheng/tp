@@ -32,6 +32,7 @@ import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
+import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
 import seedu.address.testutil.LocalCourseBuilder;
 
 /**
@@ -270,6 +271,17 @@ public class LocalCourseAddCommandTest {
         }
 
         @Override
+        public void getSearchUniversityIfExists(UniversityNameContainsKeywordsPredicate
+                                                                universityNameContainsKeywordsPredicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<University> getSearchResults(University university) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public ObservableList<University> getFilteredUniversityList() {
             throw new AssertionError("This method should not be called.");
         }
@@ -279,7 +291,6 @@ public class LocalCourseAddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
-        @Override
         public void updateUniversityList(Predicate<University> predicate) {
             throw new AssertionError("This method should not be called.");
         }

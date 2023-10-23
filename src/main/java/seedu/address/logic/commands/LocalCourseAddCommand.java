@@ -8,6 +8,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.seplendidui.UiUtil;
 
 /**
  * Adds a local course to the LocalCourseCatalogue.
@@ -56,7 +57,8 @@ public class LocalCourseAddCommand extends LocalCourseCommand {
         }
 
         seplendidModel.addLocalCourse(localCourseToAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(localCourseToAdd)));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(localCourseToAdd)),
+                UiUtil.ListViewModel.LOCAL_COURSE_LIST);
 
     }
 

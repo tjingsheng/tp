@@ -4,12 +4,14 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.SeplendidLogsCenter;
 import seedu.address.model.localcourse.LocalCode;
@@ -29,6 +31,7 @@ public class SeplendidModelManager implements SeplendidModel {
     private final LocalCourseCatalogue localCourseCatalogue;
     private final UserPrefs userPrefs;
     private final FilteredList<LocalCourse> filteredLocalCourseCatalogue;
+    private final SortedList<LocalCourse> sortedLocalCourseCatalogue;
 
     private final UniversityCatalogue universityCatalogue;
     private final FilteredList<University> filteredUniversityCatalogue;
@@ -55,6 +58,7 @@ public class SeplendidModelManager implements SeplendidModel {
         this.localCourseCatalogue = new LocalCourseCatalogue(localCourseCatalogue);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredLocalCourseCatalogue = new FilteredList<>(this.localCourseCatalogue.getLocalCourseList());
+        sortedLocalCourseCatalogue = new SortedList<>(this.localCourseCatalogue.getLocalCourseList());
         this.partnerCourseCatalogue = new PartnerCourseCatalogue(partnerCourseCatalogue);
         filteredPartnerCourseCatalogue = new FilteredList<>(this.partnerCourseCatalogue.getPartnerCourseList());
         this.universityCatalogue = new UniversityCatalogue(universityCatalogue);
@@ -166,6 +170,16 @@ public class SeplendidModelManager implements SeplendidModel {
         requireAllNonNull(target, editedLocalCourse);
 
         localCourseCatalogue.setLocalCourse(target, editedLocalCourse);
+    }
+
+    @Override
+    public ObservableList<LocalCourse> getSortedLocalCourseList() {
+        return sortedLocalCourseCatalogue;
+    }
+
+    @Override
+    public void updatedSortedLocalList(Comparator<LocalCourse> localCourseComparator) {
+        sortedLocalCourseCatalogue.setComparator(localCourseComparator);
     }
 
     //=========== FilteredLocalCourseList Accessors =============================================================

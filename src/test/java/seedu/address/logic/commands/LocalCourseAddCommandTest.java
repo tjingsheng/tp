@@ -10,6 +10,7 @@ import static seedu.address.testutil.TypicalObjects.CS2030S;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Optional;
 import java.util.function.Predicate;
 
@@ -164,6 +165,16 @@ public class LocalCourseAddCommandTest {
 
         @Override
         public void setLocalCourse(LocalCourse localCourse, LocalCourse editedLocalCourse) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<LocalCourse> getSortedLocalCourseList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updatedSortedLocalList(Comparator<LocalCourse> localCourseComparator) {
             throw new AssertionError("This method should not be called.");
         }
 

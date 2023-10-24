@@ -12,8 +12,8 @@ import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityName;
 
 /**
- * Wraps universities data at the catalogue level
- * Duplicates are not allowed (by .isSameUniversities comparison)
+ * Wraps universities data at the catalogue level.
+ * Duplicates are not allowed (by .isSameUniversities comparison).
  */
 
 public class UniversityCatalogue implements ReadOnlyUniversityCatalogue {
@@ -28,7 +28,7 @@ public class UniversityCatalogue implements ReadOnlyUniversityCatalogue {
     }
 
     /**
-     * Creates an UniversityCatalogue using the Universities in the {@code toBeCopied}
+     * Creates an UniversityCatalogue using the Universities in the {@code toBeCopied}.
      */
     public UniversityCatalogue(ReadOnlyUniversityCatalogue toBeCopied) {
         this();

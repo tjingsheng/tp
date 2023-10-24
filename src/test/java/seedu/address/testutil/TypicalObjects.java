@@ -35,17 +35,21 @@ public class TypicalObjects {
     public static final String EDGE_CASE_VALID_LOCAL_COURSE_CODE = "S";
     public static final String EDGE_CASE_VALID_LOCAL_COURSE_NAME = " Software Testing";
     public static final Double EDGE_CASE_VALID_LOCAL_COURSE_UNIT = 0.0;
-    public static final String INVALID_LOCAL_COURSE_CODE = "$HOW2BECOMERICH";
-    public static final String INVALID_LOCAL_COURSE_NAME = " ";
 
     public static final String EDGE_CASE_VALID_PARTNER_COURSE_CODE = "V";
     public static final String EDGE_CASE_VALID_PARTNER_COURSE_NAME = " Game Development";
     public static final Double EDGE_CASE_VALID_PARTNER_COURSE_UNIT = 0.0;
 
+    public static final String EDGE_CASE_VALID_UNIVERSITY_NAME = " School";
+
+    public static final String INVALID_LOCAL_COURSE_CODE = "$HOW2BECOMERICH";
+    public static final String INVALID_LOCAL_COURSE_NAME = " ";
+    public static final Double INVALID_LOCAL_COURSE_UNIT = -1.0;
 
     public static final String INVALID_PARTNER_COURSE_CODE = "$H23Y1";
     public static final String INVALID_PARTNER_COURSE_NAME = " ";
-    public static final String EDGE_CASE_VALID_UNIVERSITY_NAME = " School";
+    public static final Double INVALID_PARTNER_COURSE_UNIT = -1.0;
+
 
     public static final LocalCourse CS2040S =
         new LocalCourseBuilder().withLocalCode("CS2040S")

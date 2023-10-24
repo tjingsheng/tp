@@ -8,9 +8,11 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
+import seedu.address.model.ReadOnlyMappingCatalogue;
 import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
@@ -71,6 +73,14 @@ public interface SeplendidLogic {
     //=========== Universityatalouge ============================================================================
     ObservableList<University> getFilteredUniversityCatalogue();
 
-    //=========== NtoeCatalouge ============================================================================
+    //=========== NoteCatalouge ============================================================================
     ObservableList<Note> getFilteredNoteCatalogue();
+
+    //=========== MappingCatalouge ============================================================================
+    ReadOnlyMappingCatalogue getMappingCatalogue();
+
+    ObservableList<Mapping> getFilteredMappingCatalogue();
+
+    Path getMappingCatalogueFilePath();
 }
+

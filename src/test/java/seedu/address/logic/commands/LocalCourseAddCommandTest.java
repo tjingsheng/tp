@@ -21,6 +21,7 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.LocalCourseCatalogue;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
+import seedu.address.model.ReadOnlyMappingCatalogue;
 import seedu.address.model.ReadOnlyNoteCatalogue;
 import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyUniversityCatalogue;
@@ -28,11 +29,13 @@ import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
+import seedu.address.model.university.UniversityName;
 import seedu.address.testutil.LocalCourseBuilder;
 
 /**
@@ -154,6 +157,11 @@ public class LocalCourseAddCommandTest {
         }
 
         @Override
+        public boolean hasLocalCourse(LocalCode localCode) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public Optional<LocalCourse> getLocalCourseIfExists(LocalCode localCode) {
             throw new AssertionError("This method should not be called.");
         }
@@ -210,6 +218,11 @@ public class LocalCourseAddCommandTest {
         }
 
         @Override
+        public boolean hasPartnerCourse(PartnerCode partnerCode) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public Optional<PartnerCourse> getPartnerCourseIfExists(PartnerCode partnerCode) {
             throw new AssertionError("This method should not be called.");
         }
@@ -232,6 +245,11 @@ public class LocalCourseAddCommandTest {
 
         @Override
         public ReadOnlyUniversityCatalogue getUniversityCatalogue() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Optional<University> getUniversityIfExists(UniversityName universityName) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -288,6 +306,11 @@ public class LocalCourseAddCommandTest {
 
 
         @Override
+        public boolean hasUniversity(UniversityName universityName) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void updateFilteredUniversityList(Predicate<University> predicate) {
             throw new AssertionError("This method should not be called.");
         }
@@ -315,6 +338,72 @@ public class LocalCourseAddCommandTest {
 
         @Override
         public void updateFilteredNoteList(Predicate<Note> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Path getMappingCatalogueFilePath() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setMappingCatalogue(ReadOnlyMappingCatalogue mappingCatalogue) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyMappingCatalogue getMappingCatalogue() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasMapping(Mapping mapping) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasMapping(LocalCode localCode, UniversityName universityName, PartnerCode partnerCode) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Optional<Mapping> getMappingIfExists(LocalCode localCode, UniversityName universityName,
+                                                    PartnerCode partnerCode) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasMappingWithLocalCode(LocalCode localCode) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasMappingWithPartnerCode(PartnerCode partnerCode) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteMapping(Mapping mapping) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addMapping(Mapping mapping) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setMapping(Mapping mapping, Mapping editedMapping) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Mapping> getFilteredMappingList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredMappingList(Predicate<Mapping> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 

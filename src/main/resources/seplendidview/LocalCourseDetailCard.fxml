@@ -18,6 +18,10 @@
       </padding>
         <Label fx:id="localCode" text="\$first" styleClass="cell_big_label" />
         <Label fx:id="localName" styleClass="cell_small_label" />
+        <HBox spacing="5" alignment="CENTER_LEFT">
+          <Label fx:id="unitLabel" text="Units:" styleClass="cell_small_label" />
+          <Label fx:id="localUnit" styleClass="cell_small_label" />
+        </HBox>
     </VBox>
   </GridPane>
 </HBox>

@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-
 <HBox id="partnerCourseDetailPane" fx:id="partnerCourseDetailPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
   <GridPane HBox.hgrow="ALWAYS">
     <columnConstraints>
@@ -19,6 +18,10 @@
         <Label fx:id="partnerCode" text="\$first" styleClass="cell_big_label" />
         <Label fx:id="partnerName" styleClass="cell_small_label" />
         <Label fx:id="partnerUniversity" styleClass="cell_small_label" />
+        <HBox spacing="5" alignment="CENTER_LEFT">
+          <Label fx:id="unitLabel" text="Units:" styleClass="cell_small_label"/>
+          <Label fx:id="partnerUnit" styleClass="cell_small_label"/>
+        </HBox>
     </VBox>
   </GridPane>
 </HBox>

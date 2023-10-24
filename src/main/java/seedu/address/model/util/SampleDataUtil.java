@@ -17,11 +17,13 @@ import seedu.address.model.UniversityCatalogue;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.localcourse.LocalName;
+import seedu.address.model.localcourse.LocalUnit;
 import seedu.address.model.notes.Content;
 import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.partnercourse.PartnerName;
+import seedu.address.model.partnercourse.PartnerUnit;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -79,10 +81,18 @@ public class SampleDataUtil {
     }
 
     public static LocalCourse[] getSampleLocalCourses() {
-        return new LocalCourse[] {new LocalCourse(new LocalCode("CS1101S"),
-                new LocalName("Programming Methodology I")),
-                                  new LocalCourse(new LocalCode("CS1231S"), new LocalName("Discrete Structures"))
-        };
+        return new LocalCourse[] {new LocalCourse(
+                new LocalCode("CS1101S"),
+                new LocalName("Programming Methodology I"),
+                new LocalUnit(4.0)),
+                                  new LocalCourse(
+                                          new LocalCode("CS1231S"),
+                                          new LocalName("Discrete Structures"),
+                                          new LocalUnit(4.0)),
+                                  new LocalCourse(
+                                          new LocalCode("IS1108"),
+                                          new LocalName("Digital Ethics and Data Privacy"),
+                                          new LocalUnit(4.0))};
     }
 
     public static ReadOnlyLocalCourseCatalogue getSampleLocalCourseCatalogue() {
@@ -94,9 +104,10 @@ public class SampleDataUtil {
     }
 
     public static University[] getSampleUniversities() {
-        return new University[] {
-            new University(new UniversityName("University of Pennsylvania")),
-            new University(new UniversityName("Harvard University"))
+        return new University[] {new University(new UniversityName("Imperial College of London")),
+                                 new University(new UniversityName("University of Waterloo")),
+                                 new University(new UniversityName("Boston College")),
+                                 new University(new UniversityName("Harvard University"))
         };
     }
 
@@ -109,12 +120,21 @@ public class SampleDataUtil {
     }
 
     public static PartnerCourse[] getSamplePartnerCourses() {
-        return new PartnerCourse[] {new PartnerCourse(new University(new UniversityName("Boston College")),
-            new PartnerCode("COM1231"),
-            new PartnerName("Discrete Mathematics")),
-            new PartnerCourse(new University(new UniversityName("Harvard University")),
-                new PartnerCode("COM3041"),
-                new PartnerName("Computer Networks"))
+        return new PartnerCourse[] {new PartnerCourse(
+                new University(new UniversityName("Boston College")),
+                new PartnerCode("COM1231"),
+                new PartnerName("Discrete Mathematics"),
+                new PartnerUnit(5.0)),
+                                    new PartnerCourse(
+                                            new University(new UniversityName("University of Waterloo")),
+                                            new PartnerCode("INFR1101"),
+                                            new PartnerName("Computer Security"),
+                                            new PartnerUnit(5.0)),
+                                    new PartnerCourse(
+                                            new University(new UniversityName("Harvard University")),
+                                            new PartnerCode("COM3041"),
+                                            new PartnerName("Computer Networks"),
+                                            new PartnerUnit(2.0))
         };
     }
 
@@ -128,8 +148,8 @@ public class SampleDataUtil {
 
     public static Note[] getSampleNotes() {
         return new Note[] {new Note(new Content("Dummy Note 1"),
-            new Tag("dummy")),
-            new Note(new Content("Dummy Note 2"), new Tag("dummy"))
+                new Tag("dummy")),
+                           new Note(new Content("Dummy Note 2"), new Tag("dummy"))
         };
     }
 

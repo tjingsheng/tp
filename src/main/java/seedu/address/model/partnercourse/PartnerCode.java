@@ -13,7 +13,7 @@ public class PartnerCode {
 
     public static final String VALIDATION_REGEX = "[a-zA-Z][a-zA-Z0-9]{0,9}";
 
-    public final String value;
+    private final String value;
 
     /**
      * Constructs an {@code partnerCode}.

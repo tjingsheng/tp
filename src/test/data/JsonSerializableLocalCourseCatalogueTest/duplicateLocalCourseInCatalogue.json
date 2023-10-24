@@ -2,11 +2,13 @@
   "localCourses": [
     {
       "localCode": "CS1231S",
-      "localName": "Discrete Structures"
+      "localName": "Discrete Structures",
+      "localUnit": 4.0
     },
     {
       "localCode": "CS1231S",
-      "localName": "Continuous Structures"
+      "localName": "Continuous Structures",
+      "localUnit": 4.0
     }
   ]
 }

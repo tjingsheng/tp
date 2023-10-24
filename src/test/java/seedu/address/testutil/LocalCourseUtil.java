@@ -13,41 +13,37 @@ public class LocalCourseUtil {
      * Returns an add command string for adding the {@code LocalCourse}.
      */
     public static String getLocalCourseAddCommandFrom(LocalCourse localCourse) {
-        return LocalCourseAddCommand.COMMAND_WORD
-                + " "
-                + LocalCourseAddCommand.ACTION_WORD
-                + " "
-                + getLocalCourseArgumentsForAddCommand(localCourse);
+        return String.format("%s %s %s",
+            LocalCourseAddCommand.COMMAND_WORD,
+            LocalCourseAddCommand.ACTION_WORD,
+            getLocalCourseArgumentsForAddCommand(localCourse));
     }
 
     /**
-     * Returns the part of add command string for the given {@code localCourse}'s details.
+     * Returns the part of the add command string for the given {@code localCourse}'s details.
      */
     public static String getLocalCourseArgumentsForAddCommand(LocalCourse localCourse) {
-        StringBuilder sb = new StringBuilder("[");
-        sb.append(localCourse.getLocalCode()).append("] [");
-        sb.append(localCourse.getLocalName()).append("]");
-        return sb.toString();
+        return String.format("[%s] [%s] [%s]",
+            localCourse.getLocalCode(),
+            localCourse.getLocalName(),
+            localCourse.getLocalUnit());
     }
 
     /**
-     * Returns a delete command string for adding the {@code LocalCode}.
+     * Returns a delete command string for deleting the {@code LocalCourse}.
      */
     public static String getLocalCourseDeleteCommandFrom(LocalCourse localCourse) {
-        return LocalCourseDeleteCommand.COMMAND_WORD
-                + " "
-                + LocalCourseDeleteCommand.ACTION_WORD
-                + " "
-                + getLocalCourseArgumentsForDeleteCommand(localCourse);
+        return String.format("%s %s %s",
+            LocalCourseDeleteCommand.COMMAND_WORD,
+            LocalCourseDeleteCommand.ACTION_WORD,
+            getLocalCourseArgumentsForDeleteCommand(localCourse));
     }
 
     /**
-     * Returns the part of delete command string for the given {@code localCourse}'s details.
+     * Returns the part of delete command string for the given {@code LocalCourse}'s details.
      */
     public static String getLocalCourseArgumentsForDeleteCommand(LocalCourse localCourse) {
-        StringBuilder sb = new StringBuilder("[");
-        sb.append(localCourse.getLocalCode()).append("]");
-        return sb.toString();
+        return String.format("[%s]", localCourse.getLocalCode());
     }
 
 

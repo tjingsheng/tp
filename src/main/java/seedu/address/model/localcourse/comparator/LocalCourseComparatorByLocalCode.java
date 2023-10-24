@@ -23,6 +23,6 @@ public class LocalCourseComparatorByLocalCode implements Comparator<LocalCourse>
 
     @Override
     public String toString() {
-        return "LocalCode";
+        return "localcode";
     }
 }

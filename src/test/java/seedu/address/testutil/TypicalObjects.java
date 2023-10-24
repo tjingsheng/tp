@@ -48,6 +48,7 @@ public class TypicalObjects {
     public static final String INVALID_LOCAL_COURSE_CODE = "$HOW2BECOMERICH";
     public static final String INVALID_LOCAL_COURSE_NAME = " ";
     public static final Double INVALID_LOCAL_COURSE_UNIT = -1.0;
+    public static final String INVALID_LOCAL_COURSE_ATTRIBUTE = "partnercode";
 
     public static final String INVALID_PARTNER_COURSE_CODE = "$H23Y1";
     public static final String INVALID_PARTNER_COURSE_NAME = " ";

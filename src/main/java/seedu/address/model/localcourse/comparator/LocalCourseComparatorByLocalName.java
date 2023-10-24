@@ -19,6 +19,6 @@ public class LocalCourseComparatorByLocalName implements Comparator<LocalCourse>
 
     @Override
     public String toString() {
-        return "LocalName";
+        return "localname";
     }
 }

@@ -1,7 +1,10 @@
 package seedu.address.testutil;
 
+import java.util.Comparator;
+
 import seedu.address.logic.commands.LocalCourseAddCommand;
 import seedu.address.logic.commands.LocalCourseDeleteCommand;
+import seedu.address.logic.commands.LocalCourseSortCommand;
 import seedu.address.model.localcourse.LocalCourse;
 
 /**
@@ -44,6 +47,17 @@ public class LocalCourseUtil {
      */
     public static String getLocalCourseArgumentsForDeleteCommand(LocalCourse localCourse) {
         return String.format("[%s]", localCourse.getLocalCode());
+    }
+
+    public static String getLocalCourseSortCommandFrom(Comparator<LocalCourse> localCourseComparator) {
+        return String.format("%s %s %s",
+                LocalCourseSortCommand.COMMAND_WORD,
+                LocalCourseSortCommand.ACTION_WORD,
+                getLocalCourseArgumentsForSortCommand(localCourseComparator));
+    }
+
+    public static String getLocalCourseArgumentsForSortCommand(Comparator<LocalCourse> comparator) {
+        return String.format("[%s]", comparator.toString());
     }
 
 

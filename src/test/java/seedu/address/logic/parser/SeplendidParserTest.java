@@ -5,15 +5,19 @@ import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.testutil.Assert.assertThrows;
 
+import java.util.Comparator;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.LocalCourseAddCommand;
 import seedu.address.logic.commands.LocalCourseDeleteCommand;
+import seedu.address.logic.commands.LocalCourseSortCommand;
 import seedu.address.logic.commands.PartnerCourseAddCommand;
 import seedu.address.logic.commands.PartnerCourseDeleteCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.localcourse.comparator.LocalCourseComparatorByLocalCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.testutil.LocalCourseBuilder;
 import seedu.address.testutil.LocalCourseUtil;
@@ -43,6 +47,15 @@ public class SeplendidParserTest {
         LocalCourseDeleteCommand command = (LocalCourseDeleteCommand) parser
                 .parseCommand(LocalCourseUtil.getLocalCourseDeleteCommandFrom(localCourse));
         assertEquals(new LocalCourseDeleteCommand(localCourse.getLocalCode()), command);
+    }
+
+    @Test
+    public void parseCommand_sortLocalCourse() throws Exception {
+        Comparator<LocalCourse> localCourseComparator = new LocalCourseComparatorByLocalCode();
+
+        LocalCourseSortCommand command = (LocalCourseSortCommand) parser
+                .parseCommand(LocalCourseUtil.getLocalCourseSortCommandFrom(localCourseComparator));
+        assertEquals(new LocalCourseSortCommand(localCourseComparator), command);
     }
 
     @Test

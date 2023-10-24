@@ -63,7 +63,7 @@ public class LocalCourseSortCommand extends LocalCourseCommand {
         }
 
         LocalCourseSortCommand otherLocalCourseSortCommand = (LocalCourseSortCommand) other;
-        return comparator.equals(otherLocalCourseSortCommand.comparator);
+        return comparator.toString().equals(otherLocalCourseSortCommand.comparator.toString());
     }
 
     @Override

@@ -131,10 +131,10 @@ public class TypicalObjects {
 
     public static final PartnerCourse S0402SC = new PartnerCourseBuilder()
             .withPartnerUniversity(new UniversityName("Nanyang Technological University"))
-            .withPartnerCode("S0402SC").withPartnerName("Algorithms").build();
+            .withPartnerCode("S0402SC").withPartnerName("Algorithms").withPartnerUnit(3.0).build();
     public static final PartnerCourse STAN3230 = new PartnerCourseBuilder()
-            .withPartnerUniversity(new UniversityName("Stanford University"))
-            .withPartnerCode("STAN3230").withPartnerName("Design & Analysis of Algorithms").build();
+            .withPartnerUniversity(new UniversityName("Stanford University")).withPartnerCode("STAN3230")
+            .withPartnerName("Design & Analysis of Algorithms").withPartnerUnit(3.0).build();
 
     public static final PartnerCourse COMP4000 = new PartnerCourseBuilder()
             .withPartnerUniversity(new UniversityName("Seoul National University"))

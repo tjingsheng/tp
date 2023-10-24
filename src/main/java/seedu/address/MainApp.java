@@ -211,7 +211,7 @@ public class MainApp extends Application {
             initialMappingCatalogue = mappingCatalogueOptional.orElseGet(MappingCatalogue::new);
         } catch (DataLoadingException e) {
             logger.warning("Data file(s) could not be loaded."
-                    + " Will be starting with an empty AddressBook.");
+                    + " Will be starting with empty catalogues.");
             initialLocalCourseCatalogue = new LocalCourseCatalogue();
             initialPartnerCourseCatalogue = new PartnerCourseCatalogue();
             initialUniversityCatalogue = new UniversityCatalogue();

@@ -26,12 +26,13 @@ public class Mapping implements SeplendidDataType {
     /**
      * Every field must be present and not null
      */
-    public Mapping(LocalCode lc, UniversityName un, PartnerCode pc, MappingMiscInformation mi) {
-        requireAllNonNull(lc, pc, un, mi);
-        localCode = lc;
-        partnerCode = pc;
-        universityName = un;
-        miscInformation = mi;
+    public Mapping(LocalCode localCode, UniversityName universityName,
+                   PartnerCode partnerCode, MappingMiscInformation miscInformation) {
+        requireAllNonNull(localCode, partnerCode, universityName, miscInformation);
+        this.localCode = localCode;
+        this.partnerCode = partnerCode;
+        this.universityName = universityName;
+        this.miscInformation = miscInformation;
     }
 
     // Getters

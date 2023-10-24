@@ -235,7 +235,7 @@ mapping.
   * Pros: Easy to implement, prevents accidental deletion.
   * Cons: May have to delete a large number of mappings to remove a course (no force deletion feature).
 
-* **Alternative 2:** Deleting a `LocalCourse` or `PartnerCoruse` will delete all its associated mappings.
+* **Alternative 2:** Deleting a `LocalCourse` or `PartnerCourse` will delete all its associated mappings.
   * Pros: Will use fewer actions to delete a course, if there exists mappings it is tied to.
   * Cons: We must ensure that deletion cascades, in order to maintain data integrity. This can introduce bugs if not 
   done correctly.

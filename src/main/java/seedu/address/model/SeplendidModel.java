@@ -163,7 +163,6 @@ public interface SeplendidModel {
     ObservableList<University> getFilteredUniversityList();
     boolean hasUniversity(University university);
 
-    ObservableList<University> getSearchResults(University university);
     void getSearchUniversityIfExists(UniversityNameContainsKeywordsPredicate universityPredicate);
     void addUniversity(University university);
     void setUniversity(University target, University editedUniversity);

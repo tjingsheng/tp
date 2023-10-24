@@ -30,8 +30,8 @@ public class UniversityNameContainsKeywordsPredicate implements Predicate<Univer
             return false;
         }
 
-        seedu.address.model.university.UniversityNameContainsKeywordsPredicate otherNameContainsKeywordsPredicate =
-                (seedu.address.model.university.UniversityNameContainsKeywordsPredicate) other;
+        UniversityNameContainsKeywordsPredicate otherNameContainsKeywordsPredicate =
+                (UniversityNameContainsKeywordsPredicate) other;
         return keyword.equals(otherNameContainsKeywordsPredicate.keyword);
     }
 

@@ -244,10 +244,6 @@ public class LocalCourseDeleteCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
-        public ObservableList<University> getSearchResults(University university) {
-            throw new AssertionError("This method should not be called.");
-        }
-
         @Override
         public void setNoteCatalogue(ReadOnlyNoteCatalogue noteCatalogue) {
 

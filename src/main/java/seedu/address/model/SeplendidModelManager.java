@@ -269,13 +269,6 @@ public class SeplendidModelManager implements SeplendidModel {
     }
 
     @Override
-    public ObservableList<University> getSearchResults(University university) {
-        requireNonNull(university);
-        return filteredUniversityCatalogue;
-
-    }
-
-    @Override
     public void getSearchUniversityIfExists(UniversityNameContainsKeywordsPredicate universityPredicate) {
         requireNonNull(universityPredicate);
         filteredUniversityCatalogue.setPredicate(universityPredicate);

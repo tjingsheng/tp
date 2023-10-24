@@ -277,11 +277,6 @@ public class LocalCourseAddCommandTest {
         }
 
         @Override
-        public ObservableList<University> getSearchResults(University university) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public ObservableList<University> getFilteredUniversityList() {
             throw new AssertionError("This method should not be called.");
         }

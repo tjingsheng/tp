@@ -240,11 +240,6 @@ public class PartnerCourseAddCommandTest {
         }
 
         @Override
-        public ObservableList<University> getSearchResults(University university) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public void setNoteCatalogue(ReadOnlyNoteCatalogue noteCatalogue) {
             throw new AssertionError("This method should not be called.");
         }

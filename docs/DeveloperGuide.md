@@ -156,60 +156,93 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
+### Parser to handle both commands with and without arguments
 
-### \[Proposed\] Undo/redo feature
+The below diagram gives a high-level overview on how the `SeplendidParser` parses a command from our command set:
+<puml src="diagrams/SeplendidParserActivityDiagram.puml" alt="SeplendidParserActivityDiagram" />
 
-#### Proposed Implementation
+--------------------------------------------------------------------------------------------------------------------
 
-The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
+### Mapping feature
 
-* `VersionedAddressBook#commit()` — Saves the current address book state in its history.
-* `VersionedAddressBook#undo()` — Restores the previous address book state from its history.
-* `VersionedAddressBook#redo()` — Restores a previously undone address book state from its history.
+The mapping `list/add/delete` mechanism is facilitated by `MappingCatalogue`. It stores `Mapping` objects which
+contain the `LocalCode`, `UniversityName`, `PartnerCode` and `MappingMiscInformation` objects. This means that 
+`Mapping` is dependent on `LocalCourse`, `University` and `PartnerCourse` classes (and their respective 
+`LocalCourseCatalogue`, `UniversityCatalogue` and `PartnerCourseCatalogue`).
+ 
+A `UniqueMappingList` is stored internally in `MappingCatalogue`, ensuring that  Additionally, it implements the 
+following operations (this list is not exhaustive):
 
-These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
+* `MappingCatalogue#addMapping(Mapping)` — Adds a mapping to the mapping catalogue, and throws a
+`DuplicateMappingException` if the mapping already exists based on the primary key (`LocalCode`, `UniversityName`, 
+`PartnerCode`).
+* `MappingCatalogue#removeMapping(Mapping)` — Removes a mapping from the mapping catalogue, and throws a 
+`MappingNotFoundException` if the mapping does not exist.
+* `MappingCatalogue#hasMapping(Mapping)` — Checks whether a mapping exists in the mapping catalogue, to use to
+* prevent duplicate insertion.
+* `MappingCatalogue#hasMappingWithLocalCode(LocalCode)` — Checks whether a mapping with the specified `LocalCode` 
+exists in the mapping catalogue, to use to prevent deleting a `LocalCourse` with such a `LocalCode`.
+* `MappingCatalogue#hasMappingWithPartnerCode(PartnerCode)` — Checks whether a mapping with the specified 
+`PartnerCode` exists in the mapping catalogue, to use to prevent deleting a `PartnerCourse` with such a `PartnerCode`.
 
-Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
+These operations are exposed in the `SeplendidModel` interface as `SeplendidModel#addMapping(Mapping)`,
+`SeplendidModel#deleteMapping(Mapping)`, `SeplendidModel#hasMapping(Mapping)`, `SeplendidModel#hasMapping(LocalCode, 
+UniversityName, PartnerCode)`,`SeplendidModel#hasMappingWithLocalCode(LocalCode)` and 
+`SeplendidModel#hasMappingWithPartnerCode(PartnerCode)` respectively. 
 
-Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the initial address book state, and the `currentStatePointer` pointing to that single address book state.
+When the user launches the application for the first time. All relevant data catalogues: `LocalCourseCatalogue`,
+`PartnerCourseCatalogue`, `UniversityCatalogue`, `MappingCatalogue` are initialized with the initial state, containing
+the seed data for that year's SEP. 
 
-<puml src="diagrams/UndoRedoState0.puml" alt="UndoRedoState0" />
+Given below is an example usage scenario and how the `addMapping` mechanism works.
 
-Step 2. The user executes `delete 5` command to delete the 5th person in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
+<puml src="diagrams/MappingAddSequenceDiagram.puml" alt="MappingAddSequenceDiagram" />
 
-<puml src="diagrams/UndoRedoState1.puml" alt="UndoRedoState1" />
-
-Step 3. The user executes `add n/David …​` to add a new person. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
-
-<puml src="diagrams/UndoRedoState2.puml" alt="UndoRedoState2" />
-
-<box type="info" seamless>
-
-**Note:** If a command fails its execution, it will not call `Model#commitAddressBook()`, so the address book state will not be saved into the `addressBookStateList`.
-
-</box>
-
-Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
-
-<puml src="diagrams/UndoRedoState3.puml" alt="UndoRedoState3" />
-
-
-<box type="info" seamless>
-
-**Note:** If the `currentStatePointer` is at index 0, pointing to the initial AddressBook state, then there are no previous AddressBook states to restore. The `undo` command uses `Model#canUndoAddressBook()` to check if this is the case. If so, it will return an error to the user rather
-than attempting to perform the undo.
-
-</box>
-
-The following sequence diagram shows how the undo operation works:
-
-<puml src="diagrams/UndoSequenceDiagram.puml" alt="UndoSequenceDiagram" />
+Before a mapping is added, the `MappingAddCommand` object will access the `SeplendidModel` instance to check if the 
+respective `LocalCourse`, `PartnerCourse` and `University` exists. If any of them does not exist, the command will
+not execute `SeplendidModel#addMapping`.
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+**Note:** If a command fails its execution, no `CommandResult` will be returned, and hence no update to the UI or 
+storage files.
 
 </box>
+
+<box type="info" seamless>
+
+**Note:** The lifeline for `MappingAddCommand` should end at the destroy marker (X) but due to a limitation of 
+PlantUML, the lifeline reaches the end of diagram.
+
+</box>
+
+Similarly, the `MappingDeleteCommand` object will access the `SeplendidModel` instance to check if the mapping
+exists, before deletion. Given below is an example usage scenario and how the `deleteMapping` mechanism works.
+
+<puml src="diagrams/MappingDeleteSequenceDiagram.puml" alt="MappingDeleteSequenceDiagram" />
+
+`MappingDeleteCommand` will call `SeplendidModel#getMessageIfExists` which returns an `Optional<Mapping>`. If it is 
+non-empty, the deletion will be performed, otherwise a `CommandException` will be thrown.
+
+#### Design considerations:
+
+**Aspect: How the dependency of `Mapping` on `LocalCourse`, `PartnerCourse` and `University` should be managed:**
+
+* **Alternative 1 (implemented choice):** Disallow deletion of a `LocalCourse` or `PartnerCourse` if it exists in a 
+mapping.
+  * Note that `Unviersity` entries cannot be deleted as partner universities are fixed for every SEP application 
+  window. 
+  * Pros: Easy to implement, prevents accidental deletion.
+  * Cons: May have to delete a large number of mappings to remove a course (no force deletion feature).
+
+* **Alternative 2:** Deleting a `LocalCourse` or `PartnerCourse` will delete all its associated mappings.
+  * Pros: Will use fewer actions to delete a course, if there exists mappings it is tied to.
+  * Cons: We must ensure that deletion cascades, in order to maintain data integrity. This can introduce bugs if not 
+  done correctly.
+
+--------------------------------------------------------------------------------------------------------------------
+
+[//]: # (I'll leave some of the ab3 implementation here so you can refer, please remove if you're the last person)
 
 The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the address book to that state.
 

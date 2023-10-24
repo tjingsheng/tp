@@ -120,6 +120,26 @@
 }
 /**/
 
+/* Enter Button */
+#enterButton {
+    -fx-font-size: 12pt;
+    -fx-background-color: #CCDEF0;
+    -fx-background-insets: 0 0 0 15;
+    -fx-border-insets: 0 0 0 15;
+    -fx-border-width: 1;
+}
+
+#enterButton.content {
+    -fx-background-color: white;
+}
+
+#enterButton:hover {
+    -fx-background-color: #B8D2EB;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.2, 0.0, 0.0);
+}
+
+/**/
+
 .error {
     -fx-text-fill: #FF0000 !important; /* The error class should always override the default text-fill style */
 }
@@ -147,6 +167,5 @@
 #itemDetailView {
     -fx-background-color: #CCDEF0;
     -fx-background-insets: 5;
-    -fx-border-insets: 5;
     -fx-border-width: 0;
 }

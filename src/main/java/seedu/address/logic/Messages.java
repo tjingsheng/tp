@@ -4,6 +4,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import javafx.collections.ObservableList;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.mapping.Mapping;
@@ -11,6 +12,7 @@ import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.person.Person;
 import seedu.address.model.university.University;
+import seedu.address.model.university.UniversityName;
 
 /**
  * Container for user visible messages.
@@ -78,6 +80,20 @@ public class Messages {
     public static String format(University university) {
         final StringBuilder builder = new StringBuilder("UniversityName: ");
         builder.append(university.getUniversityName());
+        return builder.toString();
+    }
+
+    /**
+     * Formats the {@code university} for display to the user.
+     * Overloaded method.
+     * @param universityObservableList
+     * @return
+     */
+    public static String format(ObservableList<University> universityObservableList) {
+        final StringBuilder builder = new StringBuilder("UniversityName: ");
+        String universityNames = universityObservableList.stream()
+                .map(University::getUniversityName).map(UniversityName::getName).collect(Collectors.joining(", "));
+        builder.append(universityNames);
         return builder.toString();
     }
 

@@ -35,6 +35,10 @@ public class UniversityName {
         return test.matches(VALIDATION_REGEX);
     }
 
+    public String getName() {
+        return value;
+    }
+
     @Override
     public String toString() {
         return value;

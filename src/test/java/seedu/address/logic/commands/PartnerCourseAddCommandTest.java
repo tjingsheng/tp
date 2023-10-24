@@ -243,7 +243,6 @@ public class PartnerCourseAddCommandTest {
         public void setNoteCatalogue(ReadOnlyNoteCatalogue noteCatalogue) {
             throw new AssertionError("This method should not be called.");
         }
-
         @Override
         public ReadOnlyNoteCatalogue getNoteCatalogue() {
             throw new AssertionError("This method should not be called.");

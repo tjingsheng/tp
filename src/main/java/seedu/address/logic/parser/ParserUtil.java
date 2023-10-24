@@ -211,7 +211,7 @@ public class ParserUtil {
      * Parses a {@code String partnerUnit} into an {@code PartnerUnit}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code localName} is invalid.
+     * @throws ParseException if the given {@code partnerUnit} is invalid.
      */
     public static PartnerUnit parsePartnerUnit(String partnerUnit) throws ParseException {
         requireNonNull(partnerUnit);

@@ -21,6 +21,8 @@ public class LocalCourseDetail extends UiPart<Region> {
     private Label localName;
     @FXML
     private Label localCode;
+    @FXML
+    private Label localUnit;
 
     /**
      * Creates a {@code LocalCourseDetail} with the given {@code LocalCourse}
@@ -30,5 +32,6 @@ public class LocalCourseDetail extends UiPart<Region> {
         this.localCourse = localCourse;
         localName.setText(localCourse.getLocalName().toString());
         localCode.setText(localCourse.getLocalCode().toString());
+        localUnit.setText(localCourse.getLocalUnit().toString());
     }
 }

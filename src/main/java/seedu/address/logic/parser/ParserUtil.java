@@ -12,9 +12,11 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalName;
+import seedu.address.model.localcourse.LocalUnit;
 import seedu.address.model.notes.Content;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerName;
+import seedu.address.model.partnercourse.PartnerUnit;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -161,6 +163,21 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String localUnit} into an {@code LocalUnit}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code localName} is invalid.
+     */
+    public static LocalUnit parseLocalUnit(String localUnit) throws ParseException {
+        requireNonNull(localUnit);
+        String trimmedLocalUnit = localUnit.trim();
+        if (!LocalUnit.isValidLocalUnit(trimmedLocalUnit)) {
+            throw new ParseException(LocalUnit.MESSAGE_CONSTRAINTS);
+        }
+        return new LocalUnit(localUnit);
+    }
+
+    /**
      * Parses a {@code String partnerCode} into an {@code PartnerCode}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -191,6 +208,21 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String partnerUnit} into an {@code PartnerUnit}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code partnerUnit} is invalid.
+     */
+    public static PartnerUnit parsePartnerUnit(String partnerUnit) throws ParseException {
+        requireNonNull(partnerUnit);
+        String trimmedPartnerUnit = partnerUnit.trim();
+        if (!PartnerUnit.isValidPartnerUnit(trimmedPartnerUnit)) {
+            throw new ParseException(PartnerUnit.MESSAGE_CONSTRAINTS);
+        }
+        return new PartnerUnit(partnerUnit);
+    }
+
+    /**
      * Parses a {@code String universityName}.
      * Leading and trailing whitespaces will be trimmed.
      */
@@ -202,6 +234,7 @@ public class ParserUtil {
         }
         return new UniversityName(universityName);
     }
+
     /**
      * Parses a {@code String content}.
      * Leading and trailing whitespaces will be trimmed.

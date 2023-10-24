@@ -3,11 +3,13 @@
   "localCourses": [
     {
       "localCode": "CS2040S",
-      "localName": "Data Structures & Algorithms"
+      "localName": "Data Structures & Algorithms",
+      "localUnit": 4.0
     },
     {
       "localCode": "CS3230",
-      "localName": "Design & Analysis of Algorithms"
+      "localName": "Design & Analysis of Algorithms",
+      "localUnit": 4.0
     }
   ]
 }

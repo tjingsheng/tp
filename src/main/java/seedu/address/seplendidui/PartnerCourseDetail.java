@@ -22,6 +22,8 @@ public class PartnerCourseDetail extends UiPart<Region> {
     @FXML
     private Label partnerCode;
     @FXML
+    private Label partnerUnit;
+    @FXML
     private Label partnerUniversity;
 
     /**
@@ -32,6 +34,7 @@ public class PartnerCourseDetail extends UiPart<Region> {
         this.partnerCourse = partnerCourse;
         partnerName.setText(partnerCourse.getPartnerName().toString());
         partnerCode.setText(partnerCourse.getPartnerCode().toString());
-        partnerUniversity.setText(partnerCourse.getPartnerUniversity().getUniversityName().toString());
+        partnerUnit.setText(partnerCourse.getPartnerUnit().toString());
+        partnerUniversity.setText(partnerCourse.getPartnerUniversity().toString());
     }
 }

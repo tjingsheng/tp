@@ -17,10 +17,10 @@
                                prefWidth="150"/>
         </columnConstraints>
         <padding>
-            <Insets top="5"
-                    right="15"
-                    bottom="5"
-                    left="15"/>
+            <Insets top="17"
+                    right="25"
+                    bottom="17"
+                    left="25"/>
         </padding>
         <VBox alignment="CENTER_LEFT"
               GridPane.columnIndex="0">

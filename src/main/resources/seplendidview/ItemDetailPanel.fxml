@@ -6,9 +6,7 @@
       xmlns="http://javafx.com/javafx/17"
       styleClass="round-border">
     <padding>
-        <Insets top="0"
-                right="8"
-                bottom="0"
+        <Insets right="8"
                 left="8"/>
     </padding>
     <VBox fx:id="itemDetailView"

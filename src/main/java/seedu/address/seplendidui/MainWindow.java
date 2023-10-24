@@ -146,6 +146,9 @@ public class MainWindow extends UiPart<Stage> {
             case MAPPING_LIST:
                 itemListPanel.setDisplayList(seplendidLogic.getFilteredMappingCatalogue());
                 break;
+            case LOCAL_COURSE_SORT:
+                itemListPanel.setDisplayList(seplendidLogic.getSortedLocalCourseCatalogue());
+                break;
             default:
                 // do nothing
             }

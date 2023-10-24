@@ -13,7 +13,9 @@ public class UiUtil {
         PARTNER_COURSE_LIST,
         UNIVERSITY_LIST,
         NOTE_LIST,
-        MAPPING_LIST;
+        MAPPING_LIST,
+
+        LOCAL_COURSE_SORT;
 
         @Override
         public String toString() {

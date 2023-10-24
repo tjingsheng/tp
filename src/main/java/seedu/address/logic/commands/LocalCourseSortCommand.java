@@ -16,7 +16,7 @@ import seedu.address.seplendidui.UiUtil;
  */
 public class LocalCourseSortCommand extends LocalCourseCommand {
     public static final String LOCAL_COURSE_SORT_MESSAGE_USAGE = COMMAND_WORD
-            + " sort: Sorts all local courses by attributes";
+            + " sort: Sorts all local courses by attributes - localcode & localname";
     public static final String ACTION_WORD = "sort";
 
     public static final String MESSAGE_SUCCESS = "Sorted all local courses";
@@ -48,7 +48,7 @@ public class LocalCourseSortCommand extends LocalCourseCommand {
         requireNonNull(seplendidModel);
         seplendidModel.updatedSortedLocalList(comparator);
         return new CommandResult(MESSAGE_SUCCESS,
-                UiUtil.ListViewModel.LOCAL_COURSE_LIST);
+                UiUtil.ListViewModel.LOCAL_COURSE_SORT);
     }
 
     @Override

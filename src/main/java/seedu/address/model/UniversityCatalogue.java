@@ -54,10 +54,14 @@ public class UniversityCatalogue implements ReadOnlyUniversityCatalogue {
         return universities.getUniversityIfExists(universityNameQuery);
     }
 
+    /**
+     * Adds university to university list.
+     * @param uN university to add.
+     */
     public void addUniversity(University uN) {
         universities.add(uN);
     }
-  
+
     public void removeUniversity(University uN) {
         universities.remove(uN);
     }
@@ -117,5 +121,3 @@ public class UniversityCatalogue implements ReadOnlyUniversityCatalogue {
         return universities.hashCode();
     }
 }
-
-

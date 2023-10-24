@@ -23,6 +23,7 @@ import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityName;
+import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
 
 /**
  * Represents the in-memory model of SEPlendid.
@@ -315,13 +316,22 @@ public class SeplendidModelManager implements SeplendidModel {
         return universityCatalogue.hasUniversity(university);
     }
 
-    @Override
+    /**
+     * Check if there exist the same university in the catalogue.
+     * @param universityName
+     * @return
+     */
     public boolean hasUniversity(UniversityName universityName) {
         requireNonNull(universityName);
         Optional<University> maybeUniversity = getUniversityIfExists(universityName);
         return maybeUniversity.isPresent();
     }
+    @Override
+    public void getSearchUniversityIfExists(UniversityNameContainsKeywordsPredicate universityPredicate) {
+        requireNonNull(universityPredicate);
+        filteredUniversityCatalogue.setPredicate(universityPredicate);
 
+    }
     @Override
     public void addUniversity(University university) {
         universityCatalogue.addUniversity(university);
@@ -334,7 +344,6 @@ public class SeplendidModelManager implements SeplendidModel {
 
         universityCatalogue.setUniversity(target, editedUniversity);
     }
-
 
     //=========== FilteredUniversityList Accessors =============================================================
 

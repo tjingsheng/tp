@@ -44,11 +44,11 @@ public class PartnerCourseAddCommandParserTest {
                 + PartnerCourseAddCommand.ACTION_WORD
                 + UNNCESSARY_WHITESPACE
                 + getSquareBracketWrappedArgument(
-                expectedPartnerCourse.getPartnerUniversity().getUniversityName().getValue())
+                expectedPartnerCourse.getPartnerUniversity().getUniversityName().toString())
                 + UNNCESSARY_WHITESPACE
-                + getSquareBracketWrappedArgument(expectedPartnerCourse.getPartnerCode().getValue())
+                + getSquareBracketWrappedArgument(expectedPartnerCourse.getPartnerCode().toString())
                 + UNNCESSARY_WHITESPACE
-                + getSquareBracketWrappedArgument(expectedPartnerCourse.getPartnerName().getValue())
+                + getSquareBracketWrappedArgument(expectedPartnerCourse.getPartnerName().toString())
                 + UNNCESSARY_WHITESPACE
                 + getSquareBracketWrappedArgument(expectedPartnerCourse.getPartnerUnit().toString()),
             new PartnerCourseAddCommand(expectedPartnerCourse));

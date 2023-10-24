@@ -42,11 +42,11 @@ public class LocalCourseAddCommandParserTest {
                 + UNNCESSARY_WHITESPACE
                 + LocalCourseAddCommand.ACTION_WORD
                 + UNNCESSARY_WHITESPACE
-                + getSquareBracketWrappedArgument(expectedLocalCourse.getLocalCode().getValue())
+                + getSquareBracketWrappedArgument(expectedLocalCourse.getLocalCode().toString())
                 + UNNCESSARY_WHITESPACE
-                + getSquareBracketWrappedArgument(expectedLocalCourse.getLocalName().getValue())
+                + getSquareBracketWrappedArgument(expectedLocalCourse.getLocalName().toString())
                 + UNNCESSARY_WHITESPACE
-                + getSquareBracketWrappedArgument(expectedLocalCourse.getLocalUnit().getValue().toString()),
+                + getSquareBracketWrappedArgument(expectedLocalCourse.getLocalUnit().toString()),
             new LocalCourseAddCommand(expectedLocalCourse));
     }
 

@@ -33,8 +33,8 @@ import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
-import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
 import seedu.address.model.university.UniversityName;
+import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
 import seedu.address.testutil.PartnerCourseBuilder;
 
 /**
@@ -180,13 +180,14 @@ public class PartnerCourseAddCommandTest {
         }
 
         // PartnerCourse
+
         @Override
-        public Path getPartnerCourseCatalogueFilePath() {
+        public void setPartnerCourseCatalogueFilePath(Path partnerCourseCatalogueFilePath) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setPartnerCourseCatalogueFilePath(Path partnerCourseCatalogueFilePath) {
+        public Path getPartnerCourseCatalogueFilePath() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -243,7 +244,8 @@ public class PartnerCourseAddCommandTest {
 
         @Override
         public void setUniversityCatalogueFilePath(Path universityCatalogueFilePath) {
-          
+        }
+
         public Optional<University> getUniversityIfExists(UniversityName universityName) {
             throw new AssertionError("This method should not be called.");
         }
@@ -259,10 +261,6 @@ public class PartnerCourseAddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
-        @Override
-        public void setNoteCatalogue(ReadOnlyNoteCatalogue noteCatalogue) {
-            throw new AssertionError("This method should not be called.");
-        }
         @Override
         public ReadOnlyNoteCatalogue getNoteCatalogue() {
             throw new AssertionError("This method should not be called.");

@@ -213,7 +213,11 @@ public class SeplendidParser {
         switch (actionWord) {
         case UniversitySearchCommand.ACTION_WORD:
             return new UniversitySearchCommandParser().parse(arguments);
-
+        default:
+            logger.finer("This user input caused a ParseException: " + userInput);
+            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+        }
+    }
     private MappingCommand getMappingCommandWithoutArg(String userInput, String actionWord)
             throws ParseException {
         switch (actionWord) {

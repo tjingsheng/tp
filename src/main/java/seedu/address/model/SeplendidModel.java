@@ -14,9 +14,8 @@ import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
-import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
 import seedu.address.model.university.UniversityName;
-
+import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
 
 /**
  * The API of the SeplendidModel component.
@@ -179,10 +178,10 @@ public interface SeplendidModel {
     ObservableList<University> getFilteredUniversityList();
 
     boolean hasUniversity(University university);
+    boolean hasUniversity(UniversityName universityName);
 
     void getSearchUniversityIfExists(UniversityNameContainsKeywordsPredicate universityPredicate);
 
-    boolean hasUniversity(UniversityName universityName);
 
     void addUniversity(University university);
 

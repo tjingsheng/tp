@@ -34,8 +34,8 @@ import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
-import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
 import seedu.address.model.university.UniversityName;
+import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
 import seedu.address.testutil.LocalCourseBuilder;
 
 /**

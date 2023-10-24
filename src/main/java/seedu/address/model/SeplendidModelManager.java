@@ -2,6 +2,8 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.logic.commands.LocalCourseDeleteCommand.MESSAGE_MAPPING_DEPENDENT_ON_LOCAL_COURSE;
+import static seedu.address.logic.commands.PartnerCourseDeleteCommand.MESSAGE_MAPPING_DEPENDENT_ON_PARTNER_COURSE;
 
 import java.nio.file.Path;
 import java.util.Optional;
@@ -12,12 +14,15 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.SeplendidLogsCenter;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
+import seedu.address.model.university.UniversityName;
 
 /**
  * Represents the in-memory model of SEPlendid.
@@ -39,6 +44,10 @@ public class SeplendidModelManager implements SeplendidModel {
     private final NoteCatalogue noteCatalogue;
     private final FilteredList<Note> filteredNoteCatalogue;
 
+    private final MappingCatalogue mappingCatalogue;
+    private final FilteredList<Mapping> filteredMappingCatalogue;
+
+
     /**
      * Initializes a SeplendidModelManager with the given localCourseCatalogue, userPrefs,
      * partnerCourseCatalogue, universityCatalogue, mappingCatalogue, noteCatalogue.
@@ -46,11 +55,17 @@ public class SeplendidModelManager implements SeplendidModel {
     public SeplendidModelManager(ReadOnlyLocalCourseCatalogue localCourseCatalogue, ReadOnlyUserPrefs userPrefs,
                                  ReadOnlyPartnerCourseCatalogue partnerCourseCatalogue,
                                  ReadOnlyUniversityCatalogue universityCatalogue,
-                                 ReadOnlyNoteCatalogue noteCatalogue) {
-        requireAllNonNull(localCourseCatalogue, userPrefs, partnerCourseCatalogue, universityCatalogue, noteCatalogue);
+                                 ReadOnlyNoteCatalogue noteCatalogue,
+                                 ReadOnlyMappingCatalogue mappingCatalogue) {
+        requireAllNonNull(localCourseCatalogue, userPrefs, partnerCourseCatalogue, universityCatalogue,
+                noteCatalogue, mappingCatalogue);
 
         logger.fine("Initializing with local course catalogue: " + localCourseCatalogue
-                + " and user prefs " + userPrefs);
+                + ",\npartner course catalogue: " + partnerCourseCatalogue
+                + ",\nuniversity catalogue: " + universityCatalogue
+                + ",\nmapping catalogue: " + mappingCatalogue
+                + ",\nnote catalogue: " + noteCatalogue
+                + "\n and user prefs " + userPrefs);
 
         this.localCourseCatalogue = new LocalCourseCatalogue(localCourseCatalogue);
         this.userPrefs = new UserPrefs(userPrefs);
@@ -61,6 +76,8 @@ public class SeplendidModelManager implements SeplendidModel {
         filteredUniversityCatalogue = new FilteredList<>(this.universityCatalogue.getUniversityList());
         this.noteCatalogue = new NoteCatalogue(noteCatalogue);
         filteredNoteCatalogue = new FilteredList<>(this.noteCatalogue.getNoteList());
+        this.mappingCatalogue = new MappingCatalogue(mappingCatalogue);
+        filteredMappingCatalogue = new FilteredList<>(this.mappingCatalogue.getMappingList());
     }
 
     /**
@@ -68,7 +85,7 @@ public class SeplendidModelManager implements SeplendidModel {
      */
     public SeplendidModelManager() {
         this(new LocalCourseCatalogue(), new UserPrefs(), new PartnerCourseCatalogue(), new UniversityCatalogue(),
-                new NoteCatalogue());
+                new NoteCatalogue(), new MappingCatalogue());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -145,14 +162,26 @@ public class SeplendidModelManager implements SeplendidModel {
     }
 
     @Override
+    public boolean hasLocalCourse(LocalCode localCode) {
+        requireNonNull(localCode);
+        Optional<LocalCourse> maybeLocalCourse = getLocalCourseIfExists(localCode);
+        return maybeLocalCourse.isPresent();
+    }
+
+    @Override
     public Optional<LocalCourse> getLocalCourseIfExists(LocalCode localCode) {
         requireNonNull(localCode);
         return localCourseCatalogue.getLocalCourseIfExists(localCode);
     }
 
     @Override
-    public void deleteLocalCourse(LocalCourse target) {
+    public void deleteLocalCourse(LocalCourse target) throws CommandException {
+        // Block delete if it exists in a mapping
+        if (mappingCatalogue.hasMappingWithLocalCode(target.getLocalCode())) {
+            throw new CommandException(MESSAGE_MAPPING_DEPENDENT_ON_LOCAL_COURSE);
+        }
         localCourseCatalogue.removeLocalCourse(target);
+        updateFilteredLocalCourseList(PREDICATE_SHOW_ALL_LOCAL_COURSES);
     }
 
     @Override
@@ -190,10 +219,18 @@ public class SeplendidModelManager implements SeplendidModel {
     public ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue() {
         return partnerCourseCatalogue;
     }
+
     @Override
     public boolean hasPartnerCourse(PartnerCourse partnerCourse) {
         requireNonNull(partnerCourse);
         return partnerCourseCatalogue.hasPartnerCourse(partnerCourse);
+    }
+
+    @Override
+    public boolean hasPartnerCourse(PartnerCode partnerCode) {
+        requireNonNull(partnerCode);
+        Optional<PartnerCourse> maybePartnerCourse = getPartnerCourseIfExists(partnerCode);
+        return maybePartnerCourse.isPresent();
     }
 
     @Override
@@ -215,7 +252,12 @@ public class SeplendidModelManager implements SeplendidModel {
     }
 
     @Override
-    public void deletePartnerCourse(PartnerCourse partnerCourse) {
+    public void deletePartnerCourse(PartnerCourse partnerCourse) throws CommandException {
+        // Block delete if it exists in a mapping
+        if (mappingCatalogue.hasMappingWithPartnerCode(partnerCourse.getPartnerCode())) {
+            throw new CommandException(MESSAGE_MAPPING_DEPENDENT_ON_PARTNER_COURSE);
+        }
+
         partnerCourseCatalogue.removePartnerCourse(partnerCourse);
         updateFilteredPartnerCourseList(PREDICATE_SHOW_ALL_PARTNER_COURSES);
 
@@ -255,6 +297,12 @@ public class SeplendidModelManager implements SeplendidModel {
         return universityCatalogue;
     }
 
+    @Override
+    public Optional<University> getUniversityIfExists(UniversityName universityName) {
+        requireNonNull(universityName);
+        return universityCatalogue.getUniversityIfExists(universityName);
+    }
+
     /**
      * Check if there exist the same university in the catalogue.
      *
@@ -265,6 +313,13 @@ public class SeplendidModelManager implements SeplendidModel {
     public boolean hasUniversity(University university) {
         requireNonNull(university);
         return universityCatalogue.hasUniversity(university);
+    }
+
+    @Override
+    public boolean hasUniversity(UniversityName universityName) {
+        requireNonNull(universityName);
+        Optional<University> maybeUniversity = getUniversityIfExists(universityName);
+        return maybeUniversity.isPresent();
     }
 
     @Override
@@ -279,7 +334,6 @@ public class SeplendidModelManager implements SeplendidModel {
 
         universityCatalogue.setUniversity(target, editedUniversity);
     }
-
 
 
     //=========== FilteredUniversityList Accessors =============================================================
@@ -369,4 +423,128 @@ public class SeplendidModelManager implements SeplendidModel {
         requireNonNull(predicate);
         filteredNoteCatalogue.setPredicate(predicate);
     }
+
+    //============ MappingCatalogue ================================================================================
+    @Override
+    public Path getMappingCatalogueFilePath() {
+        return userPrefs.getMappingCatalogueFilePath();
+    }
+
+    /**
+     * Replaces mapping list data with the data in {@code mappingCatalogue}.
+     */
+    @Override
+    public void setMappingCatalogue(ReadOnlyMappingCatalogue mappingCatalogue) {
+        this.mappingCatalogue.resetData(mappingCatalogue);
+    }
+
+    /**
+     * Returns the Mapping list.
+     */
+    @Override
+    public ReadOnlyMappingCatalogue getMappingCatalogue() {
+        return mappingCatalogue;
+    }
+
+
+    /**
+     * Returns true if a mapping with the same identity as {@code mapping} exists in the mappingCatalogue.
+     */
+    @Override
+    public boolean hasMapping(Mapping mapping) {
+        requireNonNull(mapping);
+        return mappingCatalogue.hasMapping(mapping);
+    }
+
+    /**
+     * Returns true if a mapping with {@code localCode, universityName, partnerCode} exists in the MappingCatalogue.
+     */
+    @Override
+    public boolean hasMapping(LocalCode localCode, UniversityName universityName, PartnerCode partnerCode) {
+        requireAllNonNull(localCode, universityName, partnerCode);
+        Optional<Mapping> maybeMapping = getMappingIfExists(localCode, universityName, partnerCode);
+        return maybeMapping.isPresent();
+    }
+
+    /**
+     * Returns a Mapping in an Optional if exists, else return empty Optional.
+     */
+    @Override
+    public Optional<Mapping> getMappingIfExists(LocalCode localCode, UniversityName universityName,
+                                                PartnerCode partnerCode) {
+        requireAllNonNull(localCode, universityName, partnerCode);
+        return mappingCatalogue.getMappingIfExists(localCode, universityName, partnerCode);
+    }
+
+    /**
+     * Returns true is a mapping with {@code localCode} exists in the MappingCatalogue.
+     */
+    @Override
+    public boolean hasMappingWithLocalCode(LocalCode localCode) {
+        requireNonNull(localCode);
+        return mappingCatalogue.hasMappingWithLocalCode(localCode);
+    }
+
+    /**
+     * Returns true is a mapping with {@code partnerCode} exists in the MappingCatalogue.
+     */
+    @Override
+    public boolean hasMappingWithPartnerCode(PartnerCode partnerCode) {
+        requireNonNull(partnerCode);
+        return mappingCatalogue.hasMappingWithPartnerCode(partnerCode);
+    }
+
+    /**
+     * Deletes the given mapping.
+     * The mapping must exist in the MappingCatalogue.
+     */
+    @Override
+    public void deleteMapping(Mapping mapping) {
+        mappingCatalogue.removeMapping(mapping);
+    }
+
+
+    /**
+     * Adds the given Mapping.
+     * The {@code mapping} must not already exist in the MappingCatalogue.
+     */
+    @Override
+    public void addMapping(Mapping mapping) {
+        mappingCatalogue.addMapping(mapping);
+        updateFilteredMappingList(PREDICATE_SHOW_ALL_MAPPINGS);
+    }
+
+
+    /**
+     * Replaces the given mapping {@code target} with {@code editedMapping}.
+     * {@code target} must exist in the catalogue.
+     * The mapping identity of {@code editedMapping} must not be the same as another
+     * existing mapping in the MappingCatalogue.
+     */
+    @Override
+    public void setMapping(Mapping mapping, Mapping editedMapping) {
+        requireAllNonNull(mapping, editedMapping);
+
+        mappingCatalogue.setMapping(mapping, editedMapping);
+    }
+
+
+    //=========== FilteredNMappingList Accessors =============================================================
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Mapping} backed by the internal list of
+     * {@code versionedMappingCatalogue}
+     */
+    @Override
+    public ObservableList<Mapping> getFilteredMappingList() {
+        return filteredMappingCatalogue;
+    }
+
+
+    @Override
+    public void updateFilteredMappingList(Predicate<Mapping> predicate) {
+        requireNonNull(predicate);
+        filteredMappingCatalogue.setPredicate(predicate);
+    }
+
 }

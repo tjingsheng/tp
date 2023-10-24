@@ -5,6 +5,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,6 +35,19 @@ public class UniqueUniversityList implements Iterable<University> {
     public boolean contains(University toCheck) {
         requireNonNull(toCheck);
         return internalList.stream().anyMatch(toCheck::isSameUniversity);
+    }
+
+    /**
+     * Returns an Optional containing first occurrence of desired University.
+     * An empty Optional is returned if University is not found.
+     *
+     * @param universityName This is the UniversityName to check.
+     * @return Optional containing first occurrence of desired University, if any.
+     */
+    public Optional<University> getUniversityIfExists(UniversityName universityName) {
+        requireNonNull(universityName);
+        return internalList.stream().filter(u -> u.getUniversityName().equals(universityName))
+                .findFirst();
     }
 
     /**

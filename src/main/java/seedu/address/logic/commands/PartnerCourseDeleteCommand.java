@@ -22,6 +22,8 @@ public class PartnerCourseDeleteCommand extends PartnerCourseCommand {
     public static final String ACTION_WORD = "delete";
     public static final String MESSAGE_SUCCESS = "Partner course deleted: %1$s";
     public static final String MESSAGE_NONEXISTENT_PARTNER_COURSE = "This partner course does not exist in SEPlendid.";
+    public static final String MESSAGE_MAPPING_DEPENDENT_ON_PARTNER_COURSE = "This partner course is mapped to a local "
+            + "course. Please delete the mapping first.";
     private final PartnerCode partnerCodeToDelete;
 
     /**
@@ -48,7 +50,7 @@ public class PartnerCourseDeleteCommand extends PartnerCourseCommand {
         if (partnerCourseToDelete.isEmpty()) {
             throw new CommandException(MESSAGE_NONEXISTENT_PARTNER_COURSE);
         }
-        partnerCourseToDelete.ifPresent(seplendidModel::deletePartnerCourse);
+        seplendidModel.deletePartnerCourse(partnerCourseToDelete.get());
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(partnerCourseToDelete.get())),
                 UiUtil.ListViewModel.PARTNER_COURSE_LIST);

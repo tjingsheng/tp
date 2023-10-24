@@ -4,6 +4,7 @@ import static seedu.address.logic.commands.CommandTestUtil.assertSeplendidComman
 import static seedu.address.logic.commands.CommandTestUtil.showUniversityAtIndex;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_OBJECT;
 import static seedu.address.testutil.TypicalObjects.getTypicalLocalCourseCatalogue;
+import static seedu.address.testutil.TypicalObjects.getTypicalMappingCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalNoteCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalPartnerCourseCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalUniversityCatalogue;
@@ -22,9 +23,11 @@ public class UniversityListCommandTest {
     @BeforeEach
     public void setUp() {
         model = new SeplendidModelManager(getTypicalLocalCourseCatalogue(), new UserPrefs(),
-                getTypicalPartnerCourseCatalogue(), getTypicalUniversityCatalogue(), getTypicalNoteCatalogue());
+                getTypicalPartnerCourseCatalogue(), getTypicalUniversityCatalogue(), getTypicalNoteCatalogue(),
+                getTypicalMappingCatalogue());
         expectedModel = new SeplendidModelManager(getTypicalLocalCourseCatalogue(), new UserPrefs(),
-                getTypicalPartnerCourseCatalogue(), model.getUniversityCatalogue(), getTypicalNoteCatalogue());
+                getTypicalPartnerCourseCatalogue(), model.getUniversityCatalogue(), getTypicalNoteCatalogue(),
+                getTypicalMappingCatalogue());
     }
 
     @Test

@@ -4,6 +4,7 @@ import static seedu.address.logic.commands.CommandTestUtil.assertSeplendidComman
 import static seedu.address.logic.commands.CommandTestUtil.assertSeplendidCommandSuccess;
 import static seedu.address.testutil.TypicalObjects.WATERLOO;
 import static seedu.address.testutil.TypicalObjects.getTypicalLocalCourseCatalogue;
+import static seedu.address.testutil.TypicalObjects.getTypicalMappingCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalNoteCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalPartnerCourseCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalUniversityCatalogue;
@@ -28,7 +29,8 @@ public class PartnerCourseAddCommandIntegrationTest {
     @BeforeEach
     public void setUp() {
         model = new SeplendidModelManager(getTypicalLocalCourseCatalogue(), new UserPrefs(),
-                getTypicalPartnerCourseCatalogue(), getTypicalUniversityCatalogue(), getTypicalNoteCatalogue());
+                getTypicalPartnerCourseCatalogue(), getTypicalUniversityCatalogue(), getTypicalNoteCatalogue(),
+                getTypicalMappingCatalogue());
     }
 
     @Test
@@ -38,7 +40,7 @@ public class PartnerCourseAddCommandIntegrationTest {
 
         SeplendidModel expectedModel = new SeplendidModelManager(model.getLocalCourseCatalogue(), new UserPrefs(),
                 model.getPartnerCourseCatalogue(), new UniversityCatalogueBuilder().withUniversity(WATERLOO).build(),
-                getTypicalNoteCatalogue());
+                getTypicalNoteCatalogue(), getTypicalMappingCatalogue());
         expectedModel.addPartnerCourse(validPartnerCourse);
 
         assertSeplendidCommandSuccess(new PartnerCourseAddCommand(validPartnerCourse), model,

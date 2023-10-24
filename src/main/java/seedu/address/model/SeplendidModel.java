@@ -6,12 +6,15 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
+import seedu.address.model.university.UniversityName;
 
 /**
  * The API of the SeplendidModel component.
@@ -25,6 +28,7 @@ public interface SeplendidModel {
     Predicate<PartnerCourse> PREDICATE_SHOW_ALL_PARTNER_COURSES = unused -> true;
     Predicate<University> PREDICATE_SHOW_ALL_UNIVERSITIES = unused -> true;
     Predicate<Note> PREDICATE_SHOW_ALL_NOTES = unused -> true;
+    Predicate<Mapping> PREDICATE_SHOW_ALL_MAPPINGS = unused -> true;
 
     //=========== UserPrefs ==================================================================================
 
@@ -54,6 +58,7 @@ public interface SeplendidModel {
     Path getLocalCourseCatalogueFilePath();
 
     Path getUniversityCatalogueFilePath();
+
     /**
      * Sets the user prefs' LocalCourseCatalogue file path.
      */
@@ -78,6 +83,11 @@ public interface SeplendidModel {
     boolean hasLocalCourse(LocalCourse localCourse);
 
     /**
+     * Returns true if a local course with {@code localCode} exists in the LocalCourseCatalogue.
+     */
+    boolean hasLocalCourse(LocalCode localCode);
+
+    /**
      * Returns a LocalCourse in an Optional if exists, else return empty Optional.
      */
     Optional<LocalCourse> getLocalCourseIfExists(LocalCode localCode);
@@ -86,7 +96,7 @@ public interface SeplendidModel {
      * Deletes the given local course.
      * The local course must exist in the LocalCourseCatalogue.
      */
-    void deleteLocalCourse(LocalCourse localCourse);
+    void deleteLocalCourse(LocalCourse localCourse) throws CommandException;
 
     /**
      * Adds the given LocalCourse.
@@ -110,7 +120,6 @@ public interface SeplendidModel {
     ObservableList<LocalCourse> getFilteredLocalCourseList();
 
 
-
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
      *
@@ -128,6 +137,11 @@ public interface SeplendidModel {
     boolean hasPartnerCourse(PartnerCourse partnerCourse);
 
     /**
+     * Returns true if a partner course with {@code partnerCode} exists in the PartnerCourseCatalogue.
+     */
+    boolean hasPartnerCourse(PartnerCode partnerCode);
+
+    /**
      * Returns a LocalCourse in an Optional if exists, else return empty Optional.
      */
     Optional<PartnerCourse> getPartnerCourseIfExists(PartnerCode partnerCode);
@@ -140,9 +154,10 @@ public interface SeplendidModel {
 
     /**
      * Deletes the given PartnerCourse.
+     *
      * @param partnerCourse must exist in the PartnerCourseCatalogue.
      */
-    void deletePartnerCourse(PartnerCourse partnerCourse);
+    void deletePartnerCourse(PartnerCourse partnerCourse) throws CommandException;
 
     /**
      * Returns an unmodifiable view of the filtered partner course list
@@ -160,9 +175,13 @@ public interface SeplendidModel {
     void setUniversityCatalogueFilePath(Path universityCatalogueFilePath);
 
     ObservableList<University> getFilteredUniversityList();
+
     boolean hasUniversity(University university);
 
+    boolean hasUniversity(UniversityName universityName);
+
     void addUniversity(University university);
+
     void setUniversity(University target, University editedUniversity);
 
     void updateFilteredUniversityList(Predicate<University> predicate);
@@ -170,6 +189,9 @@ public interface SeplendidModel {
     void setUniversityCatalogue(ReadOnlyUniversityCatalogue universityCatalogue);
 
     ReadOnlyUniversityCatalogue getUniversityCatalogue();
+
+    Optional<University> getUniversityIfExists(UniversityName universityName);
+
 
     //=========== NoteCatalouge ================================================================================
 
@@ -221,4 +243,81 @@ public interface SeplendidModel {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredNoteList(Predicate<Note> predicate);
+
+    //=========== MappingCatalogue =============================================================
+
+    /**
+     * Returns the user prefs' MappingCatalogue file path.
+     */
+    Path getMappingCatalogueFilePath();
+
+    /**
+     * Replaces mapping list data with the data in {@code mappingCatalogue}.
+     */
+    void setMappingCatalogue(ReadOnlyMappingCatalogue mappingCatalogue);
+
+    /**
+     * Returns the Mapping list.
+     */
+    ReadOnlyMappingCatalogue getMappingCatalogue();
+
+
+    /**
+     * Returns true if a mapping with the same identity as {@code mapping} exists in the mappingCatalogue.
+     */
+    boolean hasMapping(Mapping mapping);
+
+    /**
+     * Returns true if a mapping with {@code localCode, universityName, partnerCode} exists in the MappingCatalogue.
+     */
+    boolean hasMapping(LocalCode localCode, UniversityName universityName, PartnerCode partnerCode);
+
+    /**
+     * Returns a Mapping in an Optional if exists, else return empty Optional.
+     */
+    Optional<Mapping> getMappingIfExists(LocalCode localCode, UniversityName universityName, PartnerCode partnerCode);
+
+    /**
+     * Returns true is a mapping with {@code localCode} exists in the MappingCatalogue.
+     */
+    boolean hasMappingWithLocalCode(LocalCode localCode);
+
+    /**
+     * Returns true is a mapping with {@code partnerCode} exists in the MappingCatalogue.
+     */
+    boolean hasMappingWithPartnerCode(PartnerCode partnerCode);
+
+    /**
+     * Deletes the given mapping.
+     * The mapping must exist in the MappingCatalogue.
+     */
+    void deleteMapping(Mapping mapping);
+
+    /**
+     * Adds the given Mapping.
+     * The {@code mapping} must not already exist in the MappingCatalogue.
+     */
+    void addMapping(Mapping mapping);
+
+    /**
+     * Replaces the given mapping {@code target} with {@code editedMapping}.
+     * {@code target} must exist in the catalogue.
+     * The mapping identity of {@code editedMapping} must not be the same as another
+     * existing mapping in the MappingCatalogue.
+     */
+    void setMapping(Mapping mapping, Mapping editedMapping);
+
+    //=========== FilteredMappingList Accessors =============================================================
+
+    /**
+     * Returns an unmodifiable view of the filtered mapping list
+     */
+    ObservableList<Mapping> getFilteredMappingList();
+
+    /**
+     * Updates the filter of the filtered mapping list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredMappingList(Predicate<Mapping> predicate);
 }

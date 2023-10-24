@@ -13,7 +13,7 @@ public class PartnerName {
 
     public static final String VALIDATION_REGEX = "[^\\s].*";
 
-    public final String value;
+    private final String value;
 
     /**
      * Constructs an {@code PartnerName}.

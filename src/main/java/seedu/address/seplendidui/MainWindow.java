@@ -71,7 +71,7 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        itemDetailPanel = new ItemDetailPanel<>();
+        itemDetailPanel = new ItemDetailPanel<>(seplendidLogic);
         itemDetailPanelPlaceholder.getChildren().add(itemDetailPanel.getRoot());
 
         ObservableList<LocalCourse> localList = seplendidLogic.getFilteredLocalCourseCatalogue();
@@ -142,6 +142,9 @@ public class MainWindow extends UiPart<Stage> {
                 break;
             case NOTE_LIST:
                 itemListPanel.setDisplayList(seplendidLogic.getFilteredNoteCatalogue());
+                break;
+            case MAPPING_LIST:
+                itemListPanel.setDisplayList(seplendidLogic.getFilteredMappingCatalogue());
                 break;
             default:
                 // do nothing

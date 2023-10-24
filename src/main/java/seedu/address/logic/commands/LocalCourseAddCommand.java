@@ -8,6 +8,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.seplendidui.UiUtil;
 
 /**
  * Adds a local course to the LocalCourseCatalogue.
@@ -15,8 +16,8 @@ import seedu.address.model.localcourse.LocalCourse;
 public class LocalCourseAddCommand extends LocalCourseCommand {
 
     // Also available in abstract class LocalCourseCommand to support polymorphism
-    public static final String LOCAL_COURSE_ADD_MESSAGE_USAGE = COMMAND_WORD
-            + " add [localcode] [localname]: Adds a local course.";
+    public static final String LOCAL_COURSE_ADD_MESSAGE_USAGE =
+        COMMAND_WORD + " add [localcode] [localname] [localunit]: Adds a local course.";
     public static final String ACTION_WORD = "add";
 
     public static final String MESSAGE_SUCCESS = "New local course added: %1$s";
@@ -56,7 +57,8 @@ public class LocalCourseAddCommand extends LocalCourseCommand {
         }
 
         seplendidModel.addLocalCourse(localCourseToAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(localCourseToAdd)));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(localCourseToAdd)),
+                UiUtil.ListViewModel.LOCAL_COURSE_LIST);
 
     }
 

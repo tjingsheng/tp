@@ -24,6 +24,11 @@ public class University implements SeplendidDataType {
         return universityName;
     }
 
+    @Override
+    public String toString() {
+        return universityName.toString();
+    }
+
     /**
      * Returns true if both Universities have the same universities.
      * Assumption: university is the primary key i.e. there exists

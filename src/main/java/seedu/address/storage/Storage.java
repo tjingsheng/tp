@@ -7,6 +7,7 @@ import java.util.Optional;
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
+import seedu.address.model.ReadOnlyMappingCatalogue;
 import seedu.address.model.ReadOnlyNoteCatalogue;
 import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyUniversityCatalogue;
@@ -18,7 +19,7 @@ import seedu.address.model.UserPrefs;
  */
 public interface Storage extends AddressBookStorage, LocalCourseCatalogueStorage, UserPrefsStorage,
         PartnerCourseCatalogueStorage, UniversityCatalogueStorage,
-        NoteCatalogueStorage {
+        NoteCatalogueStorage, MappingCatalogueStorage {
 
     // ================ UserPrefs methods ==============================
     @Override
@@ -60,9 +61,11 @@ public interface Storage extends AddressBookStorage, LocalCourseCatalogueStorage
     @Override
     void savePartnerCourseCatalogue(ReadOnlyPartnerCourseCatalogue partnerCourseCatalogue) throws IOException;
 
+    // ================ UniversityCatalogue methods ==============================
     @Override
     void saveUniversityCatalogue(ReadOnlyUniversityCatalogue universityCatalogue) throws IOException;
 
+    // ================ NoteCatalogue methods ==============================
     @Override
     Path getNoteCatalogueFilePath();
 
@@ -72,4 +75,13 @@ public interface Storage extends AddressBookStorage, LocalCourseCatalogueStorage
     @Override
     void saveNoteCatalogue(ReadOnlyNoteCatalogue noteCatalogue) throws IOException;
 
+    // ================ MappingCatalogue methods ==============================
+    @Override
+    Path getMappingCatalogueFilePath();
+
+    @Override
+    Optional<ReadOnlyMappingCatalogue> readMappingCatalogue() throws DataLoadingException;
+
+    @Override
+    void saveMappingCatalogue(ReadOnlyMappingCatalogue mappingCatalogue) throws IOException;
 }

@@ -5,10 +5,13 @@ import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.model.LocalCourseCatalogue;
+import seedu.address.model.MappingCatalogue;
 import seedu.address.model.NoteCatalogue;
 import seedu.address.model.PartnerCourseCatalogue;
 import seedu.address.model.UniversityCatalogue;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.mapping.Mapping;
+import seedu.address.model.mapping.MappingMiscInformation;
 import seedu.address.model.notes.Content;
 import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCourse;
@@ -23,60 +26,109 @@ public class TypicalObjects {
 
     public static final String TYPICAL_LOCAL_COURSE_CODE = "CS2103";
     public static final String TYPICAL_LOCAL_COURSE_NAME = "Software Engineering";
+    public static final Double TYPICAL_LOCAL_COURSE_UNIT = 4.0;
 
     public static final String TYPICAL_PARTNER_COURSE_CODE = "CS50";
     public static final String TYPICAL_PARTNER_COURSE_NAME = "Introduction to Computer Science";
+    public static final Double TYPICAL_PARTNER_COURSE_UNIT = 5.0;
 
     public static final String TYPICAL_UNIVERSITY_NAME = "Typical University";
     public static final UniversityName TYPICAL_PARTNER_UNIVERSITY_NAME = new UniversityName("Harvard University");
 
     public static final String EDGE_CASE_VALID_LOCAL_COURSE_CODE = "S";
     public static final String EDGE_CASE_VALID_LOCAL_COURSE_NAME = " Software Testing";
-    public static final String INVALID_LOCAL_COURSE_CODE = "$HOW2BECOMERICH";
-    public static final String INVALID_LOCAL_COURSE_NAME = " ";
+    public static final Double EDGE_CASE_VALID_LOCAL_COURSE_UNIT = 0.0;
 
     public static final String EDGE_CASE_VALID_PARTNER_COURSE_CODE = "V";
     public static final String EDGE_CASE_VALID_PARTNER_COURSE_NAME = " Game Development";
+    public static final Double EDGE_CASE_VALID_PARTNER_COURSE_UNIT = 0.0;
 
+    public static final String EDGE_CASE_VALID_UNIVERSITY_NAME = " School";
+
+    public static final String INVALID_LOCAL_COURSE_CODE = "$HOW2BECOMERICH";
+    public static final String INVALID_LOCAL_COURSE_NAME = " ";
+    public static final Double INVALID_LOCAL_COURSE_UNIT = -1.0;
 
     public static final String INVALID_PARTNER_COURSE_CODE = "$H23Y1";
     public static final String INVALID_PARTNER_COURSE_NAME = " ";
-    public static final String EDGE_CASE_VALID_UNIVERSITY_NAME = " School";
+    public static final Double INVALID_PARTNER_COURSE_UNIT = -1.0;
 
-    public static final LocalCourse CS2040S = new LocalCourseBuilder().withLocalCode("CS2040S")
-            .withLocalName("Data Structures & Algorithms").build();
-    public static final LocalCourse CS3230 = new LocalCourseBuilder().withLocalCode("CS3230")
-            .withLocalName("Design & Analysis of Algorithms").build();
-    public static final LocalCourse CS1231S = new LocalCourseBuilder().withLocalCode("CS1231S")
-            .withLocalName("Discrete Structures").build();
-    public static final LocalCourse CS2030S = new LocalCourseBuilder().withLocalCode("CS2030S")
-            .withLocalName("Programming Methodology II").build();
-    public static final LocalCourse MA2001 = new LocalCourseBuilder().withLocalCode("MA2001")
-            .withLocalName("Linear Algebra").build();
-    public static final LocalCourse TYPICAL_LOCAL_COURSE = new LocalCourseBuilder()
-            .withLocalCode(TYPICAL_LOCAL_COURSE_CODE).withLocalName(TYPICAL_LOCAL_COURSE_NAME).build();
-    public static final LocalCourse EDGE_CASE_VALID_LOCAL_COURSE = new LocalCourseBuilder()
-            .withLocalCode(EDGE_CASE_VALID_LOCAL_COURSE_CODE).withLocalName(EDGE_CASE_VALID_LOCAL_COURSE_NAME).build();
+
+    public static final LocalCourse CS2040S =
+            new LocalCourseBuilder().withLocalCode("CS2040S")
+                    .withLocalName("Data Structures & Algorithms")
+                    .withLocalUnit(4.0)
+                    .build();
+    public static final LocalCourse CS3230 =
+            new LocalCourseBuilder().withLocalCode("CS3230")
+                    .withLocalName("Design & Analysis of Algorithms")
+                    .withLocalUnit(4.0)
+                    .build();
+    public static final LocalCourse CS1231S =
+            new LocalCourseBuilder().withLocalCode("CS1231S")
+                    .withLocalName("Discrete Structures")
+                    .withLocalUnit(4.0)
+                    .build();
+    public static final LocalCourse CS2030S =
+            new LocalCourseBuilder().withLocalCode("CS2030S")
+                    .withLocalName("Programming Methodology II")
+                    .withLocalUnit(4.0)
+                    .build();
+    public static final LocalCourse MA2001 =
+            new LocalCourseBuilder().withLocalCode("MA2001")
+                    .withLocalName("Linear Algebra")
+                    .withLocalUnit(4.0)
+                    .build();
+    public static final LocalCourse TYPICAL_LOCAL_COURSE =
+            new LocalCourseBuilder().withLocalCode(TYPICAL_LOCAL_COURSE_CODE)
+                    .withLocalName(TYPICAL_LOCAL_COURSE_NAME)
+                    .withLocalUnit(TYPICAL_LOCAL_COURSE_UNIT)
+                    .build();
+    public static final LocalCourse EDGE_CASE_VALID_LOCAL_COURSE =
+            new LocalCourseBuilder().withLocalCode(EDGE_CASE_VALID_LOCAL_COURSE_CODE)
+                    .withLocalName(EDGE_CASE_VALID_LOCAL_COURSE_NAME)
+                    .withLocalUnit(EDGE_CASE_VALID_LOCAL_COURSE_UNIT)
+                    .build();
 
     // PartnerCourse
-    public static final PartnerCourse TYPICAL_PARTNER_COURSE = new PartnerCourseBuilder()
-            .withPartnerUniversity(TYPICAL_PARTNER_UNIVERSITY_NAME).withPartnerCode(TYPICAL_PARTNER_COURSE_CODE)
-            .withPartnerName(TYPICAL_PARTNER_COURSE_NAME).build();
+    public static final PartnerCourse TYPICAL_PARTNER_COURSE =
+            new PartnerCourseBuilder().withPartnerUniversity(TYPICAL_PARTNER_UNIVERSITY_NAME)
+                    .withPartnerCode(TYPICAL_PARTNER_COURSE_CODE)
+                    .withPartnerName(TYPICAL_PARTNER_COURSE_NAME)
+                    .withPartnerUnit(TYPICAL_PARTNER_COURSE_UNIT)
+                    .build();
+    public static final PartnerCourse EDGE_CASE_VALID_PARTNER_COURSE =
+            new PartnerCourseBuilder().withPartnerUniversity(new UniversityName(EDGE_CASE_VALID_UNIVERSITY_NAME))
+                    .withPartnerCode(EDGE_CASE_VALID_PARTNER_COURSE_CODE)
+                    .withPartnerName(EDGE_CASE_VALID_PARTNER_COURSE_NAME)
+                    .withPartnerUnit(EDGE_CASE_VALID_PARTNER_COURSE_UNIT)
+                    .build();
+    public static final PartnerCourse COMP1000 =
+            new PartnerCourseBuilder().withPartnerUniversity(new UniversityName("University of Edinburgh"))
+                    .withPartnerCode("COMP1000")
+                    .withPartnerName("Introduction to Programming")
+                    .withPartnerUnit(5.0)
+                    .build();
+    public static final PartnerCourse COMP2000 =
+            new PartnerCourseBuilder().withPartnerUniversity(new UniversityName("University of Leeds"))
+                    .withPartnerCode("COMP2000")
+                    .withPartnerName("Introduction to Databases")
+                    .withPartnerUnit(5.0)
+                    .build();
+    public static final PartnerCourse COMP3000 =
+            new PartnerCourseBuilder().withPartnerUniversity(new UniversityName("University of Zurich"))
+                    .withPartnerCode("COMP3000")
+                    .withPartnerName("Introduction to Networks")
+                    .withPartnerUnit(5.0)
+                    .build();
 
-    public static final PartnerCourse EDGE_CASE_VALID_PARTNER_COURSE = new PartnerCourseBuilder()
-            .withPartnerUniversity(new UniversityName(EDGE_CASE_VALID_UNIVERSITY_NAME))
-            .withPartnerCode(EDGE_CASE_VALID_PARTNER_COURSE_CODE)
-            .withPartnerName(EDGE_CASE_VALID_PARTNER_COURSE_NAME).build();
+    public static final PartnerCourse S0402SC = new PartnerCourseBuilder()
+            .withPartnerUniversity(new UniversityName("Nanyang Technological University"))
+            .withPartnerCode("S0402SC").withPartnerName("Algorithms").build();
+    public static final PartnerCourse STAN3230 = new PartnerCourseBuilder()
+            .withPartnerUniversity(new UniversityName("Stanford University"))
+            .withPartnerCode("STAN3230").withPartnerName("Design & Analysis of Algorithms").build();
 
-    public static final PartnerCourse COMP1000 = new PartnerCourseBuilder()
-            .withPartnerUniversity(new UniversityName("University of Edinburgh"))
-            .withPartnerCode("COMP1000").withPartnerName("Introduction to Programming").build();
-    public static final PartnerCourse COMP2000 = new PartnerCourseBuilder()
-            .withPartnerUniversity(new UniversityName("University of Leeds"))
-            .withPartnerCode("COMP2000").withPartnerName("Introduction to Databases").build();
-    public static final PartnerCourse COMP3000 = new PartnerCourseBuilder()
-            .withPartnerUniversity(new UniversityName("University of Zurich"))
-            .withPartnerCode("COMP3000").withPartnerName("Introduction to Networks").build();
 
     // University
     public static final University NTU = new University(new UniversityName("Nanyang Technological University"));
@@ -87,6 +139,13 @@ public class TypicalObjects {
             new Tag("university"));
     public static final Note NOTE2 = new Note(new Content("Application Deadline 1 December 2023"),
             new Tag("deadline"));
+
+    // Mapping
+    public static final Mapping CS2040S_TO_NTU_S0402SC = new Mapping(CS2040S.getLocalCode(), NTU.getUniversityName(),
+            S0402SC.getPartnerCode(), new MappingMiscInformation("NIL"));
+    public static final Mapping CS3230S_TO_STANFORD_STAN3230 = new Mapping(CS3230.getLocalCode(),
+            STANFORD.getUniversityName(), STAN3230.getPartnerCode(), new MappingMiscInformation("NIL"));
+
     private TypicalObjects() {
     } // prevents instantiation
 
@@ -134,18 +193,34 @@ public class TypicalObjects {
         return noteCatalogue;
     }
 
+    /**
+     * Returns an {@code MappingCatalogue} with all the typical mappings.
+     */
+    public static MappingCatalogue getTypicalMappingCatalogue() {
+        MappingCatalogue mappingCatalogue = new MappingCatalogue();
+        for (Mapping mapping : getTypicalMappings()) {
+            mappingCatalogue.addMapping(mapping);
+        }
+        return mappingCatalogue;
+    }
+
     public static List<LocalCourse> getTypicalLocalCourses() {
         return new ArrayList<>(Arrays.asList(CS2040S, CS3230));
     }
 
     public static List<PartnerCourse> getTypicalPartnerCourses() {
-        return new ArrayList<>(Arrays.asList(COMP1000, COMP2000));
+        return new ArrayList<>(Arrays.asList(COMP1000, COMP2000, S0402SC, STAN3230));
     }
 
     public static List<University> getTypicalUniversities() {
         return new ArrayList<>(Arrays.asList(NTU, STANFORD));
     }
+
     public static List<Note> getTypicalNotes() {
         return new ArrayList<>(Arrays.asList(NOTE1, NOTE2));
+    }
+
+    public static List<Mapping> getTypicalMappings() {
+        return new ArrayList<>(Arrays.asList(CS3230S_TO_STANFORD_STAN3230));
     }
 }

@@ -8,12 +8,11 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Guarantees: immutable; is valid as declared in {@link #isValidLocalUnit(Object)}
  */
 public class LocalUnit {
-
     // Used in AppUtil#checkArgument and ParserUtil, JsonAdaptedXXX exceptions
     public static final String MESSAGE_CONSTRAINTS =
         "LocalUnit can only non-negative numeric values and should not be blank";
 
-    public final Double value;
+    private final Double value;
 
     /**
      * Constructs an {@code LocalUnit}.

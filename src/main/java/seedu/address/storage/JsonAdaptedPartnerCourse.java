@@ -40,10 +40,10 @@ public class JsonAdaptedPartnerCourse {
      * Converts a given {@code PartnerCourse} into this class for Jackson use.
      */
     public JsonAdaptedPartnerCourse(PartnerCourse source) {
-        universityName = source.getPartnerUniversity().getUniversityName().value;
-        partnerCode = source.getPartnerCode().value;
-        partnerName = source.getPartnerName().value;
-        partnerUnit = source.getPartnerUnit().value;
+        universityName = source.getPartnerUniversity().getUniversityName().getValue();
+        partnerCode = source.getPartnerCode().getValue();
+        partnerName = source.getPartnerName().getValue();
+        partnerUnit = source.getPartnerUnit().getValue();
     }
 
     /**

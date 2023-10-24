@@ -37,9 +37,9 @@ class JsonAdaptedLocalCourse {
      * Converts a given {@code LocalCourse} into this class for Jackson use.
      */
     public JsonAdaptedLocalCourse(LocalCourse source) {
-        localCode = source.getLocalCode().value;
-        localName = source.getLocalName().value;
-        localUnit = source.getLocalUnit().value;
+        localCode = source.getLocalCode().getValue();
+        localName = source.getLocalName().getValue();
+        localUnit = source.getLocalUnit().getValue();
     }
 
     /**

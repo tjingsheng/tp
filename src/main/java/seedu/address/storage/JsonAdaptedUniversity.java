@@ -30,7 +30,7 @@ class JsonAdaptedUniversity {
      * Converts a given {@code University} into this class for Jackson use.
      */
     public JsonAdaptedUniversity(University source) {
-        universityName = source.getUniversityName().value;
+        universityName = source.getUniversityName().getValue();
     }
 
     /**

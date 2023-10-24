@@ -13,7 +13,7 @@ public class PartnerUnit {
     public static final String MESSAGE_CONSTRAINTS =
         "PartnerUnit can only take non-negative numeric values and should not be blank";
 
-    public final Double value;
+    private final Double value;
 
     /**
      * Constructs an {@code PartnerUnit}.

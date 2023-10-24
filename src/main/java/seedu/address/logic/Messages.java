@@ -92,7 +92,7 @@ public class Messages {
             .append(partnerCourse.getPartnerCode())
             .append("; PartnerName: ")
             .append(partnerCourse.getPartnerName())
-            .append("; LocalUnit: ")
+            .append("; PartnerUnit: ")
             .append(partnerCourse.getPartnerUnit());
         return builder.toString();
     }

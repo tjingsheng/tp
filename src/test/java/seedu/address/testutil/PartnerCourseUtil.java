@@ -22,9 +22,11 @@ public class PartnerCourseUtil {
      * Returns the part of add command string for the given {@code PartnerCourse}'s details.
      */
     public static String getPartnerCourseArgumentsForAddCommand(PartnerCourse partnerCourse) {
-        return String.format("[%s] [%s]",
+        return String.format("[%s] [%s] [%s] [%s]",
             partnerCourse.getPartnerCode(),
-            partnerCourse.getPartnerName());
+            partnerCourse.getPartnerName(),
+            partnerCourse.getPartnerUniversity(),
+            partnerCourse.getPartnerUnit());
     }
 
     /**

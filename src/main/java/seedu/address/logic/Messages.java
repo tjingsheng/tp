@@ -87,7 +87,7 @@ public class Messages {
     public static String format(PartnerCourse partnerCourse) {
         final StringBuilder builder = new StringBuilder();
         builder.append("PartnerUniversity: ")
-            .append(partnerCourse.getPartnerUniversity().getUniversityName().toString())
+            .append(partnerCourse.getPartnerUniversity())
             .append("; PartnerCode: ")
             .append(partnerCourse.getPartnerCode())
             .append("; PartnerName: ")

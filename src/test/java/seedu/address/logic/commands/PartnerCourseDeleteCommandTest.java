@@ -39,6 +39,7 @@ import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityName;
+import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
 import seedu.address.testutil.PartnerCourseBuilder;
 
 /**
@@ -281,6 +282,12 @@ public class PartnerCourseDeleteCommandTest {
 
         @Override
         public void setUniversityCatalogueFilePath(Path universityCatalogueFilePath) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void getSearchUniversityIfExists(UniversityNameContainsKeywordsPredicate
+                                                                universityNameContainsKeywordsPredicate) {
             throw new AssertionError("This method should not be called.");
         }
 

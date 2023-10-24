@@ -39,6 +39,7 @@ import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityName;
+import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
 import seedu.address.testutil.LocalCourseBuilder;
 
 /**
@@ -262,7 +263,12 @@ public class LocalCourseDeleteCommandTest {
         }
 
         @Override
+        public void getSearchUniversityIfExists(UniversityNameContainsKeywordsPredicate
+                                                                universityNameContainsKeywordsPredicate) {
+
+        }
         public Optional<University> getUniversityIfExists(UniversityName universityName) {
+
             throw new AssertionError("This method should not be called.");
         }
 

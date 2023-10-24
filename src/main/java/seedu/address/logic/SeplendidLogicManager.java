@@ -14,10 +14,12 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.SeplendidParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
+import seedu.address.model.ReadOnlyMappingCatalogue;
 import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyUniversityCatalogue;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
@@ -36,7 +38,7 @@ public class SeplendidLogicManager implements SeplendidLogic {
     private final Logger logger = SeplendidLogsCenter.getLogger(SeplendidLogicManager.class);
 
     // Note, during morphing Storage handles both ab3 and SEPlendid.
-    // On the other hand, SEPlendid has its only LogicManager.
+    // On the other hand, SEPlendid has its own LogicManager.
     // TBD: remove this developer's note.
     private final SeplendidModel model;
     private final Storage storage;
@@ -69,6 +71,7 @@ public class SeplendidLogicManager implements SeplendidLogic {
             storage.saveLocalCourseCatalogue(model.getLocalCourseCatalogue());
             storage.savePartnerCourseCatalogue(model.getPartnerCourseCatalogue());
             storage.saveUniversityCatalogue(model.getUniversityCatalogue());
+            storage.saveMappingCatalogue(model.getMappingCatalogue());
         } catch (AccessDeniedException e) {
             throw new CommandException(String.format(FILE_OPS_PERMISSION_ERROR_FORMAT, e.getMessage()), e);
         } catch (IOException ioe) {
@@ -134,8 +137,22 @@ public class SeplendidLogicManager implements SeplendidLogic {
         return model.getUniversityCatalogueFilePath();
     }
 
+    //=========== NoteCatalouge ================================================================================
     public ObservableList<Note> getFilteredNoteCatalogue() {
         return model.getFilteredNoteList();
     }
 
+    //=========== MappingCatalouge ================================================================================
+
+    public ReadOnlyMappingCatalogue getMappingCatalogue() {
+        return model.getMappingCatalogue();
+    }
+
+    public ObservableList<Mapping> getFilteredMappingCatalogue() {
+        return model.getFilteredMappingList();
+    }
+
+    public Path getMappingCatalogueFilePath() {
+        return model.getMappingCatalogueFilePath();
+    }
 }

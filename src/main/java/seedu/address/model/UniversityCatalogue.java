@@ -3,11 +3,13 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.Optional;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.university.UniqueUniversityList;
 import seedu.address.model.university.University;
+import seedu.address.model.university.UniversityName;
 
 /**
  * Wraps universities data at the catalogue level
@@ -39,6 +41,17 @@ public class UniversityCatalogue implements ReadOnlyUniversityCatalogue {
     public boolean hasUniversity(University universityQuery) {
         requireNonNull(universityQuery);
         return universities.contains(universityQuery);
+    }
+
+    /**
+     * Gets the university if it exists
+     *
+     * @param universityNameQuery This is the UniversityName to check.
+     * @return Optional containing first occurrence of desired University, if any.
+     */
+    public Optional<University> getUniversityIfExists(UniversityName universityNameQuery) {
+        requireNonNull(universityNameQuery);
+        return universities.getUniversityIfExists(universityNameQuery);
     }
 
     public void addUniversity(University uN) {

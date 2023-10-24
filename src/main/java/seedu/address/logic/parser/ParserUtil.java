@@ -14,6 +14,7 @@ import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourseAttribute;
 import seedu.address.model.localcourse.LocalName;
 import seedu.address.model.localcourse.LocalUnit;
+import seedu.address.model.mapping.MappingMiscInformation;
 import seedu.address.model.notes.Content;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerName;
@@ -257,6 +258,20 @@ public class ParserUtil {
         requireNonNull(tags);
         String trimmedTags = tags.trim();
         return trimmedTags;
+    }
+
+    /**
+     * Parse a {@code String mappingMiscInformation}.
+     * Leading and trailing whitespaces will be trimmed.
+     */
+    public static MappingMiscInformation parseMappingMiscInformation(String mappingMiscInformation)
+            throws ParseException {
+        requireNonNull(mappingMiscInformation);
+        String trimmedMappingMiscInformation = mappingMiscInformation.trim();
+        if (!MappingMiscInformation.isValidMappingMiscInformation(trimmedMappingMiscInformation)) {
+            throw new ParseException(MappingMiscInformation.MESSAGE_CONSTRAINTS);
+        }
+        return new MappingMiscInformation(trimmedMappingMiscInformation);
     }
 
     // SEPlendid ParserUtil starts here

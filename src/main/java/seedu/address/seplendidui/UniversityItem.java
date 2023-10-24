@@ -28,7 +28,7 @@ public class UniversityItem extends UiPart<Region> {
     public UniversityItem(University university, int displayedIndex) {
         super(FXML);
         this.university = university;
-        id.setText(displayedIndex + ". ");
+        id.setText(displayedIndex + ".");
         universityName.setText(university.getUniversityName().toString());
     }
 }

@@ -30,7 +30,7 @@ public class LocalCourseItem extends UiPart<Region> {
     public LocalCourseItem(LocalCourse localCourse, int displayedIndex) {
         super(FXML);
         this.localCourse = localCourse;
-        id.setText(displayedIndex + ". ");
+        id.setText(displayedIndex + ".");
         localName.setText(localCourse.getLocalName().toString());
         localCode.setText(localCourse.getLocalCode().toString());
     }

@@ -6,17 +6,27 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<HBox id="universityDetailPane" fx:id="universityDetailPane" xmlns="http://javafx.com/javafx/17"
-      xmlns:fx="http://javafx.com/fxml/1">
+<HBox xmlns:fx="http://javafx.com/fxml/1"
+      id="universityDetailPane"
+      fx:id="universityDetailPane"
+      xmlns="http://javafx.com/javafx/17">
     <GridPane HBox.hgrow="ALWAYS">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150"/>
+            <ColumnConstraints hgrow="SOMETIMES"
+                               minWidth="10"
+                               prefWidth="150"/>
         </columnConstraints>
-        <VBox alignment="CENTER_LEFT" minHeight="105" GridPane.columnIndex="0">
-            <padding>
-                <Insets top="5" right="5" bottom="5" left="15"/>
-            </padding>
-            <Label fx:id="universityName" text="\$first" styleClass="cell_big_label"/>
+        <padding>
+            <Insets top="5"
+                    right="15"
+                    bottom="5"
+                    left="15"/>
+        </padding>
+        <VBox alignment="CENTER_LEFT"
+              GridPane.columnIndex="0">
+            <Label fx:id="universityName"
+                   text="\$first"
+                   styleClass="detail_heading_label"/>
         </VBox>
     </GridPane>
 </HBox>

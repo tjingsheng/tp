@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ListView?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.VBox?>
-
-<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" >
-    <ListView fx:id="itemDetailView" VBox.vgrow="ALWAYS" styleClass="round-border"/>
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      xmlns="http://javafx.com/javafx/17"
+      styleClass="round-border">
+    <padding>
+        <Insets top="0"
+                right="8"
+                bottom="0"
+                left="8"/>
+    </padding>
+    <VBox fx:id="itemDetailView"
+          VBox.vgrow="ALWAYS"
+          styleClass="round-border"/>
 </VBox>

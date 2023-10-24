@@ -2,7 +2,11 @@
 
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.StackPane?>
-
-<StackPane styleClass="background-color" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-  <TextField fx:id="commandTextField" onAction="#handleCommandEntered" promptText="Enter command here..." styleClass="round-border"/>
+<StackPane xmlns:fx="http://javafx.com/fxml/1"
+           styleClass="background-color"
+           xmlns="http://javafx.com/javafx/17">
+    <TextField fx:id="commandTextField"
+               onAction="#handleCommandEntered"
+               promptText="Enter command here..."
+               styleClass="round-border"/>
 </StackPane>

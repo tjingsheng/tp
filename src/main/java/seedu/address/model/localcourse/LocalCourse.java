@@ -94,7 +94,7 @@ public class LocalCourse implements SeplendidDataType {
         return new ToStringBuilder(this)
                 .add("localCode", localCode)
                 .add("localName", localName)
-                .add("localunit", localUnit)
+                .add("localUnit", localUnit)
                 .toString();
     }
 }

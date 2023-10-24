@@ -86,7 +86,7 @@ public class PartnerCourse implements SeplendidDataType {
 
     @Override
     public int hashCode() {
-        return Objects.hash(partnerUniversity, partnerCode, partnerName);
+        return Objects.hash(partnerUniversity, partnerCode, partnerName, partnerUnit);
     }
 
     @Override

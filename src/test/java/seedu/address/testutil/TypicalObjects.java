@@ -48,7 +48,6 @@ public class TypicalObjects {
 
     public static final String INVALID_PARTNER_COURSE_CODE = "$H23Y1";
     public static final String INVALID_PARTNER_COURSE_NAME = " ";
-    public static final String EDGE_CASE_VALID_UNIVERSITY_NAME = " School";
     public static final String INVALID_UNIVERSITY_NAME = " ";
     public static final Double INVALID_PARTNER_COURSE_UNIT = -1.0;
 
@@ -78,6 +77,12 @@ public class TypicalObjects {
             .withLocalName("Linear Algebra")
             .withLocalUnit(4.0)
             .build();
+
+    public static final LocalCourse MA1521 =
+            new LocalCourseBuilder().withLocalCode("MA1521")
+                    .withLocalName("Calculus in Computing")
+                    .withLocalUnit(4.0)
+                    .build();
     public static final LocalCourse TYPICAL_LOCAL_COURSE =
         new LocalCourseBuilder().withLocalCode(TYPICAL_LOCAL_COURSE_CODE)
             .withLocalName(TYPICAL_LOCAL_COURSE_NAME)

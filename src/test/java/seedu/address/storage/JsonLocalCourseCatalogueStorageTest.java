@@ -3,9 +3,9 @@ package seedu.address.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalObjects.CS1231S;
 import static seedu.address.testutil.TypicalObjects.CS2030S;
 import static seedu.address.testutil.TypicalObjects.CS3230;
+import static seedu.address.testutil.TypicalObjects.MA1521;
 import static seedu.address.testutil.TypicalObjects.getTypicalLocalCourseCatalogue;
 
 import java.io.IOException;
@@ -89,7 +89,7 @@ public class JsonLocalCourseCatalogueStorageTest {
         assertEquals(original, new LocalCourseCatalogue(readBack));
 
         // Modify data, overwrite exiting file, and read back
-        original.addLocalCourse(CS1231S);
+        original.addLocalCourse(MA1521);
         original.removeLocalCourse(CS3230);
         jsonLocalCourseCatalogueStorage.saveLocalCourseCatalogue(original, filePath);
         readBack = jsonLocalCourseCatalogueStorage.readLocalCourseCatalogue(filePath).get();

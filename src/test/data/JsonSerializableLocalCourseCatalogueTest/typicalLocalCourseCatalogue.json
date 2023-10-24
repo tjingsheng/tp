@@ -7,8 +7,18 @@
       "localUnit": 4.0
     },
     {
+      "localCode": "MA2001",
+      "localName": "Linear Algebra",
+      "localUnit": 4.0
+    },
+    {
       "localCode": "CS3230",
       "localName": "Design & Analysis of Algorithms",
+      "localUnit": 4.0
+    },
+    {
+      "localCode": "CS1231S",
+      "localName": "Discrete Structures",
       "localUnit": 4.0
     }
   ]

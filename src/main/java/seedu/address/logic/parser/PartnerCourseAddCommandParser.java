@@ -13,7 +13,6 @@ import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.partnercourse.PartnerName;
 import seedu.address.model.partnercourse.PartnerUnit;
 import seedu.address.model.university.University;
-import seedu.address.model.university.UniversityName;
 
 /**
  * Parses input arguments and creates a new PartnerCourseCommand object.

@@ -57,9 +57,4 @@ public class University implements SeplendidDataType {
         University otherUniversity = (University) other;
         return universityName.equals(otherUniversity.universityName);
     }
-
-    @Override
-    public String toString() {
-        return this.getUniversityName().toString();
-    }
 }

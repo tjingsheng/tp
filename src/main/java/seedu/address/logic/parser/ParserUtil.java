@@ -11,6 +11,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.localcourse.LocalCode;
+import seedu.address.model.localcourse.LocalCourseAttribute;
 import seedu.address.model.localcourse.LocalName;
 import seedu.address.model.notes.Content;
 import seedu.address.model.partnercourse.PartnerCode;
@@ -270,5 +271,34 @@ public class ParserUtil {
      */
     public static boolean areArgumentsPresent(SeplendidArgumentMap argumentMap, SeplendidParameter... parameters) {
         return Stream.of(parameters).allMatch(parameter -> argumentMap.getValue(parameter).isPresent());
+    }
+
+    /**
+     * Parses a {@code String attribute}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code attribute} is invalid.
+     */
+    public static LocalCourseAttribute parseLocalCourseAttribute(String attribute) throws ParseException {
+        requireNonNull(attribute);
+        String attributeLowerCase = attribute.toLowerCase();
+        String resultAttribute = attributeLowerCase;
+        switch(attributeLowerCase) {
+        case("localcode"):
+            resultAttribute = "LOCALCODE";
+            break;
+        case("localname"):
+            resultAttribute = "LOCALNAME";
+            break;
+        default:
+            break;
+        }
+
+        if (!LocalCourseAttribute.isValidAttribute(resultAttribute)) {
+            throw new ParseException(LocalCourseAttribute.MESSAGE_CONSTRAINTS);
+        }
+
+        return LocalCourseAttribute.valueOf(resultAttribute);
+
     }
 }

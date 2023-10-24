@@ -142,7 +142,8 @@ public class TypicalObjects {
     }
 
     public static List<LocalCourse> getTypicalLocalCourses() {
-        return new ArrayList<>(Arrays.asList(CS2040S, CS3230));
+
+        return new ArrayList<>(Arrays.asList(CS2040S, MA2001, CS3230, CS1231S));
     }
 
     public static List<PartnerCourse> getTypicalPartnerCourses() {

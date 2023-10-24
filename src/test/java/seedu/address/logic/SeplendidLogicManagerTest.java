@@ -6,9 +6,11 @@ import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE_CODE;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE_NAME;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE_UNIT;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE_CODE;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE_NAME;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE_UNIT;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_UNIVERSITY_NAME;
 
 import java.io.IOException;
@@ -239,16 +241,23 @@ public class SeplendidLogicManagerTest {
         logic = new SeplendidLogicManager(model, storage);
 
         // Triggers the saveLocalCourseCatalogue method by executing an add command
-        String localCourseAddCommand = String.format("%s %s [%s] [%s]",
-                LocalCourseCommand.COMMAND_WORD, LocalCourseAddCommand.ACTION_WORD,
-                TYPICAL_LOCAL_COURSE_CODE, TYPICAL_LOCAL_COURSE_NAME);
+        String localCourseAddCommand = String.format("%s %s [%s] [%s] [%s]",
+                LocalCourseCommand.COMMAND_WORD,
+                LocalCourseAddCommand.ACTION_WORD,
+                TYPICAL_LOCAL_COURSE_CODE,
+                TYPICAL_LOCAL_COURSE_NAME,
+                TYPICAL_LOCAL_COURSE_UNIT);
         SeplendidModelManager expectedModel = new SeplendidModelManager();
         expectedModel.addLocalCourse(TYPICAL_LOCAL_COURSE);
         assertCommandFailure(localCourseAddCommand, CommandException.class, expectedMessage, expectedModel);
 
-        String partnerCourseAddCommand = String.format("%s %s [%s] [%s] [%s]",
-                PartnerCourseCommand.COMMAND_WORD, PartnerCourseAddCommand.ACTION_WORD,
-                TYPICAL_PARTNER_UNIVERSITY_NAME, TYPICAL_PARTNER_COURSE_CODE, TYPICAL_PARTNER_COURSE_NAME);
+        String partnerCourseAddCommand = String.format("%s %s [%s] [%s] [%s] [%s]",
+                PartnerCourseCommand.COMMAND_WORD,
+                PartnerCourseAddCommand.ACTION_WORD,
+                TYPICAL_PARTNER_UNIVERSITY_NAME,
+                TYPICAL_PARTNER_COURSE_CODE,
+                TYPICAL_PARTNER_COURSE_NAME,
+                TYPICAL_PARTNER_COURSE_UNIT);
         expectedModel.addUniversity(new University(TYPICAL_PARTNER_UNIVERSITY_NAME));
         expectedModel.addPartnerCourse(TYPICAL_PARTNER_COURSE);
         assertCommandFailure(partnerCourseAddCommand, CommandException.class, expectedMessage, expectedModel);

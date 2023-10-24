@@ -41,10 +41,10 @@ class JsonAdaptedMapping {
      * Converts a given {@code LocalCourse} into this class for Jackson use.
      */
     public JsonAdaptedMapping(Mapping source) {
-        localCode = source.getLocalCode().value;
-        universityName = source.getUniversityName().value;
-        partnerCode = source.getPartnerCode().value;
-        mappingMiscInformation = source.getMappingMiscInformation().value;
+        localCode = source.getLocalCode().getValue();
+        universityName = source.getUniversityName().getValue();
+        partnerCode = source.getPartnerCode().getValue();
+        mappingMiscInformation = source.getMappingMiscInformation().getValue();
     }
 
     /**

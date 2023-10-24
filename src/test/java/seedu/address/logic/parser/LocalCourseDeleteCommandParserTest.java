@@ -36,7 +36,7 @@ public class LocalCourseDeleteCommandParserTest {
                         + UNNCESSARY_WHITESPACE
                         + LocalCourseAddCommand.ACTION_WORD
                         + UNNCESSARY_WHITESPACE
-                        + getSquareBracketWrappedArgument(expectedLocalCode.getValue())
+                        + getSquareBracketWrappedArgument(expectedLocalCode.toString())
                         + UNNCESSARY_WHITESPACE,
                 new LocalCourseDeleteCommand(expectedLocalCode));
     }

@@ -8,7 +8,6 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Guarantees: immutable; is valid as declared in {@link #isValidLocalName(String)}
  */
 public class LocalName {
-
     // Used in AppUtil#checkArgument and ParserUtil, JsonAdaptedXXX exceptions
     public static final String MESSAGE_CONSTRAINTS = "LocalName can take any values, given it starts with a "
             + "whitespace, and it should not be blank";
@@ -18,7 +17,7 @@ public class LocalName {
      */
     public static final String VALIDATION_REGEX = "[^\\s].*";
 
-    public final String value;
+    private final String value;
 
     /**
      * Constructs an {@code LocalName}.

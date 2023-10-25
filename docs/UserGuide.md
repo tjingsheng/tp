@@ -179,7 +179,7 @@ by NUS and has yet been entered in the database. For instance, a newly offered c
 Introduction to Computer Networks. The course is will fufil four course credits, and you would like to map this course 
 for SEP.
 
-The command you would like to input into the user input box would be:
+The command you would like to input:
 `localcourse add [CS2105] [Introduction to Computer Networks] [4.0]`
 
 These are the fields you would take note of:
@@ -187,7 +187,7 @@ These are the fields you would take note of:
 - `localname`: Introduction to Computer Networks
 - `units`: 4.0 
 
-Do take not of invalid formats:
+Do take note of invalid formats:
 - `localcourse add [CS2105]`
   The attributes such as localname and units are compulsory.
 - `localcourse add CS2105 Introduction to Computer Networks 4.0`
@@ -195,6 +195,72 @@ Do take not of invalid formats:
 - `localcourse add`
   There is insufficient information on what localcourse to add.
 
+**Another Example!**
+Let's imagine this, you want to go to a specific partner university like Imperial College of London. You would like to
+know whether this partner university is available for SEP.
+
+**Format**: university search [university]
+
+The command you would like to input:
+`university search [Imperial]`
+
+Do take note of invalid formats:
+- `university search [university] [university]`
+  The attribute `university` only takes in a String instead of List<String>.
+- `university search`
+  There is insufficient information on what university to query.
+
+Conduct these checks before executing the commands:
+- I know what I would like query e.g. localcourse, partnercourse, university etc.
+- I know the restrictions of each command
+- I know "[ ]" are compulsory for wrapping each attribute
+
+Conducting these checks would prevent error messages and result in more efficient querying of results!
+
+## 4. Commands
+
+This section provides an in-depth overview of each command SEPlendid has.
+
+Key takeaways from this section: 
+- Purpose of the command
+- Command format
+- Behaviour of the command (for valid and invalid input)
+- Examples of valid and invalid inputs
+
+## 4.1. Commands for localcourse
+### 4.1.1. List all localcourses: `localcourse list`
+**Format**: `localcourse list`
+
+**Example:**
+<insert image>
+
+### 4.1.2. Add a local course: `localcourse add`
+**Format**: `localcourse add [localcode] [localname] [units]`
+
+**Example**:
+<insert image>
+
+### 4.1.3. Delete a local course: `localcourse delete`
+**Format**: `localcourse delete [localcode] [localname] [units]`
+
+**Example**: 
+<insert image>
+
+### 4.1.4. Search a local course: `localcourse search`
+**Format**: `localcourse search [localcode]` \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `localcourse search [localname]`
+
+**Example**:
+<insert image>
+
+### 4.1.5.: Sort a local course: `localcourse sort`
+**Format**: `localcourse sort [localcode]` \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `localcourse sort [localname]`
+
+**Example**:
+<insert image>
+
+## 4.2. Commands for partnercourse
 
 ### Viewing help : `help`
 

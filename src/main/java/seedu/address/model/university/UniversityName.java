@@ -12,7 +12,7 @@ public class UniversityName {
 
     public static final String VALIDATION_REGEX = "[^\\s].*";
 
-    public final String value;
+    private final String value;
 
     /**
      * Constructs an {@code UniversityName}.
@@ -33,6 +33,10 @@ public class UniversityName {
 
     public static boolean isValidUniversityName(String test) {
         return test.matches(VALIDATION_REGEX);
+    }
+
+    public String getName() {
+        return value;
     }
 
     @Override

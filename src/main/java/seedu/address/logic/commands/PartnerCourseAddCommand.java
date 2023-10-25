@@ -14,8 +14,8 @@ import seedu.address.seplendidui.UiUtil;
  * Adds a partner course to the PartnerCourseCatalogue.
  */
 public class PartnerCourseAddCommand extends PartnerCourseCommand {
-    public static final String PARTNER_COURSE_ADD_MESSAGE_USAGE = COMMAND_WORD
-            + "add [university] [partnercode] [partnername]: Adds a partner course.";
+    public static final String PARTNER_COURSE_ADD_MESSAGE_USAGE =
+        COMMAND_WORD + " add [university] [partnercode] [partnername] [partnerunit]: Adds a partner course.";
     public static final String ACTION_WORD = "add";
     public static final String MESSAGE_SUCCESS = "New partner course added: %1$s";
     public static final String MESSAGE_DUPLICATE_PARTNER_COURSE = "This partner course already exists in SEPlendid.";

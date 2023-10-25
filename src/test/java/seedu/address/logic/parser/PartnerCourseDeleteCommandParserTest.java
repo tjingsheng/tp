@@ -36,7 +36,7 @@ public class PartnerCourseDeleteCommandParserTest {
                         + UNNCESSARY_WHITESPACE
                         + PartnerCourseAddCommand.ACTION_WORD
                         + UNNCESSARY_WHITESPACE
-                        + getSquareBracketWrappedArgument(expectedPartnerCode.getValue())
+                        + getSquareBracketWrappedArgument(expectedPartnerCode.toString())
                         + UNNCESSARY_WHITESPACE,
                 new PartnerCourseDeleteCommand(expectedPartnerCode));
     }

@@ -18,8 +18,7 @@ public class LocalCode {
      */
     public static final String VALIDATION_REGEX = "[a-zA-Z][a-zA-Z0-9]{0,9}";
 
-    // TBD: refactor codebase to allow this to be set to private
-    public final String value;
+    private final String value;
 
     /**
      * Constructs an {@code LocalCode}.

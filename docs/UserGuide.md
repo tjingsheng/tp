@@ -237,30 +237,107 @@ Key takeaways from this section:
 ### 4.1.2. Add a local course: `localcourse add`
 **Format**: `localcourse add [localcode] [localname] [units]`
 
-**Example**:
+**Example:**
 <insert image>
 
 ### 4.1.3. Delete a local course: `localcourse delete`
 **Format**: `localcourse delete [localcode] [localname] [units]`
 
-**Example**: 
+**Example:**
 <insert image>
 
-### 4.1.4. Search a local course: `localcourse search`
+### 4.1.4. Search a local course by attributes: `localcourse search`
 **Format**: `localcourse search [localcode]` \
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `localcourse search [localname]`
 
-**Example**:
+**Example:**
 <insert image>
 
-### 4.1.5.: Sort a local course: `localcourse sort`
+### 4.1.5.: Sort a local course by attributes: `localcourse sort`
 **Format**: `localcourse sort [localcode]` \
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `localcourse sort [localname]`
 
-**Example**:
+**Example:**
 <insert image>
 
 ## 4.2. Commands for partnercourse
+### 4.2.1. List all partnercourses: `partnercourse list`
+**Format**: `partnercourse list`
+
+**Example:**
+
+### 4.2.2 Add a partnercourse: `partnercourse add`
+**Format**: `partnercoursea add [partnercode] [partnername] [units]`
+
+**Example:**
+
+### 4.2.3. Delete a partnercourse: `partnercourse delete`
+**Format**: `partnercourse delete [partnercode] [partnername] [units]`
+
+**Example:**
+
+### 4.2.4. Search a partnercourse by attributes: `partnercourse search`
+**Format**: `partnercourse search [partnercode]` \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `partnercourse search [partnername]`
+
+**Example:**
+
+### 4.2.5. Sort a partnercourse by attributes: `partnercourse sort`
+**Format**: `partnercourse search [partnercode]` \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `partnercourse sort [partnername]`
+
+**Example:**
+
+## 4.3. Commands for universities
+### 4.3.1. List all universities: `university list`
+**Format**: `university list`
+
+**Example:**
+
+### 4.3.2. Search a university by attributes: `university search`
+**Format**: `university search [university]`
+
+**Example:**
+
+### 4.3.3. Sort a university by attributes: `university sort`
+**Format**: `university sort [university]`
+
+**Example:**
+
+## 4.4. Commands for mappings
+### 4.4.1. List all mappings 
+**Format:** `mapping list`
+
+**Example:**
+
+### 4.4.2. Add a mapping: `mapping add`
+**Format:** `mapping add  [localcode] [university] [partnercode]`
+
+**Example**:
+
+### 4.4.3. Delete a mapping: `mapping delete`
+**Format:** `mapping delete [localcode] [university] [partnercode]`
+
+**Example:**
+
+### 4.4.4 Search a mapping by attributes: `mapping search`
+**Format:** `mapping search [localcode]` \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `mapping search [localname]` \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `mapping search [partnercode]` \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `mapping searcg [partnername]` \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `mapping search [university]` 
+
+**Example:**:
+
+### 4.4.5. Sort a mapping by attributes: `mapping sort`
+**Format:**  `mapping sort [localcode]` \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `mapping sort [localname]` \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `mapping sort [partnercode]` \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `mapping sort [partnername]` \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `mapping sort [university]` \
+
+**Example**:
+
 
 ### Viewing help : `help`
 

@@ -48,14 +48,11 @@ public class ItemDetailPanel<SeplendidDataType> extends UiPart<Region> {
         // Directly set the item to the container
         if (item != null) {
             if (item instanceof LocalCourse) {
-                itemDetailView.getChildren()
-                              .setAll(new LocalCourseDetail((LocalCourse) item).getRoot());
+                itemDetailView.getChildren().setAll(new LocalCourseDetail((LocalCourse) item).getRoot());
             } else if (item instanceof PartnerCourse) {
-                itemDetailView.getChildren()
-                              .setAll(new PartnerCourseDetail((PartnerCourse) item).getRoot());
+                itemDetailView.getChildren().setAll(new PartnerCourseDetail((PartnerCourse) item).getRoot());
             } else if (item instanceof University) {
-                itemDetailView.getChildren()
-                              .setAll(new UniversityDetail((University) item).getRoot());
+                itemDetailView.getChildren().setAll(new UniversityDetail((University) item).getRoot());
             } else if (item instanceof Mapping) {
                 Mapping mapping = (Mapping) item;
                 // We know that RTT of getLocalCourseCatalogue() is LocalCourseCatalogue.
@@ -73,12 +70,12 @@ public class ItemDetailPanel<SeplendidDataType> extends UiPart<Region> {
                     return;
                 }
 
-                itemDetailView.getChildren()
-                              .setAll(new MappingDetail(mapping,
-                                  localCourse.get()
-                                             .getLocalName(),
-                                  partnerCourse.get()
-                                               .getPartnerName()).getRoot());
+                itemDetailView.getChildren().setAll(new MappingDetail(
+                    mapping,
+                    localCourse.get().getLocalName().toString(),
+                    localCourse.get().getLocalUnit().toString(),
+                    partnerCourse.get().getPartnerName().toString(),
+                    partnerCourse.get().getPartnerUnit().toString()).getRoot());
             }
         }
     }

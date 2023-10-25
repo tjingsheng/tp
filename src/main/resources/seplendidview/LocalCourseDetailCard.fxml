@@ -25,9 +25,10 @@
         <VBox alignment="CENTER_LEFT"
               GridPane.columnIndex="0">
             <Label fx:id="localCode"
-                   text="\$first"
                    styleClass="detail_title_label"/>
             <Label fx:id="localName"
+                   styleClass="detail_heading_label"/>
+            <Label fx:id="localUnit"
                    styleClass="detail_heading_label"/>
         </VBox>
     </GridPane>

@@ -7,27 +7,52 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
-<HBox id="mappingItemPane" fx:id="mappingItemPane" xmlns="http://javafx.com/javafx/17"
-      xmlns:fx="http://javafx.com/fxml/1">
-    <GridPane HBox.hgrow="ALWAYS">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150"/>
-        </columnConstraints>
-        <VBox alignment="CENTER_LEFT" minHeight="105" GridPane.columnIndex="0">
-            <padding>
-                <Insets top="5" right="5" bottom="5" left="15"/>
-            </padding>
-            <HBox spacing="5" alignment="CENTER_LEFT">
-                <Label fx:id="id" styleClass="cell_big_label">
-                    <minWidth>
-                        <!-- Ensures that the label text is never truncated -->
-                        <Region fx:constant="USE_PREF_SIZE"/>
-                    </minWidth>
-                </Label>
-                <Label fx:id="localCode" text="\$first" styleClass="cell_big_label"/>
-                <Label fx:id="universityName" text="\$first" styleClass="cell_big_label"/>
-                <Label fx:id="partnerCode" text="\$first" styleClass="cell_big_label"/>
-            </HBox>
-        </VBox>
-    </GridPane>
+
+<HBox xmlns:fx="http://javafx.com/fxml/1"
+      id="mappingItemPane"
+      fx:id="mappingItemPane"
+      xmlns="http://javafx.com/javafx/17">
+<GridPane HBox.hgrow="ALWAYS">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES"
+                           minWidth="10"
+                           prefWidth="150"/>
+    </columnConstraints>
+    <VBox alignment="CENTER_LEFT"
+          minHeight="50"
+          maxHeight="50"
+          prefHeight="50"
+          GridPane.columnIndex="0">
+        <padding>
+            <Insets top="5"
+                    right="15"
+                    bottom="5"
+                    left="15"/>
+        </padding>
+        <HBox spacing="5"
+              alignment="CENTER_LEFT">
+            <Label fx:id="id"
+                   styleClass="item_big_label">
+                <minWidth>
+                    <!-- Ensures that the label text is never truncated -->
+                    <Region fx:constant="USE_PREF_SIZE"/>
+                </minWidth>
+            </Label>
+            <Label fx:id="localCode"
+                   styleClass="item_big_label"/>
+            <Label fx:id="arrow"
+                   text="maps to"
+                   styleClass="item_small_label"/>
+            <Label fx:id="partnerCode"
+                   styleClass="item_big_label"/>
+        </HBox>
+        <Label fx:id="universityName"
+               styleClass="item_medium_label">
+            <minWidth>
+                <!-- Ensures that the label text is never truncated -->
+                <Region fx:constant="USE_PREF_SIZE"/>
+            </minWidth>
+        </Label>
+    </VBox>
+</GridPane>
 </HBox>

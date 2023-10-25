@@ -38,7 +38,6 @@
                     </minWidth>
                 </Label>
                 <Label fx:id="localCode"
-                       text="\$first"
                        styleClass="item_big_label">
                     <minWidth>
                         <!-- Ensures that the label text is never truncated -->

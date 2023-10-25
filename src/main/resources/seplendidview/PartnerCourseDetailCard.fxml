@@ -27,9 +27,10 @@
             <Label fx:id="partnerUniversity"
                    styleClass="detail_heading_label"/>
             <Label fx:id="partnerCode"
-                   text="\$first"
                    styleClass="detail_title_label"/>
             <Label fx:id="partnerName"
+                   styleClass="detail_heading_label"/>
+            <Label fx:id="partnerUnit"
                    styleClass="detail_heading_label"/>
         </VBox>
     </GridPane>

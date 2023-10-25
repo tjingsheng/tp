@@ -20,15 +20,21 @@ public class MappingDetail extends UiPart<Region> {
     @FXML
     private HBox mappingDetailPane;
     @FXML
+    private Label title;
+    @FXML
     private Label localCode;
     @FXML
     private Label localName;
     @FXML
-    private Label universityName;
+    private Label localUnit;
     @FXML
     private Label partnerCode;
     @FXML
     private Label partnerName;
+    @FXML
+    private Label partnerUnit;
+    @FXML
+    private Label universityName;
     @FXML
     private Label mappingMiscInformation;
 
@@ -36,14 +42,23 @@ public class MappingDetail extends UiPart<Region> {
     /**
      * Creates a {@code MappingDetail} with the given {@code Mapping}
      */
-    public MappingDetail(Mapping mapping, LocalName localNameInput, PartnerName partnerNameInput) {
+    public MappingDetail(Mapping mapping,
+                         String localNameInput,
+                         String localUnitInput,
+                         String partnerNameInput,
+                         String partnerUnitInput) {
         super(FXML);
         this.mapping = mapping;
-        localCode.setText(mapping.getLocalCode().toString());
-        localName.setText(localNameInput.toString());
+        String localCodeInput = mapping.getLocalCode().toString();
+        String partnerCodeInput = mapping.getPartnerCode().toString();
+        title.setText(localCodeInput + " maps to " + partnerCodeInput);
+        localCode.setText(localCodeInput);
+        localName.setText(localNameInput);
+        localUnit.setText("Units: " + localUnitInput);
+        partnerCode.setText(partnerCodeInput);
+        partnerName.setText(partnerNameInput);
+        partnerUnit.setText("Units: " + partnerUnitInput);
         universityName.setText(mapping.getUniversityName().toString());
-        partnerCode.setText(mapping.getPartnerCode().toString());
-        partnerName.setText(partnerNameInput.toString());
         mappingMiscInformation.setText(mapping.getMappingMiscInformation().toString());
     }
 }

@@ -79,6 +79,10 @@
     -fx-font-size: 18px;
 }
 
+.item_medium_label {
+    -fx-font-size: 15px;
+}
+
 .item_small_label {
     -fx-font-size: 12px;
 }
@@ -86,11 +90,11 @@
 
 /* Cell labels */
 .detail_title_label {
-    -fx-font-size: 28px;
+    -fx-font-size: 21px;
 }
 
 .detail_heading_label {
-    -fx-font-size: 16px;
+    -fx-font-size: 15px;
 }
 
 .detail_text_label {

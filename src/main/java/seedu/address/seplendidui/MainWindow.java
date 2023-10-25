@@ -66,7 +66,6 @@ public class MainWindow extends UiPart<Stage> {
     public Stage getPrimaryStage() {
         return primaryStage;
     }
-
     /**
      * Fills up all the placeholders of this window.
      */

@@ -199,7 +199,7 @@ Do take note of invalid formats:
 Let's imagine this, you want to go to a specific partner university like Imperial College of London. You would like to
 know whether this partner university is available for SEP.
 
-**Format**: university search [university]
+**Format**: `university search [university]`
 
 The command you would like to input:
 `university search [Imperial]`
@@ -229,24 +229,35 @@ Key takeaways from this section:
 
 ## 4.1. Commands for localcourse
 ### 4.1.1. List all localcourses: `localcourse list`
+Lists all available local courses, paginated if dataset is too huge.
+
 **Format**: `localcourse list`
 
 **Example:**
-<insert image>
+| `localcourse list`                                   |
+|------------------------------------------------------|
+| ![localcourse-list-ui](images/LocalcourseListUi.png) |
 
 ### 4.1.2. Add a local course: `localcourse add`
+Adds local course with course code identified by `localcode` and course name identified by `localname`.
 **Format**: `localcourse add [localcode] [localname] [units]`
 
 **Example:**
-<insert image>
+| `localcourse add [CS1234] [Programming Fun]`       |
+|----------------------------------------------------|
+| ![localcourse-add-ui](images/LocalcourseAddUi.png) |
 
 ### 4.1.3. Delete a local course: `localcourse delete`
+Deletes local course with course code identified by `localcode`.
 **Format**: `localcourse delete [localcode] [localname] [units]`
 
 **Example:**
-<insert image>
+| `localcourse delete [CS1234]`                            |
+|----------------------------------------------------------|
+| ![localcourse-delete-ui](images/LocalcourseDeleteUi.png) |
 
 ### 4.1.4. Search a local course by attributes: `localcourse search`
+Searches local course with course code identified by `localcode` or `localname`.
 **Format**: `localcourse search [localcode]` \
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `localcourse search [localname]`
 
@@ -254,6 +265,7 @@ Key takeaways from this section:
 <insert image>
 
 ### 4.1.5.: Sort a local course by attributes: `localcourse sort`
+Sorts local course with course code identified by `localcode` or `localname`.
 **Format**: `localcourse sort [localcode]` \
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `localcourse sort [localname]`
 
@@ -262,27 +274,43 @@ Key takeaways from this section:
 
 ## 4.2. Commands for partnercourse
 ### 4.2.1. List all partnercourses: `partnercourse list`
+Lists all available partner courses, paginated if dataset is too huge.
 **Format**: `partnercourse list`
 
 **Example:**
+| `partnercourse list`                                     |
+|----------------------------------------------------------|
+| ![partnercourse-list-ui](images/PartnercourseListUi.png) |
 
 ### 4.2.2 Add a partnercourse: `partnercourse add`
+Adds partner course with course code identified by `partnercode` and course name identified by `partnername`, 
+which is offered by partner `university`.
 **Format**: `partnercoursea add [partnercode] [partnername] [units]`
 
 **Example:**
+| `partnercourse add [University of Toronto] [ROB311] [Artificial Intelligence]` |
+|--------------------------------------------------------------------------------|
+| ![partnercourse-add-ui](images/PartnercourseAddUi.png)                         |
 
 ### 4.2.3. Delete a partnercourse: `partnercourse delete`
+Deletes partner course with course code identified by `partnercode` and course name identified by `partnername`, 
+which is offered by partner `university`.
 **Format**: `partnercourse delete [partnercode] [partnername] [units]`
 
 **Example:**
+| `partnercourse delete [University of Toronto] [ROB311]`      |
+|--------------------------------------------------------------|
+| ![partnercourse-delete-ui](images/PartnercourseDeleteUi.png) |
 
 ### 4.2.4. Search a partnercourse by attributes: `partnercourse search`
+Searches partnercourse with course name identified by `partnername`.
 **Format**: `partnercourse search [partnercode]` \
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `partnercourse search [partnername]`
 
 **Example:**
 
 ### 4.2.5. Sort a partnercourse by attributes: `partnercourse sort`
+Sorts partnercourse with course code identified by partnercode.
 **Format**: `partnercourse search [partnercode]` \
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `partnercourse sort [partnername]`
 
@@ -290,41 +318,61 @@ Key takeaways from this section:
 
 ## 4.3. Commands for universities
 ### 4.3.1. List all universities: `university list`
+Lists all available partner universities, paginated if dataset is too huge.
 **Format**: `university list`
 
 **Example:**
+| `university list`                                  |
+|----------------------------------------------------|
+| ![university-list-ui](images/UniversityListUi.png) |
 
 ### 4.3.2. Search a university by attributes: `university search`
+Searches all available partner universities, paginated if dataset is too huge.
 **Format**: `university search [university]`
 
 **Example:**
 
 ### 4.3.3. Sort a university by attributes: `university sort`
-**Format**: `university sort [university]`
+Sorts universities with university name identified by `universityname`.
+**Format**: `university sort [universityname]`
 
 **Example:**
 
 ## 4.4. Commands for mappings
-### 4.4.1. List all mappings 
+### 4.4.1. List all mappings: `mapping list`
+Lists all available mappings, paginated if dataset is too huge.
 **Format:** `mapping list`
 
 **Example:**
+| `mapping list`                               |
+|----------------------------------------------|
+| ![mapping-list-ui](images/MappingListUi.png) |
 
 ### 4.4.2. Add a mapping: `mapping add`
+Adds mapping for local course identified by `localcode`, offered by partner `university`, as course with code
+`partnercode`. You will be prompted to create courses which codes you specify, but do not exist in the database.
 **Format:** `mapping add  [localcode] [university] [partnercode]`
 
 **Example**:
+| `mapping add [CS3230] [University of Toronto] [CSC373H1]` |
+|-----------------------------------------------------------|
+| ![mapping-add-ui](images/MappingAddUi.png)                |
 
 ### 4.4.3. Delete a mapping: `mapping delete`
+Deletes mapping for local course identified by `localcode`, offered by partner `university`, as course with code
+`partnercode`.
 **Format:** `mapping delete [localcode] [university] [partnercode]`
 
 **Example:**
+| `mapping delete [CS3230] [University of Toronto] [CSC373H1]` |
+|--------------------------------------------------------------|
+| ![mapping-delete-ui](images/MappingDeleteUi.png)             |
 
 ### 4.4.4 Search a mapping by attributes: `mapping search`
 **Format:** `mapping search [localcode]` \
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `mapping search [localname]` \
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `mapping search [partnercode]` \
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `mapping searcg [partnername]` \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `mapping search [partnername]` \
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `mapping search [university]` 
 
 **Example:**:
@@ -334,238 +382,58 @@ Key takeaways from this section:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `mapping sort [localname]` \
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `mapping sort [partnercode]` \
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `mapping sort [partnername]` \
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `mapping sort [university]` \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `mapping sort [university]` 
 
 **Example**:
 
-
-### Viewing help : `help`
-
-Displays the help menu.
-
-Format: `help`
-
-### List all local courses: `localcourse list`
-
-Lists all available local courses, paginated if dataset is too huge.
-This is useful when:
-- You want to retrieve 
-
-Format: `localcourse list`
-
-Example:
-
-| `localcourse list`                                   |
-|------------------------------------------------------|
-| ![localcourse-list-ui](images/LocalcourseListUi.png) |
-
-### Add a local course: `localcourse add`
-
-Adds local course with course code identified by `localcode` and course name identified by `localname`.
-
-Format: `localcourse add [localcode] [localname]`
-
-Example:
-
-| `localcourse add [CS1234] [Programming Fun]`       |
-|----------------------------------------------------|
-| ![localcourse-add-ui](images/LocalcourseAddUi.png) |
-
-### Delete a local course: `localcourse delete`
-
-Deletes local course with course code identified by `localcode`.
-
-Format: `localcourse delete [localcode]`
-
-Example:
-
-| `localcourse delete [CS1234]`                            |
-|----------------------------------------------------------|
-| ![localcourse-delete-ui](images/LocalcourseDeleteUi.png) |
-
-### Search a local course: `localcourse search [attribute]`
-
-Searches local course with course code identified by `localcode`.
-
-Searches local ciurse with course name identified by `localname`.
-
-Format: `localcourse search [attribute]`
-
-### Sort a local course: `localcourse sort`
-
-Sorts local course with course code identified by `localcode`.
-
-Sorts local course with course name identified by `localname`.
-
-Format: `localcourse sort [attribute]`
-
-Example:
-### List all partner courses: `partnercourse list`
-
-Lists all available partner courses, paginated if dataset is too huge.
-
-Format: `partnercourse list`
-
-Example:
-
-| `partnercourse list`                                     |
-|----------------------------------------------------------|
-| ![partnercourse-list-ui](images/PartnercourseListUi.png) |
-
-### Add a partner course: `partnercourse add`
-
-Adds partner course with course code identified by `partnercode` and course name identified by `partnername`, 
-which is offered by partner `university`.
-
-Format: `partnercourse add [university] [partnercode] [partnername]`
-
-Example:
-
-| `partnercourse add [University of Toronto] [ROB311] [Artificial Intelligence]` |
-|--------------------------------------------------------------------------------|
-| ![partnercourse-add-ui](images/PartnercourseAddUi.png)                         |
-
-### Delete a partner course: `partnercourse delete`
-
-Deletes partner course with course code identified by `partnercode` and offered by partner `university`.
-
-Format: `partnercourse delete [university] [partnercode]`
-
-Example:
-
-| `partnercourse delete [University of Toronto] [ROB311]`      |
-|--------------------------------------------------------------|
-| ![partnercourse-delete-ui](images/PartnercourseDeleteUi.png) |
-
-### Search a partner course: `partnercourse search`
-
-Searches partner course with course name identified by `partnername`.
-
-Format: `partnercourse search [partnername]`
-
-### Sort a partner course: `partnercourse sort`
-
-Sorts local course with course code identified by `partnercode`.
-
-Sorts local course with course name identified by `partnername`.
-
-Format: `partnercourse sort [attribute]`
-
-### List all universities: `university list`
-
-Lists all available partner universities, paginated if dataset is too huge.
-
-Format: `university list`
-
-Example:
-
-| `university list`                                  |
-|----------------------------------------------------|
-| ![university-list-ui](images/UniversityListUi.png) |
-
-### Search universities: `university search`
-
-Searches all available universities, paginated if dataset is too huge.
-
-Format: `university search [universityname]`
-
-### Search universities: `university sort`
-
-Sorts universities with university name identified by `universityname`.
-
-Format: `university sort [universityname]`
-
-### List all mappings: `mapping list`
-
-Lists all available mappings, paginated if dataset is too huge.
-
-Format: `mapping list`
-
-Example:
-
-| `mapping list`                               |
-|----------------------------------------------|
-| ![mapping-list-ui](images/MappingListUi.png) |
-
-### Add a mapping: `mapping add`
-
-Adds mapping for local course identified by `localcode`, offered by partner `university`, as course with code 
-`partnercode`. You will be prompted to create courses which codes you specify, but do not exist in the database.
-
-Format: `mapping add [localcode] [university] [partnercode]`
-
-Example:
-
-| `mapping add [CS3230] [University of Toronto] [CSC373H1]` |
-|-----------------------------------------------------------|
-| ![mapping-add-ui](images/MappingAddUi.png)                |
-
-### Delete a mapping : `mapping delete`
-
-Deletes mapping for local course identified by `localcode`, offered by partner `university`, as course with code 
-`partnercode`. 
-
-Format: `mapping delete [localcode] [university] [partnercode]`
-
-Example:
-
-| `mapping delete [CS3230] [University of Toronto] [CSC373H1]` |
-|--------------------------------------------------------------|
-| ![mapping-delete-ui](images/MappingDeleteUi.png)             |
-
-### List all notes: `note list`
-
+## 4.5. Commands for notes
+### 4.5.1. List all notes: `note list`
 Lists all notes, paginated if dataset is too huge.
+**Format:** `note list`
 
-Format: `note list`
-
-Example:
-
+**Example:**
 | `note list`                            |
 |----------------------------------------|
 | ![note-list-ui](images/NoteListUi.png) |
 
-### Add a note: `note add`
+### 4.5.2. Add a note: `note add`
+Adds note with content as `[content]` and tags it with `[tag]`.
+**Format:** `note add [content] [tag]`
 
-Adds note with content as `[content]` and tags it with `[tag]`. 
-
-Format: `note add [content] [tag]`
-
-Example:
-
+**Example:**
 | `note add [You can do this!] [self-motivation]` |
 |-------------------------------------------------|
 | ![note-add-ui](images/NoteAddUi.png)            |
 
-### Delete a note : `note delete`
-
+### 4.5.3. Delete a note: `note delete`
 Deletes note with index of `index`.
+**Format:** `note delete [index]`
 
-Format: `note delete [index]`
+**Example:**
 
-### Update a note: `note update`
-
+### 4.5.4. Update a note: `note update`
 Updates note with index `[index]` and changes its content to be `[content]`.
+**Format:** `note update [index] [content]`
 
-Format: `note update [index] [content]`
-
-Example:
-
+**Example:**
 | `note update [1] [Exchange Application Deadline\n 25 September 2023]` |
 |-----------------------------------------------------------------------|
 | ![note-update-ui](images/NoteUpdateUi.png)                            |
 
-### Tag a note: `note tag`
-
+### 4.5.5. Tag a note: 'note'
 Updates note with index `[index]` and changes its tags to be `[tag]`.
+**Format:** `note tag [index] [tag]`
 
-Format: `note update [index] [tag]`
-
-Example:
-
+**Example:**
 | `note tag [1] [important]`          |
 |-------------------------------------|
 | ![note-tag-ui](images/NoteTagUi.png) |
+
+### Viewing help : `help` 
+
+Displays the help menu.
+
+Format: `help`
 
 ### Saving the data
 

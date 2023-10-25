@@ -163,7 +163,7 @@ Let's start with the most basic command `add` command. `add` command allows you 
 
 One of the available commands for `add` is the command to add a localcourse into your storage.
 
-**Format**: localcourse add [localcode] [localname] [units]
+**Format**: `localcourse add [localcode] [localname] [units]`
 
 **Why is the format is created in this manner?**
 

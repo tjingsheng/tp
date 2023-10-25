@@ -9,16 +9,24 @@
 
 # SEPlendid User Guide
 
-SEPlendid is a **desktop app for managing contacts, optimized for use via a Line Interface** (CLI) while still
-having the benefits of a Graphical User Interface (GUI). If you can type fast and enjoy a wide variety of data
-management and query features, SEPlendid can be your quick and versatile tool in SEP planning.
+# 1. About SEPlendid
+SEPlendid is a state of the art **Module Mapping System** that allows NUS Computing students to plan for their study 
+guide easily and seamlessly for Student Exchange Programmes(SEP). As a student, you can view and find module mappings in 
+order to plan for your study guide 
+without the hassle of creating Excel sheets. Utilise SEPlendid' **module mapping** function in order to quickly find 
+possible mappings for certain courses. Finally, SEPlendid's **note-taking system** will assist you in organising your notes 
+and bookmarking important information you will need for planning.
+
+This User Guide provides a comprehensive documentation on how you can streamline your process in your application for 
+SEP. It contains detailed instructions on how to launch SEPlendid, SEPlendid's myriad of features and commands and
+common parameters used in SEPlendid. 
 
 <!-- * Table of Contents -->
 <page-nav-print />
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick start
+# 2.Quick start
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
@@ -29,7 +37,7 @@ management and query features, SEPlendid can be your quick and versatile tool in
 1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar seplendid.jar`
    command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/MappingListUi.png)
+   ![Ui](images/LocalCourseListUi.png)
 
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will
    open the help window.<br>
@@ -48,7 +56,30 @@ management and query features, SEPlendid can be your quick and versatile tool in
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Features
+
+# 3. A Short Tutorial 
+This tutorial covers on the important information for you to utilise SEPlendid to its fullest capacity. Do pay special
+attention to the Key Definitions and Command Format sections which cover on how you can run essential features on 
+SEPlendid.
+
+## 3.1 Graphical User Interface (GUI)
+
+SEPlendid provides a GUI which provides you a good visual feedback. The GUI allows you to click and view the courses
+which provides a more detailed information about the course such as the course units. This will be a quick run through
+of the layout of the GUI.
+
+SEPlendid's GUI consists of these four main components:
+1. User Input Box
+2. User Output Box
+3. List of courses, universities or notes
+4. Display pane for each item
+
+<insert annotated image>
+
+## 3.2 Command Format
+We will be using SEPlendid's commands throughout this User Guide. The following figure provides a visual example on 
+what a command consist of:
+<insert image>
 
 <box type="info" seamless>
 
@@ -125,6 +156,46 @@ An invocation of the command is exemplified by:
 
 </box>
 
+## 3.3 Execute your first command
+In order to get you familiar with SEPlendid, we should try a command together!
+
+Let's start with the most basic command `add` command. `add` command allows you to add a local, partner course or note.
+
+One of the available commands for `add` is the command to add a localcourse into your storage.
+
+**Format**: localcourse add [localcode] [localname] [units]
+
+**Why is the format is created in this manner?**
+
+The first word of each command specifies the different core features with its own unique sets of functionalities.
+- `localcourse` tells SEPlendid that this command word would execute actions only for local courses
+- Attributes such as `localcode` and `localname` shows you what you should place in each portion of the command
+
+<Add note on [] -> shows compulsory attributes>
+
+**Example**
+Let's imagine this, you want to add a localcourse to your storage since this localcourse could be a new course offered 
+by NUS and has yet been entered in the database. For instance, a newly offered course by NUS is CS2105 which is an 
+Introduction to Computer Networks. The course is will fufil four course credits, and you would like to map this course 
+for SEP.
+
+The command you would like to input into the user input box would be:
+`localcourse add [CS2105] [Introduction to Computer Networks] [4.0]`
+
+These are the fields you would take note of:
+- `localcode`: CS2105
+- `localname`: Introduction to Computer Networks
+- `units`: 4.0 
+
+Do take not of invalid formats:
+- `localcourse add [CS2105]`
+  The attributes such as localname and units are compulsory.
+- `localcourse add CS2105 Introduction to Computer Networks 4.0`
+  The brackets ("[ ]") wrapping each attribute is compulsory.
+- `localcourse add`
+  There is insufficient information on what localcourse to add.
+
+
 ### Viewing help : `help`
 
 Displays the help menu.
@@ -134,6 +205,8 @@ Format: `help`
 ### List all local courses: `localcourse list`
 
 Lists all available local courses, paginated if dataset is too huge.
+This is useful when:
+- You want to retrieve 
 
 Format: `localcourse list`
 
@@ -167,6 +240,23 @@ Example:
 |----------------------------------------------------------|
 | ![localcourse-delete-ui](images/LocalcourseDeleteUi.png) |
 
+### Search a local course: `localcourse search [attribute]`
+
+Searches local course with course code identified by `localcode`.
+
+Searches local ciurse with course name identified by `localname`.
+
+Format: `localcourse search [attribute]`
+
+### Sort a local course: `localcourse sort`
+
+Sorts local course with course code identified by `localcode`.
+
+Sorts local course with course name identified by `localname`.
+
+Format: `localcourse sort [attribute]`
+
+Example:
 ### List all partner courses: `partnercourse list`
 
 Lists all available partner courses, paginated if dataset is too huge.
@@ -204,6 +294,20 @@ Example:
 |--------------------------------------------------------------|
 | ![partnercourse-delete-ui](images/PartnercourseDeleteUi.png) |
 
+### Search a partner course: `partnercourse search`
+
+Searches partner course with course name identified by `partnername`.
+
+Format: `partnercourse search [partnername]`
+
+### Sort a partner course: `partnercourse sort`
+
+Sorts local course with course code identified by `partnercode`.
+
+Sorts local course with course name identified by `partnername`.
+
+Format: `partnercourse sort [attribute]`
+
 ### List all universities: `university list`
 
 Lists all available partner universities, paginated if dataset is too huge.
@@ -215,6 +319,18 @@ Example:
 | `university list`                                  |
 |----------------------------------------------------|
 | ![university-list-ui](images/UniversityListUi.png) |
+
+### Search universities: `university search`
+
+Searches all available universities, paginated if dataset is too huge.
+
+Format: `university search [universityname]`
+
+### Search universities: `university sort`
+
+Sorts universities with university name identified by `universityname`.
+
+Format: `university sort [universityname]`
 
 ### List all mappings: `mapping list`
 
@@ -333,6 +449,8 @@ file at the next run.  Hence, it is recommended to take a backup of the file bef
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that 
 contains the data of your previous SEPlendid home folder.
 
+**Q**: How do I view more information about the localcourse or partnercourse
+
 --------------------------------------------------------------------------------------------------------------------
 ## Command summary
 
@@ -343,7 +461,7 @@ contains the data of your previous SEPlendid home folder.
         <td><code>parameters</code></td>
     </tr>
     <tr>
-        <td rowspan="3"><code>localcourse</code></td>
+        <td rowspan="5"><code>localcourse</code></td>
         <td><code>list</code></td>
         <td> None.</td>
     </tr>
@@ -356,7 +474,15 @@ contains the data of your previous SEPlendid home folder.
         <td><code>[localcode]</code></td>
     </tr>
     <tr>
-        <td rowspan="3"><code>partnercourse</code></td>
+        <td><code>search</code></td>
+        <td><code>[localcode] [localname]</code></td>
+    </tr>
+    <tr>
+        <td><code>sort</code></td>
+        <td><code>[localcode] [localname]</code></td>
+    </tr>   
+    <tr>
+        <td rowspan="5"><code>partnercourse</code></td>
         <td><code>list</code></td>
         <td> None.</td>
     </tr>
@@ -367,6 +493,14 @@ contains the data of your previous SEPlendid home folder.
     <tr>
         <td><code>delete</code></td>
         <td><code>[university] [partnercode]</code></td>
+    </tr>
+    <tr>
+        <td><code>search</code></td>
+        <td><code>[partnercode] [partnername]</code></td>
+    </tr>
+    <tr>
+        <td><code>sort</code></td>
+        <td><code>[partnercode] [partnername]</code></td>
     </tr>
     <tr>
         <td rowspan="3"><code>mapping</code></td>
@@ -382,9 +516,17 @@ contains the data of your previous SEPlendid home folder.
         <td><code>[localcode] [university] [partnercode]</code></td>
     </tr>
     <tr>
-        <td rowspan="1"><code>university</code></td>
+        <td rowspan="3"><code>university</code></td>
         <td><code>list</code></td>
         <td>None.</td>
+    </tr>
+    <tr>
+        <td><code>search</code></td>
+        <td><code>[universityname]</code></td>
+    </tr>
+    <tr>
+        <td><code>sort</code></td>
+        <td><code>[universityname]</code></td>
     </tr>
     <tr>
         <td rowspan="5"><code>note</code></td>

@@ -6,22 +6,32 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<HBox id="partnerCourseDetailPane" fx:id="partnerCourseDetailPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-  <GridPane HBox.hgrow="ALWAYS">
-    <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
-    </columnConstraints>
-    <VBox alignment="CENTER_LEFT" minHeight="105" GridPane.columnIndex="0">
-      <padding>
-        <Insets top="5" right="5" bottom="5" left="15" />
-      </padding>
-        <Label fx:id="partnerCode" text="\$first" styleClass="cell_big_label" />
-        <Label fx:id="partnerName" styleClass="cell_small_label" />
-        <Label fx:id="partnerUniversity" styleClass="cell_small_label" />
-        <HBox spacing="5" alignment="CENTER_LEFT">
-          <Label fx:id="unitLabel" text="Units:" styleClass="cell_small_label"/>
-          <Label fx:id="partnerUnit" styleClass="cell_small_label"/>
-        </HBox>
-    </VBox>
-  </GridPane>
+<HBox xmlns:fx="http://javafx.com/fxml/1"
+      id="partnerCourseDetailPane"
+      fx:id="partnerCourseDetailPane"
+      xmlns="http://javafx.com/javafx/17">
+    <GridPane HBox.hgrow="ALWAYS">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES"
+                               minWidth="10"
+                               prefWidth="150"/>
+        </columnConstraints>
+        <padding>
+            <Insets top="17"
+                    right="25"
+                    bottom="17"
+                    left="25"/>
+        </padding>
+        <VBox alignment="CENTER_LEFT"
+              GridPane.columnIndex="0">
+            <Label fx:id="partnerUniversity"
+                   styleClass="detail_heading_label"/>
+            <Label fx:id="partnerCode"
+                   styleClass="detail_title_label"/>
+            <Label fx:id="partnerName"
+                   styleClass="detail_heading_label"/>
+            <Label fx:id="partnerUnit"
+                   styleClass="detail_heading_label"/>
+        </VBox>
+    </GridPane>
 </HBox>

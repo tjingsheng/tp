@@ -32,7 +32,7 @@ public class MappingItem extends UiPart<Region> {
     public MappingItem(Mapping mapping, int displayedIndex) {
         super(FXML);
         this.mapping = mapping;
-        id.setText(displayedIndex + ". ");
+        id.setText(displayedIndex + ".");
         localCode.setText(mapping.getLocalCode().toString());
         universityName.setText(mapping.getUniversityName().toString());
         partnerCode.setText(mapping.getPartnerCode().toString());

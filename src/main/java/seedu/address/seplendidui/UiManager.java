@@ -45,7 +45,7 @@ public class UiManager implements Ui {
             mainWindow = new MainWindow(primaryStage, seplendidLogic);
             mainWindow.show(); //This should be called before creating other UI parts
             mainWindow.fillInnerParts();
-            Font font = Font.loadFont(getClass().getResourceAsStream(SONO_FONT_TTF), 13);
+            Font font = Font.loadFont(getClass().getResourceAsStream(SONO_FONT_TTF), 12);
             setDefaultFont(mainWindow.getPrimaryStage().getScene().getRoot(), font);
 
         } catch (Throwable e) {

@@ -6,22 +6,44 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<HBox id="mappingDetailPane" fx:id="mappingDetailPane" xmlns="http://javafx.com/javafx/17"
-      xmlns:fx="http://javafx.com/fxml/1">
+<HBox xmlns:fx="http://javafx.com/fxml/1"
+      id="mappingDetailPane"
+      fx:id="mappingDetailPane"
+      xmlns="http://javafx.com/javafx/17">
     <GridPane HBox.hgrow="ALWAYS">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150"/>
+            <ColumnConstraints hgrow="SOMETIMES"
+                               minWidth="10"
+                               prefWidth="150"/>
         </columnConstraints>
-        <VBox alignment="CENTER_LEFT" minHeight="105" GridPane.columnIndex="0">
-            <padding>
-                <Insets top="5" right="5" bottom="5" left="15"/>
-            </padding>
-            <Label fx:id="localCode" text="\$first" styleClass="cell_big_label"/>
-            <Label fx:id="localName" styleClass="cell_small_label"/>
-            <Label fx:id="universityName" text="\$first" styleClass="cell_big_label"/>
-            <Label fx:id="partnerCode" text="\$first" styleClass="cell_big_label"/>
-            <Label fx:id="partnerName" styleClass="cell_small_label"/>
-            <Label fx:id="mappingMiscInformation" styleClass="cell_small_label"/>
+        <padding>
+            <Insets top="17"
+                    right="25"
+                    bottom="17"
+                    left="25"/>
+        </padding>
+        <VBox alignment="CENTER_LEFT"
+              GridPane.columnIndex="0">
+            <Label fx:id="title"
+                   styleClass="detail_title_label"/>
+            <Label fx:id="universityName"
+                   styleClass="cell_big_label"/>
+            <Label/>
+            <Label fx:id="localCode"
+                   styleClass="detail_heading_label"/>
+            <Label fx:id="localName"
+                   styleClass="detail_heading_label"/>
+            <Label fx:id="localUnit"
+                   styleClass="detail_heading_label"/>
+            <Label/>
+            <Label fx:id="partnerCode"
+                   styleClass="detail_heading_label"/>
+            <Label fx:id="partnerName"
+                   styleClass="detail_heading_label"/>
+            <Label fx:id="partnerUnit"
+                   styleClass="detail_heading_label"/>
+            <Label/>
+            <Label fx:id="mappingMiscInformation" styleClass="detail_text_label"/>
         </VBox>
     </GridPane>
 </HBox>

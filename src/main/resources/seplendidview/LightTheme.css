@@ -1,4 +1,4 @@
-/* Scroll Bar*/
+/* Scroll Bar */
 .scroll-bar {
     -fx-background-color: transparent;
     -fx-overflow: overlay;
@@ -9,8 +9,11 @@
 }
 
 .scroll-bar .thumb {
-    -fx-background-color: derive(#FFE3C7, 50%);
-    -fx-background-insets: 3;
+    -fx-background-color: #CCDEF0;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.2, 0.0, 0.0);
 }
 
 .scroll-bar .increment-button, .scroll-bar .decrement-button {
@@ -23,12 +26,13 @@
 }
 
 .scroll-bar:vertical .increment-arrow, .scroll-bar:vertical .decrement-arrow {
-    -fx-padding: 1 8 1 8;
+    -fx-padding: 2 8 2 8;
 }
 
 .scroll-bar:horizontal .increment-arrow, .scroll-bar:horizontal .decrement-arrow {
-    -fx-padding: 8 1 8 1;
+    -fx-padding: 8 2 8 2;
 }
+/**/
 
 /* List Cells */
 .list-view {
@@ -38,70 +42,144 @@
 }
 
 .list-cell {
+    -fx-padding: 0;
     -fx-background-insets: 5;
     -fx-background-radius: 15;
-    -fx-border-radius: 15;
-    -fx-padding: 5;
-    -fx-graphic-text-gap: 0;
-}
-
-.list-cell:filled:even {
-    -fx-background-color: #E5CCB3;
-}
-
-.list-cell:filled:odd {
-    -fx-background-color: #CCB59F;
-}
-
-.list-cell:filled:selected {
     -fx-border-insets: 5;
-    -fx-padding: 0;
-    -fx-border-color: black;
+    -fx-border-radius: 15;
     -fx-border-width: 1;
-    -fx-background-color: #FFE5CC;
+    -fx-border-color: #808080;
+}
+
+.list-cell:empty {
+    -fx-background: transparent;
+    -fx-border-width: 0;
+}
+
+.list-cell:filled {
+    -fx-background-color: #CCDEF0;
+}
+
+.list-cell:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.2, 0.0, 0.0);
+}
+
+.list-cell:selected {
+    -fx-padding: 0;
+    -fx-border-color: #808080;
+    -fx-border-width: 1;
+    -fx-background-color: #B8D2EB;
 }
 
 .list-cell .label {
     -fx-text-fill: black;
 }
+/**/
 
-.cell_big_label {
-    -fx-font-size: 16px;
-    -fx-text-fill: #FFE3C7;
+/* Detail Card labels */
+.item_big_label {
+    -fx-font-size: 18px;
 }
 
-.cell_small_label {
-    -fx-font-size: 13px;
-    -fx-text-fill: #FFE3C7;
+.item_medium_label {
+    -fx-font-size: 15px;
 }
 
+.item_small_label {
+    -fx-font-size: 12px;
+}
+/**/
+
+/* Cell labels */
+.detail_title_label {
+    -fx-font-size: 21px;
+}
+
+.detail_heading_label {
+    -fx-font-size: 15px;
+}
+
+.detail_text_label {
+    -fx-font-size: 12px;
+}
+/**/
+
+/*Text Field*/
 .text-field {
-    -fx-font-size: 13pt;
+    -fx-font-size: 12pt;
+    -fx-font-color: black;
+}
+/**/
+
+/* Text Area */
+.text-area {
+    -fx-font-size: 12pt;
     -fx-font-color: black;
 }
 
+.text-area .content {
+    -fx-background-color: white;
+}
+
+.text-area .scroll-pane .corner {
+    -fx-background-color: transparent;
+}
+/**/
+
+/* Enter Button */
+#enterButton {
+    -fx-font-size: 12pt;
+    -fx-background-color: #CCDEF0;
+    -fx-background-insets: 0 0 0 15;
+    -fx-border-insets: 0 0 0 15;
+    -fx-border-width: 1;
+}
+
+#enterButton.content {
+    -fx-background-color: white;
+}
+
+#enterButton:hover {
+    -fx-background-color: #B8D2EB;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.2, 0.0, 0.0);
+}
+
+/**/
+
+.error {
+    -fx-text-fill: #FF0000 !important; /* The error class should always override the default text-fill style */
+}
+
 .background-color {
-     -fx-background-color: #FFE3C7;
+     -fx-background-color: #E0EBF6;
 }
 
 .round-border {
     -fx-background-radius: 15;
     -fx-border-radius: 15;
     -fx-border-width: 1;
-    -fx-border-color: black;
-}
-
-#cardPane {
-    -fx-background-color: transparent;
-    -fx-border-width: 0;
+    -fx-border-color: #808080;
 }
 
 #commandTextField {
     -fx-background-color: white;
-    -fx-max-height: 100;
 }
 
-#resultTextField {
+#resultTextArea {
     -fx-background-color: white;
-    -fx-max-height: 200;
+    -fx-padding: 5;
+}
+
+#itemListPanelPlaceholder {
+    -fx-background-color: white;
+}
+
+#itemDetailPanelPlaceholder {
+    -fx-background-color: white;
+}
+
+#itemDetailView {
+    -fx-background-color: #CCDEF0;
+    -fx-background-insets: 5;
+    -fx-border-insets: 5;
 }

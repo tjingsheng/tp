@@ -34,7 +34,7 @@ public class PartnerCourseDetail extends UiPart<Region> {
         this.partnerCourse = partnerCourse;
         partnerName.setText(partnerCourse.getPartnerName().toString());
         partnerCode.setText(partnerCourse.getPartnerCode().toString());
-        partnerUnit.setText(partnerCourse.getPartnerUnit().toString());
+        partnerUnit.setText("Units: " + partnerCourse.getPartnerUnit().toString());
         partnerUniversity.setText(partnerCourse.getPartnerUniversity().toString());
     }
 }

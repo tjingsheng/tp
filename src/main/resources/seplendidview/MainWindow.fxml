@@ -65,7 +65,8 @@
                                     left="20"/>
                         </padding>
                         <StackPane fx:id="itemListPanelPlaceholder"
-                                   VBox.vgrow="ALWAYS"/>
+                                   VBox.vgrow="ALWAYS"
+                                   styleClass="round-border"/>
                     </VBox>
 
                     <VBox fx:id="itemDetail"
@@ -82,7 +83,7 @@
                         </padding>
                         <StackPane fx:id="itemDetailPanelPlaceholder"
                                    VBox.vgrow="ALWAYS"
-                                   styleClass="background-color"/>
+                                   styleClass="round-border"/>
                     </VBox>
                 </HBox>
             </VBox>

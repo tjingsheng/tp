@@ -42,15 +42,18 @@
 }
 
 .list-cell {
+    -fx-padding: 0;
     -fx-background-insets: 5;
     -fx-background-radius: 15;
+    -fx-border-insets: 5;
     -fx-border-radius: 15;
-    -fx-padding: 5;
-    -fx-graphic-text-gap: 0;
+    -fx-border-width: 1;
+    -fx-border-color: #808080;
 }
 
 .list-cell:empty {
     -fx-background: transparent;
+    -fx-border-width: 0;
 }
 
 .list-cell:filled {
@@ -62,7 +65,6 @@
 }
 
 .list-cell:selected {
-    -fx-border-insets: 5;
     -fx-padding: 0;
     -fx-border-color: #808080;
     -fx-border-width: 1;
@@ -168,8 +170,16 @@
     -fx-padding: 5;
 }
 
+#itemListPanelPlaceholder {
+    -fx-background-color: white;
+}
+
+#itemDetailPanelPlaceholder {
+    -fx-background-color: white;
+}
+
 #itemDetailView {
     -fx-background-color: #CCDEF0;
     -fx-background-insets: 5;
-    -fx-border-width: 0;
+    -fx-border-insets: 5;
 }

@@ -65,7 +65,6 @@ public class ItemDetailPanel<SeplendidDataType> extends UiPart<Region> {
                 Optional<PartnerCourse> partnerCourse =
                     partnerCourseCatalogue.getPartnerCourseIfExists(mapping.getPartnerCode());
                 if (localCourse.isEmpty() || partnerCourse.isEmpty()) {
-                    System.out.println("OH NO");
                     logger.warning(MESSAGE_MAPPING_ITEM_DETAIL_PANEL_ERROR);
                     return;
                 }

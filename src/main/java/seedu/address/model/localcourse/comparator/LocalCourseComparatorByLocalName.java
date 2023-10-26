@@ -21,4 +21,19 @@ public class LocalCourseComparatorByLocalName implements Comparator<LocalCourse>
     public String toString() {
         return "localname";
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof LocalCourseComparatorByLocalName)) {
+            return false;
+        }
+
+        LocalCourseComparatorByLocalName otherLocalCourseComparatorByLocalName =
+                (LocalCourseComparatorByLocalName) other;
+        return this.toString().equals(otherLocalCourseComparatorByLocalName.toString());
+    }
 }

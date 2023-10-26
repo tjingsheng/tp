@@ -25,4 +25,19 @@ public class LocalCourseComparatorByLocalCode implements Comparator<LocalCourse>
     public String toString() {
         return "localcode";
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof LocalCourseComparatorByLocalCode)) {
+            return false;
+        }
+
+        LocalCourseComparatorByLocalCode otherLocalCourseComparatorByLocalCode =
+                (LocalCourseComparatorByLocalCode) other;
+        return this.toString().equals(otherLocalCourseComparatorByLocalCode.toString());
+    }
 }

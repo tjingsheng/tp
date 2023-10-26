@@ -18,7 +18,7 @@ import seedu.address.model.localcourse.comparator.LocalCourseComparatorByLocalNa
  */
 public class LocalCourseSortCommandParser implements Parser<LocalCourseSortCommand> {
     /**
-     * Pqrses the given {@code String} of arguments in the context of the LocalCourseSortCommand
+     * Parses the given {@code String} of arguments in the context of the LocalCourseSortCommand
      * and returns a LocalCourseSortCommand object for execution.
      *
      * @throws ParseException if the user input does not conform the expected format.

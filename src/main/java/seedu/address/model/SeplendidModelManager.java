@@ -86,7 +86,7 @@ public class SeplendidModelManager implements SeplendidModel {
     }
 
     /**
-     * Contructs Seplendid Model Manager.
+     * Constructs Seplendid Model Manager.
      */
     public SeplendidModelManager() {
         this(new LocalCourseCatalogue(), new UserPrefs(), new PartnerCourseCatalogue(), new UniversityCatalogue(),

@@ -108,10 +108,11 @@ command group: \
 
 `partnercourse`:
 
-| Attribute     | Description                        |
-|---------------|------------------------------------|
-| `partnercode` | Course code for the partner course |
-| `partnername` | Name of the partner course         |
+| Attribute     | Description                                        |
+|---------------|----------------------------------------------------|
+| `partnercode` | Course code for the partner course                 |
+| `partnername` | Name of the partner course                         |
+| `university`  | The partner university offering the partner course |
 
 
 `mapping`:
@@ -126,11 +127,11 @@ command group: \
 
 `note`:
 
-|Attribute| Description                   |
-|--|-------------------------------|
-|`index`| Index for the particular note |
-|`content`| The content of the note       |
-|`tag`| Tag used to organise notes    |
+| Attribute  | Description                   |
+|------------|-------------------------------|
+| `index`    | Index for the particular note |
+| `content`  | The content of the note       |
+| `tag`      | Tag used to organise notes    |
 
 
 * The command format is `command-word action-word [parameters]`. <br /> `action-word`s include `sort`, `search`, `add`, 
@@ -285,7 +286,7 @@ Lists all available partner courses, paginated if dataset is too huge.
 ### 4.2.2 Add a partnercourse: `partnercourse add`
 Adds partner course with course code identified by `partnercode` and course name identified by `partnername`, 
 which is offered by partner `university`.
-**Format**: `partnercoursea add [partnercode] [partnername] [units]`
+**Format**: `partnercourse add [partnercode] [partnername] [units]`
 
 **Example:**
 | `partnercourse add [University of Toronto] [ROB311] [Artificial Intelligence]` |
@@ -295,10 +296,10 @@ which is offered by partner `university`.
 ### 4.2.3. Delete a partnercourse: `partnercourse delete`
 Deletes partner course with course code identified by `partnercode` and course name identified by `partnername`, 
 which is offered by partner `university`.
-**Format**: `partnercourse delete [partnercode] [partnername] [units]`
+**Format**: `partnercourse delete [partnercode]`
 
 **Example:**
-| `partnercourse delete [University of Toronto] [ROB311]`      |
+| `partnercourse delete [ROB311]`      |
 |--------------------------------------------------------------|
 | ![partnercourse-delete-ui](images/PartnercourseDeleteUi.png) |
 
@@ -503,7 +504,7 @@ contains the data of your previous SEPlendid home folder.
     </tr>
     <tr>
         <td><code>delete</code></td>
-        <td><code>[university] [partnercode]</code></td>
+        <td><code>[partnercode]</code></td>
     </tr>
     <tr>
         <td><code>search</code></td>

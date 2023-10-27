@@ -4,7 +4,7 @@
   pageNav: 3
 ---
 
-# AB-3 Developer Guide
+# SEPlendid Developer Guide
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -239,9 +239,37 @@ mapping.
   * Pros: Will use fewer actions to delete a course, if there exists mappings it is tied to.
   * Cons: We must ensure that deletion cascades, in order to maintain data integrity. This can introduce bugs if not 
   done correctly.
+--------------------------------------------------------------------------------------------------------------------
+### Sorting feature
+#### Implementation
+#### Design considerations
+
+**Aspect: Usage of enum class for attributes**
+
+* **Alternative 1 (implemented choice)**: Use enum class for LocalCourse, PartnerCourse, and Mapping to store the attributes of each data types.
+  * Pros: Easy to store constraint messages, easier to keep track of the attributes, can use for other commands such as ```search```.
+  * Cons: Need to create new enum classes for each data types.
+* **Alternative 2**: Use String to check
+  * Pros: Don't need to create new enum classes
+  * Cons: Hard to keep track of attributes of each data types.
 
 --------------------------------------------------------------------------------------------------------------------
+### University Feature
 
+The university `list/search/sort` mechanism is facilitated by `UniversityCatalogue`. It stores `University` objects
+which contain the `UniversityName` object. This means that `University` is dependent on `University` class.
+
+A `UniqueUniversityList` is stored internally in `UniversityCatalogue`. Additionally, it implements the following
+operations:
+- `UniversityCatalogue#hasUniversity(University)`  —  Checks whether a university exists in the university
+  catalogue, to use to prevent duplicate insertion.
+.
+These operations are exposed in the `SeplendidModel` interface as `SeplendidModel#hasUniversity(University).
+
+When the user launches the application for the first time. All relevant data catalogues: `UniversityCatalogue` are
+initialised with the initial state, containing the seed data (list of partner universities) for SEP.
+
+Given below is an examples usage scenario and how the `hasUniversity` mechanism works
 [//]: # (I'll leave some of the ab3 implementation here so you can refer, please remove if you're the last person)
 
 The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the address book to that state.
@@ -394,6 +422,20 @@ Use case ends.
   
   Use case resumes at step 1.
 
+**Use case: Sorts local course**
+
+**MSS:**
+1. User requests to sort the list of local courses.
+2. SEPlendid sorts and shows sorted list of all available local courses.
+
+Use case ends.
+
+**Extension:**
+* 1a. The command format is invalid.
+  * 1a1. SEPlendid shows an error message.
+
+  Use case resumes at step 1.
+
 #### Partner course
 **Use case: List partner course**
 
@@ -406,7 +448,7 @@ Use case ends.
 
 **MSS:**
 1. User requests to add a partner course.
-2. SEPlendid adds and shows the local course.
+2. SEPlendid adds and shows the partner course.
 Use case ends.
 
 **Extension:**
@@ -426,6 +468,20 @@ Use case ends.
 2. SEPlendid deletes and shows the partner course deleted.
 
 Use case ends.
+
+**Use case: Sorts partner course**
+
+**MSS:**
+1. User requests to sort the list of partner courses.
+2. SEPlendid sorts and shows sorted list of all available partner courses.
+
+Use case ends.
+
+**Extension:**
+* 1a. The command format is invalid.
+  * 1a1. SEPlendid shows an error message.
+
+  Use case resumes at step 1.
     
 **Extension:**
 * 1a. The command format is invalid. 

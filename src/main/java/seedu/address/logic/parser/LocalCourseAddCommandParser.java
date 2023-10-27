@@ -16,13 +16,13 @@ import seedu.address.model.localcourse.LocalName;
 import seedu.address.model.localcourse.LocalUnit;
 
 /**
- * Parses input arguments and creates a new LocalCourse object.
+ * Parses input arguments and creates a new LocalCourseAddCommand object.
  */
 public class LocalCourseAddCommandParser implements Parser<LocalCourseAddCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the LocalCourseAddCommand
-     * and returns an LocalCourseAddCommand object for execution.
+     * and returns a LocalCourseAddCommand object for execution.
      *
      * @throws ParseException if the user input does not conform the expected format
      */

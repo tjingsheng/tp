@@ -12,6 +12,7 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalDescription;
+import seedu.address.model.localcourse.LocalCourseAttribute;
 import seedu.address.model.localcourse.LocalName;
 import seedu.address.model.localcourse.LocalUnit;
 import seedu.address.model.mapping.MappingMiscInformation;
@@ -181,22 +182,6 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String localDescription} into an {@code LocalDescription}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code localDescription} is invalid.
-     */
-    public static LocalDescription parseLocalDescription(String localDescription) throws ParseException {
-        requireNonNull(localDescription);
-        String trimmedLocalUnit = localDescription.trim();
-        if (!LocalDescription.isValidLocalDescription(trimmedLocalUnit)) {
-            throw new ParseException(LocalDescription.MESSAGE_CONSTRAINTS);
-        }
-        return new LocalDescription(localDescription);
-    }
-
-
-    /**
      * Parses a {@code String partnerCode} into an {@code PartnerCode}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -350,5 +335,34 @@ public class ParserUtil {
      */
     public static boolean areArgumentsPresent(SeplendidArgumentMap argumentMap, SeplendidParameter... parameters) {
         return Stream.of(parameters).allMatch(parameter -> argumentMap.getValue(parameter).isPresent());
+    }
+
+    /**
+     * Parses a {@code String attribute}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code attribute} is invalid.
+     */
+    public static LocalCourseAttribute parseLocalCourseAttribute(String attribute) throws ParseException {
+        requireNonNull(attribute);
+        String attributeLowerCase = attribute.toLowerCase();
+        String resultAttribute = attributeLowerCase;
+        switch(attributeLowerCase) {
+        case("localcode"):
+            resultAttribute = "LOCALCODE";
+            break;
+        case("localname"):
+            resultAttribute = "LOCALNAME";
+            break;
+        default:
+            break;
+        }
+
+        if (!LocalCourseAttribute.isValidAttribute(resultAttribute)) {
+            throw new ParseException(LocalCourseAttribute.MESSAGE_CONSTRAINTS);
+        }
+
+        return LocalCourseAttribute.valueOf(resultAttribute);
+
     }
 }

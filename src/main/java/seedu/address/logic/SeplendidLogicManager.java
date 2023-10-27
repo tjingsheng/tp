@@ -107,6 +107,11 @@ public class SeplendidLogicManager implements SeplendidLogic {
         return model.getLocalCourseCatalogueFilePath();
     }
 
+    @Override
+    public ObservableList<LocalCourse> getSortedLocalCourseCatalogue() {
+        return model.getSortedLocalCourseList();
+    }
+
     //=========== PartnerCourseCatalouge ============================================================================
     @Override
     public ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue() {

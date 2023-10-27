@@ -39,9 +39,9 @@ public class PartnerCourseBuilder {
      * Initializes the PartnerCourseBuilder with the data of {@code partnerCourseToCopy}.
      */
     public PartnerCourseBuilder(PartnerCourse partnerCourseToCopy) {
+        partnerUniversity = partnerCourseToCopy.getPartnerUniversity();
         partnerCode = partnerCourseToCopy.getPartnerCode();
         partnerName = partnerCourseToCopy.getPartnerName();
-        partnerUniversity = partnerCourseToCopy.getPartnerUniversity();
         partnerUnit = partnerCourseToCopy.getPartnerUnit();
         partnerDescription = partnerCourseToCopy.getPartnerDescription();
     }

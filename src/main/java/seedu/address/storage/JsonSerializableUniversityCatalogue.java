@@ -25,7 +25,7 @@ class JsonSerializableUniversityCatalogue {
     private final List<JsonAdaptedUniversity> universities = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonSerializableLocalCourseCatalogue} with the given localCourses.
+     * Constructs a {@code JsonSerializableUniversityCourseCatalogue} with the given universities.
      */
     @JsonCreator
     public JsonSerializableUniversityCatalogue(@JsonProperty("universities") List<JsonAdaptedUniversity>
@@ -34,9 +34,10 @@ class JsonSerializableUniversityCatalogue {
     }
 
     /**
-     * Converts a given {@code ReadOnlyLocalCourseCatalogue} into this class for Jackson use.
+     * Converts a given {@code ReadOnlyUniversityCourseCatalogue} into this class for Jackson use.
      *
-     * @param source future changes to this will not affect the created {@code JsonSerializableLocalCourseCatalogue}.
+     * @param source future changes to this will not affect the created
+     *      {@code JsonSerializableUniversityCourseCatalogue}.
      */
     public JsonSerializableUniversityCatalogue(ReadOnlyUniversityCatalogue source) {
         universities.addAll(source.getUniversityList().stream().map(

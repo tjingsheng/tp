@@ -34,7 +34,7 @@ public class JsonSerializableLocalCourseCatalogueTest {
     }
 
     @Test
-    public void toModelType_invalidLocalCourseCatalogueFile_throwsIllegalValueException() throws Exception {
+    public void toModelType_invalidLocalCoursesCatalogueFile_throwsIllegalValueException() throws Exception {
         JsonSerializableLocalCourseCatalogue dataFromFile = JsonUtil.readJsonFile(INVALID_LOCAL_COURSES_FILE,
                 JsonSerializableLocalCourseCatalogue.class).get();
         assertThrows(IllegalValueException.class, dataFromFile::toModelType);

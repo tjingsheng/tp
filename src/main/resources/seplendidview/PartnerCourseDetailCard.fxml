@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.TextArea?>
 <HBox xmlns:fx="http://javafx.com/fxml/1"
       id="partnerCourseDetailPane"
       fx:id="partnerCourseDetailPane"
@@ -19,5 +20,10 @@
         <Label fx:id="partnerCode" styleClass="title-font-size"/>
         <Label fx:id="partnerName" styleClass="small-heading-font-size"/>
         <Label fx:id="partnerUnit" styleClass="small-heading-font-size"/>
+        <Label/>
+        <TextArea fx:id="partnerDescription"
+                  styleClass="text-font-size"
+                  editable="false"
+                  wrapText="true"/>
     </VBox>
 </HBox>

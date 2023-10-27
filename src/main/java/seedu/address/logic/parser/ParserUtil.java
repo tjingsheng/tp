@@ -17,6 +17,7 @@ import seedu.address.model.localcourse.LocalUnit;
 import seedu.address.model.mapping.MappingMiscInformation;
 import seedu.address.model.notes.Content;
 import seedu.address.model.partnercourse.PartnerCode;
+import seedu.address.model.partnercourse.PartnerDescription;
 import seedu.address.model.partnercourse.PartnerName;
 import seedu.address.model.partnercourse.PartnerUnit;
 import seedu.address.model.person.Address;
@@ -238,6 +239,21 @@ public class ParserUtil {
             throw new ParseException(PartnerUnit.MESSAGE_CONSTRAINTS);
         }
         return new PartnerUnit(partnerUnit);
+    }
+
+    /**
+     * Parses a {@code String partnerDescription} into an {@code PartnerDescription}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code partnerUnit} is invalid.
+     */
+    public static PartnerDescription parsePartnerDescription(String partnerDescription) throws ParseException {
+        requireNonNull(partnerDescription);
+        String trimmedPartnerUnit = partnerDescription.trim();
+        if (!PartnerDescription.isValidPartnerDescription(trimmedPartnerUnit)) {
+            throw new ParseException(PartnerDescription.MESSAGE_CONSTRAINTS);
+        }
+        return new PartnerDescription(partnerDescription);
     }
 
     /**

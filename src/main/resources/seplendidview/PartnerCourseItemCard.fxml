@@ -44,6 +44,8 @@
                 <Label fx:id="partnerName"
                        styleClass="text-font-size"/>
             </HBox>
+            <Label fx:id="partnerUniversity"
+                   styleClass="text-font-size"/>
         </VBox>
     </GridPane>
 </HBox>

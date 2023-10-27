@@ -23,6 +23,7 @@ import seedu.address.model.notes.Content;
 import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
+import seedu.address.model.partnercourse.PartnerDescription;
 import seedu.address.model.partnercourse.PartnerName;
 import seedu.address.model.partnercourse.PartnerUnit;
 import seedu.address.model.person.Address;
@@ -66,30 +67,61 @@ public class SampleDataUtil {
      * Returns a tag set containing the list of strings given.
      */
     public static Set<Tag> getTagSet(String... strings) {
-        return Arrays.stream(strings)
-                     .map(Tag::new)
-                     .collect(Collectors.toSet());
+        return Arrays.stream(strings).map(Tag::new).collect(Collectors.toSet());
     }
 
     public static LocalCourse[] getSampleLocalCourses() {
-        String test = "123456789 ".repeat(1000);
         return new LocalCourse[] {
             new LocalCourse(
                 new LocalCode("CS1101S"),
                 new LocalName("Programming Methodology I"),
                 new LocalUnit(4.0),
-                new LocalDescription("Fun Module")),
+                new LocalDescription(
+                    "This course introduces the concepts of programming and computational problem solving, and is the "
+                    + "first and foremost introductory course to computing. Starting from a small core of fundamental"
+                    + " abstractions, the course introduces programming as a method for communicating computational "
+                    + "processes. The course begins with purely functional programming based on a simple "
+                    + "substitution-based execution model, and ends with a powerful modern imperative language based "
+                    + "on a realistic environment-based execution model. Topics covered include: functional "
+                    + "abstraction, recursion, higher-order functions, data abstraction, algorithmic strategies, "
+                    + "state mutation, loops and arrays, evaluation strategies, sorting and searching, debugging and "
+                    + "testing."
+                )
+            ),
             new LocalCourse(
                 new LocalCode("CS1231S"),
                 new LocalName("Discrete Structures"),
                 new LocalUnit(4.0),
-                new LocalDescription("Aiken Dueet?")),
+                new LocalDescription(
+                    "This course introduces mathematical tools required in the study of computer science. Topics "
+                    + "include: (1) Logic and proof techniques: propositions, quantifications. (2) Relations "
+                    + "and Functions: Equivalence relations and partitions. Partially ordered sets. Well-Ordering "
+                    + "Principle. Function equality. Boolean/identity/inverse functions. Bijection. (3) Mathematical "
+                    + "formulation of data models (linear model, trees, graphs). (4) Counting and Combinatoric: "
+                    + "Pigeonhole Principle. Inclusion-Exclusion Principle. Number of relations on a set, number of "
+                    + "injections from one finite set to another, Diagonalization proof: An infinite countable set "
+                    + "has an uncountable power set; Algorithmic proof: An infinite set has a countably infinite "
+                    + "subset. Subsets of countable sets are countable."
+                )
+            ),
             new LocalCourse(
                 new LocalCode("IS1108"),
                 new LocalName("Digital Ethics and Data Privacy"),
                 new LocalUnit(4.0),
-                new LocalDescription(test))};
+                new LocalDescription(
+                    "Course is designed to introduce students to the issues of digital ethics and privacy faced by "
+                    + "individuals and organizations. It covers the ethical principles governing the behaviors and "
+                    + "beliefs about how we use technology, and how we collect and process personal information in a "
+                    + "manner that aligns with individual and organizational expectations for security and "
+                    + "confidentiality. It will address challenges in balancing technological desirability with "
+                    + "social desirability while developing digital products and services, including Professional "
+                    + "Ethics, Computing for Social Good, Digital Ethics by Design, Digital Intellectual Property "
+                    + "Rights, Automation and Autonomous Systems, and Artificial Intelligence Ethics and Governance."
+                )
+            )
+        };
     }
+
 
     public static ReadOnlyLocalCourseCatalogue getSampleLocalCourseCatalogue() {
         LocalCourseCatalogue sampleLocalCourseCatalogue = new LocalCourseCatalogue();
@@ -116,12 +148,24 @@ public class SampleDataUtil {
 
     public static PartnerCourse[] getSamplePartnerCourses() {
         return new PartnerCourse[] {
-            new PartnerCourse(new University(new UniversityName("Boston College")), new PartnerCode("COM1231"),
-                new PartnerName("Discrete Mathematics"), new PartnerUnit(5.0)),
-            new PartnerCourse(new University(new UniversityName("University of Waterloo")), new PartnerCode("INFR1101"
-            ), new PartnerName("Computer Security"), new PartnerUnit(5.0)),
-            new PartnerCourse(new University(new UniversityName("Harvard University")), new PartnerCode("COM3041"),
-                new PartnerName("Computer Networks"), new PartnerUnit(2.0))};
+            new PartnerCourse(
+                new University(new UniversityName("Boston College")),
+                new PartnerCode("COM1231"),
+                new PartnerName("Discrete Mathematics"),
+                new PartnerUnit(5.0),
+                new PartnerDescription("Fun math module.")),
+            new PartnerCourse(
+                new University(new UniversityName("University of Waterloo")),
+                new PartnerCode("INFR1101"),
+                new PartnerName("Computer Security"),
+                new PartnerUnit(5.0),
+                new PartnerDescription("Fun security module.")),
+            new PartnerCourse(
+                new University(new UniversityName("Harvard University")),
+                new PartnerCode("COM3041"),
+                new PartnerName("Computer Networks"),
+                new PartnerUnit(2.0),
+                new PartnerDescription("Fun network module."))};
     }
 
     public static ReadOnlyPartnerCourseCatalogue getSamplePartnerCourseCatalogue() {

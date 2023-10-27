@@ -2,6 +2,7 @@ package seedu.address.seplendidui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.partnercourse.PartnerCourse;
@@ -25,6 +26,8 @@ public class PartnerCourseDetail extends UiPart<Region> {
     private Label partnerUnit;
     @FXML
     private Label partnerUniversity;
+    @FXML
+    private TextArea partnerDescription;
 
     /**
      * Creates a {@code partnerCourseDetail} with the given {@code partnerCourse}
@@ -36,5 +39,6 @@ public class PartnerCourseDetail extends UiPart<Region> {
         partnerCode.setText(partnerCourse.getPartnerCode().toString());
         partnerUnit.setText("Units: " + partnerCourse.getPartnerUnit().toString());
         partnerUniversity.setText(partnerCourse.getPartnerUniversity().toString());
+        partnerDescription.setText(partnerCourse.getPartnerDescription().toString());
     }
 }

@@ -43,6 +43,7 @@ public class PartnerCourseUtil {
      * Returns the part of delete command string for the given {@code PartnerCourse}'s details.
      */
     public static String getPartnerCourseArgumentsForDeleteCommand(PartnerCourse partnerCourse) {
-        return String.format("[%s]", partnerCourse.getPartnerCode());
+        return String.format("[%s] [%s]",
+                partnerCourse.getPartnerCode(), partnerCourse.getPartnerUniversity().getUniversityName());
     }
 }

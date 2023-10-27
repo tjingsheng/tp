@@ -2,10 +2,12 @@ package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERCODE;
+import static seedu.address.logic.parser.CliSyntax.PARAMETER_UNIVERSITYNAME;
 
 import seedu.address.logic.commands.PartnerCourseDeleteCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.partnercourse.PartnerCode;
+import seedu.address.model.university.UniversityName;
 
 /**
  * Parses input arguments and creates a new PartnerCourseCommand object.
@@ -28,16 +30,17 @@ public class PartnerCourseDeleteCommandParser implements Parser<PartnerCourseDel
 
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args,
-                        PARAMETER_PARTNERCODE);
+                        PARAMETER_PARTNERCODE, PARAMETER_UNIVERSITYNAME);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap,
-                PARAMETER_PARTNERCODE)) {
+                PARAMETER_PARTNERCODE, PARAMETER_UNIVERSITYNAME)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     PartnerCourseDeleteCommand.PARTNER_COURSE_DELETE_MESSAGE_USAGE));
         }
 
         PartnerCode partnerCode = ParserUtil.parsePartnerCode(parameterToArgMap.getValue(PARAMETER_PARTNERCODE).get());
-
-        return new PartnerCourseDeleteCommand(partnerCode);
+        UniversityName universityName =
+                ParserUtil.parseUniversityName(parameterToArgMap.getValue(PARAMETER_UNIVERSITYNAME).get());
+        return new PartnerCourseDeleteCommand(partnerCode, universityName);
     }
 }

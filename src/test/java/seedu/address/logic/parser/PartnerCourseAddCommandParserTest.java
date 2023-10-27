@@ -73,7 +73,7 @@ public class PartnerCourseAddCommandParserTest {
 
 
     @Test
-    public void parse_allArgumentMissing_failure() {
+    public void parse_argumentMissing_failure() {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
             PartnerCourseAddCommand.PARTNER_COURSE_ADD_MESSAGE_USAGE);
 

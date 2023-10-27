@@ -8,7 +8,10 @@ import static seedu.address.testutil.TestUtil.getSquareBracketWrappedArgument;
 import static seedu.address.testutil.TypicalObjects.COMP1000;
 import static seedu.address.testutil.TypicalObjects.EDGE_CASE_VALID_PARTNER_COURSE;
 import static seedu.address.testutil.TypicalObjects.EDGE_CASE_VALID_PARTNER_COURSE_CODE;
+import static seedu.address.testutil.TypicalObjects.EDGE_CASE_VALID_UNIVERSITY_NAME;
 import static seedu.address.testutil.TypicalObjects.INVALID_PARTNER_COURSE_CODE;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE_CODE;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_UNIVERSITY_NAME;
 
 import org.junit.jupiter.api.Test;
 
@@ -16,6 +19,7 @@ import seedu.address.logic.commands.PartnerCourseAddCommand;
 import seedu.address.logic.commands.PartnerCourseCommand;
 import seedu.address.logic.commands.PartnerCourseDeleteCommand;
 import seedu.address.model.partnercourse.PartnerCode;
+import seedu.address.model.university.UniversityName;
 import seedu.address.testutil.PartnerCourseUtil;
 import seedu.address.testutil.TypicalObjects;
 
@@ -29,7 +33,7 @@ public class PartnerCourseDeleteCommandParserTest {
     @Test
     public void parse_unnecessaryWhiteSpace_success() {
         PartnerCode expectedPartnerCode = COMP1000.getPartnerCode();
-
+        UniversityName expectedUniversityName = COMP1000.getPartnerUniversity().getUniversityName();
         // add unnecessary whitespace
         assertParseSuccess(parser, UNNCESSARY_WHITESPACE
                         + PartnerCourseCommand.COMMAND_WORD
@@ -37,8 +41,10 @@ public class PartnerCourseDeleteCommandParserTest {
                         + PartnerCourseAddCommand.ACTION_WORD
                         + UNNCESSARY_WHITESPACE
                         + getSquareBracketWrappedArgument(expectedPartnerCode.toString())
+                        + UNNCESSARY_WHITESPACE
+                        + getSquareBracketWrappedArgument(expectedUniversityName.toString())
                         + UNNCESSARY_WHITESPACE,
-                new PartnerCourseDeleteCommand(expectedPartnerCode));
+                new PartnerCourseDeleteCommand(expectedPartnerCode, expectedUniversityName));
     }
 
     @Test
@@ -58,26 +64,39 @@ public class PartnerCourseDeleteCommandParserTest {
 
 
     @Test
-    public void parse_allArgumentMissing_failure() {
+    public void parse_argumentMissing_failure() {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 PartnerCourseDeleteCommand.PARTNER_COURSE_DELETE_MESSAGE_USAGE);
 
         // all arguments missing
         assertParseFailure(parser, commandActionWord, expectedMessage);
+
+        // missing partnercode argument
+        assertParseFailure(parser, commandActionWord
+                + getSquareBracketWrappedArgument(TYPICAL_UNIVERSITY_NAME), expectedMessage);
+
+        // missing universityname argument
+        assertParseFailure(parser, commandActionWord
+                + getSquareBracketWrappedArgument(TYPICAL_PARTNER_COURSE_CODE), expectedMessage);
     }
+
 
     @Test
     public void parse_invalidValue_failure() {
         // invalid partnerCode
         assertParseFailure(parser, commandActionWord
-                        + getSquareBracketWrappedArgument(INVALID_PARTNER_COURSE_CODE),
+                        + getSquareBracketWrappedArgument(INVALID_PARTNER_COURSE_CODE)
+                        + getSquareBracketWrappedArgument(TYPICAL_UNIVERSITY_NAME),
                 PartnerCode.MESSAGE_CONSTRAINTS);
     }
 
     @Test
-    public void parse_edgeCasePartnerNameValue_success() {
+    public void parse_edgeCaseValue_success() {
         assertParseSuccess(parser, commandActionWord
-                        + getSquareBracketWrappedArgument(EDGE_CASE_VALID_PARTNER_COURSE_CODE),
-                new PartnerCourseDeleteCommand(EDGE_CASE_VALID_PARTNER_COURSE.getPartnerCode()));
+                        + getSquareBracketWrappedArgument(EDGE_CASE_VALID_PARTNER_COURSE_CODE)
+                        + getSquareBracketWrappedArgument(EDGE_CASE_VALID_UNIVERSITY_NAME),
+                new PartnerCourseDeleteCommand(EDGE_CASE_VALID_PARTNER_COURSE.getPartnerCode(),
+                        EDGE_CASE_VALID_PARTNER_COURSE.getPartnerUniversity().getUniversityName()));
     }
+
 }

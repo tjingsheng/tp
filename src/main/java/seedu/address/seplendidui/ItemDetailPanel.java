@@ -82,7 +82,8 @@ public class ItemDetailPanel<SeplendidDataType> extends UiPart<Region> {
                 PartnerCourseCatalogue partnerCourseCatalogue =
                         (PartnerCourseCatalogue) seplendidLogic.getPartnerCourseCatalogue();
                 Optional<PartnerCourse> partnerCourse =
-                        partnerCourseCatalogue.getPartnerCourseIfExists(mapping.getPartnerCode());
+                        partnerCourseCatalogue.getPartnerCourseIfExists(
+                                                mapping.getPartnerCode(), mapping.getUniversityName());
                 if (localCourse.isPresent() && partnerCourse.isPresent()) {
                     setGraphic(new MappingDetail(mapping, localCourse.get().getLocalName(),
                             partnerCourse.get().getPartnerName()).getRoot());

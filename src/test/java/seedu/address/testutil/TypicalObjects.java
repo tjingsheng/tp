@@ -73,47 +73,29 @@ public class TypicalObjects {
     public static final String INVALID_UNIVERSITY_NAME = " ";
     public static final Double INVALID_PARTNER_COURSE_UNIT = -1.0;
 
-    public static final LocalCourse CS2040S =
-            new LocalCourseBuilder().withLocalCode("CS2040S")
-                    .withLocalName("Data Structures & Algorithms")
-                    .withLocalUnit(4.0)
-                    .build();
-    public static final LocalCourse CS3230 =
-            new LocalCourseBuilder().withLocalCode("CS3230")
-                    .withLocalName("Design & Analysis of Algorithms")
-                    .withLocalUnit(4.0)
-                    .build();
-    public static final LocalCourse CS1231S =
-            new LocalCourseBuilder().withLocalCode("CS1231S")
-                    .withLocalName("Discrete Structures")
-                    .withLocalUnit(4.0)
-                    .build();
-    public static final LocalCourse CS2030S =
-            new LocalCourseBuilder().withLocalCode("CS2030S")
-                    .withLocalName("Programming Methodology II")
-                    .withLocalUnit(4.0)
-                    .build();
-    public static final LocalCourse MA2001 =
-            new LocalCourseBuilder().withLocalCode("MA2001")
-                .withLocalName("Linear Algebra")
-                .withLocalUnit(4.0)
-                .build();
+    public static final LocalCourse CS2040S = new LocalCourseBuilder().withLocalCode("CS2040S").withLocalName(
+        "Data Structures & Algorithms").withLocalUnit(4.0).build();
+    public static final LocalCourse CS3230 = new LocalCourseBuilder().withLocalCode("CS3230").withLocalName(
+        "Design & Analysis of Algorithms").withLocalUnit(4.0).build();
+    public static final LocalCourse CS1231S = new LocalCourseBuilder().withLocalCode("CS1231S").withLocalName(
+        "Discrete Structures").withLocalUnit(4.0).build();
+    public static final LocalCourse CS2030S = new LocalCourseBuilder().withLocalCode("CS2030S").withLocalName(
+        "Programming Methodology II").withLocalUnit(4.0).build();
+    public static final LocalCourse MA2001 = new LocalCourseBuilder().withLocalCode("MA2001").withLocalName(
+        "Linear Algebra").withLocalUnit(4.0).build();
 
-    public static final LocalCourse MA1521 =
-            new LocalCourseBuilder().withLocalCode("MA1521")
-                    .withLocalName("Calculus in Computing")
-                    .withLocalUnit(4.0)
-                    .build();
-    public static final LocalCourse TYPICAL_LOCAL_COURSE =
-            new LocalCourseBuilder().withLocalCode(TYPICAL_LOCAL_COURSE_CODE)
-                    .withLocalName(TYPICAL_LOCAL_COURSE_NAME)
-                    .withLocalUnit(TYPICAL_LOCAL_COURSE_UNIT)
-                    .build();
-    public static final LocalCourse EDGE_CASE_VALID_LOCAL_COURSE =
-            new LocalCourseBuilder().withLocalCode(EDGE_CASE_VALID_LOCAL_COURSE_CODE)
-                    .withLocalName(EDGE_CASE_VALID_LOCAL_COURSE_NAME)
-                    .withLocalUnit(EDGE_CASE_VALID_LOCAL_COURSE_UNIT)
-                    .build();
+    public static final LocalCourse MA1521 = new LocalCourseBuilder().withLocalCode("MA1521").withLocalName(
+        "Calculus in Computing").withLocalUnit(4.0).build();
+    public static final LocalCourse TYPICAL_LOCAL_COURSE = new LocalCourseBuilder().withLocalCode(
+                                                                                       TYPICAL_LOCAL_COURSE_CODE)
+                                                                                   .withLocalName(
+                                                                                       TYPICAL_LOCAL_COURSE_NAME)
+                                                                                   .withLocalUnit(
+                                                                                       TYPICAL_LOCAL_COURSE_UNIT)
+                                                                                   .build();
+    public static final LocalCourse EDGE_CASE_VALID_LOCAL_COURSE = new LocalCourseBuilder().withLocalCode(
+        EDGE_CASE_VALID_LOCAL_COURSE_CODE).withLocalName(EDGE_CASE_VALID_LOCAL_COURSE_NAME).withLocalUnit(
+        EDGE_CASE_VALID_LOCAL_COURSE_UNIT).build();
 
     // PartnerCourse
     public static final PartnerCourse TYPICAL_PARTNER_COURSE = new PartnerCourseBuilder().withPartnerUniversity(
@@ -121,17 +103,16 @@ public class TypicalObjects {
         TYPICAL_PARTNER_COURSE_NAME).withPartnerUnit(TYPICAL_PARTNER_COURSE_UNIT).withPartnerDescription(
         TYPICAL_PARTNER_COURSE_DESCRIPTION).build();
     public static final PartnerCourse EDGE_CASE_VALID_PARTNER_COURSE =
-        new PartnerCourseBuilder().withPartnerUniversity(
-            new UniversityName(EDGE_CASE_VALID_UNIVERSITY_NAME))
-             .withPartnerCode(
-                 EDGE_CASE_VALID_PARTNER_COURSE_CODE)
-             .withPartnerName(
-                 EDGE_CASE_VALID_PARTNER_COURSE_NAME)
-             .withPartnerUnit(
-                 EDGE_CASE_VALID_PARTNER_COURSE_UNIT)
-             .withPartnerDescription(
-                 EDGE_CASE_VALID_PARTNER_COURSE_DESCRIPTION)
-             .build();
+        new PartnerCourseBuilder().withPartnerUniversity(new UniversityName(EDGE_CASE_VALID_UNIVERSITY_NAME))
+                                                             .withPartnerCode(
+                                                                 EDGE_CASE_VALID_PARTNER_COURSE_CODE)
+                                                             .withPartnerName(
+                                                                 EDGE_CASE_VALID_PARTNER_COURSE_NAME)
+                                                             .withPartnerUnit(
+                                                                 EDGE_CASE_VALID_PARTNER_COURSE_UNIT)
+                                                             .withPartnerDescription(
+                                                                 EDGE_CASE_VALID_PARTNER_COURSE_DESCRIPTION)
+                                                             .build();
 
     public static final PartnerCourse COMP1000 = new PartnerCourseBuilder().withPartnerUniversity(new UniversityName(
                                                                                "University of Edinburgh"))
@@ -139,30 +120,45 @@ public class TypicalObjects {
                                                                            .withPartnerName(
                                                                                "Introduction to Programming")
                                                                            .withPartnerUnit(5.0)
+                                                                           .withPartnerDescription("COMP1000 is a "
+                                                                               + "level 1000 course.")
                                                                            .build();
     public static final PartnerCourse COMP2000 = new PartnerCourseBuilder().withPartnerUniversity(new UniversityName(
                                                                                "University of Leeds"))
                                                                            .withPartnerCode("COMP2000")
                                                                            .withPartnerName("Introduction to Databases")
                                                                            .withPartnerUnit(5.0)
+                                                                           .withPartnerDescription("COMP2000 is a "
+                                                                               + "level 2000 course.")
                                                                            .build();
     public static final PartnerCourse COMP3000 = new PartnerCourseBuilder().withPartnerUniversity(new UniversityName(
                                                                                "University of Zurich"))
                                                                            .withPartnerCode("COMP3000")
                                                                            .withPartnerName("Introduction to Networks")
                                                                            .withPartnerUnit(5.0)
+                                                                           .withPartnerDescription("COMP3000 is a "
+                                                                               + "level 3000 course.")
                                                                            .build();
 
-    public static final PartnerCourse S0402SC = new PartnerCourseBuilder()
-        .withPartnerUniversity(new UniversityName("Nanyang Technological University"))
-        .withPartnerCode("S0402SC").withPartnerName("Algorithms").withPartnerUnit(3.0).build();
-    public static final PartnerCourse STAN3230 = new PartnerCourseBuilder()
-        .withPartnerUniversity(new UniversityName("Stanford University")).withPartnerCode("STAN3230")
-        .withPartnerName("Design & Analysis of Algorithms").withPartnerUnit(3.0).build();
-    public static final PartnerCourse COMP4000 = new PartnerCourseBuilder()
-        .withPartnerUniversity(new UniversityName("Seoul National University"))
-        .withPartnerCode("COMP4000").withPartnerName("Introduction to Game Development").build();
-
+    public static final PartnerCourse S0402SC = new PartnerCourseBuilder().withPartnerUniversity(new UniversityName(
+        "Nanyang Technological University")).withPartnerCode("S0402SC").withPartnerName("Algorithms").withPartnerUnit(
+        3.0).withPartnerDescription("Funny NTU module.").build();
+    public static final PartnerCourse STAN3230 = new PartnerCourseBuilder().withPartnerUniversity(new UniversityName(
+                                                                               "Stanford University"))
+                                                                           .withPartnerCode("STAN3230")
+                                                                           .withPartnerName(
+                                                                               "Design & Analysis of Algorithms")
+                                                                           .withPartnerUnit(3.0)
+                                                                           .withPartnerDescription(
+                                                                               "Fun analysis module.")
+                                                                           .build();
+    public static final PartnerCourse COMP4000 = new PartnerCourseBuilder().withPartnerUniversity(new UniversityName(
+                                                                               "Seoul National University"))
+                                                                           .withPartnerCode("COMP4000")
+                                                                           .withPartnerName(
+                                                                               "Introduction to Game Development")
+                                                                           .withPartnerDescription("Fun game module")
+                                                                           .build();
 
 
     // University
@@ -171,14 +167,8 @@ public class TypicalObjects {
     public static final University WATERLOO = new University(new UniversityName("University of Waterloo"));
     public static final University SNU = new University(new UniversityName("Seoul National University"));
     // Note
-    public static final Note NOTE1 =
-        new Note(
-            new Content("Nanyang Technological University"),
-            new Tag("university"));
-    public static final Note NOTE2 =
-        new Note(
-            new Content("Application Deadline 1 December 2023"),
-            new Tag("deadline"));
+    public static final Note NOTE1 = new Note(new Content("Nanyang Technological University"), new Tag("university"));
+    public static final Note NOTE2 = new Note(new Content("Application Deadline 1 December 2023"), new Tag("deadline"));
 
     // Mapping
     public static final Mapping CS2040S_TO_NTU_S0402SC = new Mapping(CS2040S.getLocalCode(),

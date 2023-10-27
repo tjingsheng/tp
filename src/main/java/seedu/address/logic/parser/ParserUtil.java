@@ -11,8 +11,8 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.localcourse.LocalCode;
-import seedu.address.model.localcourse.LocalDescription;
 import seedu.address.model.localcourse.LocalCourseAttribute;
+import seedu.address.model.localcourse.LocalDescription;
 import seedu.address.model.localcourse.LocalName;
 import seedu.address.model.localcourse.LocalUnit;
 import seedu.address.model.mapping.MappingMiscInformation;
@@ -182,6 +182,21 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String localDescription} into an {@code LocalDescription}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code localDescription} is invalid.
+     */
+    public static LocalDescription parseLocalDescription(String localDescription) throws ParseException {
+        requireNonNull(localDescription);
+        String trimmedLocalDescription = localDescription.trim();
+        if (!PartnerDescription.isValidPartnerDescription(trimmedLocalDescription)) {
+            throw new ParseException(LocalDescription.MESSAGE_CONSTRAINTS);
+        }
+        return new LocalDescription(localDescription);
+    }
+
+    /**
      * Parses a {@code String partnerCode} into an {@code PartnerCode}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -230,12 +245,12 @@ public class ParserUtil {
      * Parses a {@code String partnerDescription} into an {@code PartnerDescription}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code partnerUnit} is invalid.
+     * @throws ParseException if the given {@code partnerDescription} is invalid.
      */
     public static PartnerDescription parsePartnerDescription(String partnerDescription) throws ParseException {
         requireNonNull(partnerDescription);
-        String trimmedPartnerUnit = partnerDescription.trim();
-        if (!PartnerDescription.isValidPartnerDescription(trimmedPartnerUnit)) {
+        String trimmedPartnerDescription = partnerDescription.trim();
+        if (!PartnerDescription.isValidPartnerDescription(trimmedPartnerDescription)) {
             throw new ParseException(PartnerDescription.MESSAGE_CONSTRAINTS);
         }
         return new PartnerDescription(partnerDescription);

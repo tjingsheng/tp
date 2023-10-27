@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.Optional;
 import java.util.function.Predicate;
 
@@ -113,7 +114,11 @@ public interface SeplendidModel {
      */
     void setLocalCourse(LocalCourse localCourse, LocalCourse editedLocalCourse);
 
-    //=========== FilteredLocalCourseList Accessors =============================================================
+    //=========== Filtered/SortedLocalCourseList Accessors =============================================================
+
+    ObservableList<LocalCourse> getSortedLocalCourseList();
+
+    void updatedSortedLocalList(Comparator<LocalCourse> localCourseComparator);
 
     /**
      * Returns an unmodifiable view of the filtered local course list

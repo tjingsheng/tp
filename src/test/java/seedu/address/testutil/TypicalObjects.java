@@ -48,9 +48,11 @@ public class TypicalObjects {
     public static final String INVALID_LOCAL_COURSE_CODE = "$HOW2BECOMERICH";
     public static final String INVALID_LOCAL_COURSE_NAME = " ";
     public static final Double INVALID_LOCAL_COURSE_UNIT = -1.0;
+    public static final String INVALID_LOCAL_COURSE_ATTRIBUTE = "partnercode";
 
     public static final String INVALID_PARTNER_COURSE_CODE = "$H23Y1";
     public static final String INVALID_PARTNER_COURSE_NAME = " ";
+    public static final String INVALID_UNIVERSITY_NAME = " ";
     public static final Double INVALID_PARTNER_COURSE_UNIT = -1.0;
 
 
@@ -76,7 +78,13 @@ public class TypicalObjects {
                     .build();
     public static final LocalCourse MA2001 =
             new LocalCourseBuilder().withLocalCode("MA2001")
-                    .withLocalName("Linear Algebra")
+                .withLocalName("Linear Algebra")
+                .withLocalUnit(4.0)
+                .build();
+
+    public static final LocalCourse MA1521 =
+            new LocalCourseBuilder().withLocalCode("MA1521")
+                    .withLocalName("Calculus in Computing")
                     .withLocalUnit(4.0)
                     .build();
     public static final LocalCourse TYPICAL_LOCAL_COURSE =
@@ -124,16 +132,21 @@ public class TypicalObjects {
 
     public static final PartnerCourse S0402SC = new PartnerCourseBuilder()
             .withPartnerUniversity(new UniversityName("Nanyang Technological University"))
-            .withPartnerCode("S0402SC").withPartnerName("Algorithms").build();
+            .withPartnerCode("S0402SC").withPartnerName("Algorithms").withPartnerUnit(3.0).build();
     public static final PartnerCourse STAN3230 = new PartnerCourseBuilder()
-            .withPartnerUniversity(new UniversityName("Stanford University"))
-            .withPartnerCode("STAN3230").withPartnerName("Design & Analysis of Algorithms").build();
+            .withPartnerUniversity(new UniversityName("Stanford University")).withPartnerCode("STAN3230")
+            .withPartnerName("Design & Analysis of Algorithms").withPartnerUnit(3.0).build();
+
+    public static final PartnerCourse COMP4000 = new PartnerCourseBuilder()
+            .withPartnerUniversity(new UniversityName("Seoul National University"))
+            .withPartnerCode("COMP4000").withPartnerName("Introduction to Game Development").build();
 
 
     // University
     public static final University NTU = new University(new UniversityName("Nanyang Technological University"));
     public static final University STANFORD = new University(new UniversityName("Stanford University"));
     public static final University WATERLOO = new University(new UniversityName("University of Waterloo"));
+    public static final University SNU = new University(new UniversityName("Seoul National University"));
     // Note
     public static final Note NOTE1 = new Note(new Content("Nanyang Technological University"),
             new Tag("university"));
@@ -205,7 +218,7 @@ public class TypicalObjects {
     }
 
     public static List<LocalCourse> getTypicalLocalCourses() {
-        return new ArrayList<>(Arrays.asList(CS2040S, CS3230));
+        return new ArrayList<>(Arrays.asList(CS2040S, MA2001, CS3230, CS1231S));
     }
 
     public static List<PartnerCourse> getTypicalPartnerCourses() {

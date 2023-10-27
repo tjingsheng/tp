@@ -8,7 +8,7 @@ import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.ReadOnlyUniversityCatalogue;
 
 /**
- * Represents a storage for {@link seedu.address.model.LocalCourseCatalogue}.
+ * Represents a storage for {@link seedu.address.model.UniversityCatalogue}.
  */
 public interface UniversityCatalogueStorage {
 

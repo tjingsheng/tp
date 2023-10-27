@@ -23,9 +23,9 @@ public class PartnerCourseUtil {
      */
     public static String getPartnerCourseArgumentsForAddCommand(PartnerCourse partnerCourse) {
         return String.format("[%s] [%s] [%s] [%s]",
+            partnerCourse.getPartnerUniversity(),
             partnerCourse.getPartnerCode(),
             partnerCourse.getPartnerName(),
-            partnerCourse.getPartnerUniversity(),
             partnerCourse.getPartnerUnit());
     }
 

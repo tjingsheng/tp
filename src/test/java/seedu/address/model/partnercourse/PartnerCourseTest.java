@@ -13,7 +13,7 @@ import seedu.address.testutil.PartnerCourseBuilder;
 
 public class PartnerCourseTest {
     @Test
-    public void isSameLocalCourse() {
+    public void isSamePartnerCourse() {
         // same object -> returns true
         assertTrue(COMP1000.isSamePartnerCourse(COMP1000));
 

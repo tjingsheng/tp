@@ -63,6 +63,8 @@ public interface SeplendidLogic {
      */
     Path getLocalCourseCatalogueFilePath();
 
+    ObservableList<LocalCourse> getSortedLocalCourseCatalogue();
+
     //=========== PartnerCourseCatalouge ============================================================================
     ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue();
 

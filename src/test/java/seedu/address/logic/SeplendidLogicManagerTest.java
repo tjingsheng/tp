@@ -112,6 +112,16 @@ public class SeplendidLogicManagerTest {
         assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredLocalCourseCatalogue().remove(0));
     }
 
+    @Test
+    public void getFilteredPartnerCourseList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredPartnerCourseCatalogue().remove(0));
+    }
+
+    @Test
+    public void getFilteredUniversityList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredUniversityCatalogue().remove(0));
+    }
+
     /**
      * Executes the command and confirms that
      * - no exceptions are thrown <br>

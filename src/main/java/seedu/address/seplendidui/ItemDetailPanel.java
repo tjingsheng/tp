@@ -85,8 +85,11 @@ public class ItemDetailPanel<SeplendidDataType> extends UiPart<Region> {
                         partnerCourseCatalogue.getPartnerCourseIfExists(
                                                 mapping.getPartnerCode(), mapping.getUniversityName());
                 if (localCourse.isPresent() && partnerCourse.isPresent()) {
-                    setGraphic(new MappingDetail(mapping, localCourse.get().getLocalName(),
-                            partnerCourse.get().getPartnerName()).getRoot());
+                    setGraphic(new MappingDetail(mapping,
+                            localCourse.get().getLocalName().getValue(),
+                            localCourse.get().getLocalUnit().toString(),
+                            partnerCourse.get().getPartnerName().toString(),
+                            partnerCourse.get().getPartnerUnit().toString()).getRoot());
                 } else {
                     logger.warning(MESSAGE_MAPPING_ITEM_DETAIL_PANEL_ERROR);
                 }

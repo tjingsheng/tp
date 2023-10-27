@@ -1,5 +1,11 @@
 package seedu.address;
 
+import static seedu.address.model.util.SampleDataUtil.getSampleLocalCourseCatalogue;
+import static seedu.address.model.util.SampleDataUtil.getSampleMappingCatalogue;
+import static seedu.address.model.util.SampleDataUtil.getSampleNoteCatalogue;
+import static seedu.address.model.util.SampleDataUtil.getSamplePartnerCourseCatalogue;
+import static seedu.address.model.util.SampleDataUtil.getSampleUniversityCatalogue;
+
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
@@ -19,12 +25,9 @@ import seedu.address.logic.LogicManager;
 import seedu.address.logic.SeplendidLogic;
 import seedu.address.logic.SeplendidLogicManager;
 import seedu.address.model.AddressBook;
-import seedu.address.model.LocalCourseCatalogue;
 import seedu.address.model.MappingCatalogue;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
-import seedu.address.model.NoteCatalogue;
-import seedu.address.model.PartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
 import seedu.address.model.ReadOnlyMappingCatalogue;
@@ -34,7 +37,6 @@ import seedu.address.model.ReadOnlyUniversityCatalogue;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.SeplendidModelManager;
-import seedu.address.model.UniversityCatalogue;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.seplendidui.Ui;
@@ -61,7 +63,7 @@ import seedu.address.storage.UserPrefsStorage;
  */
 public class MainApp extends Application {
 
-    public static final Version VERSION = new Version(0, 2, 2, true);
+    public static final Version VERSION = new Version(1, 3, 0, true);
 
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
@@ -212,11 +214,11 @@ public class MainApp extends Application {
         } catch (DataLoadingException e) {
             logger.warning("Data file(s) could not be loaded."
                     + " Will be starting with empty catalogues.");
-            initialLocalCourseCatalogue = new LocalCourseCatalogue();
-            initialPartnerCourseCatalogue = new PartnerCourseCatalogue();
-            initialUniversityCatalogue = new UniversityCatalogue();
-            initialNoteCatalogue = new NoteCatalogue();
-            initialMappingCatalogue = new MappingCatalogue();
+            initialLocalCourseCatalogue = getSampleLocalCourseCatalogue();
+            initialPartnerCourseCatalogue = getSamplePartnerCourseCatalogue();
+            initialUniversityCatalogue = getSampleUniversityCatalogue();
+            initialNoteCatalogue = getSampleNoteCatalogue();
+            initialMappingCatalogue = getSampleMappingCatalogue();
         }
         return new SeplendidModelManager(initialLocalCourseCatalogue, userPrefs, initialPartnerCourseCatalogue,
                 initialUniversityCatalogue, initialNoteCatalogue, initialMappingCatalogue);

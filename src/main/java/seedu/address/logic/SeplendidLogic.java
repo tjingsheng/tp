@@ -71,6 +71,7 @@ public interface SeplendidLogic {
     ObservableList<PartnerCourse> getFilteredPartnerCourseCatalogue();
 
     Path getPartnerCourseCatalogueFilePath();
+    ObservableList<PartnerCourse> getSortedPartnerCourseCatalogue();
 
     //=========== Universityatalouge ============================================================================
     ObservableList<University> getFilteredUniversityCatalogue();

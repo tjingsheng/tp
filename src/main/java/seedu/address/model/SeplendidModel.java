@@ -118,7 +118,7 @@ public interface SeplendidModel {
 
     ObservableList<LocalCourse> getSortedLocalCourseList();
 
-    void updatedSortedLocalList(Comparator<LocalCourse> localCourseComparator);
+    void updateSortedLocalList(Comparator<LocalCourse> localCourseComparator);
 
     /**
      * Returns an unmodifiable view of the filtered local course list
@@ -164,6 +164,9 @@ public interface SeplendidModel {
      * @param partnerCourse must exist in the PartnerCourseCatalogue.
      */
     void deletePartnerCourse(PartnerCourse partnerCourse) throws CommandException;
+
+    public ObservableList<PartnerCourse> getSortedPartnerCourseList();
+    public void updateSortedPartnerList(Comparator<PartnerCourse> partnerCourseComparator);
 
     /**
      * Returns an unmodifiable view of the filtered partner course list

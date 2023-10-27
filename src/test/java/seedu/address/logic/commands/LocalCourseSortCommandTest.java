@@ -47,7 +47,7 @@ public class LocalCourseSortCommandTest {
     public void execute_sortByLocalCode_success() {
         LocalCourseComparatorByLocalCode comparator = new LocalCourseComparatorByLocalCode();
         LocalCourseSortCommand localCourseSortCommand = new LocalCourseSortCommand(comparator);
-        expectedModel.updatedSortedLocalList(comparator);
+        expectedModel.updateSortedLocalList(comparator);
 
         assertSeplendidCommandSuccess(localCourseSortCommand, model,
                 LocalCourseSortCommand.MESSAGE_SUCCESS,
@@ -66,7 +66,7 @@ public class LocalCourseSortCommandTest {
     public void execute_sortByLocalName_success() {
         LocalCourseComparatorByLocalName comparator = new LocalCourseComparatorByLocalName();
         LocalCourseSortCommand localCourseSortCommand = new LocalCourseSortCommand(comparator);
-        expectedModel.updatedSortedLocalList(comparator);
+        expectedModel.updateSortedLocalList(comparator);
 
         assertSeplendidCommandSuccess(localCourseSortCommand, model,
                 LocalCourseSortCommand.MESSAGE_SUCCESS,

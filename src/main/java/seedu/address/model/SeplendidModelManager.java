@@ -44,6 +44,7 @@ public class SeplendidModelManager implements SeplendidModel {
 
     private final PartnerCourseCatalogue partnerCourseCatalogue;
     private final FilteredList<PartnerCourse> filteredPartnerCourseCatalogue;
+    private final SortedList<PartnerCourse> sortedPartnerCourseCatalogue;
 
     private final NoteCatalogue noteCatalogue;
     private final FilteredList<Note> filteredNoteCatalogue;
@@ -77,6 +78,7 @@ public class SeplendidModelManager implements SeplendidModel {
         sortedLocalCourseCatalogue = new SortedList<>(this.localCourseCatalogue.getLocalCourseList());
         this.partnerCourseCatalogue = new PartnerCourseCatalogue(partnerCourseCatalogue);
         filteredPartnerCourseCatalogue = new FilteredList<>(this.partnerCourseCatalogue.getPartnerCourseList());
+        sortedPartnerCourseCatalogue = new SortedList<>(this.partnerCourseCatalogue.getPartnerCourseList());
         this.universityCatalogue = new UniversityCatalogue(universityCatalogue);
         filteredUniversityCatalogue = new FilteredList<>(this.universityCatalogue.getUniversityList());
         this.noteCatalogue = new NoteCatalogue(noteCatalogue);
@@ -208,7 +210,7 @@ public class SeplendidModelManager implements SeplendidModel {
     }
 
     @Override
-    public void updatedSortedLocalList(Comparator<LocalCourse> localCourseComparator) {
+    public void updateSortedLocalList(Comparator<LocalCourse> localCourseComparator) {
         sortedLocalCourseCatalogue.setComparator(localCourseComparator);
     }
 
@@ -275,8 +277,17 @@ public class SeplendidModelManager implements SeplendidModel {
 
         partnerCourseCatalogue.removePartnerCourse(partnerCourse);
         updateFilteredPartnerCourseList(PREDICATE_SHOW_ALL_PARTNER_COURSES);
+    }
 
-        //how about university? - TBD: find a way to see whether the university has other courses
+    @Override
+    public ObservableList<PartnerCourse> getSortedPartnerCourseList() {
+
+        return sortedPartnerCourseCatalogue;
+    }
+
+    @Override
+    public void updateSortedPartnerList(Comparator<PartnerCourse> partnerCourseComparator) {
+        sortedPartnerCourseCatalogue.setComparator(partnerCourseComparator);
     }
 
     /**

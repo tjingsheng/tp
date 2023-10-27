@@ -148,6 +148,9 @@ public class MainWindow extends UiPart<Stage> {
             case LOCAL_COURSE_SORT:
                 itemListPanel.setDisplayList(seplendidLogic.getSortedLocalCourseCatalogue());
                 break;
+            case PARTNER_COURSE_SORT:
+                itemListPanel.setDisplayList(seplendidLogic.getSortedPartnerCourseCatalogue());
+                break;
             default:
                 // do nothing
             }

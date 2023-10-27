@@ -17,6 +17,7 @@ import seedu.address.model.localcourse.LocalUnit;
 import seedu.address.model.mapping.MappingMiscInformation;
 import seedu.address.model.notes.Content;
 import seedu.address.model.partnercourse.PartnerCode;
+import seedu.address.model.partnercourse.PartnerCourseAttribute;
 import seedu.address.model.partnercourse.PartnerName;
 import seedu.address.model.partnercourse.PartnerUnit;
 import seedu.address.model.person.Address;
@@ -330,6 +331,7 @@ public class ParserUtil {
         requireNonNull(attribute);
         String attributeLowerCase = attribute.toLowerCase();
         String resultAttribute = attributeLowerCase;
+
         switch(attributeLowerCase) {
         case("localcode"):
             resultAttribute = "LOCALCODE";
@@ -347,5 +349,37 @@ public class ParserUtil {
 
         return LocalCourseAttribute.valueOf(resultAttribute);
 
+    }
+
+    /**
+     * Parses a {@code String attribute}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code attribute} is invalid.
+     */
+    public static PartnerCourseAttribute parsePartnerCourseAttribute(String attribute) throws ParseException {
+        requireNonNull(attribute);
+        String attributeLowerCase = attribute.toLowerCase();
+        String resultAttribute = attributeLowerCase;
+
+        switch(attributeLowerCase) {
+        case("partnercode"):
+            resultAttribute = "PARTNERCODE";
+            break;
+        case("partnername"):
+            resultAttribute = "PARTNERNAME";
+            break;
+        case("university"):
+            resultAttribute = "UNIVERSITY";
+            break;
+        default:
+            break;
+        }
+
+        if (!PartnerCourseAttribute.isValidAttribute(resultAttribute)) {
+            throw new ParseException(PartnerCourseAttribute.MESSAGE_CONSTRAINTS);
+        }
+
+        return PartnerCourseAttribute.valueOf(resultAttribute);
     }
 }

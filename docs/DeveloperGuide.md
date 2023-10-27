@@ -224,23 +224,6 @@ exists, before deletion. Given below is an example usage scenario and how the `d
 `MappingDeleteCommand` will call `SeplendidModel#getMessageIfExists` which returns an `Optional<Mapping>`. If it is 
 non-empty, the deletion will be performed, otherwise a `CommandException` will be thrown.
 
-### University Feature
-
-The university `list/search/sort` mechanism is facilitated by `UniversityCatalogue`. It stores `University` objects 
-which contain the `UniversityName` object. This means that `University` is dependent on `University` class. 
-
-A `UniqueUniversityList` is stored internally in `UniversityCatalogue`. Additionally, it implements the following 
-operations:
-- `UniversityCatalogue#hasUniversity(University)`  —  Checks whether a university exists in the university
-  catalogue, to use to prevent duplicate insertion.
-
-These operations are exposed in the `SeplendidModel` interface as `SeplendidModel#hasUniversity(University).
-
-When the user launches the application for the first time. All relevant data catalogues: `UniversityCatalogue` are 
-initialised with the initial state, containing the seed data (list of partner universities) for SEP.
-
-Given below is an examples usage scenario and how the `hasUniversity` mechanism works. 
-
 #### Design considerations:
 
 **Aspect: How the dependency of `Mapping` on `LocalCourse`, `PartnerCourse` and `University` should be managed:**
@@ -258,7 +241,22 @@ mapping.
   done correctly.
 
 --------------------------------------------------------------------------------------------------------------------
+### University Feature
 
+The university `list/search/sort` mechanism is facilitated by `UniversityCatalogue`. It stores `University` objects
+which contain the `UniversityName` object. This means that `University` is dependent on `University` class.
+
+A `UniqueUniversityList` is stored internally in `UniversityCatalogue`. Additionally, it implements the following
+operations:
+- `UniversityCatalogue#hasUniversity(University)`  —  Checks whether a university exists in the university
+  catalogue, to use to prevent duplicate insertion.
+.
+These operations are exposed in the `SeplendidModel` interface as `SeplendidModel#hasUniversity(University).
+
+When the user launches the application for the first time. All relevant data catalogues: `UniversityCatalogue` are
+initialised with the initial state, containing the seed data (list of partner universities) for SEP.
+
+Given below is an examples usage scenario and how the `hasUniversity` mechanism works
 [//]: # (I'll leave some of the ab3 implementation here so you can refer, please remove if you're the last person)
 
 The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the address book to that state.

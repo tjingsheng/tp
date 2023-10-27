@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.localcourse.LocalDescription;
 import seedu.address.model.localcourse.LocalName;
 import seedu.address.model.localcourse.LocalUnit;
 
@@ -19,7 +20,7 @@ class JsonAdaptedLocalCourse {
     private final String localCode;
     private final String localName;
     private final Double localUnit;
-
+    private final String localDescription;
 
     /**
      * Constructs a {@code JsonAdaptedLocalCourse} with the given localCourse details.
@@ -27,10 +28,12 @@ class JsonAdaptedLocalCourse {
     @JsonCreator
     public JsonAdaptedLocalCourse(@JsonProperty("localCode") String localCode,
                                   @JsonProperty("localName") String localName,
-                                  @JsonProperty("localUnit") Double localUnit) {
+                                  @JsonProperty("localUnit") Double localUnit,
+                                  @JsonProperty("localDescription") String localDescription) {
         this.localCode = localCode;
         this.localName = localName;
         this.localUnit = localUnit;
+        this.localDescription = localDescription;
     }
 
     /**
@@ -40,6 +43,7 @@ class JsonAdaptedLocalCourse {
         localCode = source.getLocalCode().getValue();
         localName = source.getLocalName().getValue();
         localUnit = source.getLocalUnit().getValue();
+        localDescription = source.getLocalDescription().getValue();
     }
 
     /**
@@ -76,7 +80,16 @@ class JsonAdaptedLocalCourse {
         }
         final LocalUnit modelLocalUnit = new LocalUnit(localUnit);
 
-        return new LocalCourse(modelLocalCode, modelLocalName, modelLocalUnit);
+        if (localDescription == null) {
+            throw new IllegalValueException(
+                String.format(MISSING_FIELD_MESSAGE_FORMAT, LocalDescription.class.getSimpleName()));
+        }
+        if (!LocalDescription.isValidLocalDescription(localDescription)) {
+            throw new IllegalValueException(LocalDescription.MESSAGE_CONSTRAINTS);
+        }
+        final LocalDescription modelLocalDescription = new LocalDescription(localDescription);
+
+        return new LocalCourse(modelLocalCode, modelLocalName, modelLocalUnit, modelLocalDescription);
     }
 
 }

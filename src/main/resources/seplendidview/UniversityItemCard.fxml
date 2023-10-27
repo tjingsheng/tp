@@ -23,22 +23,16 @@
               prefHeight="50"
               GridPane.columnIndex="0">
             <padding>
-                <Insets top="5"
-                        right="15"
-                        bottom="5"
-                        left="15"/>
+                <Insets top="5" right="15" bottom="5" left="15"/>
             </padding>
-            <HBox spacing="5"
-                  alignment="CENTER_LEFT">
-                <Label fx:id="id"
-                       styleClass="item_big_label">
+            <HBox spacing="5" alignment="CENTER_LEFT">
+                <Label fx:id="id" styleClass="big-heading-font-size">
                     <minWidth>
                         <!-- Ensures that the label text is never truncated -->
                         <Region fx:constant="USE_PREF_SIZE"/>
                     </minWidth>
                 </Label>
-                <Label fx:id="universityName"
-                       styleClass="item_big_label">
+                <Label fx:id="universityName" styleClass="big-heading-font-size">
                     <minWidth>
                         <!-- Ensures that the label text is never truncated -->
                         <Region fx:constant="USE_PREF_SIZE"/>

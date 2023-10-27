@@ -5,6 +5,7 @@ import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE_CODE;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE_DESCRIPTION;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE_NAME;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE_UNIT;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE;
@@ -241,12 +242,13 @@ public class SeplendidLogicManagerTest {
         logic = new SeplendidLogicManager(model, storage);
 
         // Triggers the saveLocalCourseCatalogue method by executing an add command
-        String localCourseAddCommand = String.format("%s %s [%s] [%s] [%s]",
+        String localCourseAddCommand = String.format("%s %s [%s] [%s] [%s] [%s]",
                 LocalCourseCommand.COMMAND_WORD,
                 LocalCourseAddCommand.ACTION_WORD,
                 TYPICAL_LOCAL_COURSE_CODE,
                 TYPICAL_LOCAL_COURSE_NAME,
-                TYPICAL_LOCAL_COURSE_UNIT);
+                TYPICAL_LOCAL_COURSE_UNIT,
+                TYPICAL_LOCAL_COURSE_DESCRIPTION);
         SeplendidModelManager expectedModel = new SeplendidModelManager();
         expectedModel.addLocalCourse(TYPICAL_LOCAL_COURSE);
         assertCommandFailure(localCourseAddCommand, CommandException.class, expectedMessage, expectedModel);

@@ -76,7 +76,6 @@ public class ItemListPanel<T extends SeplendidDataType> extends UiPart<Region> {
         }
     }
 
-
     /**
      * Show the details of the selected item in the ItemDetailPanel.
      *

@@ -47,5 +47,4 @@ public class JsonSerializableLocalCourseCatalogueTest {
         assertThrows(IllegalValueException.class, JsonSerializableLocalCourseCatalogue.MESSAGE_DUPLICATE_LOCAL_COURSE,
                 dataFromFile::toModelType);
     }
-
 }

@@ -261,8 +261,8 @@ public class SampleDataUtil {
                                             new University(new UniversityName("Northwestern University")),
                                             new PartnerCode("COM3057"),
                                             new PartnerName("Introduction to Computer Animation"),
-                                            new PartnerUnit(3.0)),
-                                    };
+                                            new PartnerUnit(3.0))
+        };
     }
 
     public static ReadOnlyPartnerCourseCatalogue getSamplePartnerCourseCatalogue() {

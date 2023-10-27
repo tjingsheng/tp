@@ -6,10 +6,12 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.AddressBook;
 import seedu.address.model.LocalCourseCatalogue;
+import seedu.address.model.MappingCatalogue;
 import seedu.address.model.NoteCatalogue;
 import seedu.address.model.PartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
+import seedu.address.model.ReadOnlyMappingCatalogue;
 import seedu.address.model.ReadOnlyNoteCatalogue;
 import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyUniversityCatalogue;
@@ -18,6 +20,8 @@ import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.localcourse.LocalName;
 import seedu.address.model.localcourse.LocalUnit;
+import seedu.address.model.mapping.Mapping;
+import seedu.address.model.mapping.MappingMiscInformation;
 import seedu.address.model.notes.Content;
 import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCode;
@@ -92,7 +96,32 @@ public class SampleDataUtil {
                                   new LocalCourse(
                                           new LocalCode("IS1108"),
                                           new LocalName("Digital Ethics and Data Privacy"),
-                                          new LocalUnit(4.0))};
+                                          new LocalUnit(4.0)),
+                                  new LocalCourse(
+                                          new LocalCode("CS2100"),
+                                          new LocalName("Computer Organisation"),
+                                          new LocalUnit(4.0)),
+                                  new LocalCourse(
+                                          new LocalCode("CS2103T"),
+                                          new LocalName("Software Engineering"),
+                                          new LocalUnit(4.0)),
+                                  new LocalCourse(
+                                          new LocalCode("CS2105"),
+                                          new LocalName("Introduction to Computer Networks"),
+                                          new LocalUnit(4.0)),
+                                  new LocalCourse(
+                                          new LocalCode("CS2106"),
+                                          new LocalName("Introduction to Operating Systems"),
+                                          new LocalUnit(4.0)),
+                                  new LocalCourse(
+                                          new LocalCode("CS3230"),
+                                          new LocalName("Design and Analysis of Algorithms"),
+                                          new LocalUnit(4.0)),
+                                  new LocalCourse(
+                                          new LocalCode("CS3235"),
+                                          new LocalName("Computer Security"),
+                                          new LocalUnit(4.0))
+        };
     }
 
     public static ReadOnlyLocalCourseCatalogue getSampleLocalCourseCatalogue() {
@@ -107,7 +136,25 @@ public class SampleDataUtil {
         return new University[] {new University(new UniversityName("Imperial College of London")),
                                  new University(new UniversityName("University of Waterloo")),
                                  new University(new UniversityName("Boston College")),
-                                 new University(new UniversityName("Harvard University"))
+                                 new University(new UniversityName("Harvard University")),
+                                 new University(new UniversityName("University of California, Berkeley")),
+                                 new University(new UniversityName("Stanford University")),
+                                 new University(new UniversityName("Massachusetts Institute of Technology")),
+                                 new University(new UniversityName("Yale University")),
+                                 new University(new UniversityName("Princeton University")),
+                                 new University(new UniversityName("University of Oxford")),
+                                 new University(new UniversityName("University of Cambridge")),
+                                 new University(new UniversityName("Columbia University")),
+                                 new University(new UniversityName("University of Chicago")),
+                                 new University(new UniversityName("CalTech")),
+                                 new University(new UniversityName("University of Michigan")),
+                                 new University(new UniversityName("Cornell University")),
+                                 new University(new UniversityName("UCLA")),
+                                 new University(new UniversityName("University of Texas at Austin")),
+                                 new University(new UniversityName("University of Pennsylvania")),
+                                 new University(new UniversityName("Northwestern University")),
+                                 new University(new UniversityName("Duke University")),
+                                 new University(new UniversityName("Johns Hopkins University"))
         };
     }
 
@@ -128,14 +175,94 @@ public class SampleDataUtil {
                                     new PartnerCourse(
                                             new University(new UniversityName("University of Waterloo")),
                                             new PartnerCode("INFR1101"),
-                                            new PartnerName("Computer Security"),
+                                            new PartnerName("Ethics and Computer Security"),
                                             new PartnerUnit(5.0)),
                                     new PartnerCourse(
                                             new University(new UniversityName("Harvard University")),
                                             new PartnerCode("COM3041"),
-                                            new PartnerName("Computer Networks"),
-                                            new PartnerUnit(2.0))
-        };
+                                            new PartnerName("Computational Mathematics"),
+                                            new PartnerUnit(2.0)),
+                                    new PartnerCourse(
+                                            new University(new UniversityName("University of California, Berkeley")),
+                                            new PartnerCode("COM3042"),
+                                            new PartnerName("Operating Systems"),
+                                            new PartnerUnit(5.0)),
+                                    new PartnerCourse(
+                                            new University(new UniversityName("Stanford University")),
+                                            new PartnerCode("INFR3043"),
+                                            new PartnerName("Computer Architecture"),
+                                            new PartnerUnit(5.0)),
+                                    new PartnerCourse(
+                                            new University(new UniversityName("Massachusetts Institute of Technology")),
+                                            new PartnerCode("INFR3044"),
+                                            new PartnerName("Networking"),
+                                            new PartnerUnit(5.0)),
+                                    new PartnerCourse(
+                                            new University(new UniversityName("Yale University")),
+                                            new PartnerCode("INFR3045"),
+                                            new PartnerName("Programming Methodology II"),
+                                            new PartnerUnit(5.0)),
+                                    new PartnerCourse(
+                                            new University(new UniversityName("Princeton University")),
+                                            new PartnerCode("INFR3046"),
+                                            new PartnerName("Introduction to Algorithms"),
+                                            new PartnerUnit(5.0)),
+                                    new PartnerCourse(
+                                            new University(new UniversityName("University of Oxford")),
+                                            new PartnerCode("COM3047"),
+                                            new PartnerName("Advanced Topics in Security"),
+                                            new PartnerUnit(2.0)),
+                                    new PartnerCourse(
+                                            new University(new UniversityName("University of Cambridge")),
+                                            new PartnerCode("COMP3048"),
+                                            new PartnerName("Introduction to Artificial Intelligence"),
+                                            new PartnerUnit(2.0)),
+                                    new PartnerCourse(
+                                            new University(new UniversityName("Columbia University")),
+                                            new PartnerCode("COMP3049"),
+                                            new PartnerName("Engineering of Software"),
+                                            new PartnerUnit(2.0)),
+                                    new PartnerCourse(
+                                            new University(new UniversityName("University of Chicago")),
+                                            new PartnerCode("COMP3050"),
+                                            new PartnerName("Introduction to Computer Vision"),
+                                            new PartnerUnit(4.0)),
+                                    new PartnerCourse(
+                                            new University(new UniversityName("CalTech")),
+                                            new PartnerCode("COMP3051"),
+                                            new PartnerName("Introduction to Natural Language Processing"),
+                                            new PartnerUnit(4.0)),
+                                    new PartnerCourse(
+                                            new University(new UniversityName("University of Michigan")),
+                                            new PartnerCode("COMP3052"),
+                                            new PartnerName("Introduction to Computer Graphics"),
+                                            new PartnerUnit(4.0)),
+                                    new PartnerCourse(
+                                            new University(new UniversityName("Cornell University")),
+                                            new PartnerCode("COM3053"),
+                                            new PartnerName("Introduction to Computer Music"),
+                                            new PartnerUnit(4.0)),
+                                    new PartnerCourse(
+                                            new University(new UniversityName("UCLA")),
+                                            new PartnerCode("COM3054"),
+                                            new PartnerName("Introduction to Computer Animation"),
+                                            new PartnerUnit(2.0)),
+                                    new PartnerCourse(
+                                            new University(new UniversityName("University of Texas at Austin")),
+                                            new PartnerCode("COM3055"),
+                                            new PartnerName("Introduction to Computer Games"),
+                                            new PartnerUnit(2.0)),
+                                    new PartnerCourse(
+                                            new University(new UniversityName("University of Pennsylvania")),
+                                            new PartnerCode("COM3056"),
+                                            new PartnerName("Introduction to Computer Music"),
+                                            new PartnerUnit(3.0)),
+                                    new PartnerCourse(
+                                            new University(new UniversityName("Northwestern University")),
+                                            new PartnerCode("COM3057"),
+                                            new PartnerName("Introduction to Computer Animation"),
+                                            new PartnerUnit(3.0)),
+                                    };
     }
 
     public static ReadOnlyPartnerCourseCatalogue getSamplePartnerCourseCatalogue() {
@@ -160,4 +287,47 @@ public class SampleDataUtil {
         }
         return sampleNoteCatalogue;
     }
+
+    public static Mapping[] getSampleMappings() {
+        return new Mapping[] {new Mapping(
+                new LocalCode("CS1101S"), new UniversityName("Yale University"),
+                new PartnerCode("INFR3045"),
+                new MappingMiscInformation("Both semesters.")),
+                              new Mapping(new LocalCode("CS1231S"), new UniversityName("Harvard University"),
+                                      new PartnerCode("COM3041"),
+                                      new MappingMiscInformation("Fall semester.")),
+                              new Mapping(new LocalCode("IS1108"), new UniversityName("University of Waterloo"),
+                                      new PartnerCode("INFR1101"),
+                                      new MappingMiscInformation("Both semesters.")),
+                              new Mapping(new LocalCode("CS2100"), new UniversityName("Stanford University"),
+                                      new PartnerCode("INFR3043"),
+                                      new MappingMiscInformation("Both semesters.")),
+                              new Mapping(new LocalCode("CS3230"), new UniversityName("Princeton University"),
+                                      new PartnerCode("INFR3046"),
+                                      new MappingMiscInformation("Spring semester.")),
+                              new Mapping(new LocalCode("CS2105"),
+                                      new UniversityName("Massachusetts Institute of Technology"),
+                                      new PartnerCode("INFR3044"),
+                                      new MappingMiscInformation("Both semesters.")),
+                              new Mapping(new LocalCode("CS2106"),
+                                      new UniversityName("University of California, Berkeley"),
+                                      new PartnerCode("COM3042"),
+                                      new MappingMiscInformation("Both semesters.")),
+                              new Mapping(new LocalCode("CS3235"), new UniversityName("University of Oxford"),
+                                      new PartnerCode("COM3047"),
+                                      new MappingMiscInformation("Spring semester.")),
+                              new Mapping(new LocalCode("CS2103T"), new UniversityName("Columbia University"),
+                                      new PartnerCode("COMP3049"),
+                                      new MappingMiscInformation("Both semesters."))
+        };
+    }
+
+    public static ReadOnlyMappingCatalogue getSampleMappingCatalogue() {
+        MappingCatalogue sampleMappingCatalogue = new MappingCatalogue();
+        for (Mapping sampleMapping : getSampleMappings()) {
+            sampleMappingCatalogue.addMapping(sampleMapping);
+        }
+        return sampleMappingCatalogue;
+    }
+
 }

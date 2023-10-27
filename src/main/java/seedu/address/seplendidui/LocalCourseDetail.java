@@ -32,6 +32,6 @@ public class LocalCourseDetail extends UiPart<Region> {
         this.localCourse = localCourse;
         localName.setText(localCourse.getLocalName().toString());
         localCode.setText(localCourse.getLocalCode().toString());
-        localUnit.setText(localCourse.getLocalUnit().toString());
+        localUnit.setText("Units: " + localCourse.getLocalUnit().toString());
     }
 }

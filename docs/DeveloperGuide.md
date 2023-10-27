@@ -4,7 +4,7 @@
   pageNav: 3
 ---
 
-# AB-3 Developer Guide
+# SEPlendid Developer Guide
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -240,6 +240,19 @@ mapping.
   * Cons: We must ensure that deletion cascades, in order to maintain data integrity. This can introduce bugs if not 
   done correctly.
 
+### Sorting feature
+#### Implementation
+#### Design considerations
+
+**Aspect: Usage of enum class for attributes**
+
+* **Alternative 1 (implemented choice)**: Use enum class for LocalCourse, PartnerCourse, and Mapping to store the attributes of each data types.
+  * Pros: Easy to store constraint messages, easier to keep track of the attributes, can use for other commands such as ```search```.
+  * Cons: Need to create new enum classes for each data types.
+* **Alternative 2**: Use String to check
+  * Pros: Don't need to create new enum classes
+  * Cons: 
+
 --------------------------------------------------------------------------------------------------------------------
 
 [//]: # (I'll leave some of the ab3 implementation here so you can refer, please remove if you're the last person)
@@ -394,6 +407,20 @@ Use case ends.
   
   Use case resumes at step 1.
 
+**Use case: Sorts local course**
+
+**MSS:**
+1. User requests to sort the list of local courses.
+2. SEPlendid sorts and shows sorted list of all available local courses.
+
+Use case ends.
+
+**Extension:**
+* 1a. The command format is invalid.
+  * 1a1. SEPlendid shows an error message.
+
+  Use case resumes at step 1.
+
 #### Partner course
 **Use case: List partner course**
 
@@ -406,7 +433,7 @@ Use case ends.
 
 **MSS:**
 1. User requests to add a partner course.
-2. SEPlendid adds and shows the local course.
+2. SEPlendid adds and shows the partner course.
 Use case ends.
 
 **Extension:**
@@ -434,6 +461,20 @@ Use case ends.
   Use case resumes at step 1.
 * 1b. The partner course does not exist. 
   * 1b1. SEPlendid shows an error message.
+  
+  Use case resumes at step 1.
+
+**Use case: Sorts partner course**
+
+**MSS:**
+1. User requests to sort the list of partner courses.
+2. SEPlendid sorts and shows sorted list of all available partner courses.
+
+Use case ends.
+
+**Extension:**
+* 1a. The command format is invalid.
+  * 1a1. SEPlendid shows an error message.
   
   Use case resumes at step 1.
 

@@ -93,17 +93,23 @@ public class LocalCourseSortCommandTest {
 
         // same object -> returns true
         assertTrue(localCourseSortCommandByLocalCode.equals(localCourseSortCommandByLocalCode));
+        assertTrue(localCourseSortCommandByLocalName.equals(localCourseSortCommandByLocalName));
 
         // same values -> returns true
         LocalCourseSortCommand localCourseSortCommandByLocalCodeCopy =
                 new LocalCourseSortCommand(localCourseComparatorByLocalCode);
         assertTrue(localCourseSortCommandByLocalCode.equals(localCourseSortCommandByLocalCodeCopy));
+        LocalCourseSortCommand localCourseSortCommandByLocalNameCopy =
+                new LocalCourseSortCommand(localCourseComparatorByLocalName);
+        assertTrue(localCourseSortCommandByLocalName.equals(localCourseSortCommandByLocalNameCopy));
 
         // different types -> returns false
         assertFalse(localCourseSortCommandByLocalCode.equals(1));
+        assertFalse(localCourseSortCommandByLocalName.equals(4.12));
 
         // null -> returns false
         assertFalse(localCourseSortCommandByLocalCode.equals(null));
+        assertFalse(localCourseSortCommandByLocalName.equals(null));
 
         // different task -> returns false
         assertFalse(localCourseSortCommandByLocalCode.equals(localCourseSortCommandByLocalName));

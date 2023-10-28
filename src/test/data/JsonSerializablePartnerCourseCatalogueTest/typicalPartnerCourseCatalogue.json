@@ -5,15 +5,15 @@
     "partnerName" : "Introduction to Programming",
     "partnerUnit": 5.0
   }, {
-    "universityName" : "University of Leeds",
-    "partnerCode" : "COMP2000",
-    "partnerName" : "Introduction to Databases",
-    "partnerUnit": 5.0
-  }, {
     "universityName" : "Nanyang Technological University",
     "partnerCode" : "S0402SC",
     "partnerName" : "Algorithms",
     "partnerUnit": 3.0
+  }, {
+    "universityName" : "University of Leeds",
+    "partnerCode" : "COMP2000",
+    "partnerName" : "Introduction to Databases",
+    "partnerUnit": 5.0
   }, {
     "universityName" : "Stanford University",
     "partnerCode" : "STAN3230",

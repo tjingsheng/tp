@@ -49,6 +49,7 @@ public class TypicalObjects {
     public static final String INVALID_LOCAL_COURSE_NAME = " ";
     public static final Double INVALID_LOCAL_COURSE_UNIT = -1.0;
     public static final String INVALID_LOCAL_COURSE_ATTRIBUTE = "partnercode";
+    public static final String INVALID_PARTNER_COURSE_ATTRIBUTE = "localname";
 
     public static final String INVALID_PARTNER_COURSE_CODE = "$H23Y1";
     public static final String INVALID_PARTNER_COURSE_NAME = " ";
@@ -222,7 +223,7 @@ public class TypicalObjects {
     }
 
     public static List<PartnerCourse> getTypicalPartnerCourses() {
-        return new ArrayList<>(Arrays.asList(COMP1000, COMP2000, S0402SC, STAN3230));
+        return new ArrayList<>(Arrays.asList(COMP1000, S0402SC, COMP2000, STAN3230));
     }
 
     public static List<University> getTypicalUniversities() {

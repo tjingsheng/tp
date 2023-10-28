@@ -25,4 +25,19 @@ public class PartnerCourseComparatorByUniversity implements Comparator<PartnerCo
     public String toString() {
         return "university";
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof PartnerCourseComparatorByUniversity)) {
+            return false;
+        }
+
+        PartnerCourseComparatorByUniversity otherPartnerCourseComparatorByUniversity =
+                (PartnerCourseComparatorByUniversity) other;
+        return this.toString().equals(otherPartnerCourseComparatorByUniversity.toString());
+    }
 }

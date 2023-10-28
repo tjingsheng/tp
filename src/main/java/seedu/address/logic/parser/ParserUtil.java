@@ -329,7 +329,7 @@ public class ParserUtil {
      */
     public static LocalCourseAttribute parseLocalCourseAttribute(String attribute) throws ParseException {
         requireNonNull(attribute);
-        String attributeLowerCase = attribute.toLowerCase();
+        String attributeLowerCase = attribute.toLowerCase().trim();
         String resultAttribute = attributeLowerCase;
 
         switch(attributeLowerCase) {
@@ -359,7 +359,7 @@ public class ParserUtil {
      */
     public static PartnerCourseAttribute parsePartnerCourseAttribute(String attribute) throws ParseException {
         requireNonNull(attribute);
-        String attributeLowerCase = attribute.toLowerCase();
+        String attributeLowerCase = attribute.toLowerCase().trim();
         String resultAttribute = attributeLowerCase;
 
         switch(attributeLowerCase) {

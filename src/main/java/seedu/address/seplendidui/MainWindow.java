@@ -151,6 +151,9 @@ public class MainWindow extends UiPart<Stage> {
             case PARTNER_COURSE_SORT:
                 itemListPanel.setDisplayList(seplendidLogic.getSortedPartnerCourseCatalogue());
                 break;
+            case UNIVERSITY_SORT:
+                itemListPanel.setDisplayList(seplendidLogic.getSortedUniversityCatalogue());
+                break;
             default:
                 // do nothing
             }

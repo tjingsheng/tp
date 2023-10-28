@@ -6,12 +6,6 @@
     "partnerUnit": 5.0,
     "partnerDescription": "COMP1000 is a level 1000 course."
   }, {
-    "universityName" : "University of Leeds",
-    "partnerCode" : "COMP2000",
-    "partnerName" : "Introduction to Databases",
-    "partnerUnit": 5.0,
-    "partnerDescription": "COMP2000 is a level 2000 course."
-  }, {
     "universityName" : "Nanyang Technological University",
     "partnerCode" : "S0402SC",
     "partnerName" : "Algorithms",
@@ -22,7 +16,7 @@
     "partnerCode" : "COMP2000",
     "partnerName" : "Introduction to Databases",
     "partnerUnit": 5.0,
-    "partnerDescription": "Great intro to database system."
+    "partnerDescription": "COMP2000 is a level 2000 course."
   }, {
     "universityName" : "Stanford University",
     "partnerCode" : "STAN3230",

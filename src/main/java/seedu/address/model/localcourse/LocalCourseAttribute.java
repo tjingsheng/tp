@@ -13,7 +13,7 @@ public enum LocalCourseAttribute {
     /**
      * Returns true if the given attribute is valid.
      * @param test String to be tested
-     * @return true if attribute is valid.
+     * @return True if attribute is valid.
      */
     public static boolean isValidAttribute(String test) {
         switch(test) {

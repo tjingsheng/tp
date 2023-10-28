@@ -27,6 +27,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.university.UniversityAttribute;
 import seedu.address.model.university.UniversityName;
 
 /**
@@ -413,5 +414,31 @@ public class ParserUtil {
         }
 
         return PartnerCourseAttribute.valueOf(resultAttribute);
+    }
+
+    /**
+     * Parses a {@code String attribute}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code attribute} is invalid.
+     */
+    public static UniversityAttribute parseUniversityAttribute(String attribute) throws ParseException {
+        requireNonNull(attribute);
+        String attributeLowerCase = attribute.toLowerCase().trim();
+        String resultAttribute = attributeLowerCase;
+
+        switch(attributeLowerCase) {
+        case("universityname"):
+            resultAttribute = "UNIVERSITYNAME";
+            break;
+        default:
+            break;
+        }
+
+        if (!UniversityAttribute.isValidAttribute(resultAttribute)) {
+            throw new ParseException(UniversityAttribute.MESSAGE_CONSTRAINTS);
+        }
+
+        return UniversityAttribute.valueOf(resultAttribute);
     }
 }

@@ -3,9 +3,9 @@ package seedu.address.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalObjects.SNU;
 import static seedu.address.testutil.TypicalObjects.STANFORD;
 import static seedu.address.testutil.TypicalObjects.WATERLOO;
+import static seedu.address.testutil.TypicalObjects.YONSEI;
 import static seedu.address.testutil.TypicalObjects.getTypicalUniversityCatalogue;
 
 import java.io.IOException;
@@ -96,7 +96,7 @@ public class JsonUniversityCatalogueStorageTest {
         assertEquals(original, new UniversityCatalogue(readBack));
 
         // Save and read without specifying file path
-        original.addUniversity(SNU);
+        original.addUniversity(YONSEI);
         jsonUniversityCatalogueStorage.saveUniversityCatalogue(original); // file path not specified
         readBack = jsonUniversityCatalogueStorage.readUniversityCatalogue().get(); // file path not specified
         assertEquals(original, new UniversityCatalogue(readBack));

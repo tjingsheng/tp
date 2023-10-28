@@ -369,9 +369,18 @@ public class SeplendidModelManager implements SeplendidModel {
     }
 
     @Override
+    public ObservableList<University> getSortedUniversityList() {
+
+        return sortedUniversityCatalogue;
+    }
+
+    @Override
     public void updateSortedUniversityList(Comparator<University> universityComparator) {
         sortedUniversityCatalogue.setComparator(universityComparator);
     }
+
+
+
 
     //=========== FilteredUniversityList Accessors =============================================================
 

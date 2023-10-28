@@ -194,6 +194,7 @@ public interface SeplendidModel {
     void addUniversity(University university);
 
     void setUniversity(University target, University editedUniversity);
+    ObservableList<University> getSortedUniversityList();
 
     void updateSortedUniversityList(Comparator<University> universityComparator);
 

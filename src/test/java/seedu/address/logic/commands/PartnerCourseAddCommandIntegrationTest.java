@@ -38,7 +38,7 @@ public class PartnerCourseAddCommandIntegrationTest {
         model.addUniversity(WATERLOO);
         PartnerCourse validPartnerCourse = new PartnerCourseBuilder().build();
 
-        SeplendidModel expectedModel = new SeplendidModelManager(model.getLocalCourseCatalogue(), new UserPrefs(),
+        SeplendidModel expectedModel = new SeplendidModelManager(getTypicalLocalCourseCatalogue(), new UserPrefs(),
                 model.getPartnerCourseCatalogue(), new UniversityCatalogueBuilder().withUniversity(WATERLOO).build(),
                 getTypicalNoteCatalogue(), getTypicalMappingCatalogue());
         expectedModel.addPartnerCourse(validPartnerCourse);

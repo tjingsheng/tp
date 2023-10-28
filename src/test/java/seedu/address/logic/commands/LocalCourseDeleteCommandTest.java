@@ -334,6 +334,11 @@ public class LocalCourseDeleteCommandTest {
         }
 
         @Override
+        public ObservableList<University> getSortedUniversityList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void updateSortedUniversityList(Comparator<University> universityComparator) {
             throw new AssertionError("This method should not be called.");
         }

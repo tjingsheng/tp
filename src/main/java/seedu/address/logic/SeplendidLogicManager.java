@@ -134,16 +134,24 @@ public class SeplendidLogicManager implements SeplendidLogic {
     }
     //=========== UniversityCatalouge ================================================================================
 
+    @Override
     public ReadOnlyUniversityCatalogue getUniversityCatalogue() {
         return model.getUniversityCatalogue();
     }
 
+    @Override
     public ObservableList<University> getFilteredUniversityCatalogue() {
         return model.getFilteredUniversityList();
     }
 
+    @Override
     public Path getUniversityeCatalogueFilePath() {
         return model.getUniversityCatalogueFilePath();
+    }
+
+    @Override
+    public ObservableList<University> getSortedUniversityCatalogue() {
+        return model.getSortedUniversityList();
     }
 
     //=========== NoteCatalouge ================================================================================

@@ -19,15 +19,20 @@ public class LocalCourse implements SeplendidDataType {
     // Data fields
     private final LocalName localName;
     private final LocalUnit localUnit;
+    private final LocalDescription localDescription;
 
     /**
      * Every field must be present and not null
      */
-    public LocalCourse(LocalCode localCode, LocalName localName, LocalUnit localUnit) {
-        requireAllNonNull(localCode, localName, localUnit);
+    public LocalCourse(LocalCode localCode,
+                       LocalName localName,
+                       LocalUnit localUnit,
+                       LocalDescription localDescription) {
+        requireAllNonNull(localCode, localName, localUnit, localDescription);
         this.localCode = localCode;
         this.localName = localName;
         this.localUnit = localUnit;
+        this.localDescription = localDescription;
     }
 
     // Getters
@@ -43,6 +48,10 @@ public class LocalCourse implements SeplendidDataType {
         return localUnit;
     }
 
+    public LocalDescription getLocalDescription() {
+        return localDescription;
+    }
+
     /**
      * Returns true if both LocalCourses have the same localCode.
      * Assumption: localCode is the primary key i.e. there exists
@@ -55,8 +64,7 @@ public class LocalCourse implements SeplendidDataType {
             return true;
         }
 
-        return otherLocalCourse != null
-                && otherLocalCourse.getLocalCode().equals(getLocalCode());
+        return otherLocalCourse != null && otherLocalCourse.getLocalCode().equals(getLocalCode());
     }
 
     /**
@@ -79,22 +87,23 @@ public class LocalCourse implements SeplendidDataType {
 
         LocalCourse otherLocalCourse = (LocalCourse) other;
         return localCode.equals(otherLocalCourse.localCode)
-                && localName.equals(otherLocalCourse.localName)
-                && localUnit.equals(otherLocalCourse.localUnit);
+            && localName.equals(otherLocalCourse.localName)
+            && localUnit.equals(otherLocalCourse.localUnit)
+            && localDescription.equals(otherLocalCourse.localDescription);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(localCode, localName, localUnit);
+        return Objects.hash(localCode, localName, localUnit, localDescription);
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
-                .add("localCode", localCode)
-                .add("localName", localName)
-                .add("localUnit", localUnit)
-                .toString();
+        return new ToStringBuilder(this).add("localCode", localCode)
+                                        .add("localName", localName)
+                                        .add("localUnit", localUnit)
+                                        .add("localDescription", localDescription)
+                                        .toString();
     }
 }

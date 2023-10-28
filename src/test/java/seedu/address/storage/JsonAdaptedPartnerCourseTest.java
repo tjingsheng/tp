@@ -8,6 +8,7 @@ import static seedu.address.testutil.TypicalObjects.INVALID_PARTNER_COURSE_CODE;
 import static seedu.address.testutil.TypicalObjects.INVALID_PARTNER_COURSE_NAME;
 import static seedu.address.testutil.TypicalObjects.INVALID_PARTNER_COURSE_UNIT;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE_CODE;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE_DESCRIPTION;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE_NAME;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE_UNIT;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_UNIVERSITY_NAME;
@@ -34,7 +35,8 @@ public class JsonAdaptedPartnerCourseTest {
                 TYPICAL_UNIVERSITY_NAME,
                 INVALID_PARTNER_COURSE_CODE,
                 TYPICAL_PARTNER_COURSE_NAME,
-                TYPICAL_PARTNER_COURSE_UNIT);
+                TYPICAL_PARTNER_COURSE_UNIT,
+                TYPICAL_PARTNER_COURSE_DESCRIPTION);
         String expectedMessage = PartnerCode.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, partnerCourse::toModelType);
     }
@@ -46,7 +48,8 @@ public class JsonAdaptedPartnerCourseTest {
                 TYPICAL_UNIVERSITY_NAME,
                 null,
                 TYPICAL_PARTNER_COURSE_NAME,
-                TYPICAL_PARTNER_COURSE_UNIT);
+                TYPICAL_PARTNER_COURSE_UNIT,
+                TYPICAL_PARTNER_COURSE_DESCRIPTION);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, PartnerCode.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, partnerCourse::toModelType);
     }
@@ -58,7 +61,8 @@ public class JsonAdaptedPartnerCourseTest {
                 TYPICAL_UNIVERSITY_NAME,
                 TYPICAL_PARTNER_COURSE_CODE,
                 INVALID_PARTNER_COURSE_NAME,
-                TYPICAL_PARTNER_COURSE_UNIT);
+                TYPICAL_PARTNER_COURSE_UNIT,
+                TYPICAL_PARTNER_COURSE_DESCRIPTION);
         String expectedMessage = PartnerName.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, partnerCourse::toModelType);
     }
@@ -69,7 +73,8 @@ public class JsonAdaptedPartnerCourseTest {
             TYPICAL_UNIVERSITY_NAME,
             TYPICAL_PARTNER_COURSE_CODE,
             null,
-            TYPICAL_PARTNER_COURSE_UNIT);
+            TYPICAL_PARTNER_COURSE_UNIT,
+            TYPICAL_PARTNER_COURSE_DESCRIPTION);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, PartnerName.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, partnerCourse::toModelType);
     }
@@ -80,7 +85,8 @@ public class JsonAdaptedPartnerCourseTest {
             TYPICAL_UNIVERSITY_NAME,
             TYPICAL_PARTNER_COURSE_CODE,
             TYPICAL_PARTNER_COURSE_NAME,
-            null);
+            null,
+            TYPICAL_PARTNER_COURSE_DESCRIPTION);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, PartnerUnit.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, partnerCourse::toModelType);
     }
@@ -91,7 +97,8 @@ public class JsonAdaptedPartnerCourseTest {
             TYPICAL_UNIVERSITY_NAME,
             TYPICAL_PARTNER_COURSE_CODE,
             TYPICAL_PARTNER_COURSE_NAME,
-            INVALID_PARTNER_COURSE_UNIT);
+            INVALID_PARTNER_COURSE_UNIT,
+            TYPICAL_PARTNER_COURSE_DESCRIPTION);
         String expectedMessage = PartnerUnit.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, partnerCourse::toModelType);
     }

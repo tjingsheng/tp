@@ -30,22 +30,19 @@
             </padding>
             <HBox spacing="5"
                   alignment="CENTER_LEFT">
-                <Label fx:id="id"
-                       styleClass="item_big_label">
+                <Label fx:id="id" styleClass="big-heading-font-size">
                     <minWidth>
                         <!-- Ensures that the label text is never truncated -->
                         <Region fx:constant="USE_PREF_SIZE"/>
                     </minWidth>
                 </Label>
-                <Label fx:id="localCode"
-                       styleClass="item_big_label">
+                <Label fx:id="localCode" styleClass="big-heading-font-size">
                     <minWidth>
                         <!-- Ensures that the label text is never truncated -->
                         <Region fx:constant="USE_PREF_SIZE"/>
                     </minWidth>
                 </Label>
-                <Label fx:id="localName"
-                       styleClass="item_small_label"/>
+                <Label fx:id="localName" styleClass="small-heading-font-size"/>
             </HBox>
         </VBox>
     </GridPane>

@@ -26,10 +26,11 @@ public class LocalCourseUtil {
      * Returns the part of the add command string for the given {@code localCourse}'s details.
      */
     public static String getLocalCourseArgumentsForAddCommand(LocalCourse localCourse) {
-        return String.format("[%s] [%s] [%s]",
+        return String.format("[%s] [%s] [%s] [%s]",
             localCourse.getLocalCode(),
             localCourse.getLocalName(),
-            localCourse.getLocalUnit());
+            localCourse.getLocalUnit(),
+            localCourse.getLocalDescription());
     }
 
     /**

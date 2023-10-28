@@ -85,9 +85,9 @@ private Label address;
 
 ``` xml
 ...
-<Label fx:id="phone" styleClass="item_small_label" text="\$phone" />
-<Label fx:id="address" styleClass="item_small_label" text="\$address" />
-<Label fx:id="email" styleClass="item_small_label" text="\$email" />
+<Label fx:id="phone" styleClass="text-font-size" text="\$phone" />
+<Label fx:id="address" styleClass="text-font-size" text="\$address" />
+<Label fx:id="email" styleClass="text-font-size" text="\$email" />
 ...
 ```
 

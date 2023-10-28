@@ -2,6 +2,7 @@ package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_LOCALCODE;
+import static seedu.address.logic.parser.CliSyntax.PARAMETER_LOCALDESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_LOCALNAME;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_LOCALUNIT;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
@@ -10,6 +11,7 @@ import seedu.address.logic.commands.LocalCourseAddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.localcourse.LocalDescription;
 import seedu.address.model.localcourse.LocalName;
 import seedu.address.model.localcourse.LocalUnit;
 
@@ -26,26 +28,31 @@ public class LocalCourseAddCommandParser implements Parser<LocalCourseAddCommand
      */
     public LocalCourseAddCommand parse(String args) throws ParseException {
         if (!areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, LocalCourseAddCommand.LOCAL_COURSE_ADD_MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                LocalCourseAddCommand.LOCAL_COURSE_ADD_MESSAGE_USAGE));
         }
 
         SeplendidArgumentMap parameterToArgMap =
-            SeplendidArgumentTokenizer.tokenize(args, PARAMETER_LOCALCODE, PARAMETER_LOCALNAME, PARAMETER_LOCALUNIT);
+            SeplendidArgumentTokenizer.tokenize(args, PARAMETER_LOCALCODE, PARAMETER_LOCALNAME, PARAMETER_LOCALUNIT,
+                PARAMETER_LOCALDESCRIPTION);
 
-        if (!ParserUtil.areArgumentsPresent(
-            parameterToArgMap, PARAMETER_LOCALCODE, PARAMETER_LOCALNAME, PARAMETER_LOCALUNIT)
-        ) {
-            throw new ParseException(
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, LocalCourseAddCommand.LOCAL_COURSE_ADD_MESSAGE_USAGE));
+        if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_LOCALCODE, PARAMETER_LOCALNAME,
+            PARAMETER_LOCALUNIT, PARAMETER_LOCALDESCRIPTION)) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                LocalCourseAddCommand.LOCAL_COURSE_ADD_MESSAGE_USAGE));
         }
 
         // All arguments should be a non-empty {@code Optional}
-        LocalCode localCode = ParserUtil.parseLocalCode(parameterToArgMap.getValue(PARAMETER_LOCALCODE).get());
-        LocalName localName = ParserUtil.parseLocalName(parameterToArgMap.getValue(PARAMETER_LOCALNAME).get());
-        LocalUnit localUnit = ParserUtil.parseLocalUnit(parameterToArgMap.getValue(PARAMETER_LOCALUNIT).get());
+        LocalCode localCode = ParserUtil.parseLocalCode(parameterToArgMap.getValue(PARAMETER_LOCALCODE)
+                                                                         .get());
+        LocalName localName = ParserUtil.parseLocalName(parameterToArgMap.getValue(PARAMETER_LOCALNAME)
+                                                                         .get());
+        LocalUnit localUnit = ParserUtil.parseLocalUnit(parameterToArgMap.getValue(PARAMETER_LOCALUNIT)
+                                                                         .get());
+        LocalDescription localDescription =
+            ParserUtil.parseLocalDescription(parameterToArgMap.getValue(PARAMETER_LOCALDESCRIPTION).get());
 
-        LocalCourse localCourse = new LocalCourse(localCode, localName, localUnit);
+        LocalCourse localCourse = new LocalCourse(localCode, localName, localUnit, localDescription);
 
         return new LocalCourseAddCommand(localCourse);
     }

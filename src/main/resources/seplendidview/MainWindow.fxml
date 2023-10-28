@@ -27,63 +27,50 @@
             <VBox>
                 <StackPane VBox.vgrow="NEVER"
                            fx:id="commandBoxPlaceholder"
-                           styleClass="background-color">
+                           styleClass="primary-background-color">
                     <padding>
-                        <Insets top="20"
-                                right="20"
-                                bottom="10"
-                                left="20"/>
+                        <Insets top="20" right="20" bottom="10" left="20"/>
                     </padding>
                 </StackPane>
 
                 <StackPane VBox.vgrow="NEVER"
                            fx:id="resultBoxPlaceholder"
-                           styleClass="background-color"
+                           styleClass="primary-background-color"
                            minHeight="120"
                            prefHeight="120"
                            maxHeight="120">
                     <padding>
-                        <Insets top="10"
-                                right="20"
-                                bottom="10"
-                                left="20"/>
+                        <Insets top="10" right="20" bottom="10" left="20"/>
                     </padding>
                 </StackPane>
 
                 <HBox HBox.hgrow="ALWAYS"
                       VBox.vgrow="ALWAYS"
-                      styleClass="background-color">
+                      styleClass="primary-background-color">
                     <VBox fx:id="itemList"
                           minWidth="200"
                           prefWidth="200"
                           HBox.hgrow="ALWAYS"
                           VBox.vgrow="ALWAYS">
                         <padding>
-                            <Insets top="10"
-                                    right="10"
-                                    bottom="20"
-                                    left="20"/>
+                            <Insets top="10" right="10" bottom="20" left="20"/>
                         </padding>
                         <StackPane fx:id="itemListPanelPlaceholder"
                                    VBox.vgrow="ALWAYS"
-                                   styleClass="round-border"/>
+                                   styleClass="round-border, secondary-background-color"/>
                     </VBox>
-
                     <VBox fx:id="itemDetail"
-                          styleClass="background-color"
                           minWidth="200"
                           prefWidth="200"
                           HBox.hgrow="ALWAYS"
-                          VBox.vgrow="ALWAYS">
+                          VBox.vgrow="ALWAYS"
+                          styleClass="primary-background-color">
                         <padding>
-                            <Insets top="10"
-                                    right="20"
-                                    bottom="20"
-                                    left="10"/>
+                            <Insets top="10" right="20" bottom="20" left="10"/>
                         </padding>
                         <StackPane fx:id="itemDetailPanelPlaceholder"
                                    VBox.vgrow="ALWAYS"
-                                   styleClass="round-border"/>
+                                   styleClass="round-border, secondary-background-color"/>
                     </VBox>
                 </HBox>
             </VBox>

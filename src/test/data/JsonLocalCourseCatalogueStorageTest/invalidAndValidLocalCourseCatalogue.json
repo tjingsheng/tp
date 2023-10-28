@@ -2,11 +2,15 @@
   "localCourses": [
     {
       "localCode": "VALID123",
-      "localName": "Valid Local NUS Course"
+      "localName": "Valid Local NUS Course",
+      "localUnit" : 4.0,
+      "localDescription": "Valid Description!"
     },
     {
       "localCode": "INVALID1234567890",
-      "localName": " "
+      "localName": " ",
+      "localUnit" : 4.0,
+      "localDescription": ""
     }
   ]
 }

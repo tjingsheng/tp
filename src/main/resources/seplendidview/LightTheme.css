@@ -1,4 +1,13 @@
-/* Scroll Bar */
+/* Scrolling */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
+
 .scroll-bar {
     -fx-background-color: transparent;
     -fx-overflow: overlay;
@@ -76,49 +85,30 @@
 }
 /**/
 
-/* Detail Card labels */
-.item_big_label {
-    -fx-font-size: 18px;
+/* Font Sizes */
+.title-font-size {
+    -fx-font-size: 24px;
 }
 
-.item_medium_label {
-    -fx-font-size: 15px;
+.big-heading-font-size {
+    -fx-font-size: 20px;
 }
 
-.item_small_label {
-    -fx-font-size: 12px;
-}
-/**/
-
-/* Cell labels */
-.detail_title_label {
-    -fx-font-size: 21px;
+.small-heading-font-size {
+    -fx-font-size: 16px;
 }
 
-.detail_heading_label {
-    -fx-font-size: 15px;
-}
-
-.detail_text_label {
-    -fx-font-size: 12px;
-}
-/**/
-
-/*Text Field*/
-.text-field {
-    -fx-font-size: 12pt;
-    -fx-font-color: black;
+.text-font-size {
+    -fx-font-size: 16px;
 }
 /**/
 
 /* Text Area */
-.text-area {
-    -fx-font-size: 12pt;
-    -fx-font-color: black;
+#resultTextArea {
+ -fx-padding: 5;
 }
-
 .text-area .content {
-    -fx-background-color: white;
+    -fx-background-color: transparent;
 }
 
 .text-area .scroll-pane .corner {
@@ -128,7 +118,6 @@
 
 /* Enter Button */
 #enterButton {
-    -fx-font-size: 12pt;
     -fx-background-color: #CCDEF0;
     -fx-background-insets: 0 0 0 15;
     -fx-border-insets: 0 0 0 15;
@@ -136,7 +125,7 @@
 }
 
 #enterButton.content {
-    -fx-background-color: white;
+    -fx-background-color: transparent;
 }
 
 #enterButton:hover {
@@ -150,8 +139,12 @@
     -fx-text-fill: #FF0000 !important; /* The error class should always override the default text-fill style */
 }
 
-.background-color {
+.primary-background-color {
      -fx-background-color: #E0EBF6;
+}
+
+.secondary-background-color {
+    -fx-background-color: white;
 }
 
 .round-border {
@@ -161,25 +154,30 @@
     -fx-border-color: #808080;
 }
 
-#commandTextField {
-    -fx-background-color: white;
-}
-
-#resultTextArea {
-    -fx-background-color: white;
-    -fx-padding: 5;
-}
-
-#itemListPanelPlaceholder {
-    -fx-background-color: white;
-}
-
-#itemDetailPanelPlaceholder {
-    -fx-background-color: white;
-}
-
-#itemDetailView {
+.detail-card {
     -fx-background-color: #CCDEF0;
+    -fx-padding: 0;
+    -fx-background-radius: 15;
     -fx-background-insets: 5;
     -fx-border-insets: 5;
+}
+
+#localDescription{
+    -fx-background-color: #CCDEF0;
+    -fx-min-height: 1000;
+}
+
+#localDescription .content{
+    -fx-background-color: transparent;
+    -fx-padding:0;
+}
+
+#partnerDescription{
+    -fx-background-color: #CCDEF0;
+    -fx-min-height: 1000;
+}
+
+#partnerDescription .content{
+    -fx-background-color: transparent;
+    -fx-padding:0;
 }

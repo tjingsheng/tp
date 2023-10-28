@@ -5,17 +5,17 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <StackPane xmlns:fx="http://javafx.com/fxml/1"
-           styleClass="background-color"
+           styleClass="primary-background-color"
            xmlns="http://javafx.com/javafx/17">
     <HBox>
         <TextField fx:id="commandTextField"
-                   styleClass="round-border"
+                   styleClass="round-border, small-heading-font-size, secondary-background-color"
                    onAction="#handleCommandEntered"
                    promptText="Enter command here..."
                    minHeight="40"
                    HBox.Hgrow="ALWAYS"/>
         <Button fx:id="enterButton"
-                styleClass="round-border"
+                styleClass="round-border, small-heading-font-size"
                 onAction="#handleCommandEntered"
                 mnemonicParsing="false"
                 text="Enter"

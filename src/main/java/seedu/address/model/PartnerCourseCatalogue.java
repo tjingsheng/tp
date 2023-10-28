@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,6 +11,7 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.partnercourse.UniquePartnerCourseList;
+import seedu.address.model.university.UniversityName;
 
 /**
  * Wraps partner course data at the catalogue level
@@ -68,9 +70,10 @@ public class PartnerCourseCatalogue implements ReadOnlyPartnerCourseCatalogue {
     /**
      * Gets the partner course if it exists.
      */
-    public Optional<PartnerCourse> getPartnerCourseIfExists(PartnerCode partnerCodeQuery) {
-        requireNonNull(partnerCodeQuery);
-        return partnerCourses.getPartnerCourseIfExists(partnerCodeQuery);
+    public Optional<PartnerCourse> getPartnerCourseIfExists(
+            PartnerCode partnerCodeQuery, UniversityName universityNameQuery) {
+        requireAllNonNull(partnerCodeQuery, universityNameQuery);
+        return partnerCourses.getPartnerCourseIfExists(partnerCodeQuery, universityNameQuery);
     }
 
     /**

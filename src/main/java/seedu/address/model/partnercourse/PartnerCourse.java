@@ -71,7 +71,8 @@ public class PartnerCourse implements SeplendidDataType {
             return false;
         }
 
-        return otherPartnerCourse.getPartnerCode().equals(getPartnerCode());
+        return otherPartnerCourse.getPartnerCode().equals(getPartnerCode())
+                && otherPartnerCourse.getPartnerUniversity().equals(getPartnerUniversity());
     }
 
     @Override

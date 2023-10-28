@@ -149,14 +149,52 @@ public class SeplendidModelManagerTest {
     }
 
     @Test
-    public void getPartnerCourseIfExists_partnerCourseInPartnerCourseCatalogue_returnsPartnerCourse() {
-        modelManager.addPartnerCourse(COMP2000);
-        assertEquals(COMP2000, modelManager.getPartnerCourseIfExists(COMP2000.getPartnerCode()).get());
+    public void hasPartnerCourse_partnerCourseWithSamePartnerCodeDifferentUniversityName_returnsFalse() {
+        modelManager.addPartnerCourse(COMP1000);
+        assertFalse(modelManager.hasPartnerCourse(COMP1000.getPartnerCode(),
+                COMP2000.getPartnerUniversity().getUniversityName()));
     }
 
     @Test
+    public void hasPartnerCourse_partnerCourseWithDifferentPartnerCodeSameUniversityName_returnsFalse() {
+        modelManager.addPartnerCourse(COMP1000);
+        assertFalse(modelManager.hasPartnerCourse(COMP2000.getPartnerCode(),
+                COMP1000.getPartnerUniversity().getUniversityName()));
+    }
+
+    @Test
+    public void hasPartnerCourse_partnerCourseWithSameKeyValues_returnsTrue() {
+        modelManager.addPartnerCourse(COMP1000);
+        assertTrue(modelManager.hasPartnerCourse(COMP1000.getPartnerCode(),
+                COMP1000.getPartnerUniversity().getUniversityName()));
+    }
+
+    @Test
+    public void getPartnerCourseIfExists_partnerCourseInPartnerCourseCatalogueWithSameKeyValues_returnsPartnerCourse() {
+        modelManager.addPartnerCourse(COMP2000);
+        assertEquals(COMP2000, modelManager.getPartnerCourseIfExists(COMP2000.getPartnerCode(),
+                COMP2000.getPartnerUniversity().getUniversityName()).get());
+    }
+
+    @Test
+    public void getPartnerCourseIfExists_partnerCourseWithSamePartnerCodeDifferentUniversityName_returnsEmpty() {
+        modelManager.addPartnerCourse(COMP2000);
+        assertEquals(Optional.empty(), modelManager.getPartnerCourseIfExists(COMP2000.getPartnerCode(),
+                COMP1000.getPartnerUniversity().getUniversityName()));
+    }
+
+    @Test
+    public void getPartnerCourseIfExists_partnerCourseWithDifferentPartnerCodeSameUniversityName_returnsEmpty() {
+        modelManager.addPartnerCourse(COMP2000);
+        assertEquals(Optional.empty(), modelManager.getPartnerCourseIfExists(COMP1000.getPartnerCode(),
+                COMP2000.getPartnerUniversity().getUniversityName()));
+    }
+
+
+    @Test
     public void getPartnerCourseIfExists_partnerCourseNotInPartnerCourseCatalogue_returnsEmpty() {
-        assertEquals(Optional.empty(), modelManager.getPartnerCourseIfExists(COMP2000.getPartnerCode()));
+        assertEquals(Optional.empty(), modelManager.getPartnerCourseIfExists(COMP2000.getPartnerCode(),
+                COMP2000.getPartnerUniversity().getUniversityName()));
     }
 
     @Test

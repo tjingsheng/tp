@@ -63,7 +63,7 @@ public class MappingAddCommand extends MappingCommand {
             throw new CommandException(MESSAGE_NONEXISTENT_LOCALCODE);
         }
 
-        if (!seplendidModel.hasPartnerCourse(mappingToAdd.getPartnerCode())) {
+        if (!seplendidModel.hasPartnerCourse(mappingToAdd.getPartnerCode(), mappingToAdd.getUniversityName())) {
             throw new CommandException(MESSAGE_NONEXISTENT_PARTNERCODE);
         }
 

@@ -145,12 +145,12 @@ public interface SeplendidModel {
     /**
      * Returns true if a partner course with {@code partnerCode} exists in the PartnerCourseCatalogue.
      */
-    boolean hasPartnerCourse(PartnerCode partnerCode);
+    boolean hasPartnerCourse(PartnerCode partnerCode, UniversityName universityName);
 
     /**
      * Returns a LocalCourse in an Optional if exists, else return empty Optional.
      */
-    Optional<PartnerCourse> getPartnerCourseIfExists(PartnerCode partnerCode);
+    Optional<PartnerCourse> getPartnerCourseIfExists(PartnerCode partnerCode, UniversityName universityName);
 
     /**
      * Adds the given PartnerCourse.

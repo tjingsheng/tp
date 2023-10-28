@@ -8,6 +8,7 @@ import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalObjects.COMP1000;
 import static seedu.address.testutil.TypicalObjects.COMP2000;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE_CODE;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_UNIVERSITY_NAME;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -49,14 +50,15 @@ public class PartnerCourseDeleteCommandTest {
 
     @Test
     public void constructor_nullPartnerCode_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new PartnerCourseDeleteCommand(null));
+        assertThrows(NullPointerException.class, () -> new PartnerCourseDeleteCommand(null, null));
     }
 
     @Test
     public void execute_partnerCourseAcceptedByModel_deleteSuccessful() throws Exception {
         ModelStubAcceptingPartnerCourseDeleted modelStub = new ModelStubAcceptingPartnerCourseDeleted();
 
-        CommandResult commandResult = new PartnerCourseDeleteCommand(COMP1000.getPartnerCode()).execute(modelStub);
+        CommandResult commandResult = new PartnerCourseDeleteCommand(
+                COMP1000.getPartnerCode(), COMP1000.getPartnerUniversity().getUniversityName()).execute(modelStub);
 
         assertEquals(String.format(PartnerCourseDeleteCommand.MESSAGE_SUCCESS, Messages.format(COMP1000)),
                      commandResult.getFeedbackToUser());
@@ -66,8 +68,9 @@ public class PartnerCourseDeleteCommandTest {
     @Test
     public void execute_partnerCourseDoesNotExist_throwsCommandException() {
         PartnerCourse validPartnerCourse = new PartnerCourseBuilder().build();
-        PartnerCourseDeleteCommand partnerCourseDeleteCommand = new PartnerCourseDeleteCommand(new PartnerCode(
-            TYPICAL_PARTNER_COURSE_CODE));
+
+        PartnerCourseDeleteCommand partnerCourseDeleteCommand = new PartnerCourseDeleteCommand(
+                new PartnerCode(TYPICAL_PARTNER_COURSE_CODE), new UniversityName(TYPICAL_UNIVERSITY_NAME));
         SeplendidModelStub modelStub = new SeplendidModelStubWithPartnerCourse(validPartnerCourse);
 
         assertThrows(
@@ -80,14 +83,16 @@ public class PartnerCourseDeleteCommandTest {
     public void equals() {
         PartnerCode comp1000 = new PartnerCode("COMP1000");
         PartnerCode comp2000 = new PartnerCode("COMP2000");
-        PartnerCourseDeleteCommand deleteComp1000Command = new PartnerCourseDeleteCommand(comp1000);
-        PartnerCourseDeleteCommand deleteComp2000Command = new PartnerCourseDeleteCommand(comp2000);
+        UniversityName edinburgh = new UniversityName("University of Edinburgh");
+        UniversityName leeds = new UniversityName("University of Leeds");
+        PartnerCourseDeleteCommand deleteComp1000Command = new PartnerCourseDeleteCommand(comp1000, edinburgh);
+        PartnerCourseDeleteCommand deleteComp2000Command = new PartnerCourseDeleteCommand(comp2000, leeds);
 
         // same object -> returns true
         assertTrue(deleteComp1000Command.equals(deleteComp1000Command));
 
         // same values -> returns true
-        PartnerCourseDeleteCommand deleteComp1000CommandCopy = new PartnerCourseDeleteCommand(comp1000);
+        PartnerCourseDeleteCommand deleteComp1000CommandCopy = new PartnerCourseDeleteCommand(comp1000, edinburgh);
         assertTrue(deleteComp1000Command.equals(deleteComp1000CommandCopy));
 
         // different types -> returns false
@@ -227,12 +232,13 @@ public class PartnerCourseDeleteCommandTest {
         }
 
         @Override
-        public boolean hasPartnerCourse(PartnerCode partnerCode) {
+        public boolean hasPartnerCourse(PartnerCode partnerCode, UniversityName universityName) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public Optional<PartnerCourse> getPartnerCourseIfExists(PartnerCode partnerCode) {
+        public Optional<PartnerCourse> getPartnerCourseIfExists(
+                PartnerCode partnerCode, UniversityName universityName) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -441,8 +447,10 @@ public class PartnerCourseDeleteCommandTest {
         }
 
         @Override
-        public Optional<PartnerCourse> getPartnerCourseIfExists(PartnerCode partnerCode) {
-            if (!partnerCourse.getPartnerCode().equals(partnerCode)) {
+        public Optional<PartnerCourse> getPartnerCourseIfExists(
+                PartnerCode partnerCode, UniversityName universityName) {
+            if (!partnerCourse.getPartnerCode().equals(partnerCode)
+                    || !partnerCourse.getPartnerUniversity().getUniversityName().equals(universityName)) {
                 return Optional.empty();
             }
             return Optional.of(partnerCourse);
@@ -468,8 +476,10 @@ public class PartnerCourseDeleteCommandTest {
         }
 
         @Override
-        public Optional<PartnerCourse> getPartnerCourseIfExists(PartnerCode partnerCode) {
-            return partnerCoursesAdded.stream().filter(pc -> pc.getPartnerCode().equals(partnerCode)).findFirst();
+        public Optional<PartnerCourse> getPartnerCourseIfExists(
+                PartnerCode partnerCode, UniversityName universityName) {
+            return partnerCoursesAdded.stream().filter(pc -> pc.getPartnerCode().equals(partnerCode)
+                    && pc.getPartnerUniversity().getUniversityName().equals(universityName)).findFirst();
         }
 
         @Override

@@ -41,8 +41,33 @@ public class UniquePartnerCourseListTest {
     public void contains_partnerCourseWithSameIdentityFieldsInList_returnsTrue() {
         uniquePartnerCourseList.add(COMP2000);
         PartnerCourse partnerCourseWithSameIdentityFields =
-                new PartnerCourseBuilder(COMP1000).withPartnerCode(COMP2000.getPartnerCode().getValue()).build();
+                new PartnerCourseBuilder(COMP1000)
+                        .withPartnerCode(COMP2000.getPartnerCode().getValue())
+                        .withPartnerUniversity(COMP2000.getPartnerUniversity().getUniversityName())
+                        .build();
         assertTrue(uniquePartnerCourseList.contains(partnerCourseWithSameIdentityFields));
+    }
+
+    @Test
+    public void contains_partnerCourseWithSamePartnerCodeDifferentUniversityNameInList_returnsFalse() {
+        uniquePartnerCourseList.add(COMP2000);
+        PartnerCourse partnerCourseWithSamePartnerCodeDifferentUniversityName =
+                new PartnerCourseBuilder(COMP2000)
+                        .withPartnerCode(COMP2000.getPartnerCode().getValue())
+                        .withPartnerUniversity(COMP1000.getPartnerUniversity().getUniversityName())
+                        .build();
+        assertFalse(uniquePartnerCourseList.contains(partnerCourseWithSamePartnerCodeDifferentUniversityName));
+    }
+
+    @Test
+    public void contains_partnerCourseWithDifferentPartnerCodeSameUniversityNameInList_returnsFalse() {
+        uniquePartnerCourseList.add(COMP2000);
+        PartnerCourse partnerCourseWithDifferentPartnerCodeSameUniversityName =
+                new PartnerCourseBuilder(COMP2000)
+                        .withPartnerCode(COMP1000.getPartnerCode().getValue())
+                        .withPartnerUniversity(COMP2000.getPartnerUniversity().getUniversityName())
+                        .build();
+        assertFalse(uniquePartnerCourseList.contains(partnerCourseWithDifferentPartnerCodeSameUniversityName));
     }
 
     @Test

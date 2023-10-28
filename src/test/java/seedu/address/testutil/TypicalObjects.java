@@ -176,17 +176,18 @@ public class TypicalObjects {
         TYPICAL_PARTNER_UNIVERSITY_NAME).withPartnerCode(TYPICAL_PARTNER_COURSE_CODE).withPartnerName(
         TYPICAL_PARTNER_COURSE_NAME).withPartnerUnit(TYPICAL_PARTNER_COURSE_UNIT).withPartnerDescription(
         TYPICAL_PARTNER_COURSE_DESCRIPTION).build();
-    public static final PartnerCourse EDGE_CASE_VALID_PARTNER_COURSE = new PartnerCourseBuilder().withPartnerUniversity(
-                                                                                                     new UniversityName(EDGE_CASE_VALID_UNIVERSITY_NAME))
-                                                                                                 .withPartnerCode(
-                                                                                                     EDGE_CASE_VALID_PARTNER_COURSE_CODE)
-                                                                                                 .withPartnerName(
-                                                                                                     EDGE_CASE_VALID_PARTNER_COURSE_NAME)
-                                                                                                 .withPartnerUnit(
-                                                                                                     EDGE_CASE_VALID_PARTNER_COURSE_UNIT)
-                                                                                                 .withPartnerDescription(
-                                                                                                     EDGE_CASE_VALID_PARTNER_COURSE_DESCRIPTION)
-                                                                                                 .build();
+    public static final PartnerCourse EDGE_CASE_VALID_PARTNER_COURSE =
+        new PartnerCourseBuilder().withPartnerUniversity(
+            new UniversityName(EDGE_CASE_VALID_UNIVERSITY_NAME))
+            .withPartnerCode(
+            EDGE_CASE_VALID_PARTNER_COURSE_CODE)
+            .withPartnerName(
+            EDGE_CASE_VALID_PARTNER_COURSE_NAME)
+            .withPartnerUnit(
+            EDGE_CASE_VALID_PARTNER_COURSE_UNIT)
+            .withPartnerDescription(
+            EDGE_CASE_VALID_PARTNER_COURSE_DESCRIPTION)
+            .build();
 
     public static final PartnerCourse COMP1000 = new PartnerCourseBuilder().withPartnerUniversity(new UniversityName(
                                                                                "University of Edinburgh"))

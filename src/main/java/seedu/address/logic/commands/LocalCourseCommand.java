@@ -13,7 +13,7 @@ public abstract class LocalCourseCommand extends Command {
     private static final String MESSAGE_USAGE = COMMAND_WORD + ": Courses offered by NUS Computing"
             + "Commands: "
             + "localcourse list: Lists all available local courses."
-            + "localcourse add [localcode] [localname] [localunit]: Adds a local course."
+            + "localcourse add [localcode] [localname] [localunit] [localdescription]: Adds a local course."
             + "localcourse delete [localcode]";
 
     protected LocalCourseCommand() {

@@ -2,13 +2,15 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ScrollPane?>
 <VBox xmlns:fx="http://javafx.com/fxml/1"
       xmlns="http://javafx.com/javafx/17">
     <padding>
-        <Insets right="8"
-                left="8"/>
+        <Insets top="-1" right="8" bottom="-1" left="8"/>
     </padding>
-    <VBox fx:id="itemDetailView"
-          VBox.vgrow="ALWAYS"
-          styleClass="round-border"/>
+    <ScrollPane fitToWidth="true">
+        <VBox fx:id="itemDetailView"
+              VBox.vgrow="ALWAYS"
+              styleClass="detail-card"/>
+    </ScrollPane>
 </VBox>

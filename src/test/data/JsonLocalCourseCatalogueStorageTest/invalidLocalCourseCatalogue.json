@@ -2,7 +2,8 @@
   "localCourses": [
     {
       "localCode": "INVALID1234567890",
-      "localName": " "
+      "localName": " ",
+      "localUnit" : "a"
     }
   ]
 }

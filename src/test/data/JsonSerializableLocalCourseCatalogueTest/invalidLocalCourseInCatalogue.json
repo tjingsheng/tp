@@ -3,7 +3,8 @@
     {
       "localCode": "INVALID1234567890",
       "localName": " ",
-      "localUnit": 2.0
+      "localUnit": 2.0,
+      "localDescription": "a"
     }
   ]
 }

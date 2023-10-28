@@ -23,6 +23,8 @@ public class PartnerCourseItem extends UiPart<Region> {
     private Label partnerName;
     @FXML
     private Label partnerCode;
+    @FXML
+    private Label partnerUniversity;
 
     /**
      * Creates a {@code PartnerCourseItem} with the given {@code PartnerCourse}
@@ -33,5 +35,6 @@ public class PartnerCourseItem extends UiPart<Region> {
         id.setText(displayedIndex + ".");
         partnerName.setText(partnerCourse.getPartnerName().toString());
         partnerCode.setText(partnerCourse.getPartnerCode().toString());
+        partnerUniversity.setText(partnerCourse.getPartnerUniversity().getUniversityName().toString());
     }
 }

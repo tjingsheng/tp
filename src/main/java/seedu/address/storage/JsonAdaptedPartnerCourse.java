@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
+import seedu.address.model.partnercourse.PartnerDescription;
 import seedu.address.model.partnercourse.PartnerName;
 import seedu.address.model.partnercourse.PartnerUnit;
 import seedu.address.model.university.University;
@@ -21,19 +22,23 @@ public class JsonAdaptedPartnerCourse {
     private final String partnerCode;
     private final String partnerName;
     private final Double partnerUnit;
+    private final String partnerDescription;
 
     /**
      * Constructs a {@code JsonAdaptedPartnerCourse} with the given partnerCourse details.
      */
     @JsonCreator
-    public JsonAdaptedPartnerCourse(@JsonProperty("universityName") String universityName,
-                                    @JsonProperty("partnerCode") String partnerCode,
-                                    @JsonProperty("partnerName") String partnerName,
-                                    @JsonProperty("partnerUnit") Double partnerUnit) {
+    public JsonAdaptedPartnerCourse(
+        @JsonProperty("universityName") String universityName,
+        @JsonProperty("partnerCode") String partnerCode,
+        @JsonProperty("partnerName") String partnerName,
+        @JsonProperty("partnerUnit") Double partnerUnit,
+        @JsonProperty("partnerDescription") String partnerDescription) {
         this.universityName = universityName;
         this.partnerCode = partnerCode;
         this.partnerName = partnerName;
         this.partnerUnit = partnerUnit;
+        this.partnerDescription = partnerDescription;
     }
 
     /**
@@ -44,6 +49,7 @@ public class JsonAdaptedPartnerCourse {
         partnerCode = source.getPartnerCode().getValue();
         partnerName = source.getPartnerName().getValue();
         partnerUnit = source.getPartnerUnit().getValue();
+        partnerDescription = source.getPartnerDescription().getValue();
     }
 
     /**
@@ -54,9 +60,9 @@ public class JsonAdaptedPartnerCourse {
     public PartnerCourse toModelType() throws IllegalValueException {
 
         if (universityName == null) {
-            throw new IllegalValueException(
-                    String.format(MISSING_FIELD_MESSAGE_FORMAT, UniversityName.class.getSimpleName())
-            );
+            throw new IllegalValueException(String.format(
+                MISSING_FIELD_MESSAGE_FORMAT,
+                UniversityName.class.getSimpleName()));
         }
         if (!UniversityName.isValidUniversityName(universityName)) {
             throw new IllegalValueException(UniversityName.MESSAGE_CONSTRAINTS);
@@ -64,8 +70,9 @@ public class JsonAdaptedPartnerCourse {
         final University modelUniversity = new University(new UniversityName(universityName));
 
         if (partnerCode == null) {
-            throw new IllegalValueException(
-                String.format(MISSING_FIELD_MESSAGE_FORMAT, PartnerCode.class.getSimpleName()));
+            throw new IllegalValueException(String.format(
+                MISSING_FIELD_MESSAGE_FORMAT,
+                PartnerCode.class.getSimpleName()));
         }
         if (!PartnerCode.isValidPartnerCode(partnerCode)) {
             throw new IllegalValueException(PartnerCode.MESSAGE_CONSTRAINTS);
@@ -73,8 +80,9 @@ public class JsonAdaptedPartnerCourse {
         final PartnerCode modelPartnerCode = new PartnerCode(partnerCode);
 
         if (partnerName == null) {
-            throw new IllegalValueException(
-                String.format(MISSING_FIELD_MESSAGE_FORMAT, PartnerName.class.getSimpleName()));
+            throw new IllegalValueException(String.format(
+                MISSING_FIELD_MESSAGE_FORMAT,
+                PartnerName.class.getSimpleName()));
         }
         if (!PartnerName.isValidPartnerName(partnerName)) {
             throw new IllegalValueException(PartnerName.MESSAGE_CONSTRAINTS);
@@ -82,14 +90,30 @@ public class JsonAdaptedPartnerCourse {
         final PartnerName modelPartnerName = new PartnerName(partnerName);
 
         if (partnerUnit == null) {
-            throw new IllegalValueException(
-                String.format(MISSING_FIELD_MESSAGE_FORMAT, PartnerUnit.class.getSimpleName()));
+            throw new IllegalValueException(String.format(
+                MISSING_FIELD_MESSAGE_FORMAT,
+                PartnerUnit.class.getSimpleName()));
         }
         if (!PartnerUnit.isValidPartnerUnit(partnerUnit)) {
             throw new IllegalValueException(PartnerUnit.MESSAGE_CONSTRAINTS);
         }
         final PartnerUnit modelPartnerUnit = new PartnerUnit(partnerUnit);
 
-        return new PartnerCourse(modelUniversity, modelPartnerCode, modelPartnerName, modelPartnerUnit);
+        if (partnerDescription == null) {
+            throw new IllegalValueException(String.format(
+                MISSING_FIELD_MESSAGE_FORMAT,
+                PartnerDescription.class.getSimpleName()));
+        }
+        if (!PartnerDescription.isValidPartnerDescription(partnerDescription)) {
+            throw new IllegalValueException(PartnerUnit.MESSAGE_CONSTRAINTS);
+        }
+        final PartnerDescription modelPartnerDescription = new PartnerDescription(partnerDescription);
+
+        return new PartnerCourse(
+            modelUniversity,
+            modelPartnerCode,
+            modelPartnerName,
+            modelPartnerUnit,
+            modelPartnerDescription);
     }
 }

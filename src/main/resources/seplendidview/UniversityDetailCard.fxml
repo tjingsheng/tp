@@ -2,30 +2,19 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+
 <HBox xmlns:fx="http://javafx.com/fxml/1"
       id="universityDetailPane"
       fx:id="universityDetailPane"
-      xmlns="http://javafx.com/javafx/17">
-    <GridPane HBox.hgrow="ALWAYS">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES"
-                               minWidth="10"
-                               prefWidth="150"/>
-        </columnConstraints>
+      xmlns="http://javafx.com/javafx/17"
+      HBox.hgrow="ALWAYS"
+      styleClass="detail-card, round-border">
+    <VBox alignment="CENTER_LEFT">
         <padding>
-            <Insets top="17"
-                    right="25"
-                    bottom="17"
-                    left="25"/>
+            <Insets top="17" right="25" bottom="17" left="25"/>
         </padding>
-        <VBox alignment="CENTER_LEFT"
-              GridPane.columnIndex="0">
-            <Label fx:id="universityName"
-                   styleClass="detail_title_label"/>
-        </VBox>
-    </GridPane>
+        <Label fx:id="universityName" styleClass="big-heading-font-size"/>
+    </VBox>
 </HBox>

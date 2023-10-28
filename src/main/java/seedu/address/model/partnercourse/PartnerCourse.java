@@ -17,6 +17,7 @@ public class PartnerCourse implements SeplendidDataType {
     private final PartnerCode partnerCode;
     private final PartnerName partnerName;
     private final PartnerUnit partnerUnit;
+    private final PartnerDescription partnerDescription;
 
     /**
      * Every field must be present and not null
@@ -25,12 +26,14 @@ public class PartnerCourse implements SeplendidDataType {
         University partnerUniversity,
         PartnerCode partnerCode,
         PartnerName partnerName,
-        PartnerUnit partnerUnit) {
-        requireAllNonNull(partnerUniversity, partnerCode, partnerName, partnerUnit);
+        PartnerUnit partnerUnit,
+        PartnerDescription partnerDescription) {
+        requireAllNonNull(partnerUniversity, partnerCode, partnerName, partnerUnit, partnerDescription);
         this.partnerUniversity = partnerUniversity;
         this.partnerCode = partnerCode;
         this.partnerName = partnerName;
         this.partnerUnit = partnerUnit;
+        this.partnerDescription = partnerDescription;
     }
     public University getPartnerUniversity() {
         return partnerUniversity;
@@ -46,6 +49,10 @@ public class PartnerCourse implements SeplendidDataType {
 
     public PartnerUnit getPartnerUnit() {
         return partnerUnit;
+    }
+
+    public PartnerDescription getPartnerDescription() {
+        return partnerDescription;
     }
 
     /**
@@ -81,12 +88,13 @@ public class PartnerCourse implements SeplendidDataType {
         return partnerUniversity.equals(otherPartnerCourse.partnerUniversity)
                 && partnerCode.equals(otherPartnerCourse.partnerCode)
                 && partnerName.equals(otherPartnerCourse.partnerName)
-                && partnerUnit.equals(otherPartnerCourse.partnerUnit);
+                && partnerUnit.equals(otherPartnerCourse.partnerUnit)
+                && partnerDescription.equals(otherPartnerCourse.partnerDescription);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(partnerUniversity, partnerCode, partnerName, partnerUnit);
+        return Objects.hash(partnerUniversity, partnerCode, partnerName, partnerUnit, partnerDescription);
     }
 
     @Override
@@ -96,6 +104,7 @@ public class PartnerCourse implements SeplendidDataType {
                 .add("partnerCode", partnerCode)
                 .add("partnerName", partnerName)
                 .add("partnerUnit", partnerUnit)
+                .add("partnerDescription", partnerDescription)
                 .toString();
     }
 }

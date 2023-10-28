@@ -311,6 +311,11 @@ public class LocalCourseAddCommandTest {
         }
 
         @Override
+        public void updateSortedUniversityList(Comparator<University> universityComparator) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void getSearchUniversityIfExists(UniversityNameContainsKeywordsPredicate
                                                                 universityNameContainsKeywordsPredicate) {
             throw new AssertionError("This method should not be called.");

@@ -24,4 +24,19 @@ public class UniversityComparatorByUniversityName implements Comparator<Universi
     public String toString() {
         return "universityname";
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof UniversityComparatorByUniversityName)) {
+            return false;
+        }
+
+        UniversityComparatorByUniversityName otherUniversityComparatorByUniversityName =
+                (UniversityComparatorByUniversityName) other;
+        return this.toString().equals(otherUniversityComparatorByUniversityName.toString());
+    }
 }

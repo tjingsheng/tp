@@ -41,6 +41,7 @@ public class SeplendidModelManager implements SeplendidModel {
 
     private final UniversityCatalogue universityCatalogue;
     private final FilteredList<University> filteredUniversityCatalogue;
+    private final SortedList<University> sortedUniversityCatalogue;
 
     private final PartnerCourseCatalogue partnerCourseCatalogue;
     private final FilteredList<PartnerCourse> filteredPartnerCourseCatalogue;
@@ -81,6 +82,7 @@ public class SeplendidModelManager implements SeplendidModel {
         sortedPartnerCourseCatalogue = new SortedList<>(this.partnerCourseCatalogue.getPartnerCourseList());
         this.universityCatalogue = new UniversityCatalogue(universityCatalogue);
         filteredUniversityCatalogue = new FilteredList<>(this.universityCatalogue.getUniversityList());
+        sortedUniversityCatalogue = new SortedList<>(this.universityCatalogue.getUniversityList());
         this.noteCatalogue = new NoteCatalogue(noteCatalogue);
         filteredNoteCatalogue = new FilteredList<>(this.noteCatalogue.getNoteList());
         this.mappingCatalogue = new MappingCatalogue(mappingCatalogue);
@@ -290,10 +292,6 @@ public class SeplendidModelManager implements SeplendidModel {
         sortedPartnerCourseCatalogue.setComparator(partnerCourseComparator);
     }
 
-    /**
-     * Returns an unmodifiable view of the list of {@code LocalCourse} backed by the internal list of
-     * {@code versionedLocalCourseCatalogue}
-     */
     @Override
     public ObservableList<PartnerCourse> getFilteredPartnerCourseList() {
         return filteredPartnerCourseCatalogue;
@@ -368,6 +366,11 @@ public class SeplendidModelManager implements SeplendidModel {
         requireAllNonNull(target, editedUniversity);
 
         universityCatalogue.setUniversity(target, editedUniversity);
+    }
+
+    @Override
+    public void updateSortedUniversityList(Comparator<University> universityComparator) {
+        sortedUniversityCatalogue.setComparator(universityComparator);
     }
 
     //=========== FilteredUniversityList Accessors =============================================================

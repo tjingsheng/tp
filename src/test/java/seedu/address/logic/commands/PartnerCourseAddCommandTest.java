@@ -309,6 +309,11 @@ public class PartnerCourseAddCommandTest {
         }
 
         @Override
+        public void updateSortedUniversityList(Comparator<University> universityComparator) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public ObservableList<University> getFilteredUniversityList() {
             throw new AssertionError("This method should not be called.");
         }

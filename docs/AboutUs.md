@@ -13,7 +13,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Lam Cheng Hou
 
-<img src="images/lamchenghou.png" width="200px">
+<img src="images/profilepictures/lamchenghou.png" width="200px">
 
 [[github](https://github.com/lamchenghou)]
 [[portfolio](team/lamchenghou.md)]
@@ -24,7 +24,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Yim Sohyun
 
-<img src="images/dlathyun.png" width="200px">
+<img src="images/profilepictures/dlathyun.png" width="200px">
 
 [[github](http://github.com/dlathyun)]
 [[portfolio](team/dlathyun.md)]
@@ -34,7 +34,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Alyssa Ong 
 
-<img src="images/alyssaongyx.png" width="200px">
+<img src="images/profilepictures/alyssaongyx.png" width="200px">
 
 [[github](http://github.com/alyssaongyx)] 
 [[portfolio](team/alyssaongyx.md)]
@@ -44,7 +44,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Alicia Michelle Wang
 
-<img src="images/aliciamichellew.png" width="200px">
+<img src="images/profilepictures/aliciamichellew.png" width="200px">
 
 [[github](http://github.com/aliciamichellew)]
 [[portfolio](team/aliciamichellew.md)]
@@ -54,7 +54,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Tan Jing Sheng
 
-<img src="images/tjingsheng.png" width="200px">
+<img src="images/profilepictures/tjingsheng.png" width="200px">
 
 [[github](http://github.com/tjingsheng)]
 [[portfolio](team/tjingsheng.md)]

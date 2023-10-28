@@ -190,7 +190,7 @@ public class ParserUtil {
     public static LocalDescription parseLocalDescription(String localDescription) throws ParseException {
         requireNonNull(localDescription);
         String trimmedLocalDescription = localDescription.trim();
-        if (!PartnerDescription.isValidPartnerDescription(trimmedLocalDescription)) {
+        if (!LocalDescription.isValidLocalDescription(trimmedLocalDescription)) {
             throw new ParseException(LocalDescription.MESSAGE_CONSTRAINTS);
         }
         return new LocalDescription(localDescription);

@@ -88,7 +88,8 @@ public class LocalCourse implements SeplendidDataType {
         LocalCourse otherLocalCourse = (LocalCourse) other;
         return localCode.equals(otherLocalCourse.localCode)
             && localName.equals(otherLocalCourse.localName)
-            && localUnit.equals(otherLocalCourse.localUnit);
+            && localUnit.equals(otherLocalCourse.localUnit)
+            && localDescription.equals(otherLocalCourse.localDescription);
     }
 
     @Override

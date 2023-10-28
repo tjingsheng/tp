@@ -1,8 +1,7 @@
 package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static seedu.address.logic.commands.CommandTestUtil.assertSeplendidCommandSuccess;
 import static seedu.address.testutil.TypicalObjects.CS1231S;
 import static seedu.address.testutil.TypicalObjects.CS2040S;
@@ -34,13 +33,18 @@ public class LocalCourseSortCommandTest {
 
     @BeforeEach
     public void setUp() {
-        model = new SeplendidModelManager(getTypicalLocalCourseCatalogue(), new UserPrefs(),
-                getTypicalPartnerCourseCatalogue(), getTypicalUniversityCatalogue(), getTypicalNoteCatalogue(),
-                getTypicalMappingCatalogue());
-        expectedModel = new SeplendidModelManager(model.getLocalCourseCatalogue(), new UserPrefs(),
-                getTypicalPartnerCourseCatalogue(), getTypicalUniversityCatalogue(), getTypicalNoteCatalogue(),
-                getTypicalMappingCatalogue());
-
+        model = new SeplendidModelManager(new UserPrefs(),
+                                          getTypicalLocalCourseCatalogue(),
+                                          getTypicalPartnerCourseCatalogue(),
+                                          getTypicalUniversityCatalogue(),
+                                          getTypicalMappingCatalogue(),
+                                          getTypicalNoteCatalogue());
+        expectedModel = new SeplendidModelManager(new UserPrefs(),
+                                                  model.getLocalCourseCatalogue(),
+                                                  getTypicalPartnerCourseCatalogue(),
+                                                  getTypicalUniversityCatalogue(),
+                                                  getTypicalMappingCatalogue(),
+                                                  getTypicalNoteCatalogue());
     }
 
     @Test
@@ -49,9 +53,10 @@ public class LocalCourseSortCommandTest {
         LocalCourseSortCommand localCourseSortCommand = new LocalCourseSortCommand(comparator);
         expectedModel.updatedSortedLocalList(comparator);
 
-        assertSeplendidCommandSuccess(localCourseSortCommand, model,
-                LocalCourseSortCommand.MESSAGE_SUCCESS,
-                expectedModel);
+        assertSeplendidCommandSuccess(localCourseSortCommand,
+                                      model,
+                                      LocalCourseSortCommand.MESSAGE_SUCCESS,
+                                      expectedModel);
 
         List<LocalCourse> sortedList = new ArrayList<>();
         sortedList.add(CS1231S);
@@ -68,9 +73,10 @@ public class LocalCourseSortCommandTest {
         LocalCourseSortCommand localCourseSortCommand = new LocalCourseSortCommand(comparator);
         expectedModel.updatedSortedLocalList(comparator);
 
-        assertSeplendidCommandSuccess(localCourseSortCommand, model,
-                LocalCourseSortCommand.MESSAGE_SUCCESS,
-                expectedModel);
+        assertSeplendidCommandSuccess(localCourseSortCommand,
+                                      model,
+                                      LocalCourseSortCommand.MESSAGE_SUCCESS,
+                                      expectedModel);
 
         List<LocalCourse> sortedList = new ArrayList<>();
         sortedList.add(CS2040S);
@@ -86,26 +92,26 @@ public class LocalCourseSortCommandTest {
         Comparator<LocalCourse> localCourseComparatorByLocalCode = new LocalCourseComparatorByLocalCode();
         Comparator<LocalCourse> localCourseComparatorByLocalName = new LocalCourseComparatorByLocalName();
 
-        LocalCourseSortCommand localCourseSortCommandByLocalCode =
-                new LocalCourseSortCommand(localCourseComparatorByLocalCode);
-        LocalCourseSortCommand localCourseSortCommandByLocalName =
-                new LocalCourseSortCommand(localCourseComparatorByLocalName);
+        LocalCourseSortCommand localCourseSortCommandByLocalCode = new LocalCourseSortCommand(
+            localCourseComparatorByLocalCode);
+        LocalCourseSortCommand localCourseSortCommandByLocalName = new LocalCourseSortCommand(
+            localCourseComparatorByLocalName);
 
         // same object -> returns true
-        assertTrue(localCourseSortCommandByLocalCode.equals(localCourseSortCommandByLocalCode));
+        assertEquals(localCourseSortCommandByLocalCode, localCourseSortCommandByLocalCode);
 
         // same values -> returns true
-        LocalCourseSortCommand localCourseSortCommandByLocalCodeCopy =
-                new LocalCourseSortCommand(localCourseComparatorByLocalCode);
-        assertTrue(localCourseSortCommandByLocalCode.equals(localCourseSortCommandByLocalCodeCopy));
+        LocalCourseSortCommand localCourseSortCommandByLocalCodeCopy = new LocalCourseSortCommand(
+            localCourseComparatorByLocalCode);
+        assertEquals(localCourseSortCommandByLocalCode, localCourseSortCommandByLocalCodeCopy);
 
         // different types -> returns false
-        assertFalse(localCourseSortCommandByLocalCode.equals(1));
+        assertNotEquals(1, localCourseSortCommandByLocalCode);
 
         // null -> returns false
-        assertFalse(localCourseSortCommandByLocalCode.equals(null));
+        assertNotEquals(null, localCourseSortCommandByLocalCode);
 
         // different task -> returns false
-        assertFalse(localCourseSortCommandByLocalCode.equals(localCourseSortCommandByLocalName));
+        assertNotEquals(localCourseSortCommandByLocalCode, localCourseSortCommandByLocalName);
     }
 }

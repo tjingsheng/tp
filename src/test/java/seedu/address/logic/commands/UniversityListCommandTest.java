@@ -22,25 +22,35 @@ public class UniversityListCommandTest {
 
     @BeforeEach
     public void setUp() {
-        model = new SeplendidModelManager(getTypicalLocalCourseCatalogue(), new UserPrefs(),
-                getTypicalPartnerCourseCatalogue(), getTypicalUniversityCatalogue(), getTypicalNoteCatalogue(),
-                getTypicalMappingCatalogue());
-        expectedModel = new SeplendidModelManager(getTypicalLocalCourseCatalogue(), new UserPrefs(),
-                getTypicalPartnerCourseCatalogue(), model.getUniversityCatalogue(), getTypicalNoteCatalogue(),
-                getTypicalMappingCatalogue());
+        model = new SeplendidModelManager(new UserPrefs(),
+                                          getTypicalLocalCourseCatalogue(),
+                                          getTypicalPartnerCourseCatalogue(),
+                                          getTypicalUniversityCatalogue(),
+                                          getTypicalMappingCatalogue(),
+                                          getTypicalNoteCatalogue());
+        expectedModel = new SeplendidModelManager(new UserPrefs(),
+                                                  getTypicalLocalCourseCatalogue(),
+                                                  getTypicalPartnerCourseCatalogue(),
+                                                  model.getUniversityCatalogue(),
+                                                  getTypicalMappingCatalogue(),
+                                                  getTypicalNoteCatalogue());
     }
 
     @Test
     public void execute_listIsNotFiltered_showsSameList() {
-        assertSeplendidCommandSuccess(new UniversityListCommand(), model, UniversityListCommand.MESSAGE_SUCCESS,
-                expectedModel);
+        assertSeplendidCommandSuccess(new UniversityListCommand(),
+                                      model,
+                                      UniversityListCommand.MESSAGE_SUCCESS,
+                                      expectedModel);
     }
 
     @Test
     public void execute_listIsFiltered_showsEverything() {
         showUniversityAtIndex(model, INDEX_FIRST_OBJECT);
-        assertSeplendidCommandSuccess(new UniversityListCommand(), model,
-                UniversityListCommand.MESSAGE_SUCCESS, expectedModel);
+        assertSeplendidCommandSuccess(new UniversityListCommand(),
+                                      model,
+                                      UniversityListCommand.MESSAGE_SUCCESS,
+                                      expectedModel);
 
     }
 }

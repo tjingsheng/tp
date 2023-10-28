@@ -59,19 +59,21 @@ public class PartnerCourseDeleteCommandTest {
         CommandResult commandResult = new PartnerCourseDeleteCommand(COMP1000.getPartnerCode()).execute(modelStub);
 
         assertEquals(String.format(PartnerCourseDeleteCommand.MESSAGE_SUCCESS, Messages.format(COMP1000)),
-                commandResult.getFeedbackToUser());
+                     commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(COMP2000), modelStub.partnerCoursesAdded);
     }
 
     @Test
     public void execute_partnerCourseDoesNotExist_throwsCommandException() {
         PartnerCourse validPartnerCourse = new PartnerCourseBuilder().build();
-        PartnerCourseDeleteCommand partnerCourseDeleteCommand = new PartnerCourseDeleteCommand(
-                new PartnerCode(TYPICAL_PARTNER_COURSE_CODE));
+        PartnerCourseDeleteCommand partnerCourseDeleteCommand = new PartnerCourseDeleteCommand(new PartnerCode(
+            TYPICAL_PARTNER_COURSE_CODE));
         SeplendidModelStub modelStub = new SeplendidModelStubWithPartnerCourse(validPartnerCourse);
 
-        assertThrows(CommandException.class, PartnerCourseDeleteCommand.MESSAGE_NONEXISTENT_PARTNER_COURSE, () ->
-                partnerCourseDeleteCommand.execute(modelStub));
+        assertThrows(
+            CommandException.class,
+            PartnerCourseDeleteCommand.MESSAGE_NONEXISTENT_PARTNER_COURSE, (
+            ) -> partnerCourseDeleteCommand.execute(modelStub));
     }
 
     @Test
@@ -286,8 +288,9 @@ public class PartnerCourseDeleteCommandTest {
         }
 
         @Override
-        public void getSearchUniversityIfExists(UniversityNameContainsKeywordsPredicate
-                                                                universityNameContainsKeywordsPredicate) {
+        public void getSearchUniversityIfExists(
+            UniversityNameContainsKeywordsPredicate universityNameContainsKeywordsPredicate
+        ) {
             throw new AssertionError("This method should not be called.");
         }
 

@@ -56,7 +56,7 @@ public class PartnerCourseAddCommandTest {
         CommandResult commandResult = new PartnerCourseAddCommand(validPartnerCourse).execute(modelStub);
 
         assertEquals(String.format(PartnerCourseAddCommand.MESSAGE_SUCCESS, Messages.format(validPartnerCourse)),
-                commandResult.getFeedbackToUser());
+                     commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(validPartnerCourse), modelStub.partnerCoursesAdded);
     }
 
@@ -66,8 +66,10 @@ public class PartnerCourseAddCommandTest {
         PartnerCourseAddCommand partnerCourseAddCommand = new PartnerCourseAddCommand(validPartnerCourse);
         SeplendidModelStub modelStub = new SeplendidModelStubWithPartnerCourse(validPartnerCourse);
 
-        assertThrows(CommandException.class, PartnerCourseAddCommand.MESSAGE_DUPLICATE_PARTNER_COURSE, () ->
-                partnerCourseAddCommand.execute(modelStub));
+        assertThrows(
+            CommandException.class,
+            PartnerCourseAddCommand.MESSAGE_DUPLICATE_PARTNER_COURSE, (
+            ) -> partnerCourseAddCommand.execute(modelStub));
     }
 
     @Test
@@ -267,8 +269,9 @@ public class PartnerCourseAddCommandTest {
         }
 
         @Override
-        public void getSearchUniversityIfExists(UniversityNameContainsKeywordsPredicate
-                                                        universityNameContainsKeywordsPredicate) {
+        public void getSearchUniversityIfExists(
+            UniversityNameContainsKeywordsPredicate universityNameContainsKeywordsPredicate
+        ) {
             throw new AssertionError("This method should not be called.");
         }
 

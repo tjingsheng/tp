@@ -29,29 +29,38 @@ public class PartnerCourseDeleteCommandIntegrationTest {
 
     @BeforeEach
     public void setUp() {
-        model = new SeplendidModelManager(getTypicalLocalCourseCatalogue(), new UserPrefs(),
-                getTypicalPartnerCourseCatalogue(), getTypicalUniversityCatalogue(), getTypicalNoteCatalogue(),
-                getTypicalMappingCatalogue());
+        model = new SeplendidModelManager(new UserPrefs(),
+                                          getTypicalLocalCourseCatalogue(),
+                                          getTypicalPartnerCourseCatalogue(),
+                                          getTypicalUniversityCatalogue(),
+                                          getTypicalMappingCatalogue(),
+                                          getTypicalNoteCatalogue());
     }
 
     @Test
     public void execute_deletePartnerCourse_success() throws CommandException {
         PartnerCourse validExistingPartnerCourse = getTypicalPartnerCourses().get(0);
 
-        SeplendidModel expectedModel = new SeplendidModelManager(model.getLocalCourseCatalogue(), new UserPrefs(),
-                model.getPartnerCourseCatalogue(), model.getUniversityCatalogue(), getTypicalNoteCatalogue(),
-                getTypicalMappingCatalogue());
+        SeplendidModel expectedModel = new SeplendidModelManager(new UserPrefs(),
+                                                                 model.getLocalCourseCatalogue(),
+                                                                 model.getPartnerCourseCatalogue(),
+                                                                 model.getUniversityCatalogue(),
+                                                                 getTypicalMappingCatalogue(),
+                                                                 getTypicalNoteCatalogue());
         expectedModel.deletePartnerCourse(validExistingPartnerCourse);
 
-        assertSeplendidCommandSuccess(new PartnerCourseDeleteCommand(
-                        validExistingPartnerCourse.getPartnerCode()), model,
-                String.format(PartnerCourseDeleteCommand.MESSAGE_SUCCESS, Messages.format(validExistingPartnerCourse)),
-                expectedModel);
+        assertSeplendidCommandSuccess(new PartnerCourseDeleteCommand(validExistingPartnerCourse.getPartnerCode()),
+                                      model,
+                                      String.format(
+                                          PartnerCourseDeleteCommand.MESSAGE_SUCCESS,
+                                          Messages.format(validExistingPartnerCourse)),
+                                      expectedModel);
     }
 
     @Test
     public void execute_nonExistingPartnerCourse_throwsCommandException() {
-        assertSeplendidCommandFailure(new PartnerCourseDeleteCommand(TYPICAL_PARTNER_COURSE.getPartnerCode()), model,
-                PartnerCourseDeleteCommand.MESSAGE_NONEXISTENT_PARTNER_COURSE);
+        assertSeplendidCommandFailure(new PartnerCourseDeleteCommand(TYPICAL_PARTNER_COURSE.getPartnerCode()),
+                                      model,
+                                      PartnerCourseDeleteCommand.MESSAGE_NONEXISTENT_PARTNER_COURSE);
     }
 }

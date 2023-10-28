@@ -6,6 +6,7 @@ import static seedu.address.testutil.TypicalObjects.COMP1000;
 import static seedu.address.testutil.TypicalObjects.COMP2000;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE_CODE;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE_NAME;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_UNIVERSITY_NAME;
 
 import org.junit.jupiter.api.Test;
 
@@ -20,13 +21,18 @@ public class PartnerCourseTest {
         // null -> returns false
         assertFalse(COMP1000.isSamePartnerCourse(null));
 
-        // same partnercode, all other attributes different -> returns true
+        // same partnercode and universityname, all other attributes different -> returns true
         PartnerCourse editedComp1000 = new PartnerCourseBuilder(COMP1000)
                 .withPartnerName(TYPICAL_PARTNER_COURSE_NAME).build();
         assertTrue(COMP1000.isSamePartnerCourse(editedComp1000));
 
         // different partnercode, all other attributes same -> returns false
         editedComp1000 = new PartnerCourseBuilder(COMP1000).withPartnerCode(TYPICAL_PARTNER_COURSE_CODE).build();
+        assertFalse(COMP1000.isSamePartnerCourse(editedComp1000));
+
+        // different universityname, all other attributes same -> returns false
+        editedComp1000 = new PartnerCourseBuilder(COMP1000)
+                .withPartnerUniversity(TYPICAL_PARTNER_UNIVERSITY_NAME).build();
         assertFalse(COMP1000.isSamePartnerCourse(editedComp1000));
 
         // partnerCode differs in case, all other attributes same -> returns false

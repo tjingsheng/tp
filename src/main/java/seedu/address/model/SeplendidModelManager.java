@@ -242,16 +242,16 @@ public class SeplendidModelManager implements SeplendidModel {
     }
 
     @Override
-    public boolean hasPartnerCourse(PartnerCode partnerCode) {
-        requireNonNull(partnerCode);
-        Optional<PartnerCourse> maybePartnerCourse = getPartnerCourseIfExists(partnerCode);
+    public boolean hasPartnerCourse(PartnerCode partnerCode, UniversityName universityName) {
+        requireAllNonNull(partnerCode, universityName);
+        Optional<PartnerCourse> maybePartnerCourse = getPartnerCourseIfExists(partnerCode, universityName);
         return maybePartnerCourse.isPresent();
     }
 
     @Override
-    public Optional<PartnerCourse> getPartnerCourseIfExists(PartnerCode partnerCode) {
-        requireNonNull(partnerCode);
-        return partnerCourseCatalogue.getPartnerCourseIfExists(partnerCode);
+    public Optional<PartnerCourse> getPartnerCourseIfExists(PartnerCode partnerCode, UniversityName universityName) {
+        requireAllNonNull(partnerCode, universityName);
+        return partnerCourseCatalogue.getPartnerCourseIfExists(partnerCode, universityName);
     }
 
     @Override

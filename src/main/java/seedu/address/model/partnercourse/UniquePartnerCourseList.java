@@ -11,6 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.partnercourse.exceptions.DuplicatePartnerCourseException;
 import seedu.address.model.partnercourse.exceptions.PartnerCourseNotFoundException;
+import seedu.address.model.university.UniversityName;
 
 /**
  * A list of partner courses that enforces uniqueness between its elements and does not allow nulls.
@@ -45,9 +46,12 @@ public class UniquePartnerCourseList implements Iterable<PartnerCourse> {
      * @param partnerCode This is the PartnerCode to check.
      * @return Optional containing first occurrence of desired PartnerCourse, if any.
      */
-    public Optional<PartnerCourse> getPartnerCourseIfExists(PartnerCode partnerCode) {
-        requireNonNull(partnerCode);
-        return internalList.stream().filter(pc -> pc.getPartnerCode().equals(partnerCode))
+    public Optional<PartnerCourse> getPartnerCourseIfExists(PartnerCode partnerCode, UniversityName universityName) {
+        requireAllNonNull(partnerCode, universityName);
+        return internalList
+                .stream()
+                .filter(pc -> pc.getPartnerCode().equals(partnerCode)
+                        && pc.getPartnerUniversity().getUniversityName().equals(universityName))
                 .findFirst();
     }
     /**

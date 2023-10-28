@@ -81,12 +81,19 @@ public class PartnerCourseCatalogueTest {
     @Test
     public void getPartnerCourseIfExists_partnerCourseExists_returnsPartnerCourse() {
         partnerCourseCatalogue.addPartnerCourse(COMP1000);
-        assertEquals(COMP1000, partnerCourseCatalogue.getPartnerCourseIfExists(COMP1000.getPartnerCode()).get());
+        assertEquals(COMP1000,
+                partnerCourseCatalogue
+                        .getPartnerCourseIfExists(COMP1000.getPartnerCode(),
+                                COMP1000.getPartnerUniversity().getUniversityName()).get());
     }
 
     @Test
     public void getPartnerCourseIfExists_partnerCourseNotExists_returnsEmpty() {
-        assertEquals(Optional.empty(), partnerCourseCatalogue.getPartnerCourseIfExists(COMP1000.getPartnerCode()));
+        assertEquals(
+                Optional.empty(),
+                partnerCourseCatalogue
+                        .getPartnerCourseIfExists(COMP1000.getPartnerCode(),
+                                COMP1000.getPartnerUniversity().getUniversityName()));
     }
 
     @Test

@@ -43,15 +43,19 @@ public class PartnerCourseDeleteCommandIntegrationTest {
                 getTypicalMappingCatalogue());
         expectedModel.deletePartnerCourse(validExistingPartnerCourse);
 
-        assertSeplendidCommandSuccess(new PartnerCourseDeleteCommand(
-                        validExistingPartnerCourse.getPartnerCode()), model,
+        assertSeplendidCommandSuccess(
+                new PartnerCourseDeleteCommand(
+                        validExistingPartnerCourse.getPartnerCode(),
+                        validExistingPartnerCourse.getPartnerUniversity().getUniversityName()),
+                model,
                 String.format(PartnerCourseDeleteCommand.MESSAGE_SUCCESS, Messages.format(validExistingPartnerCourse)),
                 expectedModel);
     }
 
     @Test
     public void execute_nonExistingPartnerCourse_throwsCommandException() {
-        assertSeplendidCommandFailure(new PartnerCourseDeleteCommand(TYPICAL_PARTNER_COURSE.getPartnerCode()), model,
+        assertSeplendidCommandFailure(new PartnerCourseDeleteCommand(TYPICAL_PARTNER_COURSE.getPartnerCode(),
+                        TYPICAL_PARTNER_COURSE.getPartnerUniversity().getUniversityName()), model,
                 PartnerCourseDeleteCommand.MESSAGE_NONEXISTENT_PARTNER_COURSE);
     }
 }

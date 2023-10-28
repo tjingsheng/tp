@@ -223,12 +223,13 @@ public class PartnerCourseAddCommandTest {
         }
 
         @Override
-        public boolean hasPartnerCourse(PartnerCode partnerCode) {
+        public boolean hasPartnerCourse(PartnerCode partnerCode, UniversityName universityName) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public Optional<PartnerCourse> getPartnerCourseIfExists(PartnerCode partnerCode) {
+        public Optional<PartnerCourse> getPartnerCourseIfExists(
+                PartnerCode partnerCode, UniversityName universityName) {
             throw new AssertionError("This method should not be called.");
         }
 

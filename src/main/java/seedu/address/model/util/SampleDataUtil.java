@@ -54,7 +54,7 @@ public class SampleDataUtil {
     }
 
     public static University[] getSampleUniversities() {
-        return SampleUniversities.getSampleUniversity();
+        return SampleUniversities.getSampleUniversities();
     }
 
     public static ReadOnlyUniversityCatalogue getSampleUniversityCatalogue() {

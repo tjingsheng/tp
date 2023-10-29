@@ -21,7 +21,7 @@ public class NoteDetail extends UiPart<Region> {
     @FXML
     private Label tags;
     @FXML
-    private TextArea content;
+    private TextArea noteContent;
 
     /**
      * Creates a {@code noteDetail} with the given {@code note}
@@ -29,7 +29,7 @@ public class NoteDetail extends UiPart<Region> {
     public NoteDetail(Note note) {
         super(FXML);
         this.note = note;
-        content.setText(note.getContent().toString());
+        noteContent.setText(note.getContent().toString());
         tags.setText("Tags:" + note.getTags().toString());
     }
 }

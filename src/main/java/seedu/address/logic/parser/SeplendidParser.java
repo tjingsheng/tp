@@ -21,6 +21,7 @@ import seedu.address.logic.commands.MappingDeleteCommand;
 import seedu.address.logic.commands.MappingListCommand;
 import seedu.address.logic.commands.NoteAddCommand;
 import seedu.address.logic.commands.NoteCommand;
+import seedu.address.logic.commands.NoteListCommand;
 import seedu.address.logic.commands.PartnerCourseAddCommand;
 import seedu.address.logic.commands.PartnerCourseCommand;
 import seedu.address.logic.commands.PartnerCourseDeleteCommand;
@@ -82,6 +83,9 @@ public class SeplendidParser {
 
         case MappingCommand.COMMAND_WORD:
             return getMappingCommandWithoutArg(userInput, actionWord);
+
+        case NoteCommand.COMMAND_WORD:
+                return getNoteCommandWithoutArg(userInput, actionWord);
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
@@ -240,6 +244,17 @@ public class SeplendidParser {
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+        }
+    }
+
+    private NoteCommand getNoteCommandWithoutArg(String userInput, String actionWord)
+            throws ParseException {
+        switch (actionWord) {
+            case NoteListCommand.ACTION_WORD:
+                return new NoteListCommand();
+            default:
+                logger.finer("This user input caused a ParseException: " + userInput);
+                throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
 

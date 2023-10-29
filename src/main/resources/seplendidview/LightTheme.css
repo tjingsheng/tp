@@ -181,3 +181,13 @@
     -fx-background-color: transparent;
     -fx-padding:0;
 }
+
+#noteContent{
+    -fx-background-color: #CCDEF0;
+    -fx-min-height: 1000;
+}
+
+#noteContent .content{
+    -fx-background-color: transparent;
+    -fx-padding:0;
+}

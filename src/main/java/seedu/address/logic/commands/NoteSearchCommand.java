@@ -40,7 +40,7 @@ public class NoteSearchCommand extends NoteCommand {
 
         model.getSearchNoteIfExists(predicate);
 
-        if (model.getFilteredUniversityList().isEmpty()) {
+        if (model.getFilteredLocalCourseList().isEmpty()) {
             throw new CommandException(MESSAGE_NONEXISTENT_NOTES);
         }
 

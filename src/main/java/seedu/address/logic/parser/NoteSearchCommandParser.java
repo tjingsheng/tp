@@ -4,7 +4,6 @@ import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_TAGS;
 
 import seedu.address.logic.commands.NoteSearchCommand;
-import seedu.address.logic.commands.UniversitySearchCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.notes.NoteTagContainsKeywordsPredicate;
 import seedu.address.model.tag.Tag;
@@ -16,8 +15,8 @@ import seedu.address.model.tag.Tag;
  */
 public class NoteSearchCommandParser implements Parser<NoteSearchCommand> {
     /**
-     * Parses the given {@code String} of arguments in the context of the UniversitySearchCommand
-     * and returns a UniversitySearchCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the NoteSearchCommand
+     * and returns a NoteSearchCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
     public NoteSearchCommand parse(String args) throws ParseException {
@@ -36,7 +35,7 @@ public class NoteSearchCommandParser implements Parser<NoteSearchCommand> {
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap,
                 PARAMETER_TAGS)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    UniversitySearchCommand.UNIVERSITY_SEARCH_MESSAGE_USAGE));
+                    NoteSearchCommand.NOTE_SEARCH_MESSAGE_USAGE));
         }
 
         Tag tag = ParserUtil.parseTag(

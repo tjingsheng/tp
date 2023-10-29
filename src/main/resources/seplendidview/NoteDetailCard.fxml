@@ -18,7 +18,7 @@
         </padding>
         <Label fx:id="tags" styleClass="small-heading-font-size"/>
         <Label/>
-        <TextArea fx:id="content"
+        <TextArea fx:id="noteContent"
                   styleClass="text-font-size"
                   editable="false"
                   wrapText="true"/>

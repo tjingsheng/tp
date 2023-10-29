@@ -98,8 +98,7 @@ public class Note implements SeplendidDataType {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
-                .add("content", content)
+        return new ToStringBuilder(this).add("content", content)
                 .add("tags", tags)
                 .toString();
     }

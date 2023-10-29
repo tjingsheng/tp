@@ -141,4 +141,16 @@ public class Messages {
         return builder.toString();
     }
 
+    /**
+     * Formats the {@code note} for display to the user.
+     * Overloaded method.
+     * @param noteObservableList
+     * @return
+     */
+    public static String formatSearch(ObservableList<Note> noteObservableList) {
+        final StringBuilder builder = new StringBuilder("Note: ");
+        String tag = noteObservableList.stream().findFirst().map(Note::getTags).get().toString();
+        builder.append(tag);
+        return builder.toString();
+    }
 }

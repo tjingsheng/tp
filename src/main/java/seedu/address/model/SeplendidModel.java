@@ -12,6 +12,7 @@ import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
+import seedu.address.model.notes.NoteTagContainsKeywordsPredicate;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
@@ -237,6 +238,13 @@ public interface SeplendidModel {
      * existing note in the NoteCatalogue.
      */
     void setNote(Note note, Note editedNote);
+
+    /**
+     * Gets the notes with the specific tags
+     * @param notePredicate
+     */
+    void getSearchNoteIfExists(NoteTagContainsKeywordsPredicate notePredicate);
+
 
     //=========== FilteredLocalCourseList Accessors =============================================================
 

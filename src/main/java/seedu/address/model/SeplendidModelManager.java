@@ -21,6 +21,7 @@ import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
+import seedu.address.model.notes.NoteTagContainsKeywordsPredicate;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
@@ -440,6 +441,13 @@ public class SeplendidModelManager implements SeplendidModel {
         requireAllNonNull(target, editedNote);
 
         noteCatalogue.setNote(target, editedNote);
+    }
+
+    @Override
+    public void getSearchNoteIfExists(NoteTagContainsKeywordsPredicate notePredicate) {
+        requireNonNull(notePredicate);
+        filteredNoteCatalogue.setPredicate(notePredicate);
+
     }
 
     //=========== FilteredNoteList Accessors =============================================================

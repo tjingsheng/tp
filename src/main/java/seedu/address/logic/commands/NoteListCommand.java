@@ -1,13 +1,16 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 import seedu.address.seplendidui.UiUtil;
 
-import static java.util.Objects.requireNonNull;
-
-public class NoteListCommand extends NoteCommand{
+/**
+ * Lists all notes in the NoteCatalogue.
+ */
+public class NoteListCommand extends NoteCommand {
     public static final String NOTE_LIST_MESSAGE_USAGE = COMMAND_WORD + "list: Lists all notes.";
 
     public static final String ACTION_WORD = "list";

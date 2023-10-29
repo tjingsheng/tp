@@ -85,7 +85,7 @@ public class SeplendidParser {
             return getMappingCommandWithoutArg(userInput, actionWord);
 
         case NoteCommand.COMMAND_WORD:
-                return getNoteCommandWithoutArg(userInput, actionWord);
+            return getNoteCommandWithoutArg(userInput, actionWord);
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
@@ -250,11 +250,11 @@ public class SeplendidParser {
     private NoteCommand getNoteCommandWithoutArg(String userInput, String actionWord)
             throws ParseException {
         switch (actionWord) {
-            case NoteListCommand.ACTION_WORD:
-                return new NoteListCommand();
-            default:
-                logger.finer("This user input caused a ParseException: " + userInput);
-                throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+        case NoteListCommand.ACTION_WORD:
+            return new NoteListCommand();
+        default:
+            logger.finer("This user input caused a ParseException: " + userInput);
+            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
 

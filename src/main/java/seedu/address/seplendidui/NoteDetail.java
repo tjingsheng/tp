@@ -10,7 +10,7 @@ import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCourse;
 
 /**
- * An UI component that displays information of a {@code note}.
+ * A UI component that displays information of a {@code note}.
  */
 public class NoteDetail extends UiPart<Region> {
 

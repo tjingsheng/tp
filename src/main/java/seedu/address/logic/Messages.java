@@ -84,17 +84,28 @@ public class Messages {
     }
 
     /**
-     * Formats the {@code university} for display to the user.
+     * Formats the {@code observableList} for display to the user.
      * Overloaded method.
-     * @param universityObservableList
+     * @param observableList
      * @return
      */
-    public static String format(ObservableList<University> universityObservableList) {
-        final StringBuilder builder = new StringBuilder("UniversityName: ");
-        String universityNames = universityObservableList.stream()
-                .map(University::getUniversityName).map(UniversityName::getName).collect(Collectors.joining(", "));
-        builder.append(universityNames);
-        return builder.toString();
+    public static <T> String format(ObservableList<T> observableList) {
+        T item = observableList.get(0);
+        if (item instanceof University) {
+            final StringBuilder builder = new StringBuilder("UniversityName: ");
+            String universityNames = observableList.stream().map(c -> (University) c)
+                    .map(University::getUniversityName)
+                    .map(UniversityName::getName).collect(Collectors.joining(", "));
+            builder.append(universityNames);
+            return builder.toString();
+        } else if (item instanceof Note) {
+            final StringBuilder builder = new StringBuilder("Note: ");
+            String tag = observableList.stream().findFirst().map(c -> (Note) c)
+                    .map(Note::getTags).get().toString();
+            builder.append(tag);
+            return builder.toString();
+        }
+        return "default";
     }
 
     /**
@@ -140,5 +151,4 @@ public class Messages {
                 .append(note.getTags());
         return builder.toString();
     }
-
 }

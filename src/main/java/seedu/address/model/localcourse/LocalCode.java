@@ -67,4 +67,5 @@ public class LocalCode {
     public int hashCode() {
         return value.hashCode();
     }
+
 }

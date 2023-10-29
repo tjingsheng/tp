@@ -35,6 +35,7 @@ public class PartnerName {
     public String getValue() {
         return value;
     }
+
     @Override
     public String toString() {
         return value;
@@ -59,4 +60,5 @@ public class PartnerName {
     public int hashCode() {
         return value.hashCode();
     }
+
 }

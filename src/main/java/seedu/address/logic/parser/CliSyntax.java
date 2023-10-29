@@ -28,5 +28,8 @@ public class CliSyntax {
     public static final SeplendidParameter PARAMETER_CONTENT = new SeplendidParameter("content");
     public static final SeplendidParameter PARAMETER_TAGS = new SeplendidParameter("tags");
     public static final SeplendidParameter PARAMETER_INFORMATION = new SeplendidParameter("information");
+    public static final SeplendidParameter PARAMETER_MAPPINGATTRIBUTE =
+            new SeplendidParameter("mappingattribute");
+    public static final SeplendidParameter PARAMETER_QUERY = new SeplendidParameter("query");
 
 }

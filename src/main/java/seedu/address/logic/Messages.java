@@ -133,7 +133,12 @@ public class Messages {
      * Overloaded method.
      */
     public static String format(Note note) {
-        return note.toString();
+        final StringBuilder builder = new StringBuilder();
+        builder.append("Note Content: ")
+                .append(note.getContent())
+                .append("; Tags: ")
+                .append(note.getTags());
+        return builder.toString();
     }
 
 }

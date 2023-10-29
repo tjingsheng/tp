@@ -1,16 +1,13 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PARAMETER_TAGS;
+
 import seedu.address.logic.commands.NoteSearchCommand;
 import seedu.address.logic.commands.UniversitySearchCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.notes.NoteTagContainsKeywordsPredicate;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.university.UniversityName;
-import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
-
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PARAMETER_TAGS;
-import static seedu.address.logic.parser.CliSyntax.PARAMETER_UNIVERSITYNAME;
 
 /**
  * Parses the given {@code String} of arguments in the context of the SearchCommand

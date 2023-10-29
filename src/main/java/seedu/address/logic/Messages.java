@@ -6,7 +6,6 @@ import java.util.stream.Stream;
 
 import javafx.collections.ObservableList;
 import seedu.address.logic.parser.Prefix;
-import seedu.address.model.SeplendidDataType;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;

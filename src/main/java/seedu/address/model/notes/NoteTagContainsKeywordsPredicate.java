@@ -1,11 +1,12 @@
 package seedu.address.model.notes;
 
-import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.university.University;
-import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
-
 import java.util.function.Predicate;
 
+import seedu.address.commons.util.ToStringBuilder;
+
+/**
+ * Tests that a {@code Note}'s {@code Tag} matches any of the keywords given.
+ */
 public class NoteTagContainsKeywordsPredicate implements Predicate<Note> {
     private final String keyword;
     public NoteTagContainsKeywordsPredicate(String keywords) {

@@ -28,9 +28,12 @@ public class PartnerCourseAddCommandIntegrationTest {
 
     @BeforeEach
     public void setUp() {
-        model = new SeplendidModelManager(getTypicalLocalCourseCatalogue(), new UserPrefs(),
-                getTypicalPartnerCourseCatalogue(), getTypicalUniversityCatalogue(), getTypicalNoteCatalogue(),
-                getTypicalMappingCatalogue());
+        model = new SeplendidModelManager(new UserPrefs(),
+                                          getTypicalLocalCourseCatalogue(),
+                                          getTypicalPartnerCourseCatalogue(),
+                                          getTypicalUniversityCatalogue(),
+                                          getTypicalMappingCatalogue(),
+                                          getTypicalNoteCatalogue());
     }
 
     @Test
@@ -38,27 +41,35 @@ public class PartnerCourseAddCommandIntegrationTest {
         model.addUniversity(WATERLOO);
         PartnerCourse validPartnerCourse = new PartnerCourseBuilder().build();
 
-        SeplendidModel expectedModel = new SeplendidModelManager(model.getLocalCourseCatalogue(), new UserPrefs(),
-                model.getPartnerCourseCatalogue(), new UniversityCatalogueBuilder().withUniversity(WATERLOO).build(),
-                getTypicalNoteCatalogue(), getTypicalMappingCatalogue());
+        SeplendidModel expectedModel = new SeplendidModelManager(new UserPrefs(),
+                                                                 model.getLocalCourseCatalogue(),
+                                                                 model.getPartnerCourseCatalogue(),
+                                                                 new UniversityCatalogueBuilder().withUniversity(
+                                                                     WATERLOO).build(),
+                                                                 getTypicalMappingCatalogue(),
+                                                                 getTypicalNoteCatalogue());
         expectedModel.addPartnerCourse(validPartnerCourse);
 
-        assertSeplendidCommandSuccess(new PartnerCourseAddCommand(validPartnerCourse), model,
-                String.format(PartnerCourseAddCommand.MESSAGE_SUCCESS, Messages.format(validPartnerCourse)),
-                expectedModel);
+        assertSeplendidCommandSuccess(new PartnerCourseAddCommand(validPartnerCourse),
+                                      model,
+                                      String.format(PartnerCourseAddCommand.MESSAGE_SUCCESS,
+                                                    Messages.format(validPartnerCourse)),
+                                      expectedModel);
     }
 
     @Test
     public void execute_nonExistingUniversity_throwsCommandException() {
         PartnerCourse validPartnerCourse = new PartnerCourseBuilder().build();
-        assertSeplendidCommandFailure(new PartnerCourseAddCommand(validPartnerCourse), model,
-                PartnerCourseAddCommand.MESSAGE_NONEXISTENT_UNIVERSITY);
+        assertSeplendidCommandFailure(new PartnerCourseAddCommand(validPartnerCourse),
+                                      model,
+                                      PartnerCourseAddCommand.MESSAGE_NONEXISTENT_UNIVERSITY);
     }
 
     @Test
     public void execute_duplicatePartnerCourse_throwsCommandException() {
         PartnerCourse partnerCourseInList = model.getPartnerCourseCatalogue().getPartnerCourseList().get(0);
-        assertSeplendidCommandFailure(new PartnerCourseAddCommand(partnerCourseInList), model,
-                PartnerCourseAddCommand.MESSAGE_DUPLICATE_PARTNER_COURSE);
+        assertSeplendidCommandFailure(new PartnerCourseAddCommand(partnerCourseInList),
+                                      model,
+                                      PartnerCourseAddCommand.MESSAGE_DUPLICATE_PARTNER_COURSE);
     }
 }

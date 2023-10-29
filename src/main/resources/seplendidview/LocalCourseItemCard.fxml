@@ -23,13 +23,9 @@
               prefHeight="50"
               GridPane.columnIndex="0">
             <padding>
-                <Insets top="5"
-                        right="15"
-                        bottom="5"
-                        left="15"/>
+                <Insets top="5" right="15" bottom="5" left="15"/>
             </padding>
-            <HBox spacing="5"
-                  alignment="CENTER_LEFT">
+            <HBox spacing="5" alignment="CENTER_LEFT">
                 <Label fx:id="id" styleClass="big-heading-font-size">
                     <minWidth>
                         <!-- Ensures that the label text is never truncated -->

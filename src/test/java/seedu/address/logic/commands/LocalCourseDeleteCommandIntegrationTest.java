@@ -29,29 +29,39 @@ public class LocalCourseDeleteCommandIntegrationTest {
 
     @BeforeEach
     public void setUp() {
-        model = new SeplendidModelManager(getTypicalLocalCourseCatalogue(), new UserPrefs(),
-                getTypicalPartnerCourseCatalogue(), getTypicalUniversityCatalogue(), getTypicalNoteCatalogue(),
-                getTypicalMappingCatalogue());
+        model = new SeplendidModelManager(new UserPrefs(),
+                                          getTypicalLocalCourseCatalogue(),
+                                          getTypicalPartnerCourseCatalogue(),
+                                          getTypicalUniversityCatalogue(),
+                                          getTypicalMappingCatalogue(),
+                                          getTypicalNoteCatalogue());
     }
 
     @Test
     public void execute_deleteLocalCourse_success() throws CommandException {
         LocalCourse validExistingLocalCourse = getTypicalLocalCourses().get(0);
 
-        SeplendidModel expectedModel = new SeplendidModelManager(model.getLocalCourseCatalogue(), new UserPrefs(),
-                model.getPartnerCourseCatalogue(), model.getUniversityCatalogue(), model.getNoteCatalogue(),
-                getTypicalMappingCatalogue());
+        SeplendidModel expectedModel = new SeplendidModelManager(new UserPrefs(),
+                                                                 model.getLocalCourseCatalogue(),
+                                                                 model.getPartnerCourseCatalogue(),
+                                                                 model.getUniversityCatalogue(),
+                                                                 getTypicalMappingCatalogue(),
+                                                                 model.getNoteCatalogue());
         expectedModel.deleteLocalCourse(validExistingLocalCourse);
 
-        assertSeplendidCommandSuccess(new LocalCourseDeleteCommand(validExistingLocalCourse.getLocalCode()), model,
-                String.format(LocalCourseDeleteCommand.MESSAGE_SUCCESS, Messages.format(validExistingLocalCourse)),
-                expectedModel);
+        assertSeplendidCommandSuccess(new LocalCourseDeleteCommand(validExistingLocalCourse.getLocalCode()),
+                                      model,
+                                      String.format(
+                                          LocalCourseDeleteCommand.MESSAGE_SUCCESS,
+                                          Messages.format(validExistingLocalCourse)),
+                                      expectedModel);
     }
 
     @Test
     public void execute_nonExistingLocalCourse_throwsCommandException() {
-        assertSeplendidCommandFailure(new LocalCourseDeleteCommand(TYPICAL_LOCAL_COURSE.getLocalCode()), model,
-                LocalCourseDeleteCommand.MESSAGE_NONEXISTENT_LOCAL_COURSE);
+        assertSeplendidCommandFailure(new LocalCourseDeleteCommand(TYPICAL_LOCAL_COURSE.getLocalCode()),
+                                      model,
+                                      LocalCourseDeleteCommand.MESSAGE_NONEXISTENT_LOCAL_COURSE);
     }
 
 }

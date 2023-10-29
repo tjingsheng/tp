@@ -55,22 +55,26 @@ public class LogicManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonAddressBookStorage addressBookStorage =
-                new JsonAddressBookStorage(temporaryFolder.resolve("addressBook.json"));
-        JsonLocalCourseCatalogueStorage localCourseCatalogueStorage =
-                new JsonLocalCourseCatalogueStorage(temporaryFolder.resolve("localcoursecatalogue.json"));
+        JsonAddressBookStorage addressBookStorage = new JsonAddressBookStorage(temporaryFolder.resolve(
+            "addressBook.json"));
+        JsonLocalCourseCatalogueStorage localCourseCatalogueStorage = new JsonLocalCourseCatalogueStorage(
+            temporaryFolder.resolve("localcoursecatalogue.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
-        JsonPartnerCourseCatalogueStorage partnerCourseCatalogueStorage =
-                new JsonPartnerCourseCatalogueStorage(temporaryFolder.resolve("partnercoursecatalogue.json"));
+        JsonPartnerCourseCatalogueStorage partnerCourseCatalogueStorage = new JsonPartnerCourseCatalogueStorage(
+            temporaryFolder.resolve("partnercoursecatalogue.json"));
         JsonUniversityCatalogueStorage universityCatalogueStorage =
-                new JsonUniversityCatalogueStorage(temporaryFolder.resolve("universitycatalogue.json"));
-        JsonNoteCatalogueStorage noteCatalogueStorage =
-                new JsonNoteCatalogueStorage(temporaryFolder.resolve("notecatalogue.json"));
-        JsonMappingCatalogueStorage mappingCatalogueStorage =
-                new JsonMappingCatalogueStorage(temporaryFolder.resolve("mappingcatalogue.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, localCourseCatalogueStorage, userPrefsStorage,
-                partnerCourseCatalogueStorage, universityCatalogueStorage, noteCatalogueStorage,
-                mappingCatalogueStorage);
+            new JsonUniversityCatalogueStorage(temporaryFolder.resolve("universitycatalogue.json"));
+        JsonNoteCatalogueStorage noteCatalogueStorage = new JsonNoteCatalogueStorage(temporaryFolder.resolve(
+            "notecatalogue.json"));
+        JsonMappingCatalogueStorage mappingCatalogueStorage = new JsonMappingCatalogueStorage(temporaryFolder.resolve(
+            "mappingcatalogue.json"));
+        StorageManager storage = new StorageManager(addressBookStorage,
+                                                    userPrefsStorage,
+                                                    localCourseCatalogueStorage,
+                                                    partnerCourseCatalogueStorage,
+                                                    universityCatalogueStorage,
+                                                    mappingCatalogueStorage,
+                                                    noteCatalogueStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -94,14 +98,20 @@ public class LogicManagerTest {
 
     @Test
     public void execute_storageThrowsIoException_throwsCommandException() {
-        assertCommandFailureForExceptionFromStorage(DUMMY_IO_EXCEPTION, String.format(
-                LogicManager.FILE_OPS_ERROR_FORMAT, DUMMY_IO_EXCEPTION.getMessage()));
+        assertCommandFailureForExceptionFromStorage(
+            DUMMY_IO_EXCEPTION,
+            String.format(
+                LogicManager.FILE_OPS_ERROR_FORMAT,
+                DUMMY_IO_EXCEPTION.getMessage()));
     }
 
     @Test
     public void execute_storageThrowsAdException_throwsCommandException() {
-        assertCommandFailureForExceptionFromStorage(DUMMY_AD_EXCEPTION, String.format(
-                LogicManager.FILE_OPS_PERMISSION_ERROR_FORMAT, DUMMY_AD_EXCEPTION.getMessage()));
+        assertCommandFailureForExceptionFromStorage(
+            DUMMY_AD_EXCEPTION,
+            String.format(
+                LogicManager.FILE_OPS_PERMISSION_ERROR_FORMAT,
+                DUMMY_AD_EXCEPTION.getMessage()));
     }
 
     @Test
@@ -117,8 +127,8 @@ public class LogicManagerTest {
      *
      * @see #assertCommandFailure(String, Class, String, Model)
      */
-    private void assertCommandSuccess(String inputCommand, String expectedMessage,
-                                      Model expectedModel) throws CommandException, ParseException {
+    private void assertCommandSuccess(String inputCommand, String expectedMessage, Model expectedModel)
+            throws CommandException, ParseException {
         CommandResult result = logic.execute(inputCommand);
         assertEquals(expectedMessage, result.getFeedbackToUser());
         assertEquals(expectedModel, model);
@@ -179,8 +189,7 @@ public class LogicManagerTest {
         // Inject LogicManager with an AddressBookStorage that throws the IOException e when saving
         JsonAddressBookStorage addressBookStorage = new JsonAddressBookStorage(prefPath) {
             @Override
-            public void saveAddressBook(ReadOnlyAddressBook addressBook, Path filePath)
-                    throws IOException {
+            public void saveAddressBook(ReadOnlyAddressBook addressBook, Path filePath) throws IOException {
                 throw e;
             }
         };
@@ -194,14 +203,14 @@ public class LogicManagerTest {
         };
 
         JsonPartnerCourseCatalogueStorage partnerCourseCatalogueStorage =
-                new JsonPartnerCourseCatalogueStorage(prefPath) {
-                    @Override
-                    public void savePartnerCourseCatalogue(ReadOnlyPartnerCourseCatalogue partnerCourseCatalogue,
-                                                           Path filePath)
-                            throws IOException {
-                        throw e;
-                    }
-                };
+            new JsonPartnerCourseCatalogueStorage(prefPath) {
+                @Override
+                public void savePartnerCourseCatalogue(ReadOnlyPartnerCourseCatalogue partnerCourseCatalogue,
+                                                       Path filePath)
+                        throws IOException {
+                    throw e;
+                }
+            };
 
         JsonUniversityCatalogueStorage universityCatalogueStorage = new JsonUniversityCatalogueStorage(prefPath) {
             @Override
@@ -213,31 +222,33 @@ public class LogicManagerTest {
 
         JsonNoteCatalogueStorage noteCatalogueStorage = new JsonNoteCatalogueStorage(prefPath) {
             @Override
-            public void saveNoteCatalogue(ReadOnlyNoteCatalogue noteCatalogue, Path filePath)
-                    throws IOException {
+            public void saveNoteCatalogue(ReadOnlyNoteCatalogue noteCatalogue, Path filePath) throws IOException {
                 throw e;
             }
         };
 
         JsonMappingCatalogueStorage mappingCatalogueStorage = new JsonMappingCatalogueStorage(prefPath) {
             @Override
-            public void saveMappingCatalogue(ReadOnlyMappingCatalogue noteCatalogue, Path filePath)
-                    throws IOException {
+            public void saveMappingCatalogue(ReadOnlyMappingCatalogue noteCatalogue, Path filePath) throws IOException {
                 throw e;
             }
         };
 
-        JsonUserPrefsStorage userPrefsStorage =
-                new JsonUserPrefsStorage(temporaryFolder.resolve("ExceptionUserPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, localCourseCatalogueStorage, userPrefsStorage,
-                partnerCourseCatalogueStorage, universityCatalogueStorage,
-                noteCatalogueStorage, mappingCatalogueStorage);
+        JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve(
+            "ExceptionUserPrefs.json"));
+        StorageManager storage = new StorageManager(addressBookStorage,
+                                                    userPrefsStorage,
+                                                    localCourseCatalogueStorage,
+                                                    partnerCourseCatalogueStorage,
+                                                    universityCatalogueStorage,
+                                                    mappingCatalogueStorage,
+                                                    noteCatalogueStorage);
 
         logic = new LogicManager(model, storage);
 
         // Triggers the saveAddressBook method by executing an add command
-        String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY
-                + EMAIL_DESC_AMY + ADDRESS_DESC_AMY;
+        String addCommand =
+            AddCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY + ADDRESS_DESC_AMY;
         Person expectedPerson = new PersonBuilder(AMY).withTags().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addPerson(expectedPerson);

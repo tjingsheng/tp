@@ -27,30 +27,39 @@ public class LocalCourseAddCommandIntegrationTest {
 
     @BeforeEach
     public void setUp() {
-        model = new SeplendidModelManager(getTypicalLocalCourseCatalogue(), new UserPrefs(),
-                getTypicalPartnerCourseCatalogue(), getTypicalUniversityCatalogue(), getTypicalNoteCatalogue(),
-                getTypicalMappingCatalogue());
+        model = new SeplendidModelManager(new UserPrefs(),
+                                          getTypicalLocalCourseCatalogue(),
+                                          getTypicalPartnerCourseCatalogue(),
+                                          getTypicalUniversityCatalogue(),
+                                          getTypicalMappingCatalogue(),
+                                          getTypicalNoteCatalogue());
     }
 
     @Test
     public void execute_newLocalCourse_success() {
         LocalCourse validLocalCourse = new LocalCourseBuilder().build();
 
-        SeplendidModel expectedModel = new SeplendidModelManager(model.getLocalCourseCatalogue(), new UserPrefs(),
-                model.getPartnerCourseCatalogue(), model.getUniversityCatalogue(), model.getNoteCatalogue(),
-                model.getMappingCatalogue());
+        SeplendidModel expectedModel = new SeplendidModelManager(new UserPrefs(),
+                                                                 model.getLocalCourseCatalogue(),
+                                                                 model.getPartnerCourseCatalogue(),
+                                                                 model.getUniversityCatalogue(),
+                                                                 model.getMappingCatalogue(),
+                                                                 model.getNoteCatalogue());
         expectedModel.addLocalCourse(validLocalCourse);
 
-        assertSeplendidCommandSuccess(new LocalCourseAddCommand(validLocalCourse), model,
-                String.format(LocalCourseAddCommand.MESSAGE_SUCCESS, Messages.format(validLocalCourse)),
-                expectedModel);
+        assertSeplendidCommandSuccess(new LocalCourseAddCommand(validLocalCourse),
+                                      model,
+                                      String.format(LocalCourseAddCommand.MESSAGE_SUCCESS,
+                                                    Messages.format(validLocalCourse)),
+                                      expectedModel);
     }
 
     @Test
     public void execute_duplicateLocalCourse_throwsCommandException() {
         LocalCourse localCourseInList = model.getLocalCourseCatalogue().getLocalCourseList().get(0);
-        assertSeplendidCommandFailure(new LocalCourseAddCommand(localCourseInList), model,
-                LocalCourseAddCommand.MESSAGE_DUPLICATE_LOCAL_COURSE);
+        assertSeplendidCommandFailure(new LocalCourseAddCommand(localCourseInList),
+                                      model,
+                                      LocalCourseAddCommand.MESSAGE_DUPLICATE_LOCAL_COURSE);
     }
 
 }

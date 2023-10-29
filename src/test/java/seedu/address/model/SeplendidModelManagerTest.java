@@ -116,8 +116,7 @@ public class SeplendidModelManagerTest {
 
     @Test
     public void getFilteredLocalCourseList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredLocalCourseList()
-                .remove(0));
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredLocalCourseList().remove(0));
     }
 
     //partner courses
@@ -200,8 +199,7 @@ public class SeplendidModelManagerTest {
 
     @Test
     public void getFilteredPartnerCourseList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredPartnerCourseList()
-                .remove(0));
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredPartnerCourseList().remove(0));
     }
 
     //university
@@ -235,28 +233,35 @@ public class SeplendidModelManagerTest {
 
     @Test
     public void getFilteredUniversityList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredUniversityList()
-                .remove(0));
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredUniversityList().remove(0));
     }
 
     @Test
     public void equals() {
         LocalCourseCatalogue localCourseCatalogue =
-                new LocalCourseCatalogueBuilder().withLocalCourse(CS2030S).withLocalCourse(CS2040S).build();
+            new LocalCourseCatalogueBuilder().withLocalCourse(CS2030S).withLocalCourse(CS2040S).build();
         LocalCourseCatalogue differentLocalCourseCatalogue = new LocalCourseCatalogue();
         UserPrefs userPrefs = new UserPrefs();
         PartnerCourseCatalogue partnerCourseCatalogue =
-                new PartnerCourseCatalogueBuilder().withPartnerCourse(COMP1000).withPartnerCourse(COMP2000).build();
+            new PartnerCourseCatalogueBuilder().withPartnerCourse(COMP1000).withPartnerCourse(COMP2000).build();
         UniversityCatalogue universityCatalogue = getTypicalUniversityCatalogue();
         NoteCatalogue noteCatalogue = getTypicalNoteCatalogue();
         MappingCatalogue mappingCatalogue = getTypicalMappingCatalogue();
 
 
         // same values -> returns true
-        modelManager = new SeplendidModelManager(localCourseCatalogue, userPrefs,
-                partnerCourseCatalogue, universityCatalogue, noteCatalogue, mappingCatalogue);
-        SeplendidModelManager modelManagerCopy = new SeplendidModelManager(localCourseCatalogue, userPrefs,
-                partnerCourseCatalogue, universityCatalogue, noteCatalogue, mappingCatalogue);
+        modelManager = new SeplendidModelManager(userPrefs,
+                                                 localCourseCatalogue,
+                                                 partnerCourseCatalogue,
+                                                 universityCatalogue,
+                                                 mappingCatalogue,
+                                                 noteCatalogue);
+        SeplendidModelManager modelManagerCopy = new SeplendidModelManager(userPrefs,
+                                                                           localCourseCatalogue,
+                                                                           partnerCourseCatalogue,
+                                                                           universityCatalogue,
+                                                                           mappingCatalogue,
+                                                                           noteCatalogue);
         assertTrue(modelManager.equals(modelManagerCopy));
 
         // same object -> returns true
@@ -269,13 +274,21 @@ public class SeplendidModelManagerTest {
         assertFalse(modelManager.equals(5));
 
         // different localCourseCatalogue -> returns false
-        assertFalse(modelManager.equals(new SeplendidModelManager(differentLocalCourseCatalogue, userPrefs,
-                partnerCourseCatalogue, universityCatalogue, noteCatalogue, mappingCatalogue)));
+        assertFalse(modelManager.equals(new SeplendidModelManager(userPrefs,
+                                                                  differentLocalCourseCatalogue,
+                                                                  partnerCourseCatalogue,
+                                                                  universityCatalogue,
+                                                                  mappingCatalogue,
+                                                                  noteCatalogue)));
 
         // different filteredList -> returns false
         modelManager.updateFilteredLocalCourseList(unused -> false);
-        assertFalse(modelManager.equals(new SeplendidModelManager(localCourseCatalogue, userPrefs,
-                partnerCourseCatalogue, universityCatalogue, noteCatalogue, mappingCatalogue)));
+        assertFalse(modelManager.equals(new SeplendidModelManager(userPrefs,
+                                                                  localCourseCatalogue,
+                                                                  partnerCourseCatalogue,
+                                                                  universityCatalogue,
+                                                                  mappingCatalogue,
+                                                                  noteCatalogue)));
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredLocalCourseList(PREDICATE_SHOW_ALL_LOCAL_COURSES);
@@ -283,7 +296,11 @@ public class SeplendidModelManagerTest {
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setLocalCourseCatalogueFilePath(Paths.get("differentFilePath"));
-        assertFalse(modelManager.equals(new SeplendidModelManager(localCourseCatalogue, differentUserPrefs,
-                partnerCourseCatalogue, universityCatalogue, noteCatalogue, mappingCatalogue)));
+        assertFalse(modelManager.equals(new SeplendidModelManager(differentUserPrefs,
+                                                                  localCourseCatalogue,
+                                                                  partnerCourseCatalogue,
+                                                                  universityCatalogue,
+                                                                  mappingCatalogue,
+                                                                  noteCatalogue)));
     }
 }

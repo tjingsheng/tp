@@ -44,7 +44,7 @@ public class NoteSearchCommand extends NoteCommand {
             throw new CommandException(MESSAGE_NONEXISTENT_NOTES);
         }
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.formatSearch(model.getFilteredNoteList())),
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(model.getFilteredNoteList())),
                 UiUtil.ListViewModel.NOTE_LIST);
     }
 

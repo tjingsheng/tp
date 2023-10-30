@@ -103,6 +103,12 @@
 }
 /**/
 
+/* Text Flow */
+.text-Flow {
+    -fx-background-color: #CCDEF0;
+}
+/**/
+
 /* Text Area */
 #resultTextArea {
  -fx-padding: 5;
@@ -115,10 +121,6 @@
     -fx-background-color: transparent;
 }
 /**/
-
-.text-Flow {
-    -fx-background-color: #CCDEF0;
-}
 
 /* Enter Button */
 #enterButton {

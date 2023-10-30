@@ -2,9 +2,9 @@ package seedu.address.testutil;
 
 import java.util.Comparator;
 
-import seedu.address.logic.commands.LocalCourseAddCommand;
-import seedu.address.logic.commands.LocalCourseDeleteCommand;
-import seedu.address.logic.commands.LocalCourseSortCommand;
+import seedu.address.logic.commands.localcourse.LocalCourseAddCommand;
+import seedu.address.logic.commands.localcourse.LocalCourseDeleteCommand;
+import seedu.address.logic.commands.localcourse.LocalCourseSortCommand;
 import seedu.address.model.localcourse.LocalCourse;
 
 /**

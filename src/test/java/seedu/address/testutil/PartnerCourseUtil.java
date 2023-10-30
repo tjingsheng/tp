@@ -1,7 +1,7 @@
 package seedu.address.testutil;
 
-import seedu.address.logic.commands.PartnerCourseAddCommand;
-import seedu.address.logic.commands.PartnerCourseDeleteCommand;
+import seedu.address.logic.commands.partnercourse.PartnerCourseAddCommand;
+import seedu.address.logic.commands.partnercourse.PartnerCourseDeleteCommand;
 import seedu.address.model.partnercourse.PartnerCourse;
 
 /**

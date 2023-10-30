@@ -32,7 +32,10 @@ import seedu.address.model.ReadOnlyUniversityCatalogue;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCode;
+import seedu.address.model.localcourse.LocalCodeContainsKeywordsPredicate;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.localcourse.LocalCourseAttribute;
+import seedu.address.model.localcourse.LocalNameContainsKeywordsPredicate;
 import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
 import seedu.address.model.notes.NoteTagContainsKeywordsPredicate;
@@ -133,6 +136,12 @@ public class LocalCourseDeleteCommandTest {
         }
 
         // LocalCourse
+        @Override
+        public void searchLocalCourses(LocalCourseAttribute attribute,
+                                       LocalCodeContainsKeywordsPredicate localCodeContainsKeywordsPredicate,
+                                       LocalNameContainsKeywordsPredicate localNameContainsKeywordsPredicate) {
+            throw new AssertionError("This method should not be called.");
+        }
         @Override
         public Path getLocalCourseCatalogueFilePath() {
             throw new AssertionError("This method should not be called.");

@@ -1,8 +1,5 @@
 package seedu.address.logic.parser;
 
-import seedu.address.model.localcourse.LocalCode;
-import seedu.address.model.localcourse.LocalCourseAttribute;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

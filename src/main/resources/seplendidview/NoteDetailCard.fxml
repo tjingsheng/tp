@@ -4,23 +4,19 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.text.TextFlow?>
 <HBox xmlns:fx="http://javafx.com/fxml/1"
       id="noteDetailPane"
       fx:id="noteDetailPane"
       xmlns="http://javafx.com/javafx/17"
       HBox.hgrow="ALWAYS"
       styleClass="detail-card, round-border">
-    <VBox alignment="CENTER_LEFT">
+    <VBox>
         <padding>
             <Insets top="17" right="25" bottom="17" left="25"/>
         </padding>
         <Label fx:id="tags" styleClass="small-heading-font-size"/>
         <Label/>
-        <TextArea fx:id="noteContent"
-                  styleClass="text-font-size"
-                  editable="false"
-                  wrapText="true"/>
+        <TextFlow fx:id="noteContent" styleClass="text-font-size"/>
     </VBox>
 </HBox>

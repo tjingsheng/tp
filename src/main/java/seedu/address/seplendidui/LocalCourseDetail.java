@@ -2,9 +2,10 @@ package seedu.address.seplendidui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import seedu.address.model.localcourse.LocalCourse;
 
 /**
@@ -25,7 +26,7 @@ public class LocalCourseDetail extends UiPart<Region> {
     @FXML
     private Label localUnit;
     @FXML
-    private TextArea localDescription;
+    private TextFlow localDescription;
 
     /**
      * Creates a {@code LocalCourseDetail} with the given {@code LocalCourse}
@@ -36,6 +37,7 @@ public class LocalCourseDetail extends UiPart<Region> {
         localName.setText(localCourse.getLocalName().toString());
         localCode.setText(localCourse.getLocalCode().toString());
         localUnit.setText("Units: " + localCourse.getLocalUnit().toString());
-        localDescription.setText(localCourse.getLocalDescription().toString());
+        TextFlowHeightUpdater.setAutoFitText(localDescription);
+        localDescription.getChildren().add(new Text(localCourse.getLocalDescription().toString()));
     }
 }

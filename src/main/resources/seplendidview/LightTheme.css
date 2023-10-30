@@ -116,6 +116,10 @@
 }
 /**/
 
+.text-Flow {
+    -fx-background-color: #CCDEF0;
+}
+
 /* Enter Button */
 #enterButton {
     -fx-background-color: #CCDEF0;
@@ -160,34 +164,4 @@
     -fx-background-radius: 15;
     -fx-background-insets: 5;
     -fx-border-insets: 5;
-}
-
-#localDescription{
-    -fx-background-color: #CCDEF0;
-    -fx-min-height: 1000;
-}
-
-#localDescription .content{
-    -fx-background-color: transparent;
-    -fx-padding:0;
-}
-
-#partnerDescription{
-    -fx-background-color: #CCDEF0;
-    -fx-min-height: 1000;
-}
-
-#partnerDescription .content{
-    -fx-background-color: transparent;
-    -fx-padding:0;
-}
-
-#noteContent{
-    -fx-background-color: #CCDEF0;
-    -fx-min-height: 1000;
-}
-
-#noteContent .content{
-    -fx-background-color: transparent;
-    -fx-padding:0;
 }

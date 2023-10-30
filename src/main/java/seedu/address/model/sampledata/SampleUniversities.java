@@ -240,7 +240,7 @@ public class SampleUniversities {
      */
     public static University[] getSampleUniversities() {
         return Arrays.stream(SampleUniversityName.values())
-                     .map(name -> new UniversityName(name.toValue()))
+                     .map(data -> new UniversityName(data.toValue()))
                      .map(University::new)
                      .toArray(University[]::new);
     }

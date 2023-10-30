@@ -7,10 +7,9 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.commands.localcourse.LocalCourseSearchCommand;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
-import seedu.address.model.localcourse.LocalCodeContainsKeywordsPredicate;
-import seedu.address.model.localcourse.LocalCourseAttribute;
-import seedu.address.model.localcourse.LocalNameContainsKeywordsPredicate;
-import seedu.address.model.partnercourse.PartnerCourse;
+import seedu.address.model.partnercourse.PartnerCodeContainsKeywordsPredicate;
+import seedu.address.model.partnercourse.PartnerCourseAttribute;
+import seedu.address.model.partnercourse.PartnerNameContainsKeywordsPredicate;
 
 import java.util.Objects;
 
@@ -23,11 +22,10 @@ import static java.util.Objects.requireNonNull;
 public class PartnerCourseSearchCommand extends PartnerCourseCommand {
     public static final String ACTION_WORD = "search"; // Use "search" as the command word
 
-    public static final String MESSAGE_SUCCESS = "Local courses searched: %1$s";
-
+    public static final String MESSAGE_SUCCESS = "partner courses searched: %1$s";
 
     public static final String PARTNERCOURSE_SEARCH_MESSAGE_USAGE = COMMAND_WORD
-            + " : Search local courses by attributes - partnercode and partnername";
+            + " : Search partner courses by attributes - partnercode and partnername";
 
     private final PartnerCourseAttribute attribute;
 
@@ -35,21 +33,21 @@ public class PartnerCourseSearchCommand extends PartnerCourseCommand {
     private final PartnerNameContainsKeywordsPredicate namePredicate;
 
     /**
-     * Creates a LocalCourseSearchCommand to sort the local course list based on the code predicate.
+     * Creates a PartnerCourseSearchCommand to sort the partner course list based on the code predicate.
      * @param codePredicate Predicate use for search
      */
     public PartnerCourseSearchCommand(PartnerCodeContainsKeywordsPredicate codePredicate) {
-        this.attribute = PartnerCourseAttribute.LOCALCODE;
+        this.attribute = PartnerCourseAttribute.PARTNERCODE;
         this.codePredicate = codePredicate;
         this.namePredicate = null;
     }
 
     /**
-     * Creates a LocalCourseSearchCommand to sort the local course list based on the name predicate.
+     * Creates a PartnerCourseSearchCommand to sort the partner course list based on the name predicate.
      * @param namePredicate Predicate use for search
      */
     public PartnerCourseSearchCommand(PartnerNameContainsKeywordsPredicate namePredicate) {
-        this.attribute = PartnerCourseAttribute.LOCALNAME;
+        this.attribute = PartnerCourseAttribute.PARTNERNAME;
         this.codePredicate = null;
         this.namePredicate = namePredicate;
     }

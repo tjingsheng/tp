@@ -121,6 +121,23 @@ public class Messages {
                     .collect(Collectors.joining(", "));
             builder.append(localCourses);
             return builder.toString();
+        } else if (item instanceof PartnerCourse) {
+            final StringBuilder builder = new StringBuilder("Partnercourses: ");
+            String partnerCourses = observableList.stream()
+                    .map(partnercourse -> (PartnerCourse) partnercourse)
+                    .map(partnerCourse -> {
+                        String partnerName = partnerCourse.getPartnerName().toString();
+                        String partnerCode = partnerCourse.getPartnerCode().toString();
+                        double units = partnerCourse.getPartnerUnit().getValue();
+                        System.out.println(partnerName);
+                        System.out.println(partnerCode);
+                        System.out.println(units);
+
+                        return partnerName + " (" + partnerCode + ", " + units + " units)";
+                    })
+                    .collect(Collectors.joining(", "));
+            builder.append(partnerCourses);
+            return builder.toString();
         }
         return "default";
 

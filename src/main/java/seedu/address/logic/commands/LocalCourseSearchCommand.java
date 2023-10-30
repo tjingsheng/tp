@@ -15,12 +15,13 @@ import seedu.address.model.localcourse.LocalNameContainsKeywordsPredicate;
 
 /**
  * Finds and lists all localcourses in SEPlendid whose name contains any of the argument keywords.
- * Keyword matching is case insensitive.
+ * Keyword matching is case-insensitive.
  */
 public class LocalCourseSearchCommand extends LocalCourseCommand {
     public static final String ACTION_WORD = "search"; // Use "search" as the command word
 
     public static final String MESSAGE_SUCCESS = "Local courses searched: %1$s";
+
 
     public static final String LOCALCOURSE_SEARCH_MESSAGE_USAGE = COMMAND_WORD
             + " : Search local courses by attributes - localcode and localname";

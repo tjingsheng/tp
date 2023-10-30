@@ -40,10 +40,15 @@ public class LocalCourseSearchCommandParser implements Parser<LocalCourseSearchC
                     LocalCourseSearchCommand.LOCALCOURSE_SEARCH_MESSAGE_USAGE));
         }
 
-        if (ParserUtil.areArgumentsPresent(parameterToArgMap,
-                PARAMETER_LOCALNAME, PARAMETER_LOCALCODE)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    LocalCourseSearchCommand.LOCALCOURSE_SEARCH_MESSAGE_USAGE));
+        if (parameterToArgMap.contains(PARAMETER_LOCALCODE) && parameterToArgMap.contains(PARAMETER_LOCALNAME)) {
+            // Both localcode and localname are present, check their order
+            int localCodeIndex = parameterToArgMap.getIndexOf(PARAMETER_LOCALCODE);
+            int localNameIndex = parameterToArgMap.getIndexOf(PARAMETER_LOCALNAME);
+
+            if (localCodeIndex > localNameIndex) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                        LocalCourseSearchCommand.LOCALCOURSE_SEARCH_MESSAGE_USAGE));
+            }
         }
 
         LocalCourseAttribute attribute;

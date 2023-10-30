@@ -1,6 +1,11 @@
 package seedu.address.logic.parser;
 
+import seedu.address.model.localcourse.LocalCode;
+import seedu.address.model.localcourse.LocalCourseAttribute;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -41,5 +46,13 @@ public class SeplendidArgumentMap {
 
     public boolean contains(SeplendidParameter parameterLocalcode) {
         return parameterToArgMap.containsKey(parameterLocalcode);
+    }
+
+    public int getIndexOf(SeplendidParameter parameter) {
+        List<SeplendidParameter> parameters = new ArrayList<>(parameterToArgMap.keySet());
+        if (parameters.get(1) == CliSyntax.PARAMETER_LOCALCODE) {
+            return 0;
+        }
+        return 1;
     }
 }

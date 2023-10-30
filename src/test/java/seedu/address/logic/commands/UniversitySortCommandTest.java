@@ -33,12 +33,12 @@ public class UniversitySortCommandTest {
 
     @BeforeEach
     public void setUp() {
-        model = new SeplendidModelManager(getTypicalLocalCourseCatalogue(), new UserPrefs(),
-                getTypicalPartnerCourseCatalogue(), getTypicalUniversityCatalogue(), getTypicalNoteCatalogue(),
-                getTypicalMappingCatalogue());
-        expectedModel = new SeplendidModelManager(getTypicalLocalCourseCatalogue(), new UserPrefs(),
-                getTypicalPartnerCourseCatalogue(), model.getUniversityCatalogue(), getTypicalNoteCatalogue(),
-                getTypicalMappingCatalogue());
+        model = new SeplendidModelManager(new UserPrefs(), getTypicalLocalCourseCatalogue(),
+                getTypicalPartnerCourseCatalogue(), getTypicalUniversityCatalogue(),
+                getTypicalMappingCatalogue(), getTypicalNoteCatalogue());
+        expectedModel = new SeplendidModelManager(new UserPrefs(), getTypicalLocalCourseCatalogue(),
+                getTypicalPartnerCourseCatalogue(), model.getUniversityCatalogue(),
+                getTypicalMappingCatalogue(), getTypicalNoteCatalogue());
     }
 
     @Test

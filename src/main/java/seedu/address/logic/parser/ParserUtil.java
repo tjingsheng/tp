@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -15,6 +16,7 @@ import seedu.address.model.localcourse.LocalCourseAttribute;
 import seedu.address.model.localcourse.LocalDescription;
 import seedu.address.model.localcourse.LocalName;
 import seedu.address.model.localcourse.LocalUnit;
+import seedu.address.model.mapping.MappingAttributeEnum;
 import seedu.address.model.mapping.MappingMiscInformation;
 import seedu.address.model.notes.Content;
 import seedu.address.model.partnercourse.PartnerCode;
@@ -308,6 +310,30 @@ public class ParserUtil {
         return new MappingMiscInformation(trimmedMappingMiscInformation);
     }
 
+    /**
+     * Parse a {@code String MappingAttribute}.
+     * Leading and trailing whitespaces will be trimmed.
+     */
+    public static MappingAttributeEnum parseMappingAttribute(String attributeInput)
+            throws ParseException {
+        requireNonNull(attributeInput);
+        String trimmedAttributeInput = attributeInput.trim();
+
+        if (!MappingAttributeEnum.isValidAttribute(trimmedAttributeInput)) {
+            throw new ParseException(MappingAttributeEnum.MESSAGE_CONSTRAINTS);
+        }
+
+        Optional<MappingAttributeEnum> mappingAttributeOptional = MappingAttributeEnum.getAttributeEnumValue(
+                trimmedAttributeInput);
+
+        if (mappingAttributeOptional.isEmpty()) {
+            // Defensive programming
+            throw new ParseException(MappingAttributeEnum.MESSAGE_CONSTRAINTS);
+        }
+        return mappingAttributeOptional.get();
+    }
+
+
     // SEPlendid ParserUtil starts here
 
     /**
@@ -365,11 +391,11 @@ public class ParserUtil {
         String attributeLowerCase = attribute.toLowerCase().trim();
         String resultAttribute = attributeLowerCase;
 
-        switch(attributeLowerCase) {
-        case("localcode"):
+        switch (attributeLowerCase) {
+        case ("localcode"):
             resultAttribute = "LOCALCODE";
             break;
-        case("localname"):
+        case ("localname"):
             resultAttribute = "LOCALNAME";
             break;
         default:
@@ -395,14 +421,14 @@ public class ParserUtil {
         String attributeLowerCase = attribute.toLowerCase().trim();
         String resultAttribute = attributeLowerCase;
 
-        switch(attributeLowerCase) {
-        case("partnercode"):
+        switch (attributeLowerCase) {
+        case ("partnercode"):
             resultAttribute = "PARTNERCODE";
             break;
-        case("partnername"):
+        case ("partnername"):
             resultAttribute = "PARTNERNAME";
             break;
-        case("university"):
+        case ("university"):
             resultAttribute = "UNIVERSITY";
             break;
         default:
@@ -427,8 +453,8 @@ public class ParserUtil {
         String attributeLowerCase = attribute.toLowerCase().trim();
         String resultAttribute = attributeLowerCase;
 
-        switch(attributeLowerCase) {
-        case("universityname"):
+        switch (attributeLowerCase) {
+        case ("universityname"):
             resultAttribute = "UNIVERSITYNAME";
             break;
         default:

@@ -78,12 +78,12 @@ public class SeplendidLogicManagerTest {
             "mappingcatalogue.json"));
         StorageManager storage = new StorageManager(
             addressBookStorage,
-            localCourseCatalogueStorage,
             userPrefsStorage,
+            localCourseCatalogueStorage,
             partnerCourseCatalogueStorage,
             universityCatalogueStorage,
-            noteCatalogueStorage,
-            mappingCatalogueStorage);
+            mappingCatalogueStorage,
+            noteCatalogueStorage);
         model.addUniversity(new University(TYPICAL_PARTNER_UNIVERSITY_NAME));
         logic = new SeplendidLogicManager(model, storage);
     }
@@ -170,12 +170,12 @@ public class SeplendidLogicManagerTest {
     private void assertCommandFailure(
         String inputCommand, Class<? extends Throwable> expectedException, String expectedMessage) {
         SeplendidModel expectedModel = new SeplendidModelManager(
-            model.getLocalCourseCatalogue(),
             new UserPrefs(),
+            model.getLocalCourseCatalogue(),
             model.getPartnerCourseCatalogue(),
             model.getUniversityCatalogue(),
-            model.getNoteCatalogue(),
-            model.getMappingCatalogue());
+            model.getMappingCatalogue(),
+            model.getNoteCatalogue());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 
@@ -256,12 +256,12 @@ public class SeplendidLogicManagerTest {
             "ExceptionUserPrefs.json"));
         StorageManager storage = new StorageManager(
             addressBookStorage,
-            localCourseCatalogueStorage,
             userPrefsStorage,
+            localCourseCatalogueStorage,
             partnerCourseCatalogueStorage,
             universityCatalogueStorage,
-            noteCatalogueStorage,
-            mappingCatalogueStorage);
+            mappingCatalogueStorage,
+            noteCatalogueStorage);
 
         logic = new SeplendidLogicManager(model, storage);
 

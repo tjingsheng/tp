@@ -32,12 +32,7 @@
                         <Region fx:constant="USE_PREF_SIZE"/>
                     </minWidth>
                 </Label>
-                <Label fx:id="universityName" styleClass="big-heading-font-size">
-                    <minWidth>
-                        <!-- Ensures that the label text is never truncated -->
-                        <Region fx:constant="USE_PREF_SIZE"/>
-                    </minWidth>
-                </Label>
+                <Label fx:id="universityName" styleClass="big-heading-font-size"/>
             </HBox>
         </VBox>
     </GridPane>

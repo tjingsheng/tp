@@ -22,31 +22,32 @@ import seedu.address.model.UserPrefs;
 public class StorageManager implements Storage {
 
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
-    private AddressBookStorage addressBookStorage;
-    private LocalCourseCatalogueStorage localCourseCatalogueStorage;
-    private UniversityCatalogueStorage universityCatalogueStorage;
-    private PartnerCourseCatalogueStorage partnerCourseCatalogueStorage;
-    private UserPrefsStorage userPrefsStorage;
-    private NoteCatalogueStorage noteCatalogueStorage;
-    private MappingCatalogueStorage mappingCatalogueStorage;
+    private final AddressBookStorage addressBookStorage;
+    private final UserPrefsStorage userPrefsStorage;
+    private final LocalCourseCatalogueStorage localCourseCatalogueStorage;
+    private final PartnerCourseCatalogueStorage partnerCourseCatalogueStorage;
+    private final UniversityCatalogueStorage universityCatalogueStorage;
+    private final MappingCatalogueStorage mappingCatalogueStorage;
+    private final NoteCatalogueStorage noteCatalogueStorage;
+
 
     /**
      * Creates a {@code StorageManager} with the given {@code AddressBookStorage} and {@code UserPrefStorage}.
      */
     public StorageManager(AddressBookStorage addressBookStorage,
-                          LocalCourseCatalogueStorage localCourseCatalogueStorage,
                           UserPrefsStorage userPrefsStorage,
+                          LocalCourseCatalogueStorage localCourseCatalogueStorage,
                           PartnerCourseCatalogueStorage partnerCourseCatalogueStorage,
                           UniversityCatalogueStorage universityCatalogueStorage,
-                          NoteCatalogueStorage noteCatalogueStorage,
-                          MappingCatalogueStorage mappingCatalogueStorage) {
+                          MappingCatalogueStorage mappingCatalogueStorage,
+                          NoteCatalogueStorage noteCatalogueStorage) {
         this.addressBookStorage = addressBookStorage;
-        this.localCourseCatalogueStorage = localCourseCatalogueStorage;
-        this.universityCatalogueStorage = universityCatalogueStorage;
         this.userPrefsStorage = userPrefsStorage;
+        this.localCourseCatalogueStorage = localCourseCatalogueStorage;
         this.partnerCourseCatalogueStorage = partnerCourseCatalogueStorage;
-        this.noteCatalogueStorage = noteCatalogueStorage;
+        this.universityCatalogueStorage = universityCatalogueStorage;
         this.mappingCatalogueStorage = mappingCatalogueStorage;
+        this.noteCatalogueStorage = noteCatalogueStorage;
     }
 
     // ================ UserPrefs methods ==============================

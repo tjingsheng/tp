@@ -8,8 +8,8 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <HBox xmlns:fx="http://javafx.com/fxml/1"
-      id="localCourseItemPane"
-      fx:id="localCourseItemPane"
+      id="noteItemPane"
+      fx:id="noteItemPane"
       xmlns="http://javafx.com/javafx/17">
     <GridPane HBox.hgrow="ALWAYS">
         <columnConstraints>
@@ -25,21 +25,20 @@
             <padding>
                 <Insets top="5" right="15" bottom="5" left="15"/>
             </padding>
-            <HBox spacing="5" alignment="CENTER_LEFT">
-                <Label fx:id="id" styleClass="big-heading-font-size">
+            <HBox spacing="5"
+                  alignment="CENTER_LEFT">
+                <Label fx:id="id"
+                       styleClass="big-heading-font-size">
                     <minWidth>
                         <!-- Ensures that the label text is never truncated -->
                         <Region fx:constant="USE_PREF_SIZE"/>
                     </minWidth>
                 </Label>
-                <Label fx:id="localCode" styleClass="big-heading-font-size">
-                    <minWidth>
-                        <!-- Ensures that the label text is never truncated -->
-                        <Region fx:constant="USE_PREF_SIZE"/>
-                    </minWidth>
+                <Label fx:id="content"
+                       styleClass="big-heading-font-size">
                 </Label>
-                <Label fx:id="localName" styleClass="small-heading-font-size"/>
             </HBox>
+            <Label fx:id="tags" styleClass="text-font-size"/>
         </VBox>
     </GridPane>
 </HBox>

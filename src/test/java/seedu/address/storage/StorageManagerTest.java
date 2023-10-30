@@ -34,20 +34,24 @@ public class StorageManagerTest {
     @BeforeEach
     public void setUp() {
         JsonAddressBookStorage addressBookStorage = new JsonAddressBookStorage(getTempFilePath("ab"));
-        JsonLocalCourseCatalogueStorage localCourseCatalogueStorage =
-                new JsonLocalCourseCatalogueStorage(getTempFilePath("localcourse"));
-        JsonPartnerCourseCatalogueStorage partnerCourseCatalogueStorage =
-                new JsonPartnerCourseCatalogueStorage(getTempFilePath("partnercourse"));
-        JsonUniversityCatalogueStorage universityCatalogueStorage =
-                new JsonUniversityCatalogueStorage(getTempFilePath("university"));
-        JsonNoteCatalogueStorage noteCatalogueStorage =
-                new JsonNoteCatalogueStorage(getTempFilePath("note"));
+        JsonLocalCourseCatalogueStorage localCourseCatalogueStorage = new JsonLocalCourseCatalogueStorage(
+            getTempFilePath("localcourse"));
+        JsonPartnerCourseCatalogueStorage partnerCourseCatalogueStorage = new JsonPartnerCourseCatalogueStorage(
+            getTempFilePath("partnercourse"));
+        JsonUniversityCatalogueStorage universityCatalogueStorage = new JsonUniversityCatalogueStorage(getTempFilePath(
+            "university"));
+        JsonNoteCatalogueStorage noteCatalogueStorage = new JsonNoteCatalogueStorage(getTempFilePath("note"));
         JsonMappingCatalogueStorage mappingCatalogueStorage =
-                new JsonMappingCatalogueStorage(getTempFilePath("mapping"));
+            new JsonMappingCatalogueStorage(getTempFilePath("mapping"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
-        storageManager = new StorageManager(addressBookStorage, localCourseCatalogueStorage, userPrefsStorage,
-                partnerCourseCatalogueStorage, universityCatalogueStorage, noteCatalogueStorage,
-                mappingCatalogueStorage);
+
+        storageManager = new StorageManager(addressBookStorage,
+                                            userPrefsStorage,
+                                            localCourseCatalogueStorage,
+                                            partnerCourseCatalogueStorage,
+                                            universityCatalogueStorage,
+                                            mappingCatalogueStorage,
+                                            noteCatalogueStorage);
     }
 
     private Path getTempFilePath(String fileName) {

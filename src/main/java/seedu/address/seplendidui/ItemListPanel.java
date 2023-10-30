@@ -11,6 +11,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.SeplendidDataType;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.mapping.Mapping;
+import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
 
@@ -72,6 +73,8 @@ public class ItemListPanel<T extends SeplendidDataType> extends UiPart<Region> {
                 setGraphic(new UniversityItem((University) item, getIndex() + 1).getRoot());
             } else if (item instanceof Mapping) {
                 setGraphic(new MappingItem((Mapping) item, getIndex() + 1).getRoot());
+            } else if (item instanceof Note) {
+                setGraphic(new NoteItem((Note) item, getIndex() + 1).getRoot());
             }
         }
     }

@@ -72,6 +72,7 @@ public class SeplendidLogicManager implements SeplendidLogic {
             storage.savePartnerCourseCatalogue(model.getPartnerCourseCatalogue());
             storage.saveUniversityCatalogue(model.getUniversityCatalogue());
             storage.saveMappingCatalogue(model.getMappingCatalogue());
+            storage.saveNoteCatalogue(model.getNoteCatalogue());
         } catch (AccessDeniedException e) {
             throw new CommandException(String.format(FILE_OPS_PERMISSION_ERROR_FORMAT, e.getMessage()), e);
         } catch (IOException ioe) {
@@ -112,7 +113,7 @@ public class SeplendidLogicManager implements SeplendidLogic {
         return model.getSortedLocalCourseList();
     }
 
-    //=========== PartnerCourseCatalouge ============================================================================
+    //=========== PartnerCourseCatalogue ============================================================================
     @Override
     public ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue() {
         return model.getPartnerCourseCatalogue();
@@ -132,7 +133,8 @@ public class SeplendidLogicManager implements SeplendidLogic {
     public ObservableList<PartnerCourse> getSortedPartnerCourseCatalogue() {
         return model.getSortedPartnerCourseList();
     }
-    //=========== UniversityCatalouge ================================================================================
+
+    //=========== UniversityCatalogue ================================================================================
 
     @Override
     public ReadOnlyUniversityCatalogue getUniversityCatalogue() {
@@ -154,12 +156,13 @@ public class SeplendidLogicManager implements SeplendidLogic {
         return model.getSortedUniversityList();
     }
 
-    //=========== NoteCatalouge ================================================================================
+    //=========== NoteCatalogue ================================================================================
+
     public ObservableList<Note> getFilteredNoteCatalogue() {
         return model.getFilteredNoteList();
     }
 
-    //=========== MappingCatalouge ================================================================================
+    //=========== MappingCatalogue ================================================================================
 
     public ReadOnlyMappingCatalogue getMappingCatalogue() {
         return model.getMappingCatalogue();

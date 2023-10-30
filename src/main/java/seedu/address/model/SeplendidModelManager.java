@@ -21,6 +21,7 @@ import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
+import seedu.address.model.notes.NoteTagContainsKeywordsPredicate;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
@@ -58,20 +59,27 @@ public class SeplendidModelManager implements SeplendidModel {
      * Initializes a SeplendidModelManager with the given localCourseCatalogue, userPrefs,
      * partnerCourseCatalogue, universityCatalogue, mappingCatalogue, noteCatalogue.
      */
-    public SeplendidModelManager(ReadOnlyLocalCourseCatalogue localCourseCatalogue, ReadOnlyUserPrefs userPrefs,
+    public SeplendidModelManager(ReadOnlyUserPrefs userPrefs,
+                                 ReadOnlyLocalCourseCatalogue localCourseCatalogue,
                                  ReadOnlyPartnerCourseCatalogue partnerCourseCatalogue,
                                  ReadOnlyUniversityCatalogue universityCatalogue,
-                                 ReadOnlyNoteCatalogue noteCatalogue,
-                                 ReadOnlyMappingCatalogue mappingCatalogue) {
+                                 ReadOnlyMappingCatalogue mappingCatalogue,
+                                 ReadOnlyNoteCatalogue noteCatalogue) {
         requireAllNonNull(localCourseCatalogue, userPrefs, partnerCourseCatalogue, universityCatalogue,
                 noteCatalogue, mappingCatalogue);
 
-        logger.fine("Initializing with local course catalogue: " + localCourseCatalogue
-                + ",\npartner course catalogue: " + partnerCourseCatalogue
-                + ",\nuniversity catalogue: " + universityCatalogue
-                + ",\nmapping catalogue: " + mappingCatalogue
-                + ",\nnote catalogue: " + noteCatalogue
-                + "\n and user prefs " + userPrefs);
+        logger.fine(String.format("Initializing with user prefs: %s,\n"
+                                  + "local course catalogue: %s, \n"
+                                  + "partner course catalogue: %s,\n"
+                                  + "university catalogue: %s,\n"
+                                  + "mapping catalogue: %s,\n"
+                                  + "and note catalogue: %s",
+                                  userPrefs,
+                                  localCourseCatalogue,
+                                  partnerCourseCatalogue,
+                                  universityCatalogue,
+                                  mappingCatalogue,
+                                  noteCatalogue));
 
         this.localCourseCatalogue = new LocalCourseCatalogue(localCourseCatalogue);
         this.userPrefs = new UserPrefs(userPrefs);
@@ -93,8 +101,13 @@ public class SeplendidModelManager implements SeplendidModel {
      * Constructs Seplendid Model Manager.
      */
     public SeplendidModelManager() {
-        this(new LocalCourseCatalogue(), new UserPrefs(), new PartnerCourseCatalogue(), new UniversityCatalogue(),
-                new NoteCatalogue(), new MappingCatalogue());
+        this(
+            new UserPrefs(),
+            new LocalCourseCatalogue(),
+            new PartnerCourseCatalogue(),
+            new UniversityCatalogue(),
+            new MappingCatalogue(),
+            new NoteCatalogue());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -451,6 +464,13 @@ public class SeplendidModelManager implements SeplendidModel {
         requireAllNonNull(target, editedNote);
 
         noteCatalogue.setNote(target, editedNote);
+    }
+
+    @Override
+    public void getSearchNoteIfExists(NoteTagContainsKeywordsPredicate notePredicate) {
+        requireNonNull(notePredicate);
+        filteredNoteCatalogue.setPredicate(notePredicate);
+
     }
 
     //=========== FilteredNoteList Accessors =============================================================

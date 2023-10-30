@@ -36,6 +36,7 @@ import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
+import seedu.address.model.notes.NoteTagContainsKeywordsPredicate;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
@@ -61,19 +62,22 @@ public class PartnerCourseDeleteCommandTest {
                 COMP1000.getPartnerCode(), COMP1000.getPartnerUniversity().getUniversityName()).execute(modelStub);
 
         assertEquals(String.format(PartnerCourseDeleteCommand.MESSAGE_SUCCESS, Messages.format(COMP1000)),
-                commandResult.getFeedbackToUser());
+                     commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(COMP2000), modelStub.partnerCoursesAdded);
     }
 
     @Test
     public void execute_partnerCourseDoesNotExist_throwsCommandException() {
         PartnerCourse validPartnerCourse = new PartnerCourseBuilder().build();
+
         PartnerCourseDeleteCommand partnerCourseDeleteCommand = new PartnerCourseDeleteCommand(
                 new PartnerCode(TYPICAL_PARTNER_COURSE_CODE), new UniversityName(TYPICAL_UNIVERSITY_NAME));
         SeplendidModelStub modelStub = new SeplendidModelStubWithPartnerCourse(validPartnerCourse);
 
-        assertThrows(CommandException.class, PartnerCourseDeleteCommand.MESSAGE_NONEXISTENT_PARTNER_COURSE, () ->
-                partnerCourseDeleteCommand.execute(modelStub));
+        assertThrows(
+            CommandException.class,
+            PartnerCourseDeleteCommand.MESSAGE_NONEXISTENT_PARTNER_COURSE, (
+            ) -> partnerCourseDeleteCommand.execute(modelStub));
     }
 
     @Test
@@ -301,8 +305,9 @@ public class PartnerCourseDeleteCommandTest {
         }
 
         @Override
-        public void getSearchUniversityIfExists(UniversityNameContainsKeywordsPredicate
-                                                                universityNameContainsKeywordsPredicate) {
+        public void getSearchUniversityIfExists(
+            UniversityNameContainsKeywordsPredicate universityNameContainsKeywordsPredicate
+        ) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -359,6 +364,11 @@ public class PartnerCourseDeleteCommandTest {
 
         @Override
         public void setNote(Note note, Note editedNote) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void getSearchNoteIfExists(NoteTagContainsKeywordsPredicate notePredicate) {
             throw new AssertionError("This method should not be called.");
         }
 

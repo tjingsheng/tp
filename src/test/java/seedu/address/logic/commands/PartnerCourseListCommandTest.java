@@ -25,24 +25,34 @@ public class PartnerCourseListCommandTest {
 
     @BeforeEach
     public void setUp() {
-        model = new SeplendidModelManager(getTypicalLocalCourseCatalogue(), new UserPrefs(),
-                getTypicalPartnerCourseCatalogue(), getTypicalUniversityCatalogue(), getTypicalNoteCatalogue(),
-                getTypicalMappingCatalogue());
-        expectedModel = new SeplendidModelManager(getTypicalLocalCourseCatalogue(), new UserPrefs(),
-                model.getPartnerCourseCatalogue(), getTypicalUniversityCatalogue(), getTypicalNoteCatalogue(),
-                getTypicalMappingCatalogue());
+        model = new SeplendidModelManager(new UserPrefs(),
+                                          getTypicalLocalCourseCatalogue(),
+                                          getTypicalPartnerCourseCatalogue(),
+                                          getTypicalUniversityCatalogue(),
+                                          getTypicalMappingCatalogue(),
+                                          getTypicalNoteCatalogue());
+        expectedModel = new SeplendidModelManager(new UserPrefs(),
+                                                  getTypicalLocalCourseCatalogue(),
+                                                  model.getPartnerCourseCatalogue(),
+                                                  getTypicalUniversityCatalogue(),
+                                                  getTypicalMappingCatalogue(),
+                                                  getTypicalNoteCatalogue());
     }
 
     @Test
     public void execute_listNotFiltered_showsSameList() {
-        assertSeplendidCommandSuccess(new PartnerCourseListCommand(), model, PartnerCourseListCommand.MESSAGE_SUCCESS,
-                expectedModel);
+        assertSeplendidCommandSuccess(new PartnerCourseListCommand(),
+                                      model,
+                                      PartnerCourseListCommand.MESSAGE_SUCCESS,
+                                      expectedModel);
     }
 
     @Test
     public void execute_listIsFiltered_showsEverything() {
         showPartnerCourseAtIndex(model, INDEX_FIRST_OBJECT);
-        assertSeplendidCommandSuccess(new PartnerCourseListCommand(), model,
-                PartnerCourseListCommand.MESSAGE_SUCCESS, expectedModel);
+        assertSeplendidCommandSuccess(new PartnerCourseListCommand(),
+                                      model,
+                                      PartnerCourseListCommand.MESSAGE_SUCCESS,
+                                      expectedModel);
     }
 }

@@ -119,7 +119,7 @@ public interface SeplendidModel {
 
     ObservableList<LocalCourse> getSortedLocalCourseList();
 
-    void updatedSortedLocalList(Comparator<LocalCourse> localCourseComparator);
+    void updateSortedLocalList(Comparator<LocalCourse> localCourseComparator);
 
     /**
      * Returns an unmodifiable view of the filtered local course list
@@ -166,6 +166,9 @@ public interface SeplendidModel {
      */
     void deletePartnerCourse(PartnerCourse partnerCourse) throws CommandException;
 
+    public ObservableList<PartnerCourse> getSortedPartnerCourseList();
+    public void updateSortedPartnerList(Comparator<PartnerCourse> partnerCourseComparator);
+
     /**
      * Returns an unmodifiable view of the filtered partner course list
      */
@@ -192,6 +195,9 @@ public interface SeplendidModel {
     void addUniversity(University university);
 
     void setUniversity(University target, University editedUniversity);
+    ObservableList<University> getSortedUniversityList();
+
+    void updateSortedUniversityList(Comparator<University> universityComparator);
 
     void updateFilteredUniversityList(Predicate<University> predicate);
 

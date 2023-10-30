@@ -129,21 +129,35 @@ public class SeplendidLogicManager implements SeplendidLogic {
         return model.getPartnerCourseCatalogueFilePath();
     }
 
+    @Override
+    public ObservableList<PartnerCourse> getSortedPartnerCourseCatalogue() {
+        return model.getSortedPartnerCourseList();
+    }
+
     //=========== UniversityCatalogue ================================================================================
 
+    @Override
     public ReadOnlyUniversityCatalogue getUniversityCatalogue() {
         return model.getUniversityCatalogue();
     }
 
+    @Override
     public ObservableList<University> getFilteredUniversityCatalogue() {
         return model.getFilteredUniversityList();
     }
 
+    @Override
     public Path getUniversityeCatalogueFilePath() {
         return model.getUniversityCatalogueFilePath();
     }
 
+    @Override
+    public ObservableList<University> getSortedUniversityCatalogue() {
+        return model.getSortedUniversityList();
+    }
+
     //=========== NoteCatalogue ================================================================================
+
     public ObservableList<Note> getFilteredNoteCatalogue() {
         return model.getFilteredNoteList();
     }

@@ -50,6 +50,9 @@ public class LocalCourseUtil {
         return String.format("[%s]", localCourse.getLocalCode());
     }
 
+    /**
+     * Returns a sort command string for sorting the localcourse list.
+     */
     public static String getLocalCourseSortCommandFrom(Comparator<LocalCourse> localCourseComparator) {
         return String.format("%s %s %s",
                 LocalCourseSortCommand.COMMAND_WORD,
@@ -57,6 +60,9 @@ public class LocalCourseUtil {
                 getLocalCourseArgumentsForSortCommand(localCourseComparator));
     }
 
+    /**
+     * Returns the part of sort command string for the given comparator's details.
+     */
     public static String getLocalCourseArgumentsForSortCommand(Comparator<LocalCourse> comparator) {
         return String.format("[%s]", comparator.toString());
     }

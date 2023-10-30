@@ -14,8 +14,10 @@ public class UiUtil {
         UNIVERSITY_LIST,
         NOTE_LIST,
         MAPPING_LIST,
+        LOCAL_COURSE_SORT,
+        PARTNER_COURSE_SORT,
+        UNIVERSITY_SORT;
 
-        LOCAL_COURSE_SORT;
 
         @Override
         public String toString() {

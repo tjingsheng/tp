@@ -8,26 +8,22 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
-import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.university.University;
 import seedu.address.seplendidui.UiUtil;
 
 /**
- * Sorts local course list.
+ * Sorts university list.
  */
-public class LocalCourseSortCommand extends LocalCourseCommand {
-    public static final String LOCAL_COURSE_SORT_MESSAGE_USAGE = COMMAND_WORD
-            + " sort: Sorts all local courses by attributes - localcode & localname";
+public class UniversitySortCommand extends UniversityCommand {
+    public static final String UNIVERSITY_SORT_MESSAGE_USAGE = COMMAND_WORD
+            + " sort: Sorts all universities in alphabetical order";
     public static final String ACTION_WORD = "sort";
 
-    public static final String MESSAGE_SUCCESS = "Sorted all local courses";
+    public static final String MESSAGE_SUCCESS = "Sorted all universities";
 
-    private final Comparator<LocalCourse> comparator;
+    private final Comparator<University> comparator;
 
-    /**
-     * Creates a LocalCourseSortCommand to sort the local course list.
-     * @param comparator Comparator used for sorting
-     */
-    public LocalCourseSortCommand(Comparator<LocalCourse> comparator) {
+    public UniversitySortCommand(Comparator<University> comparator) {
         this.comparator = comparator;
     }
 
@@ -46,9 +42,9 @@ public class LocalCourseSortCommand extends LocalCourseCommand {
     @Override
     public CommandResult execute(SeplendidModel seplendidModel) throws CommandException {
         requireNonNull(seplendidModel);
-        seplendidModel.updateSortedLocalList(comparator);
+        seplendidModel.updateSortedUniversityList(comparator);
         return new CommandResult(MESSAGE_SUCCESS,
-                UiUtil.ListViewModel.LOCAL_COURSE_SORT);
+                UiUtil.ListViewModel.UNIVERSITY_SORT);
     }
 
     @Override
@@ -57,19 +53,18 @@ public class LocalCourseSortCommand extends LocalCourseCommand {
             return true;
         }
 
-        // instanceof handles nulls
-        if (!(other instanceof LocalCourseSortCommand)) {
+        if (!(other instanceof UniversitySortCommand)) {
             return false;
         }
 
-        LocalCourseSortCommand otherLocalCourseSortCommand = (LocalCourseSortCommand) other;
-        return comparator.equals(otherLocalCourseSortCommand.comparator);
+        UniversitySortCommand otherUniversitySortCommand = (UniversitySortCommand) other;
+        return comparator.equals(otherUniversitySortCommand.comparator);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("localCourseAttributeToSort", comparator)
+                .add("UniversityAttributeToSort", comparator)
                 .toString();
     }
 }

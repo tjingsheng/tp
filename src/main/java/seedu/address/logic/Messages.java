@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 import javafx.collections.ObservableList;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.localcourse.LocalName;
 import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCourse;
@@ -89,6 +90,22 @@ public class Messages {
      * @param universityObservableList
      * @return
      */
+
+    public static String formatList(ObservableList<LocalCourse> localCourseObservableList) {
+        final StringBuilder builder = new StringBuilder("Localcourses: ");
+        String localCourses = localCourseObservableList.stream()
+                .map(localCourse -> {
+                    String localName = localCourse.getLocalName().toString();
+                    String localCode = localCourse.getLocalCode().toString();
+                    double units = localCourse.getLocalUnit().getValue();
+                    return localName + " (" + localCode + ", " + units + " units)";
+                })
+                .collect(Collectors.joining(", "));
+        builder.append(localCourses);
+        return builder.toString();
+    }
+
+
     public static String format(ObservableList<University> universityObservableList) {
         final StringBuilder builder = new StringBuilder("UniversityName: ");
         String universityNames = universityObservableList.stream()
@@ -96,7 +113,6 @@ public class Messages {
         builder.append(universityNames);
         return builder.toString();
     }
-
     /**
      * Formats the {@code partnerCourse} for display to the user.
      * Overloaded method.

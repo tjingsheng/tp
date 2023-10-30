@@ -43,6 +43,8 @@ public class LocalCourse implements SeplendidDataType {
         return localUnit;
     }
 
+
+
     /**
      * Returns true if both LocalCourses have the same localCode.
      * Assumption: localCode is the primary key i.e. there exists

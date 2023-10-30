@@ -38,4 +38,8 @@ public class SeplendidArgumentMap {
                 ? Optional.empty()
                 : Optional.of(argument);
     }
+
+    public boolean contains(SeplendidParameter parameterLocalcode) {
+        return parameterToArgMap.containsKey(parameterLocalcode);
+    }
 }

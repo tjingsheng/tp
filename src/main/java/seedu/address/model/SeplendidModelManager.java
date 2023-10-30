@@ -18,7 +18,10 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.SeplendidLogsCenter;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.localcourse.LocalCode;
+import seedu.address.model.localcourse.LocalCodeContainsKeywordsPredicate;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.localcourse.LocalCourseAttribute;
+import seedu.address.model.localcourse.LocalNameContainsKeywordsPredicate;
 import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
 import seedu.address.model.partnercourse.PartnerCode;
@@ -210,6 +213,23 @@ public class SeplendidModelManager implements SeplendidModel {
     @Override
     public void updatedSortedLocalList(Comparator<LocalCourse> localCourseComparator) {
         sortedLocalCourseCatalogue.setComparator(localCourseComparator);
+    }
+
+    public void searchLocalCourses(LocalCourseAttribute attribute,
+                                   LocalCodeContainsKeywordsPredicate codeContainsKeywordsPredicate,
+                                   LocalNameContainsKeywordsPredicate nameContainsKeywordsPredicate) {
+        requireNonNull(attribute);
+        if (attribute == LocalCourseAttribute.LOCALCODE) {
+            filteredLocalCourseCatalogue.setPredicate(codeContainsKeywordsPredicate);
+        } else {
+            filteredLocalCourseCatalogue.setPredicate(nameContainsKeywordsPredicate);
+        }
+    }
+
+
+    public void getSearchLocalCourseList(LocalCodeContainsKeywordsPredicate codeContainsKeywordsPredicate) {
+        requireNonNull(codeContainsKeywordsPredicate);
+        filteredLocalCourseCatalogue.setPredicate(codeContainsKeywordsPredicate);
     }
 
     //=========== FilteredLocalCourseList Accessors =============================================================

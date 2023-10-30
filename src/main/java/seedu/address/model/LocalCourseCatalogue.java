@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.localcourse.LocalName;
 import seedu.address.model.localcourse.UniqueLocalCourseList;
 
 /**
@@ -76,6 +77,11 @@ public class LocalCourseCatalogue implements ReadOnlyLocalCourseCatalogue {
     public Optional<LocalCourse> getLocalCourseIfExists(LocalCode localCodeQuery) {
         requireNonNull(localCodeQuery);
         return localCourses.getLocalCourseIfExists(localCodeQuery);
+    }
+
+    public Optional<LocalCourse> getLocalCourseNameIfExists(LocalName localNameQuery) {
+        requireNonNull(localNameQuery);
+        return localCourses.getLocalCourseNameIfExists(localNameQuery);
     }
 
     /**

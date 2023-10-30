@@ -1,18 +1,23 @@
 package seedu.address.model.localcourse;
 
-import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.localcourse.LocalNameContainsKeywordsPredicate;
+import java.util.function.Predicate;
 
-public class LocalNameContainsKeywordsPredicate {
+public class LocalNameContainsKeywordsPredicate implements Predicate<LocalCourse> {
     private final String keyword;
-    public LocalNameContainsKeywordsPredicate(String keywords) {
+    private final LocalCourseAttribute attribute;
+
+    public LocalNameContainsKeywordsPredicate(String keywords, LocalCourseAttribute attribute) {
         this.keyword = keywords;
+        this.attribute = attribute;
     }
 
     @Override
     public boolean test(LocalCourse localCourse) {
-        return localCourse.getLocalName().getValue().toLowerCase()
-                .contains(keyword.toLowerCase());
+        if (attribute == LocalCourseAttribute.LOCALNAME) {
+            return localCourse.getLocalName().getValue().toLowerCase().contains(keyword.toLowerCase());
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -21,18 +26,12 @@ public class LocalNameContainsKeywordsPredicate {
             return true;
         }
 
-        // instanceof handles nulls
         if (!(other instanceof LocalNameContainsKeywordsPredicate)) {
             return false;
         }
 
-        LocalNameContainsKeywordsPredicate otherLocalNameContainsKeywordsPredicate =
-                (LocalNameContainsKeywordsPredicate) other;
-        return keyword.equals(otherLocalNameContainsKeywordsPredicate.keyword);
-    }
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this).add("keyword", keyword).toString();
+        LocalNameContainsKeywordsPredicate otherPredicate = (LocalNameContainsKeywordsPredicate) other;
+        return keyword.equals(otherPredicate.keyword) && attribute == otherPredicate.attribute;
     }
 }
+

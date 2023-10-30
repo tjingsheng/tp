@@ -164,4 +164,10 @@ public class UniqueLocalCourseList implements Iterable<LocalCourse> {
         }
         return true;
     }
+
+    public Optional<LocalCourse> getLocalCourseNameIfExists(LocalName localNameQuery) {
+        requireNonNull(localNameQuery);
+        return internalList.stream().filter(ln -> ln.getLocalName().equals(localNameQuery))
+                .findFirst();
+    }
 }

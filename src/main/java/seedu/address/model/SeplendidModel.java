@@ -9,7 +9,10 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.localcourse.LocalCode;
+import seedu.address.model.localcourse.LocalCodeContainsKeywordsPredicate;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.localcourse.LocalCourseAttribute;
+import seedu.address.model.localcourse.LocalNameContainsKeywordsPredicate;
 import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
 import seedu.address.model.notes.NoteTagContainsKeywordsPredicate;
@@ -79,6 +82,9 @@ public interface SeplendidModel {
      */
     ReadOnlyLocalCourseCatalogue getLocalCourseCatalogue();
 
+    void searchLocalCourses(LocalCourseAttribute attribute,
+                            LocalCodeContainsKeywordsPredicate codeContainsKeywordsPredicate,
+                            LocalNameContainsKeywordsPredicate nameContainsKeywordsPredicate);
 
     /**
      * Returns true if a local course with the same identity as {@code localCourse} exists in the LocalCourseCatalogue.

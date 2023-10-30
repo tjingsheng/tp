@@ -104,10 +104,28 @@ public class Messages {
                     .map(Note::getTags).get().toString();
             builder.append(tag);
             return builder.toString();
+        } else if (item instanceof LocalCourse) {
+            final StringBuilder builder = new StringBuilder("Localcourses: ");
+            String localCourses = observableList.stream()
+                    .map(localcourse -> (LocalCourse) localcourse)
+                    .map(localCourse -> {
+                        String localName = localCourse.getLocalName().toString();
+                        String localCode = localCourse.getLocalCode().toString();
+                        double units = localCourse.getLocalUnit().getValue();
+                        System.out.println(localName);
+                        System.out.println(localCode);
+                        System.out.println(units);
+
+                        return localName + " (" + localCode + ", " + units + " units)";
+                    })
+                    .collect(Collectors.joining(", "));
+            builder.append(localCourses);
+            return builder.toString();
         }
         return "default";
-    }
 
+
+    }
     /**
      * Formats the {@code partnerCourse} for display to the user.
      * Overloaded method.

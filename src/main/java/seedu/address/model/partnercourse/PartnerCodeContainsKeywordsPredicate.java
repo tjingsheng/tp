@@ -2,6 +2,9 @@ package seedu.address.model.partnercourse;
 
 import java.util.function.Predicate;
 
+/**
+ * Tests that a {@code PartnerCourse}'s {@code PartnerCode} matches any of the keywords given.
+ */
 public class PartnerCodeContainsKeywordsPredicate implements Predicate<PartnerCourse> {
     private final String keyword;
     private final PartnerCourseAttribute attribute;

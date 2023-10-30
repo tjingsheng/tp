@@ -1,6 +1,9 @@
 package seedu.address.logic.parser.partnercourse;
 
-import seedu.address.logic.commands.localcourse.LocalCourseSearchCommand;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERCODE;
+import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERNAME;
+
 import seedu.address.logic.commands.partnercourse.PartnerCourseSearchCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
@@ -13,11 +16,16 @@ import seedu.address.model.partnercourse.PartnerCourseAttribute;
 import seedu.address.model.partnercourse.PartnerName;
 import seedu.address.model.partnercourse.PartnerNameContainsKeywordsPredicate;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERCODE;
-import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERNAME;
-
+/**
+ * Parses input arguments and creates a new PartnerCourseSearchCommand object.
+ */
 public class PartnerCourseSearchCommandParser implements Parser<PartnerCourseSearchCommand> {
+    /**
+     * Parses the given {@code String} of arguments in the context of the PartnerCourseSearchCommand
+     * and returns a PartnerCourseSearchCommand object for execution.
+     *
+     * @throws ParseException if the user input does not conform the expected format.
+     */
     public PartnerCourseSearchCommand parse(String args) throws ParseException {
         if (!ParserUtil.areValuesEnclosedAndNonEmpty(args)) {
             throw new ParseException(

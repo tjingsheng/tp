@@ -1,5 +1,8 @@
 package seedu.address.model.partnercourse;
 
+/**
+ * Enum for PartnerCourse
+ */
 public enum PartnerCourseAttribute {
     PARTNERCODE,
     PARTNERNAME;
@@ -14,11 +17,11 @@ public enum PartnerCourseAttribute {
      */
     public static boolean isValidAttribute(String test) {
         switch(test) {
-            case ("PARTNERCODE"):
-            case ("PARTNERNAME"):
-                return true;
-            default:
-                return false;
+        case ("PARTNERCODE"):
+        case ("PARTNERNAME"):
+            return true;
+        default:
+            return false;
         }
     }
 }

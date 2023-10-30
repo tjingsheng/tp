@@ -1,5 +1,9 @@
 package seedu.address.logic.commands.partnercourse;
 
+import static java.util.Objects.requireNonNull;
+
+import java.util.Objects;
+
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.CommandResult;
@@ -11,10 +15,6 @@ import seedu.address.model.partnercourse.PartnerCodeContainsKeywordsPredicate;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
 import seedu.address.model.partnercourse.PartnerNameContainsKeywordsPredicate;
 import seedu.address.seplendidui.UiUtil;
-
-import java.util.Objects;
-
-import static java.util.Objects.requireNonNull;
 
 /**
  * Finds and lists all partnercourses in SEPlendid whose name contains any of the argument keywords.

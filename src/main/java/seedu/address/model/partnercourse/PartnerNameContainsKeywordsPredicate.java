@@ -21,7 +21,7 @@ public class PartnerNameContainsKeywordsPredicate implements Predicate<PartnerCo
 
     @Override
     public boolean test(PartnerCourse partnerCourse) {
-        if (attribute == PartnerCourseAttribute.LOCALNAME) {
+        if (attribute == PartnerCourseAttribute.PARTNERNAME) {
             return partnerCourse.getPartnerName().getValue().toLowerCase().contains(keyword.toLowerCase());
         } else {
             return false;

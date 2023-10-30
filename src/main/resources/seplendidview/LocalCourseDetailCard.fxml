@@ -4,16 +4,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.TextArea?>
-
+<?import javafx.scene.text.TextFlow?>
 <HBox xmlns:fx="http://javafx.com/fxml/1"
       id="localCourseDetailPane"
       fx:id="localCourseDetailPane"
       xmlns="http://javafx.com/javafx/17"
       HBox.hgrow="ALWAYS"
       styleClass="detail-card, round-border">
-    <VBox alignment="CENTER_LEFT"
-          HBox.hgrow="ALWAYS">
+    <VBox>
         <padding>
             <Insets top="17"
                     right="25"
@@ -24,9 +22,7 @@
         <Label fx:id="localName" styleClass="small-heading-font-size"/>
         <Label fx:id="localUnit" styleClass="small-heading-font-size"/>
         <Label/>
-        <TextArea fx:id="localDescription"
-                  styleClass="text-font-size"
-                  editable="false"
-                  wrapText="true"/>
+        <TextFlow fx:id="localDescription"
+                  styleClass="text-font-size"/>
     </VBox>
 </HBox>

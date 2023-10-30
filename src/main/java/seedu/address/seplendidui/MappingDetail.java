@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import seedu.address.model.mapping.Mapping;
 
 /**
@@ -34,8 +36,7 @@ public class MappingDetail extends UiPart<Region> {
     @FXML
     private Label universityName;
     @FXML
-    private Label mappingMiscInformation;
-
+    private TextFlow mappingMiscInformation;
 
     /**
      * Creates a {@code MappingDetail} with the given {@code Mapping}
@@ -57,6 +58,7 @@ public class MappingDetail extends UiPart<Region> {
         partnerName.setText(partnerNameInput);
         partnerUnit.setText("Units: " + partnerUnitInput);
         universityName.setText(mapping.getUniversityName().toString());
-        mappingMiscInformation.setText(mapping.getMappingMiscInformation().toString());
+        TextFlowHeightUpdater.setAutoFitText(mappingMiscInformation);
+        mappingMiscInformation.getChildren().add(new Text(mapping.getMappingMiscInformation().toString()));
     }
 }

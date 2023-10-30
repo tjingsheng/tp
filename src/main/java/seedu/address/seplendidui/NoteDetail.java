@@ -2,9 +2,10 @@ package seedu.address.seplendidui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import seedu.address.model.notes.Note;
 
 /**
@@ -21,7 +22,7 @@ public class NoteDetail extends UiPart<Region> {
     @FXML
     private Label tags;
     @FXML
-    private TextArea noteContent;
+    private TextFlow noteContent;
 
     /**
      * Creates a {@code noteDetail} with the given {@code note}
@@ -29,7 +30,8 @@ public class NoteDetail extends UiPart<Region> {
     public NoteDetail(Note note) {
         super(FXML);
         this.note = note;
-        noteContent.setText(note.getContent().toString());
+        TextFlowHeightUpdater.setAutoFitText(noteContent);
+        noteContent.getChildren().add(new Text(note.getContent().toString()));
         tags.setText("Tags:" + note.getTags().toString());
     }
 }

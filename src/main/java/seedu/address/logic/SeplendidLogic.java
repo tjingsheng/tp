@@ -72,13 +72,13 @@ public interface SeplendidLogic {
 
     Path getPartnerCourseCatalogueFilePath();
 
-    //=========== Universityatalouge ============================================================================
+    //=========== UniversityCatalogue ============================================================================
     ObservableList<University> getFilteredUniversityCatalogue();
 
-    //=========== NoteCatalouge ============================================================================
+    //=========== NoteCatalogue ============================================================================
     ObservableList<Note> getFilteredNoteCatalogue();
 
-    //=========== MappingCatalouge ============================================================================
+    //=========== MappingCatalogue ============================================================================
     ReadOnlyMappingCatalogue getMappingCatalogue();
 
     ObservableList<Mapping> getFilteredMappingCatalogue();

@@ -13,6 +13,7 @@ import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCodeContainsKeywordsPredicate;
 import seedu.address.model.localcourse.LocalCourseAttribute;
 import seedu.address.model.localcourse.LocalNameContainsKeywordsPredicate;
+import seedu.address.seplendidui.UiUtil;
 
 /**
  * Finds and lists all localcourses in SEPlendid whose name contains any of the argument keywords.
@@ -58,7 +59,8 @@ public class LocalCourseSearchCommand extends LocalCourseCommand {
 
         model.searchLocalCourses(attribute, codePredicate, namePredicate);
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(model.getFilteredLocalCourseList())));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(model.getFilteredLocalCourseList()),
+                UiUtil.ListViewModel.LOCAL_COURSE_LIST));
     }
 
     @Override

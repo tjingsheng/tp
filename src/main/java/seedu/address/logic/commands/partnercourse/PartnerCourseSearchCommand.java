@@ -10,6 +10,7 @@ import seedu.address.model.SeplendidModel;
 import seedu.address.model.partnercourse.PartnerCodeContainsKeywordsPredicate;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
 import seedu.address.model.partnercourse.PartnerNameContainsKeywordsPredicate;
+import seedu.address.seplendidui.UiUtil;
 
 import java.util.Objects;
 
@@ -58,7 +59,8 @@ public class PartnerCourseSearchCommand extends PartnerCourseCommand {
 
         model.searchPartnerCourses(attribute, codePredicate, namePredicate);
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(model.getFilteredPartnerCourseList())));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(model.getFilteredPartnerCourseList()),
+                UiUtil.ListViewModel.PARTNER_COURSE_LIST));
     }
 
     @Override

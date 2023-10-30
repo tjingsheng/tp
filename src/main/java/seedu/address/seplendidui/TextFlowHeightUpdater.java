@@ -1,8 +1,10 @@
 package seedu.address.seplendidui;
 
+import java.util.List;
+
 import javafx.scene.Node;
 import javafx.scene.text.TextFlow;
-import java.util.List;
+
 
 /**
  * A utility class for managing the height of a JavaFX TextFlow.
@@ -17,14 +19,8 @@ public class TextFlowHeightUpdater {
      */
     public static void setAutoFitText(TextFlow textFlow) {
         updateHeight(textFlow);
-
-        textFlow.accessibleTextProperty().addListener((observable, oldValue, newValue) -> {
-            updateHeight(textFlow);
-        });
-
-        textFlow.widthProperty().addListener((observable, oldValue, newValue) -> {
-            updateHeight(textFlow);
-        });
+        textFlow.accessibleTextProperty().addListener((observable, oldValue, newValue) -> updateHeight(textFlow));
+        textFlow.widthProperty().addListener((observable, oldValue, newValue) -> updateHeight(textFlow));
     }
 
     /**

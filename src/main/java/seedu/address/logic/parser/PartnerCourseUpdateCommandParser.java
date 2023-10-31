@@ -1,13 +1,14 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PARAMETER_EDITEDVALUE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERATTRIBUTE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERCODE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_UNIVERSITYNAME;
+import static seedu.address.logic.parser.CliSyntax.PARAMETER_UPDATEDVALUE;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
-import seedu.address.logic.commands.PartnerCourseEditCommand;
+import seedu.address.logic.commands.PartnerCourseUpdateCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
@@ -19,7 +20,7 @@ import seedu.address.model.university.UniversityName;
 /**
  * Parses input arguments and creates a new PartnerCourseEditCommand object.
  */
-public class PartnerCourseEditCommandParser implements Parser<PartnerCourseEditCommand> {
+public class PartnerCourseUpdateCommandParser implements Parser<PartnerCourseUpdateCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the PartnerCourseEditCommand
@@ -27,25 +28,25 @@ public class PartnerCourseEditCommandParser implements Parser<PartnerCourseEditC
      *
      * @throws ParseException if the user input does not conform the expected format.
      */
-    public PartnerCourseEditCommand parse(String args) throws ParseException {
+    public PartnerCourseUpdateCommand parse(String args) throws ParseException {
         if (!areValuesEnclosedAndNonEmpty(args)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    PartnerCourseEditCommand.PARTNER_COURSE_EDIT_MESSAGE_USAGE));
+                    PartnerCourseUpdateCommand.PARTNER_COURSE_EDIT_MESSAGE_USAGE));
         }
 
         SeplendidArgumentMap parameterToArgMap = SeplendidArgumentTokenizer.tokenize(args,
                 PARAMETER_UNIVERSITYNAME,
                 PARAMETER_PARTNERCODE,
                 PARAMETER_PARTNERATTRIBUTE,
-                PARAMETER_EDITEDVALUE);
+                PARAMETER_UPDATEDVALUE);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap,
                 PARAMETER_UNIVERSITYNAME,
                 PARAMETER_PARTNERCODE,
                 PARAMETER_PARTNERATTRIBUTE,
-                PARAMETER_EDITEDVALUE)) {
+                PARAMETER_UPDATEDVALUE)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    PartnerCourseEditCommand.PARTNER_COURSE_EDIT_MESSAGE_USAGE));
+                    PartnerCourseUpdateCommand.PARTNER_COURSE_EDIT_MESSAGE_USAGE));
         }
 
         UniversityName universityName =
@@ -53,43 +54,45 @@ public class PartnerCourseEditCommandParser implements Parser<PartnerCourseEditC
         PartnerCode partnerCode = ParserUtil.parsePartnerCode(parameterToArgMap.getValue(PARAMETER_PARTNERCODE).get());
         PartnerCourseAttribute partnerCourseAttribute = ParserUtil.parsePartnerCourseAttributeForEdit(
                 parameterToArgMap.getValue(PARAMETER_PARTNERATTRIBUTE).get());
-        String editedValue = parseEditedValue(partnerCourseAttribute,
-                parameterToArgMap.getValue(PARAMETER_EDITEDVALUE).get());
+        String updatedValue = parseEditedValue(partnerCourseAttribute,
+                parameterToArgMap.getValue(PARAMETER_UPDATEDVALUE).get());
 
-        return new PartnerCourseEditCommand(universityName, partnerCode, partnerCourseAttribute, editedValue);
+        return new PartnerCourseUpdateCommand(universityName, partnerCode, partnerCourseAttribute, updatedValue);
     }
 
-    private String parseEditedValue(PartnerCourseAttribute partnerCourseAttribute, String editedValue)
+    private String parseEditedValue(PartnerCourseAttribute partnerCourseAttribute, String updatedValue)
             throws ParseException {
+        requireAllNonNull(partnerCourseAttribute, updatedValue);
+        String trimmedUpdatedValue = updatedValue.trim();
         switch (partnerCourseAttribute) {
         case UNIVERSITY:
-            if (!UniversityName.isValidUniversityName(editedValue)) {
+            if (!UniversityName.isValidUniversityName(trimmedUpdatedValue)) {
                 throw new ParseException(UniversityName.MESSAGE_CONSTRAINTS);
             }
             break;
         case PARTNERCODE:
-            if (!PartnerCode.isValidPartnerCode(editedValue)) {
+            if (!PartnerCode.isValidPartnerCode(trimmedUpdatedValue)) {
                 throw new ParseException(PartnerCode.MESSAGE_CONSTRAINTS);
             }
             break;
         case PARTNERNAME:
-            if (!PartnerName.isValidPartnerName(editedValue)) {
+            if (!PartnerName.isValidPartnerName(trimmedUpdatedValue)) {
                 throw new ParseException(PartnerName.MESSAGE_CONSTRAINTS);
             }
             break;
         case UNIT:
-            if (!PartnerUnit.isValidPartnerUnit(editedValue)) {
+            if (!PartnerUnit.isValidPartnerUnit(trimmedUpdatedValue)) {
                 throw new ParseException(PartnerUnit.MESSAGE_CONSTRAINTS);
             }
             break;
         case DESCRIPTION:
-            if (!PartnerDescription.isValidPartnerDescription(editedValue)) {
+            if (!PartnerDescription.isValidPartnerDescription(trimmedUpdatedValue)) {
                 throw new ParseException(PartnerDescription.MESSAGE_CONSTRAINTS);
             }
             break;
         default:
             //do nothing
         }
-        return editedValue;
+        return trimmedUpdatedValue;
     }
 }

@@ -21,17 +21,17 @@ import seedu.address.seplendidui.UiUtil;
 /**
  * Edits partner course.
  */
-public class PartnerCourseEditCommand extends PartnerCourseCommand {
+public class PartnerCourseUpdateCommand extends PartnerCourseCommand {
     public static final String PARTNER_COURSE_EDIT_MESSAGE_USAGE = COMMAND_WORD
-            + " edit: Edits a partner course for a particular attribute - "
+            + " update: Updates a partner course for a particular attribute - "
             + "partnercode & partnername & university & unit & description";
-    public static final String ACTION_WORD = "edit";
-    public static final String MESSAGE_SUCCESS = "Edited this partner course: %1$s to this: %2$s.";
+    public static final String ACTION_WORD = "update";
+    public static final String MESSAGE_SUCCESS = "Updated this partner course: %1$s to this: %2$s.";
     public static final String MESSAGE_NONEXISTENT_PARTNER_COURSE = "This partner course does not exist in SEPlendid.";
     public static final String MESSAGE_DUPLICATE_PARTNER_COURSE =
-            "This edited partner course already exists in SEPlendid.";
-    private PartnerCourse partnerCourseToEdit;
-    private PartnerCourse editedPartnerCourse;
+            "This updated partner course already exists in SEPlendid.";
+    private PartnerCourse partnerCourseToUpdate;
+    private PartnerCourse updatedPartnerCourse;
 
     private UniversityName universityName;
     private PartnerCode partnerCode;
@@ -41,7 +41,7 @@ public class PartnerCourseEditCommand extends PartnerCourseCommand {
     private PartnerDescription partnerDescription;
 
     private PartnerCourseAttribute partnerCourseAttribute;
-    private String editedValue;
+    private String updatedValue;
 
     /**
      * Creates a PartnerCourseEditCommand to edit the given partner course.
@@ -49,16 +49,16 @@ public class PartnerCourseEditCommand extends PartnerCourseCommand {
      * @param universityName University name of the course to be edited.
      * @param partnerCode Partner code of the course to be edited.
      * @param partnerCourseAttribute Attribute of the course to be edited.
-     * @param editedValue Edited value of the specified attribute.
+     * @param updatedValue Edited value of the specified attribute.
      */
-    public PartnerCourseEditCommand(UniversityName universityName, PartnerCode partnerCode,
-                                    PartnerCourseAttribute partnerCourseAttribute, String editedValue) {
+    public PartnerCourseUpdateCommand(UniversityName universityName, PartnerCode partnerCode,
+                                      PartnerCourseAttribute partnerCourseAttribute, String updatedValue) {
         super();
-        requireAllNonNull(universityName, partnerCode, partnerCourseAttribute, editedValue);
+        requireAllNonNull(universityName, partnerCode, partnerCourseAttribute, updatedValue);
         this.universityName = universityName;
         this.partnerCode = partnerCode;
         this.partnerCourseAttribute = partnerCourseAttribute;
-        this.editedValue = editedValue;
+        this.updatedValue = updatedValue;
     }
 
     /**
@@ -77,48 +77,49 @@ public class PartnerCourseEditCommand extends PartnerCourseCommand {
     public CommandResult execute(SeplendidModel seplendidModel) throws CommandException {
         requireNonNull(seplendidModel);
 
-        partnerCourseToEdit = seplendidModel.getPartnerCourseIfExists(partnerCode, universityName).get();
+        partnerCourseToUpdate = seplendidModel.getPartnerCourseIfExists(partnerCode, universityName).get();
 
-        partnerName = partnerCourseToEdit.getPartnerName();
-        partnerUnit = partnerCourseToEdit.getPartnerUnit();
-        partnerDescription = partnerCourseToEdit.getPartnerDescription();
+        partnerName = partnerCourseToUpdate.getPartnerName();
+        partnerUnit = partnerCourseToUpdate.getPartnerUnit();
+        partnerDescription = partnerCourseToUpdate.getPartnerDescription();
 
         switch (partnerCourseAttribute) {
         case UNIVERSITY:
-            universityName = new UniversityName(editedValue);
+            universityName = new UniversityName(updatedValue);
             break;
         case PARTNERCODE:
-            partnerCode = new PartnerCode(editedValue);
+            partnerCode = new PartnerCode(updatedValue);
             break;
         case PARTNERNAME:
-            partnerName = new PartnerName(editedValue);
+            partnerName = new PartnerName(updatedValue);
             break;
         case UNIT:
-            partnerUnit = new PartnerUnit(editedValue);
+            partnerUnit = new PartnerUnit(updatedValue);
             break;
         case DESCRIPTION:
-            partnerDescription = new PartnerDescription(editedValue);
+            partnerDescription = new PartnerDescription(updatedValue);
             break;
         default:
             //do nothing
         }
 
-        editedPartnerCourse = new PartnerCourse(
+        updatedPartnerCourse = new PartnerCourse(
                 new University(universityName), partnerCode, partnerName, partnerUnit, partnerDescription);
 
-        if (!seplendidModel.hasPartnerCourse(partnerCourseToEdit)) {
+        if (!seplendidModel.hasPartnerCourse(partnerCourseToUpdate)) {
             throw new CommandException(MESSAGE_NONEXISTENT_PARTNER_COURSE);
         }
 
-        if (seplendidModel.hasPartnerCourse(editedPartnerCourse)
-                && !partnerCourseToEdit.isSamePartnerCourse(editedPartnerCourse)) {
+        if (seplendidModel.hasPartnerCourse(updatedPartnerCourse)
+                && !partnerCourseToUpdate.isSamePartnerCourse(updatedPartnerCourse)) {
             throw new CommandException(MESSAGE_DUPLICATE_PARTNER_COURSE);
         }
 
-        seplendidModel.setPartnerCourse(partnerCourseToEdit, editedPartnerCourse);
+        seplendidModel.setPartnerCourse(partnerCourseToUpdate, updatedPartnerCourse);
 
         return new CommandResult(
-            String.format(MESSAGE_SUCCESS, Messages.format(partnerCourseToEdit), Messages.format(editedPartnerCourse)),
+            String.format(MESSAGE_SUCCESS,
+                    Messages.format(partnerCourseToUpdate), Messages.format(updatedPartnerCourse)),
             UiUtil.ListViewModel.PARTNER_COURSE_LIST);
     }
 
@@ -128,19 +129,19 @@ public class PartnerCourseEditCommand extends PartnerCourseCommand {
             return true;
         }
 
-        if (!(other instanceof PartnerCourseEditCommand)) {
+        if (!(other instanceof PartnerCourseUpdateCommand)) {
             return false;
         }
 
-        PartnerCourseEditCommand otherPartnerCourseEditCommand = (PartnerCourseEditCommand) other;
-        return partnerCourseToEdit.equals(otherPartnerCourseEditCommand.partnerCourseToEdit)
-                && editedPartnerCourse.equals(otherPartnerCourseEditCommand.editedPartnerCourse);
+        PartnerCourseUpdateCommand otherPartnerCourseUpdateCommand = (PartnerCourseUpdateCommand) other;
+        return partnerCourseToUpdate.equals(otherPartnerCourseUpdateCommand.partnerCourseToUpdate)
+                && updatedPartnerCourse.equals(otherPartnerCourseUpdateCommand.updatedPartnerCourse);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("partnerCourseToEdit", partnerCourseToEdit)
-                .add("editedPartnerCourse", editedPartnerCourse).toString();
+                .add("partnerCourseToEdit", partnerCourseToUpdate)
+                .add("editedPartnerCourse", updatedPartnerCourse).toString();
     }
 }

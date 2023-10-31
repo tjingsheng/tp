@@ -27,6 +27,7 @@ import seedu.address.logic.commands.NoteSearchCommand;
 import seedu.address.logic.commands.PartnerCourseAddCommand;
 import seedu.address.logic.commands.PartnerCourseCommand;
 import seedu.address.logic.commands.PartnerCourseDeleteCommand;
+import seedu.address.logic.commands.PartnerCourseEditCommand;
 import seedu.address.logic.commands.PartnerCourseListCommand;
 import seedu.address.logic.commands.PartnerCourseSortCommand;
 import seedu.address.logic.commands.UniversityCommand;
@@ -180,6 +181,8 @@ public class SeplendidParser {
             return new PartnerCourseDeleteCommandParser().parse(arguments);
         case PartnerCourseSortCommand.ACTION_WORD:
             return new PartnerCourseSortCommandParser().parse(arguments);
+        case PartnerCourseEditCommand.ACTION_WORD:
+            return new PartnerCourseEditCommandParser().parse(arguments);
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

@@ -53,6 +53,7 @@ public class PartnerCourseAddCommand extends PartnerCourseCommand {
         }
 
         seplendidModel.addPartnerCourse(partnerCourseToAdd);
+
         return new CommandResult(
             String.format(MESSAGE_SUCCESS, Messages.format(partnerCourseToAdd)),
             UiUtil.ListViewModel.PARTNER_COURSE_LIST);

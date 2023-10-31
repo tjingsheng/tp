@@ -159,6 +159,8 @@ public interface SeplendidModel {
      */
     void addPartnerCourse(PartnerCourse partnerCourse);
 
+    void setPartnerCourse(PartnerCourse target, PartnerCourse editedPartnerCourse);
+
     /**
      * Deletes the given PartnerCourse.
      *

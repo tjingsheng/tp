@@ -399,20 +399,20 @@ public class ParserUtilTest {
 
     @Test
     public void parsePartnerCourseAttribute_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parsePartnerCourseAttribute((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort((String) null));
     }
 
     @Test
     public void parsePartnerCourseAttribute_invalidValue_throwsParseException() {
         assertThrows(ParseException.class, () ->
-                ParserUtil.parsePartnerCourseAttribute(INVALID_PARTNER_COURSE_ATTRIBUTE));
+                ParserUtil.parsePartnerCourseAttributeForSort(INVALID_PARTNER_COURSE_ATTRIBUTE));
     }
 
     @Test
     public void parsePartnerCourseAttribute_validValueWithoutWhitespaceAndAllCaps_returnsPartnerCourseAttribute()
             throws Exception {
         PartnerCourseAttribute expectedPartnerCourseAttribute = PartnerCourseAttribute.PARTNERCODE;
-        assertEquals(expectedPartnerCourseAttribute, ParserUtil.parsePartnerCourseAttribute("partnErcoDe"));
+        assertEquals(expectedPartnerCourseAttribute, ParserUtil.parsePartnerCourseAttributeForSort("partnErcoDe"));
     }
 
     @Test
@@ -421,6 +421,6 @@ public class ParserUtilTest {
         String partnerCourseAttributeWithWhitespace = WHITESPACE + "PartnerName" + WHITESPACE;
         PartnerCourseAttribute expectedPartnerCourseAttribute = PartnerCourseAttribute.PARTNERNAME;
         assertEquals(expectedPartnerCourseAttribute,
-                ParserUtil.parsePartnerCourseAttribute(partnerCourseAttributeWithWhitespace));
+                ParserUtil.parsePartnerCourseAttributeForSort(partnerCourseAttributeWithWhitespace));
     }
 }

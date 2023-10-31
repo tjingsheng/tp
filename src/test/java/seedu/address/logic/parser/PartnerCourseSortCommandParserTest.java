@@ -62,7 +62,7 @@ public class PartnerCourseSortCommandParserTest {
         // invalid attribute
         assertParseFailure(parser, commandActionWord
                         + getSquareBracketWrappedArgument(INVALID_PARTNER_COURSE_ATTRIBUTE),
-                PartnerCourseAttribute.MESSAGE_CONSTRAINTS);
+                PartnerCourseAttribute.MESSAGE_CONSTRAINTS_SORT);
     }
 
     @Test

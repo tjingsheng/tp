@@ -37,5 +37,6 @@ public class CliSyntax {
     public static final SeplendidParameter PARAMETER_MAPPINGATTRIBUTE =
             new SeplendidParameter("mappingattribute");
     public static final SeplendidParameter PARAMETER_QUERY = new SeplendidParameter("query");
+    public static final SeplendidParameter PARAMETER_EDITEDVALUE = new SeplendidParameter("editedValue");
 
 }

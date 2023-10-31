@@ -18,13 +18,13 @@ import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityName;
 
 /**
- * Parses input arguments and creates a new PartnerCourseCommand object.
+ * Parses input arguments and creates a new PartnerCourseAddCommand object.
  */
 public class PartnerCourseAddCommandParser implements Parser<PartnerCourseAddCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the PartnerCourseAddCommand
-     * and returns an PartnerCourseAddCommand object for execution.
+     * and returns a PartnerCourseAddCommand object for execution.
      *
      * @throws ParseException if the user input does not conform the expected format
      */

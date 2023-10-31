@@ -284,6 +284,13 @@ public class SeplendidModelManager implements SeplendidModel {
     }
 
     @Override
+    public void setPartnerCourse(PartnerCourse target, PartnerCourse editedPartnerCourse) {
+        requireAllNonNull(target, editedPartnerCourse);
+
+        partnerCourseCatalogue.setPartnerCourse(target, editedPartnerCourse);
+    }
+
+    @Override
     public void deletePartnerCourse(PartnerCourse partnerCourse) throws CommandException {
         // Block delete if it exists in a mapping
         if (mappingCatalogue.hasMappingWithPartnerCode(partnerCourse.getPartnerCode())) {

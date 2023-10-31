@@ -74,7 +74,7 @@ public class ItemListPanel<T extends SeplendidDataType> extends UiPart<Region> {
             } else if (item instanceof Mapping) {
                 setGraphic(new MappingItem((Mapping) item, getIndex() + 1).getRoot());
             } else if (item instanceof Note) {
-                setGraphic(new NoteItem((Note) item, getIndex() + 1).getRoot());
+                setGraphic(new NoteItem((Note) item).getRoot());
             }
         }
     }

@@ -11,7 +11,10 @@ import seedu.address.model.notes.Note;
 import seedu.address.model.tag.Tag;
 import seedu.address.seplendidui.UiUtil;
 
-public class NoteTagCommand  extends NoteCommand {
+/**
+ * Adds a tag to a note to the NoteList.
+ */
+public class NoteTagCommand extends NoteCommand {
 
     public static final String NOTE_TAG_MESSAGE_USAGE = COMMAND_WORD
             + " tag [index] [tag]: Add a tag to a note.";

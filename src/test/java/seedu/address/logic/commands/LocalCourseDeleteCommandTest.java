@@ -303,7 +303,7 @@ public class LocalCourseDeleteCommandTest {
         }
 
         @Override
-        public void deleteNote(Note note) {
+        public Note deleteNote(int noteIndex) {
             throw new AssertionError("This method should not be called.");
         }
 

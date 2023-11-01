@@ -3,6 +3,8 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Optional;
+
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -77,7 +79,13 @@ public class PartnerCourseUpdateCommand extends PartnerCourseCommand {
     public CommandResult execute(SeplendidModel seplendidModel) throws CommandException {
         requireNonNull(seplendidModel);
 
-        partnerCourseToUpdate = seplendidModel.getPartnerCourseIfExists(partnerCode, universityName).get();
+        Optional<PartnerCourse> partnerCourseToUpdateOptional =
+                seplendidModel.getPartnerCourseIfExists(partnerCode, universityName);
+        if (partnerCourseToUpdateOptional.isEmpty()) {
+            throw new CommandException(MESSAGE_NONEXISTENT_PARTNER_COURSE);
+        }
+
+        partnerCourseToUpdate = partnerCourseToUpdateOptional.get();
 
         universityName = partnerCourseToUpdate.getPartnerUniversity().getUniversityName();
         partnerCode = partnerCourseToUpdate.getPartnerCode();
@@ -86,9 +94,6 @@ public class PartnerCourseUpdateCommand extends PartnerCourseCommand {
         partnerDescription = partnerCourseToUpdate.getPartnerDescription();
 
         switch (partnerCourseAttribute) {
-        case UNIVERSITY:
-            universityName = new UniversityName(updatedValue);
-            break;
         case PARTNERCODE:
             partnerCode = new PartnerCode(updatedValue);
             break;

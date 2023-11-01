@@ -16,6 +16,7 @@ import seedu.address.model.tag.Tag;
 public class Note implements SeplendidDataType {
     private final Content content;
     private final Set<Tag> tags = new HashSet<>();
+    private Integer index;
 
     /**
      * Constructs an {@code Note}.
@@ -28,6 +29,7 @@ public class Note implements SeplendidDataType {
         requireAllNonNull(content, tag);
         this.content = content;
         this.tags.add(tag);
+        this.index = null;
     }
 
     /**
@@ -41,6 +43,22 @@ public class Note implements SeplendidDataType {
         requireAllNonNull(content, tags);
         this.content = content;
         this.tags.addAll(tags);
+        this.index = null;
+    }
+
+    /**
+     * Constructs an {@code Note}.
+     * Every field must be present and not null.
+     *
+     * @param content Content for the Note
+     * @param tag     Tag for the note
+     * @param index   Index for the note
+     */
+    public Note(Content content, Set<Tag> tag, Integer index) {
+        requireAllNonNull(content, tag);
+        this.content = content;
+        this.tags.addAll(tag);
+        this.index = index;
     }
 
     /**
@@ -57,6 +75,14 @@ public class Note implements SeplendidDataType {
         return content;
     }
 
+    public void setIndex(Integer index) {
+        this.index = index;
+    }
+
+    public Integer getIndex() {
+        return index;
+    }
+
     /**
      * Returns true if both notes have the same content.
      * This defines a weaker notion of equality between two notes.
@@ -67,7 +93,8 @@ public class Note implements SeplendidDataType {
         }
 
         return otherNote != null
-                && otherNote.getContent().equals(getContent());
+                && otherNote.getContent().equals(getContent())
+                && otherNote.getIndex().equals(getIndex());
     }
 
     /**
@@ -87,7 +114,8 @@ public class Note implements SeplendidDataType {
 
         Note otherNote = (Note) other;
         return content.equals(otherNote.content)
-                && tags.equals(otherNote.tags);
+                && tags.equals(otherNote.tags)
+                && index.equals(otherNote.index);
     }
 
     @Override

@@ -112,9 +112,6 @@ public class Messages {
                         String localName = localCourse.getLocalName().toString();
                         String localCode = localCourse.getLocalCode().toString();
                         double units = localCourse.getLocalUnit().getValue();
-                        System.out.println(localName);
-                        System.out.println(localCode);
-                        System.out.println(units);
 
                         return localName + " (" + localCode + ", " + units + " units)";
                     })

@@ -51,8 +51,8 @@ public class LocalCourseSearchCommand extends LocalCourseCommand {
 
         model.searchLocalCourses(attribute, predicate);
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(model.getFilteredLocalCourseList()),
-                UiUtil.ListViewModel.LOCAL_COURSE_LIST));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(model.getFilteredLocalCourseList())),
+                UiUtil.ListViewModel.LOCAL_COURSE_LIST);
     }
 
     @Override

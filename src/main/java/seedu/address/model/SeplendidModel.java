@@ -228,8 +228,10 @@ public interface SeplendidModel {
     /**
      * Deletes the given Note.
      * The note must exist in the NoteCatalogue.
+     *
+     * @return
      */
-    void deleteNote(Note note);
+    Note deleteNote(int noteIndex);
 
     /**
      * Adds the given Note.

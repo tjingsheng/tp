@@ -29,7 +29,7 @@ public class JsonAdaptedNote {
      */
     @JsonCreator
     public JsonAdaptedNote(@JsonProperty("content") String content,
-                             @JsonProperty("tags") List<JsonAdaptedTag> tags,
+                           @JsonProperty("tags") List<JsonAdaptedTag> tags,
                            @JsonProperty("index") Integer index) {
         this.content = content;
         if (tags != null) {

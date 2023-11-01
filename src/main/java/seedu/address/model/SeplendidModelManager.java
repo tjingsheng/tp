@@ -449,8 +449,8 @@ public class SeplendidModelManager implements SeplendidModel {
     }
 
     @Override
-    public void deleteNote(Note target) {
-        noteCatalogue.removeNote(target);
+    public Note deleteNote(int target) {
+        return noteCatalogue.removeNote(target);
     }
 
     @Override

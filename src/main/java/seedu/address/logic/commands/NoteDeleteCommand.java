@@ -11,28 +11,28 @@ import seedu.address.model.notes.Note;
 import seedu.address.seplendidui.UiUtil;
 
 /**
- * Adds a note to the NoteList.
+ * Deletes a note to the NoteList.
  */
-public class NoteAddCommand extends NoteCommand {
+public class NoteDeleteCommand extends NoteCommand {
 
     // Also available in abstract class LocalCourseCommand to support polymorphism
-    public static final String NOTE_ADD_MESSAGE_USAGE = COMMAND_WORD
-            + "add [content] [tags]: Adds a note.";
-    public static final String ACTION_WORD = "add";
+    public static final String NOTE_DELETE_MESSAGE_USAGE = COMMAND_WORD
+            + " delete [index]: Deletes a note.";
+    public static final String ACTION_WORD = "delete";
 
-    public static final String MESSAGE_SUCCESS = "New note added: %1$s";
+    public static final String MESSAGE_SUCCESS = "Note deleted: %1$s";
 
-    private final Note noteToAdd;
+    private final Integer noteIndexToDelete;
 
     /**
      * Creates a NoteAddCommand to add the specified {@code Note}
      *
      * @param note The Note to be added into Storage.
      */
-    public NoteAddCommand(Note note) {
+    public NoteDeleteCommand(int note) {
         super();
         requireNonNull(note);
-        noteToAdd = note;
+        noteIndexToDelete = note;
     }
 
     /**
@@ -51,8 +51,8 @@ public class NoteAddCommand extends NoteCommand {
     public CommandResult execute(SeplendidModel seplendidModel) throws CommandException {
         requireNonNull(seplendidModel);
 
-        seplendidModel.addNote(noteToAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(noteToAdd)),
+        Note deletedNote = seplendidModel.deleteNote(noteIndexToDelete);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(deletedNote)),
                 UiUtil.ListViewModel.NOTE_LIST);
 
     }
@@ -64,18 +64,18 @@ public class NoteAddCommand extends NoteCommand {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof NoteAddCommand)) {
+        if (!(other instanceof NoteDeleteCommand)) {
             return false;
         }
 
-        NoteAddCommand otherNoteAddCommand = (NoteAddCommand) other;
-        return noteToAdd.equals(otherNoteAddCommand.noteToAdd);
+        NoteDeleteCommand otherNoteDeleteCommand = (NoteDeleteCommand) other;
+        return noteIndexToDelete.equals(otherNoteDeleteCommand.noteIndexToDelete);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("noteToAdd", noteToAdd)
+                .add("noteToDelete", noteIndexToDelete)
                 .toString();
     }
 }

@@ -142,7 +142,7 @@ public interface SeplendidModel {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredLocalCourseList(Predicate<LocalCourse> predicate);
-    //=========== PartnerCourseCatalouge ============================================================================
+    //=========== PartnerCourseCatalogue ============================================================================
 
     void searchPartnerCourses(PartnerCourseAttribute attribute,
                               PartnerCodeContainsKeywordsPredicate codeContainsKeywordsPredicate,

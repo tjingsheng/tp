@@ -16,6 +16,7 @@ import seedu.address.logic.commands.localcourse.LocalCourseDeleteCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseListCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseSearchCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseSortCommand;
+import seedu.address.logic.commands.localcourse.LocalCourseUpdateCommand;
 import seedu.address.logic.commands.mapping.MappingAddCommand;
 import seedu.address.logic.commands.mapping.MappingCommand;
 import seedu.address.logic.commands.mapping.MappingDeleteCommand;
@@ -38,6 +39,7 @@ import seedu.address.logic.parser.localcourse.LocalCourseAddCommandParser;
 import seedu.address.logic.parser.localcourse.LocalCourseDeleteCommandParser;
 import seedu.address.logic.parser.localcourse.LocalCourseSearchCommandParser;
 import seedu.address.logic.parser.localcourse.LocalCourseSortCommandParser;
+import seedu.address.logic.parser.localcourse.LocalCourseUpdateCommandParser;
 import seedu.address.logic.parser.mapping.MappingAddCommandParser;
 import seedu.address.logic.parser.mapping.MappingDeleteCommandParser;
 import seedu.address.logic.parser.mapping.MappingSearchCommandParser;
@@ -151,7 +153,6 @@ public class SeplendidParser {
         case MappingCommand.COMMAND_WORD:
             return getMappingCommandWithArg(userInput, actionWord, arguments);
 
-
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
@@ -169,6 +170,8 @@ public class SeplendidParser {
             return new LocalCourseSortCommandParser().parse(arguments);
         case LocalCourseSearchCommand.ACTION_WORD:
             return new LocalCourseSearchCommandParser().parse(arguments);
+        case LocalCourseUpdateCommand.ACTION_WORD:
+            return new LocalCourseUpdateCommandParser().parse(arguments);
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

@@ -5,10 +5,15 @@ package seedu.address.model.localcourse;
  */
 public enum LocalCourseAttribute {
     LOCALCODE,
-    LOCALNAME;
+    LOCALNAME,
+    LOCALUNIT,
+    LOCALDESCRIPTION;
 
     public static final String MESSAGE_CONSTRAINTS =
             "There are only 2 attributes: localcode and localname.";
+
+    public static final String MESSAGE_CONSTRAINTS_UPDATE =
+            "There are only 4 attributes for update: localcode, localname, localunit and localdescription.";
 
     /**
      * Returns true if the given attribute is valid.
@@ -22,6 +27,18 @@ public enum LocalCourseAttribute {
             return true;
         default:
             return false;
+        }
+    }
+
+    public static boolean isValidAttributeForUpdate(String test) {
+        switch(test) {
+            case ("LOCALCODE"):
+            case ("LOCALNAME"):
+            case ("LOCALUNIT"):
+            case ("LOCALDESCRIPTION"):
+                return true;
+            default:
+                return false;
         }
     }
 }

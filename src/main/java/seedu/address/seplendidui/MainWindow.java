@@ -134,7 +134,6 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
-
     public ItemListPanel<? extends SeplendidDataType> getItemListPanel() {
         return itemListPanel;
     }

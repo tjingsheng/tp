@@ -30,17 +30,18 @@ public class PartnerCourseDeleteCommandParser implements Parser<PartnerCourseDel
 
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args,
-                        PARAMETER_PARTNERCODE, PARAMETER_UNIVERSITYNAME);
+                        PARAMETER_UNIVERSITYNAME, PARAMETER_PARTNERCODE);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap,
-                PARAMETER_PARTNERCODE, PARAMETER_UNIVERSITYNAME)) {
+                PARAMETER_UNIVERSITYNAME, PARAMETER_PARTNERCODE)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     PartnerCourseDeleteCommand.PARTNER_COURSE_DELETE_MESSAGE_USAGE));
         }
 
-        PartnerCode partnerCode = ParserUtil.parsePartnerCode(parameterToArgMap.getValue(PARAMETER_PARTNERCODE).get());
         UniversityName universityName =
                 ParserUtil.parseUniversityName(parameterToArgMap.getValue(PARAMETER_UNIVERSITYNAME).get());
-        return new PartnerCourseDeleteCommand(partnerCode, universityName);
+        PartnerCode partnerCode = ParserUtil.parsePartnerCode(parameterToArgMap.getValue(PARAMETER_PARTNERCODE).get());
+
+        return new PartnerCourseDeleteCommand(universityName, partnerCode);
     }
 }

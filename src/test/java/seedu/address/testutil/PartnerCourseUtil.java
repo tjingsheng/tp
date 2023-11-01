@@ -48,7 +48,7 @@ public class PartnerCourseUtil {
      */
     public static String getPartnerCourseArgumentsForDeleteCommand(PartnerCourse partnerCourse) {
         return String.format("[%s] [%s]",
-                partnerCourse.getPartnerCode(), partnerCourse.getPartnerUniversity().getUniversityName());
+                partnerCourse.getPartnerUniversity().getUniversityName(), partnerCourse.getPartnerCode());
     }
 
     /**

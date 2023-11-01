@@ -91,9 +91,6 @@ public class SeplendidParser {
         case NoteCommand.COMMAND_WORD:
             return getNoteCommandWithoutArg(userInput, actionWord);
 
-        case "remark":
-            return null;
-
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

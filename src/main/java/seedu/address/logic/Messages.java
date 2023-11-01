@@ -129,9 +129,6 @@ public class Messages {
                         String partnerName = partnerCourse.getPartnerName().toString();
                         String partnerCode = partnerCourse.getPartnerCode().toString();
                         double units = partnerCourse.getPartnerUnit().getValue();
-                        System.out.println(partnerName);
-                        System.out.println(partnerCode);
-                        System.out.println(units);
 
                         return partnerName + " (" + partnerCode + ", " + units + " units)";
                     })

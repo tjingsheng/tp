@@ -8,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Region;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import seedu.address.MainApp;

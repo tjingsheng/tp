@@ -1,7 +1,10 @@
 package seedu.address.seplendidui;
 
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -116,7 +119,7 @@ public class MainWindow extends UiPart<Stage> {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
                 (int) primaryStage.getX(), (int) primaryStage.getY());
         seplendidLogic.setGuiSettings(guiSettings);
-        primaryStage.hide();
+        CompletableFuture.delayedExecutor(2, TimeUnit.SECONDS).execute(() -> Platform.runLater(primaryStage::hide));
     }
 
     /**

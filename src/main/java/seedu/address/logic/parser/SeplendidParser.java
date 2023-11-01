@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 
 import seedu.address.commons.core.SeplendidLogsCenter;
 import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.LocalCourseAddCommand;
 import seedu.address.logic.commands.LocalCourseCommand;
@@ -99,12 +100,16 @@ public class SeplendidParser {
         }
 
         final String commandWord = matcher.group(REGEX_GROUP_COMMAND_WORD).trim();
-        if (commandWord.equals(HelpCommand.COMMAND_WORD)) {
-            return new HelpCommand();
-        }
 
-        logger.finer("This user input caused a ParseException: " + userInput);
-        throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
+        switch (commandWord) {
+        case HelpCommand.COMMAND_WORD:
+            return new HelpCommand();
+        case ExitCommand.COMMAND_WORD:
+            return new ExitCommand();
+        default:
+            logger.finer("This user input caused a ParseException: " + userInput);
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
+        }
     }
 
     /**

@@ -2,8 +2,9 @@ package seedu.address.model.localcourse;
 
 import java.util.function.Predicate;
 
-import static seedu.address.model.localcourse.LocalCourseAttribute.LOCALNAME;
-
+/**
+ * Tests that a {@code LocalCourse}'s {@code LocalAttribute} matches any of the keywords given.
+ */
 public class LocalCourseContainsKeywordsPredicate implements Predicate<LocalCourse> {
     private final String keyword;
     private final LocalCourseAttribute attribute;

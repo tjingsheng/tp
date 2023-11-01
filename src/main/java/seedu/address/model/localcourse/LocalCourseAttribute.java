@@ -13,7 +13,7 @@ public enum LocalCourseAttribute {
             "There are only 2 attributes: localcode and localname.";
 
     public static final String MESSAGE_CONSTRAINTS_SEARCH =
-            "There are only 3 attributes: localcode and localname and localdescription.";
+            "There are only 3 attributes: localcode, localname and localdescription.";
 
     /**
      * Returns true if the given attribute is valid.
@@ -37,12 +37,12 @@ public enum LocalCourseAttribute {
      */
     public static boolean isValidAttributeForSearch(String test) {
         switch(test) {
-            case ("LOCALCODE"):
-            case ("LOCALNAME"):
-            case ("LOCALDESCRIPTION"):
-                return true;
-            default:
-                return false;
+        case ("LOCALCODE"):
+        case ("LOCALNAME"):
+        case ("LOCALDESCRIPTION"):
+            return true;
+        default:
+            return false;
         }
     }
 }

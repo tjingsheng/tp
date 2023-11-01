@@ -18,11 +18,9 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.SeplendidLogsCenter;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.localcourse.LocalCode;
-import seedu.address.model.localcourse.LocalCodeContainsKeywordsPredicate;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.localcourse.LocalCourseAttribute;
 import seedu.address.model.localcourse.LocalCourseContainsKeywordsPredicate;
-import seedu.address.model.localcourse.LocalNameContainsKeywordsPredicate;
 import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
 import seedu.address.model.notes.NoteTagContainsKeywordsPredicate;
@@ -241,11 +239,6 @@ public class SeplendidModelManager implements SeplendidModel {
                                    LocalCourseContainsKeywordsPredicate predicate) {
         requireNonNull(attribute);
         filteredLocalCourseCatalogue.setPredicate(predicate);
-    }
-
-    public void getSearchLocalCourseList(LocalCodeContainsKeywordsPredicate codeContainsKeywordsPredicate) {
-        requireNonNull(codeContainsKeywordsPredicate);
-        filteredLocalCourseCatalogue.setPredicate(codeContainsKeywordsPredicate);
     }
 
     //=========== FilteredLocalCourseList Accessors =============================================================

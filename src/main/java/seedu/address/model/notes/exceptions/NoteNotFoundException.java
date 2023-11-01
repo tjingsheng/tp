@@ -5,6 +5,6 @@ package seedu.address.model.notes.exceptions;
  */
 public class NoteNotFoundException extends RuntimeException {
     public NoteNotFoundException() {
-        super("Note is not found. Please check if the index you input sis valid.");
+        super("Note is not found. Please check if the index you input is valid.");
     }
 }

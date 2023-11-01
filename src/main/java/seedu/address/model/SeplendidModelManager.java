@@ -25,10 +25,9 @@ import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
 import seedu.address.model.notes.NoteTagContainsKeywordsPredicate;
 import seedu.address.model.partnercourse.PartnerCode;
-import seedu.address.model.partnercourse.PartnerCodeContainsKeywordsPredicate;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
-import seedu.address.model.partnercourse.PartnerNameContainsKeywordsPredicate;
+import seedu.address.model.partnercourse.PartnerCourseContainsKeywordsPredicate;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityName;
 import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
@@ -262,18 +261,12 @@ public class SeplendidModelManager implements SeplendidModel {
     /**
      * Checks if the local course exists.
      * @param attribute
-     * @param codeContainsKeywordsPredicate
-     * @param nameContainsKeywordsPredicate
+     * @param predicate
      */
     public void searchPartnerCourses(PartnerCourseAttribute attribute,
-                                     PartnerCodeContainsKeywordsPredicate codeContainsKeywordsPredicate,
-                                     PartnerNameContainsKeywordsPredicate nameContainsKeywordsPredicate) {
+                                     PartnerCourseContainsKeywordsPredicate predicate) {
         requireNonNull(attribute);
-        if (attribute == PartnerCourseAttribute.PARTNERCODE) {
-            filteredPartnerCourseCatalogue.setPredicate(codeContainsKeywordsPredicate);
-        } else {
-            filteredPartnerCourseCatalogue.setPredicate(nameContainsKeywordsPredicate);
-        }
+        filteredPartnerCourseCatalogue.setPredicate(predicate);
     }
 
     @Override

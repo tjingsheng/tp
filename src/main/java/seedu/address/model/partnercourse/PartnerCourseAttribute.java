@@ -5,7 +5,9 @@ package seedu.address.model.partnercourse;
  */
 public enum PartnerCourseAttribute {
     PARTNERCODE,
-    PARTNERNAME;
+    PARTNERNAME,
+    UNIVERSITY,
+    DESCRIPTION;
 
     public static final String MESSAGE_CONSTRAINTS =
             "There are only 2 attributes: partnercode and partnername.";

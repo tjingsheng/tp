@@ -1,8 +1,9 @@
 package seedu.address.logic.parser.partnercourse;
 
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERCODE;
-import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERNAME;
+import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERATTRIBUTE;
+import static seedu.address.logic.parser.CliSyntax.PARAMETER_QUERY;
 
 import seedu.address.logic.commands.partnercourse.PartnerCourseSearchCommand;
 import seedu.address.logic.parser.Parser;
@@ -11,10 +12,9 @@ import seedu.address.logic.parser.SeplendidArgumentMap;
 import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.partnercourse.PartnerCode;
-import seedu.address.model.partnercourse.PartnerCodeContainsKeywordsPredicate;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
+import seedu.address.model.partnercourse.PartnerCourseContainsKeywordsPredicate;
 import seedu.address.model.partnercourse.PartnerName;
-import seedu.address.model.partnercourse.PartnerNameContainsKeywordsPredicate;
 
 /**
  * Parses input arguments and creates a new PartnerCourseSearchCommand object.
@@ -36,43 +36,38 @@ public class PartnerCourseSearchCommandParser implements Parser<PartnerCourseSea
 
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args,
-                        PARAMETER_PARTNERCODE, PARAMETER_PARTNERNAME);
+                        PARAMETER_PARTNERATTRIBUTE, PARAMETER_QUERY);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap,
-                PARAMETER_PARTNERCODE, PARAMETER_PARTNERNAME)) {
+                PARAMETER_PARTNERATTRIBUTE, PARAMETER_QUERY)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     PartnerCourseSearchCommand.PARTNERCOURSE_SEARCH_MESSAGE_USAGE));
         }
 
-        if (parameterToArgMap.contains(PARAMETER_PARTNERCODE) && parameterToArgMap.contains(PARAMETER_PARTNERNAME)) {
-            // Both partnercode and partnername are present, check their order
-            int partnerCodeIndex = parameterToArgMap.getIndexOf(PARAMETER_PARTNERCODE);
-            int partnerNameIndex = parameterToArgMap.getIndexOf(PARAMETER_PARTNERNAME);
-
-            if (partnerCodeIndex > partnerNameIndex) {
-                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                        PartnerCourseSearchCommand.PARTNERCOURSE_SEARCH_MESSAGE_USAGE));
+        PartnerCourseAttribute partnerCourseAttribute = ParserUtil.parsePartnerCourseAttributeForSearch(
+                parameterToArgMap.getValue(PARAMETER_PARTNERATTRIBUTE).get());
+        String query = parseQuery(partnerCourseAttribute, parameterToArgMap.getValue(PARAMETER_QUERY).get());
+        return new PartnerCourseSearchCommand(partnerCourseAttribute,
+                new PartnerCourseContainsKeywordsPredicate(query, partnerCourseAttribute), query);
+    }
+    private String parseQuery(PartnerCourseAttribute partnerCourseAttribute, String query)
+            throws ParseException {
+        requireAllNonNull(partnerCourseAttribute, query);
+        String trimmedQuery = query.trim();
+        switch (partnerCourseAttribute) {
+        case PARTNERCODE:
+            if (!PartnerCode.isValidPartnerCode(trimmedQuery)) {
+                throw new ParseException(PartnerCode.MESSAGE_CONSTRAINTS);
             }
+            break;
+        case PARTNERNAME:
+            if (!PartnerName.isValidPartnerName(trimmedQuery)) {
+                throw new ParseException(PartnerName.MESSAGE_CONSTRAINTS);
+            }
+            break;
+        default:
+            //do nothing
         }
-
-        PartnerCourseAttribute attribute;
-
-        if (parameterToArgMap.contains(PARAMETER_PARTNERNAME)) {
-            attribute = PartnerCourseAttribute.PARTNERNAME;
-            PartnerName partnerName = ParserUtil.parsePartnerName(
-                    parameterToArgMap.getValue(PARAMETER_PARTNERNAME).get());
-            return new PartnerCourseSearchCommand(
-                    new PartnerNameContainsKeywordsPredicate(partnerName.toString(), attribute));
-        }
-
-        if (parameterToArgMap.contains(PARAMETER_PARTNERCODE)) {
-            attribute = PartnerCourseAttribute.PARTNERCODE;
-            PartnerCode partnerCode = ParserUtil.parsePartnerCode(
-                    parameterToArgMap.getValue(PARAMETER_PARTNERCODE).get());
-            return new PartnerCourseSearchCommand(
-                    new PartnerCodeContainsKeywordsPredicate(partnerCode.toString(), attribute));
-        }
-
-        throw new ParseException("You must specify either local code or local name.");
+        return trimmedQuery;
     }
 }

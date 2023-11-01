@@ -16,10 +16,9 @@ import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
 import seedu.address.model.notes.NoteTagContainsKeywordsPredicate;
 import seedu.address.model.partnercourse.PartnerCode;
-import seedu.address.model.partnercourse.PartnerCodeContainsKeywordsPredicate;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
-import seedu.address.model.partnercourse.PartnerNameContainsKeywordsPredicate;
+import seedu.address.model.partnercourse.PartnerCourseContainsKeywordsPredicate;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityName;
 import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
@@ -143,8 +142,7 @@ public interface SeplendidModel {
     //=========== PartnerCourseCatalouge ============================================================================
 
     void searchPartnerCourses(PartnerCourseAttribute attribute,
-                              PartnerCodeContainsKeywordsPredicate codeContainsKeywordsPredicate,
-                              PartnerNameContainsKeywordsPredicate nameContainsKeywordsPredicate);
+                              PartnerCourseContainsKeywordsPredicate predicate);
     ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue();
 
     /**

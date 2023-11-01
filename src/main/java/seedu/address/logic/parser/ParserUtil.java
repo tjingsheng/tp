@@ -419,20 +419,20 @@ public class ParserUtil {
         String resultAttribute = attributeLowerCase;
 
         switch (attributeLowerCase) {
-            case ("localcode"):
-                resultAttribute = "LOCALCODE";
-                break;
-            case ("localname"):
-                resultAttribute = "LOCALNAME";
-                break;
-            case ("unit"):
-                resultAttribute = "LOCALUNIT";
-                break;
-            case ("description"):
-                resultAttribute = "LOCALDESCRIPTION";
-                break;
-            default:
-                break;
+        case ("localcode"):
+            resultAttribute = "LOCALCODE";
+            break;
+        case ("localname"):
+            resultAttribute = "LOCALNAME";
+            break;
+        case ("unit"):
+            resultAttribute = "LOCALUNIT";
+            break;
+        case ("description"):
+            resultAttribute = "LOCALDESCRIPTION";
+            break;
+        default:
+            break;
         }
 
         if (!LocalCourseAttribute.isValidAttributeForUpdate(resultAttribute)) {

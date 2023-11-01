@@ -15,14 +15,17 @@ import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourseAttribute;
-import seedu.address.model.localcourse.LocalName;
 import seedu.address.model.localcourse.LocalDescription;
+import seedu.address.model.localcourse.LocalName;
 import seedu.address.model.localcourse.LocalUnit;
 
+/**
+ * Parses input arguments and creates a new LocalCourseUpdateCommand object.
+ */
 public class LocalCourseUpdateCommandParser implements Parser<LocalCourseUpdateCommand> {
     /**
-     * Parses the given {@code String} of arguments in the context of the PartnerCourseEditCommand
-     * and returns a PartnerCourseEditCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the LocalCourseUpdateCommand
+     * and returns a LocalCourseUpdateCommand object for execution.
      *
      * @throws ParseException if the user input does not conform the expected format.
      */
@@ -53,33 +56,34 @@ public class LocalCourseUpdateCommandParser implements Parser<LocalCourseUpdateC
 
         return new LocalCourseUpdateCommand(localCode, localCourseAttribute, updatedValue);
     }
-        private String parseUpdatedValue(LocalCourseAttribute localCourseAttribute, String updatedValue)
+
+    private String parseUpdatedValue(LocalCourseAttribute localCourseAttribute, String updatedValue)
             throws ParseException {
-            requireAllNonNull(localCourseAttribute, updatedValue);
-            String trimmedUpdatedValue = updatedValue.trim();
-            switch (localCourseAttribute) {
-            case LOCALCODE:
-                if (!LocalCode.isValidLocalCode(trimmedUpdatedValue)) {
-                    throw new ParseException(LocalCode.MESSAGE_CONSTRAINTS);
-                }
-                break;
-            case LOCALNAME:
-                if (!LocalName.isValidLocalName(trimmedUpdatedValue)) {
-                    throw new ParseException(LocalName.MESSAGE_CONSTRAINTS);
-                }
-                break;
-            case LOCALUNIT:
-                if (!LocalUnit.isValidLocalUnit(trimmedUpdatedValue)) {
-                    throw new ParseException(LocalUnit.MESSAGE_CONSTRAINTS);
-                }
-                break;
-            case LOCALDESCRIPTION:
-                if (!LocalDescription.isValidLocalDescription(trimmedUpdatedValue)) {
-                    throw new ParseException(LocalDescription.MESSAGE_CONSTRAINTS);
-                }
-                break;
-            default:
-                //do nothing
+        requireAllNonNull(localCourseAttribute, updatedValue);
+        String trimmedUpdatedValue = updatedValue.trim();
+        switch (localCourseAttribute) {
+        case LOCALCODE:
+            if (!LocalCode.isValidLocalCode(trimmedUpdatedValue)) {
+                throw new ParseException(LocalCode.MESSAGE_CONSTRAINTS);
+            }
+            break;
+        case LOCALNAME:
+            if (!LocalName.isValidLocalName(trimmedUpdatedValue)) {
+                throw new ParseException(LocalName.MESSAGE_CONSTRAINTS);
+            }
+            break;
+        case LOCALUNIT:
+            if (!LocalUnit.isValidLocalUnit(trimmedUpdatedValue)) {
+                throw new ParseException(LocalUnit.MESSAGE_CONSTRAINTS);
+            }
+            break;
+        case LOCALDESCRIPTION:
+            if (!LocalDescription.isValidLocalDescription(trimmedUpdatedValue)) {
+                throw new ParseException(LocalDescription.MESSAGE_CONSTRAINTS);
+            }
+            break;
+        default:
+            //do nothing
         }
         return trimmedUpdatedValue;
     }

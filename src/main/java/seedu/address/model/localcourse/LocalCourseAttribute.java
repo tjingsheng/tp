@@ -30,15 +30,20 @@ public enum LocalCourseAttribute {
         }
     }
 
+    /**
+     * Returns true if the given attribute is valid.
+     * @param test String to be tested
+     * @return true if attribute is valid.
+     */
     public static boolean isValidAttributeForUpdate(String test) {
         switch(test) {
-            case ("LOCALCODE"):
-            case ("LOCALNAME"):
-            case ("LOCALUNIT"):
-            case ("LOCALDESCRIPTION"):
-                return true;
-            default:
-                return false;
+        case ("LOCALCODE"):
+        case ("LOCALNAME"):
+        case ("LOCALUNIT"):
+        case ("LOCALDESCRIPTION"):
+            return true;
+        default:
+            return false;
         }
     }
 }

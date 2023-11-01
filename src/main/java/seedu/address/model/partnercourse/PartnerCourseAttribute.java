@@ -11,10 +11,10 @@ public enum PartnerCourseAttribute {
     DESCRIPTION;
 
     public static final String MESSAGE_CONSTRAINTS_SORT =
-            "There are only 3 attributes: partnercode, partnername and university.";
+            "There are only 3 attributes for sort: partnercode, partnername and university.";
 
-    public static final String MESSAGE_CONSTRAINTS_EDIT =
-            "There are only 3 attributes: partnercode, partnername, university and description.";
+    public static final String MESSAGE_CONSTRAINTS_UPDATE =
+            "There are only 4 attributes for update: partnercode, partnername, unit and description.";
 
     /**
      * Returns true if the given attribute is valid for sort command.
@@ -37,9 +37,9 @@ public enum PartnerCourseAttribute {
      * @param test String to be tested
      * @return true if attribute is valid.
      */
-    public static boolean isValidAttributeForEdit(String test) {
+    public static boolean isValidAttributeForUpdate(String test) {
+        // cannot update universityName
         switch(test) {
-        case ("UNIVERSITY"):
         case ("PARTNERCODE"):
         case ("PARTNERNAME"):
         case ("UNIT"):

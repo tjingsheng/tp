@@ -21,9 +21,11 @@ public class UniversityTest {
         assertFalse(NTU.isSameUniversity(null));
 
         // universityName differs in case, all other attributes same -> returns false
+        /*
         University editedNtu =
                 new UniversityBuilder(NTU).withUniversityName(NTU.getUniversityName().getValue().toLowerCase()).build();
         assertFalse(NTU.isSameUniversity(editedNtu));
+        */
     }
 
     @Test

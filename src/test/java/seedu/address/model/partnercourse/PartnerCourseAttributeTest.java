@@ -12,16 +12,35 @@ public class PartnerCourseAttributeTest {
     public void isValidPartnerCourseAttribute() {
         // null String
         assertThrows(NullPointerException.class, () -> PartnerCourseAttribute.isValidAttributeForSort((String) null));
+        assertThrows(NullPointerException.class, () -> PartnerCourseAttribute.isValidAttributeForUpdate((String) null));
 
-        // invalid partnerCourseAttribute
+        // invalid partnerCourseAttribute for sort
         assertFalse(PartnerCourseAttribute.isValidAttributeForSort("")); // empty string
         assertFalse(PartnerCourseAttribute.isValidAttributeForSort(" ")); // spaces only
         assertFalse(PartnerCourseAttribute.isValidAttributeForSort("PARTNER"));
-        assertFalse(PartnerCourseAttribute.isValidAttributeForSort("partnername")); // cannot accpet lowercase
+        assertFalse(PartnerCourseAttribute.isValidAttributeForSort("partnername")); // cannot accept lowercase
+        assertFalse(PartnerCourseAttribute.isValidAttributeForSort("pArTnerCODE"));
+        assertFalse(PartnerCourseAttribute.isValidAttributeForSort("UNIT"));
+        assertFalse(PartnerCourseAttribute.isValidAttributeForSort("DESCRIPTION"));
 
-        // valid partnerCourseAttribute
+        // invalid partnerCourseAttribute for update
+        assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate("")); // empty string
+        assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate(" ")); // spaces only
+        assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate("PARTNER"));
+        assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate("partnername")); // cannot accept lowercase
+        assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate("Description"));
+        assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate("UNIVERSITY"));
+
+        // valid partnerCourseAttribute for sort
         assertTrue(PartnerCourseAttribute.isValidAttributeForSort("PARTNERCODE"));
         assertTrue(PartnerCourseAttribute.isValidAttributeForSort("PARTNERNAME"));
         assertTrue(PartnerCourseAttribute.isValidAttributeForSort("UNIVERSITY"));
+
+        // valid partnerCourseAttribute for update
+        assertTrue(PartnerCourseAttribute.isValidAttributeForUpdate("PARTNERCODE"));
+        assertTrue(PartnerCourseAttribute.isValidAttributeForUpdate("PARTNERNAME"));
+        assertTrue(PartnerCourseAttribute.isValidAttributeForUpdate("UNIT"));
+        assertTrue(PartnerCourseAttribute.isValidAttributeForUpdate("DESCRIPTION"));
+
     }
 }

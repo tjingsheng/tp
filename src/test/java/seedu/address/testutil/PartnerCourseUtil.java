@@ -62,9 +62,11 @@ public class PartnerCourseUtil {
     }
 
     /**
-     * Returns the part of sort command string for the given comparator's details/
+     * Returns the part of sort command string for the given comparator's details
      */
     public static String getPartnerCourseArgumentsForSortCommand(Comparator<PartnerCourse> comparator) {
         return String.format("[%s]", comparator.toString());
     }
+
+
 }

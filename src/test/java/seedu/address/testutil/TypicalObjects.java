@@ -73,6 +73,7 @@ public class TypicalObjects {
     public static final String INVALID_PARTNER_COURSE_NAME = " ";
     public static final String INVALID_UNIVERSITY_NAME = " ";
     public static final Double INVALID_PARTNER_COURSE_UNIT = -1.0;
+    public static final String INVALID_PARTNER_COURSE_DESCRIPTION = " ";
 
     public static final LocalCourse CS2040S = new LocalCourseBuilder().withLocalCode("CS2040S").withLocalName(
         "Data Structures & Algorithms").withLocalUnit(4.0).withLocalDescription(

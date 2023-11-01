@@ -448,15 +448,12 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code attribute} is invalid.
      */
-    public static PartnerCourseAttribute parsePartnerCourseAttributeForEdit(String attribute) throws ParseException {
+    public static PartnerCourseAttribute parsePartnerCourseAttributeForUpdate(String attribute) throws ParseException {
         requireNonNull(attribute);
         String attributeLowerCase = attribute.toLowerCase().trim();
         String resultAttribute = attributeLowerCase;
 
         switch (attributeLowerCase) {
-        case ("university"):
-            resultAttribute = "UNIVERSITY";
-            break;
         case ("partnercode"):
             resultAttribute = "PARTNERCODE";
             break;
@@ -473,8 +470,8 @@ public class ParserUtil {
             break;
         }
 
-        if (!PartnerCourseAttribute.isValidAttributeForEdit(resultAttribute)) {
-            throw new ParseException(PartnerCourseAttribute.MESSAGE_CONSTRAINTS_EDIT);
+        if (!PartnerCourseAttribute.isValidAttributeForUpdate(resultAttribute)) {
+            throw new ParseException(PartnerCourseAttribute.MESSAGE_CONSTRAINTS_UPDATE);
         }
 
         return PartnerCourseAttribute.valueOf(resultAttribute);

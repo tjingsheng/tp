@@ -51,7 +51,7 @@ public class PartnerCode {
         }
 
         PartnerCode otherPartnerCode = (PartnerCode) other;
-        return value.equals(otherPartnerCode.value);
+        return value.equalsIgnoreCase(otherPartnerCode.value);
     }
 
     @Override

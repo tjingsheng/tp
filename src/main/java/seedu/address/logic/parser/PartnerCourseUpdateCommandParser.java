@@ -31,7 +31,7 @@ public class PartnerCourseUpdateCommandParser implements Parser<PartnerCourseUpd
     public PartnerCourseUpdateCommand parse(String args) throws ParseException {
         if (!areValuesEnclosedAndNonEmpty(args)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    PartnerCourseUpdateCommand.PARTNER_COURSE_EDIT_MESSAGE_USAGE));
+                    PartnerCourseUpdateCommand.PARTNER_COURSE_UPDATE_MESSAGE_USAGE));
         }
 
         SeplendidArgumentMap parameterToArgMap = SeplendidArgumentTokenizer.tokenize(args,
@@ -46,30 +46,25 @@ public class PartnerCourseUpdateCommandParser implements Parser<PartnerCourseUpd
                 PARAMETER_PARTNERATTRIBUTE,
                 PARAMETER_UPDATEDVALUE)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    PartnerCourseUpdateCommand.PARTNER_COURSE_EDIT_MESSAGE_USAGE));
+                    PartnerCourseUpdateCommand.PARTNER_COURSE_UPDATE_MESSAGE_USAGE));
         }
 
         UniversityName universityName =
                 ParserUtil.parseUniversityName(parameterToArgMap.getValue(PARAMETER_UNIVERSITYNAME).get());
         PartnerCode partnerCode = ParserUtil.parsePartnerCode(parameterToArgMap.getValue(PARAMETER_PARTNERCODE).get());
-        PartnerCourseAttribute partnerCourseAttribute = ParserUtil.parsePartnerCourseAttributeForEdit(
+        PartnerCourseAttribute partnerCourseAttribute = ParserUtil.parsePartnerCourseAttributeForUpdate(
                 parameterToArgMap.getValue(PARAMETER_PARTNERATTRIBUTE).get());
-        String updatedValue = parseEditedValue(partnerCourseAttribute,
+        String updatedValue = parseUpdatedValue(partnerCourseAttribute,
                 parameterToArgMap.getValue(PARAMETER_UPDATEDVALUE).get());
 
         return new PartnerCourseUpdateCommand(universityName, partnerCode, partnerCourseAttribute, updatedValue);
     }
 
-    private String parseEditedValue(PartnerCourseAttribute partnerCourseAttribute, String updatedValue)
+    private String parseUpdatedValue(PartnerCourseAttribute partnerCourseAttribute, String updatedValue)
             throws ParseException {
         requireAllNonNull(partnerCourseAttribute, updatedValue);
         String trimmedUpdatedValue = updatedValue.trim();
         switch (partnerCourseAttribute) {
-        case UNIVERSITY:
-            if (!UniversityName.isValidUniversityName(trimmedUpdatedValue)) {
-                throw new ParseException(UniversityName.MESSAGE_CONSTRAINTS);
-            }
-            break;
         case PARTNERCODE:
             if (!PartnerCode.isValidPartnerCode(trimmedUpdatedValue)) {
                 throw new ParseException(PartnerCode.MESSAGE_CONSTRAINTS);

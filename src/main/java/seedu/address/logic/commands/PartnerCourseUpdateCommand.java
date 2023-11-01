@@ -22,7 +22,7 @@ import seedu.address.seplendidui.UiUtil;
  * Edits partner course.
  */
 public class PartnerCourseUpdateCommand extends PartnerCourseCommand {
-    public static final String PARTNER_COURSE_EDIT_MESSAGE_USAGE = COMMAND_WORD
+    public static final String PARTNER_COURSE_UPDATE_MESSAGE_USAGE = COMMAND_WORD
             + " update: Updates a partner course for a particular attribute - "
             + "partnercode & partnername & university & unit & description";
     public static final String ACTION_WORD = "update";
@@ -79,6 +79,8 @@ public class PartnerCourseUpdateCommand extends PartnerCourseCommand {
 
         partnerCourseToUpdate = seplendidModel.getPartnerCourseIfExists(partnerCode, universityName).get();
 
+        universityName = partnerCourseToUpdate.getPartnerUniversity().getUniversityName();
+        partnerCode = partnerCourseToUpdate.getPartnerCode();
         partnerName = partnerCourseToUpdate.getPartnerName();
         partnerUnit = partnerCourseToUpdate.getPartnerUnit();
         partnerDescription = partnerCourseToUpdate.getPartnerDescription();
@@ -134,8 +136,10 @@ public class PartnerCourseUpdateCommand extends PartnerCourseCommand {
         }
 
         PartnerCourseUpdateCommand otherPartnerCourseUpdateCommand = (PartnerCourseUpdateCommand) other;
-        return partnerCourseToUpdate.equals(otherPartnerCourseUpdateCommand.partnerCourseToUpdate)
-                && updatedPartnerCourse.equals(otherPartnerCourseUpdateCommand.updatedPartnerCourse);
+        return universityName.equals(otherPartnerCourseUpdateCommand.universityName)
+                && partnerCode.equals(otherPartnerCourseUpdateCommand.partnerCode)
+                && partnerCourseAttribute.equals(otherPartnerCourseUpdateCommand.partnerCourseAttribute)
+                && updatedValue.equals(otherPartnerCourseUpdateCommand.updatedValue);
     }
 
     @Override

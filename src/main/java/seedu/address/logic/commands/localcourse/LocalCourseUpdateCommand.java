@@ -43,8 +43,8 @@ public class LocalCourseUpdateCommand extends LocalCourseCommand {
     /**
      * Creates a LocalCourseUpdateCommand to edit the given local course.
      *
-     * @param localCode            Local code of the course to be edited.
-     * @param localCourseAttribute Attribute of the course to be edited.
+     * @param localCode            Local code of the course to be updated.
+     * @param localCourseAttribute Attribute of the course to be updated.
      * @param updatedValue         Edited value of the specified attribute.
      */
     public LocalCourseUpdateCommand(LocalCode localCode,
@@ -138,7 +138,7 @@ public class LocalCourseUpdateCommand extends LocalCourseCommand {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("localCourseToEdit", localCourseToUpdate)
+                .add("localCourseToUpdate", localCourseToUpdate)
                 .add("updatedLocalCourse", updatedLocalCourse).toString();
     }
 }

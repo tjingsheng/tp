@@ -33,7 +33,8 @@ public class CliSyntax {
     public static final SeplendidParameter PARAMETER_MAPPINGATTRIBUTE =
             new SeplendidParameter("mappingattribute");
     public static final SeplendidParameter PARAMETER_QUERY = new SeplendidParameter("query");
-    public static final SeplendidParameter PARAMETER_UPDATEDVALUE = new SeplendidParameter("editedValue");
+    public static final SeplendidParameter PARAMETER_LOCALUPDATEDVALUE =
+            new SeplendidParameter("local updated Value");
 
 
 }

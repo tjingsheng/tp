@@ -21,7 +21,7 @@ import seedu.address.model.university.UniversityName;
 import seedu.address.seplendidui.UiUtil;
 
 /**
- * Edits partner course.
+ * Updates partner course.
  */
 public class PartnerCourseUpdateCommand extends PartnerCourseCommand {
     public static final String PARTNER_COURSE_UPDATE_MESSAGE_USAGE = COMMAND_WORD

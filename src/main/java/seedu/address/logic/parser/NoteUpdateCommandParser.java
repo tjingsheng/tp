@@ -1,16 +1,26 @@
 package seedu.address.logic.parser;
 
-import seedu.address.logic.commands.NoteUpdateCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.notes.Content;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_CONTENT;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_INDEX;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
-public class NoteUpdateCommandParser implements Parser<NoteUpdateCommand> {
+import seedu.address.logic.commands.NoteUpdateCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.notes.Content;
 
+/**
+ * Parses the given {@code String} of arguments in the context of the UpdateCommand
+ * and returns a UpdateCommand object for execution.
+ * @throws ParseException if the user input does not conform the expected format
+ */
+public class NoteUpdateCommandParser implements Parser<NoteUpdateCommand> {
+    /**
+     * Parses the given {@code String} of arguments in the context of the NoteUpdateCommand
+     * and returns a NoteUpdateCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format
+     */
     public NoteUpdateCommand parse(String args) throws ParseException {
         if (!areValuesEnclosedAndNonEmpty(args)) {
             throw new ParseException(

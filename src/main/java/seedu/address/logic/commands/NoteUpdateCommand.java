@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
-import javafx.collections.ObservableList;
+import static java.util.Objects.requireNonNull;
+
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -8,11 +9,11 @@ import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.notes.Content;
 import seedu.address.model.notes.Note;
-import seedu.address.model.notes.exceptions.NoteNotFoundException;
 import seedu.address.seplendidui.UiUtil;
 
-import static java.util.Objects.requireNonNull;
-
+/**
+ * Updates the content a note to the NoteList.
+ */
 public class NoteUpdateCommand extends NoteCommand {
 
     public static final String NOTE_UPDATE_MESSAGE_USAGE = COMMAND_WORD
@@ -23,9 +24,10 @@ public class NoteUpdateCommand extends NoteCommand {
     private final Content updateContent;
 
     /**
-     * Creates a NoteAddCommand to add the specified {@code Note}
+     * Creates a NoteUpdateCommand to update the specified {@code Note}
      *
-     * @param note The Note to be added into Storage.
+     * @param noteIndexToUpdate The Index of Note to be updated into Storage.
+     * @param updateContent The updated content of the note
      */
     public NoteUpdateCommand(int noteIndexToUpdate, Content updateContent) {
         super();

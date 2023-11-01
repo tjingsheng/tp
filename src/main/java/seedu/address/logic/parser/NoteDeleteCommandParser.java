@@ -1,12 +1,16 @@
 package seedu.address.logic.parser;
 
-import seedu.address.logic.commands.NoteDeleteCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
-
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_INDEX;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
+import seedu.address.logic.commands.NoteDeleteCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
+
+
+/**
+ * Parses input arguments and deletes a Note object.
+ */
 public class NoteDeleteCommandParser implements Parser<NoteDeleteCommand> {
 
     /**

@@ -30,6 +30,6 @@ public class HelpCommand extends Command {
      */
     @Override
     public CommandResult execute(SeplendidModel model) throws CommandException {
-        throw new CommandException("TBD: this is a stub and should be removed after morph.");
+        return new CommandResult(SHOWING_HELP_MESSAGE, true, false);
     }
 }

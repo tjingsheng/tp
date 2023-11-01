@@ -21,6 +21,7 @@ import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCodeContainsKeywordsPredicate;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.localcourse.LocalCourseAttribute;
+import seedu.address.model.localcourse.LocalCourseContainsKeywordsPredicate;
 import seedu.address.model.localcourse.LocalNameContainsKeywordsPredicate;
 import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
@@ -234,18 +235,12 @@ public class SeplendidModelManager implements SeplendidModel {
     /**
      * Checks if the local course exists.
      * @param attribute
-     * @param codeContainsKeywordsPredicate
-     * @param nameContainsKeywordsPredicate
+     * @param predicate
      */
     public void searchLocalCourses(LocalCourseAttribute attribute,
-                                   LocalCodeContainsKeywordsPredicate codeContainsKeywordsPredicate,
-                                   LocalNameContainsKeywordsPredicate nameContainsKeywordsPredicate) {
+                                   LocalCourseContainsKeywordsPredicate predicate) {
         requireNonNull(attribute);
-        if (attribute == LocalCourseAttribute.LOCALCODE) {
-            filteredLocalCourseCatalogue.setPredicate(codeContainsKeywordsPredicate);
-        } else {
-            filteredLocalCourseCatalogue.setPredicate(nameContainsKeywordsPredicate);
-        }
+        filteredLocalCourseCatalogue.setPredicate(predicate);
     }
 
     public void getSearchLocalCourseList(LocalCodeContainsKeywordsPredicate codeContainsKeywordsPredicate) {

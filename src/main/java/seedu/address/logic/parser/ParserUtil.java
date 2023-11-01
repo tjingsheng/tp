@@ -395,15 +395,50 @@ public class ParserUtil {
         case ("localname"):
             resultAttribute = "LOCALNAME";
             break;
+        case ("localdescription"):
+            resultAttribute = "LOCALDESCRIPTION";
+            break;
         default:
             break;
         }
 
-        if (!LocalCourseAttribute.isValidAttribute(resultAttribute)) {
-            throw new ParseException(LocalCourseAttribute.MESSAGE_CONSTRAINTS);
+        if (!LocalCourseAttribute.isValidAttributeForSearch(resultAttribute)) {
+            throw new ParseException(LocalCourseAttribute.MESSAGE_CONSTRAINTS_SEARCH);
         }
 
         return LocalCourseAttribute.valueOf(resultAttribute);
 
+    }
+
+    /**
+     * Parses a {@code String attribute}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code attribute} is invalid.
+     */
+    public static LocalCourseAttribute parseLocalCourseAttributeForSearch(String attribute) throws ParseException {
+        requireNonNull(attribute);
+        String attributeLowerCase = attribute.toLowerCase().trim();
+        String resultAttribute = attributeLowerCase;
+
+        switch (attributeLowerCase) {
+            case ("localcode"):
+                resultAttribute = "LOCALCODE";
+                break;
+            case ("localname"):
+                resultAttribute = "LOCALNAME";
+                break;
+            case ("localdescription"):
+                resultAttribute = "LOCALDESCRIPTION";
+                break;
+            default:
+                break;
+        }
+
+        if (!LocalCourseAttribute.isValidAttributeForSearch(resultAttribute)) {
+            throw new ParseException(LocalCourseAttribute.MESSAGE_CONSTRAINTS_SEARCH);
+        }
+
+        return LocalCourseAttribute.valueOf(resultAttribute);
     }
 }

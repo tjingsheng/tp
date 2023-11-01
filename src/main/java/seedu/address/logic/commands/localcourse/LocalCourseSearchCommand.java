@@ -10,9 +10,8 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
-import seedu.address.model.localcourse.LocalCodeContainsKeywordsPredicate;
 import seedu.address.model.localcourse.LocalCourseAttribute;
-import seedu.address.model.localcourse.LocalNameContainsKeywordsPredicate;
+import seedu.address.model.localcourse.LocalCourseContainsKeywordsPredicate;
 import seedu.address.seplendidui.UiUtil;
 
 /**
@@ -26,38 +25,31 @@ public class LocalCourseSearchCommand extends LocalCourseCommand {
 
 
     public static final String LOCALCOURSE_SEARCH_MESSAGE_USAGE = COMMAND_WORD
-            + " : Search local courses by attributes - localcode and localname";
+            + " : Search local courses by attributes - localcode and localname and localdescription";
 
     private final LocalCourseAttribute attribute;
 
-    private final LocalCodeContainsKeywordsPredicate codePredicate;
-    private final LocalNameContainsKeywordsPredicate namePredicate;
+    private final LocalCourseContainsKeywordsPredicate predicate;
+
+    private String query;
 
     /**
      * Creates a LocalCourseSearchCommand to sort the local course list based on the code predicate.
      * @param codePredicate Predicate use for search
      */
-    public LocalCourseSearchCommand(LocalCodeContainsKeywordsPredicate codePredicate) {
-        this.attribute = LocalCourseAttribute.LOCALCODE;
-        this.codePredicate = codePredicate;
-        this.namePredicate = null;
-    }
-
-    /**
-     * Creates a LocalCourseSearchCommand to sort the local course list based on the name predicate.
-     * @param namePredicate Predicate use for search
-     */
-    public LocalCourseSearchCommand(LocalNameContainsKeywordsPredicate namePredicate) {
-        this.attribute = LocalCourseAttribute.LOCALNAME;
-        this.codePredicate = null;
-        this.namePredicate = namePredicate;
+    public LocalCourseSearchCommand(LocalCourseAttribute attribute,
+                                    LocalCourseContainsKeywordsPredicate predicate,
+                                    String query) {
+        this.attribute = attribute;
+        this.predicate = predicate;
+        this.query = query;
     }
 
     @Override
     public CommandResult execute(SeplendidModel model) throws CommandException {
         requireNonNull(model);
 
-        model.searchLocalCourses(attribute, codePredicate, namePredicate);
+        model.searchLocalCourses(attribute, predicate);
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(model.getFilteredLocalCourseList()),
                 UiUtil.ListViewModel.LOCAL_COURSE_LIST));
@@ -80,16 +72,16 @@ public class LocalCourseSearchCommand extends LocalCourseCommand {
 
         LocalCourseSearchCommand otherLocalCourseSearchCommand = (LocalCourseSearchCommand) other;
         return attribute == otherLocalCourseSearchCommand.attribute
-                && Objects.equals(codePredicate, otherLocalCourseSearchCommand.codePredicate)
-                && Objects.equals(namePredicate, otherLocalCourseSearchCommand.namePredicate);
+                && Objects.equals(predicate, otherLocalCourseSearchCommand.predicate)
+                && Objects.equals(query, otherLocalCourseSearchCommand.query);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("attribute", attribute)
-                .add("codePredicate", codePredicate)
-                .add("namePredicate", namePredicate)
+                .add("predicate", predicate)
+                .add("query", query)
                 .toString();
     }
 }

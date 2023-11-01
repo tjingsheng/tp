@@ -59,8 +59,8 @@ public class PartnerCourseSearchCommand extends PartnerCourseCommand {
 
         model.searchPartnerCourses(attribute, codePredicate, namePredicate);
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(model.getFilteredPartnerCourseList()),
-                UiUtil.ListViewModel.PARTNER_COURSE_LIST));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(model.getFilteredPartnerCourseList())),
+                UiUtil.ListViewModel.PARTNER_COURSE_LIST);
     }
 
     @Override

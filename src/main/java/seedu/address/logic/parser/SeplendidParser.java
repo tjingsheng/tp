@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 import seedu.address.commons.core.SeplendidLogsCenter;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.HelpCommand;
+import seedu.address.logic.commands.NoteClearTagCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseAddCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseDeleteCommand;

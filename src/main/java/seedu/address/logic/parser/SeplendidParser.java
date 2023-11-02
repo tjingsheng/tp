@@ -21,6 +21,7 @@ import seedu.address.logic.commands.mapping.MappingCommand;
 import seedu.address.logic.commands.mapping.MappingDeleteCommand;
 import seedu.address.logic.commands.mapping.MappingListCommand;
 import seedu.address.logic.commands.mapping.MappingSearchCommand;
+import seedu.address.logic.commands.mapping.MappingSortCommand;
 import seedu.address.logic.commands.note.NoteAddCommand;
 import seedu.address.logic.commands.note.NoteCommand;
 import seedu.address.logic.commands.note.NoteDeleteCommand;
@@ -46,6 +47,7 @@ import seedu.address.logic.parser.localcourse.LocalCourseSortCommandParser;
 import seedu.address.logic.parser.mapping.MappingAddCommandParser;
 import seedu.address.logic.parser.mapping.MappingDeleteCommandParser;
 import seedu.address.logic.parser.mapping.MappingSearchCommandParser;
+import seedu.address.logic.parser.mapping.MappingSortCommandParser;
 import seedu.address.logic.parser.note.NoteAddCommandParser;
 import seedu.address.logic.parser.note.NoteSearchCommandParser;
 import seedu.address.logic.parser.partnercourse.PartnerCourseAddCommandParser;
@@ -217,6 +219,8 @@ public class SeplendidParser {
             return new MappingDeleteCommandParser().parse(arguments);
         case MappingSearchCommand.ACTION_WORD:
             return new MappingSearchCommandParser().parse(arguments);
+        case MappingSortCommand.ACTION_WORD:
+            return new MappingSortCommandParser().parse(arguments);
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

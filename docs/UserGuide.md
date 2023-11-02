@@ -149,21 +149,26 @@ e.g. `localcourse sort [localname]` will sort the list of local courses by their
 | `note`          | A note to keep track of items                      |
 
 Each of these data types have certain attributes. These are the columns or data that will be displayed for each 
-command group: \
+command group: 
+
 `localcourse`:
 
-| Attribute   | Description                      |
-|-------------|----------------------------------|
-| `localcode` | Course code for the local course |
-| `localname` | Name of the local course         |
+| Attribute          | Description                          |
+|--------------------|--------------------------------------|
+| `localcode`        | Course code for the local course     |
+| `localname`        | Name of the local course             |
+| `localunit`        | Number of units  of the local course |
+| `localdescription` | Description of the local course      |
 
 `partnercourse`:
 
-| Attribute     | Description                                        |
-|---------------|----------------------------------------------------|
-| `partnercode` | Course code for the partner course                 |
-| `partnername` | Name of the partner course                         |
-| `university`  | The partner university offering the partner course |
+| Attribute            | Description                                        |
+|----------------------|----------------------------------------------------|
+| `partnercode`        | Course code for the partner course                 |
+| `partnername`        | Name of the partner course                         |
+| `university`         | The partner university offering the partner course |
+| `partnerunit`        | Number of units  of the partner course             |
+| `partnerdescription` | Description of the partner course                  |
 
 
 `mapping`:
@@ -280,7 +285,7 @@ Key takeaways from this section:
 - Examples of valid and invalid inputs
 
 ## 4.1. Commands for localcourse
-### 4.1.1. List all localcourses: `localcourse list`
+### 4.1.1. List all local courses: `localcourse list`
 Lists all available local courses, offered by NUS Computing.
 
 **Format**: `localcourse list`
@@ -314,70 +319,112 @@ Deletes local course with course code identified by `localcode`.
 |----------------------------------------------------------|
 | ![localcourse-delete-ui](images/LocalcourseDeleteUi.png) |
 
-### 4.1.4. Search a local course by attributes: `localcourse search`
-Searches local course with course code identified by `localcode` or `localname`.
+### 4.1.4. Update a local course: `localcourse update`
+Updates `localcourseattribute` of a local course, with course code identified by `localcode`, with updated value.
+
+`localcourseattribute` - `localcode`, `localname`, `localunit`, `localdescription`
+
+**Format**: `localcourse update [localcode] [localcourseattribute] [updatedValue]`
+
+**Example**
+| `localcourse update [CS1234] [localname] [ProgrammingVeryFun]`      |
+|--------------------------------------------------------------|
+| ![localcourse-update-ui](images/LocalcourseUpdateUi.png) |
+
+### 4.1.5. Search a localcourse by attributes: `localcourse search`
+Searches localcourse with course code identified by `localcode` or `localname`.
+
 **Format**: `localcourse search [localcode]` \
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `localcourse search [localname]`
 
 **Example:**
-<insert image>
-
-### 4.1.5.: Sort a local course by attributes: `localcourse sort`
-Sorts local course with course code identified by `localcode` or `localname`.
-**Format**: `localcourse sort [localcode]` \
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `localcourse sort [localname]`
-
-**Example:**
 | `localcourse search [localcode] [BT2101]`                                     |
 |----------------------------------------------------------|
-| ![partnercourse-list-ui](images/PartnercourseListUi.png) |
+| ![localcourse-search-ui](images/LocalcourseSearchUi.png) |
+
+
+### 4.1.6.: Sort local courses by attributes: `localcourse sort`
+Sorts local courses according to `localcourseattribute` - `localcode` or `localname`.
+
+**Format**: `localcourse sort [localcourseattribute]` 
+
+**Example**
+| `localcourse sort [localname]`      |
+|------------------------------------------------------|
+| ![localcourse-sort-ui](images/LocalcourseSortUi.png) |
 
 ## 4.2. Commands for partnercourse
-### 4.2.1. List all partnercourses: `partnercourse list`
-Lists all available partner courses, paginated if dataset is too huge.
+### 4.2.1. List all partner courses: `partnercourse list`
+Lists all available partner courses.
+
 **Format**: `partnercourse list`
 
 **Example:**
 | `partnercourse list`                                     |
 |----------------------------------------------------------|
-| ![localcourse-search-ui](images/LocalcourseSearchUi.png) |
+| ![partnercourse-list-ui](images/PartnercourseListUi.png) |
 
 ### 4.2.2. Add a partnercourse: `partnercourse add`
-Adds partner course with course code identified by `partnercode` and course name identified by `partnername`, 
-which is offered by partner `university`.
-**Format**: `partnercourse add [partnercode] [partnername] [units]`
+Adds partner course with university identified by `university`, course code identified by `partnercode`, 
+course name identified by `partnername`, credit units identified by `units` and 
+course description identified by `description`. 
+
+<box type="info">
+    You are unable to add a partner course if the university does not exist in SEPlendid.
+</box>
+
+**Format**: `partnercourse add [university] [partnercode] [partnername] [units] [description]`
 
 **Example:**
-| `partnercourse add [University of Toronto] [ROB311] [Artificial Intelligence]` |
-|--------------------------------------------------------------------------------|
-| ![partnercourse-add-ui](images/PartnercourseAddUi.png)                         |
+| `partnercourse add [University of Toronto] [ROB311] [Artificial Intelligence] [5.0] [Introduction module to AI]` |
+|------------------------------------------------------------------------------------------------------------------|
+| ![partnercourse-add-ui](images/PartnercourseAddUi.png)                                                           |
 
-### 4.2.3. Delete a partnercourse: `partnercourse delete`
-Deletes partner course with course code identified by `partnercode` and course name identified by `partnername`, 
-which is offered by partner `university`.
-**Format**: `partnercourse delete [partnercode]`
+### 4.2.3. Delete a partner course: `partnercourse delete`
+Deletes partner course with university identified by `university` and course code identified by `partnercode`.
+<box type="info">
+    You are unable to delete a partner course if it exists in a mapping.
+</box>
+
+**Format**: `partnercourse delete [university] [partnercode]`
 
 **Example:**
-| `partnercourse delete [ROB311]`      |
+| `partnercourse delete [University of Toronto] [ROB311]`      |
 |--------------------------------------------------------------|
 | ![partnercourse-delete-ui](images/PartnercourseDeleteUi.png) |
 
-### 4.2.4. Search a partnercourse by attributes: `partnercourse search`
-Searches partnercourse with course name identified by `partnername`.
+### 4.2.4. Update a partner course: `partnercourse update`
+Updates `partnercourseattribute` of partner course, with university identified by `universityname` and 
+partner code identified by `partnercode`, with updated value.
+
+`partnercourseattribute` - `partnercode`, `partnername`, `unit`, `description`
+
+**Format**: `partnercourse update [universityname] [partnercode] [partnercourseattribute] [updatedValue]`
+
+**Example**
+| `partnercourse update [University of Toronto] [ROB311] [unit] [10.0]`      |
+|--------------------------------------------------------------|
+| ![partnercourse-update-ui](images/PartnercourseUpdateUi.png) |
+
+### 4.2.5. Search a partnercourse by attributes: `partnercourse search`
+Searches partner course with course name identified by `partnername`.
 **Format**: `partnercourse search [partnercode]` \
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `partnercourse search [partnername]`
 
 **Example:**
 | `partnercourse search [partnercode] [CSE469]`                                  |
 |----------------------------------------------------|
-| ![partnercourse-search-ui](images/PartnercourseSearchUi![img_1.png](img_1.png).png) |
+| ![partnercourse-search-ui](images/PartnercourseSearchUi.png) |
 
-### 4.2.5. Sort a partnercourse by attributes: `partnercourse sort`
-Sorts partnercourse with course code identified by partnercode.
-**Format**: `partnercourse search [partnercode]` \
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `partnercourse sort [partnername]`
+### 4.2.6. Sort partner courses by attributes: `partnercourse sort`
+Sorts partner courses according to `partnercourseattribute` - `university`, `partnercode` or `partnername`.
 
-**Example:**
+**Format**: `partnercourse sort [partnercourseattribute]`
+
+**Example**
+| `partnercourse sort [partnercode]`      |
+|----------------------------------------------------------|
+| ![partnercourse-sort-ui](images/PartnercourseSortUi.png) |
 
 ## 4.3. Commands for universities
 ### 4.3.1. List all universities: `university list`
@@ -397,11 +444,16 @@ Searches universities with the same keyword, paginated if dataset is too huge.
 | `university search [imperial]`                                  |
 |----------------------------------------------------|
 | ![university-search-ui](images/UniversitySearchUi.png) |
-### 4.3.3. Sort a university by attributes: `university sort`
-Sorts universities with university name identified by `universityname`.
+
+### 4.3.3. Sort universities by attributes: `university sort`
+Sorts universities according to `universityattribute` - `universityname`.
+
 **Format**: `university sort [universityname]`
 
-**Example:**
+**Example**
+| `university sort [universityname]`      |
+|----------------------------------------------------------|
+| ![university-sort-ui](images/UniversitySortUi.png)       |
 
 ## 4.4. Commands for mappings
 ### 4.4.1. List all mappings: `mapping list`
@@ -566,38 +618,46 @@ contains the data of your previous SEPlendid home folder.
         <td><code>parameters</code></td>
     </tr>
     <tr>
-        <td rowspan="5"><code>localcourse</code></td>
+        <td rowspan="6"><code>localcourse</code></td>
         <td><code>list</code></td>
         <td> None.</td>
     </tr>
     <tr>
         <td><code>add</code></td>
-        <td><code>[localcode] [localname]</code></td>
+        <td><code>[localcode] [localname] [units] [description]</code></td>
     </tr>
     <tr>
         <td><code>delete</code></td>
         <td><code>[localcode]</code></td>
     </tr>
     <tr>
+        <td><code>update</code></td>
+        <td><code>[localcode] [attribute] [updatedValue]</code></td>
+    </tr>
+    <tr>
         <td><code>search</code></td>
         <td><code>[localcode] [localname]</code></td>
     </tr>
     <tr>
         <td><code>sort</code></td>
-        <td><code>[localcode] [localname]</code></td>
+        <td><code>[localcode/localname]</code></td>
     </tr>   
     <tr>
-        <td rowspan="5"><code>partnercourse</code></td>
+        <td rowspan="6"><code>partnercourse</code></td>
         <td><code>list</code></td>
         <td> None.</td>
     </tr>
     <tr>
         <td><code>add</code></td>
-        <td><code>[university] [partnercode] [partnername]</code></td>
+        <td><code>[university] [partnercode] [partnername] [units] [description]</code></td>
     </tr>
     <tr>
         <td><code>delete</code></td>
-        <td><code>[partnercode]</code></td>
+        <td><code>[university] [partnercode]</code></td>
+    </tr>
+    <tr>
+        <td><code>update</code></td>
+        <td><code>[university] [partnercode] [attribute] [updatedValue]</code></td>
     </tr>
     <tr>
         <td><code>search</code></td>
@@ -605,7 +665,7 @@ contains the data of your previous SEPlendid home folder.
     </tr>
     <tr>
         <td><code>sort</code></td>
-        <td><code>[partnercode] [partnername]</code></td>
+        <td><code>[university/partnercode/partnername]</code></td>
     </tr>
     <tr>
         <td rowspan="5"><code>mapping</code></td>

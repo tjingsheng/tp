@@ -20,6 +20,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.localcourse.LocalCourseAddCommand;
 import seedu.address.model.LocalCourseCatalogue;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
 import seedu.address.model.ReadOnlyMappingCatalogue;
@@ -30,11 +31,15 @@ import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.localcourse.LocalCourseAttribute;
+import seedu.address.model.localcourse.LocalCourseContainsKeywordsPredicate;
 import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
 import seedu.address.model.notes.NoteTagContainsKeywordsPredicate;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
+import seedu.address.model.partnercourse.PartnerCourseAttribute;
+import seedu.address.model.partnercourse.PartnerCourseContainsKeywordsPredicate;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityName;
 import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
@@ -58,8 +63,8 @@ public class LocalCourseAddCommandTest {
         CommandResult commandResult = new LocalCourseAddCommand(validLocalCourse).execute(modelStub);
 
         assertEquals(
-            String.format(LocalCourseAddCommand.MESSAGE_SUCCESS, Messages.format(validLocalCourse)),
-            commandResult.getFeedbackToUser());
+                String.format(LocalCourseAddCommand.MESSAGE_SUCCESS, Messages.format(validLocalCourse)),
+                commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(validLocalCourse), modelStub.localCoursesAdded);
     }
 
@@ -70,9 +75,9 @@ public class LocalCourseAddCommandTest {
         SeplendidModelStub modelStub = new SeplendidModelStubWithLocalCourse(validLocalCourse);
 
         assertThrows(
-            CommandException.class,
-            LocalCourseAddCommand.MESSAGE_DUPLICATE_LOCAL_COURSE, (
-            ) -> localCourseAddCommand.execute(modelStub));
+                CommandException.class,
+                LocalCourseAddCommand.MESSAGE_DUPLICATE_LOCAL_COURSE, (
+                ) -> localCourseAddCommand.execute(modelStub));
     }
 
     @Test
@@ -131,6 +136,12 @@ public class LocalCourseAddCommandTest {
         }
 
         // LocalCourse
+        @Override
+        public void searchLocalCourses(LocalCourseAttribute attribute,
+                                       LocalCourseContainsKeywordsPredicate predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
         @Override
         public Path getLocalCourseCatalogueFilePath() {
             throw new AssertionError("This method should not be called.");
@@ -202,6 +213,11 @@ public class LocalCourseAddCommandTest {
         }
 
         // PartnerCourse
+        @Override
+        public void searchPartnerCourses(PartnerCourseAttribute attribute,
+                                         PartnerCourseContainsKeywordsPredicate predicate) {
+        }
+
         @Override
         public Path getPartnerCourseCatalogueFilePath() {
             throw new AssertionError("This method should not be called.");
@@ -326,7 +342,7 @@ public class LocalCourseAddCommandTest {
 
         @Override
         public void getSearchUniversityIfExists(
-            UniversityNameContainsKeywordsPredicate universityNameContainsKeywordsPredicate
+                UniversityNameContainsKeywordsPredicate universityNameContainsKeywordsPredicate
         ) {
             throw new AssertionError("This method should not be called.");
         }
@@ -449,6 +465,15 @@ public class LocalCourseAddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        @Override
+        public ObservableList<Mapping> getSortedMappingList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateSortedMappingList(Comparator<Mapping> mappingComparator) {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**

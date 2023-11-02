@@ -2,8 +2,8 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.logic.commands.LocalCourseDeleteCommand.MESSAGE_MAPPING_DEPENDENT_ON_LOCAL_COURSE;
-import static seedu.address.logic.commands.PartnerCourseDeleteCommand.MESSAGE_MAPPING_DEPENDENT_ON_PARTNER_COURSE;
+import static seedu.address.logic.commands.localcourse.LocalCourseDeleteCommand.MESSAGE_MAPPING_DEPENDENT_ON_LOCAL_COURSE;
+import static seedu.address.logic.commands.partnercourse.PartnerCourseDeleteCommand.MESSAGE_MAPPING_DEPENDENT_ON_PARTNER_COURSE;
 
 import java.nio.file.Path;
 import java.util.Comparator;
@@ -19,11 +19,15 @@ import seedu.address.commons.core.SeplendidLogsCenter;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.localcourse.LocalCourseAttribute;
+import seedu.address.model.localcourse.LocalCourseContainsKeywordsPredicate;
 import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
 import seedu.address.model.notes.NoteTagContainsKeywordsPredicate;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
+import seedu.address.model.partnercourse.PartnerCourseAttribute;
+import seedu.address.model.partnercourse.PartnerCourseContainsKeywordsPredicate;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityName;
 import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
@@ -53,6 +57,7 @@ public class SeplendidModelManager implements SeplendidModel {
 
     private final MappingCatalogue mappingCatalogue;
     private final FilteredList<Mapping> filteredMappingCatalogue;
+    private final SortedList<Mapping> sortedMappingCatalogue;
 
 
     /**
@@ -69,17 +74,17 @@ public class SeplendidModelManager implements SeplendidModel {
                 noteCatalogue, mappingCatalogue);
 
         logger.fine(String.format("Initializing with user prefs: %s,\n"
-                                  + "local course catalogue: %s, \n"
-                                  + "partner course catalogue: %s,\n"
-                                  + "university catalogue: %s,\n"
-                                  + "mapping catalogue: %s,\n"
-                                  + "and note catalogue: %s",
-                                  userPrefs,
-                                  localCourseCatalogue,
-                                  partnerCourseCatalogue,
-                                  universityCatalogue,
-                                  mappingCatalogue,
-                                  noteCatalogue));
+                        + "local course catalogue: %s, \n"
+                        + "partner course catalogue: %s,\n"
+                        + "university catalogue: %s,\n"
+                        + "mapping catalogue: %s,\n"
+                        + "and note catalogue: %s",
+                userPrefs,
+                localCourseCatalogue,
+                partnerCourseCatalogue,
+                universityCatalogue,
+                mappingCatalogue,
+                noteCatalogue));
 
         this.localCourseCatalogue = new LocalCourseCatalogue(localCourseCatalogue);
         this.userPrefs = new UserPrefs(userPrefs);
@@ -95,6 +100,7 @@ public class SeplendidModelManager implements SeplendidModel {
         filteredNoteCatalogue = new FilteredList<>(this.noteCatalogue.getNoteList());
         this.mappingCatalogue = new MappingCatalogue(mappingCatalogue);
         filteredMappingCatalogue = new FilteredList<>(this.mappingCatalogue.getMappingList());
+        sortedMappingCatalogue = new SortedList<>(this.mappingCatalogue.getMappingList());
     }
 
     /**
@@ -102,12 +108,12 @@ public class SeplendidModelManager implements SeplendidModel {
      */
     public SeplendidModelManager() {
         this(
-            new UserPrefs(),
-            new LocalCourseCatalogue(),
-            new PartnerCourseCatalogue(),
-            new UniversityCatalogue(),
-            new MappingCatalogue(),
-            new NoteCatalogue());
+                new UserPrefs(),
+                new LocalCourseCatalogue(),
+                new PartnerCourseCatalogue(),
+                new UniversityCatalogue(),
+                new MappingCatalogue(),
+                new NoteCatalogue());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -229,6 +235,18 @@ public class SeplendidModelManager implements SeplendidModel {
         sortedLocalCourseCatalogue.setComparator(localCourseComparator);
     }
 
+    /**
+     * Checks if the local course exists.
+     *
+     * @param attribute
+     * @param predicate
+     */
+    public void searchLocalCourses(LocalCourseAttribute attribute,
+                                   LocalCourseContainsKeywordsPredicate predicate) {
+        requireNonNull(attribute);
+        filteredLocalCourseCatalogue.setPredicate(predicate);
+    }
+
     //=========== FilteredLocalCourseList Accessors =============================================================
 
     /**
@@ -246,7 +264,20 @@ public class SeplendidModelManager implements SeplendidModel {
         filteredLocalCourseCatalogue.setPredicate(predicate);
     }
 
-    //=========== PartnerCourseCatalouge ============================================================================
+    //=========== PartnerCourseCatalogue ============================================================================
+
+    /**
+     * Checks if the local course exists.
+     *
+     * @param attribute
+     * @param predicate
+     */
+    public void searchPartnerCourses(PartnerCourseAttribute attribute,
+                                     PartnerCourseContainsKeywordsPredicate predicate) {
+        requireNonNull(attribute);
+        filteredPartnerCourseCatalogue.setPredicate(predicate);
+    }
+
     @Override
     public ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue() {
         return partnerCourseCatalogue;
@@ -354,6 +385,7 @@ public class SeplendidModelManager implements SeplendidModel {
 
     /**
      * Check if there exist the same university in the catalogue.
+     *
      * @param universityName
      * @return
      */
@@ -362,12 +394,14 @@ public class SeplendidModelManager implements SeplendidModel {
         Optional<University> maybeUniversity = getUniversityIfExists(universityName);
         return maybeUniversity.isPresent();
     }
+
     @Override
     public void getSearchUniversityIfExists(UniversityNameContainsKeywordsPredicate universityPredicate) {
         requireNonNull(universityPredicate);
         filteredUniversityCatalogue.setPredicate(universityPredicate);
 
     }
+
     @Override
     public void addUniversity(University university) {
         universityCatalogue.addUniversity(university);
@@ -391,8 +425,6 @@ public class SeplendidModelManager implements SeplendidModel {
     public void updateSortedUniversityList(Comparator<University> universityComparator) {
         sortedUniversityCatalogue.setComparator(universityComparator);
     }
-
-
 
 
     //=========== FilteredUniversityList Accessors =============================================================
@@ -592,6 +624,16 @@ public class SeplendidModelManager implements SeplendidModel {
         requireAllNonNull(mapping, editedMapping);
 
         mappingCatalogue.setMapping(mapping, editedMapping);
+    }
+
+    @Override
+    public ObservableList<Mapping> getSortedMappingList() {
+        return sortedMappingCatalogue;
+    }
+
+    @Override
+    public void updateSortedMappingList(Comparator<Mapping> mappingComparator) {
+        sortedMappingCatalogue.setComparator(mappingComparator);
     }
 
 

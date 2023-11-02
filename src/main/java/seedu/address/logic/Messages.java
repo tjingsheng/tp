@@ -22,6 +22,7 @@ public class Messages {
     public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command";
     public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Invalid command format! \n%1$s";
     public static final String MESSAGE_INVALID_PERSON_DISPLAYED_INDEX = "The person index provided is invalid";
+    public static final String MESSAGE_EMPTY_LIST = "Command did not return any results";
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
     public static final String MESSAGE_DUPLICATE_FIELDS =
         "Multiple values specified for the following single-valued field(s): ";
@@ -90,6 +91,10 @@ public class Messages {
      * @return
      */
     public static <T> String format(ObservableList<T> observableList) {
+        if (observableList.isEmpty()) {
+            return MESSAGE_EMPTY_LIST;
+        }
+
         T item = observableList.get(0);
         if (item instanceof University) {
             final StringBuilder builder = new StringBuilder("UniversityName: ");
@@ -104,10 +109,39 @@ public class Messages {
                     .map(Note::getTags).get().toString();
             builder.append(tag);
             return builder.toString();
-        }
-        return "default";
-    }
+        } else if (item instanceof LocalCourse) {
+            final StringBuilder builder = new StringBuilder("Localcourses: ");
+            String localCourses = observableList.stream()
+                    .map(localcourse -> (LocalCourse) localcourse)
+                    .map(localCourse -> {
+                        String localName = localCourse.getLocalName().toString();
+                        String localCode = localCourse.getLocalCode().toString();
+                        double units = localCourse.getLocalUnit().getValue();
 
+                        return localName + " (" + localCode + ", " + units + " units)";
+                    })
+                    .collect(Collectors.joining(", "));
+            builder.append(localCourses);
+            return builder.toString();
+        } else if (item instanceof PartnerCourse) {
+            final StringBuilder builder = new StringBuilder("Partnercourses: ");
+            String partnerCourses = observableList.stream()
+                    .map(partnercourse -> (PartnerCourse) partnercourse)
+                    .map(partnerCourse -> {
+                        String partnerName = partnerCourse.getPartnerName().toString();
+                        String partnerCode = partnerCourse.getPartnerCode().toString();
+                        double units = partnerCourse.getPartnerUnit().getValue();
+
+                        return partnerName + " (" + partnerCode + ", " + units + " units)";
+                    })
+                    .collect(Collectors.joining(", "));
+            builder.append(partnerCourses);
+            return builder.toString();
+        } else {
+            // This line should not be reached.
+            return "default";
+        }
+    }
     /**
      * Formats the {@code partnerCourse} for display to the user.
      * Overloaded method.

@@ -23,6 +23,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.localcourse.LocalCourseDeleteCommand;
 import seedu.address.model.LocalCourseCatalogue;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
 import seedu.address.model.ReadOnlyMappingCatalogue;
@@ -33,11 +34,15 @@ import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.localcourse.LocalCourseAttribute;
+import seedu.address.model.localcourse.LocalCourseContainsKeywordsPredicate;
 import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
 import seedu.address.model.notes.NoteTagContainsKeywordsPredicate;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
+import seedu.address.model.partnercourse.PartnerCourseAttribute;
+import seedu.address.model.partnercourse.PartnerCourseContainsKeywordsPredicate;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityName;
 import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
@@ -60,7 +65,7 @@ public class LocalCourseDeleteCommandTest {
         CommandResult commandResult = new LocalCourseDeleteCommand(CS2030S.getLocalCode()).execute(modelStub);
 
         assertEquals(String.format(LocalCourseDeleteCommand.MESSAGE_SUCCESS, Messages.format(CS2030S)),
-                     commandResult.getFeedbackToUser());
+                commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(CS2040S), modelStub.localCoursesAdded);
     }
 
@@ -68,13 +73,13 @@ public class LocalCourseDeleteCommandTest {
     public void execute_localCourseDoesNotExist_throwsCommandException() {
         LocalCourse validLocalCourse = new LocalCourseBuilder().build();
         LocalCourseDeleteCommand localCourseDeleteCommand = new LocalCourseDeleteCommand(new LocalCode(
-            TYPICAL_LOCAL_COURSE_CODE));
+                TYPICAL_LOCAL_COURSE_CODE));
         SeplendidModelStub modelStub = new SeplendidModelStubWithLocalCourse(validLocalCourse);
 
         assertThrows(
-            CommandException.class,
-            LocalCourseDeleteCommand.MESSAGE_NONEXISTENT_LOCAL_COURSE, (
-            ) -> localCourseDeleteCommand.execute(modelStub));
+                CommandException.class,
+                LocalCourseDeleteCommand.MESSAGE_NONEXISTENT_LOCAL_COURSE, (
+                ) -> localCourseDeleteCommand.execute(modelStub));
     }
 
     @Test
@@ -133,6 +138,12 @@ public class LocalCourseDeleteCommandTest {
         }
 
         // LocalCourse
+        @Override
+        public void searchLocalCourses(LocalCourseAttribute attribute,
+                                       LocalCourseContainsKeywordsPredicate predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
         @Override
         public Path getLocalCourseCatalogueFilePath() {
             throw new AssertionError("This method should not be called.");
@@ -204,6 +215,11 @@ public class LocalCourseDeleteCommandTest {
         }
 
         // PartnerCourse
+        @Override
+        public void searchPartnerCourses(PartnerCourseAttribute attribute,
+                                         PartnerCourseContainsKeywordsPredicate predicate) {
+        }
+
         @Override
         public Path getPartnerCourseCatalogueFilePath() {
             throw new AssertionError("This method should not be called.");
@@ -278,7 +294,7 @@ public class LocalCourseDeleteCommandTest {
 
         @Override
         public void getSearchUniversityIfExists(
-            UniversityNameContainsKeywordsPredicate universityNameContainsKeywordsPredicate
+                UniversityNameContainsKeywordsPredicate universityNameContainsKeywordsPredicate
         ) {
         }
 
@@ -447,6 +463,16 @@ public class LocalCourseDeleteCommandTest {
 
         @Override
         public void updateFilteredMappingList(Predicate<Mapping> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Mapping> getSortedMappingList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateSortedMappingList(Comparator<Mapping> mappingComparator) {
             throw new AssertionError("This method should not be called.");
         }
 

@@ -72,22 +72,29 @@ public interface SeplendidLogic {
     ObservableList<PartnerCourse> getFilteredPartnerCourseCatalogue();
 
     Path getPartnerCourseCatalogueFilePath();
+
     ObservableList<PartnerCourse> getSortedPartnerCourseCatalogue();
 
-    //=========== Universityatalouge ============================================================================
+
+    //=========== UniversityCatalogue ============================================================================
     ReadOnlyUniversityCatalogue getUniversityCatalogue();
+
     ObservableList<University> getFilteredUniversityCatalogue();
 
     Path getUniversityeCatalogueFilePath();
+
     ObservableList<University> getSortedUniversityCatalogue();
-    //=========== NoteCatalouge ============================================================================
+
+    //=========== NoteCatalogue ============================================================================
     ObservableList<Note> getFilteredNoteCatalogue();
 
-    //=========== MappingCatalouge ============================================================================
+    //=========== MappingCatalogue ============================================================================
     ReadOnlyMappingCatalogue getMappingCatalogue();
 
     ObservableList<Mapping> getFilteredMappingCatalogue();
 
     Path getMappingCatalogueFilePath();
+
+    ObservableList<Mapping> getSortedMappingCatalogue();
 }
 

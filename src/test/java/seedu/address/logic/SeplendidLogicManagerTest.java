@@ -25,12 +25,12 @@ import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.LocalCourseAddCommand;
-import seedu.address.logic.commands.LocalCourseCommand;
-import seedu.address.logic.commands.LocalCourseListCommand;
-import seedu.address.logic.commands.PartnerCourseAddCommand;
-import seedu.address.logic.commands.PartnerCourseCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.localcourse.LocalCourseAddCommand;
+import seedu.address.logic.commands.localcourse.LocalCourseCommand;
+import seedu.address.logic.commands.localcourse.LocalCourseListCommand;
+import seedu.address.logic.commands.partnercourse.PartnerCourseAddCommand;
+import seedu.address.logic.commands.partnercourse.PartnerCourseCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;

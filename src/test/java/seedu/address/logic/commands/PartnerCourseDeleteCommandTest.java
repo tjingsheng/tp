@@ -24,6 +24,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.partnercourse.PartnerCourseDeleteCommand;
 import seedu.address.model.PartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
 import seedu.address.model.ReadOnlyMappingCatalogue;
@@ -34,11 +35,15 @@ import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.localcourse.LocalCourseAttribute;
+import seedu.address.model.localcourse.LocalCourseContainsKeywordsPredicate;
 import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
 import seedu.address.model.notes.NoteTagContainsKeywordsPredicate;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
+import seedu.address.model.partnercourse.PartnerCourseAttribute;
+import seedu.address.model.partnercourse.PartnerCourseContainsKeywordsPredicate;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityName;
 import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
@@ -62,7 +67,7 @@ public class PartnerCourseDeleteCommandTest {
                 COMP1000.getPartnerCode(), COMP1000.getPartnerUniversity().getUniversityName()).execute(modelStub);
 
         assertEquals(String.format(PartnerCourseDeleteCommand.MESSAGE_SUCCESS, Messages.format(COMP1000)),
-                     commandResult.getFeedbackToUser());
+                commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(COMP2000), modelStub.partnerCoursesAdded);
     }
 
@@ -75,9 +80,9 @@ public class PartnerCourseDeleteCommandTest {
         SeplendidModelStub modelStub = new SeplendidModelStubWithPartnerCourse(validPartnerCourse);
 
         assertThrows(
-            CommandException.class,
-            PartnerCourseDeleteCommand.MESSAGE_NONEXISTENT_PARTNER_COURSE, (
-            ) -> partnerCourseDeleteCommand.execute(modelStub));
+                CommandException.class,
+                PartnerCourseDeleteCommand.MESSAGE_NONEXISTENT_PARTNER_COURSE, (
+                ) -> partnerCourseDeleteCommand.execute(modelStub));
     }
 
     @Test
@@ -131,6 +136,12 @@ public class PartnerCourseDeleteCommandTest {
         }
 
         // LocalCourse
+        @Override
+        public void searchLocalCourses(LocalCourseAttribute attribute,
+                                       LocalCourseContainsKeywordsPredicate predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
         @Override
         public Path getLocalCourseCatalogueFilePath() {
             throw new AssertionError("This method should not be called.");
@@ -202,6 +213,11 @@ public class PartnerCourseDeleteCommandTest {
         }
 
         // PartnerCourse
+        @Override
+        public void searchPartnerCourses(PartnerCourseAttribute attribute,
+                                         PartnerCourseContainsKeywordsPredicate predicate) {
+        }
+
         @Override
         public Path getPartnerCourseCatalogueFilePath() {
             throw new AssertionError("This method should not be called.");
@@ -306,7 +322,7 @@ public class PartnerCourseDeleteCommandTest {
 
         @Override
         public void getSearchUniversityIfExists(
-            UniversityNameContainsKeywordsPredicate universityNameContainsKeywordsPredicate
+                UniversityNameContainsKeywordsPredicate universityNameContainsKeywordsPredicate
         ) {
             throw new AssertionError("This method should not be called.");
         }
@@ -448,6 +464,15 @@ public class PartnerCourseDeleteCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        @Override
+        public ObservableList<Mapping> getSortedMappingList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateSortedMappingList(Comparator<Mapping> mappingComparator) {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**

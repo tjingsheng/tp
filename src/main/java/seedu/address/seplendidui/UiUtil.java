@@ -16,7 +16,8 @@ public class UiUtil {
         MAPPING_LIST,
         LOCAL_COURSE_SORT,
         PARTNER_COURSE_SORT,
-        UNIVERSITY_SORT;
+        UNIVERSITY_SORT,
+        MAPPING_SORT;
 
 
         @Override

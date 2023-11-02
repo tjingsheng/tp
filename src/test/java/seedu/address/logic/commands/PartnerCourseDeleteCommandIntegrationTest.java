@@ -52,8 +52,9 @@ public class PartnerCourseDeleteCommandIntegrationTest {
 
         assertSeplendidCommandSuccess(
                 new PartnerCourseDeleteCommand(
-                        validExistingPartnerCourse.getPartnerCode(),
-                        validExistingPartnerCourse.getPartnerUniversity().getUniversityName()),
+                        validExistingPartnerCourse.getPartnerUniversity().getUniversityName(),
+                        validExistingPartnerCourse.getPartnerCode()
+                ),
                 model,
                 String.format(PartnerCourseDeleteCommand.MESSAGE_SUCCESS, Messages.format(validExistingPartnerCourse)),
                 expectedModel);
@@ -61,8 +62,11 @@ public class PartnerCourseDeleteCommandIntegrationTest {
 
     @Test
     public void execute_nonExistingPartnerCourse_throwsCommandException() {
-        assertSeplendidCommandFailure(new PartnerCourseDeleteCommand(TYPICAL_PARTNER_COURSE.getPartnerCode(),
-                        TYPICAL_PARTNER_COURSE.getPartnerUniversity().getUniversityName()), model,
+        assertSeplendidCommandFailure(
+                new PartnerCourseDeleteCommand(
+                        TYPICAL_PARTNER_COURSE.getPartnerUniversity().getUniversityName(),
+                        TYPICAL_PARTNER_COURSE.getPartnerCode()),
+                model,
                 PartnerCourseDeleteCommand.MESSAGE_NONEXISTENT_PARTNER_COURSE);
     }
 }

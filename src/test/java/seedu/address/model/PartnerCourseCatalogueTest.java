@@ -27,7 +27,6 @@ public class PartnerCourseCatalogueTest {
 
     @Test
     public void constructor() {
-
         assertEquals(Collections.emptyList(), partnerCourseCatalogue.getPartnerCourseList());
     }
 

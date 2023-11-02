@@ -175,4 +175,8 @@ public class SeplendidLogicManager implements SeplendidLogic {
     public Path getMappingCatalogueFilePath() {
         return model.getMappingCatalogueFilePath();
     }
+
+    public ObservableList<Mapping> getSortedMappingCatalogue() {
+        return model.getSortedMappingList();
+    }
 }

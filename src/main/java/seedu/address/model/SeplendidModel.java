@@ -139,10 +139,11 @@ public interface SeplendidModel {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredLocalCourseList(Predicate<LocalCourse> predicate);
-    //=========== PartnerCourseCatalouge ============================================================================
+    //=========== PartnerCourseCatalogue ============================================================================
 
     void searchPartnerCourses(PartnerCourseAttribute attribute,
                               PartnerCourseContainsKeywordsPredicate predicate);
+
     ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue();
 
     /**
@@ -167,6 +168,8 @@ public interface SeplendidModel {
      */
     void addPartnerCourse(PartnerCourse partnerCourse);
 
+    void setPartnerCourse(PartnerCourse target, PartnerCourse editedPartnerCourse);
+
     /**
      * Deletes the given PartnerCourse.
      *
@@ -175,6 +178,7 @@ public interface SeplendidModel {
     void deletePartnerCourse(PartnerCourse partnerCourse) throws CommandException;
 
     public ObservableList<PartnerCourse> getSortedPartnerCourseList();
+
     public void updateSortedPartnerList(Comparator<PartnerCourse> partnerCourseComparator);
 
     /**
@@ -195,6 +199,7 @@ public interface SeplendidModel {
     ObservableList<University> getFilteredUniversityList();
 
     boolean hasUniversity(University university);
+
     boolean hasUniversity(UniversityName universityName);
 
     void getSearchUniversityIfExists(UniversityNameContainsKeywordsPredicate universityPredicate);
@@ -203,6 +208,7 @@ public interface SeplendidModel {
     void addUniversity(University university);
 
     void setUniversity(University target, University editedUniversity);
+
     ObservableList<University> getSortedUniversityList();
 
     void updateSortedUniversityList(Comparator<University> universityComparator);
@@ -257,6 +263,7 @@ public interface SeplendidModel {
 
     /**
      * Gets the notes with the specific tags
+     *
      * @param notePredicate
      */
     void getSearchNoteIfExists(NoteTagContainsKeywordsPredicate notePredicate);
@@ -338,6 +345,18 @@ public interface SeplendidModel {
      * existing mapping in the MappingCatalogue.
      */
     void setMapping(Mapping mapping, Mapping editedMapping);
+
+    /**
+     * Returns the sorted mapping list.
+     */
+    ObservableList<Mapping> getSortedMappingList();
+
+    /**
+     * Sorts the mapping list according to the given comparator.
+     *
+     * @param mappingComparator This is the given comparator.
+     */
+    void updateSortedMappingList(Comparator<Mapping> mappingComparator);
 
     //=========== FilteredMappingList Accessors =============================================================
 

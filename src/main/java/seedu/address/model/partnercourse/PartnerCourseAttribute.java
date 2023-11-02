@@ -16,9 +16,6 @@ public enum PartnerCourseAttribute {
     public static final String MESSAGE_CONSTRAINTS_UPDATE =
             "There are only 4 attributes for update: partnercode, partnername, unit and description.";
 
-    public static final String MESSAGE_CONSTRAINTS =
-            "There are only 2 attributes: partnercode and partnername.";
-
     public static final String MESSAGE_CONSTRAINTS_SEARCH =
             "There are only 3 attributes: partnercode, partnername and university.";
 

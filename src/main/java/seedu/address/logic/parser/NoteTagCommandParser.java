@@ -6,7 +6,6 @@ import static seedu.address.logic.parser.CliSyntax.PARAMETER_TAGS;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
 import seedu.address.logic.commands.NoteTagCommand;
-import seedu.address.logic.commands.NoteUpdateCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.tag.Tag;
 

@@ -24,10 +24,11 @@ public class CliSyntax {
     public static final SeplendidParameter PARAMETER_PARTNERDESCRIPTION =
             new SeplendidParameter("partnerdescription");
     public static final SeplendidParameter PARAMETER_UNIVERSITY = new SeplendidParameter("university");
+    public static final SeplendidParameter PARAMETER_ATTRIBUTE = new SeplendidParameter("attribute");
     public static final SeplendidParameter PARAMETER_LOCALATTRIBUTE =
-            new SeplendidParameter("localattribute");
+            new SeplendidParameter("local attribute");
     public static final SeplendidParameter PARAMETER_PARTNERATTRIBUTE =
-            new SeplendidParameter("partnerattribute");
+            new SeplendidParameter("partner attribute");
     public static final SeplendidParameter PARAMETER_UNIVERSITYATTRIBUTE =
             new SeplendidParameter("universityattribute");
     public static final SeplendidParameter PARAMETER_UNIVERSITYNAME = new SeplendidParameter("university");

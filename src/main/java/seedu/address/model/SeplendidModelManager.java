@@ -2,8 +2,8 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.logic.commands.LocalCourseDeleteCommand.MESSAGE_MAPPING_DEPENDENT_ON_LOCAL_COURSE;
-import static seedu.address.logic.commands.PartnerCourseDeleteCommand.MESSAGE_MAPPING_DEPENDENT_ON_PARTNER_COURSE;
+import static seedu.address.logic.commands.localcourse.LocalCourseDeleteCommand.MESSAGE_MAPPING_DEPENDENT_ON_LOCAL_COURSE;
+import static seedu.address.logic.commands.partnercourse.PartnerCourseDeleteCommand.MESSAGE_MAPPING_DEPENDENT_ON_PARTNER_COURSE;
 
 import java.nio.file.Path;
 import java.util.Comparator;
@@ -19,11 +19,15 @@ import seedu.address.commons.core.SeplendidLogsCenter;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.localcourse.LocalCourseAttribute;
+import seedu.address.model.localcourse.LocalCourseContainsKeywordsPredicate;
 import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
 import seedu.address.model.notes.NoteTagContainsKeywordsPredicate;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
+import seedu.address.model.partnercourse.PartnerCourseAttribute;
+import seedu.address.model.partnercourse.PartnerCourseContainsKeywordsPredicate;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityName;
 import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
@@ -229,6 +233,17 @@ public class SeplendidModelManager implements SeplendidModel {
         sortedLocalCourseCatalogue.setComparator(localCourseComparator);
     }
 
+    /**
+     * Checks if the local course exists.
+     * @param attribute
+     * @param predicate
+     */
+    public void searchLocalCourses(LocalCourseAttribute attribute,
+                                   LocalCourseContainsKeywordsPredicate predicate) {
+        requireNonNull(attribute);
+        filteredLocalCourseCatalogue.setPredicate(predicate);
+    }
+
     //=========== FilteredLocalCourseList Accessors =============================================================
 
     /**
@@ -246,7 +261,18 @@ public class SeplendidModelManager implements SeplendidModel {
         filteredLocalCourseCatalogue.setPredicate(predicate);
     }
 
-    //=========== PartnerCourseCatalouge ============================================================================
+    //=========== PartnerCourseCatalogue ============================================================================
+    /**
+     * Checks if the local course exists.
+     * @param attribute
+     * @param predicate
+     */
+    public void searchPartnerCourses(PartnerCourseAttribute attribute,
+                                     PartnerCourseContainsKeywordsPredicate predicate) {
+        requireNonNull(attribute);
+        filteredPartnerCourseCatalogue.setPredicate(predicate);
+    }
+
     @Override
     public ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue() {
         return partnerCourseCatalogue;

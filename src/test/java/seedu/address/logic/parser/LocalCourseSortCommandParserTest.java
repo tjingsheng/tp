@@ -11,8 +11,9 @@ import java.util.Comparator;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.LocalCourseCommand;
-import seedu.address.logic.commands.LocalCourseSortCommand;
+import seedu.address.logic.commands.localcourse.LocalCourseCommand;
+import seedu.address.logic.commands.localcourse.LocalCourseSortCommand;
+import seedu.address.logic.parser.localcourse.LocalCourseSortCommandParser;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.localcourse.LocalCourseAttribute;
 import seedu.address.model.localcourse.comparator.LocalCourseComparatorByLocalCode;
@@ -61,7 +62,7 @@ public class LocalCourseSortCommandParserTest {
         // invalid attribute
         assertParseFailure(parser, commandActionWord
                 + getSquareBracketWrappedArgument(INVALID_LOCAL_COURSE_ATTRIBUTE),
-                LocalCourseAttribute.MESSAGE_CONSTRAINTS);
+                LocalCourseAttribute.MESSAGE_CONSTRAINTS_SEARCH);
     }
 
     @Test

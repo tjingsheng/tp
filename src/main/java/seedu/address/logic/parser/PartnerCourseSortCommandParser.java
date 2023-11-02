@@ -6,7 +6,7 @@ import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty
 
 import java.util.Comparator;
 
-import seedu.address.logic.commands.PartnerCourseSortCommand;
+import seedu.address.logic.commands.partnercourse.PartnerCourseSortCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
@@ -46,7 +46,7 @@ public class PartnerCourseSortCommandParser implements Parser<PartnerCourseSortC
     }
 
     private Comparator<PartnerCourse> parsePartnerCourseComparator(String args) throws ParseException {
-        PartnerCourseAttribute partnerCourseAttribute = ParserUtil.parsePartnerCourseAttribute(args);
+        PartnerCourseAttribute partnerCourseAttribute = ParserUtil.parsePartnerCourseAttributeForSort(args);
         switch(partnerCourseAttribute) {
         case PARTNERCODE:
             return new PartnerCourseComparatorByPartnerCode();

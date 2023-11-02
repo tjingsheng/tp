@@ -6,8 +6,8 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.notes.Note;
-import seedu.address.model.notes.UniqueNoteList;
+import seedu.address.model.note.Note;
+import seedu.address.model.note.UniqueNoteList;
 
 /**
  * Wraps note data at the catalogue level

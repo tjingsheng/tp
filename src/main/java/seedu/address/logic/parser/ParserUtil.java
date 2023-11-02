@@ -18,7 +18,7 @@ import seedu.address.model.localcourse.LocalName;
 import seedu.address.model.localcourse.LocalUnit;
 import seedu.address.model.mapping.MappingAttributeEnum;
 import seedu.address.model.mapping.MappingMiscInformation;
-import seedu.address.model.notes.Content;
+import seedu.address.model.note.Content;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
 import seedu.address.model.partnercourse.PartnerDescription;

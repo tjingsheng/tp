@@ -6,7 +6,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
-import seedu.address.model.notes.Note;
+import seedu.address.model.note.Note;
 
 /**
  * A UI component that displays information of a {@code note}.

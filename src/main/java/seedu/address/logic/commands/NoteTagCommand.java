@@ -18,6 +18,7 @@ public class NoteTagCommand extends NoteCommand {
 
     public static final String NOTE_TAG_MESSAGE_USAGE = COMMAND_WORD
             + " tag [index] [tag]: Add a tag to a note.";
+    public static final String MESSAGE_NONEXISTENT_NOTE = "Note not found, please put a valid index.";
     public static final String ACTION_WORD = "tag";
     public static final String MESSAGE_SUCCESS = "Note tagged: %1$s";
     private final Integer noteIndexToUpdate;
@@ -46,7 +47,7 @@ public class NoteTagCommand extends NoteCommand {
         requireNonNull(seplendidModel);
         int noteListSize = seplendidModel.getNoteCatalogue().getNoteList().size();
         if (noteListSize < this.noteIndexToUpdate) {
-            throw new CommandException("Note not found, please put a valid index.");
+            throw new CommandException(MESSAGE_NONEXISTENT_NOTE);
         }
         Note oldNote = seplendidModel.getNoteCatalogue().getNoteList().get(this.noteIndexToUpdate - 1);
         oldNote.getTags().add(addTag);
@@ -68,13 +69,15 @@ public class NoteTagCommand extends NoteCommand {
         }
 
         NoteTagCommand otherNoteTagCommand = (NoteTagCommand) other;
-        return noteIndexToUpdate.equals(otherNoteTagCommand.noteIndexToUpdate);
+        return noteIndexToUpdate.equals(otherNoteTagCommand.noteIndexToUpdate)
+                && addTag.equals(otherNoteTagCommand.addTag);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("noteToUpdate", noteIndexToUpdate)
+                .add("tag", addTag)
                 .toString();
     }
 }

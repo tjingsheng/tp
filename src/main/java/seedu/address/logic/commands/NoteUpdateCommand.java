@@ -76,6 +76,7 @@ public class NoteUpdateCommand extends NoteCommand {
     public String toString() {
         return new ToStringBuilder(this)
                 .add("noteToUpdate", noteIndexToUpdate)
+                .add("content", updateContent)
                 .toString();
     }
 }

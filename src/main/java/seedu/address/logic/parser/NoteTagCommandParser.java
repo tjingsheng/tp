@@ -17,15 +17,15 @@ import seedu.address.model.tag.Tag;
  */
 public class NoteTagCommandParser implements Parser<NoteTagCommand> {
     /**
-     * Parses the given {@code String} of arguments in the context of the NoteUpdateCommand
-     * and returns a NoteUpdateCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the NoteTagCommand
+     * and returns a NoteTagCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
     public NoteTagCommand parse(String args) throws ParseException {
         if (!areValuesEnclosedAndNonEmpty(args)) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                            NoteUpdateCommand.NOTE_UPDATE_MESSAGE_USAGE));
+                            NoteTagCommand.NOTE_TAG_MESSAGE_USAGE));
         }
 
         SeplendidArgumentMap parameterToArgMap =
@@ -33,7 +33,7 @@ public class NoteTagCommandParser implements Parser<NoteTagCommand> {
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_INDEX, PARAMETER_TAGS)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    NoteUpdateCommand.NOTE_UPDATE_MESSAGE_USAGE));
+                    NoteTagCommand.NOTE_TAG_MESSAGE_USAGE));
         }
 
         // All arguments should be a non-empty {@code Optional}
@@ -44,7 +44,7 @@ public class NoteTagCommandParser implements Parser<NoteTagCommand> {
             return new NoteTagCommand(noteIndex, newTag);
         } catch (NumberFormatException e) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    NoteUpdateCommand.NOTE_UPDATE_MESSAGE_USAGE));
+                    NoteTagCommand.NOTE_TAG_MESSAGE_USAGE));
         }
     }
 }

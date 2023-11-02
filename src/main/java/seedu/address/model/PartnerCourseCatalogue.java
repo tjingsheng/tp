@@ -44,6 +44,17 @@ public class PartnerCourseCatalogue implements ReadOnlyPartnerCourseCatalogue {
     }
 
     /**
+     * Replaces the given PartnerCourse {@code target} in the list with {@code updatedPartnerCourse}.
+     * {@code target} must exist in the PartnerCourseCatalogue.
+     * The identity of {@code updatedPartnerCourse} must not be the same as another existing PartnerCourse.
+     */
+    public void setPartnerCourse(PartnerCourse target, PartnerCourse editedPartnerCourse) {
+        requireNonNull(editedPartnerCourse);
+
+        partnerCourses.setPartnerCourse(target, editedPartnerCourse);
+    }
+
+    /**
      * Replaces the contents of the PartnerCourse list with {@code partnerCourses}.
      * {@code partnerCourses} must not contain duplicate PartnerCourses.
      */

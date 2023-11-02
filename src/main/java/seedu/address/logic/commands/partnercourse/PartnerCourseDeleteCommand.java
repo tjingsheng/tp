@@ -35,11 +35,11 @@ public class PartnerCourseDeleteCommand extends PartnerCourseCommand {
      *
      * @param partnerCode The partnerCourse to be deleted in Storage.
      */
-    public PartnerCourseDeleteCommand(PartnerCode partnerCode, UniversityName universityName) {
+    public PartnerCourseDeleteCommand(UniversityName universityName, PartnerCode partnerCode) {
         super();
-        requireAllNonNull(partnerCode, universityName);
-        partnerCodeToDelete = partnerCode;
+        requireAllNonNull(universityName, partnerCode);
         universityNameToDelete = universityName;
+        partnerCodeToDelete = partnerCode;
     }
 
     @Override

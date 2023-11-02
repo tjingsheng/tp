@@ -55,7 +55,7 @@ public class UniversityName {
         }
 
         UniversityName otherUniversityName = (UniversityName) other;
-        return value.equals(otherUniversityName.value);
+        return value.equalsIgnoreCase(otherUniversityName.value);
     }
 
     @Override

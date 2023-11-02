@@ -64,7 +64,7 @@ public class PartnerCourseDeleteCommandTest {
         ModelStubAcceptingPartnerCourseDeleted modelStub = new ModelStubAcceptingPartnerCourseDeleted();
 
         CommandResult commandResult = new PartnerCourseDeleteCommand(
-                COMP1000.getPartnerCode(), COMP1000.getPartnerUniversity().getUniversityName()).execute(modelStub);
+                COMP1000.getPartnerUniversity().getUniversityName(), COMP1000.getPartnerCode()).execute(modelStub);
 
         assertEquals(String.format(PartnerCourseDeleteCommand.MESSAGE_SUCCESS, Messages.format(COMP1000)),
                 commandResult.getFeedbackToUser());
@@ -76,7 +76,7 @@ public class PartnerCourseDeleteCommandTest {
         PartnerCourse validPartnerCourse = new PartnerCourseBuilder().build();
 
         PartnerCourseDeleteCommand partnerCourseDeleteCommand = new PartnerCourseDeleteCommand(
-                new PartnerCode(TYPICAL_PARTNER_COURSE_CODE), new UniversityName(TYPICAL_UNIVERSITY_NAME));
+                new UniversityName(TYPICAL_UNIVERSITY_NAME), new PartnerCode(TYPICAL_PARTNER_COURSE_CODE));
         SeplendidModelStub modelStub = new SeplendidModelStubWithPartnerCourse(validPartnerCourse);
 
         assertThrows(
@@ -91,14 +91,14 @@ public class PartnerCourseDeleteCommandTest {
         PartnerCode comp2000 = new PartnerCode("COMP2000");
         UniversityName edinburgh = new UniversityName("University of Edinburgh");
         UniversityName leeds = new UniversityName("University of Leeds");
-        PartnerCourseDeleteCommand deleteComp1000Command = new PartnerCourseDeleteCommand(comp1000, edinburgh);
-        PartnerCourseDeleteCommand deleteComp2000Command = new PartnerCourseDeleteCommand(comp2000, leeds);
+        PartnerCourseDeleteCommand deleteComp1000Command = new PartnerCourseDeleteCommand(edinburgh, comp1000);
+        PartnerCourseDeleteCommand deleteComp2000Command = new PartnerCourseDeleteCommand(leeds, comp2000);
 
         // same object -> returns true
         assertTrue(deleteComp1000Command.equals(deleteComp1000Command));
 
         // same values -> returns true
-        PartnerCourseDeleteCommand deleteComp1000CommandCopy = new PartnerCourseDeleteCommand(comp1000, edinburgh);
+        PartnerCourseDeleteCommand deleteComp1000CommandCopy = new PartnerCourseDeleteCommand(edinburgh, comp1000);
         assertTrue(deleteComp1000Command.equals(deleteComp1000CommandCopy));
 
         // different types -> returns false
@@ -230,6 +230,11 @@ public class PartnerCourseDeleteCommandTest {
 
         @Override
         public void addPartnerCourse(PartnerCourse partnerCourse) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setPartnerCourse(PartnerCourse target, PartnerCourse editedPartnerCourse) {
             throw new AssertionError("This method should not be called.");
         }
 

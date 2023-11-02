@@ -306,12 +306,12 @@ public class SeplendidModelManager implements SeplendidModel {
     public void addPartnerCourse(PartnerCourse partnerCourse) {
         partnerCourseCatalogue.addPartnerCourse(partnerCourse);
         updateFilteredPartnerCourseList(PREDICATE_SHOW_ALL_PARTNER_COURSES);
+    }
 
-        //need to update the university catalogue when a partner course is added. - might not be needed at all
-        if (!universityCatalogue.hasUniversity(partnerCourse.getPartnerUniversity())) {
-            universityCatalogue.addUniversity(partnerCourse.getPartnerUniversity());
-            updateFilteredUniversityList(PREDICATE_SHOW_ALL_UNIVERSITIES);
-        }
+    @Override
+    public void setPartnerCourse(PartnerCourse target, PartnerCourse editedPartnerCourse) {
+        requireAllNonNull(target, editedPartnerCourse);
+        partnerCourseCatalogue.setPartnerCourse(target, editedPartnerCourse);
     }
 
     @Override

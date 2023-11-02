@@ -234,6 +234,11 @@ public class LocalCourseAddCommandTest {
         }
 
         @Override
+        public void setPartnerCourse(PartnerCourse target, PartnerCourse editedPartnerCourse) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void deletePartnerCourse(PartnerCourse partnerCourse) {
             throw new AssertionError("This method should not be called.");
         }

@@ -25,10 +25,10 @@ public class NoteItem extends UiPart<Region> {
     /**
      * Creates a {@code PartnerCourseItem} with the given {@code PartnerCourse}
      */
-    public NoteItem(Note note, int displayedIndex) {
+    public NoteItem(Note note) {
         super(FXML);
         this.note = note;
-        id.setText(displayedIndex + ".");
+        id.setText(note.getIndex() + ".");
         content.setText(note.getContent().toString());
         tags.setText("Tags:" + note.getTags().toString());
     }

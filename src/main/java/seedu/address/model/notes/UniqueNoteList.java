@@ -46,6 +46,7 @@ public class UniqueNoteList implements Iterable<Note> {
             throw new DuplicateNoteException();
         }
         internalList.add(toAdd);
+        toAdd.setIndex(internalList.size());
     }
 
     /**
@@ -72,11 +73,21 @@ public class UniqueNoteList implements Iterable<Note> {
      * Removes the equivalent note from the list.
      * The note must exist in the list.
      */
-    public void remove(Note toRemove) {
+    public Note remove(int toRemove) {
         requireNonNull(toRemove);
-        if (!internalList.remove(toRemove)) {
+
+        for (int i = toRemove; i < internalList.size(); i++) {
+            internalList.get(i).setIndex(i);
+        }
+
+        Note deletedNote;
+        try {
+            deletedNote = internalList.remove(toRemove - 1);
+        } catch (Exception e) {
             throw new NoteNotFoundException();
         }
+
+        return deletedNote;
     }
 
     /**

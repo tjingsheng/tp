@@ -285,7 +285,7 @@ Key takeaways from this section:
 - Examples of valid and invalid inputs
 
 ## 4.1. Commands for localcourse
-### 4.1.1. List all localcourses: `localcourse list`
+### 4.1.1. List all local courses: `localcourse list`
 Lists all available local courses, offered by NUS Computing.
 
 **Format**: `localcourse list`
@@ -327,7 +327,9 @@ Updates `localcourseattribute` of a local course, with course code identified by
 **Format**: `localcourse update [localcode] [localcourseattribute] [updatedValue]`
 
 **Example**
-<insert image>
+| `localcourse update [CS1234] [localname] [ProgrammingVeryFun]`      |
+|--------------------------------------------------------------|
+| ![localcourse-update-ui](images/LocalcourseUpdateUi.png) |
 
 ### 4.1.5. Search a localcourse by attributes: `localcourse search`
 Searches localcourse with course code identified by `localcode` or `localname`.
@@ -338,17 +340,20 @@ Searches localcourse with course code identified by `localcode` or `localname`.
 **Example:**
 <insert image>
 
-### 4.1.6.: Sort localcourses by attributes: `localcourse sort`
-Sorts localcourses according to `localcourseattribute` - `localcode` or `localname`.
+### 4.1.6.: Sort local courses by attributes: `localcourse sort`
+Sorts local courses according to `localcourseattribute` - `localcode` or `localname`.
 
 **Format**: `localcourse sort [localcourseattribute]` 
 
-**Example:**
-<insert image>
+**Example**
+| `localcourse sort [localname]`      |
+|--------------------------------------------------------------|
+| ![localcourse-sort-ui](images/LocalcourseSortUi.png) |
 
 ## 4.2. Commands for partnercourse
-### 4.2.1. List all partnercourses: `partnercourse list`
-Lists all available partner courses, paginated if dataset is too huge.
+### 4.2.1. List all partner courses: `partnercourse list`
+Lists all available partner courses.
+
 **Format**: `partnercourse list`
 
 **Example:**
@@ -357,21 +362,22 @@ Lists all available partner courses, paginated if dataset is too huge.
 | ![partnercourse-list-ui](images/PartnercourseListUi.png) |
 
 ### 4.2.2. Add a partnercourse: `partnercourse add`
-Adds partner course with course code identified by `partnercode` and course name identified by `partnername`, 
-which is offered by partner `university`.
-
-**Format**: `partnercourse add [university] [partnercode] [partnername] [partnerunit] [partnerdescription]`
+Adds partner course with university identified by `university`, course code identified by `partnercode`, 
+course name identified by `partnername`, credit units identified by `units` and 
+course description identified by `description`. \
+\
+**Format**: `partnercourse add [university] [partnercode] [partnername] [units] [description]`
 
 **Example:**
 | `partnercourse add [University of Toronto] [ROB311] [Artificial Intelligence] [5.0] [Introduction module to AI]` |
 |------------------------------------------------------------------------------------------------------------------|
 | ![partnercourse-add-ui](images/PartnercourseAddUi.png)                                                           |
 
-### 4.2.3. Delete a partnercourse: `partnercourse delete`
-Deletes a partnercourse with course code identified by `partnercode` which is offered by partner `university`.
-
-> [!NOTE]
-> You are unable to delete a partner course if it exists in a mapping.
+### 4.2.3. Delete a partner course: `partnercourse delete`
+Deletes partner course with university identified by `university` and course code identified by `partnercode`.
+<box type="info">
+    You are unable to delete a partner course if it exists in a mapping.
+</box>
 
 **Format**: `partnercourse delete [university] [partnercode]`
 
@@ -380,15 +386,18 @@ Deletes a partnercourse with course code identified by `partnercode` which is of
 |--------------------------------------------------------------|
 | ![partnercourse-delete-ui](images/PartnercourseDeleteUi.png) |
 
-### 4.2.4. Update a partnercourse: `partnercourse update`
-Updates `partnercourseattribute` of partnercourse, with course code identified by `universityname` and `partnercode`, with updated value.
+### 4.2.4. Update a partner course: `partnercourse update`
+Updates `partnercourseattribute` of partnercourse, with university identified by `universityname` and 
+partner code identified by `partnercode`, with updated value.
 
-`partnercourseattribute` - `partnercode`, `partnername`, `partnerunit`, `partnerdescription`
+`partnercourseattribute` - `partnercode`, `partnername`, `unit`, `description`
 
 **Format**: `partnercourse update [universityname] [partnercode] [partnercourseattribute] [updatedValue]`
 
 **Example**
-<insert image>
+| `partnercourse update [University of Toronto] [ROB311] [unit] [10.0]`      |
+|--------------------------------------------------------------|
+| ![partnercourse-update-ui](images/PartnercourseUpdateUi.png) |
 
 ### 4.2.5. Search a partnercourse by attributes: `partnercourse search`
 Searches partnercourse with course name identified by `partnername`.
@@ -397,12 +406,15 @@ Searches partnercourse with course name identified by `partnername`.
 
 **Example:**
 
-### 4.2.6. Sort partnercourses by attributes: `partnercourse sort`
-Sorts partnercourse according to `partnercourseattribute` - `university`, `partnercode` or `partnername`.
+### 4.2.6. Sort partner courses by attributes: `partnercourse sort`
+Sorts partner courses according to `partnercourseattribute` - `university`, `partnercode` or `partnername`.
 
 **Format**: `partnercourse sort [partnercourseattribute]`
 
-**Example:**
+**Example**
+| `partnercourse sort [partnercode]`      |
+|----------------------------------------------------------|
+| ![partnercourse-sort-ui](images/PartnercourseSortUi.png) |
 
 ## 4.3. Commands for universities
 ### 4.3.1. List all universities: `university list`
@@ -424,7 +436,10 @@ Searches all available partner universities, paginated if dataset is too huge.
 Sorts universities according to `universityattribute` - `universityname`.
 **Format**: `university sort [universityname]`
 
-**Example:**
+**Example**
+| `university sort [universityname]`      |
+|----------------------------------------------------------|
+| ![university-sort-ui](images/UniversitySortUi.png)       |
 
 ## 4.4. Commands for mappings
 ### 4.4.1. List all mappings: `mapping list`

@@ -183,22 +183,16 @@ public class SeplendidParser {
         logger.fine("Command word: " + commandWord + "; Action word: " + actionWord);
 
         switch (commandWord) {
-
         case LocalCourseCommand.COMMAND_WORD:
             return getLocalCourseCommandWithoutArg(userInput, actionWord);
-
         case PartnerCourseCommand.COMMAND_WORD:
             return getPartnerCourseCommandWithoutArg(userInput, actionWord);
-
         case UniversityCommand.COMMAND_WORD:
             return getUniversityCommandWithoutArg(userInput, actionWord);
-
         case MappingCommand.COMMAND_WORD:
             return getMappingCommandWithoutArg(userInput, actionWord);
-
         case NoteCommand.COMMAND_WORD:
             return getNoteCommandWithoutArg(userInput, actionWord);
-
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(UsageMessage.HELP.getValue());
@@ -227,22 +221,16 @@ public class SeplendidParser {
         logger.fine("Command word: " + commandWord + "; Action word: " + actionWord + "; Arguments: " + arguments);
 
         switch (commandWord) {
-
         case LocalCourseCommand.COMMAND_WORD:
             return getLocalCourseCommandWithArg(userInput, actionWord, arguments);
-
         case PartnerCourseCommand.COMMAND_WORD:
             return getPartnerCourseCommandWithArg(userInput, actionWord, arguments);
-
         case NoteCommand.COMMAND_WORD:
             return getNoteCommandWithArg(userInput, actionWord, arguments);
-
         case UniversityCommand.COMMAND_WORD:
             return getUniversityCommandWithArg(userInput, actionWord, arguments);
-
         case MappingCommand.COMMAND_WORD:
             return getMappingCommandWithArg(userInput, actionWord, arguments);
-
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(UsageMessage.HELP.getValue());
@@ -270,11 +258,23 @@ public class SeplendidParser {
 
     private LocalCourseCommand getLocalCourseCommandWithoutArg(String userInput, String actionWord)
                 throws ParseException {
-        switch (actionWord) {
-        case LocalCourseListCommand.ACTION_WORD:
+        if (actionWord.equals(LocalCourseListCommand.ACTION_WORD)) {
             return new LocalCourseListCommand();
+        }
+
+        logger.finer("This user input caused a ParseException: " + userInput);
+        switch (actionWord) {
+        case LocalCourseAddCommand.ACTION_WORD:
+            throw new ParseException(UsageMessage.LOCALCOURSE_ADD.getValue());
+        case LocalCourseDeleteCommand.ACTION_WORD:
+            throw new ParseException(UsageMessage.LOCALCOURSE_DELETE.getValue());
+        case LocalCourseSearchCommand.ACTION_WORD:
+            throw new ParseException(UsageMessage.LOCALCOURSE_SEARCH.getValue());
+        case LocalCourseSortCommand.ACTION_WORD:
+            throw new ParseException(UsageMessage.LOCALCOURSE_SORT.getValue());
+        case LocalCourseUpdateCommand.ACTION_WORD:
+            throw new ParseException(UsageMessage.LOCALCOURSE_UPDATE.getValue());
         default:
-            logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(UsageMessage.LOCALCOURSE.getValue());
         }
     }
@@ -300,11 +300,23 @@ public class SeplendidParser {
 
     private PartnerCourseCommand getPartnerCourseCommandWithoutArg(String userInput, String actionWord)
                 throws ParseException {
-        switch (actionWord) {
-        case PartnerCourseListCommand.ACTION_WORD:
+        if (actionWord.equals(PartnerCourseListCommand.ACTION_WORD)) {
             return new PartnerCourseListCommand();
+        }
+
+        logger.finer("This user input caused a ParseException: " + userInput);
+        switch (actionWord) {
+        case PartnerCourseAddCommand.ACTION_WORD:
+            throw new ParseException(UsageMessage.PARTNERCOURSE_ADD.getValue());
+        case PartnerCourseDeleteCommand.ACTION_WORD:
+            throw new ParseException(UsageMessage.PARTNERCOURSE_DELETE.getValue());
+        case PartnerCourseSearchCommand.ACTION_WORD:
+            throw new ParseException(UsageMessage.PARTNERCOURSE_SEARCH.getValue());
+        case PartnerCourseSortCommand.ACTION_WORD:
+            throw new ParseException(UsageMessage.PARTNERCOURSE_SORT.getValue());
+        case PartnerCourseUpdateCommand.ACTION_WORD:
+            throw new ParseException(UsageMessage.PARTNERCOURSE_UPDATE.getValue());
         default:
-            logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(UsageMessage.PARTNERCOURSE.getValue());
         }
     }
@@ -328,11 +340,17 @@ public class SeplendidParser {
 
     private UniversityCommand getUniversityCommandWithoutArg(String userInput, String actionWord)
                 throws ParseException {
-        switch (actionWord) {
-        case UniversityListCommand.ACTION_WORD:
+        if (actionWord.equals(UniversityListCommand.ACTION_WORD)) {
             return new UniversityListCommand();
+        }
+        
+        logger.finer("This user input caused a ParseException: " + userInput);
+        switch (actionWord) {
+        case UniversitySearchCommand.ACTION_WORD:
+            throw new ParseException(UsageMessage.UNIVERSITY_SEARCH.getValue());
+        case UniversitySortCommand.ACTION_WORD:
+            throw new ParseException(UsageMessage.UNIVERSITY_SORT.getValue());
         default:
-            logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(UsageMessage.UNIVERSITY.getValue());
         }
     }
@@ -351,11 +369,20 @@ public class SeplendidParser {
     }
 
     private MappingCommand getMappingCommandWithoutArg(String userInput, String actionWord) throws ParseException {
-        switch (actionWord) {
-        case MappingListCommand.ACTION_WORD:
+        if (actionWord.equals(MappingListCommand.ACTION_WORD)) {
             return new MappingListCommand();
+        }
+        logger.finer("This user input caused a ParseException: " + userInput);
+        switch (actionWord) {
+        case MappingAddCommand.ACTION_WORD:
+            throw new ParseException(UsageMessage.MAPPING_ADD.getValue());
+        case MappingDeleteCommand.ACTION_WORD:
+            throw new ParseException(UsageMessage.MAPPING_DELETE.getValue());
+        case MappingSearchCommand.ACTION_WORD:
+            throw new ParseException(UsageMessage.MAPPING_SEARCH.getValue());
+        case MappingSortCommand.ACTION_WORD:
+            throw new ParseException(UsageMessage.MAPPING_SORT.getValue());
         default:
-            logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(UsageMessage.MAPPING.getValue());
         }
     }
@@ -382,11 +409,24 @@ public class SeplendidParser {
     }
 
     private NoteCommand getNoteCommandWithoutArg(String userInput, String actionWord) throws ParseException {
-        switch (actionWord) {
-        case NoteListCommand.ACTION_WORD:
+        if (actionWord.equals(NoteListCommand.ACTION_WORD)) {
             return new NoteListCommand();
+        }
+        logger.finer("This user input caused a ParseException: " + userInput);
+        switch (actionWord) {
+        case NoteAddCommand.ACTION_WORD:
+            throw new ParseException(UsageMessage.NOTE_ADD.getValue());
+        case NoteClearTagCommand.ACTION_WORD:
+            throw new ParseException(UsageMessage.NOTE_CLEAR_TAG.getValue());
+        case NoteDeleteCommand.ACTION_WORD:
+            throw new ParseException(UsageMessage.NOTE_DELETE.getValue());
+        case NoteSearchCommand.ACTION_WORD:
+            throw new ParseException(UsageMessage.NOTE_SEARCH.getValue());
+        case NoteTagCommand.ACTION_WORD:
+            throw new ParseException(UsageMessage.NOTE_TAG.getValue());
+        case NoteUpdateCommand.ACTION_WORD:
+            throw new ParseException(UsageMessage.NOTE_UPDATE.getValue());
         default:
-            logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(UsageMessage.NOTE.getValue());
         }
     }

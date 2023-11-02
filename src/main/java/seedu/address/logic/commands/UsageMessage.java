@@ -55,28 +55,28 @@ public enum UsageMessage {
         LocalCourseCommand.COMMAND_WORD,
         LocalCourseSearchCommand.ACTION_WORD,
         "[attribute] [query]",
-        "Searches for a local course where query is found in the selected attribute\nAttributes:\n"
+        "Searches for a local course where query is found in the selected attribut\nAttributes:\n"
             + "localcode\nlocalname\nlocaldescription"),
     LOCALCOURSE_SORT(
         LocalCourseCommand.COMMAND_WORD,
         LocalCourseSortCommand.ACTION_WORD,
         "[attribute]",
-        "Sorts local courses by the selected attribute.\nAttributes:\n"
+        "Sorts local courses by the selected attribute\nAttributes:\n"
             + "localcode\nlocalname"),
     LOCALCOURSE_UPDATE(
         LocalCourseCommand.COMMAND_WORD,
         LocalCourseUpdateCommand.ACTION_WORD,
-        "[localcode] [attribute] [newValue]",
+        "[localcode] [attribute] [newvalue]",
         "Updates the attribute of the local course with a new value.\nAttributes:\n"
             + "localcode\nlocalname\nlocalunit\nlocaldescription'"),
     LOCALCOURSE(String.join("\n",
-                    "Localcourse Commands:\n",
+                    "Local Courses Commands:\n",
                     LOCALCOURSE_ADD.getValue(),
-                    LOCALCOURSE_DELETE.getValue(),
                     LOCALCOURSE_LIST.getValue(),
+                    LOCALCOURSE_UPDATE.getValue(),
+                    LOCALCOURSE_DELETE.getValue(),
                     LOCALCOURSE_SEARCH.getValue(),
-                    LOCALCOURSE_SORT.getValue(),
-                    LOCALCOURSE_UPDATE.getValue())),
+                    LOCALCOURSE_SORT.getValue())),
     MAPPING_ADD(
         MappingCommand.COMMAND_WORD,
         MappingAddCommand.ACTION_WORD,
@@ -97,18 +97,18 @@ public enum UsageMessage {
         MappingSearchCommand.ACTION_WORD,
         "[attribute] [query]",
         "Searches for a mapping where query is found in the selected attribute\nAttributes:\n"
-        + " localcode\nlocalname\npartnercode\npartnername\nuniversity\ninformation"),
+        + "localcode\nlocalname\npartnercode\npartnername\nuniversity\ninformation"),
     MAPPING_SORT(
         MappingCommand.COMMAND_WORD,
         MappingSearchCommand.ACTION_WORD,
         "[attribute]",
-        "Sorts local courses by the selected attribute.\nAttributes:\n"
-            + "localcode\nlocalname\npartnercode\npartnername\nuniversity\ninformation]: \""),
+        "Sorts local courses by the selected attribute\nAttributes:\n"
+            + "localcode\nlocalname\npartnercode\npartnername\nuniversity\ninformation"),
     MAPPING(String.join("\n",
                         "Mapping Commands:\n",
+                        MAPPING_LIST.getValue(),
                         MAPPING_ADD.getValue(),
                         MAPPING_DELETE.getValue(),
-                        MAPPING_LIST.getValue(),
                         MAPPING_SEARCH.getValue(),
                         MAPPING_SORT.getValue())),
     NOTE_ADD(
@@ -130,7 +130,7 @@ public enum UsageMessage {
         NoteCommand.COMMAND_WORD,
         NoteSearchCommand.ACTION_WORD,
         "[query]",
-        "Searches for notes with query word within any tag"),
+        "Searches for notes with query is found in the note tag"),
     NOTE_TAG(
         NoteCommand.COMMAND_WORD,
         NoteTagCommand.ACTION_WORD,
@@ -149,6 +149,7 @@ public enum UsageMessage {
     NOTE(String.join("\n",
                      "Note Commands:\n",
                      NOTE_ADD.getValue(),
+                     NOTE_CLEAR_TAG.getValue(),
                      NOTE_DELETE.getValue(),
                      NOTE_LIST.getValue(),
                      NOTE_SEARCH.getValue(),
@@ -179,20 +180,22 @@ public enum UsageMessage {
         PartnerCourseCommand.COMMAND_WORD,
         PartnerCourseSortCommand.ACTION_WORD,
         "[attribute]",
-        "Sorts partner courses by the selected attribute.\nAttributes:\n"
+        "Sorts partner courses by the selected attribute\nAttributes:\n"
             + "partnercode\npartnername\nuniversity"),
     PARTNERCOURSE_UPDATE(
         PartnerCourseCommand.COMMAND_WORD,
         PartnerCourseUpdateCommand.ACTION_WORD,
-        "[partnercode] [attribute] [newValue]",
+        "[partnercode] [attribute] [newvalue]",
         "Updates the attribute of the partner course with a new value.\nAttributes:\n"
             + "partnercode\npartnername\npartnerunit\npartnerdescription"),
     PARTNERCOURSE(String.join("\n",
-                              "Partnercourse Commands:\n",
-                              PARTNERCOURSE_ADD.getValue(),
-                              PARTNERCOURSE_DELETE.getValue(),
+                              "Partner Course Commands:\n",
                               PARTNERCOURSE_LIST.getValue(),
-                              PARTNERCOURSE_SEARCH.getValue())),
+                              PARTNERCOURSE_ADD.getValue(),
+                              PARTNERCOURSE_UPDATE.getValue(),
+                              PARTNERCOURSE_DELETE.getValue(),
+                              PARTNERCOURSE_SEARCH.getValue(),
+                              PARTNERCOURSE_SORT.getValue())),
     UNIVERSITY_LIST(
         UniversityCommand.COMMAND_WORD,
         UniversityListCommand.ACTION_WORD,
@@ -201,8 +204,8 @@ public enum UsageMessage {
     UNIVERSITY_SEARCH(
         UniversityCommand.COMMAND_WORD,
         UniversitySearchCommand.ACTION_WORD,
-        "",
-        "Searches for a university by name"),
+        "[query]",
+        "Searches for a university where query is found in the university name"),
     UNIVERSITY_SORT(
         UniversityCommand.COMMAND_WORD,
         UniversitySortCommand.ACTION_WORD,
@@ -211,7 +214,8 @@ public enum UsageMessage {
     UNIVERSITY(String.join("\n",
                            "University Commands:\n",
                            UNIVERSITY_LIST.getValue(),
-                           UNIVERSITY_SEARCH.getValue())),
+                           UNIVERSITY_SEARCH.getValue(),
+                           UNIVERSITY_SORT.getValue())),
     HELP(
         HelpCommand.COMMAND_WORD,
         "",
@@ -238,7 +242,7 @@ public enum UsageMessage {
      * @param description The description of the command.
      */
     UsageMessage(String commandWord, String actionWord, String args, String description) {
-        this.value = String.format("%s %s %s\n%s\n", commandWord, actionWord, args, description);
+        this.value = String.format(">>> %s %s %s\n%s\n", commandWord, actionWord, args, description);
     }
 
     /**

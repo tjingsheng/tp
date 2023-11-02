@@ -57,6 +57,7 @@ public class SeplendidModelManager implements SeplendidModel {
 
     private final MappingCatalogue mappingCatalogue;
     private final FilteredList<Mapping> filteredMappingCatalogue;
+    private final SortedList<Mapping> sortedMappingCatalogue;
 
 
     /**
@@ -73,17 +74,17 @@ public class SeplendidModelManager implements SeplendidModel {
                 noteCatalogue, mappingCatalogue);
 
         logger.fine(String.format("Initializing with user prefs: %s,\n"
-                                  + "local course catalogue: %s, \n"
-                                  + "partner course catalogue: %s,\n"
-                                  + "university catalogue: %s,\n"
-                                  + "mapping catalogue: %s,\n"
-                                  + "and note catalogue: %s",
-                                  userPrefs,
-                                  localCourseCatalogue,
-                                  partnerCourseCatalogue,
-                                  universityCatalogue,
-                                  mappingCatalogue,
-                                  noteCatalogue));
+                        + "local course catalogue: %s, \n"
+                        + "partner course catalogue: %s,\n"
+                        + "university catalogue: %s,\n"
+                        + "mapping catalogue: %s,\n"
+                        + "and note catalogue: %s",
+                userPrefs,
+                localCourseCatalogue,
+                partnerCourseCatalogue,
+                universityCatalogue,
+                mappingCatalogue,
+                noteCatalogue));
 
         this.localCourseCatalogue = new LocalCourseCatalogue(localCourseCatalogue);
         this.userPrefs = new UserPrefs(userPrefs);
@@ -99,6 +100,7 @@ public class SeplendidModelManager implements SeplendidModel {
         filteredNoteCatalogue = new FilteredList<>(this.noteCatalogue.getNoteList());
         this.mappingCatalogue = new MappingCatalogue(mappingCatalogue);
         filteredMappingCatalogue = new FilteredList<>(this.mappingCatalogue.getMappingList());
+        sortedMappingCatalogue = new SortedList<>(this.mappingCatalogue.getMappingList());
     }
 
     /**
@@ -106,12 +108,12 @@ public class SeplendidModelManager implements SeplendidModel {
      */
     public SeplendidModelManager() {
         this(
-            new UserPrefs(),
-            new LocalCourseCatalogue(),
-            new PartnerCourseCatalogue(),
-            new UniversityCatalogue(),
-            new MappingCatalogue(),
-            new NoteCatalogue());
+                new UserPrefs(),
+                new LocalCourseCatalogue(),
+                new PartnerCourseCatalogue(),
+                new UniversityCatalogue(),
+                new MappingCatalogue(),
+                new NoteCatalogue());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -235,6 +237,7 @@ public class SeplendidModelManager implements SeplendidModel {
 
     /**
      * Checks if the local course exists.
+     *
      * @param attribute
      * @param predicate
      */
@@ -262,8 +265,10 @@ public class SeplendidModelManager implements SeplendidModel {
     }
 
     //=========== PartnerCourseCatalogue ============================================================================
+
     /**
      * Checks if the local course exists.
+     *
      * @param attribute
      * @param predicate
      */
@@ -380,6 +385,7 @@ public class SeplendidModelManager implements SeplendidModel {
 
     /**
      * Check if there exist the same university in the catalogue.
+     *
      * @param universityName
      * @return
      */
@@ -388,12 +394,14 @@ public class SeplendidModelManager implements SeplendidModel {
         Optional<University> maybeUniversity = getUniversityIfExists(universityName);
         return maybeUniversity.isPresent();
     }
+
     @Override
     public void getSearchUniversityIfExists(UniversityNameContainsKeywordsPredicate universityPredicate) {
         requireNonNull(universityPredicate);
         filteredUniversityCatalogue.setPredicate(universityPredicate);
 
     }
+
     @Override
     public void addUniversity(University university) {
         universityCatalogue.addUniversity(university);
@@ -417,8 +425,6 @@ public class SeplendidModelManager implements SeplendidModel {
     public void updateSortedUniversityList(Comparator<University> universityComparator) {
         sortedUniversityCatalogue.setComparator(universityComparator);
     }
-
-
 
 
     //=========== FilteredUniversityList Accessors =============================================================
@@ -618,6 +624,16 @@ public class SeplendidModelManager implements SeplendidModel {
         requireAllNonNull(mapping, editedMapping);
 
         mappingCatalogue.setMapping(mapping, editedMapping);
+    }
+
+    @Override
+    public ObservableList<Mapping> getSortedMappingList() {
+        return sortedMappingCatalogue;
+    }
+
+    @Override
+    public void updateSortedMappingList(Comparator<Mapping> mappingComparator) {
+        sortedMappingCatalogue.setComparator(mappingComparator);
     }
 
 

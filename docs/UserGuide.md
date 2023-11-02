@@ -314,12 +314,15 @@ which is offered by partner `university`.
 | ![partnercourse-add-ui](images/PartnercourseAddUi.png)                                                           |
 
 ### 4.2.3. Delete a partnercourse: `partnercourse delete`
-Deletes a partnercourse with course code identified by `partnercode` and course name identified by `partnername`, 
-which is offered by partner `university`.
-**Format**: `partnercourse delete [partnercode]`
+Deletes a partnercourse with course code identified by `partnercode` which is offered by partner `university`.
+
+> [!NOTE]
+> You are unable to delete a partner course if it exists in a mapping.
+
+**Format**: `partnercourse delete [university] [partnercode]`
 
 **Example:**
-| `partnercourse delete [ROB311]`                              |
+| `partnercourse delete [University of Toronto] [ROB311]`      |
 |--------------------------------------------------------------|
 | ![partnercourse-delete-ui](images/PartnercourseDeleteUi.png) |
 

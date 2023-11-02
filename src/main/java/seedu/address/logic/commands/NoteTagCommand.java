@@ -7,34 +7,34 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
-import seedu.address.model.notes.Content;
 import seedu.address.model.notes.Note;
+import seedu.address.model.tag.Tag;
 import seedu.address.seplendidui.UiUtil;
 
 /**
- * Updates the content a note to the NoteList.
+ * Adds a tag to a note to the NoteList.
  */
-public class NoteUpdateCommand extends NoteCommand {
+public class NoteTagCommand extends NoteCommand {
 
-    public static final String NOTE_UPDATE_MESSAGE_USAGE = COMMAND_WORD
-            + " update [index] [content]: Updates a note to the specified content.";
+    public static final String NOTE_TAG_MESSAGE_USAGE = COMMAND_WORD
+            + " tag [index] [tag]: Add a tag to a note.";
     public static final String MESSAGE_NONEXISTENT_NOTE = "Note not found, please put a valid index.";
-    public static final String ACTION_WORD = "update";
-    public static final String MESSAGE_SUCCESS = "Note updated: %1$s";
+    public static final String ACTION_WORD = "tag";
+    public static final String MESSAGE_SUCCESS = "Note tagged: %1$s";
     private final Integer noteIndexToUpdate;
-    private final Content updateContent;
+    private final Tag addTag;
 
     /**
-     * Creates a NoteUpdateCommand to update the specified {@code Note}
+     * Creates a NoteTagCommand to update the specified {@code Note}
      *
-     * @param noteIndexToUpdate The Index of Note to be updated into Storage.
-     * @param updateContent The updated content of the note
+     * @param noteIndexToUpdate The index of Note to be updated into Storage.
+     * @param addTag The tag to be added to the note.
      */
-    public NoteUpdateCommand(int noteIndexToUpdate, Content updateContent) {
+    public NoteTagCommand(int noteIndexToUpdate, Tag addTag) {
         super();
         requireNonNull(noteIndexToUpdate);
         this.noteIndexToUpdate = noteIndexToUpdate;
-        this.updateContent = updateContent;
+        this.addTag = addTag;
     }
 
     @Override
@@ -50,7 +50,8 @@ public class NoteUpdateCommand extends NoteCommand {
             throw new CommandException(MESSAGE_NONEXISTENT_NOTE);
         }
         Note oldNote = seplendidModel.getNoteCatalogue().getNoteList().get(this.noteIndexToUpdate - 1);
-        Note newNote = new Note(this.updateContent, oldNote.getTags(), oldNote.getIndex());
+        oldNote.getTags().add(addTag);
+        Note newNote = new Note(oldNote.getContent(), oldNote.getTags(), oldNote.getIndex());
         seplendidModel.setNote(oldNote, newNote);
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(newNote)),
                 UiUtil.ListViewModel.NOTE_LIST);
@@ -63,20 +64,21 @@ public class NoteUpdateCommand extends NoteCommand {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof NoteUpdateCommand)) {
+        if (!(other instanceof NoteTagCommand)) {
             return false;
         }
 
-        NoteUpdateCommand otherNoteDeleteCommand = (NoteUpdateCommand) other;
-        return noteIndexToUpdate.equals(otherNoteDeleteCommand.noteIndexToUpdate)
-                && updateContent.equals(otherNoteDeleteCommand.updateContent);
+        NoteTagCommand otherNoteTagCommand = (NoteTagCommand) other;
+        return noteIndexToUpdate.equals(otherNoteTagCommand.noteIndexToUpdate)
+                && addTag.equals(otherNoteTagCommand.addTag);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("noteToUpdate", noteIndexToUpdate)
-                .add("content", updateContent)
+                .add("tag", addTag)
                 .toString();
     }
 }
+

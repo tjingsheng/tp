@@ -1,7 +1,10 @@
 package seedu.address.seplendidui;
 
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,6 +37,7 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private ItemListPanel<SeplendidDataType> itemListPanel;
     private ItemDetailPanel<SeplendidDataType> itemDetailPanel;
+    private HelpWindow helpWindow;
 
     private ResultBox resultBox;
 
@@ -60,7 +64,10 @@ public class MainWindow extends UiPart<Stage> {
         this.seplendidLogic = seplendidLogic;
 
         // Configure the UI
+        UiManager.setDefaultFont(primaryStage.getScene().getRoot(), UiManager.getDefaultFont());
         setWindowDefaultSize(seplendidLogic.getGuiSettings());
+
+        this.helpWindow = new HelpWindow();
     }
 
     public Stage getPrimaryStage() {
@@ -112,7 +119,19 @@ public class MainWindow extends UiPart<Stage> {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
                 (int) primaryStage.getX(), (int) primaryStage.getY());
         seplendidLogic.setGuiSettings(guiSettings);
-        primaryStage.hide();
+        CompletableFuture.delayedExecutor(2, TimeUnit.SECONDS).execute(() -> Platform.runLater(primaryStage::hide));
+    }
+
+    /**
+     * Opens the help window or focuses on it if it's already opened.
+     */
+    @FXML
+    public void handleHelp() {
+        if (!helpWindow.isShowing()) {
+            helpWindow.show();
+        } else {
+            helpWindow.focus();
+        }
     }
 
     public ItemListPanel<? extends SeplendidDataType> getItemListPanel() {
@@ -160,6 +179,10 @@ public class MainWindow extends UiPart<Stage> {
                 break;
             default:
                 // do nothing
+            }
+
+            if (commandResult.isShowHelp()) {
+                handleHelp();
             }
 
             if (commandResult.isExit()) {

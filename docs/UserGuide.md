@@ -347,7 +347,7 @@ Sorts local courses according to `localcourseattribute` - `localcode` or `localn
 
 **Example**
 | `localcourse sort [localname]`      |
-|--------------------------------------------------------------|
+|------------------------------------------------------|
 | ![localcourse-sort-ui](images/LocalcourseSortUi.png) |
 
 ## 4.2. Commands for partnercourse

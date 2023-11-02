@@ -9,18 +9,16 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.localcourse.LocalCode;
-import seedu.address.model.localcourse.LocalCodeContainsKeywordsPredicate;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.localcourse.LocalCourseAttribute;
-import seedu.address.model.localcourse.LocalNameContainsKeywordsPredicate;
+import seedu.address.model.localcourse.LocalCourseContainsKeywordsPredicate;
 import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
 import seedu.address.model.notes.NoteTagContainsKeywordsPredicate;
 import seedu.address.model.partnercourse.PartnerCode;
-import seedu.address.model.partnercourse.PartnerCodeContainsKeywordsPredicate;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
-import seedu.address.model.partnercourse.PartnerNameContainsKeywordsPredicate;
+import seedu.address.model.partnercourse.PartnerCourseContainsKeywordsPredicate;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityName;
 import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
@@ -86,8 +84,7 @@ public interface SeplendidModel {
     ReadOnlyLocalCourseCatalogue getLocalCourseCatalogue();
 
     void searchLocalCourses(LocalCourseAttribute attribute,
-                            LocalCodeContainsKeywordsPredicate codeContainsKeywordsPredicate,
-                            LocalNameContainsKeywordsPredicate nameContainsKeywordsPredicate);
+                            LocalCourseContainsKeywordsPredicate predicate);
 
     /**
      * Returns true if a local course with the same identity as {@code localCourse} exists in the LocalCourseCatalogue.
@@ -128,7 +125,7 @@ public interface SeplendidModel {
 
     ObservableList<LocalCourse> getSortedLocalCourseList();
 
-    void updatedSortedLocalList(Comparator<LocalCourse> localCourseComparator);
+    void updateSortedLocalList(Comparator<LocalCourse> localCourseComparator);
 
     /**
      * Returns an unmodifiable view of the filtered local course list
@@ -145,8 +142,7 @@ public interface SeplendidModel {
     //=========== PartnerCourseCatalogue ============================================================================
 
     void searchPartnerCourses(PartnerCourseAttribute attribute,
-                              PartnerCodeContainsKeywordsPredicate codeContainsKeywordsPredicate,
-                              PartnerNameContainsKeywordsPredicate nameContainsKeywordsPredicate);
+                              PartnerCourseContainsKeywordsPredicate predicate);
     ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue();
 
     /**
@@ -178,6 +174,9 @@ public interface SeplendidModel {
      */
     void deletePartnerCourse(PartnerCourse partnerCourse) throws CommandException;
 
+    public ObservableList<PartnerCourse> getSortedPartnerCourseList();
+    public void updateSortedPartnerList(Comparator<PartnerCourse> partnerCourseComparator);
+
     /**
      * Returns an unmodifiable view of the filtered partner course list
      */
@@ -204,6 +203,9 @@ public interface SeplendidModel {
     void addUniversity(University university);
 
     void setUniversity(University target, University editedUniversity);
+    ObservableList<University> getSortedUniversityList();
+
+    void updateSortedUniversityList(Comparator<University> universityComparator);
 
     void updateFilteredUniversityList(Predicate<University> predicate);
 
@@ -234,8 +236,10 @@ public interface SeplendidModel {
     /**
      * Deletes the given Note.
      * The note must exist in the NoteCatalogue.
+     *
+     * @return
      */
-    void deleteNote(Note note);
+    Note deleteNote(int noteIndex);
 
     /**
      * Adds the given Note.

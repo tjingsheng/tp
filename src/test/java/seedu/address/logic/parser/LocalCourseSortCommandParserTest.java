@@ -1,7 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.UNNCESSARY_WHITESPACE;
+import static seedu.address.logic.commands.CommandTestUtil.UNNECESSARY_WHITESPACE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TestUtil.getSquareBracketWrappedArgument;
@@ -32,18 +32,18 @@ public class LocalCourseSortCommandParserTest {
         Comparator<LocalCourse> expectedComparator = new LocalCourseComparatorByLocalCode();
 
         // add unnecessary whitespace
-        assertParseSuccess(parser, UNNCESSARY_WHITESPACE
+        assertParseSuccess(parser, UNNECESSARY_WHITESPACE
                         + LocalCourseCommand.COMMAND_WORD
-                        + UNNCESSARY_WHITESPACE
+                        + UNNECESSARY_WHITESPACE
                         + LocalCourseSortCommand.ACTION_WORD
-                        + UNNCESSARY_WHITESPACE
+                        + UNNECESSARY_WHITESPACE
                         + getSquareBracketWrappedArgument("localcode")
-                        + UNNCESSARY_WHITESPACE,
+                        + UNNECESSARY_WHITESPACE,
                 new LocalCourseSortCommand(expectedComparator));
     }
 
     @Test
-    void parse_argumentNotClosedOrEmpty_failure() {
+    public void parse_argumentNotClosedOrEmpty_failure() {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 LocalCourseSortCommand.LOCAL_COURSE_SORT_MESSAGE_USAGE);
 

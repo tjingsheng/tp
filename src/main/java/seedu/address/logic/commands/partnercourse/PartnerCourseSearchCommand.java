@@ -8,12 +8,10 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.commands.localcourse.LocalCourseSearchCommand;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
-import seedu.address.model.partnercourse.PartnerCodeContainsKeywordsPredicate;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
-import seedu.address.model.partnercourse.PartnerNameContainsKeywordsPredicate;
+import seedu.address.model.partnercourse.PartnerCourseContainsKeywordsPredicate;
 import seedu.address.seplendidui.UiUtil;
 
 /**
@@ -23,41 +21,36 @@ import seedu.address.seplendidui.UiUtil;
 public class PartnerCourseSearchCommand extends PartnerCourseCommand {
     public static final String ACTION_WORD = "search"; // Use "search" as the command word
 
-    public static final String MESSAGE_SUCCESS = "partner courses searched: %1$s";
+    public static final String MESSAGE_SUCCESS = "Partner courses searched: %1$s";
+
 
     public static final String PARTNERCOURSE_SEARCH_MESSAGE_USAGE = COMMAND_WORD
-            + " : Search partner courses by attributes - partnercode and partnername";
+            + " : Search local courses by attributes - partnercode and partnername and partneruniversity "
+            + "and partnerdescription";
 
     private final PartnerCourseAttribute attribute;
 
-    private final PartnerCodeContainsKeywordsPredicate codePredicate;
-    private final PartnerNameContainsKeywordsPredicate namePredicate;
+    private final PartnerCourseContainsKeywordsPredicate predicate;
+
+    private String query;
 
     /**
-     * Creates a PartnerCourseSearchCommand to sort the partner course list based on the code predicate.
-     * @param codePredicate Predicate use for search
+     * Creates a PartnerCourseSearchCommand to sort the partner course list based on the predicate.
+     * @param predicate Predicate use for search
      */
-    public PartnerCourseSearchCommand(PartnerCodeContainsKeywordsPredicate codePredicate) {
-        this.attribute = PartnerCourseAttribute.PARTNERCODE;
-        this.codePredicate = codePredicate;
-        this.namePredicate = null;
-    }
-
-    /**
-     * Creates a PartnerCourseSearchCommand to sort the partner course list based on the name predicate.
-     * @param namePredicate Predicate use for search
-     */
-    public PartnerCourseSearchCommand(PartnerNameContainsKeywordsPredicate namePredicate) {
-        this.attribute = PartnerCourseAttribute.PARTNERNAME;
-        this.codePredicate = null;
-        this.namePredicate = namePredicate;
+    public PartnerCourseSearchCommand(PartnerCourseAttribute attribute,
+                                    PartnerCourseContainsKeywordsPredicate predicate,
+                                    String query) {
+        this.attribute = attribute;
+        this.predicate = predicate;
+        this.query = query;
     }
 
     @Override
     public CommandResult execute(SeplendidModel model) throws CommandException {
         requireNonNull(model);
 
-        model.searchPartnerCourses(attribute, codePredicate, namePredicate);
+        model.searchPartnerCourses(attribute, predicate);
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(model.getFilteredPartnerCourseList())),
                 UiUtil.ListViewModel.PARTNER_COURSE_LIST);
@@ -74,22 +67,22 @@ public class PartnerCourseSearchCommand extends PartnerCourseCommand {
             return true;
         }
 
-        if (!(other instanceof LocalCourseSearchCommand)) {
+        if (!(other instanceof PartnerCourseSearchCommand)) {
             return false;
         }
 
         PartnerCourseSearchCommand otherPartnerCourseSearchCommand = (PartnerCourseSearchCommand) other;
         return attribute == otherPartnerCourseSearchCommand.attribute
-                && Objects.equals(codePredicate, otherPartnerCourseSearchCommand.codePredicate)
-                && Objects.equals(namePredicate, otherPartnerCourseSearchCommand.namePredicate);
+                && Objects.equals(predicate, otherPartnerCourseSearchCommand.predicate)
+                && Objects.equals(query, otherPartnerCourseSearchCommand.query);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("attribute", attribute)
-                .add("codePredicate", codePredicate)
-                .add("namePredicate", namePredicate)
+                .add("predicate", predicate)
+                .add("query", query)
                 .toString();
     }
 }

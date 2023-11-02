@@ -33,18 +33,16 @@ import seedu.address.model.ReadOnlyUniversityCatalogue;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCode;
-import seedu.address.model.localcourse.LocalCodeContainsKeywordsPredicate;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.localcourse.LocalCourseAttribute;
-import seedu.address.model.localcourse.LocalNameContainsKeywordsPredicate;
+import seedu.address.model.localcourse.LocalCourseContainsKeywordsPredicate;
 import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
 import seedu.address.model.notes.NoteTagContainsKeywordsPredicate;
 import seedu.address.model.partnercourse.PartnerCode;
-import seedu.address.model.partnercourse.PartnerCodeContainsKeywordsPredicate;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
-import seedu.address.model.partnercourse.PartnerNameContainsKeywordsPredicate;
+import seedu.address.model.partnercourse.PartnerCourseContainsKeywordsPredicate;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityName;
 import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
@@ -142,8 +140,7 @@ public class LocalCourseDeleteCommandTest {
         // LocalCourse
         @Override
         public void searchLocalCourses(LocalCourseAttribute attribute,
-                                       LocalCodeContainsKeywordsPredicate localCodeContainsKeywordsPredicate,
-                                       LocalNameContainsKeywordsPredicate localNameContainsKeywordsPredicate) {
+                                       LocalCourseContainsKeywordsPredicate predicate) {
             throw new AssertionError("This method should not be called.");
         }
         @Override
@@ -202,7 +199,7 @@ public class LocalCourseDeleteCommandTest {
         }
 
         @Override
-        public void updatedSortedLocalList(Comparator<LocalCourse> localCourseComparator) {
+        public void updateSortedLocalList(Comparator<LocalCourse> localCourseComparator) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -219,9 +216,9 @@ public class LocalCourseDeleteCommandTest {
         // PartnerCourse
         @Override
         public void searchPartnerCourses(PartnerCourseAttribute attribute,
-                                         PartnerCodeContainsKeywordsPredicate codeContainsKeywordsPredicate,
-                                         PartnerNameContainsKeywordsPredicate nameContainsKeywordsPredicate) {
+                                         PartnerCourseContainsKeywordsPredicate predicate) {
         }
+
         @Override
         public Path getPartnerCourseCatalogueFilePath() {
             throw new AssertionError("This method should not be called.");
@@ -239,6 +236,16 @@ public class LocalCourseDeleteCommandTest {
 
         @Override
         public void deletePartnerCourse(PartnerCourse partnerCourse) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<PartnerCourse> getSortedPartnerCourseList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateSortedPartnerList(Comparator<PartnerCourse> partnerCourseComparator) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -311,7 +318,7 @@ public class LocalCourseDeleteCommandTest {
         }
 
         @Override
-        public void deleteNote(Note note) {
+        public Note deleteNote(int noteIndex) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -342,6 +349,16 @@ public class LocalCourseDeleteCommandTest {
 
         @Override
         public void setUniversity(University target, University editedUniversity) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<University> getSortedUniversityList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateSortedUniversityList(Comparator<University> universityComparator) {
             throw new AssertionError("This method should not be called.");
         }
 

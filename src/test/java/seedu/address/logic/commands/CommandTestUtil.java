@@ -66,7 +66,7 @@ public class CommandTestUtil {
     public static final EditCommand.EditPersonDescriptor DESC_BOB;
 
     // SEPlendid
-    public static final String UNNCESSARY_WHITESPACE = "  \t  ";
+    public static final String UNNECESSARY_WHITESPACE = "  \t  ";
 
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)

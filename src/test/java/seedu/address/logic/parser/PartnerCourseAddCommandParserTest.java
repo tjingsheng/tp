@@ -1,7 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.UNNCESSARY_WHITESPACE;
+import static seedu.address.logic.commands.CommandTestUtil.UNNECESSARY_WHITESPACE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TestUtil.getSquareBracketWrappedArgument;
@@ -42,21 +42,21 @@ public class PartnerCourseAddCommandParserTest {
 
         // add unnecessary whitespace
         assertParseSuccess(parser,
-            UNNCESSARY_WHITESPACE
+            UNNECESSARY_WHITESPACE
                 + PartnerCourseCommand.COMMAND_WORD
-                + UNNCESSARY_WHITESPACE
+                + UNNECESSARY_WHITESPACE
                 + PartnerCourseAddCommand.ACTION_WORD
-                + UNNCESSARY_WHITESPACE
+                + UNNECESSARY_WHITESPACE
                 + getSquareBracketWrappedArgument(expectedPartnerCourse.getPartnerUniversity()
                                                                        .getUniversityName()
                                                                        .toString())
-                + UNNCESSARY_WHITESPACE
+                + UNNECESSARY_WHITESPACE
                 + getSquareBracketWrappedArgument(expectedPartnerCourse.getPartnerCode().toString())
-                + UNNCESSARY_WHITESPACE
+                + UNNECESSARY_WHITESPACE
                 + getSquareBracketWrappedArgument(expectedPartnerCourse.getPartnerName().toString())
-                + UNNCESSARY_WHITESPACE
+                + UNNECESSARY_WHITESPACE
                 + getSquareBracketWrappedArgument(expectedPartnerCourse.getPartnerUnit().toString())
-                + UNNCESSARY_WHITESPACE
+                + UNNECESSARY_WHITESPACE
                 + getSquareBracketWrappedArgument(expectedPartnerCourse.getPartnerDescription().toString()),
             new PartnerCourseAddCommand(expectedPartnerCourse));
     }

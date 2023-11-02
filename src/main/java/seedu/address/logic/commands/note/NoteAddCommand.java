@@ -18,7 +18,7 @@ public class NoteAddCommand extends NoteCommand {
 
     // Also available in abstract class LocalCourseCommand to support polymorphism
     public static final String NOTE_ADD_MESSAGE_USAGE = COMMAND_WORD
-            + "add [content] [tags]: Adds a local course.";
+            + "add [content] [tags]: Adds a note.";
     public static final String ACTION_WORD = "add";
 
     public static final String MESSAGE_SUCCESS = "New note added: %1$s";

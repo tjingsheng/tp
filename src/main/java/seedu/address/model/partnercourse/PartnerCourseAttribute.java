@@ -1,14 +1,19 @@
 package seedu.address.model.partnercourse;
 
 /**
- * Enum for PartnerCourse
+ * Represents the attribute which is related to partner course.
  */
 public enum PartnerCourseAttribute {
     PARTNERCODE,
-    PARTNERNAME;
+    PARTNERNAME,
+    UNIVERSITY,
+    DESCRIPTION;
 
     public static final String MESSAGE_CONSTRAINTS =
             "There are only 2 attributes: partnercode and partnername.";
+
+    public static final String MESSAGE_CONSTRAINTS_SEARCH =
+            "There are only 3 attributes: partnercode, partnername and university.";
 
     /**
      * Returns true if the given attribute is valid.
@@ -19,6 +24,7 @@ public enum PartnerCourseAttribute {
         switch(test) {
         case ("PARTNERCODE"):
         case ("PARTNERNAME"):
+        case ("UNIVERSITY"):
             return true;
         default:
             return false;

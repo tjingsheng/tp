@@ -18,18 +18,16 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.SeplendidLogsCenter;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.localcourse.LocalCode;
-import seedu.address.model.localcourse.LocalCodeContainsKeywordsPredicate;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.localcourse.LocalCourseAttribute;
-import seedu.address.model.localcourse.LocalNameContainsKeywordsPredicate;
+import seedu.address.model.localcourse.LocalCourseContainsKeywordsPredicate;
 import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
 import seedu.address.model.notes.NoteTagContainsKeywordsPredicate;
 import seedu.address.model.partnercourse.PartnerCode;
-import seedu.address.model.partnercourse.PartnerCodeContainsKeywordsPredicate;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
-import seedu.address.model.partnercourse.PartnerNameContainsKeywordsPredicate;
+import seedu.address.model.partnercourse.PartnerCourseContainsKeywordsPredicate;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityName;
 import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
@@ -48,9 +46,11 @@ public class SeplendidModelManager implements SeplendidModel {
 
     private final UniversityCatalogue universityCatalogue;
     private final FilteredList<University> filteredUniversityCatalogue;
+    private final SortedList<University> sortedUniversityCatalogue;
 
     private final PartnerCourseCatalogue partnerCourseCatalogue;
     private final FilteredList<PartnerCourse> filteredPartnerCourseCatalogue;
+    private final SortedList<PartnerCourse> sortedPartnerCourseCatalogue;
 
     private final NoteCatalogue noteCatalogue;
     private final FilteredList<Note> filteredNoteCatalogue;
@@ -91,8 +91,10 @@ public class SeplendidModelManager implements SeplendidModel {
         sortedLocalCourseCatalogue = new SortedList<>(this.localCourseCatalogue.getLocalCourseList());
         this.partnerCourseCatalogue = new PartnerCourseCatalogue(partnerCourseCatalogue);
         filteredPartnerCourseCatalogue = new FilteredList<>(this.partnerCourseCatalogue.getPartnerCourseList());
+        sortedPartnerCourseCatalogue = new SortedList<>(this.partnerCourseCatalogue.getPartnerCourseList());
         this.universityCatalogue = new UniversityCatalogue(universityCatalogue);
         filteredUniversityCatalogue = new FilteredList<>(this.universityCatalogue.getUniversityList());
+        sortedUniversityCatalogue = new SortedList<>(this.universityCatalogue.getUniversityList());
         this.noteCatalogue = new NoteCatalogue(noteCatalogue);
         filteredNoteCatalogue = new FilteredList<>(this.noteCatalogue.getNoteList());
         this.mappingCatalogue = new MappingCatalogue(mappingCatalogue);
@@ -227,30 +229,19 @@ public class SeplendidModelManager implements SeplendidModel {
     }
 
     @Override
-    public void updatedSortedLocalList(Comparator<LocalCourse> localCourseComparator) {
+    public void updateSortedLocalList(Comparator<LocalCourse> localCourseComparator) {
         sortedLocalCourseCatalogue.setComparator(localCourseComparator);
     }
 
     /**
      * Checks if the local course exists.
      * @param attribute
-     * @param codeContainsKeywordsPredicate
-     * @param nameContainsKeywordsPredicate
+     * @param predicate
      */
     public void searchLocalCourses(LocalCourseAttribute attribute,
-                                   LocalCodeContainsKeywordsPredicate codeContainsKeywordsPredicate,
-                                   LocalNameContainsKeywordsPredicate nameContainsKeywordsPredicate) {
+                                   LocalCourseContainsKeywordsPredicate predicate) {
         requireNonNull(attribute);
-        if (attribute == LocalCourseAttribute.LOCALCODE) {
-            filteredLocalCourseCatalogue.setPredicate(codeContainsKeywordsPredicate);
-        } else {
-            filteredLocalCourseCatalogue.setPredicate(nameContainsKeywordsPredicate);
-        }
-    }
-
-    public void getSearchLocalCourseList(LocalCodeContainsKeywordsPredicate codeContainsKeywordsPredicate) {
-        requireNonNull(codeContainsKeywordsPredicate);
-        filteredLocalCourseCatalogue.setPredicate(codeContainsKeywordsPredicate);
+        filteredLocalCourseCatalogue.setPredicate(predicate);
     }
 
     //=========== FilteredLocalCourseList Accessors =============================================================
@@ -274,18 +265,12 @@ public class SeplendidModelManager implements SeplendidModel {
     /**
      * Checks if the local course exists.
      * @param attribute
-     * @param codeContainsKeywordsPredicate
-     * @param nameContainsKeywordsPredicate
+     * @param predicate
      */
     public void searchPartnerCourses(PartnerCourseAttribute attribute,
-                                     PartnerCodeContainsKeywordsPredicate codeContainsKeywordsPredicate,
-                                     PartnerNameContainsKeywordsPredicate nameContainsKeywordsPredicate) {
+                                     PartnerCourseContainsKeywordsPredicate predicate) {
         requireNonNull(attribute);
-        if (attribute == PartnerCourseAttribute.PARTNERCODE) {
-            filteredPartnerCourseCatalogue.setPredicate(codeContainsKeywordsPredicate);
-        } else {
-            filteredPartnerCourseCatalogue.setPredicate(nameContainsKeywordsPredicate);
-        }
+        filteredPartnerCourseCatalogue.setPredicate(predicate);
     }
 
     @Override
@@ -333,14 +318,19 @@ public class SeplendidModelManager implements SeplendidModel {
 
         partnerCourseCatalogue.removePartnerCourse(partnerCourse);
         updateFilteredPartnerCourseList(PREDICATE_SHOW_ALL_PARTNER_COURSES);
-
-        //how about university? - TBD: find a way to see whether the university has other courses
     }
 
-    /**
-     * Returns an unmodifiable view of the list of {@code LocalCourse} backed by the internal list of
-     * {@code versionedLocalCourseCatalogue}
-     */
+    @Override
+    public ObservableList<PartnerCourse> getSortedPartnerCourseList() {
+
+        return sortedPartnerCourseCatalogue;
+    }
+
+    @Override
+    public void updateSortedPartnerList(Comparator<PartnerCourse> partnerCourseComparator) {
+        sortedPartnerCourseCatalogue.setComparator(partnerCourseComparator);
+    }
+
     @Override
     public ObservableList<PartnerCourse> getFilteredPartnerCourseList() {
         return filteredPartnerCourseCatalogue;
@@ -417,6 +407,20 @@ public class SeplendidModelManager implements SeplendidModel {
         universityCatalogue.setUniversity(target, editedUniversity);
     }
 
+    @Override
+    public ObservableList<University> getSortedUniversityList() {
+
+        return sortedUniversityCatalogue;
+    }
+
+    @Override
+    public void updateSortedUniversityList(Comparator<University> universityComparator) {
+        sortedUniversityCatalogue.setComparator(universityComparator);
+    }
+
+
+
+
     //=========== FilteredUniversityList Accessors =============================================================
 
     @Override
@@ -471,8 +475,8 @@ public class SeplendidModelManager implements SeplendidModel {
     }
 
     @Override
-    public void deleteNote(Note target) {
-        noteCatalogue.removeNote(target);
+    public Note deleteNote(int target) {
+        return noteCatalogue.removeNote(target);
     }
 
     @Override

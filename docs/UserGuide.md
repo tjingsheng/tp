@@ -390,7 +390,7 @@ Lists all available partner universities, paginated if dataset is too huge.
 | ![university-list-ui](images/UniversityListUi.png) |
 
 ### 4.3.2. Search a university by attributes: `university search`
-Searches all available partner universities, paginated if dataset is too huge.
+Searches universities with the same keyword, paginated if dataset is too huge.
 **Format**: `university search [university]`
 
 **Example:**

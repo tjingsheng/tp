@@ -93,8 +93,7 @@ public class Note implements SeplendidDataType {
         }
 
         return otherNote != null
-                && otherNote.getContent().equals(getContent())
-                && otherNote.getIndex().equals(getIndex());
+                && otherNote.getContent().equals(getContent());
     }
 
     /**

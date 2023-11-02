@@ -65,7 +65,7 @@ public class UniqueNoteList implements Iterable<Note> {
      * Removes the equivalent note from the list.
      * The note must exist in the list.
      */
-    public Note remove(int toRemove) {
+    public Note remove(Integer toRemove) {
         requireNonNull(toRemove);
 
         for (int i = toRemove; i < internalList.size(); i++) {

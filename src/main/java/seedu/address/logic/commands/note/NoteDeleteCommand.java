@@ -30,7 +30,7 @@ public class NoteDeleteCommand extends NoteCommand {
      *
      * @param note The Note to be added into Storage.
      */
-    public NoteDeleteCommand(int note) {
+    public NoteDeleteCommand(Integer note) {
         super();
         requireNonNull(note);
         noteIndexToDelete = note;

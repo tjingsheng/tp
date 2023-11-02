@@ -10,6 +10,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
 import seedu.address.model.ReadOnlyMappingCatalogue;
 import seedu.address.model.ReadOnlyPartnerCourseCatalogue;
+import seedu.address.model.ReadOnlyUniversityCatalogue;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.mapping.Mapping;
@@ -71,10 +72,14 @@ public interface SeplendidLogic {
     ObservableList<PartnerCourse> getFilteredPartnerCourseCatalogue();
 
     Path getPartnerCourseCatalogueFilePath();
+    ObservableList<PartnerCourse> getSortedPartnerCourseCatalogue();
 
     //=========== Universityatalouge ============================================================================
+    ReadOnlyUniversityCatalogue getUniversityCatalogue();
     ObservableList<University> getFilteredUniversityCatalogue();
 
+    Path getUniversityeCatalogueFilePath();
+    ObservableList<University> getSortedUniversityCatalogue();
     //=========== NoteCatalouge ============================================================================
     ObservableList<Note> getFilteredNoteCatalogue();
 

@@ -46,7 +46,7 @@ public class LocalCourseSortCommand extends LocalCourseCommand {
     @Override
     public CommandResult execute(SeplendidModel seplendidModel) throws CommandException {
         requireNonNull(seplendidModel);
-        seplendidModel.updatedSortedLocalList(comparator);
+        seplendidModel.updateSortedLocalList(comparator);
         return new CommandResult(MESSAGE_SUCCESS,
                 UiUtil.ListViewModel.LOCAL_COURSE_SORT);
     }

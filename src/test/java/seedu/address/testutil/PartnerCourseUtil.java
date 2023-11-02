@@ -1,7 +1,10 @@
 package seedu.address.testutil;
 
+import java.util.Comparator;
+
 import seedu.address.logic.commands.PartnerCourseAddCommand;
 import seedu.address.logic.commands.PartnerCourseDeleteCommand;
+import seedu.address.logic.commands.PartnerCourseSortCommand;
 import seedu.address.model.partnercourse.PartnerCourse;
 
 /**
@@ -46,5 +49,22 @@ public class PartnerCourseUtil {
     public static String getPartnerCourseArgumentsForDeleteCommand(PartnerCourse partnerCourse) {
         return String.format("[%s] [%s]",
                 partnerCourse.getPartnerCode(), partnerCourse.getPartnerUniversity().getUniversityName());
+    }
+
+    /**
+     * Returns a sort command string for sorting the partnercourse list.
+     */
+    public static String getPartnerCourseSortCommandFrom(Comparator<PartnerCourse> partnerCourseComparator) {
+        return String.format("%s %s %s",
+                PartnerCourseSortCommand.COMMAND_WORD,
+                PartnerCourseSortCommand.ACTION_WORD,
+                getPartnerCourseArgumentsForSortCommand(partnerCourseComparator));
+    }
+
+    /**
+     * Returns the part of sort command string for the given comparator's details/
+     */
+    public static String getPartnerCourseArgumentsForSortCommand(Comparator<PartnerCourse> comparator) {
+        return String.format("[%s]", comparator.toString());
     }
 }

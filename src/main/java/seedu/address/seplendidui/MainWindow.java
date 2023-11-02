@@ -66,6 +66,7 @@ public class MainWindow extends UiPart<Stage> {
     public Stage getPrimaryStage() {
         return primaryStage;
     }
+
     /**
      * Fills up all the placeholders of this window.
      */
@@ -153,6 +154,9 @@ public class MainWindow extends UiPart<Stage> {
                 break;
             case UNIVERSITY_SORT:
                 itemListPanel.setDisplayList(seplendidLogic.getSortedUniversityCatalogue());
+                break;
+            case MAPPING_SORT:
+                itemListPanel.setDisplayList(seplendidLogic.getSortedMappingCatalogue());
                 break;
             default:
                 // do nothing

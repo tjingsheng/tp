@@ -197,6 +197,8 @@ public class SampleLocalCourses {
             + "Inclusion-Exclusion Principle. Number of relations on a set, number of injections from one finite set "
             + "to another, Diagonalisation proof: An infinite countable set has an uncountable power set; Algorithmic"
             + " proof: An infinite set has a countably infinite subset. Subsets of countable sets are countable."),
+        CS2010("CS2010", "Data Structures and Algorithms II",
+               "This course is a follow up to CS2040S."),
         CS2030("CS2030", "Programming Methodology II",
             "This course is a follow up to CS1010. It explores two modern programming paradigms, object-oriented "
             + "programming and functional programming. Through a series of integrated assignments, students will "
@@ -968,6 +970,15 @@ public class SampleLocalCourses {
             + " the methodology, techniques, and tools of assessing the security of the target systems. This course "
             + "contains a mix of technical-review seminars, testing-scoping meetings, and penetration testing "
             + "exercises, analysis, as well as reporting."),
+        IS1103("IS1103", "Ethics in Computing",
+               "This module gives an introduction to Ethics in the Computing domain. Students will learn about the "
+                   + "importance of Ethics in Computing policy-making and be able to make judgements and decisions "
+                   + "based on established ethical frameworks (such as Deontology, Consequentialism, Social Contract "
+                   + "Theory and Virtue Ethics). The objective is to develop students to be ethical computing "
+                   + "decision-makers who can analyse and explain their decisions in real-world policy-making "
+                   + "situations. Issues in emerging areas such as Digital Intellectual Property Rights, Artificial "
+                   + "Intelligence, Big Data, Social Media, Hacking, and interface design may also be discussed in "
+                   + "relation to Ethics."),
         IS1108("IS1108", "Digital Ethics and Data Privacy",
             "Course is designed to introduce students to the issues of digital ethics and data privacy faced by "
             + "individuals and organizations. It covers the ethical principles governing the behaviors and beliefs "

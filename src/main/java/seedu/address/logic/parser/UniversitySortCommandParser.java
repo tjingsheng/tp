@@ -6,7 +6,7 @@ import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty
 
 import java.util.Comparator;
 
-import seedu.address.logic.commands.UniversitySortCommand;
+import seedu.address.logic.commands.university.UniversitySortCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityAttribute;

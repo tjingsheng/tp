@@ -58,14 +58,6 @@ public class UniqueNoteList implements Iterable<Note> {
         requireAllNonNull(target, editedNote);
 
         int index = internalList.indexOf(target);
-        if (index == -1) {
-            throw new NoteNotFoundException();
-        }
-
-        if (!target.isSameNote(editedNote) && contains(editedNote)) {
-            throw new DuplicateNoteException();
-        }
-
         internalList.set(index, editedNote);
     }
 

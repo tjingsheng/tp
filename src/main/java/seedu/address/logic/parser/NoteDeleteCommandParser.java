@@ -4,7 +4,7 @@ import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_INDEX;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
-import seedu.address.logic.commands.NoteDeleteCommand;
+import seedu.address.logic.commands.note.NoteDeleteCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 

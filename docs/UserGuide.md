@@ -364,8 +364,12 @@ Lists all available partner courses.
 ### 4.2.2. Add a partnercourse: `partnercourse add`
 Adds partner course with university identified by `university`, course code identified by `partnercode`, 
 course name identified by `partnername`, credit units identified by `units` and 
-course description identified by `description`. \
-\
+course description identified by `description`. 
+
+<box type="info">
+    You are unable to add a partner course if the university does not exist in SEPlendid.
+</box>
+
 **Format**: `partnercourse add [university] [partnercode] [partnername] [units] [description]`
 
 **Example:**
@@ -434,6 +438,7 @@ Searches all available partner universities, paginated if dataset is too huge.
 
 ### 4.3.3. Sort universities by attributes: `university sort`
 Sorts universities according to `universityattribute` - `universityname`.
+
 **Format**: `university sort [universityname]`
 
 **Example**
@@ -604,38 +609,46 @@ contains the data of your previous SEPlendid home folder.
         <td><code>parameters</code></td>
     </tr>
     <tr>
-        <td rowspan="5"><code>localcourse</code></td>
+        <td rowspan="6"><code>localcourse</code></td>
         <td><code>list</code></td>
         <td> None.</td>
     </tr>
     <tr>
         <td><code>add</code></td>
-        <td><code>[localcode] [localname]</code></td>
+        <td><code>[localcode] [localname] [units] [description]</code></td>
     </tr>
     <tr>
         <td><code>delete</code></td>
         <td><code>[localcode]</code></td>
     </tr>
     <tr>
+        <td><code>update</code></td>
+        <td><code>[localcode] [attribute] [updatedValue]</code></td>
+    </tr>
+    <tr>
         <td><code>search</code></td>
         <td><code>[localcode] [localname]</code></td>
     </tr>
     <tr>
         <td><code>sort</code></td>
-        <td><code>[localcode] [localname]</code></td>
+        <td><code>[localcode/localname]</code></td>
     </tr>   
     <tr>
-        <td rowspan="5"><code>partnercourse</code></td>
+        <td rowspan="6"><code>partnercourse</code></td>
         <td><code>list</code></td>
         <td> None.</td>
     </tr>
     <tr>
         <td><code>add</code></td>
-        <td><code>[university] [partnercode] [partnername]</code></td>
+        <td><code>[university] [partnercode] [partnername] [units] [description]</code></td>
     </tr>
     <tr>
         <td><code>delete</code></td>
-        <td><code>[partnercode]</code></td>
+        <td><code>[university] [partnercode]</code></td>
+    </tr>
+    <tr>
+        <td><code>update</code></td>
+        <td><code>[university] [partnercode] [attribute] [updatedValue]</code></td>
     </tr>
     <tr>
         <td><code>search</code></td>
@@ -643,7 +656,7 @@ contains the data of your previous SEPlendid home folder.
     </tr>
     <tr>
         <td><code>sort</code></td>
-        <td><code>[partnercode] [partnername]</code></td>
+        <td><code>[university/partnercode/partnername]</code></td>
     </tr>
     <tr>
         <td rowspan="5"><code>mapping</code></td>

@@ -119,6 +119,7 @@ public class SeplendidModelManagerTest {
         assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredLocalCourseList().remove(0));
     }
 
+
     //partner courses
     @Test
     public void setPartnerCourseCatalogueFilePath_nullPath_throwsNullPointerException() {

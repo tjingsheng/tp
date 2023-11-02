@@ -67,6 +67,7 @@ public class TypicalObjects {
     public static final String INVALID_LOCAL_COURSE_NAME = " ";
     public static final Double INVALID_LOCAL_COURSE_UNIT = -1.0;
     public static final String INVALID_LOCAL_COURSE_ATTRIBUTE = "partnercode";
+    public static final String INVALID_PARTNER_COURSE_ATTRIBUTE = "localname";
 
     public static final String INVALID_PARTNER_COURSE_CODE = "$H23Y1";
     public static final String INVALID_PARTNER_COURSE_NAME = " ";
@@ -241,6 +242,7 @@ public class TypicalObjects {
     public static final University STANFORD = new University(new UniversityName("Stanford University"));
     public static final University WATERLOO = new University(new UniversityName("University of Waterloo"));
     public static final University SNU = new University(new UniversityName("Seoul National University"));
+    public static final University YONSEI = new University(new UniversityName("Yonsei University"));
     // Note
     public static final Note NOTE1 = new Note(new Content("Nanyang Technological University"), new Tag("university"));
     public static final Note NOTE2 = new Note(new Content("Application Deadline 1 December 2023"), new Tag("deadline"));
@@ -318,11 +320,12 @@ public class TypicalObjects {
     }
 
     public static List<PartnerCourse> getTypicalPartnerCourses() {
-        return new ArrayList<>(Arrays.asList(COMP1000, COMP2000, S0402SC, STAN3230));
+        return new ArrayList<>(Arrays.asList(COMP1000, S0402SC, COMP2000, STAN3230));
     }
 
     public static List<University> getTypicalUniversities() {
-        return new ArrayList<>(Arrays.asList(NTU, STANFORD));
+
+        return new ArrayList<>(Arrays.asList(NTU, STANFORD, SNU));
     }
 
     public static List<Note> getTypicalNotes() {

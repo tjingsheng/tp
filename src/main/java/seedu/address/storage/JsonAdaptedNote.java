@@ -22,17 +22,20 @@ public class JsonAdaptedNote {
 
     private final String content;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
+    private final Integer index;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
      */
     @JsonCreator
     public JsonAdaptedNote(@JsonProperty("content") String content,
-                             @JsonProperty("tags") List<JsonAdaptedTag> tags) {
+                           @JsonProperty("tags") List<JsonAdaptedTag> tags,
+                           @JsonProperty("index") Integer index) {
         this.content = content;
         if (tags != null) {
             this.tags.addAll(tags);
         }
+        this.index = index;
     }
 
     /**
@@ -43,6 +46,7 @@ public class JsonAdaptedNote {
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
+        index = source.getIndex();
     }
 
     /**
@@ -65,6 +69,7 @@ public class JsonAdaptedNote {
         final Content modelContent = new Content(content);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Note(modelContent, modelTags);
+        final Integer modelIndex = index;
+        return new Note(modelContent, modelTags, modelIndex);
     }
 }

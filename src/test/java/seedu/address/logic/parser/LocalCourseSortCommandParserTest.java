@@ -43,7 +43,7 @@ public class LocalCourseSortCommandParserTest {
     }
 
     @Test
-    void parse_argumentNotClosedOrEmpty_failure() {
+    public void parse_argumentNotClosedOrEmpty_failure() {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 LocalCourseSortCommand.LOCAL_COURSE_SORT_MESSAGE_USAGE);
 

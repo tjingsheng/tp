@@ -8,7 +8,7 @@
     <padding>
         <Insets top="-1" right="8" bottom="-1" left="8"/>
     </padding>
-    <ScrollPane fitToWidth="true">
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
         <VBox fx:id="itemDetailView"
               VBox.vgrow="ALWAYS"
               styleClass="detail-card"/>

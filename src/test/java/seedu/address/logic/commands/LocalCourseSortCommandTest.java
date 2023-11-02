@@ -52,7 +52,7 @@ public class LocalCourseSortCommandTest {
     public void execute_sortByLocalCode_success() {
         LocalCourseComparatorByLocalCode comparator = new LocalCourseComparatorByLocalCode();
         LocalCourseSortCommand localCourseSortCommand = new LocalCourseSortCommand(comparator);
-        expectedModel.updatedSortedLocalList(comparator);
+        expectedModel.updateSortedLocalList(comparator);
 
         assertSeplendidCommandSuccess(localCourseSortCommand,
                                       model,
@@ -72,7 +72,7 @@ public class LocalCourseSortCommandTest {
     public void execute_sortByLocalName_success() {
         LocalCourseComparatorByLocalName comparator = new LocalCourseComparatorByLocalName();
         LocalCourseSortCommand localCourseSortCommand = new LocalCourseSortCommand(comparator);
-        expectedModel.updatedSortedLocalList(comparator);
+        expectedModel.updateSortedLocalList(comparator);
 
         assertSeplendidCommandSuccess(localCourseSortCommand,
                                       model,
@@ -100,17 +100,24 @@ public class LocalCourseSortCommandTest {
 
         // same object -> returns true
         assertEquals(localCourseSortCommandByLocalCode, localCourseSortCommandByLocalCode);
+        assertEquals(localCourseComparatorByLocalName, localCourseComparatorByLocalName);
 
         // same values -> returns true
         LocalCourseSortCommand localCourseSortCommandByLocalCodeCopy = new LocalCourseSortCommand(
             localCourseComparatorByLocalCode);
         assertEquals(localCourseSortCommandByLocalCode, localCourseSortCommandByLocalCodeCopy);
 
+        LocalCourseSortCommand localCourseSortCommandByLocalNameCopy = new LocalCourseSortCommand(
+                localCourseComparatorByLocalName);
+        assertEquals(localCourseSortCommandByLocalName, localCourseSortCommandByLocalNameCopy);
+
         // different types -> returns false
         assertNotEquals(1, localCourseSortCommandByLocalCode);
+        assertNotEquals(4.12, localCourseSortCommandByLocalName);
 
         // null -> returns false
         assertNotEquals(null, localCourseSortCommandByLocalCode);
+        assertNotEquals(null, localCourseSortCommandByLocalName);
 
         // different task -> returns false
         assertNotEquals(localCourseSortCommandByLocalCode, localCourseSortCommandByLocalName);

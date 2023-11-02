@@ -7,8 +7,10 @@ import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_OBJECT;
+import static seedu.address.testutil.TypicalObjects.INVALID_LOCAL_COURSE_ATTRIBUTE;
 import static seedu.address.testutil.TypicalObjects.INVALID_LOCAL_COURSE_CODE;
 import static seedu.address.testutil.TypicalObjects.INVALID_LOCAL_COURSE_NAME;
+import static seedu.address.testutil.TypicalObjects.INVALID_PARTNER_COURSE_ATTRIBUTE;
 import static seedu.address.testutil.TypicalObjects.INVALID_PARTNER_COURSE_CODE;
 import static seedu.address.testutil.TypicalObjects.INVALID_PARTNER_COURSE_NAME;
 import static seedu.address.testutil.TypicalObjects.INVALID_UNIVERSITY_NAME;
@@ -27,8 +29,10 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.localcourse.LocalCode;
+import seedu.address.model.localcourse.LocalCourseAttribute;
 import seedu.address.model.localcourse.LocalName;
 import seedu.address.model.partnercourse.PartnerCode;
+import seedu.address.model.partnercourse.PartnerCourseAttribute;
 import seedu.address.model.partnercourse.PartnerName;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
@@ -365,5 +369,85 @@ public class ParserUtilTest {
     @Test
     public void areValuesEnclosedAndNonEmpty_trailingWhiteSpaceValue_returnsTrue() throws Exception {
         assertTrue(areValuesEnclosedAndNonEmpty("[CS2103T] [Software Engineering]       "));
+    }
+
+    @Test
+    public void parseLocalCourseAttribute_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseLocalCourseAttribute((String) null));
+    }
+
+    @Test
+    public void parseLocalCourseAttribute_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttribute(INVALID_LOCAL_COURSE_ATTRIBUTE));
+    }
+
+    @Test
+    public void parseLocalCourseAttribute_validValueWithoutWhitespaceAndAllCaps_returnsLocalCourseAttribute()
+            throws Exception {
+        LocalCourseAttribute expectedLocalCourseAttribute = LocalCourseAttribute.LOCALCODE;
+        assertEquals(expectedLocalCourseAttribute, ParserUtil.parseLocalCourseAttribute("LOCALCODE"));
+    }
+
+    @Test
+    public void parseLocalCourseAttribute_validValueWithWhitespace_returnsTrimmedLocalCourseAttribute()
+            throws Exception {
+        String localCourseAttributeWithWhitespace = WHITESPACE + "localNAME" + WHITESPACE;
+        LocalCourseAttribute expectedLocalCourseAttribute = LocalCourseAttribute.LOCALNAME;
+        assertEquals(expectedLocalCourseAttribute,
+                ParserUtil.parseLocalCourseAttribute(localCourseAttributeWithWhitespace));
+    }
+
+    @Test
+    public void parsePartnerCourseAttributeForSort_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort((String) null));
+    }
+
+    @Test
+    public void parsePartnerCourseAttributeForSort_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () ->
+                ParserUtil.parsePartnerCourseAttributeForSort(INVALID_PARTNER_COURSE_ATTRIBUTE));
+    }
+
+    @Test
+    public void parsePartnerCourseAttributeForSort_validValueWithoutWhitespaceAndAllCaps_returnsPartnerCourseAttribute()
+            throws Exception {
+        PartnerCourseAttribute expectedPartnerCourseAttribute = PartnerCourseAttribute.PARTNERCODE;
+        assertEquals(expectedPartnerCourseAttribute, ParserUtil.parsePartnerCourseAttributeForSort("partnErcoDe"));
+    }
+
+    @Test
+    public void parsePartnerCourseAttributeForSort_validValueWithWhitespace_returnsTrimmedPartnerCourseAttribute()
+            throws Exception {
+        String partnerCourseAttributeWithWhitespace = WHITESPACE + "PartnerName" + WHITESPACE;
+        PartnerCourseAttribute expectedPartnerCourseAttribute = PartnerCourseAttribute.PARTNERNAME;
+        assertEquals(expectedPartnerCourseAttribute,
+                ParserUtil.parsePartnerCourseAttributeForSort(partnerCourseAttributeWithWhitespace));
+    }
+
+    @Test
+    public void parsePartnerCourseAttributeForSearch_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parsePartnerCourseAttributeForSearch((String) null));
+    }
+
+    @Test
+    public void parsePartnerCourseAttributeForSearch_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () ->
+                ParserUtil.parsePartnerCourseAttributeForSearch(INVALID_PARTNER_COURSE_ATTRIBUTE));
+    }
+
+    @Test
+    public void parsePartnerCourseAttributeForSearch_validValueWithoutWhitespaceAndAllCaps_returnsPartnerCourseAttribute()
+            throws Exception {
+        PartnerCourseAttribute expectedPartnerCourseAttribute = PartnerCourseAttribute.PARTNERCODE;
+        assertEquals(expectedPartnerCourseAttribute, ParserUtil.parsePartnerCourseAttributeForSearch("partnErcoDe"));
+    }
+
+    @Test
+    public void parsePartnerCourseAttributeForSearch_validValueWithWhitespace_returnsTrimmedPartnerCourseAttribute()
+            throws Exception {
+        String partnerCourseAttributeWithWhitespace = WHITESPACE + "PartnerName" + WHITESPACE;
+        PartnerCourseAttribute expectedPartnerCourseAttribute = PartnerCourseAttribute.PARTNERNAME;
+        assertEquals(expectedPartnerCourseAttribute,
+                ParserUtil.parsePartnerCourseAttributeForSearch(partnerCourseAttributeWithWhitespace));
     }
 }

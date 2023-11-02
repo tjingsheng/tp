@@ -197,7 +197,7 @@ public class PartnerCourseDeleteCommandTest {
         }
 
         @Override
-        public void updatedSortedLocalList(Comparator<LocalCourse> localCourseComparator) {
+        public void updateSortedLocalList(Comparator<LocalCourse> localCourseComparator) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -234,6 +234,16 @@ public class PartnerCourseDeleteCommandTest {
 
         @Override
         public void deletePartnerCourse(PartnerCourse partnerCourse) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<PartnerCourse> getSortedPartnerCourseList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateSortedPartnerList(Comparator<PartnerCourse> partnerCourseComparator) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -300,7 +310,7 @@ public class PartnerCourseDeleteCommandTest {
         }
 
         @Override
-        public void deleteNote(Note note) {
+        public Note deleteNote(int noteIndex) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -338,6 +348,16 @@ public class PartnerCourseDeleteCommandTest {
 
         @Override
         public void setUniversity(University target, University editedUniversity) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<University> getSortedUniversityList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateSortedUniversityList(Comparator<University> universityComparator) {
             throw new AssertionError("This method should not be called.");
         }
 

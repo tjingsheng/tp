@@ -90,8 +90,8 @@ public class NoteCatalogue implements ReadOnlyNoteCatalogue {
      * Removes {@code toRemove} from this {@code NoteCatalogue}.
      * {@code toRemove} must exist in the note catalogue.
      */
-    public void removeNote(Note toRemove) {
-        notes.remove(toRemove);
+    public Note removeNote(int toRemove) {
+        return notes.remove(toRemove);
     }
 
     //// util methods

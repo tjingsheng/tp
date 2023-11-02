@@ -46,9 +46,11 @@ public class SeplendidModelManager implements SeplendidModel {
 
     private final UniversityCatalogue universityCatalogue;
     private final FilteredList<University> filteredUniversityCatalogue;
+    private final SortedList<University> sortedUniversityCatalogue;
 
     private final PartnerCourseCatalogue partnerCourseCatalogue;
     private final FilteredList<PartnerCourse> filteredPartnerCourseCatalogue;
+    private final SortedList<PartnerCourse> sortedPartnerCourseCatalogue;
 
     private final NoteCatalogue noteCatalogue;
     private final FilteredList<Note> filteredNoteCatalogue;
@@ -89,8 +91,10 @@ public class SeplendidModelManager implements SeplendidModel {
         sortedLocalCourseCatalogue = new SortedList<>(this.localCourseCatalogue.getLocalCourseList());
         this.partnerCourseCatalogue = new PartnerCourseCatalogue(partnerCourseCatalogue);
         filteredPartnerCourseCatalogue = new FilteredList<>(this.partnerCourseCatalogue.getPartnerCourseList());
+        sortedPartnerCourseCatalogue = new SortedList<>(this.partnerCourseCatalogue.getPartnerCourseList());
         this.universityCatalogue = new UniversityCatalogue(universityCatalogue);
         filteredUniversityCatalogue = new FilteredList<>(this.universityCatalogue.getUniversityList());
+        sortedUniversityCatalogue = new SortedList<>(this.universityCatalogue.getUniversityList());
         this.noteCatalogue = new NoteCatalogue(noteCatalogue);
         filteredNoteCatalogue = new FilteredList<>(this.noteCatalogue.getNoteList());
         this.mappingCatalogue = new MappingCatalogue(mappingCatalogue);
@@ -225,7 +229,7 @@ public class SeplendidModelManager implements SeplendidModel {
     }
 
     @Override
-    public void updatedSortedLocalList(Comparator<LocalCourse> localCourseComparator) {
+    public void updateSortedLocalList(Comparator<LocalCourse> localCourseComparator) {
         sortedLocalCourseCatalogue.setComparator(localCourseComparator);
     }
 
@@ -314,14 +318,19 @@ public class SeplendidModelManager implements SeplendidModel {
 
         partnerCourseCatalogue.removePartnerCourse(partnerCourse);
         updateFilteredPartnerCourseList(PREDICATE_SHOW_ALL_PARTNER_COURSES);
-
-        //how about university? - TBD: find a way to see whether the university has other courses
     }
 
-    /**
-     * Returns an unmodifiable view of the list of {@code LocalCourse} backed by the internal list of
-     * {@code versionedLocalCourseCatalogue}
-     */
+    @Override
+    public ObservableList<PartnerCourse> getSortedPartnerCourseList() {
+
+        return sortedPartnerCourseCatalogue;
+    }
+
+    @Override
+    public void updateSortedPartnerList(Comparator<PartnerCourse> partnerCourseComparator) {
+        sortedPartnerCourseCatalogue.setComparator(partnerCourseComparator);
+    }
+
     @Override
     public ObservableList<PartnerCourse> getFilteredPartnerCourseList() {
         return filteredPartnerCourseCatalogue;
@@ -398,6 +407,20 @@ public class SeplendidModelManager implements SeplendidModel {
         universityCatalogue.setUniversity(target, editedUniversity);
     }
 
+    @Override
+    public ObservableList<University> getSortedUniversityList() {
+
+        return sortedUniversityCatalogue;
+    }
+
+    @Override
+    public void updateSortedUniversityList(Comparator<University> universityComparator) {
+        sortedUniversityCatalogue.setComparator(universityComparator);
+    }
+
+
+
+
     //=========== FilteredUniversityList Accessors =============================================================
 
     @Override
@@ -452,8 +475,8 @@ public class SeplendidModelManager implements SeplendidModel {
     }
 
     @Override
-    public void deleteNote(Note target) {
-        noteCatalogue.removeNote(target);
+    public Note deleteNote(int target) {
+        return noteCatalogue.removeNote(target);
     }
 
     @Override

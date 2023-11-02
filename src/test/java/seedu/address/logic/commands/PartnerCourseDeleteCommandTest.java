@@ -67,7 +67,7 @@ public class PartnerCourseDeleteCommandTest {
                 COMP1000.getPartnerCode(), COMP1000.getPartnerUniversity().getUniversityName()).execute(modelStub);
 
         assertEquals(String.format(PartnerCourseDeleteCommand.MESSAGE_SUCCESS, Messages.format(COMP1000)),
-                     commandResult.getFeedbackToUser());
+                commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(COMP2000), modelStub.partnerCoursesAdded);
     }
 
@@ -80,9 +80,9 @@ public class PartnerCourseDeleteCommandTest {
         SeplendidModelStub modelStub = new SeplendidModelStubWithPartnerCourse(validPartnerCourse);
 
         assertThrows(
-            CommandException.class,
-            PartnerCourseDeleteCommand.MESSAGE_NONEXISTENT_PARTNER_COURSE, (
-            ) -> partnerCourseDeleteCommand.execute(modelStub));
+                CommandException.class,
+                PartnerCourseDeleteCommand.MESSAGE_NONEXISTENT_PARTNER_COURSE, (
+                ) -> partnerCourseDeleteCommand.execute(modelStub));
     }
 
     @Test
@@ -141,6 +141,7 @@ public class PartnerCourseDeleteCommandTest {
                                        LocalCourseContainsKeywordsPredicate predicate) {
             throw new AssertionError("This method should not be called.");
         }
+
         @Override
         public Path getLocalCourseCatalogueFilePath() {
             throw new AssertionError("This method should not be called.");
@@ -321,7 +322,7 @@ public class PartnerCourseDeleteCommandTest {
 
         @Override
         public void getSearchUniversityIfExists(
-            UniversityNameContainsKeywordsPredicate universityNameContainsKeywordsPredicate
+                UniversityNameContainsKeywordsPredicate universityNameContainsKeywordsPredicate
         ) {
             throw new AssertionError("This method should not be called.");
         }
@@ -463,6 +464,15 @@ public class PartnerCourseDeleteCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        @Override
+        public ObservableList<Mapping> getSortedMappingList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateSortedMappingList(Comparator<Mapping> mappingComparator) {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**

@@ -8,7 +8,7 @@ import javafx.collections.ObservableList;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.mapping.Mapping;
-import seedu.address.model.notes.Note;
+import seedu.address.model.note.Note;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.person.Person;
 import seedu.address.model.university.University;
@@ -22,6 +22,7 @@ public class Messages {
     public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command";
     public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Invalid command format! \n%1$s";
     public static final String MESSAGE_INVALID_PERSON_DISPLAYED_INDEX = "The person index provided is invalid";
+    public static final String MESSAGE_EMPTY_LIST = "Command did not return any results";
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
     public static final String MESSAGE_DUPLICATE_FIELDS =
         "Multiple values specified for the following single-valued field(s): ";
@@ -90,6 +91,10 @@ public class Messages {
      * @return
      */
     public static <T> String format(ObservableList<T> observableList) {
+        if (observableList.isEmpty()) {
+            return MESSAGE_EMPTY_LIST;
+        }
+
         T item = observableList.get(0);
         if (item instanceof University) {
             final StringBuilder builder = new StringBuilder("UniversityName: ");
@@ -132,10 +137,10 @@ public class Messages {
                     .collect(Collectors.joining(", "));
             builder.append(partnerCourses);
             return builder.toString();
+        } else {
+            // This line should not be reached.
+            return "default";
         }
-        return "default";
-
-
     }
     /**
      * Formats the {@code partnerCourse} for display to the user.

@@ -11,8 +11,8 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.SeplendidArgumentMap;
 import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.notes.Content;
-import seedu.address.model.notes.Note;
+import seedu.address.model.note.Content;
+import seedu.address.model.note.Note;
 import seedu.address.model.tag.Tag;
 
 /**

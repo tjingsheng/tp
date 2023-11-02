@@ -25,7 +25,7 @@ public class MappingAttributeContainsKeywordPredicate implements Predicate<Mappi
     private BiFunction<? super PartnerCode, ? super UniversityName, ? extends
             Optional<? extends PartnerCourse>> getPartnerCourseIfExists;
 
-    private boolean isgetLocalPartnerCourseInitialised = false;
+    private boolean isGetLocalPartnerCourseInitialised = false;
 
     /**
      * Constructor for MappingAttributeContainsKeywordPredicate.
@@ -47,7 +47,7 @@ public class MappingAttributeContainsKeywordPredicate implements Predicate<Mappi
                                                         Optional<? extends PartnerCourse>> getPartnerCourseIfExists) {
         this.getLocalCourseIfExists = getLocalCourseIfExists;
         this.getPartnerCourseIfExists = getPartnerCourseIfExists;
-        isgetLocalPartnerCourseInitialised = true;
+        isGetLocalPartnerCourseInitialised = true;
     }
 
     /**
@@ -70,14 +70,14 @@ public class MappingAttributeContainsKeywordPredicate implements Predicate<Mappi
         case LOCALCODE:
             return isQueryContainedInLocalCode(keyword, mapping);
         case LOCALNAME:
-            if (!isgetLocalPartnerCourseInitialised) {
+            if (!isGetLocalPartnerCourseInitialised) {
                 break;
             }
             return isQueryContainedInLocalName(keyword, mapping, getLocalCourseIfExists);
         case PARTNERCODE:
             return isQueryContainedInPartnerCode(keyword, mapping);
         case PARTNERNAME:
-            if (!isgetLocalPartnerCourseInitialised) {
+            if (!isGetLocalPartnerCourseInitialised) {
                 break;
             }
             return isQueryContainedInPartnerName(keyword, mapping, getPartnerCourseIfExists);
@@ -120,7 +120,7 @@ public class MappingAttributeContainsKeywordPredicate implements Predicate<Mappi
                                                 Function<? super LocalCode, ? extends
                                                         Optional<? extends LocalCourse>> getLocalCourseIfExists) {
         String localName = getLocalCourseIfExists.apply(mapping.getLocalCode())
-                .map(pc -> pc.getLocalName().getValue()).orElse("");
+                .map(lc -> lc.getLocalName().getValue()).orElse("");
         return localName.toLowerCase().contains(query.toLowerCase());
     }
 
@@ -155,7 +155,9 @@ public class MappingAttributeContainsKeywordPredicate implements Predicate<Mappi
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).add("keyword", keyword).toString();
+        return new ToStringBuilder(this)
+                .add("attribute", attribute)
+                .add("keyword", keyword).toString();
     }
 }
 

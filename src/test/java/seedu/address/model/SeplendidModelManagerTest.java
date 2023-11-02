@@ -38,7 +38,11 @@ public class SeplendidModelManagerTest {
         assertEquals(new UserPrefs(), modelManager.getUserPrefs());
         assertEquals(new GuiSettings(), modelManager.getGuiSettings());
         assertEquals(new LocalCourseCatalogue(), new LocalCourseCatalogue(modelManager.getLocalCourseCatalogue()));
-        // Developers note: Add for appropriate catalogues
+        assertEquals(new PartnerCourseCatalogue(),
+                    new PartnerCourseCatalogue(modelManager.getPartnerCourseCatalogue()));
+        assertEquals(new UniversityCatalogue(), new UniversityCatalogue(modelManager.getUniversityCatalogue()));
+        assertEquals(new MappingCatalogue(), new MappingCatalogue(modelManager.getMappingCatalogue()));
+        assertEquals(new NoteCatalogue(), new NoteCatalogue(modelManager.getNoteCatalogue()));
     }
 
     @Test

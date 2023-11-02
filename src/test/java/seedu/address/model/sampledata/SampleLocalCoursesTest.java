@@ -20,7 +20,7 @@ public class SampleLocalCoursesTest {
     @Test
     public void getSampleLocalCourses_returnsCorrectNumberOfCourses() {
         LocalCourse[] sampleLocalCourses = SampleLocalCourses.getSampleLocalCourses();
-        assertEquals(163, sampleLocalCourses.length);
+        assertEquals(165, sampleLocalCourses.length);
     }
 
     @Test

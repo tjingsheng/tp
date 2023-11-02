@@ -98,21 +98,26 @@ e.g. `localcourse sort [localname]` will sort the list of local courses by their
 | `note`          | A note to keep track of items                      |
 
 Each of these data types have certain attributes. These are the columns or data that will be displayed for each 
-command group: \
+command group: 
+
 `localcourse`:
 
-| Attribute   | Description                      |
-|-------------|----------------------------------|
-| `localcode` | Course code for the local course |
-| `localname` | Name of the local course         |
+| Attribute          | Description                          |
+|--------------------|--------------------------------------|
+| `localcode`        | Course code for the local course     |
+| `localname`        | Name of the local course             |
+| `localunit`        | Number of units  of the local course |
+| `localdescription` | Description of the local course      |
 
 `partnercourse`:
 
-| Attribute     | Description                                        |
-|---------------|----------------------------------------------------|
-| `partnercode` | Course code for the partner course                 |
-| `partnername` | Name of the partner course                         |
-| `university`  | The partner university offering the partner course |
+| Attribute            | Description                                        |
+|----------------------|----------------------------------------------------|
+| `partnercode`        | Course code for the partner course                 |
+| `partnername`        | Name of the partner course                         |
+| `university`         | The partner university offering the partner course |
+| `partnerunit`        | Number of units  of the partner course             |
+| `partnerdescription` | Description of the partner course                  |
 
 
 `mapping`:
@@ -230,7 +235,7 @@ Key takeaways from this section:
 
 ## 4.1. Commands for localcourse
 ### 4.1.1. List all localcourses: `localcourse list`
-Lists all available local courses, paginated if dataset is too huge.
+Lists all available localcourses, paginated if dataset is too huge.
 
 **Format**: `localcourse list`
 
@@ -239,43 +244,56 @@ Lists all available local courses, paginated if dataset is too huge.
 |------------------------------------------------------|
 | ![localcourse-list-ui](images/LocalcourseListUi.png) |
 
-### 4.1.2. Add a local course: `localcourse add`
-Adds local course with course code identified by `localcode` and course name identified by `localname`.
-**Format**: `localcourse add [localcode] [localname] [units]`
+### 4.1.2. Add a localcourse: `localcourse add`
+Adds localcourse with course code identified by `localcode` and course name identified by `localname`.
+
+**Format**: `localcourse add [localcode] [localname] [localunit] [localdescription]`
 
 **Example:**
-| `localcourse add [CS1234] [Programming Fun]`       |
-|----------------------------------------------------|
+| `localcourse add [CS1234] [Programming Fun] [4.0] [Fun module about python]` |
+|------------------------------------------------------------------------------|
 | ![localcourse-add-ui](images/LocalcourseAddUi.png) |
 
-### 4.1.3. Delete a local course: `localcourse delete`
-Deletes local course with course code identified by `localcode`.
-**Format**: `localcourse delete [localcode] [localname] [units]`
+### 4.1.3. Delete a localcourse: `localcourse delete`
+Deletes localcourse with course code identified by `localcode`.
+
+**Format**: `localcourse delete [localcode]`
 
 **Example:**
 | `localcourse delete [CS1234]`                            |
 |----------------------------------------------------------|
 | ![localcourse-delete-ui](images/LocalcourseDeleteUi.png) |
 
-### 4.1.4. Search a local course by attributes: `localcourse search`
-Searches local course with course code identified by `localcode` or `localname`.
+### 4.1.4. Update a localcourse: `localcourse update`
+Updates `localcourseattribute` of localcourse, with course code identified by `localcode`, with updated value.
+
+`localcourseattribute` - `localcode`, `localname`, `localunit`, `localdescription`
+
+**Format**: `localcourse update [localcode] [localcourseattribute] [updatedValue]`
+
+**Example**
+<insert image>
+
+### 4.1.5. Search a localcourse by attributes: `localcourse search`
+Searches localcourse with course code identified by `localcode` or `localname`.
+
 **Format**: `localcourse search [localcode]` \
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `localcourse search [localname]`
 
 **Example:**
 <insert image>
 
-### 4.1.5.: Sort a local course by attributes: `localcourse sort`
-Sorts local course with course code identified by `localcode` or `localname`.
-**Format**: `localcourse sort [localcode]` \
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `localcourse sort [localname]`
+### 4.1.6.: Sort localcourses by attributes: `localcourse sort`
+Sorts localcourses according to `localcourseattribute` - `localcode` or `localname`.
+
+**Format**: `localcourse sort [localcourseattribute]` 
 
 **Example:**
 <insert image>
 
 ## 4.2. Commands for partnercourse
 ### 4.2.1. List all partnercourses: `partnercourse list`
-Lists all available partner courses, paginated if dataset is too huge.
+Lists all available partnercourses, paginated if dataset is too huge.
 **Format**: `partnercourse list`
 
 **Example:**
@@ -284,38 +302,51 @@ Lists all available partner courses, paginated if dataset is too huge.
 | ![partnercourse-list-ui](images/PartnercourseListUi.png) |
 
 ### 4.2.2 Add a partnercourse: `partnercourse add`
-Adds partner course with course code identified by `partnercode` and course name identified by `partnername`, 
+Adds a partnercourse with course code identified by `partnercode`, course name identified by `partnername`, number of 
+units identified by `partnerunit`, description identified by `partnerdescription` 
 which is offered by partner `university`.
-**Format**: `partnercourse add [partnercode] [partnername] [units]`
+
+**Format**: `partnercourse add [university] [partnercode] [partnername] [partnerunit] [partnerdescription]`
 
 **Example:**
-| `partnercourse add [University of Toronto] [ROB311] [Artificial Intelligence]` |
-|--------------------------------------------------------------------------------|
-| ![partnercourse-add-ui](images/PartnercourseAddUi.png)                         |
+| `partnercourse add [University of Toronto] [ROB311] [Artificial Intelligence] [5.0] [Introduction module to AI]` |
+|------------------------------------------------------------------------------------------------------------------|
+| ![partnercourse-add-ui](images/PartnercourseAddUi.png)                                                           |
 
 ### 4.2.3. Delete a partnercourse: `partnercourse delete`
-Deletes partner course with course code identified by `partnercode` and course name identified by `partnername`, 
+Deletes a partnercourse with course code identified by `partnercode` and course name identified by `partnername`, 
 which is offered by partner `university`.
 **Format**: `partnercourse delete [partnercode]`
 
 **Example:**
-| `partnercourse delete [ROB311]`      |
+| `partnercourse delete [ROB311]`                              |
 |--------------------------------------------------------------|
 | ![partnercourse-delete-ui](images/PartnercourseDeleteUi.png) |
 
-### 4.2.4. Search a partnercourse by attributes: `partnercourse search`
+### 4.2.4. Update a partnercourse: `partnercourse update`
+Updates `partnercourseattribute` of partnercourse, with course code identified by `universityname` and `partnercode`, with updated value.
+
+`partnercourseattribute` - `partnercode`, `partnername`, `partnerunit`, `partnerdescription`
+
+**Format**: `partnercourse update [universityname] [partnercode] [partnercourseattribute] [updatedValue]`
+
+**Example**
+<insert image>
+
+### 4.2.5. Search a partnercourse by attributes: `partnercourse search`
 Searches partnercourse with course name identified by `partnername`.
 **Format**: `partnercourse search [partnercode]` \
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `partnercourse search [partnername]`
 
 **Example:**
 
-### 4.2.5. Sort a partnercourse by attributes: `partnercourse sort`
-Sorts partnercourse with course code identified by partnercode.
-**Format**: `partnercourse search [partnercode]` \
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `partnercourse sort [partnername]`
+### 4.2.6. Sort partnercourses by attributes: `partnercourse sort`
+Sorts partnercourse according to `partnercourseattribute` - `university`, `partnercode` or `partnername`.
+
+**Format**: `partnercourse sort [partnercourseattribute]`
 
 **Example:**
+<insert image>
 
 ## 4.3. Commands for universities
 ### 4.3.1. List all universities: `university list`
@@ -333,8 +364,8 @@ Searches all available partner universities, paginated if dataset is too huge.
 
 **Example:**
 
-### 4.3.3. Sort a university by attributes: `university sort`
-Sorts universities with university name identified by `universityname`.
+### 4.3.3. Sort universities by attributes: `university sort`
+Sorts universities according to `universityattribute` - `universityname`.
 **Format**: `university sort [universityname]`
 
 **Example:**

@@ -36,9 +36,9 @@
                 <StackPane VBox.vgrow="NEVER"
                            fx:id="resultBoxPlaceholder"
                            styleClass="primary-background-color"
-                           minHeight="120"
-                           prefHeight="120"
-                           maxHeight="120">
+                           minHeight="200"
+                           prefHeight="200"
+                           maxHeight="200">
                     <padding>
                         <Insets top="10" right="20" bottom="10" left="20"/>
                     </padding>

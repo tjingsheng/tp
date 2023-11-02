@@ -48,7 +48,8 @@
      - 4.5.2. [Add a note: `note add`](#4-5-2-add-a-note-note-add)
      - 4.5.3. [Delete a note: `note delete`](#4-5-3-delete-a-note-note-delete)
      - 4.5.4. [Update a note: `note update`](#4-5-4-update-a-note-note-update)
-     - 4.5.5. [Tag a note: 'note'](#4-5-5-tag-a-note-note)
+     - 4.5.5. [Tag a note: `note tag`](#4-5-5-tag-a-note-note-tag)
+     - 4.5.6. [Clear tag a note: `note cleartag`](#4-5-6-clear-tags-of-a-note-note-cleartag)
    - 4.6. [Viewing help : `help`](#4-5-6-viewing-help--help)
    - 4.7. [Saving the data](#4-5-7-saving-the-data)
 5. [FAQ](#5-faq)
@@ -458,7 +459,7 @@ Sorts all the mappings by the specified attribute (one of `localcode`, `localnam
 
 ## 4.5. Commands for notes
 ### 4.5.1. List all notes: `note list`
-Lists all notes, paginated if dataset is too huge.
+Lists all notes that you have.
 **Format:** `note list`
 
 **Example:**
@@ -468,10 +469,11 @@ Lists all notes, paginated if dataset is too huge.
 
 ### 4.5.2. Add a note: `note add`
 Adds note with content as `[content]` and tags it with `[tag]`.
+
 **Format:** `note add [content] [tag]`
 
 **Example:**
-| `note add [You can do this!] [self-motivation]` |
+| `note add [You can do this!] [motivation]` |
 |-------------------------------------------------|
 | ![note-add-ui](images/NoteAddUi.png)            |
 
@@ -480,24 +482,39 @@ Deletes note with index of `index`.
 **Format:** `note delete [index]`
 
 **Example:**
+| `note delete [3]` |
+|-----------------------------------------------------------------------|
+| ![note-delete-ui](images/NoteDeleteUi.png)
 
 ### 4.5.4. Update a note: `note update`
 Updates note with index `[index]` and changes its content to be `[content]`.
+
 **Format:** `note update [index] [content]`
 
 **Example:**
-| `note update [1] [Exchange Application Deadline\n 25 September 2023]` |
+| `note update [1] [Exchange Application Deadline: 25 September 2023]` |
 |-----------------------------------------------------------------------|
 | ![note-update-ui](images/NoteUpdateUi.png)                            |
 
-### 4.5.5. Tag a note: 'note'
-Updates note with index `[index]` and changes its tags to be `[tag]`.
+### 4.5.5. Tag a note: `note tag`
+Updates note with index `[index]` and adds `[tag]` tag to the note.
+
 **Format:** `note tag [index] [tag]`
 
 **Example:**
 | `note tag [1] [important]`          |
 |-------------------------------------|
 | ![note-tag-ui](images/NoteTagUi.png) |
+
+### 4.5.6. Clear tags of a note: `note cleartag`
+Updates note with index `[index]` and removes all tags for this note.
+
+**Format:** `note cleartag [index]`
+
+**Example:**
+| `note cleartag [1]`          |
+|-------------------------------------|
+| ![note-cleartag-ui](images/NoteTagUi.png) |
 
 ### 4.6. Viewing help : `help` 
 

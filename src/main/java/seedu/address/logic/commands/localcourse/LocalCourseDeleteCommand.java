@@ -18,9 +18,6 @@ import seedu.address.seplendidui.UiUtil;
  * Deletes a local course identified using its local code from the address book.
  */
 public class LocalCourseDeleteCommand extends LocalCourseCommand {
-
-    public static final String LOCAL_COURSE_DELETE_MESSAGE_USAGE = COMMAND_WORD
-            + " delete [localcode]: Deletes a local course.";
     public static final String ACTION_WORD = "delete";
 
     public static final String MESSAGE_SUCCESS = "Deleted Local Course: %1$s";

@@ -1,12 +1,17 @@
-package seedu.address.logic.parser;
+package seedu.address.logic.parser.university;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_UNIVERSITYATTRIBUTE;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
 import java.util.Comparator;
 
+import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.university.UniversitySortCommand;
+import seedu.address.logic.parser.Parser;
+import seedu.address.logic.parser.ParserUtil;
+import seedu.address.logic.parser.SeplendidArgumentMap;
+import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityAttribute;
@@ -25,16 +30,14 @@ public class UniversitySortCommandParser implements Parser<UniversitySortCommand
      */
     public UniversitySortCommand parse(String args) throws ParseException {
         if (!areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    UniversitySortCommand.UNIVERSITY_SORT_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.UNIVERSITY_SORT.getValue());
         }
 
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_UNIVERSITYATTRIBUTE);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_UNIVERSITYATTRIBUTE)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    UniversitySortCommand.UNIVERSITY_SORT_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.UNIVERSITY_SORT.getValue());
         }
 
         Comparator<University> universityComparator =

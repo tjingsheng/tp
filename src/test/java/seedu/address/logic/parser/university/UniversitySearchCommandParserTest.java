@@ -1,11 +1,12 @@
 package seedu.address.logic.parser.university;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.university.UniversitySearchCommand;
 import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
 public class UniversitySearchCommandParserTest {
@@ -14,8 +15,7 @@ public class UniversitySearchCommandParserTest {
 
     @Test
     public void parse_emptyArg_throwsParseException() {
-        assertParseFailure(parser, "     ", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                UniversitySearchCommand.UNIVERSITY_SEARCH_MESSAGE_USAGE));
+        assertParseFailure(parser, "     ", UsageMessage.UNIVERSITY_SEARCH.getValue());
     }
 
     @Test

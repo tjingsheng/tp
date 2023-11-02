@@ -1,7 +1,6 @@
 package seedu.address.logic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE;
 import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE_CODE;
@@ -24,7 +23,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.HelpCommand;
+import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.commands.localcourse.LocalCourseAddCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseCommand;
@@ -91,7 +90,8 @@ public class SeplendidLogicManagerTest {
     @Test
     public void execute_invalidCommandFormat_throwsParseException() {
         String invalidCommand = "uicfhmowqewca";
-        assertParseException(invalidCommand, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
+        assertParseException(invalidCommand,
+                             UsageMessage.HELP.getValue());
     }
 
     @Test

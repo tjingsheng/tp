@@ -1,11 +1,11 @@
 package seedu.address.logic.parser.mapping;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_MAPPINGATTRIBUTE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_QUERY;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 import static seedu.address.logic.parser.ParserUtil.parseMappingAttribute;
 
+import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.mapping.MappingSearchCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
@@ -28,8 +28,8 @@ public class MappingSearchCommandParser implements Parser<MappingSearchCommand> 
      */
     public MappingSearchCommand parse(String args) throws ParseException {
         if (!areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    MappingSearchCommand.MAPPING_SEARCH_MESSAGE_USAGE));
+            throw new ParseException(
+                UsageMessage.MAPPING_SEARCH.getValue());
         }
 
         SeplendidArgumentMap parameterToArgMap =
@@ -37,8 +37,8 @@ public class MappingSearchCommandParser implements Parser<MappingSearchCommand> 
 
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_MAPPINGATTRIBUTE, PARAMETER_QUERY)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    MappingSearchCommand.MAPPING_SEARCH_MESSAGE_USAGE));
+            throw new ParseException(
+                UsageMessage.MAPPING_SEARCH.getValue());
         }
 
         // All arguments should be a non-empty {@code Optional}

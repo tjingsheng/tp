@@ -25,9 +25,6 @@ import seedu.address.seplendidui.UiUtil;
  * Updates partner course.
  */
 public class PartnerCourseUpdateCommand extends PartnerCourseCommand {
-    public static final String PARTNER_COURSE_UPDATE_MESSAGE_USAGE = COMMAND_WORD
-            + " update: Updates a partner course for a particular attribute - "
-            + "partnercode & partnername & university & unit & description";
     public static final String ACTION_WORD = "update";
     public static final String MESSAGE_SUCCESS = "Updated this partner course: %1$s to this: %2$s.";
     public static final String MESSAGE_NONEXISTENT_PARTNER_COURSE = "This partner course does not exist in SEPlendid.";

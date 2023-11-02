@@ -1,12 +1,13 @@
 package seedu.address.logic.parser.partnercourse;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERCODE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERDESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERNAME;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERUNIT;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_UNIVERSITY;
 
+import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.partnercourse.PartnerCourseAddCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
@@ -34,8 +35,7 @@ public class PartnerCourseAddCommandParser implements Parser<PartnerCourseAddCom
      */
     public PartnerCourseAddCommand parse(String args) throws ParseException {
         if (!ParserUtil.areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                PartnerCourseAddCommand.PARTNER_COURSE_ADD_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.PARTNERCOURSE_ADD.getValue());
         }
 
         SeplendidArgumentMap parameterToArgMap = SeplendidArgumentTokenizer.tokenize(args,
@@ -51,8 +51,7 @@ public class PartnerCourseAddCommandParser implements Parser<PartnerCourseAddCom
             PARAMETER_PARTNERNAME,
             PARAMETER_PARTNERUNIT,
             PARAMETER_PARTNERDESCRIPTION)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                PartnerCourseAddCommand.PARTNER_COURSE_ADD_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.PARTNERCOURSE_ADD.getValue());
         }
 
         UniversityName universityName = ParserUtil.parseUniversityName(parameterToArgMap.getValue(PARAMETER_UNIVERSITY)

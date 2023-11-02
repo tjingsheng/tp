@@ -1,8 +1,9 @@
 package seedu.address.logic.parser.university;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_UNIVERSITYNAME;
 
+import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.university.UniversitySearchCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
@@ -25,12 +26,8 @@ public class UniversitySearchCommandParser implements Parser<UniversitySearchCom
      * @throws ParseException if the user input does not conform the expected format
      */
     public UniversitySearchCommand parse(String args) throws ParseException {
-        String trimmedArgs = args.trim();
         if (!ParserUtil.areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                            UniversitySearchCommand.UNIVERSITY_SEARCH_MESSAGE_USAGE)
-            );
+            throw new ParseException(UsageMessage.UNIVERSITY_SEARCH.getValue());
         }
 
         SeplendidArgumentMap parameterToArgMap =
@@ -39,8 +36,7 @@ public class UniversitySearchCommandParser implements Parser<UniversitySearchCom
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap,
                 PARAMETER_UNIVERSITYNAME)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    UniversitySearchCommand.UNIVERSITY_SEARCH_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.UNIVERSITY_SEARCH.getValue());
         }
 
         UniversityName universityName = ParserUtil.parseUniversityName(

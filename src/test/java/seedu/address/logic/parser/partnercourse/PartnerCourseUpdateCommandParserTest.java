@@ -1,6 +1,6 @@
 package seedu.address.logic.parser.partnercourse;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.commands.CommandTestUtil.UNNECESSARY_WHITESPACE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -13,9 +13,9 @@ import static seedu.address.testutil.TypicalObjects.INVALID_UNIVERSITY_NAME;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.partnercourse.PartnerCourseCommand;
 import seedu.address.logic.commands.partnercourse.PartnerCourseUpdateCommand;
-import seedu.address.logic.parser.PartnerCourseUpdateCommandParser;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
 import seedu.address.model.partnercourse.PartnerUnit;
@@ -54,18 +54,14 @@ public class PartnerCourseUpdateCommandParserTest {
 
     @Test
     public void parse_argumentNotClosedOrEmpty_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                PartnerCourseUpdateCommand.PARTNER_COURSE_UPDATE_MESSAGE_USAGE);
-
         // empty argument
         assertParseFailure(parser, commandActionWord
-                + getSquareBracketWrappedArgument(""), expectedMessage);
+                + getSquareBracketWrappedArgument(""), UsageMessage.PARTNERCOURSE_UPDATE.getValue());
     }
 
     @Test
     public void parse_argumentMissing_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                PartnerCourseUpdateCommand.PARTNER_COURSE_UPDATE_MESSAGE_USAGE);
+        String expectedMessage = UsageMessage.PARTNERCOURSE_UPDATE.getValue();
 
         // missing universityName argument
         assertParseFailure(
@@ -123,8 +119,7 @@ public class PartnerCourseUpdateCommandParserTest {
                         + getSquareBracketWrappedArgument(COMP1000.getPartnerCode().toString())
                         + getSquareBracketWrappedArgument(PartnerCourseAttribute.UNIT.toString())
                         + getSquareBracketWrappedArgument("10.0"),
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                        PartnerCourseUpdateCommand.PARTNER_COURSE_UPDATE_MESSAGE_USAGE));
+                UsageMessage.PARTNERCOURSE_UPDATE.getValue());
 
         // invalid partnerCode
         assertParseFailure(

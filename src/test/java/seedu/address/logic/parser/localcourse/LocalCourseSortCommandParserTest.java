@@ -1,6 +1,6 @@
 package seedu.address.logic.parser.localcourse;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.commands.CommandTestUtil.UNNECESSARY_WHITESPACE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -11,6 +11,7 @@ import java.util.Comparator;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.localcourse.LocalCourseCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseSortCommand;
 import seedu.address.model.localcourse.LocalCourse;
@@ -43,9 +44,7 @@ public class LocalCourseSortCommandParserTest {
 
     @Test
     public void parse_argumentNotClosedOrEmpty_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                LocalCourseSortCommand.LOCAL_COURSE_SORT_MESSAGE_USAGE);
-
+        String expectedMessage = UsageMessage.LOCALCOURSE_SORT.getValue();
         // missing open bracket
         assertParseFailure(parser, commandActionWord
                 + LocalCourseUtil.getLocalCourseArgumentsForSortCommand(new LocalCourseComparatorByLocalCode())

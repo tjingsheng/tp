@@ -1,12 +1,12 @@
 package seedu.address.logic.parser.mapping;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_INFORMATION;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_LOCALCODE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERCODE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_UNIVERSITY;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
+import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.mapping.MappingAddCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
@@ -32,9 +32,7 @@ public class MappingAddCommandParser implements Parser<MappingAddCommand> {
      */
     public MappingAddCommand parse(String args) throws ParseException {
         if (!areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                            MappingAddCommand.MAPPING_ADD_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.MAPPING_ADD.getValue());
         }
 
         SeplendidArgumentMap parameterToArgMap =
@@ -43,8 +41,7 @@ public class MappingAddCommandParser implements Parser<MappingAddCommand> {
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_LOCALCODE, PARAMETER_UNIVERSITY,
                 PARAMETER_PARTNERCODE, PARAMETER_INFORMATION)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    MappingAddCommand.MAPPING_ADD_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.MAPPING_ADD.getValue());
         }
 
         // All arguments should be a non-empty {@code Optional}

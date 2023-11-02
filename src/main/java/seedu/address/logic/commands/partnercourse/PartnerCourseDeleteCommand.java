@@ -20,8 +20,6 @@ import seedu.address.seplendidui.UiUtil;
  * Deletes a partner course in PartnerCourseCatalogue.
  */
 public class PartnerCourseDeleteCommand extends PartnerCourseCommand {
-    public static final String PARTNER_COURSE_DELETE_MESSAGE_USAGE = COMMAND_WORD
-            + "delete [university] [partnercode]: Deletes a partner course.";
     public static final String ACTION_WORD = "delete";
     public static final String MESSAGE_SUCCESS = "Partner course deleted: %1$s";
     public static final String MESSAGE_NONEXISTENT_PARTNER_COURSE = "This partner course does not exist in SEPlendid.";

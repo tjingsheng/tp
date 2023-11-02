@@ -15,10 +15,6 @@ import seedu.address.seplendidui.UiUtil;
  * Adds a local course to the LocalCourseCatalogue.
  */
 public class LocalCourseAddCommand extends LocalCourseCommand {
-
-    // Also available in abstract class LocalCourseCommand to support polymorphism
-    public static final String LOCAL_COURSE_ADD_MESSAGE_USAGE =
-        COMMAND_WORD + " add [localcode] [localname] [localunit] [localdescription]: Adds a local course.";
     public static final String ACTION_WORD = "add";
 
     public static final String MESSAGE_SUCCESS = "New local course added: %1$s";

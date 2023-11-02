@@ -16,10 +16,7 @@ import seedu.address.seplendidui.UiUtil;
  * Sorts partner course list.
  */
 public class PartnerCourseSortCommand extends PartnerCourseCommand {
-    public static final String PARTNER_COURSE_SORT_MESSAGE_USAGE = COMMAND_WORD
-            + " sort: Sorts all partner courses by attributes - partnercode & partnername";
     public static final String ACTION_WORD = "sort";
-
     public static final String MESSAGE_SUCCESS = "Sorted all partner courses";
 
     private final Comparator<PartnerCourse> comparator;

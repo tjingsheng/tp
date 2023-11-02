@@ -1,11 +1,12 @@
 package seedu.address.logic.parser.note;
 
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_CONTENT;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_INDEX;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
+import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.note.NoteUpdateCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
@@ -27,17 +28,14 @@ public class NoteUpdateCommandParser implements Parser<NoteUpdateCommand> {
      */
     public NoteUpdateCommand parse(String args) throws ParseException {
         if (!areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                            NoteUpdateCommand.NOTE_UPDATE_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.NOTE_UPDATE.getValue());
         }
 
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_INDEX, PARAMETER_CONTENT);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_INDEX, PARAMETER_CONTENT)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    NoteUpdateCommand.NOTE_UPDATE_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.NOTE_UPDATE.getValue());
         }
 
         // All arguments should be a non-empty {@code Optional}
@@ -47,8 +45,7 @@ public class NoteUpdateCommandParser implements Parser<NoteUpdateCommand> {
             Content newContent = new Content(parameterToArgMap.getValue(PARAMETER_CONTENT).get());
             return new NoteUpdateCommand(noteIndex, newContent);
         } catch (NumberFormatException e) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    NoteUpdateCommand.NOTE_UPDATE_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.NOTE_UPDATE.getValue());
         }
     }
 }

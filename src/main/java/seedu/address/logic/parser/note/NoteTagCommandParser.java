@@ -1,10 +1,11 @@
 package seedu.address.logic.parser.note;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_INDEX;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_TAGS;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
+import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.note.NoteTagCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
@@ -26,17 +27,14 @@ public class NoteTagCommandParser implements Parser<NoteTagCommand> {
      */
     public NoteTagCommand parse(String args) throws ParseException {
         if (!areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                            NoteTagCommand.NOTE_TAG_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.NOTE_UPDATE.getValue());
         }
 
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_INDEX, PARAMETER_TAGS);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_INDEX, PARAMETER_TAGS)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    NoteTagCommand.NOTE_TAG_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.NOTE_UPDATE.getValue());
         }
 
         // All arguments should be a non-empty {@code Optional}
@@ -46,8 +44,7 @@ public class NoteTagCommandParser implements Parser<NoteTagCommand> {
             Tag newTag = new Tag(parameterToArgMap.getValue(PARAMETER_TAGS).get());
             return new NoteTagCommand(noteIndex, newTag);
         } catch (NumberFormatException e) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    NoteTagCommand.NOTE_TAG_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.NOTE_UPDATE.getValue());
         }
     }
 }

@@ -16,9 +16,6 @@ import seedu.address.seplendidui.UiUtil;
  * Adds a tag to a note to the NoteList.
  */
 public class NoteTagCommand extends NoteCommand {
-
-    public static final String NOTE_TAG_MESSAGE_USAGE = COMMAND_WORD
-            + " tag [index] [tag]: Add a tag to a note.";
     public static final String MESSAGE_NONEXISTENT_NOTE = "Note not found, please put a valid index.";
     public static final String ACTION_WORD = "tag";
     public static final String MESSAGE_SUCCESS = "Note tagged: %1$s";

@@ -1,12 +1,17 @@
-package seedu.address.logic.parser;
+package seedu.address.logic.parser.partnercourse;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERATTRIBUTE;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
 import java.util.Comparator;
 
+import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.partnercourse.PartnerCourseSortCommand;
+import seedu.address.logic.parser.Parser;
+import seedu.address.logic.parser.ParserUtil;
+import seedu.address.logic.parser.SeplendidArgumentMap;
+import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
@@ -27,16 +32,14 @@ public class PartnerCourseSortCommandParser implements Parser<PartnerCourseSortC
      */
     public PartnerCourseSortCommand parse(String args) throws ParseException {
         if (!areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    PartnerCourseSortCommand.PARTNER_COURSE_SORT_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.PARTNERCOURSE_SORT.getValue());
         }
 
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_PARTNERATTRIBUTE);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_PARTNERATTRIBUTE)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    PartnerCourseSortCommand.PARTNER_COURSE_SORT_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.PARTNERCOURSE_SORT.getValue());
         }
 
         Comparator<PartnerCourse> partnerCourseComparator =

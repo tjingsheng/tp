@@ -9,12 +9,6 @@ import seedu.address.logic.commands.Command;
 public abstract class UniversityCommand extends Command {
     public static final String COMMAND_WORD = "university";
 
-    private static final String MESSAGE_USAGE = COMMAND_WORD + ": Universities given by NUS Computing"
-            + "Commands: "
-            + "university list: Lists all available universities."
-            + "university search [university name]."
-            + "university sort [university]";
-
     protected UniversityCommand() {
     }
 

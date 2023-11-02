@@ -1,10 +1,15 @@
-package seedu.address.logic.parser;
+package seedu.address.logic.parser.note;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_INDEX;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
-import seedu.address.logic.commands.NoteClearTagCommand;
+import seedu.address.logic.commands.UsageMessage;
+import seedu.address.logic.commands.note.NoteClearTagCommand;
+import seedu.address.logic.parser.Parser;
+import seedu.address.logic.parser.ParserUtil;
+import seedu.address.logic.parser.SeplendidArgumentMap;
+import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -20,17 +25,14 @@ public class NoteClearTagCommandParser implements Parser<NoteClearTagCommand> {
      */
     public NoteClearTagCommand parse(String args) throws ParseException {
         if (!areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                            NoteClearTagCommand.NOTE_CLEAR_TAG_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.NOTE_CLEAR_TAG.getValue());
         }
 
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_INDEX);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_INDEX)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    NoteClearTagCommand.NOTE_CLEAR_TAG_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.NOTE_CLEAR_TAG.getValue());
         }
 
         // All arguments should be a non-empty {@code Optional}
@@ -39,8 +41,7 @@ public class NoteClearTagCommandParser implements Parser<NoteClearTagCommand> {
             Integer noteIndex = Integer.valueOf(parameterToArgMap.getValue(PARAMETER_INDEX).get());
             return new NoteClearTagCommand(noteIndex);
         } catch (NumberFormatException e) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    NoteClearTagCommand.NOTE_CLEAR_TAG_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.NOTE_CLEAR_TAG.getValue());
         }
     }
 }

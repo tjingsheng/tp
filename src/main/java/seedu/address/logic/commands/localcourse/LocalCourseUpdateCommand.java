@@ -23,9 +23,6 @@ import seedu.address.seplendidui.UiUtil;
  * Parses input arguments and create a new LocalCourseUpdateCommand object.
  */
 public class LocalCourseUpdateCommand extends LocalCourseCommand {
-    public static final String LOCAL_COURSE_UPDATE_MESSAGE_USAGE = COMMAND_WORD
-            + " update: Updates a local course for a particular attribute - "
-            + "localcode & localname & unit & description";
     public static final String ACTION_WORD = "update";
     public static final String MESSAGE_SUCCESS = "Updated this local course: %1$s to this: %2$s.";
     public static final String MESSAGE_NONEXISTENT_LOCAL_COURSE = "This local course does not exist in SEPlendid.";

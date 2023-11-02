@@ -1,9 +1,10 @@
 package seedu.address.logic.parser.localcourse;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_LOCALCODE;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
+import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.localcourse.LocalCourseDeleteCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
@@ -25,17 +26,14 @@ public class LocalCourseDeleteCommandParser implements Parser<LocalCourseDeleteC
      */
     public LocalCourseDeleteCommand parse(String args) throws ParseException {
         if (!areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                            LocalCourseDeleteCommand.LOCAL_COURSE_DELETE_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.LOCALCOURSE_DELETE.getValue());
         }
 
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_LOCALCODE);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_LOCALCODE)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    LocalCourseDeleteCommand.LOCAL_COURSE_DELETE_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.LOCALCOURSE_DELETE.getValue());
         }
 
         // All arguments should be a non-empty {@code Optional}

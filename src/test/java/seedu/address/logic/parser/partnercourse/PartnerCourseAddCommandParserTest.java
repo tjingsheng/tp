@@ -1,6 +1,6 @@
 package seedu.address.logic.parser.partnercourse;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.commands.CommandTestUtil.UNNECESSARY_WHITESPACE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -24,6 +24,7 @@ import static seedu.address.testutil.TypicalObjects.TYPICAL_UNIVERSITY_NAME;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.partnercourse.PartnerCourseAddCommand;
 import seedu.address.logic.commands.partnercourse.PartnerCourseCommand;
 import seedu.address.model.partnercourse.PartnerCode;
@@ -66,8 +67,7 @@ public class PartnerCourseAddCommandParserTest {
 
     @Test
     void parse_argumentNotClosedOrEmpty_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-            PartnerCourseAddCommand.PARTNER_COURSE_ADD_MESSAGE_USAGE);
+        String expectedMessage = UsageMessage.PARTNERCOURSE_ADD.getValue();
 
         // missing open bracket
         assertParseFailure(
@@ -89,8 +89,7 @@ public class PartnerCourseAddCommandParserTest {
 
     @Test
     public void parse_argumentMissing_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-            PartnerCourseAddCommand.PARTNER_COURSE_ADD_MESSAGE_USAGE);
+        String expectedMessage = UsageMessage.PARTNERCOURSE_ADD.getValue();
 
         // missing patrtnercode argument
         assertParseFailure(parser,
@@ -113,6 +112,7 @@ public class PartnerCourseAddCommandParserTest {
         // Therefore an argument starting with a whitespace will pass,
         // while a whitespace alone will not. A whitespace alone will trigger
         // ParseException due to ParserUtil#areValuesEncloseAndNonEmpty.
+        String expectedMessage = UsageMessage.PARTNERCOURSE_ADD.getValue();
 
         // invalid universityName
         assertParseFailure(
@@ -123,8 +123,7 @@ public class PartnerCourseAddCommandParserTest {
                         + getSquareBracketWrappedArgument(TYPICAL_PARTNER_COURSE_NAME)
                         + getSquareBracketWrappedArgument(TYPICAL_PARTNER_COURSE_UNIT.toString())
                         + getSquareBracketWrappedArgument(TYPICAL_PARTNER_COURSE_DESCRIPTION),
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                        PartnerCourseAddCommand.PARTNER_COURSE_ADD_MESSAGE_USAGE));
+                expectedMessage);
         // invalid partnerCode
         assertParseFailure(
                 parser,
@@ -143,8 +142,7 @@ public class PartnerCourseAddCommandParserTest {
                         + getSquareBracketWrappedArgument(INVALID_PARTNER_COURSE_NAME)
                         + getSquareBracketWrappedArgument(TYPICAL_PARTNER_COURSE_UNIT.toString())
                         + getSquareBracketWrappedArgument(TYPICAL_PARTNER_COURSE_DESCRIPTION),
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                        PartnerCourseAddCommand.PARTNER_COURSE_ADD_MESSAGE_USAGE));
+                expectedMessage);
 
         // invalid partnerUnit
         assertParseFailure(
@@ -166,8 +164,7 @@ public class PartnerCourseAddCommandParserTest {
                         + getSquareBracketWrappedArgument(TYPICAL_PARTNER_COURSE_NAME)
                         + getSquareBracketWrappedArgument(TYPICAL_PARTNER_COURSE_UNIT.toString())
                         + getSquareBracketWrappedArgument(INVALID_PARTNER_COURSE_DESCRIPTION),
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                        PartnerCourseAddCommand.PARTNER_COURSE_ADD_MESSAGE_USAGE));
+                expectedMessage);
     }
 
     @Test

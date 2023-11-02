@@ -1,4 +1,4 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.partnercourse;
 
 import static seedu.address.logic.commands.CommandTestUtil.assertSeplendidCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertSeplendidCommandSuccess;

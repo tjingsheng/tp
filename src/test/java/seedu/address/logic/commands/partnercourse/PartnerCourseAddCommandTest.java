@@ -1,20 +1,15 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.partnercourse;
 
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalObjects.COMP1000;
-import static seedu.address.testutil.TypicalObjects.COMP2000;
-import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE_CODE;
-import static seedu.address.testutil.TypicalObjects.TYPICAL_UNIVERSITY_NAME;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
@@ -23,8 +18,8 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.Messages;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.commands.partnercourse.PartnerCourseDeleteCommand;
 import seedu.address.model.PartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
 import seedu.address.model.ReadOnlyMappingCatalogue;
@@ -50,65 +45,62 @@ import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
 import seedu.address.testutil.PartnerCourseBuilder;
 
 /**
- * Unit testing of PartnerCourseDeleteCommand, with stubs / dependency injection.
+ * Unit testing of PartnerCourseAddCommand, with stubs / dependency injection.
  */
-public class PartnerCourseDeleteCommandTest {
+public class PartnerCourseAddCommandTest {
 
     @Test
-    public void constructor_nullPartnerCode_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new PartnerCourseDeleteCommand(null, null));
+    public void constructor_nullPartnerCourse_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> new PartnerCourseAddCommand(null));
     }
 
     @Test
-    public void execute_partnerCourseAcceptedByModel_deleteSuccessful() throws Exception {
-        ModelStubAcceptingPartnerCourseDeleted modelStub = new ModelStubAcceptingPartnerCourseDeleted();
-
-        CommandResult commandResult = new PartnerCourseDeleteCommand(
-                COMP1000.getPartnerUniversity().getUniversityName(), COMP1000.getPartnerCode()).execute(modelStub);
-
-        assertEquals(String.format(PartnerCourseDeleteCommand.MESSAGE_SUCCESS, Messages.format(COMP1000)),
-                commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(COMP2000), modelStub.partnerCoursesAdded);
-    }
-
-    @Test
-    public void execute_partnerCourseDoesNotExist_throwsCommandException() {
+    public void execute_partnerCourseAcceptedByModel_addSuccessful() throws Exception {
+        ModelStubAcceptingPartnerCourseAdded modelStub = new ModelStubAcceptingPartnerCourseAdded();
         PartnerCourse validPartnerCourse = new PartnerCourseBuilder().build();
 
-        PartnerCourseDeleteCommand partnerCourseDeleteCommand = new PartnerCourseDeleteCommand(
-                new UniversityName(TYPICAL_UNIVERSITY_NAME), new PartnerCode(TYPICAL_PARTNER_COURSE_CODE));
+        CommandResult commandResult = new PartnerCourseAddCommand(validPartnerCourse).execute(modelStub);
+
+        assertEquals(String.format(PartnerCourseAddCommand.MESSAGE_SUCCESS, Messages.format(validPartnerCourse)),
+                commandResult.getFeedbackToUser());
+        assertEquals(Arrays.asList(validPartnerCourse), modelStub.partnerCoursesAdded);
+    }
+
+    @Test
+    public void execute_duplicatePartnerCourse_throwsCommandException() {
+        PartnerCourse validPartnerCourse = new PartnerCourseBuilder().build();
+        PartnerCourseAddCommand partnerCourseAddCommand = new PartnerCourseAddCommand(validPartnerCourse);
         SeplendidModelStub modelStub = new SeplendidModelStubWithPartnerCourse(validPartnerCourse);
 
         assertThrows(
                 CommandException.class,
-                PartnerCourseDeleteCommand.MESSAGE_NONEXISTENT_PARTNER_COURSE, (
-                ) -> partnerCourseDeleteCommand.execute(modelStub));
+                PartnerCourseAddCommand.MESSAGE_DUPLICATE_PARTNER_COURSE, (
+                ) -> partnerCourseAddCommand.execute(modelStub));
     }
 
     @Test
     public void equals() {
-        PartnerCode comp1000 = new PartnerCode("COMP1000");
-        PartnerCode comp2000 = new PartnerCode("COMP2000");
-        UniversityName edinburgh = new UniversityName("University of Edinburgh");
-        UniversityName leeds = new UniversityName("University of Leeds");
-        PartnerCourseDeleteCommand deleteComp1000Command = new PartnerCourseDeleteCommand(edinburgh, comp1000);
-        PartnerCourseDeleteCommand deleteComp2000Command = new PartnerCourseDeleteCommand(leeds, comp2000);
+        PartnerCourse cs1234 = new PartnerCourseBuilder().withPartnerCode("CS1234").build();
+        PartnerCourse cs6789 = new PartnerCourseBuilder().withPartnerCode("CS6789").build();
+        PartnerCourseAddCommand addCS1234Command = new PartnerCourseAddCommand(cs1234);
+        PartnerCourseAddCommand addCS6789Command = new PartnerCourseAddCommand(cs6789);
 
         // same object -> returns true
-        assertTrue(deleteComp1000Command.equals(deleteComp1000Command));
+        assertTrue(addCS1234Command.equals(addCS1234Command));
 
         // same values -> returns true
-        PartnerCourseDeleteCommand deleteComp1000CommandCopy = new PartnerCourseDeleteCommand(edinburgh, comp1000);
-        assertTrue(deleteComp1000Command.equals(deleteComp1000CommandCopy));
+        PartnerCourseAddCommand addCS1234CommandCopy = new PartnerCourseAddCommand(cs1234);
+        assertTrue(addCS1234Command.equals(addCS1234CommandCopy));
 
         // different types -> returns false
-        assertFalse(deleteComp1000Command.equals(1));
+        assertFalse(addCS1234Command.equals(1));
 
         // null -> returns false
-        assertFalse(deleteComp1000Command.equals(null));
+        assertFalse(addCS1234Command.equals(null));
 
         // different local course -> returns false
-        assertFalse(deleteComp1000Command.equals(deleteComp2000Command));
+        assertFalse(addCS1234Command.equals(addCS6789Command));
+
     }
 
     /**
@@ -219,12 +211,12 @@ public class PartnerCourseDeleteCommandTest {
         }
 
         @Override
-        public Path getPartnerCourseCatalogueFilePath() {
+        public void setPartnerCourseCatalogueFilePath(Path partnerCourseCatalogueFilePath) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setPartnerCourseCatalogueFilePath(Path partnerCourseCatalogueFilePath) {
+        public Path getPartnerCourseCatalogueFilePath() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -296,12 +288,22 @@ public class PartnerCourseDeleteCommandTest {
         }
 
         @Override
+        public void setUniversityCatalogueFilePath(Path universityCatalogueFilePath) {
+        }
+
         public Optional<University> getUniversityIfExists(UniversityName universityName) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public void setNoteCatalogue(ReadOnlyNoteCatalogue noteCatalogue) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void getSearchUniversityIfExists(
+                UniversityNameContainsKeywordsPredicate universityNameContainsKeywordsPredicate
+        ) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -317,33 +319,6 @@ public class PartnerCourseDeleteCommandTest {
 
         @Override
         public Note deleteNote(int noteIndex) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void setUniversityCatalogueFilePath(Path universityCatalogueFilePath) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void getSearchUniversityIfExists(
-                UniversityNameContainsKeywordsPredicate universityNameContainsKeywordsPredicate
-        ) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public ObservableList<University> getFilteredUniversityList() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public boolean hasUniversity(University university) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public boolean hasUniversity(UniversityName universityName) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -364,6 +339,21 @@ public class PartnerCourseDeleteCommandTest {
 
         @Override
         public void updateSortedUniversityList(Comparator<University> universityComparator) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<University> getFilteredUniversityList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasUniversity(University university) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasUniversity(UniversityName universityName) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -478,12 +468,13 @@ public class PartnerCourseDeleteCommandTest {
         public void updateSortedMappingList(Comparator<Mapping> mappingComparator) {
             throw new AssertionError("This method should not be called.");
         }
+
     }
 
     /**
      * A Model stub that contains a single partnerCourse.
      */
-    private class SeplendidModelStubWithPartnerCourse extends PartnerCourseDeleteCommandTest.SeplendidModelStub {
+    private class SeplendidModelStubWithPartnerCourse extends PartnerCourseAddCommandTest.SeplendidModelStub {
         private final PartnerCourse partnerCourse;
 
         SeplendidModelStubWithPartnerCourse(PartnerCourse pc) {
@@ -498,26 +489,14 @@ public class PartnerCourseDeleteCommandTest {
         }
 
         @Override
-        public void deletePartnerCourse(PartnerCourse partnerCourse) {
-            requireNonNull(partnerCourse);
-        }
-
-        @Override
-        public Optional<PartnerCourse> getPartnerCourseIfExists(
-                PartnerCode partnerCode, UniversityName universityName) {
-            if (!partnerCourse.getPartnerCode().equals(partnerCode)
-                    || !partnerCourse.getPartnerUniversity().getUniversityName().equals(universityName)) {
-                return Optional.empty();
-            }
-            return Optional.of(partnerCourse);
+        public boolean hasUniversity(University university) {
+            requireNonNull(university);
+            return partnerCourse.getPartnerUniversity().isSameUniversity(university);
         }
     }
 
-    /**
-     * A Model stub that always accept the partner course being added.
-     */
-    private class ModelStubAcceptingPartnerCourseDeleted extends PartnerCourseDeleteCommandTest.SeplendidModelStub {
-        final ArrayList<PartnerCourse> partnerCoursesAdded = new ArrayList<>(List.of(COMP1000, COMP2000));
+    private class ModelStubAcceptingPartnerCourseAdded extends PartnerCourseAddCommandTest.SeplendidModelStub {
+        final ArrayList<PartnerCourse> partnerCoursesAdded = new ArrayList<>();
 
         @Override
         public boolean hasPartnerCourse(PartnerCourse partnerCourse) {
@@ -526,16 +505,16 @@ public class PartnerCourseDeleteCommandTest {
         }
 
         @Override
-        public void deletePartnerCourse(PartnerCourse partnerCourse) {
+        public void addPartnerCourse(PartnerCourse partnerCourse) {
             requireNonNull(partnerCourse);
-            partnerCoursesAdded.remove(partnerCourse);
+            partnerCoursesAdded.add(partnerCourse);
         }
 
         @Override
-        public Optional<PartnerCourse> getPartnerCourseIfExists(
-                PartnerCode partnerCode, UniversityName universityName) {
-            return partnerCoursesAdded.stream().filter(pc -> pc.getPartnerCode().equals(partnerCode)
-                    && pc.getPartnerUniversity().getUniversityName().equals(universityName)).findFirst();
+        public boolean hasUniversity(University university) {
+            requireNonNull(university);
+            //assume that the university exists
+            return true;
         }
 
         @Override
@@ -543,4 +522,6 @@ public class PartnerCourseDeleteCommandTest {
             return new PartnerCourseCatalogue();
         }
     }
+
+
 }

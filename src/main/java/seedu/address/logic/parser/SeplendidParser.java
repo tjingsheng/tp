@@ -343,7 +343,7 @@ public class SeplendidParser {
         if (actionWord.equals(UniversityListCommand.ACTION_WORD)) {
             return new UniversityListCommand();
         }
-        
+
         logger.finer("This user input caused a ParseException: " + userInput);
         switch (actionWord) {
         case UniversitySearchCommand.ACTION_WORD:

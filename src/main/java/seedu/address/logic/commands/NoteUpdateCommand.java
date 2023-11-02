@@ -18,6 +18,7 @@ public class NoteUpdateCommand extends NoteCommand {
 
     public static final String NOTE_UPDATE_MESSAGE_USAGE = COMMAND_WORD
             + " update [index] [content]: Updates a note to the specified content.";
+    public static final String MESSAGE_NONEXISTENT_NOTE = "Note not found, please put a valid index.";
     public static final String ACTION_WORD = "update";
     public static final String MESSAGE_SUCCESS = "Note updated: %1$s";
     private final Integer noteIndexToUpdate;
@@ -46,7 +47,7 @@ public class NoteUpdateCommand extends NoteCommand {
         requireNonNull(seplendidModel);
         int noteListSize = seplendidModel.getNoteCatalogue().getNoteList().size();
         if (noteListSize < this.noteIndexToUpdate) {
-            throw new CommandException("Note not found, please put a valid index.");
+            throw new CommandException(MESSAGE_NONEXISTENT_NOTE);
         }
         Note oldNote = seplendidModel.getNoteCatalogue().getNoteList().get(this.noteIndexToUpdate - 1);
         Note newNote = new Note(this.updateContent, oldNote.getTags(), oldNote.getIndex());
@@ -67,7 +68,8 @@ public class NoteUpdateCommand extends NoteCommand {
         }
 
         NoteUpdateCommand otherNoteDeleteCommand = (NoteUpdateCommand) other;
-        return noteIndexToUpdate.equals(otherNoteDeleteCommand.noteIndexToUpdate);
+        return noteIndexToUpdate.equals(otherNoteDeleteCommand.noteIndexToUpdate)
+                && updateContent.equals(otherNoteDeleteCommand.updateContent);
     }
 
     @Override

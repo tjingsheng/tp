@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 import seedu.address.commons.core.SeplendidLogsCenter;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.HelpCommand;
+import seedu.address.logic.commands.NoteClearTagCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseAddCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseDeleteCommand;
@@ -292,6 +293,8 @@ public class SeplendidParser {
             return new NoteUpdateCommandParser().parse(arguments);
         case NoteTagCommand.ACTION_WORD:
             return new NoteTagCommandParser().parse(arguments);
+        case NoteClearTagCommand.ACTION_WORD:
+            return new NoteClearTagCommandParser().parse(arguments);
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

@@ -58,7 +58,7 @@
 --------------------------------------------------------------------------------------------------------------------
 
 # 1. About SEPlendid
-SEPlendid is a state of the art **Course Mapping System** that allows NUS Computing students to seamlessly plan for 
+SEPlendid is a **Course Mapping System** that allows NUS Computing students to seamlessly plan for 
 their overseas courses, for the Student Exchange Programmes (SEP). As a student, you can view and find course 
 mappings in order to plan for your overseas studies without the hassle of creating Excel sheets. Utilise SEPlendid' 
 **course mapping** function in order to quickly find possible mappings for certain courses. Finally, SEPlendid's 
@@ -328,7 +328,9 @@ Sorts local course with course code identified by `localcode` or `localname`.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `localcourse sort [localname]`
 
 **Example:**
-<insert image>
+| `localcourse search [localcode] [BT2101]`                                     |
+|----------------------------------------------------------|
+| ![partnercourse-list-ui](images/PartnercourseListUi.png) |
 
 ## 4.2. Commands for partnercourse
 ### 4.2.1. List all partnercourses: `partnercourse list`
@@ -338,7 +340,7 @@ Lists all available partner courses, paginated if dataset is too huge.
 **Example:**
 | `partnercourse list`                                     |
 |----------------------------------------------------------|
-| ![partnercourse-list-ui](images/PartnercourseListUi.png) |
+| ![localcourse-search-ui](images/LocalcourseSearchUi.png) |
 
 ### 4.2.2. Add a partnercourse: `partnercourse add`
 Adds partner course with course code identified by `partnercode` and course name identified by `partnername`, 
@@ -366,6 +368,9 @@ Searches partnercourse with course name identified by `partnername`.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `partnercourse search [partnername]`
 
 **Example:**
+| `partnercourse search [partnercode] [CSE469]`                                  |
+|----------------------------------------------------|
+| ![partnercourse-search-ui](images/PartnercourseSearchUi![img_1.png](img_1.png).png) |
 
 ### 4.2.5. Sort a partnercourse by attributes: `partnercourse sort`
 Sorts partnercourse with course code identified by partnercode.
@@ -385,11 +390,13 @@ Lists all available partner universities, paginated if dataset is too huge.
 | ![university-list-ui](images/UniversityListUi.png) |
 
 ### 4.3.2. Search a university by attributes: `university search`
-Searches all available partner universities, paginated if dataset is too huge.
+Searches universities with the same keyword, paginated if dataset is too huge.
 **Format**: `university search [university]`
 
 **Example:**
-
+| `university search [imperial]`                                  |
+|----------------------------------------------------|
+| ![university-search-ui](images/UniversitySearchUi.png) |
 ### 4.3.3. Sort a university by attributes: `university sort`
 Sorts universities with university name identified by `universityname`.
 **Format**: `university sort [universityname]`

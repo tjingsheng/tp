@@ -69,10 +69,10 @@ which provides a more detailed information about the course such as the course u
 of the layout of the GUI.
 
 SEPlendid's GUI consists of these four main components:
-1. User Input Box
-2. User Output Box
-3. List of courses, universities or notes
-4. Display pane for each item
+1. Command Input Box
+2. Command Result Box
+3. List Panel for Local Courses, Partner Courses, Universities, Mappings or Notes
+4. Display Panel for details of the selected item from the list panel.
 
 <insert annotated image>
 

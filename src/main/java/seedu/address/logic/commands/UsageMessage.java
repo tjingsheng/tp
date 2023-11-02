@@ -55,7 +55,7 @@ public enum UsageMessage {
         LocalCourseCommand.COMMAND_WORD,
         LocalCourseSearchCommand.ACTION_WORD,
         "[attribute] [query]",
-        "Searches for a local course where query is found in the selected attribut\nAttributes:\n"
+        "Searches for a local course where query is found in the selected attribute\nAttributes:\n"
             + "localcode\nlocalname\nlocaldescription"),
     LOCALCOURSE_SORT(
         LocalCourseCommand.COMMAND_WORD,
@@ -163,7 +163,7 @@ public enum UsageMessage {
     PARTNERCOURSE_DELETE(
         PartnerCourseCommand.COMMAND_WORD,
         PartnerCourseDeleteCommand.ACTION_WORD,
-        "[partnercode]",
+        "[university] [partnercode] ",
         "Deletes a partner course"),
     PARTNERCOURSE_LIST(
         PartnerCourseCommand.COMMAND_WORD,
@@ -185,7 +185,7 @@ public enum UsageMessage {
     PARTNERCOURSE_UPDATE(
         PartnerCourseCommand.COMMAND_WORD,
         PartnerCourseUpdateCommand.ACTION_WORD,
-        "[partnercode] [attribute] [newvalue]",
+        "[university] [partnercode] [attribute] [newvalue]",
         "Updates the attribute of the partner course with a new value.\nAttributes:\n"
             + "partnercode\npartnername\npartnerunit\npartnerdescription"),
     PARTNERCOURSE(String.join("\n",

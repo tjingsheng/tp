@@ -27,24 +27,24 @@ public class NoteTagCommandParser implements Parser<NoteTagCommand> {
      */
     public NoteTagCommand parse(String args) throws ParseException {
         if (!areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(UsageMessage.NOTE_UPDATE.getValue());
+            throw new ParseException(UsageMessage.NOTE_TAG.getValue());
         }
 
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_INDEX, PARAMETER_TAGS);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_INDEX, PARAMETER_TAGS)) {
-            throw new ParseException(UsageMessage.NOTE_UPDATE.getValue());
+            throw new ParseException(UsageMessage.NOTE_TAG.getValue());
         }
 
         // All arguments should be a non-empty {@code Optional}
 
         try {
-            Integer noteIndex = Integer.valueOf(parameterToArgMap.getValue(PARAMETER_INDEX).get());
+            int noteIndex = Integer.parseInt(parameterToArgMap.getValue(PARAMETER_INDEX).get());
             Tag newTag = new Tag(parameterToArgMap.getValue(PARAMETER_TAGS).get());
             return new NoteTagCommand(noteIndex, newTag);
         } catch (NumberFormatException e) {
-            throw new ParseException(UsageMessage.NOTE_UPDATE.getValue());
+            throw new ParseException(UsageMessage.NOTE_TAG.getValue());
         }
     }
 }

@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.NoteCatalogue;
 import seedu.address.model.ReadOnlyNoteCatalogue;
-import seedu.address.model.notes.Note;
+import seedu.address.model.note.Note;
 
 /**
  * An Immutable NoteCatalogue that is serializable to JSON format.

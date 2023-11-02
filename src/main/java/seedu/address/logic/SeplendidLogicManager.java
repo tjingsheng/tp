@@ -20,7 +20,7 @@ import seedu.address.model.ReadOnlyUniversityCatalogue;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.mapping.Mapping;
-import seedu.address.model.notes.Note;
+import seedu.address.model.note.Note;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
 import seedu.address.seplendidui.Ui;

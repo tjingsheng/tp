@@ -1,4 +1,4 @@
-package seedu.address.model.notes;
+package seedu.address.model.note;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
@@ -8,8 +8,8 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.notes.exceptions.DuplicateNoteException;
-import seedu.address.model.notes.exceptions.NoteNotFoundException;
+import seedu.address.model.note.exceptions.DuplicateNoteException;
+import seedu.address.model.note.exceptions.NoteNotFoundException;
 
 
 /**

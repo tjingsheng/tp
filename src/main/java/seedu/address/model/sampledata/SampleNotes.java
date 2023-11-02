@@ -2,8 +2,8 @@ package seedu.address.model.sampledata;
 
 import java.util.Arrays;
 
-import seedu.address.model.notes.Content;
-import seedu.address.model.notes.Note;
+import seedu.address.model.note.Content;
+import seedu.address.model.note.Note;
 import seedu.address.model.tag.Tag;
 
 /**

@@ -1,4 +1,4 @@
-package seedu.address.model.notes;
+package seedu.address.model.note;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
@@ -14,7 +14,7 @@ public class Content {
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String VALIDATION_REGEX = "^[\\p{Alnum} .,!?\"'():\\-–]+";
+    public static final String VALIDATION_REGEX = "[^\\s].*[^\\s]";
 
     public final String content;
 

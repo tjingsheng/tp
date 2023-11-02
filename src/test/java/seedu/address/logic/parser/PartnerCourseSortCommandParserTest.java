@@ -1,7 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.UNNCESSARY_WHITESPACE;
+import static seedu.address.logic.commands.CommandTestUtil.UNNECESSARY_WHITESPACE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TestUtil.getSquareBracketWrappedArgument;
@@ -11,8 +11,8 @@ import java.util.Comparator;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.PartnerCourseCommand;
-import seedu.address.logic.commands.PartnerCourseSortCommand;
+import seedu.address.logic.commands.partnercourse.PartnerCourseCommand;
+import seedu.address.logic.commands.partnercourse.PartnerCourseSortCommand;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
 import seedu.address.model.partnercourse.comparator.PartnerCourseComparatorByPartnerCode;
@@ -32,13 +32,13 @@ public class PartnerCourseSortCommandParserTest {
         Comparator<PartnerCourse> expectedComparator = new PartnerCourseComparatorByPartnerCode();
 
         // add unnecessary whitespace
-        assertParseSuccess(parser, UNNCESSARY_WHITESPACE
+        assertParseSuccess(parser, UNNECESSARY_WHITESPACE
                         + PartnerCourseCommand.COMMAND_WORD
-                        + UNNCESSARY_WHITESPACE
+                        + UNNECESSARY_WHITESPACE
                         + PartnerCourseSortCommand.ACTION_WORD
-                        + UNNCESSARY_WHITESPACE
+                        + UNNECESSARY_WHITESPACE
                         + getSquareBracketWrappedArgument("partnercode")
-                        + UNNCESSARY_WHITESPACE,
+                        + UNNECESSARY_WHITESPACE,
                 new PartnerCourseSortCommand(expectedComparator));
     }
 

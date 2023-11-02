@@ -451,4 +451,32 @@ public class ParserUtilTest {
         assertEquals(expectedPartnerCourseAttribute,
                 ParserUtil.parsePartnerCourseAttributeForUpdate(partnerCourseAttributeWithWhitespace));
     }
+
+    @Test
+    public void parsePartnerCourseAttributeForSearch_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parsePartnerCourseAttributeForSearch((String) null));
+    }
+
+    @Test
+    public void parsePartnerCourseAttributeForSearch_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () ->
+                ParserUtil.parsePartnerCourseAttributeForSearch(INVALID_PARTNER_COURSE_ATTRIBUTE));
+    }
+
+    @Test
+    public void
+        parsePartnerCourseAttributeForSearch_validValueWithoutWhitespaceAndAllCaps_returnsPartnerCourseAttribute()
+            throws Exception {
+        PartnerCourseAttribute expectedPartnerCourseAttribute = PartnerCourseAttribute.PARTNERCODE;
+        assertEquals(expectedPartnerCourseAttribute, ParserUtil.parsePartnerCourseAttributeForSearch("partnErcoDe"));
+    }
+
+    @Test
+    public void parsePartnerCourseAttributeForSearch_validValueWithWhitespace_returnsTrimmedPartnerCourseAttribute()
+            throws Exception {
+        String partnerCourseAttributeWithWhitespace = WHITESPACE + "PartnerName" + WHITESPACE;
+        PartnerCourseAttribute expectedPartnerCourseAttribute = PartnerCourseAttribute.PARTNERNAME;
+        assertEquals(expectedPartnerCourseAttribute,
+                ParserUtil.parsePartnerCourseAttributeForSearch(partnerCourseAttributeWithWhitespace));
+    }
 }

@@ -4,11 +4,11 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERATTRIBUTE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERCODE;
+import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERUPDATEDVALUE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_UNIVERSITYNAME;
-import static seedu.address.logic.parser.CliSyntax.PARAMETER_UPDATEDVALUE;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
-import seedu.address.logic.commands.PartnerCourseUpdateCommand;
+import seedu.address.logic.commands.partnercourse.PartnerCourseUpdateCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
@@ -38,13 +38,13 @@ public class PartnerCourseUpdateCommandParser implements Parser<PartnerCourseUpd
                 PARAMETER_UNIVERSITYNAME,
                 PARAMETER_PARTNERCODE,
                 PARAMETER_PARTNERATTRIBUTE,
-                PARAMETER_UPDATEDVALUE);
+                PARAMETER_PARTNERUPDATEDVALUE);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap,
                 PARAMETER_UNIVERSITYNAME,
                 PARAMETER_PARTNERCODE,
                 PARAMETER_PARTNERATTRIBUTE,
-                PARAMETER_UPDATEDVALUE)) {
+                PARAMETER_PARTNERUPDATEDVALUE)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     PartnerCourseUpdateCommand.PARTNER_COURSE_UPDATE_MESSAGE_USAGE));
         }
@@ -55,7 +55,7 @@ public class PartnerCourseUpdateCommandParser implements Parser<PartnerCourseUpd
         PartnerCourseAttribute partnerCourseAttribute = ParserUtil.parsePartnerCourseAttributeForUpdate(
                 parameterToArgMap.getValue(PARAMETER_PARTNERATTRIBUTE).get());
         String updatedValue = parseUpdatedValue(partnerCourseAttribute,
-                parameterToArgMap.getValue(PARAMETER_UPDATEDVALUE).get());
+                parameterToArgMap.getValue(PARAMETER_PARTNERUPDATEDVALUE).get());
 
         return new PartnerCourseUpdateCommand(universityName, partnerCode, partnerCourseAttribute, updatedValue);
     }

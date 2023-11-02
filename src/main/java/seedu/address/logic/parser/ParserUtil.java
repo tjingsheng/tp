@@ -398,6 +398,9 @@ public class ParserUtil {
         case ("localname"):
             resultAttribute = "LOCALNAME";
             break;
+        case ("localdescription"):
+            resultAttribute = "LOCALDESCRIPTION";
+            break;
         default:
             break;
         }
@@ -408,6 +411,75 @@ public class ParserUtil {
 
         return LocalCourseAttribute.valueOf(resultAttribute);
 
+    }
+
+    /**
+     * Parses a {@code String attribute}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code attribute} is invalid.
+     */
+    public static LocalCourseAttribute parseLocalCourseAttributeForUpdate(String attribute) throws ParseException {
+        requireNonNull(attribute);
+        String attributeLowerCase = attribute.toLowerCase().trim();
+        String resultAttribute = attributeLowerCase;
+
+        switch (attributeLowerCase) {
+        case ("localcode"):
+            resultAttribute = "LOCALCODE";
+            break;
+        case ("localname"):
+            resultAttribute = "LOCALNAME";
+            break;
+        case ("unit"):
+            resultAttribute = "LOCALUNIT";
+            break;
+        case ("localdescription"):
+            resultAttribute = "LOCALDESCRIPTION";
+            break;
+        default:
+            break;
+        }
+
+        if (!LocalCourseAttribute.isValidAttributeForUpdate(resultAttribute)) {
+            throw new ParseException(LocalCourseAttribute.MESSAGE_CONSTRAINTS_UPDATE);
+        }
+
+        return LocalCourseAttribute.valueOf(resultAttribute);
+    }
+
+
+
+    /**
+     * Parses a {@code String attribute}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code attribute} is invalid.
+     */
+    public static PartnerCourseAttribute parsePartnerCourseAttributeForSearch(String attribute) throws ParseException {
+        requireNonNull(attribute);
+        String attributeLowerCase = attribute.toLowerCase().trim();
+        String resultAttribute = attributeLowerCase;
+
+        switch (attributeLowerCase) {
+        case ("partnercode"):
+            resultAttribute = "PARTNERCODE";
+            break;
+        case ("partnername"):
+            resultAttribute = "PARTNERNAME";
+            break;
+        case ("university"):
+            resultAttribute = "UNIVERSITY";
+            break;
+        default:
+            break;
+        }
+
+        if (!PartnerCourseAttribute.isValidAttributeForSearch(resultAttribute)) {
+            throw new ParseException(PartnerCourseAttribute.MESSAGE_CONSTRAINTS_SEARCH);
+        }
+
+        return PartnerCourseAttribute.valueOf(resultAttribute);
     }
 
     /**

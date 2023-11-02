@@ -1,7 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.UNNCESSARY_WHITESPACE;
+import static seedu.address.logic.commands.CommandTestUtil.UNNECESSARY_WHITESPACE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TestUtil.getSquareBracketWrappedArgument;
@@ -12,9 +12,10 @@ import static seedu.address.testutil.TypicalObjects.INVALID_LOCAL_COURSE_CODE;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.LocalCourseAddCommand;
-import seedu.address.logic.commands.LocalCourseCommand;
-import seedu.address.logic.commands.LocalCourseDeleteCommand;
+import seedu.address.logic.commands.localcourse.LocalCourseAddCommand;
+import seedu.address.logic.commands.localcourse.LocalCourseCommand;
+import seedu.address.logic.commands.localcourse.LocalCourseDeleteCommand;
+import seedu.address.logic.parser.localcourse.LocalCourseDeleteCommandParser;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.testutil.LocalCourseUtil;
 import seedu.address.testutil.TypicalObjects;
@@ -31,13 +32,13 @@ public class LocalCourseDeleteCommandParserTest {
         LocalCode expectedLocalCode = CS2040S.getLocalCode();
 
         // add unnecessary whitespace
-        assertParseSuccess(parser, UNNCESSARY_WHITESPACE
+        assertParseSuccess(parser, UNNECESSARY_WHITESPACE
                         + LocalCourseCommand.COMMAND_WORD
-                        + UNNCESSARY_WHITESPACE
+                        + UNNECESSARY_WHITESPACE
                         + LocalCourseAddCommand.ACTION_WORD
-                        + UNNCESSARY_WHITESPACE
+                        + UNNECESSARY_WHITESPACE
                         + getSquareBracketWrappedArgument(expectedLocalCode.toString())
-                        + UNNCESSARY_WHITESPACE,
+                        + UNNECESSARY_WHITESPACE,
                 new LocalCourseDeleteCommand(expectedLocalCode));
     }
 

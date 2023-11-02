@@ -1,7 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.UNNCESSARY_WHITESPACE;
+import static seedu.address.logic.commands.CommandTestUtil.UNNECESSARY_WHITESPACE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TestUtil.getSquareBracketWrappedArgument;
@@ -11,8 +11,9 @@ import java.util.Comparator;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.LocalCourseCommand;
-import seedu.address.logic.commands.LocalCourseSortCommand;
+import seedu.address.logic.commands.localcourse.LocalCourseCommand;
+import seedu.address.logic.commands.localcourse.LocalCourseSortCommand;
+import seedu.address.logic.parser.localcourse.LocalCourseSortCommandParser;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.localcourse.LocalCourseAttribute;
 import seedu.address.model.localcourse.comparator.LocalCourseComparatorByLocalCode;
@@ -31,13 +32,13 @@ public class LocalCourseSortCommandParserTest {
         Comparator<LocalCourse> expectedComparator = new LocalCourseComparatorByLocalCode();
 
         // add unnecessary whitespace
-        assertParseSuccess(parser, UNNCESSARY_WHITESPACE
+        assertParseSuccess(parser, UNNECESSARY_WHITESPACE
                         + LocalCourseCommand.COMMAND_WORD
-                        + UNNCESSARY_WHITESPACE
+                        + UNNECESSARY_WHITESPACE
                         + LocalCourseSortCommand.ACTION_WORD
-                        + UNNCESSARY_WHITESPACE
+                        + UNNECESSARY_WHITESPACE
                         + getSquareBracketWrappedArgument("localcode")
-                        + UNNCESSARY_WHITESPACE,
+                        + UNNECESSARY_WHITESPACE,
                 new LocalCourseSortCommand(expectedComparator));
     }
 

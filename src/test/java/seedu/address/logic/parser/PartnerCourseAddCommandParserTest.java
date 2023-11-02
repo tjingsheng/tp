@@ -1,7 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.UNNCESSARY_WHITESPACE;
+import static seedu.address.logic.commands.CommandTestUtil.UNNECESSARY_WHITESPACE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TestUtil.getSquareBracketWrappedArgument;
@@ -24,8 +24,9 @@ import static seedu.address.testutil.TypicalObjects.TYPICAL_UNIVERSITY_NAME;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.PartnerCourseAddCommand;
-import seedu.address.logic.commands.PartnerCourseCommand;
+import seedu.address.logic.commands.partnercourse.PartnerCourseAddCommand;
+import seedu.address.logic.commands.partnercourse.PartnerCourseCommand;
+import seedu.address.logic.parser.partnercourse.PartnerCourseAddCommandParser;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.partnercourse.PartnerUnit;
@@ -45,21 +46,21 @@ public class PartnerCourseAddCommandParserTest {
 
         // add unnecessary whitespace
         assertParseSuccess(parser,
-            UNNCESSARY_WHITESPACE
+            UNNECESSARY_WHITESPACE
                 + PartnerCourseCommand.COMMAND_WORD
-                + UNNCESSARY_WHITESPACE
+                + UNNECESSARY_WHITESPACE
                 + PartnerCourseAddCommand.ACTION_WORD
-                + UNNCESSARY_WHITESPACE
+                + UNNECESSARY_WHITESPACE
                 + getSquareBracketWrappedArgument(expectedPartnerCourse.getPartnerUniversity()
                                                                        .getUniversityName()
                                                                        .toString())
-                + UNNCESSARY_WHITESPACE
+                + UNNECESSARY_WHITESPACE
                 + getSquareBracketWrappedArgument(expectedPartnerCourse.getPartnerCode().toString())
-                + UNNCESSARY_WHITESPACE
+                + UNNECESSARY_WHITESPACE
                 + getSquareBracketWrappedArgument(expectedPartnerCourse.getPartnerName().toString())
-                + UNNCESSARY_WHITESPACE
+                + UNNECESSARY_WHITESPACE
                 + getSquareBracketWrappedArgument(expectedPartnerCourse.getPartnerUnit().toString())
-                + UNNCESSARY_WHITESPACE
+                + UNNECESSARY_WHITESPACE
                 + getSquareBracketWrappedArgument(expectedPartnerCourse.getPartnerDescription().toString()),
             new PartnerCourseAddCommand(expectedPartnerCourse));
     }

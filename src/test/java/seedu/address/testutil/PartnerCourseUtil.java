@@ -2,9 +2,9 @@ package seedu.address.testutil;
 
 import java.util.Comparator;
 
-import seedu.address.logic.commands.PartnerCourseAddCommand;
-import seedu.address.logic.commands.PartnerCourseDeleteCommand;
-import seedu.address.logic.commands.PartnerCourseSortCommand;
+import seedu.address.logic.commands.partnercourse.PartnerCourseAddCommand;
+import seedu.address.logic.commands.partnercourse.PartnerCourseDeleteCommand;
+import seedu.address.logic.commands.partnercourse.PartnerCourseSortCommand;
 import seedu.address.model.partnercourse.PartnerCourse;
 
 /**

@@ -19,6 +19,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.partnercourse.PartnerCourseAddCommand;
 import seedu.address.model.PartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
 import seedu.address.model.ReadOnlyMappingCatalogue;
@@ -29,11 +30,15 @@ import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.localcourse.LocalCourseAttribute;
+import seedu.address.model.localcourse.LocalCourseContainsKeywordsPredicate;
 import seedu.address.model.mapping.Mapping;
 import seedu.address.model.notes.Note;
 import seedu.address.model.notes.NoteTagContainsKeywordsPredicate;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
+import seedu.address.model.partnercourse.PartnerCourseAttribute;
+import seedu.address.model.partnercourse.PartnerCourseContainsKeywordsPredicate;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityName;
 import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
@@ -124,6 +129,11 @@ public class PartnerCourseAddCommandTest {
 
         // LocalCourse
         @Override
+        public void searchLocalCourses(LocalCourseAttribute attribute,
+                                       LocalCourseContainsKeywordsPredicate predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+        @Override
         public Path getLocalCourseCatalogueFilePath() {
             throw new AssertionError("This method should not be called.");
         }
@@ -194,6 +204,10 @@ public class PartnerCourseAddCommandTest {
         }
 
         // PartnerCourse
+        @Override
+        public void searchPartnerCourses(PartnerCourseAttribute attribute,
+                                         PartnerCourseContainsKeywordsPredicate predicate) {
+        }
 
         @Override
         public void setPartnerCourseCatalogueFilePath(Path partnerCourseCatalogueFilePath) {

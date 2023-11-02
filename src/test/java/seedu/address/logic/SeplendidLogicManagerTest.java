@@ -279,6 +279,7 @@ public class SeplendidLogicManagerTest {
         expectedModel.addLocalCourse(TYPICAL_LOCAL_COURSE);
         assertCommandFailure(localCourseAddCommand, CommandException.class, expectedMessage, expectedModel);
 
+        // Triggers the savePartnerCourseCatalogue method by executing an add command
         String partnerCourseAddCommand = String.format(
             "%s %s [%s] [%s] [%s] [%s] [%s]",
             PartnerCourseCommand.COMMAND_WORD,

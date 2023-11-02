@@ -15,7 +15,6 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.localcourse.LocalCourseAddCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseDeleteCommand;
-import seedu.address.logic.parser.localcourse.LocalCourseDeleteCommandParser;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.testutil.LocalCourseUtil;
 import seedu.address.testutil.TypicalObjects;

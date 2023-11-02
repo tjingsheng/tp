@@ -8,7 +8,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.commands.note.NoteCommand;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
-import seedu.address.model.notes.Note;
+import seedu.address.model.note.Note;
 import seedu.address.seplendidui.UiUtil;
 
 /**

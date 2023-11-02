@@ -20,7 +20,6 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.localcourse.LocalCourseAddCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseCommand;
-import seedu.address.logic.parser.localcourse.LocalCourseAddCommandParser;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.testutil.LocalCourseBuilder;

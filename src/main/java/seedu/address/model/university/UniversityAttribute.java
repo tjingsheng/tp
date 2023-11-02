@@ -4,11 +4,10 @@ package seedu.address.model.university;
  * Represents the attribute which is related to university.
  */
 public enum UniversityAttribute {
-    UNIVERSITYNAME,
-    COUNTRY;
+    UNIVERSITYNAME;
 
     public static final String MESSAGE_CONSTRAINTS =
-            "There are only 2 attributes: universityname, country";
+            "There are only 1 attribute: universityname";
 
     /**
      * Returns trye if the given attribute is valid.

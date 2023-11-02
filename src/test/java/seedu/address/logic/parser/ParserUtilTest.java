@@ -11,6 +11,7 @@ import static seedu.address.testutil.TypicalObjects.INVALID_LOCAL_COURSE_ATTRIBU
 import static seedu.address.testutil.TypicalObjects.INVALID_LOCAL_COURSE_CODE;
 import static seedu.address.testutil.TypicalObjects.INVALID_LOCAL_COURSE_NAME;
 import static seedu.address.testutil.TypicalObjects.INVALID_PARTNER_COURSE_ATTRIBUTE;
+import static seedu.address.testutil.TypicalObjects.INVALID_PARTNER_COURSE_ATTRIBUTE_UPDATE;
 import static seedu.address.testutil.TypicalObjects.INVALID_PARTNER_COURSE_CODE;
 import static seedu.address.testutil.TypicalObjects.INVALID_PARTNER_COURSE_NAME;
 import static seedu.address.testutil.TypicalObjects.INVALID_UNIVERSITY_NAME;
@@ -422,6 +423,33 @@ public class ParserUtilTest {
         PartnerCourseAttribute expectedPartnerCourseAttribute = PartnerCourseAttribute.PARTNERNAME;
         assertEquals(expectedPartnerCourseAttribute,
                 ParserUtil.parsePartnerCourseAttributeForSort(partnerCourseAttributeWithWhitespace));
+    }
+
+    @Test
+    public void parsePartnerCourseAttributeForUpdate_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parsePartnerCourseAttributeForUpdate((String) null));
+    }
+
+    @Test
+    public void parsePartnerCourseAttributeForUpdate_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () ->
+                ParserUtil.parsePartnerCourseAttributeForUpdate(INVALID_PARTNER_COURSE_ATTRIBUTE_UPDATE));
+    }
+
+    @Test
+    public void parsePartnerCourseAttributeForUpdate_validValueWithoutAllCaps_returnsPartnerCourseAttribute()
+            throws Exception {
+        PartnerCourseAttribute expectedPartnerCourseAttribute = PartnerCourseAttribute.PARTNERCODE;
+        assertEquals(expectedPartnerCourseAttribute, ParserUtil.parsePartnerCourseAttributeForUpdate("partnErcoDe"));
+    }
+
+    @Test
+    public void parsePartnerCourseAttributeForUpdate_validValueWithWhitespace_returnsTrimmedPartnerCourseAttribute()
+            throws Exception {
+        String partnerCourseAttributeWithWhitespace = WHITESPACE + "PartnerName" + WHITESPACE;
+        PartnerCourseAttribute expectedPartnerCourseAttribute = PartnerCourseAttribute.PARTNERNAME;
+        assertEquals(expectedPartnerCourseAttribute,
+                ParserUtil.parsePartnerCourseAttributeForUpdate(partnerCourseAttributeWithWhitespace));
     }
 
     @Test

@@ -73,8 +73,10 @@ public class SeplendidParserTest {
         // This narrow typecast is safe as PartnerCourseDeleteCommand is a known subtype of Command
         PartnerCourseDeleteCommand command = (PartnerCourseDeleteCommand) parser
                 .parseCommand(PartnerCourseUtil.getPartnerCourseDeleteCommandFrom(partnerCourse));
-        assertEquals(new PartnerCourseDeleteCommand(partnerCourse.getPartnerCode(),
-                partnerCourse.getPartnerUniversity().getUniversityName()), command);
+        assertEquals(new PartnerCourseDeleteCommand(
+                            partnerCourse.getPartnerUniversity().getUniversityName(),
+                            partnerCourse.getPartnerCode()),
+                    command);
     }
 
 

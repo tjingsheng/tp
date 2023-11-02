@@ -8,7 +8,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Guarantees: immutable; is valid as declared in {@link #isValidPartnerCode(String)}
  */
 public class PartnerCode {
-    public static final String MESSAGE_CONSTRAINTS = "PartnerCode must start with an alphabet, and be no mor than "
+    public static final String MESSAGE_CONSTRAINTS = "PartnerCode must start with an alphabet, and be no more than "
             + "10 alphanumeric characters";
 
     public static final String VALIDATION_REGEX = "[a-zA-Z][a-zA-Z0-9]{0,9}";
@@ -51,7 +51,7 @@ public class PartnerCode {
         }
 
         PartnerCode otherPartnerCode = (PartnerCode) other;
-        return value.equals(otherPartnerCode.value);
+        return value.equalsIgnoreCase(otherPartnerCode.value);
     }
 
     @Override

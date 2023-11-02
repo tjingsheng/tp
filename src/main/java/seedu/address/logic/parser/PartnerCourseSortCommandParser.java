@@ -47,7 +47,7 @@ public class PartnerCourseSortCommandParser implements Parser<PartnerCourseSortC
 
     private Comparator<PartnerCourse> parsePartnerCourseComparator(String args) throws ParseException {
         PartnerCourseAttribute partnerCourseAttribute = ParserUtil.parsePartnerCourseAttributeForSort(args);
-        switch(partnerCourseAttribute) {
+        switch (partnerCourseAttribute) {
         case PARTNERCODE:
             return new PartnerCourseComparatorByPartnerCode();
         case PARTNERNAME:
@@ -55,7 +55,7 @@ public class PartnerCourseSortCommandParser implements Parser<PartnerCourseSortC
         case UNIVERSITY:
             return new PartnerCourseComparatorByUniversity();
         default:
-            throw new ParseException(PartnerCourseAttribute.MESSAGE_CONSTRAINTS);
+            throw new ParseException(PartnerCourseAttribute.MESSAGE_CONSTRAINTS_SORT);
         }
     }
 }

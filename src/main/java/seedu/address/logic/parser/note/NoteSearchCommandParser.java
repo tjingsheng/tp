@@ -9,7 +9,7 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.SeplendidArgumentMap;
 import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.notes.NoteTagContainsKeywordsPredicate;
+import seedu.address.model.note.NoteTagContainsKeywordsPredicate;
 import seedu.address.model.tag.Tag;
 
 /**

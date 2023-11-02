@@ -60,7 +60,7 @@ public class LocalCode {
 
         LocalCode otherLocalCode = (LocalCode) other;
         // performs semantic check
-        return value.equals(otherLocalCode.value);
+        return value.equalsIgnoreCase(otherLocalCode.value);
     }
 
     @Override

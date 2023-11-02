@@ -1,4 +1,4 @@
-package seedu.address.model.notes;
+package seedu.address.model.note;
 
 import java.util.function.Predicate;
 
@@ -26,7 +26,7 @@ public class NoteTagContainsKeywordsPredicate implements Predicate<Note> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof seedu.address.model.notes.NoteTagContainsKeywordsPredicate)) {
+        if (!(other instanceof seedu.address.model.note.NoteTagContainsKeywordsPredicate)) {
             return false;
         }
 

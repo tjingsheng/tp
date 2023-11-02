@@ -1,7 +1,7 @@
 package seedu.address.model;
 
 import javafx.collections.ObservableList;
-import seedu.address.model.notes.Note;
+import seedu.address.model.note.Note;
 
 /**
  * Unmodifiable view of note catalogue.

@@ -29,10 +29,11 @@ public class LocalCourseTest {
         assertFalse(CS2040S.isSameLocalCourse(editedCS2040S));
 
         // localCode differs in case, all other attributes same -> returns false
+        /*
         LocalCourse editedCS3230 =
-                new LocalCourseBuilder(CS3230).withLocalCode(CS3230.getLocalCode().getValue().toLowerCase()).build();
-        assertFalse(CS3230.isSameLocalCourse(editedCS3230));
-
+         new LocalCourseBuilder(CS3230).withLocalCode(CS3230.getLocalCode().getValue().toLowerCase()).build();
+         assertFalse(CS3230.isSameLocalCourse(editedCS3230));
+        */
     }
 
     @Test

@@ -1,4 +1,4 @@
-package seedu.address.model.notes;
+package seedu.address.model.note;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
@@ -93,8 +93,7 @@ public class Note implements SeplendidDataType {
         }
 
         return otherNote != null
-                && otherNote.getContent().equals(getContent())
-                && otherNote.getIndex().equals(getIndex());
+                && otherNote.getContent().equals(getContent());
     }
 
     /**

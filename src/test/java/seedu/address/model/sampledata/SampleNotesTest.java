@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.notes.Content;
-import seedu.address.model.notes.Note;
+import seedu.address.model.note.Content;
+import seedu.address.model.note.Note;
 import seedu.address.model.tag.Tag;
 
 public class SampleNotesTest {

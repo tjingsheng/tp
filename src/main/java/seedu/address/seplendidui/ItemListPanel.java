@@ -11,7 +11,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.SeplendidDataType;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.mapping.Mapping;
-import seedu.address.model.notes.Note;
+import seedu.address.model.note.Note;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.university.University;
 

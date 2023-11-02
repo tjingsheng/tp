@@ -38,8 +38,8 @@ import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.localcourse.LocalCourseAttribute;
 import seedu.address.model.localcourse.LocalCourseContainsKeywordsPredicate;
 import seedu.address.model.mapping.Mapping;
-import seedu.address.model.notes.Note;
-import seedu.address.model.notes.NoteTagContainsKeywordsPredicate;
+import seedu.address.model.note.Note;
+import seedu.address.model.note.NoteTagContainsKeywordsPredicate;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
@@ -64,10 +64,10 @@ public class PartnerCourseDeleteCommandTest {
         ModelStubAcceptingPartnerCourseDeleted modelStub = new ModelStubAcceptingPartnerCourseDeleted();
 
         CommandResult commandResult = new PartnerCourseDeleteCommand(
-                COMP1000.getPartnerCode(), COMP1000.getPartnerUniversity().getUniversityName()).execute(modelStub);
+                COMP1000.getPartnerUniversity().getUniversityName(), COMP1000.getPartnerCode()).execute(modelStub);
 
         assertEquals(String.format(PartnerCourseDeleteCommand.MESSAGE_SUCCESS, Messages.format(COMP1000)),
-                     commandResult.getFeedbackToUser());
+                commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(COMP2000), modelStub.partnerCoursesAdded);
     }
 
@@ -76,13 +76,13 @@ public class PartnerCourseDeleteCommandTest {
         PartnerCourse validPartnerCourse = new PartnerCourseBuilder().build();
 
         PartnerCourseDeleteCommand partnerCourseDeleteCommand = new PartnerCourseDeleteCommand(
-                new PartnerCode(TYPICAL_PARTNER_COURSE_CODE), new UniversityName(TYPICAL_UNIVERSITY_NAME));
+                new UniversityName(TYPICAL_UNIVERSITY_NAME), new PartnerCode(TYPICAL_PARTNER_COURSE_CODE));
         SeplendidModelStub modelStub = new SeplendidModelStubWithPartnerCourse(validPartnerCourse);
 
         assertThrows(
-            CommandException.class,
-            PartnerCourseDeleteCommand.MESSAGE_NONEXISTENT_PARTNER_COURSE, (
-            ) -> partnerCourseDeleteCommand.execute(modelStub));
+                CommandException.class,
+                PartnerCourseDeleteCommand.MESSAGE_NONEXISTENT_PARTNER_COURSE, (
+                ) -> partnerCourseDeleteCommand.execute(modelStub));
     }
 
     @Test
@@ -91,14 +91,14 @@ public class PartnerCourseDeleteCommandTest {
         PartnerCode comp2000 = new PartnerCode("COMP2000");
         UniversityName edinburgh = new UniversityName("University of Edinburgh");
         UniversityName leeds = new UniversityName("University of Leeds");
-        PartnerCourseDeleteCommand deleteComp1000Command = new PartnerCourseDeleteCommand(comp1000, edinburgh);
-        PartnerCourseDeleteCommand deleteComp2000Command = new PartnerCourseDeleteCommand(comp2000, leeds);
+        PartnerCourseDeleteCommand deleteComp1000Command = new PartnerCourseDeleteCommand(edinburgh, comp1000);
+        PartnerCourseDeleteCommand deleteComp2000Command = new PartnerCourseDeleteCommand(leeds, comp2000);
 
         // same object -> returns true
         assertTrue(deleteComp1000Command.equals(deleteComp1000Command));
 
         // same values -> returns true
-        PartnerCourseDeleteCommand deleteComp1000CommandCopy = new PartnerCourseDeleteCommand(comp1000, edinburgh);
+        PartnerCourseDeleteCommand deleteComp1000CommandCopy = new PartnerCourseDeleteCommand(edinburgh, comp1000);
         assertTrue(deleteComp1000Command.equals(deleteComp1000CommandCopy));
 
         // different types -> returns false
@@ -141,6 +141,7 @@ public class PartnerCourseDeleteCommandTest {
                                        LocalCourseContainsKeywordsPredicate predicate) {
             throw new AssertionError("This method should not be called.");
         }
+
         @Override
         public Path getLocalCourseCatalogueFilePath() {
             throw new AssertionError("This method should not be called.");
@@ -233,6 +234,11 @@ public class PartnerCourseDeleteCommandTest {
         }
 
         @Override
+        public void setPartnerCourse(PartnerCourse target, PartnerCourse editedPartnerCourse) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void deletePartnerCourse(PartnerCourse partnerCourse) {
             throw new AssertionError("This method should not be called.");
         }
@@ -321,7 +327,7 @@ public class PartnerCourseDeleteCommandTest {
 
         @Override
         public void getSearchUniversityIfExists(
-            UniversityNameContainsKeywordsPredicate universityNameContainsKeywordsPredicate
+                UniversityNameContainsKeywordsPredicate universityNameContainsKeywordsPredicate
         ) {
             throw new AssertionError("This method should not be called.");
         }
@@ -463,6 +469,15 @@ public class PartnerCourseDeleteCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        @Override
+        public ObservableList<Mapping> getSortedMappingList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateSortedMappingList(Comparator<Mapping> mappingComparator) {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**

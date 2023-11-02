@@ -1,28 +1,29 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.partnercourse;
 
 import static seedu.address.logic.commands.CommandTestUtil.assertSeplendidCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertSeplendidCommandSuccess;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE;
 import static seedu.address.testutil.TypicalObjects.getTypicalLocalCourseCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalMappingCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalNoteCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalPartnerCourseCatalogue;
+import static seedu.address.testutil.TypicalObjects.getTypicalPartnerCourses;
 import static seedu.address.testutil.TypicalObjects.getTypicalUniversityCatalogue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.Messages;
-import seedu.address.logic.commands.localcourse.LocalCourseAddCommand;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.SeplendidModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.localcourse.LocalCourse;
-import seedu.address.testutil.LocalCourseBuilder;
+import seedu.address.model.partnercourse.PartnerCourse;
 
 /**
- * Contains integration tests (interaction with the SeplendidModel) for {@code LocalCourseAddCommand}.
+ * Contains integration tests (interaction with the SeplendidModel) for {@code PartnerCourseDeleteCommand}.
  */
-public class LocalCourseAddCommandIntegrationTest {
+public class PartnerCourseDeleteCommandIntegrationTest {
 
     private SeplendidModel model;
 
@@ -37,30 +38,30 @@ public class LocalCourseAddCommandIntegrationTest {
     }
 
     @Test
-    public void execute_newLocalCourse_success() {
-        LocalCourse validLocalCourse = new LocalCourseBuilder().build();
+    public void execute_deletePartnerCourse_success() throws CommandException {
+        PartnerCourse validExistingPartnerCourse = getTypicalPartnerCourses().get(0);
 
         SeplendidModel expectedModel = new SeplendidModelManager(new UserPrefs(),
                                                                  model.getLocalCourseCatalogue(),
                                                                  model.getPartnerCourseCatalogue(),
                                                                  model.getUniversityCatalogue(),
-                                                                 model.getMappingCatalogue(),
-                                                                 model.getNoteCatalogue());
-        expectedModel.addLocalCourse(validLocalCourse);
+                                                                 getTypicalMappingCatalogue(),
+                                                                 getTypicalNoteCatalogue());
+        expectedModel.deletePartnerCourse(validExistingPartnerCourse);
 
-        assertSeplendidCommandSuccess(new LocalCourseAddCommand(validLocalCourse),
-                                      model,
-                                      String.format(LocalCourseAddCommand.MESSAGE_SUCCESS,
-                                                    Messages.format(validLocalCourse)),
-                                      expectedModel);
+        assertSeplendidCommandSuccess(
+                new PartnerCourseDeleteCommand(
+                        validExistingPartnerCourse.getPartnerCode(),
+                        validExistingPartnerCourse.getPartnerUniversity().getUniversityName()),
+                model,
+                String.format(PartnerCourseDeleteCommand.MESSAGE_SUCCESS, Messages.format(validExistingPartnerCourse)),
+                expectedModel);
     }
 
     @Test
-    public void execute_duplicateLocalCourse_throwsCommandException() {
-        LocalCourse localCourseInList = model.getLocalCourseCatalogue().getLocalCourseList().get(0);
-        assertSeplendidCommandFailure(new LocalCourseAddCommand(localCourseInList),
-                                      model,
-                                      LocalCourseAddCommand.MESSAGE_DUPLICATE_LOCAL_COURSE);
+    public void execute_nonExistingPartnerCourse_throwsCommandException() {
+        assertSeplendidCommandFailure(new PartnerCourseDeleteCommand(TYPICAL_PARTNER_COURSE.getPartnerCode(),
+                        TYPICAL_PARTNER_COURSE.getPartnerUniversity().getUniversityName()), model,
+                PartnerCourseDeleteCommand.MESSAGE_NONEXISTENT_PARTNER_COURSE);
     }
-
 }

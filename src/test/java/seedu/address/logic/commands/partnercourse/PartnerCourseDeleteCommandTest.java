@@ -1,16 +1,20 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.partnercourse;
 
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalObjects.CS2030S;
+import static seedu.address.testutil.TypicalObjects.COMP1000;
+import static seedu.address.testutil.TypicalObjects.COMP2000;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE_CODE;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_UNIVERSITY_NAME;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
@@ -19,9 +23,9 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.Messages;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.commands.localcourse.LocalCourseAddCommand;
-import seedu.address.model.LocalCourseCatalogue;
+import seedu.address.model.PartnerCourseCatalogue;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
 import seedu.address.model.ReadOnlyMappingCatalogue;
 import seedu.address.model.ReadOnlyNoteCatalogue;
@@ -43,72 +47,68 @@ import seedu.address.model.partnercourse.PartnerCourseContainsKeywordsPredicate;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityName;
 import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
-import seedu.address.testutil.LocalCourseBuilder;
+import seedu.address.testutil.PartnerCourseBuilder;
 
 /**
- * Unit testing of LocalCourseAddCommand, with stubs / dependency injection.
+ * Unit testing of PartnerCourseDeleteCommand, with stubs / dependency injection.
  */
-public class LocalCourseAddCommandTest {
+public class PartnerCourseDeleteCommandTest {
 
     @Test
-    public void constructor_nullLocalCourse_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new LocalCourseAddCommand(null));
+    public void constructor_nullPartnerCode_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> new PartnerCourseDeleteCommand(null, null));
     }
 
     @Test
-    public void execute_localCourseAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingLocalCourseAdded modelStub = new ModelStubAcceptingLocalCourseAdded();
-        LocalCourse validLocalCourse = new LocalCourseBuilder().build();
-        // Tests interactions with model
-        CommandResult commandResult = new LocalCourseAddCommand(validLocalCourse).execute(modelStub);
+    public void execute_partnerCourseAcceptedByModel_deleteSuccessful() throws Exception {
+        ModelStubAcceptingPartnerCourseDeleted modelStub = new ModelStubAcceptingPartnerCourseDeleted();
 
-        assertEquals(
-            String.format(LocalCourseAddCommand.MESSAGE_SUCCESS, Messages.format(validLocalCourse)),
-            commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validLocalCourse), modelStub.localCoursesAdded);
+        CommandResult commandResult = new PartnerCourseDeleteCommand(
+                COMP1000.getPartnerCode(), COMP1000.getPartnerUniversity().getUniversityName()).execute(modelStub);
+
+        assertEquals(String.format(PartnerCourseDeleteCommand.MESSAGE_SUCCESS, Messages.format(COMP1000)),
+                     commandResult.getFeedbackToUser());
+        assertEquals(Arrays.asList(COMP2000), modelStub.partnerCoursesAdded);
     }
 
     @Test
-    public void execute_duplicateLocalCourse_throwsCommandException() {
-        LocalCourse validLocalCourse = new LocalCourseBuilder().build();
-        LocalCourseAddCommand localCourseAddCommand = new LocalCourseAddCommand(validLocalCourse);
-        SeplendidModelStub modelStub = new SeplendidModelStubWithLocalCourse(validLocalCourse);
+    public void execute_partnerCourseDoesNotExist_throwsCommandException() {
+        PartnerCourse validPartnerCourse = new PartnerCourseBuilder().build();
+
+        PartnerCourseDeleteCommand partnerCourseDeleteCommand = new PartnerCourseDeleteCommand(
+                new PartnerCode(TYPICAL_PARTNER_COURSE_CODE), new UniversityName(TYPICAL_UNIVERSITY_NAME));
+        SeplendidModelStub modelStub = new SeplendidModelStubWithPartnerCourse(validPartnerCourse);
 
         assertThrows(
             CommandException.class,
-            LocalCourseAddCommand.MESSAGE_DUPLICATE_LOCAL_COURSE, (
-            ) -> localCourseAddCommand.execute(modelStub));
+            PartnerCourseDeleteCommand.MESSAGE_NONEXISTENT_PARTNER_COURSE, (
+            ) -> partnerCourseDeleteCommand.execute(modelStub));
     }
 
     @Test
     public void equals() {
-        LocalCourse cs2030s = new LocalCourseBuilder().withLocalCode("CS2030S").build();
-        LocalCourse cs2040s = new LocalCourseBuilder().withLocalCode("CS2040S").build();
-        LocalCourseAddCommand addCS2030SCommand = new LocalCourseAddCommand(cs2030s);
-        LocalCourseAddCommand addCS2040SCommand = new LocalCourseAddCommand(cs2040s);
+        PartnerCode comp1000 = new PartnerCode("COMP1000");
+        PartnerCode comp2000 = new PartnerCode("COMP2000");
+        UniversityName edinburgh = new UniversityName("University of Edinburgh");
+        UniversityName leeds = new UniversityName("University of Leeds");
+        PartnerCourseDeleteCommand deleteComp1000Command = new PartnerCourseDeleteCommand(comp1000, edinburgh);
+        PartnerCourseDeleteCommand deleteComp2000Command = new PartnerCourseDeleteCommand(comp2000, leeds);
 
         // same object -> returns true
-        assertTrue(addCS2030SCommand.equals(addCS2030SCommand));
+        assertTrue(deleteComp1000Command.equals(deleteComp1000Command));
 
         // same values -> returns true
-        LocalCourseAddCommand addCS2030SCommandCopy = new LocalCourseAddCommand(cs2030s);
-        assertTrue(addCS2030SCommand.equals(addCS2030SCommandCopy));
+        PartnerCourseDeleteCommand deleteComp1000CommandCopy = new PartnerCourseDeleteCommand(comp1000, edinburgh);
+        assertTrue(deleteComp1000Command.equals(deleteComp1000CommandCopy));
 
         // different types -> returns false
-        assertFalse(addCS2030SCommand.equals(1));
+        assertFalse(deleteComp1000Command.equals(1));
 
         // null -> returns false
-        assertFalse(addCS2030SCommand.equals(null));
+        assertFalse(deleteComp1000Command.equals(null));
 
         // different local course -> returns false
-        assertFalse(addCS2030SCommand.equals(addCS2040SCommand));
-    }
-
-    @Test
-    public void toStringMethod() {
-        LocalCourseAddCommand localCourseAddCommand = new LocalCourseAddCommand(CS2030S);
-        String expected = LocalCourseAddCommand.class.getCanonicalName() + "{localCourseToAdd=" + CS2030S + "}";
-        assertEquals(expected, localCourseAddCommand.toString());
+        assertFalse(deleteComp1000Command.equals(deleteComp2000Command));
     }
 
     /**
@@ -141,7 +141,6 @@ public class LocalCourseAddCommandTest {
                                        LocalCourseContainsKeywordsPredicate predicate) {
             throw new AssertionError("This method should not be called.");
         }
-
         @Override
         public Path getLocalCourseCatalogueFilePath() {
             throw new AssertionError("This method should not be called.");
@@ -321,26 +320,6 @@ public class LocalCourseAddCommandTest {
         }
 
         @Override
-        public void addUniversity(University university) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void setUniversity(University target, University editedUniversity) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public ObservableList<University> getSortedUniversityList() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void updateSortedUniversityList(Comparator<University> universityComparator) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public void getSearchUniversityIfExists(
             UniversityNameContainsKeywordsPredicate universityNameContainsKeywordsPredicate
         ) {
@@ -357,9 +336,28 @@ public class LocalCourseAddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
-
         @Override
         public boolean hasUniversity(UniversityName universityName) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addUniversity(University university) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setUniversity(University target, University editedUniversity) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<University> getSortedUniversityList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateSortedUniversityList(Comparator<University> universityComparator) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -468,45 +466,66 @@ public class LocalCourseAddCommandTest {
     }
 
     /**
-     * A Model stub that contains a single localCourse.
+     * A Model stub that contains a single partnerCourse.
      */
-    private class SeplendidModelStubWithLocalCourse extends SeplendidModelStub {
-        private final LocalCourse localCourse;
+    private class SeplendidModelStubWithPartnerCourse extends PartnerCourseDeleteCommandTest.SeplendidModelStub {
+        private final PartnerCourse partnerCourse;
 
-        SeplendidModelStubWithLocalCourse(LocalCourse lc) {
-            requireNonNull(lc);
-            localCourse = lc;
+        SeplendidModelStubWithPartnerCourse(PartnerCourse pc) {
+            requireNonNull(pc);
+            partnerCourse = pc;
         }
 
         @Override
-        public boolean hasLocalCourse(LocalCourse lc) {
-            requireNonNull(lc);
-            return localCourse.isSameLocalCourse(lc);
+        public boolean hasPartnerCourse(PartnerCourse pc) {
+            requireNonNull(pc);
+            return partnerCourse.isSamePartnerCourse(pc);
+        }
+
+        @Override
+        public void deletePartnerCourse(PartnerCourse partnerCourse) {
+            requireNonNull(partnerCourse);
+        }
+
+        @Override
+        public Optional<PartnerCourse> getPartnerCourseIfExists(
+                PartnerCode partnerCode, UniversityName universityName) {
+            if (!partnerCourse.getPartnerCode().equals(partnerCode)
+                    || !partnerCourse.getPartnerUniversity().getUniversityName().equals(universityName)) {
+                return Optional.empty();
+            }
+            return Optional.of(partnerCourse);
         }
     }
 
     /**
-     * A Model stub that always accept the local course being added.
+     * A Model stub that always accept the partner course being added.
      */
-    private class ModelStubAcceptingLocalCourseAdded extends SeplendidModelStub {
-        final ArrayList<LocalCourse> localCoursesAdded = new ArrayList<>();
+    private class ModelStubAcceptingPartnerCourseDeleted extends PartnerCourseDeleteCommandTest.SeplendidModelStub {
+        final ArrayList<PartnerCourse> partnerCoursesAdded = new ArrayList<>(List.of(COMP1000, COMP2000));
 
         @Override
-        public boolean hasLocalCourse(LocalCourse localCourse) {
-            requireNonNull(localCourse);
-            return localCoursesAdded.stream().anyMatch(localCourse::isSameLocalCourse);
+        public boolean hasPartnerCourse(PartnerCourse partnerCourse) {
+            requireNonNull(partnerCourse);
+            return partnerCoursesAdded.stream().anyMatch(partnerCourse::isSamePartnerCourse);
         }
 
         @Override
-        public void addLocalCourse(LocalCourse localCourse) {
-            requireNonNull(localCourse);
-            localCoursesAdded.add(localCourse);
+        public void deletePartnerCourse(PartnerCourse partnerCourse) {
+            requireNonNull(partnerCourse);
+            partnerCoursesAdded.remove(partnerCourse);
         }
 
         @Override
-        public ReadOnlyLocalCourseCatalogue getLocalCourseCatalogue() {
-            return new LocalCourseCatalogue();
+        public Optional<PartnerCourse> getPartnerCourseIfExists(
+                PartnerCode partnerCode, UniversityName universityName) {
+            return partnerCoursesAdded.stream().filter(pc -> pc.getPartnerCode().equals(partnerCode)
+                    && pc.getPartnerUniversity().getUniversityName().equals(universityName)).findFirst();
+        }
+
+        @Override
+        public ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue() {
+            return new PartnerCourseCatalogue();
         }
     }
-
 }

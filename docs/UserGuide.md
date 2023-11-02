@@ -58,7 +58,7 @@
 --------------------------------------------------------------------------------------------------------------------
 
 # 1. About SEPlendid
-SEPlendid is a state of the art **Course Mapping System** that allows NUS Computing students to seamlessly plan for 
+SEPlendid is a **Course Mapping System** that allows NUS Computing students to seamlessly plan for 
 their overseas courses, for the Student Exchange Programmes (SEP). As a student, you can view and find course 
 mappings in order to plan for your overseas studies without the hassle of creating Excel sheets. Utilise SEPlendid' 
 **course mapping** function in order to quickly find possible mappings for certain courses. Finally, SEPlendid's 
@@ -338,7 +338,10 @@ Searches localcourse with course code identified by `localcode` or `localname`.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `localcourse search [localname]`
 
 **Example:**
-<insert image>
+| `localcourse search [localcode] [BT2101]`                                     |
+|----------------------------------------------------------|
+| ![localcourse-search-ui](images/LocalcourseSearchUi.png) |
+
 
 ### 4.1.6.: Sort local courses by attributes: `localcourse sort`
 Sorts local courses according to `localcourseattribute` - `localcode` or `localname`.
@@ -391,7 +394,7 @@ Deletes partner course with university identified by `university` and course cod
 | ![partnercourse-delete-ui](images/PartnercourseDeleteUi.png) |
 
 ### 4.2.4. Update a partner course: `partnercourse update`
-Updates `partnercourseattribute` of partnercourse, with university identified by `universityname` and 
+Updates `partnercourseattribute` of partner course, with university identified by `universityname` and 
 partner code identified by `partnercode`, with updated value.
 
 `partnercourseattribute` - `partnercode`, `partnername`, `unit`, `description`
@@ -404,11 +407,14 @@ partner code identified by `partnercode`, with updated value.
 | ![partnercourse-update-ui](images/PartnercourseUpdateUi.png) |
 
 ### 4.2.5. Search a partnercourse by attributes: `partnercourse search`
-Searches partnercourse with course name identified by `partnername`.
+Searches partner course with course name identified by `partnername`.
 **Format**: `partnercourse search [partnercode]` \
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `partnercourse search [partnername]`
 
 **Example:**
+| `partnercourse search [partnercode] [CSE469]`                                  |
+|----------------------------------------------------|
+| ![partnercourse-search-ui](images/PartnercourseSearchUi.png) |
 
 ### 4.2.6. Sort partner courses by attributes: `partnercourse sort`
 Sorts partner courses according to `partnercourseattribute` - `university`, `partnercode` or `partnername`.
@@ -431,10 +437,13 @@ Lists all available partner universities, paginated if dataset is too huge.
 | ![university-list-ui](images/UniversityListUi.png) |
 
 ### 4.3.2. Search a university by attributes: `university search`
-Searches all available partner universities, paginated if dataset is too huge.
+Searches universities with the same keyword, paginated if dataset is too huge.
 **Format**: `university search [university]`
 
 **Example:**
+| `university search [imperial]`                                  |
+|----------------------------------------------------|
+| ![university-search-ui](images/UniversitySearchUi.png) |
 
 ### 4.3.3. Sort universities by attributes: `university sort`
 Sorts universities according to `universityattribute` - `universityname`.

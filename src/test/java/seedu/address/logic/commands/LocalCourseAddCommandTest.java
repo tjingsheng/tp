@@ -63,8 +63,8 @@ public class LocalCourseAddCommandTest {
         CommandResult commandResult = new LocalCourseAddCommand(validLocalCourse).execute(modelStub);
 
         assertEquals(
-            String.format(LocalCourseAddCommand.MESSAGE_SUCCESS, Messages.format(validLocalCourse)),
-            commandResult.getFeedbackToUser());
+                String.format(LocalCourseAddCommand.MESSAGE_SUCCESS, Messages.format(validLocalCourse)),
+                commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(validLocalCourse), modelStub.localCoursesAdded);
     }
 
@@ -75,9 +75,9 @@ public class LocalCourseAddCommandTest {
         SeplendidModelStub modelStub = new SeplendidModelStubWithLocalCourse(validLocalCourse);
 
         assertThrows(
-            CommandException.class,
-            LocalCourseAddCommand.MESSAGE_DUPLICATE_LOCAL_COURSE, (
-            ) -> localCourseAddCommand.execute(modelStub));
+                CommandException.class,
+                LocalCourseAddCommand.MESSAGE_DUPLICATE_LOCAL_COURSE, (
+                ) -> localCourseAddCommand.execute(modelStub));
     }
 
     @Test
@@ -342,7 +342,7 @@ public class LocalCourseAddCommandTest {
 
         @Override
         public void getSearchUniversityIfExists(
-            UniversityNameContainsKeywordsPredicate universityNameContainsKeywordsPredicate
+                UniversityNameContainsKeywordsPredicate universityNameContainsKeywordsPredicate
         ) {
             throw new AssertionError("This method should not be called.");
         }
@@ -465,6 +465,15 @@ public class LocalCourseAddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        @Override
+        public ObservableList<Mapping> getSortedMappingList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateSortedMappingList(Comparator<Mapping> mappingComparator) {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**

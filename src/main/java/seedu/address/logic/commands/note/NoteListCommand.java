@@ -18,6 +18,20 @@ public class NoteListCommand extends NoteCommand {
 
     public static final String MESSAGE_SUCCESS = "Listed all notes";
 
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof NoteListCommand)) {
+            return false;
+        }
+
+        return true;
+    }
+
 
     /**
      * TBD: This stub is to be removed after morphing is complete.

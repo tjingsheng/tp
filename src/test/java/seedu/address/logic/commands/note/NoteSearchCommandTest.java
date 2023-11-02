@@ -1,21 +1,25 @@
 package seedu.address.logic.commands.note;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.testutil.Assert.assertThrows;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Predicate;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.logic.Messages;
-import seedu.address.logic.commands.CommandResult;
+import seedu.address.model.NoteCatalogue;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
 import seedu.address.model.ReadOnlyMappingCatalogue;
 import seedu.address.model.ReadOnlyNoteCatalogue;
@@ -34,53 +38,53 @@ import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
 import seedu.address.model.partnercourse.PartnerCourseContainsKeywordsPredicate;
+import seedu.address.model.tag.Tag;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityName;
 import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
 import seedu.address.testutil.NoteBuilder;
 
-public class NoteAddCommandTest {
+public class NoteSearchCommandTest {
 
-    @Test
-    public void constructor_nullNote_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new NoteAddCommand(null));
-    }
+    private ModelStubWithNotes modelStub;
+    private NoteSearchCommand noteSearchCommand;
 
-    @Test
-    public void execute_noteAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingNoteAdded modelStub = new ModelStubAcceptingNoteAdded();
-        Note validNote = new NoteBuilder().withContent("Note 1").build();
+    @BeforeEach
+    public void setUp() {
+        List<Note> notes = new ArrayList<>();
+        Set<Tag> tags = new HashSet<>();
+        tags.add(new Tag("tag"));
 
-        CommandResult commandResult = new NoteAddCommand(validNote).execute(modelStub);
+        notes.add(new NoteBuilder().withContent("Note 1").withTags(tags).build());
+        notes.add(new NoteBuilder().withContent("Note 2").withTags(tags).build());
 
-        assertEquals(
-                String.format(NoteAddCommand.MESSAGE_SUCCESS, Messages.format(validNote)),
-                commandResult.getFeedbackToUser());
-        assertTrue(modelStub.hasNote(validNote));
+        modelStub = new ModelStubWithNotes(notes);
+        noteSearchCommand = new NoteSearchCommand(new NoteTagContainsKeywordsPredicate("tag"));
     }
 
     @Test
     public void equals() {
-        Note note1 = new NoteBuilder().withContent("Note 1").build();
-        Note note2 = new NoteBuilder().withContent("Note 2").build();
-        NoteAddCommand addNote1Command = new NoteAddCommand(note1);
-        NoteAddCommand addNote2Command = new NoteAddCommand(note2);
+        NoteTagContainsKeywordsPredicate firstPredicate = new NoteTagContainsKeywordsPredicate("tag");
+        NoteTagContainsKeywordsPredicate secondPredicate = new NoteTagContainsKeywordsPredicate("differentTag");
+
+        NoteSearchCommand searchCommandWithFirstPredicate = new NoteSearchCommand(firstPredicate);
+        NoteSearchCommand searchCommandWithSecondPredicate = new NoteSearchCommand(secondPredicate);
 
         // same object -> returns true
-        assertTrue(addNote1Command.equals(addNote1Command));
+        assertTrue(searchCommandWithFirstPredicate.equals(searchCommandWithFirstPredicate));
 
         // same values -> returns true
-        NoteAddCommand addNote1CommandCopy = new NoteAddCommand(note1);
-        assertTrue(addNote1Command.equals(addNote1CommandCopy));
+        NoteSearchCommand searchCommandWithFirstPredicateCopy = new NoteSearchCommand(firstPredicate);
+        assertTrue(searchCommandWithFirstPredicate.equals(searchCommandWithFirstPredicateCopy));
 
         // different types -> returns false
-        assertFalse(addNote1Command.equals(1));
+        assertFalse(searchCommandWithFirstPredicate.equals(1));
 
         // null -> returns false
-        assertFalse(addNote1Command.equals(null));
+        assertFalse(searchCommandWithFirstPredicate.equals(null));
 
         // different note -> returns false
-        assertFalse(addNote1Command.equals(addNote2Command));
+        assertFalse(searchCommandWithFirstPredicate.equals(searchCommandWithSecondPredicate));
     }
 
     /**
@@ -452,21 +456,26 @@ public class NoteAddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
     }
+    private class ModelStubWithNotes extends SeplendidModelStub {
+        private final NoteCatalogue noteCatalogue = new NoteCatalogue();
+        private FilteredList<Note> notes;
 
-    /**
-     * A Model stub that always accepts the note being added.
-     */
-    private class ModelStubAcceptingNoteAdded extends SeplendidModelStub {
-        private Note note;
-
-        @Override
-        public boolean hasNote(Note note) {
-            return this.note != null && this.note.equals(note);
+        ModelStubWithNotes(List<Note> notes) {
+            requireNonNull(notes);
+            this.notes = new FilteredList<>(this.noteCatalogue.getNoteList());
+            noteCatalogue.setNotes(this.notes);
         }
 
         @Override
-        public void addNote(Note note) {
-            this.note = note;
+        public void getSearchNoteIfExists(NoteTagContainsKeywordsPredicate notePredicate) {
+            requireNonNull(notePredicate);
+            updateFilteredNoteList(notePredicate); // Update the filtered notes
+        }
+
+        @Override
+        public NoteCatalogue getNoteCatalogue() {
+            return noteCatalogue;
         }
     }
+
 }

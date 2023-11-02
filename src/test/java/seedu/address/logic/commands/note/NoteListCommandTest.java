@@ -3,7 +3,6 @@ package seedu.address.logic.commands.note;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.testutil.Assert.assertThrows;
 
 import java.nio.file.Path;
 import java.util.Comparator;
@@ -14,8 +13,8 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.logic.Messages;
-import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.NoteCatalogue;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
 import seedu.address.model.ReadOnlyMappingCatalogue;
 import seedu.address.model.ReadOnlyNoteCatalogue;
@@ -37,56 +36,39 @@ import seedu.address.model.partnercourse.PartnerCourseContainsKeywordsPredicate;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityName;
 import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
-import seedu.address.testutil.NoteBuilder;
 
-public class NoteAddCommandTest {
-
-    @Test
-    public void constructor_nullNote_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new NoteAddCommand(null));
-    }
+public class NoteListCommandTest {
 
     @Test
-    public void execute_noteAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingNoteAdded modelStub = new ModelStubAcceptingNoteAdded();
-        Note validNote = new NoteBuilder().withContent("Note 1").build();
+    public void execute_listIsNotFiltered_showsAllNotes() throws CommandException {
+        ModelStubWithNote modelStub = new ModelStubWithNote();
+        NoteListCommand noteListCommand = new NoteListCommand();
 
-        CommandResult commandResult = new NoteAddCommand(validNote).execute(modelStub);
-
-        assertEquals(
-                String.format(NoteAddCommand.MESSAGE_SUCCESS, Messages.format(validNote)),
-                commandResult.getFeedbackToUser());
-        assertTrue(modelStub.hasNote(validNote));
+        assertEquals("Listed all notes", noteListCommand.execute(modelStub).getFeedbackToUser());
     }
 
     @Test
     public void equals() {
-        Note note1 = new NoteBuilder().withContent("Note 1").build();
-        Note note2 = new NoteBuilder().withContent("Note 2").build();
-        NoteAddCommand addNote1Command = new NoteAddCommand(note1);
-        NoteAddCommand addNote2Command = new NoteAddCommand(note2);
+        NoteListCommand listCommand = new NoteListCommand();
+        NoteListCommand otherListCommand = new NoteListCommand();
 
         // same object -> returns true
-        assertTrue(addNote1Command.equals(addNote1Command));
+        assertTrue(listCommand.equals(listCommand));
 
         // same values -> returns true
-        NoteAddCommand addNote1CommandCopy = new NoteAddCommand(note1);
-        assertTrue(addNote1Command.equals(addNote1CommandCopy));
+        assertTrue(listCommand.equals(otherListCommand));
 
         // different types -> returns false
-        assertFalse(addNote1Command.equals(1));
+        assertFalse(listCommand.equals(1));
 
         // null -> returns false
-        assertFalse(addNote1Command.equals(null));
-
-        // different note -> returns false
-        assertFalse(addNote1Command.equals(addNote2Command));
+        assertFalse(listCommand.equals(null));
     }
 
     /**
      * A default model stub that have all methods failing.
      */
-    private class SeplendidModelStub implements SeplendidModel {
+    private abstract class SeplendidModelStub implements SeplendidModel {
         @Override
         public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
             throw new AssertionError("This method should not be called.");
@@ -277,6 +259,8 @@ public class NoteAddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        public abstract void updateFilteredNoteList(NoteTagContainsKeywordsPredicate predicate);
+
         @Override
         public ReadOnlyNoteCatalogue getNoteCatalogue() {
             throw new AssertionError("This method should not be called.");
@@ -372,11 +356,6 @@ public class NoteAddCommandTest {
         }
 
         @Override
-        public void updateFilteredNoteList(Predicate<Note> predicate) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public Path getMappingCatalogueFilePath() {
             throw new AssertionError("This method should not be called.");
         }
@@ -453,20 +432,22 @@ public class NoteAddCommandTest {
         }
     }
 
-    /**
-     * A Model stub that always accepts the note being added.
-     */
-    private class ModelStubAcceptingNoteAdded extends SeplendidModelStub {
-        private Note note;
+    private class ModelStubWithNote extends SeplendidModelStub {
+        private final NoteCatalogue noteCatalogue = new NoteCatalogue();
 
         @Override
-        public boolean hasNote(Note note) {
-            return this.note != null && this.note.equals(note);
+        public void updateFilteredNoteList(Predicate<Note> predicate) {
+            // Do nothing in this stub
         }
 
         @Override
-        public void addNote(Note note) {
-            this.note = note;
+        public void updateFilteredNoteList(NoteTagContainsKeywordsPredicate predicate) {
+            // Do nothing in this stub
+        }
+
+        @Override
+        public NoteCatalogue getNoteCatalogue() {
+            return noteCatalogue;
         }
     }
 }

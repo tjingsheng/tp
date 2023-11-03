@@ -15,12 +15,7 @@ import seedu.address.seplendidui.UiUtil;
  * Deletes a note to the NoteList.
  */
 public class NoteDeleteCommand extends NoteCommand {
-
-    // Also available in abstract class LocalCourseCommand to support polymorphism
-    public static final String NOTE_DELETE_MESSAGE_USAGE = COMMAND_WORD
-            + " delete [index]: Deletes a note.";
     public static final String ACTION_WORD = "delete";
-
     public static final String MESSAGE_SUCCESS = "Note deleted: %1$s";
 
     private final Integer noteIndexToDelete;

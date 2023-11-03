@@ -1,10 +1,11 @@
 package seedu.address.logic.parser.note;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_CONTENT;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_TAGS;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
+import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.note.NoteAddCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
@@ -28,17 +29,14 @@ public class NoteAddCommandParser implements Parser<NoteAddCommand> {
      */
     public NoteAddCommand parse(String args) throws ParseException {
         if (!areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                            NoteAddCommand.NOTE_ADD_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.NOTE_ADD.getValue());
         }
 
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_CONTENT, PARAMETER_TAGS);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_CONTENT, PARAMETER_TAGS)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    NoteAddCommand.NOTE_ADD_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.NOTE_ADD.getValue());
         }
 
         // All arguments should be a non-empty {@code Optional}

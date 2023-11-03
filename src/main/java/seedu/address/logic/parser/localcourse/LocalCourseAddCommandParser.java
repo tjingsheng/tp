@@ -1,12 +1,13 @@
 package seedu.address.logic.parser.localcourse;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_LOCALCODE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_LOCALDESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_LOCALNAME;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_LOCALUNIT;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
+import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.localcourse.LocalCourseAddCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
@@ -32,8 +33,7 @@ public class LocalCourseAddCommandParser implements Parser<LocalCourseAddCommand
      */
     public LocalCourseAddCommand parse(String args) throws ParseException {
         if (!areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                LocalCourseAddCommand.LOCAL_COURSE_ADD_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.LOCALCOURSE_ADD.getValue());
         }
 
         SeplendidArgumentMap parameterToArgMap =
@@ -42,8 +42,7 @@ public class LocalCourseAddCommandParser implements Parser<LocalCourseAddCommand
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_LOCALCODE, PARAMETER_LOCALNAME,
             PARAMETER_LOCALUNIT, PARAMETER_LOCALDESCRIPTION)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                LocalCourseAddCommand.LOCAL_COURSE_ADD_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.LOCALCOURSE_ADD.getValue());
         }
 
         // All arguments should be a non-empty {@code Optional}

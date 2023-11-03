@@ -20,13 +20,7 @@ import seedu.address.seplendidui.UiUtil;
  */
 public class PartnerCourseSearchCommand extends PartnerCourseCommand {
     public static final String ACTION_WORD = "search"; // Use "search" as the command word
-
     public static final String MESSAGE_SUCCESS = "Partner courses searched: %1$s";
-
-
-    public static final String PARTNERCOURSE_SEARCH_MESSAGE_USAGE = COMMAND_WORD
-            + " : Search local courses by attributes - partnercode and partnername and partneruniversity "
-            + "and partnerdescription";
 
     private final PartnerCourseAttribute attribute;
 

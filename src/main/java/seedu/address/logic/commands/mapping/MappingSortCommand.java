@@ -14,10 +14,6 @@ import seedu.address.seplendidui.UiUtil;
  * Lists all mappings in the MappingCatalogue.
  */
 public class MappingSortCommand extends MappingCommand {
-
-    public static final String MAPPING_SORT_MESSAGE_USAGE = COMMAND_WORD
-            + " sort [localcode/localname/partnercode/partnername/university/information]: "
-            + "Sorts all mappings based on the specified attribute.";
     public static final String ACTION_WORD = "sort";
 
     public static final String MESSAGE_SUCCESS = "Sorted mappings by %1$s.";

@@ -17,13 +17,9 @@ import seedu.address.seplendidui.UiUtil;
  */
 public class NoteSearchCommand extends NoteCommand {
     public static final String ACTION_WORD = "search";
-
     public static final String MESSAGE_SUCCESS = "Notes searched: %1$s";
-
     public static final String MESSAGE_NONEXISTENT_NOTES = "This note does not exist in SEPlendid";
 
-    public static final String NOTE_SEARCH_MESSAGE_USAGE = COMMAND_WORD
-            + " search [note_tag_keyword]: Search notes with the same tag keyword";
     private final NoteTagContainsKeywordsPredicate predicate;
 
     public NoteSearchCommand(NoteTagContainsKeywordsPredicate predicate) {

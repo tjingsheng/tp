@@ -1,14 +1,18 @@
-package seedu.address.logic.parser;
+package seedu.address.logic.parser.partnercourse;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERATTRIBUTE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERCODE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERUPDATEDVALUE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_UNIVERSITYNAME;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
+import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.partnercourse.PartnerCourseUpdateCommand;
+import seedu.address.logic.parser.Parser;
+import seedu.address.logic.parser.ParserUtil;
+import seedu.address.logic.parser.SeplendidArgumentMap;
+import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
@@ -30,23 +34,21 @@ public class PartnerCourseUpdateCommandParser implements Parser<PartnerCourseUpd
      */
     public PartnerCourseUpdateCommand parse(String args) throws ParseException {
         if (!areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    PartnerCourseUpdateCommand.PARTNER_COURSE_UPDATE_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.PARTNERCOURSE_UPDATE.getValue());
         }
 
         SeplendidArgumentMap parameterToArgMap = SeplendidArgumentTokenizer.tokenize(args,
-                PARAMETER_UNIVERSITYNAME,
-                PARAMETER_PARTNERCODE,
-                PARAMETER_PARTNERATTRIBUTE,
-                PARAMETER_PARTNERUPDATEDVALUE);
+                                                                                     PARAMETER_UNIVERSITYNAME,
+                                                                                     PARAMETER_PARTNERCODE,
+                                                                                     PARAMETER_PARTNERATTRIBUTE,
+                                                                                     PARAMETER_PARTNERUPDATEDVALUE);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap,
-                PARAMETER_UNIVERSITYNAME,
-                PARAMETER_PARTNERCODE,
-                PARAMETER_PARTNERATTRIBUTE,
-                PARAMETER_PARTNERUPDATEDVALUE)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    PartnerCourseUpdateCommand.PARTNER_COURSE_UPDATE_MESSAGE_USAGE));
+                                            PARAMETER_UNIVERSITYNAME,
+                                            PARAMETER_PARTNERCODE,
+                                            PARAMETER_PARTNERATTRIBUTE,
+                                            PARAMETER_PARTNERUPDATEDVALUE)) {
+            throw new ParseException(UsageMessage.PARTNERCOURSE_UPDATE.getValue());
         }
 
         UniversityName universityName =

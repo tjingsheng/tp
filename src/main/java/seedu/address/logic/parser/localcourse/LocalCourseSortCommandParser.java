@@ -1,11 +1,12 @@
 package seedu.address.logic.parser.localcourse;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_LOCALATTRIBUTE;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
 import java.util.Comparator;
 
+import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.localcourse.LocalCourseSortCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
@@ -29,16 +30,14 @@ public class LocalCourseSortCommandParser implements Parser<LocalCourseSortComma
      */
     public LocalCourseSortCommand parse(String args) throws ParseException {
         if (!areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                            LocalCourseSortCommand.LOCAL_COURSE_SORT_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.LOCALCOURSE_SORT.getValue());
         }
 
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_LOCALATTRIBUTE);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_LOCALATTRIBUTE)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    LocalCourseSortCommand.LOCAL_COURSE_SORT_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.LOCALCOURSE_SORT.getValue());
         }
 
         Comparator<LocalCourse> localCourseComparator =

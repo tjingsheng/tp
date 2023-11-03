@@ -1,6 +1,6 @@
 package seedu.address.logic.parser.partnercourse;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.commands.CommandTestUtil.UNNECESSARY_WHITESPACE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -15,6 +15,7 @@ import static seedu.address.testutil.TypicalObjects.TYPICAL_UNIVERSITY_NAME;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.partnercourse.PartnerCourseAddCommand;
 import seedu.address.logic.commands.partnercourse.PartnerCourseCommand;
 import seedu.address.logic.commands.partnercourse.PartnerCourseDeleteCommand;
@@ -49,8 +50,7 @@ public class PartnerCourseDeleteCommandParserTest {
 
     @Test
     void parse_argumentNotClosedOrEmpty_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                PartnerCourseDeleteCommand.PARTNER_COURSE_DELETE_MESSAGE_USAGE);
+        String expectedMessage = UsageMessage.PARTNERCOURSE_DELETE.getValue();
 
         // missing open bracket
         assertParseFailure(parser, commandActionWord
@@ -65,8 +65,7 @@ public class PartnerCourseDeleteCommandParserTest {
 
     @Test
     public void parse_argumentMissing_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                PartnerCourseDeleteCommand.PARTNER_COURSE_DELETE_MESSAGE_USAGE);
+        String expectedMessage = UsageMessage.PARTNERCOURSE_DELETE.getValue();
 
         // all arguments missing
         assertParseFailure(parser, commandActionWord, expectedMessage);

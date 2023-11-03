@@ -1,10 +1,10 @@
 package seedu.address.logic.parser.localcourse;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_LOCALATTRIBUTE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_QUERY;
 
+import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.localcourse.LocalCourseSearchCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
@@ -29,20 +29,16 @@ public class LocalCourseSearchCommandParser implements Parser<LocalCourseSearchC
      */
     public LocalCourseSearchCommand parse(String args) throws ParseException {
         if (!ParserUtil.areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                            LocalCourseSearchCommand.LOCALCOURSE_SEARCH_MESSAGE_USAGE)
-            );
+            throw new ParseException(UsageMessage.LOCALCOURSE_SEARCH.getValue());
         }
 
         SeplendidArgumentMap parameterToArgMap =
-                SeplendidArgumentTokenizer.tokenize(args,
-                        PARAMETER_LOCALATTRIBUTE, PARAMETER_QUERY);
+                SeplendidArgumentTokenizer.tokenize(args, PARAMETER_LOCALATTRIBUTE, PARAMETER_QUERY);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap,
                 PARAMETER_LOCALATTRIBUTE, PARAMETER_QUERY)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    LocalCourseSearchCommand.LOCALCOURSE_SEARCH_MESSAGE_USAGE));
+            throw new ParseException(
+                UsageMessage.LOCALCOURSE_SEARCH.getValue());
         }
 
         LocalCourseAttribute localCourseAttribute = ParserUtil.parseLocalCourseAttribute(

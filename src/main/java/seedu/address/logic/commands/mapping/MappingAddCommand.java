@@ -15,11 +15,7 @@ import seedu.address.seplendidui.UiUtil;
  * Adds a mapping to the MappingCatalogue.
  */
 public class MappingAddCommand extends MappingCommand {
-
-    public static final String MAPPING_ADD_MESSAGE_USAGE = COMMAND_WORD
-            + " add [localcode] [university] [partnercode] [information]: Adds a mapping to the mapping catalogue.";
     public static final String ACTION_WORD = "add";
-
     public static final String MESSAGE_SUCCESS = "New mapping added: %1$s";
     public static final String MESSAGE_DUPLICATE_MAPPING = "This mapping already exists in SEPlendid";
     public static final String MESSAGE_NONEXISTENT_LOCALCODE = "The local course does not exist in SEPlendid";

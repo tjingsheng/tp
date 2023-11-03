@@ -16,9 +16,6 @@ import seedu.address.seplendidui.UiUtil;
  * Updates the content a note to the NoteList.
  */
 public class NoteUpdateCommand extends NoteCommand {
-
-    public static final String NOTE_UPDATE_MESSAGE_USAGE = COMMAND_WORD
-            + " update [index] [content]: Updates a note to the specified content.";
     public static final String MESSAGE_NONEXISTENT_NOTE = "Note not found, please put a valid index.";
     public static final String ACTION_WORD = "update";
     public static final String MESSAGE_SUCCESS = "Note updated: %1$s";

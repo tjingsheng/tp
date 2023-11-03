@@ -21,11 +21,7 @@ import seedu.address.seplendidui.UiUtil;
  * Deletes a mapping identified using its local code, university and partner code.
  */
 public class MappingDeleteCommand extends MappingCommand {
-
-    public static final String MAPPING_DELETE_MESSAGE_USAGE = COMMAND_WORD
-            + " delete [localcode] [university] [partnercode]: Deletes a course mapping.";
     public static final String ACTION_WORD = "delete";
-
     public static final String MESSAGE_SUCCESS = "Deleted Mapping: %1$s";
     public static final String MESSAGE_NONEXISTENT_MAPPING = "This course mapping does not exist in SEPlendid.";
 

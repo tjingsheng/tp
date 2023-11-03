@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
+import seedu.address.logic.Messages;
 import seedu.address.logic.SeplendidLogic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -190,9 +191,12 @@ public class MainWindow extends UiPart<Stage> {
             }
 
             return commandResult;
-        } catch (CommandException | ParseException e) {
+        } catch (CommandException e) {
             logger.info("An error occurred while executing command: " + commandText);
             resultBox.setFeedbackToUser(e.getMessage());
+            throw e;
+        } catch (ParseException e) {
+            resultBox.setFeedbackToUser(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, e.getMessage()));
             throw e;
         }
     }

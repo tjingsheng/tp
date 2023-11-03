@@ -1,6 +1,6 @@
 package seedu.address.logic.parser.localcourse;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.commands.CommandTestUtil.UNNECESSARY_WHITESPACE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -18,6 +18,7 @@ import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE_UNIT;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.localcourse.LocalCourseAddCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseCommand;
 import seedu.address.model.localcourse.LocalCode;
@@ -27,9 +28,7 @@ import seedu.address.testutil.LocalCourseUtil;
 import seedu.address.testutil.TypicalObjects;
 
 public class LocalCourseAddCommandParserTest {
-
     private static final String commandActionWord = LocalCourseCommand.COMMAND_WORD + LocalCourseAddCommand.ACTION_WORD;
-
     private LocalCourseAddCommandParser parser = new LocalCourseAddCommandParser();
 
     @Test
@@ -56,7 +55,7 @@ public class LocalCourseAddCommandParserTest {
     @Test
     void parse_argumentNotClosedOrEmpty_failure() {
         String expectedMessage =
-            String.format(MESSAGE_INVALID_COMMAND_FORMAT, LocalCourseAddCommand.LOCAL_COURSE_ADD_MESSAGE_USAGE);
+            UsageMessage.LOCALCOURSE_ADD.getValue();
 
         // missing open bracket
         assertParseFailure(parser, commandActionWord
@@ -72,8 +71,7 @@ public class LocalCourseAddCommandParserTest {
 
     @Test
     public void parse_allArgumentMissing_failure() {
-        String expectedMessage =
-            String.format(MESSAGE_INVALID_COMMAND_FORMAT, LocalCourseAddCommand.LOCAL_COURSE_ADD_MESSAGE_USAGE);
+        String expectedMessage = UsageMessage.LOCALCOURSE_ADD.getValue();
 
         // missing localcode argument
         assertParseFailure(parser, commandActionWord
@@ -109,8 +107,7 @@ public class LocalCourseAddCommandParserTest {
             + getSquareBracketWrappedArgument(INVALID_LOCAL_COURSE_NAME)
             + getSquareBracketWrappedArgument(TYPICAL_LOCAL_COURSE_DESCRIPTION);
 
-        assertParseFailure(parser, invalidLocalNameCommand, String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-            LocalCourseAddCommand.LOCAL_COURSE_ADD_MESSAGE_USAGE));
+        assertParseFailure(parser, invalidLocalNameCommand, UsageMessage.LOCALCOURSE_ADD.getValue());
     }
 
 

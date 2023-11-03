@@ -45,8 +45,8 @@ public class UniqueNoteList implements Iterable<Note> {
         if (contains(toAdd)) {
             throw new DuplicateNoteException();
         }
+        toAdd.setIndex(internalList.size() + 1);
         internalList.add(toAdd);
-        toAdd.setIndex(internalList.size());
     }
 
     /**

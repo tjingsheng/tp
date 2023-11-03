@@ -327,7 +327,7 @@ Updates `localcourseattribute` of a local course, with course code identified by
 **Format**: `localcourse update [localcode] [localcourseattribute] [updatedValue]`
 
 **Example**
-| `localcourse update [CS1234] [localname] [ProgrammingVeryFun]`      |
+| `localcourse update [BT1101] [localcode] [BT1102]`      |
 |--------------------------------------------------------------|
 | ![localcourse-update-ui](images/LocalcourseUpdateUi.png) |
 
@@ -403,8 +403,8 @@ partner code identified by `partnercode`, with updated value.
 
 **Example**
 | `partnercourse update [University of Toronto] [ROB311] [unit] [10.0]`      |
-|--------------------------------------------------------------|
-| ![partnercourse-update-ui](images/PartnercourseUpdateUi.png) |
+|----------------------------------------------------------------------------|
+| ![partnercourse-update-ui](images/PartnercourseUpdateUi.png)               |
 
 ### 4.2.5. Search a partnercourse by attributes: `partnercourse search`
 Searches partner course with course name identified by `partnername`.
@@ -441,8 +441,8 @@ Searches universities with the same keyword, paginated if dataset is too huge.
 **Format**: `university search [university]`
 
 **Example:**
-| `university search [imperial]`                                  |
-|----------------------------------------------------|
+| `university search [imperial]`                         |
+|--------------------------------------------------------|
 | ![university-search-ui](images/UniversitySearchUi.png) |
 
 ### 4.3.3. Sort universities by attributes: `university sort`
@@ -451,7 +451,7 @@ Sorts universities according to `universityattribute` - `universityname`.
 **Format**: `university sort [universityname]`
 
 **Example**
-| `university sort [universityname]`      |
+| `university sort [universityname]`                       |
 |----------------------------------------------------------|
 | ![university-sort-ui](images/UniversitySortUi.png)       |
 

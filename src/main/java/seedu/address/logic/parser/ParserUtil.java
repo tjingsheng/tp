@@ -431,7 +431,7 @@ public class ParserUtil {
         case ("localname"):
             resultAttribute = "LOCALNAME";
             break;
-        case ("unit"):
+        case ("localunit"):
             resultAttribute = "LOCALUNIT";
             break;
         case ("localdescription"):

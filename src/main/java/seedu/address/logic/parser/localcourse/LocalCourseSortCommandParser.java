@@ -13,6 +13,7 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.SeplendidArgumentMap;
 import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.ConstraintMessage;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.localcourse.LocalCourseAttribute;
 import seedu.address.model.localcourse.comparator.LocalCourseComparatorByLocalCode;
@@ -47,14 +48,14 @@ public class LocalCourseSortCommandParser implements Parser<LocalCourseSortComma
     }
 
     private Comparator<LocalCourse> parseLocalCourseComparator(String args) throws ParseException {
-        LocalCourseAttribute localCourseAttribute = ParserUtil.parseLocalCourseAttribute(args);
+        LocalCourseAttribute localCourseAttribute = ParserUtil.parseLocalCourseAttributeForSort(args);
         switch(localCourseAttribute) {
         case LOCALCODE:
             return new LocalCourseComparatorByLocalCode();
         case LOCALNAME:
             return new LocalCourseComparatorByLocalName();
         default:
-            throw new ParseException(LocalCourseAttribute.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_ATTRIBUTE_SORT.getValue());
         }
     }
 }

@@ -11,6 +11,7 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.SeplendidArgumentMap;
 import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.ConstraintMessage;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourseAttribute;
 import seedu.address.model.localcourse.LocalCourseContainsKeywordsPredicate;
@@ -41,7 +42,7 @@ public class LocalCourseSearchCommandParser implements Parser<LocalCourseSearchC
                 UsageMessage.LOCALCOURSE_SEARCH.getValue());
         }
 
-        LocalCourseAttribute localCourseAttribute = ParserUtil.parseLocalCourseAttribute(
+        LocalCourseAttribute localCourseAttribute = ParserUtil.parseLocalCourseAttributeForSearch(
                 parameterToArgMap.getValue(PARAMETER_LOCALATTRIBUTE).get());
         String query = parseQuery(localCourseAttribute, parameterToArgMap.getValue(PARAMETER_QUERY).get());
         return new LocalCourseSearchCommand(localCourseAttribute,
@@ -54,17 +55,17 @@ public class LocalCourseSearchCommandParser implements Parser<LocalCourseSearchC
         switch (localCourseAttribute) {
         case LOCALCODE:
             if (!LocalCode.isValidLocalCode(trimmedQuery)) {
-                throw new ParseException(LocalCode.MESSAGE_CONSTRAINTS);
+                throw new ParseException(ConstraintMessage.LOCALCOURSE_CODE.getValue());
             }
             break;
         case LOCALNAME:
             if (!LocalName.isValidLocalName(trimmedQuery)) {
-                throw new ParseException(LocalName.MESSAGE_CONSTRAINTS);
+                throw new ParseException(ConstraintMessage.LOCALCOURSE_NAME.getValue());
             }
             break;
         case LOCALDESCRIPTION:
             if (!LocalDescription.isValidLocalDescription(trimmedQuery)) {
-                throw new ParseException(LocalDescription.MESSAGE_CONSTRAINTS);
+                throw new ParseException(ConstraintMessage.LOCALCOURSE_DESCRIPTION.getValue());
             }
             break;
         default:

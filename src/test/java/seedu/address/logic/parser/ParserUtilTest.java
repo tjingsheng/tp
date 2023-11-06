@@ -373,29 +373,36 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseLocalCourseAttribute_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseLocalCourseAttribute((String) null));
+    public void parseLocalCourseAttributeForSearch_validValue() throws ParseException {
+        assertEquals(LocalCourseAttribute.LOCALNAME, ParserUtil.parseLocalCourseAttributeForSearch("localname"));
     }
 
     @Test
-    public void parseLocalCourseAttribute_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttribute(INVALID_LOCAL_COURSE_ATTRIBUTE));
+    public void parseLocalCourseAttributeForSearch_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSearch("local unit"));
     }
 
     @Test
-    public void parseLocalCourseAttribute_validValueWithoutWhitespaceAndAllCaps_returnsLocalCourseAttribute()
-            throws Exception {
-        LocalCourseAttribute expectedLocalCourseAttribute = LocalCourseAttribute.LOCALCODE;
-        assertEquals(expectedLocalCourseAttribute, ParserUtil.parseLocalCourseAttribute("LOCALCODE"));
+    public void parseLocalCourseAttributeForSort_null_throwsNullPointerException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSort((String) null));
     }
 
     @Test
-    public void parseLocalCourseAttribute_validValueWithWhitespace_returnsTrimmedLocalCourseAttribute()
-            throws Exception {
-        String localCourseAttributeWithWhitespace = WHITESPACE + "localNAME" + WHITESPACE;
-        LocalCourseAttribute expectedLocalCourseAttribute = LocalCourseAttribute.LOCALNAME;
-        assertEquals(expectedLocalCourseAttribute,
-                ParserUtil.parseLocalCourseAttribute(localCourseAttributeWithWhitespace));
+    public void parseLocalCourseAttributeForSort_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () ->
+            ParserUtil.parseLocalCourseAttributeForSort(INVALID_LOCAL_COURSE_ATTRIBUTE));
+    }
+
+    @Test
+    public void parseLocalCourseAttributeForUpdate_validValue() throws ParseException {
+        assertEquals(LocalCourseAttribute.LOCALNAME, ParserUtil.parseLocalCourseAttributeForSearch("localname"));
+    }
+
+    @Test
+    public void parseLocalCourseAttributeForUpdate_validValueWithWhitespace_throwsParseException() {
+        String localCourseAttributeWithWhitespace = WHITESPACE + "localname" + WHITESPACE;
+        assertThrows(ParseException.class, (
+            ) -> ParserUtil.parseLocalCourseAttributeForUpdate(localCourseAttributeWithWhitespace));
     }
 
     @Test

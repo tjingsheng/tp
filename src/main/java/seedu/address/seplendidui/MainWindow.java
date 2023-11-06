@@ -147,6 +147,7 @@ public class MainWindow extends UiPart<Stage> {
     private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
         try {
             CommandResult commandResult = seplendidLogic.execute(commandText);
+            itemDetailPanel.setItemDetail(null);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultBox.setFeedbackToUser(commandResult.getFeedbackToUser());
 

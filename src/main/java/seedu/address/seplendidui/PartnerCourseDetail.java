@@ -13,7 +13,7 @@ import seedu.address.model.partnercourse.PartnerCourse;
  */
 public class PartnerCourseDetail extends UiPart<Region> {
 
-    private static final String FXML = "partnerCourseDetailCard.fxml";
+    private static final String FXML = "PartnerCourseDetailCard.fxml";
 
     public final PartnerCourse partnerCourse;
 

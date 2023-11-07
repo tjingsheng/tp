@@ -1,5 +1,6 @@
 package seedu.address.messages;
 
+import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseAddCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseCommand;
@@ -221,7 +222,12 @@ public enum UsageMessage {
         HelpCommand.COMMAND_WORD,
         "",
         "",
-        "Shows a help window for the program usage");
+        "Shows a help window for the program usage"),
+    EXIT(
+        ExitCommand.COMMAND_WORD,
+        "",
+        "",
+        "Exit SEPlendid.");
 
     private final String value;
 

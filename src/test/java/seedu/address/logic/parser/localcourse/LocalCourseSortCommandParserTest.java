@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.localcourse.LocalCourseCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseSortCommand;
+import seedu.address.model.ConstraintMessage;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.localcourse.LocalCourseAttribute;
 import seedu.address.model.localcourse.comparator.LocalCourseComparatorByLocalCode;
@@ -22,8 +23,10 @@ import seedu.address.testutil.LocalCourseUtil;
 
 public class LocalCourseSortCommandParserTest {
 
-    private static final String commandActionWord = LocalCourseCommand.COMMAND_WORD
-            + LocalCourseSortCommand.ACTION_WORD;
+    private static final String commandActionWord =
+        LocalCourseCommand.COMMAND_WORD
+        + " "
+        + LocalCourseSortCommand.ACTION_WORD;
 
     private LocalCourseSortCommandParser parser = new LocalCourseSortCommandParser();
 
@@ -60,17 +63,17 @@ public class LocalCourseSortCommandParserTest {
         // invalid attribute
         assertParseFailure(parser, commandActionWord
                 + getSquareBracketWrappedArgument(INVALID_LOCAL_COURSE_ATTRIBUTE),
-                LocalCourseAttribute.MESSAGE_CONSTRAINTS);
+                           ConstraintMessage.LOCALCOURSE_ATTRIBUTE_SORT.getValue());
     }
 
     @Test
     public void parse_validArguments_success() {
         assertParseSuccess(parser, commandActionWord
-                + getSquareBracketWrappedArgument(LocalCourseAttribute.LOCALCODE.toString()),
+                + getSquareBracketWrappedArgument(LocalCourseAttribute.LOCALCODE.getValue()),
                 new LocalCourseSortCommand(new LocalCourseComparatorByLocalCode()));
 
         assertParseSuccess(parser, commandActionWord
-                        + getSquareBracketWrappedArgument(LocalCourseAttribute.LOCALNAME.toString()),
+                        + getSquareBracketWrappedArgument(LocalCourseAttribute.LOCALNAME.getValue()),
                 new LocalCourseSortCommand(new LocalCourseComparatorByLocalName()));
 
     }

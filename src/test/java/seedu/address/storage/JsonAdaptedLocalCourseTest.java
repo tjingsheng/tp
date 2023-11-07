@@ -15,6 +15,7 @@ import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE_UNIT;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.ConstraintMessage;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalName;
 import seedu.address.model.localcourse.LocalUnit;
@@ -35,7 +36,7 @@ public class JsonAdaptedLocalCourseTest {
                     TYPICAL_LOCAL_COURSE_NAME,
                     TYPICAL_LOCAL_COURSE_UNIT,
                     TYPICAL_LOCAL_COURSE_DESCRIPTION);
-        String expectedMessage = LocalCode.MESSAGE_CONSTRAINTS;
+        String expectedMessage = ConstraintMessage.LOCALCOURSE_CODE.getValue();
         assertThrows(IllegalValueException.class, expectedMessage, localCourse::toModelType);
     }
 
@@ -58,7 +59,7 @@ public class JsonAdaptedLocalCourseTest {
                     INVALID_LOCAL_COURSE_NAME,
                     TYPICAL_LOCAL_COURSE_UNIT,
                     TYPICAL_LOCAL_COURSE_DESCRIPTION);
-        String expectedMessage = LocalName.MESSAGE_CONSTRAINTS;
+        String expectedMessage = ConstraintMessage.LOCALCOURSE_NAME.getValue();
         assertThrows(IllegalValueException.class, expectedMessage, localCourse::toModelType);
     }
 
@@ -91,7 +92,7 @@ public class JsonAdaptedLocalCourseTest {
             TYPICAL_LOCAL_COURSE_NAME,
             INVALID_LOCAL_COURSE_UNIT,
             TYPICAL_LOCAL_COURSE_DESCRIPTION);
-        String expectedMessage = LocalUnit.MESSAGE_CONSTRAINTS;
+        String expectedMessage = ConstraintMessage.LOCALCOURSE_UNIT.getValue();
         assertThrows(IllegalValueException.class, expectedMessage, localCourse::toModelType);
     }
 }

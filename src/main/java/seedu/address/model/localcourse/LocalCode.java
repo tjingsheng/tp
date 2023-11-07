@@ -3,16 +3,13 @@ package seedu.address.model.localcourse;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import seedu.address.model.ConstraintMessage;
+
 /**
  * Represents a Local Course's local code in SEPlendid.
  * Guarantees: immutable; is valid as declared in {@link #isValidLocalCode(String)}
  */
 public class LocalCode {
-
-    // Used in AppUtil#checkArgument and ParserUtil, JsonAdaptedXXX exceptions
-    public static final String MESSAGE_CONSTRAINTS = "LocalCode must start with an alphabet, and be no more than "
-            + "10 alphanumeric characters";
-
     /*
      * This matches alphanumeric string of length 1-10, starting with an alphabet.
      */
@@ -28,7 +25,7 @@ public class LocalCode {
     public LocalCode(String localCode) {
         localCode = localCode.trim();
         requireNonNull(localCode);
-        checkArgument(isValidLocalCode(localCode), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidLocalCode(localCode), ConstraintMessage.LOCALCOURSE_CODE.getValue());
         value = localCode;
     }
 

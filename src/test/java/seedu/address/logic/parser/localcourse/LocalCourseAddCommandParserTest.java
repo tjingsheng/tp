@@ -21,7 +21,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.localcourse.LocalCourseAddCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseCommand;
-import seedu.address.model.localcourse.LocalCode;
+import seedu.address.model.ConstraintMessage;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.testutil.LocalCourseBuilder;
 import seedu.address.testutil.LocalCourseUtil;
@@ -94,7 +94,7 @@ public class LocalCourseAddCommandParserTest {
             + getSquareBracketWrappedArgument(TYPICAL_LOCAL_COURSE_UNIT.toString())
             + getSquareBracketWrappedArgument(TYPICAL_LOCAL_COURSE_DESCRIPTION);
 
-        assertParseFailure(parser, invalidLocalCodeCommand, LocalCode.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, invalidLocalCodeCommand, ConstraintMessage.LOCALCOURSE_CODE.getValue());
 
         // Invalid localName
         // This test also ensures that the input to checkArgument and parseLocalName matches.

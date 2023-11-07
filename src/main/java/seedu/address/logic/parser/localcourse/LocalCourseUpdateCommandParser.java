@@ -13,6 +13,7 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.SeplendidArgumentMap;
 import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.ConstraintMessage;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourseAttribute;
 import seedu.address.model.localcourse.LocalDescription;
@@ -62,22 +63,22 @@ public class LocalCourseUpdateCommandParser implements Parser<LocalCourseUpdateC
         switch (localCourseAttribute) {
         case LOCALCODE:
             if (!LocalCode.isValidLocalCode(trimmedUpdatedValue)) {
-                throw new ParseException(LocalCode.MESSAGE_CONSTRAINTS);
+                throw new ParseException(ConstraintMessage.LOCALCOURSE_CODE.getValue());
             }
             break;
         case LOCALNAME:
             if (!LocalName.isValidLocalName(trimmedUpdatedValue)) {
-                throw new ParseException(LocalName.MESSAGE_CONSTRAINTS);
+                throw new ParseException(ConstraintMessage.LOCALCOURSE_NAME.getValue());
             }
             break;
         case LOCALUNIT:
             if (!LocalUnit.isValidLocalUnit(trimmedUpdatedValue)) {
-                throw new ParseException(LocalUnit.MESSAGE_CONSTRAINTS);
+                throw new ParseException(ConstraintMessage.LOCALCOURSE_UNIT.getValue());
             }
             break;
         case LOCALDESCRIPTION:
             if (!LocalDescription.isValidLocalDescription(trimmedUpdatedValue)) {
-                throw new ParseException(LocalDescription.MESSAGE_CONSTRAINTS);
+                throw new ParseException(ConstraintMessage.LOCALCOURSE_DESCRIPTION.getValue());
             }
             break;
         default:

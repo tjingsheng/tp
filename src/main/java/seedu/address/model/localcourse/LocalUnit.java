@@ -3,15 +3,13 @@ package seedu.address.model.localcourse;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import seedu.address.model.ConstraintMessage;
+
 /**
  * Represents a Local Course's unit in SEPlendid.
  * Guarantees: immutable; is valid as declared in {@link #isValidLocalUnit(Object)}
  */
 public class LocalUnit {
-    // Used in AppUtil#checkArgument and ParserUtil, JsonAdaptedXXX exceptions
-    public static final String MESSAGE_CONSTRAINTS =
-        "LocalUnit can only non-negative numeric values and should not be blank";
-
     private final Double value;
 
     /**
@@ -21,7 +19,7 @@ public class LocalUnit {
      */
     public LocalUnit(String localUnit) {
         requireNonNull(localUnit);
-        checkArgument(isValidLocalUnit(localUnit), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidLocalUnit(localUnit), ConstraintMessage.LOCALCOURSE_UNIT.getValue());
         value = Double.parseDouble(localUnit);
     }
 
@@ -32,7 +30,7 @@ public class LocalUnit {
      */
     public LocalUnit(Double localUnit) {
         requireNonNull(localUnit);
-        checkArgument(isValidLocalUnit(localUnit), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidLocalUnit(localUnit), ConstraintMessage.LOCALCOURSE_UNIT.getValue());
         value = localUnit;
     }
 

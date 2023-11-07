@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.localcourse.LocalCourseCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseDeleteCommand;
+import seedu.address.model.ConstraintMessage;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.testutil.LocalCourseUtil;
 import seedu.address.testutil.TypicalObjects;
@@ -69,7 +70,7 @@ public class LocalCourseDeleteCommandParserTest {
         // invalid localCode
         assertParseFailure(parser, commandActionWord
                         + getSquareBracketWrappedArgument(INVALID_LOCAL_COURSE_CODE),
-                LocalCode.MESSAGE_CONSTRAINTS);
+                           ConstraintMessage.LOCALCOURSE_CODE.getValue());
     }
 
     @Test

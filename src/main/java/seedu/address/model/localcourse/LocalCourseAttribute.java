@@ -1,63 +1,113 @@
 package seedu.address.model.localcourse;
 
 /**
- * Represents the attribute which is related to local course.
+ * Represents the attribute related to a local course.
  */
 public enum LocalCourseAttribute {
-    LOCALCODE,
-    LOCALNAME,
-    LOCALUNIT,
-    LOCALDESCRIPTION;
+    LOCALCODE("localcode"),
+    LOCALNAME("localname"),
+    LOCALUNIT("localunit"),
+    LOCALDESCRIPTION("localdescription");
 
-    public static final String MESSAGE_CONSTRAINTS =
-            "There are only 2 attributes: localcode and localname.";
-    public static final String MESSAGE_CONSTRAINTS_UPDATE =
-            "There are only 4 attributes for update: localcode, localname, localunit and localdescription.";
-    public static final String MESSAGE_CONSTRAINTS_SEARCH =
-            "There are only 3 attributes: localcode, localname and localdescription.";
+    private final String value;
 
     /**
-     * Returns true if the given attribute is valid.
-     * @param test String to be tested
-     * @return True if attribute is valid.
+     * Constructor for LocalCourseAttribute.
+     *
+     * @param value The string representation of the attribute.
      */
-    public static boolean isValidAttribute(String test) {
-        switch(test) {
-        case ("LOCALCODE"):
-        case ("LOCALNAME"):
-            return true;
-        default:
-            return false;
-        }
+    LocalCourseAttribute(String value) {
+        this.value = value;
     }
 
     /**
-     * Returns true if the given attribute is valid.
-     * @param test String to be tested
-     * @return true if attribute is valid.
+     * Gets the string representation of the attribute.
+     *
+     * @return The string representation of the attribute.
      */
-    public static boolean isValidAttributeForUpdate(String test) {
-        switch (test) {
-        case ("LOCALCODE"):
-        case ("LOCALNAME"):
-        case ("LOCALUNIT"):
-        case ("LOCALDESCRIPTION"):
-            return true;
-        default:
-            return false;
-        }
+    public String getValue() {
+        return value;
     }
 
     /**
-     * Returns true if the given attribute is valid.
-     * @param test String to be tested
-     * @return true if attribute is valid.
+     * Converts a string to the corresponding LocalCourseAttribute.
+     *
+     * @param text The string to be converted.
+     * @return The LocalCourseAttribute corresponding to the input string, or null if not found.
+     */
+    public static LocalCourseAttribute fromString(String text) {
+        if (text == null) {
+            return null;
+        }
+        for (LocalCourseAttribute enumValue : LocalCourseAttribute.values()) {
+            if (enumValue.value.equals(text)) {
+                return enumValue;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Checks if the given attribute is valid for search.
+     *
+     * @param test The string to be tested.
+     * @return True if the attribute is valid for search, false otherwise.
      */
     public static boolean isValidAttributeForSearch(String test) {
-        switch(test) {
-        case ("LOCALCODE"):
-        case ("LOCALNAME"):
-        case ("LOCALDESCRIPTION"):
+        LocalCourseAttribute attribute = LocalCourseAttribute.fromString(test);
+        if (attribute == null) {
+            return false;
+        }
+
+        switch (attribute) {
+        case LOCALCODE:
+        case LOCALNAME:
+        case LOCALDESCRIPTION:
+            return true;
+        default:
+            return false;
+        }
+    }
+
+    /**
+     * Checks if the given attribute is valid for sorting.
+     *
+     * @param test The string to be tested.
+     * @return True if the attribute is valid for sorting, false otherwise.
+     */
+    public static boolean isValidAttributeForSort(String test) {
+        LocalCourseAttribute attribute = LocalCourseAttribute.fromString(test);
+        if (attribute == null) {
+            return false;
+        }
+
+        switch (attribute) {
+        case LOCALCODE:
+        case LOCALNAME:
+            return true;
+        default:
+            return false;
+        }
+    }
+
+    /**
+     * Checks if the given attribute is valid for update.
+     *
+     * @param test The string to be tested.
+     * @return True if the attribute is valid for update, false otherwise.
+     */
+    public static boolean isValidAttributeForUpdate(String test) {
+        LocalCourseAttribute attribute = LocalCourseAttribute.fromString(test);
+        if (attribute == null) {
+            return false;
+        }
+
+        switch (attribute) {
+        case LOCALCODE:
+        case LOCALNAME:
+        case LOCALUNIT:
+        case LOCALDESCRIPTION:
+            return true;
         default:
             return false;
         }

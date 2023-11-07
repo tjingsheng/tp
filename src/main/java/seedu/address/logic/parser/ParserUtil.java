@@ -11,6 +11,7 @@ import java.util.stream.Stream;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.ConstraintMessage;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourseAttribute;
 import seedu.address.model.localcourse.LocalDescription;
@@ -150,7 +151,7 @@ public class ParserUtil {
         requireNonNull(localCode);
         String trimmedLocalCode = localCode.trim();
         if (!LocalCode.isValidLocalCode(trimmedLocalCode)) {
-            throw new ParseException(LocalCode.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_CODE.getValue());
         }
         return new LocalCode(localCode);
     }
@@ -165,7 +166,7 @@ public class ParserUtil {
         requireNonNull(localName);
         String trimmedLocalName = localName.trim();
         if (!LocalName.isValidLocalName(trimmedLocalName)) {
-            throw new ParseException(LocalName.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_NAME.getValue());
         }
         return new LocalName(localName);
     }
@@ -180,7 +181,7 @@ public class ParserUtil {
         requireNonNull(localUnit);
         String trimmedLocalUnit = localUnit.trim();
         if (!LocalUnit.isValidLocalUnit(trimmedLocalUnit)) {
-            throw new ParseException(LocalUnit.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_UNIT.getValue());
         }
         return new LocalUnit(localUnit);
     }
@@ -195,7 +196,7 @@ public class ParserUtil {
         requireNonNull(localDescription);
         String trimmedLocalDescription = localDescription.trim();
         if (!LocalDescription.isValidLocalDescription(trimmedLocalDescription)) {
-            throw new ParseException(LocalDescription.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_DESCRIPTION.getValue());
         }
         return new LocalDescription(localDescription);
     }
@@ -381,74 +382,41 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String attribute}.
-     * Leading and trailing whitespaces will be trimmed.
+     * Parses a {@code String attribute} for search.
      *
      * @throws ParseException if the given {@code attribute} is invalid.
      */
-    public static LocalCourseAttribute parseLocalCourseAttribute(String attribute) throws ParseException {
-        requireNonNull(attribute);
-        String attributeLowerCase = attribute.toLowerCase().trim();
-        String resultAttribute = attributeLowerCase;
-
-        switch (attributeLowerCase) {
-        case ("localcode"):
-            resultAttribute = "LOCALCODE";
-            break;
-        case ("localname"):
-            resultAttribute = "LOCALNAME";
-            break;
-        case ("localdescription"):
-            resultAttribute = "LOCALDESCRIPTION";
-            break;
-        default:
-            break;
+    public static LocalCourseAttribute parseLocalCourseAttributeForSearch(String attribute) throws ParseException {
+        if (!LocalCourseAttribute.isValidAttributeForSearch(attribute)) {
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_ATTRIBUTE_SEARCH.getValue());
         }
-
-        if (!LocalCourseAttribute.isValidAttribute(resultAttribute)) {
-            throw new ParseException(LocalCourseAttribute.MESSAGE_CONSTRAINTS);
-        }
-
-        return LocalCourseAttribute.valueOf(resultAttribute);
-
+        return LocalCourseAttribute.fromString(attribute);
     }
 
     /**
-     * Parses a {@code String attribute}.
+     * Parses a {@code String attribute} for sort.
+     *
+     * @throws ParseException if the given {@code attribute} is invalid.
+     */
+    public static LocalCourseAttribute parseLocalCourseAttributeForSort(String attribute) throws ParseException {
+        if (!LocalCourseAttribute.isValidAttributeForUpdate(attribute)) {
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_ATTRIBUTE_SORT.getValue());
+        }
+        return LocalCourseAttribute.fromString(attribute);
+    }
+
+    /**
+     * Parses a {@code String attribute} for update.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code attribute} is invalid.
      */
     public static LocalCourseAttribute parseLocalCourseAttributeForUpdate(String attribute) throws ParseException {
-        requireNonNull(attribute);
-        String attributeLowerCase = attribute.toLowerCase().trim();
-        String resultAttribute = attributeLowerCase;
-
-        switch (attributeLowerCase) {
-        case ("localcode"):
-            resultAttribute = "LOCALCODE";
-            break;
-        case ("localname"):
-            resultAttribute = "LOCALNAME";
-            break;
-        case ("localunit"):
-            resultAttribute = "LOCALUNIT";
-            break;
-        case ("localdescription"):
-            resultAttribute = "LOCALDESCRIPTION";
-            break;
-        default:
-            break;
+        if (!LocalCourseAttribute.isValidAttributeForUpdate(attribute)) {
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_ATTRIBUTE_UPDATE.getValue());
         }
-
-        if (!LocalCourseAttribute.isValidAttributeForUpdate(resultAttribute)) {
-            throw new ParseException(LocalCourseAttribute.MESSAGE_CONSTRAINTS_UPDATE);
-        }
-
-        return LocalCourseAttribute.valueOf(resultAttribute);
+        return LocalCourseAttribute.fromString(attribute);
     }
-
-
 
     /**
      * Parses a {@code String attribute}.

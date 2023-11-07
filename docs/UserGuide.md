@@ -208,16 +208,16 @@ Throughout this guide, admonitions are used to highlight important information, 
 --------------------------------------------------------------------------------------------------------------------
 
 
-# 3. Quick Reference Guide
-This tutorial covers on the important information for you to utilise SEPlendid to its fullest capacity. Do pay special
-attention to the Key Definitions and Command Format sections which cover on how you can run essential features on 
-SEPlendid.
+## 3. Quick Reference Guide
+
+This section covers important information for you to utilise SEPlendid to its fullest capacity. You will learn how to 
+navigate SEPlendid effectively and the commands section will cover on how you can run essential features on SEPlendid.
 
 ## 3.1. Graphical User Interface (GUI)
 
-SEPlendid provides a GUI which provides you a good visual feedback. The GUI allows you to click and view the courses
-which provides a more detailed information about the course such as the course units. This will be a quick run through
-of the layout of the GUI.
+SEPlendid's GUI is designed to provide you with great visual feedback and user experience. SEPlendid's GUI allows you to
+click and view the different courses which provides an in-depth insight about the course such as the course units and
+description. Let's now take a look at the different components available in SEPlendid's GUI.
 
 SEPlendid's GUI consists of these four main components:
 1. Command Input Box

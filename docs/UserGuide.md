@@ -27,9 +27,13 @@ SEP. It includes:
 If you are a new user, please head over to  [How to use the User Guide](#) to start planning for your study guide!
 
 <page-nav-print />
+<br />
+<br />
 
 --------------------------------------------------------------------------------------------------------------------
+
 ## Table of Contents
+<div class= "toc">
 
 1. [About SEPlendid](#1-about-seplendid)
 
@@ -40,109 +44,109 @@ If you are a new user, please head over to  [How to use the User Guide](#) to st
 3. [A Short Tutorial](#3-a-short-tutorial)
 
 
-   - 3.1. [Graphical User Interface (GUI)](#3-1-graphical-user-interface-gui)
+   - 3.1 [Graphical User Interface (GUI)](#3-1-graphical-user-interface-gui)
 
 
-   - 3.2. [Command Format](#3-2-command-format)
+   - 3.2 [Command Format](#3-2-command-format)
 
 
-   - 3.3. [Execute your first command](#3-3-execute-your-first-command)
+   - 3.3 [Execute your first command](#3-3-execute-your-first-command)
 
 
 4. [Commands](#4-commands)
 
 
-   - 4.1. [Commands for localcourse](#4-1-commands-for-localcourse)
+   - 4.1 [Commands for localcourse](#4-1-commands-for-localcourse)
 
 
-     - 4.1.1. [List all localcourses: `localcourse list`](#4-1-1-list-all-localcourses-localcourse-list)
+     - 4.1.1 [List all localcourses: `localcourse list`](#4-1-1-list-all-localcourses-localcourse-list)
 
 
-     - 4.1.2. [Add a local course: `localcourse add`](#4-1-2-add-a-local-course-localcourse-add)
+     - 4.1.2 [Add a local course: `localcourse add`](#4-1-2-add-a-local-course-localcourse-add)
 
 
-     - 4.1.3. [Delete a local course: `localcourse delete`](#4-1-3-delete-a-local-course-localcourse-delete)
+     - 4.1.3 [Delete a local course: `localcourse delete`](#4-1-3-delete-a-local-course-localcourse-delete)
 
 
-     - 4.1.4. [Search a local course by attributes: `localcourse search`](#4-1-4-search-a-local-course-by-attributes-localcourse-search)
+     - 4.1.4 [Search a local course by attributes: `localcourse search`](#4-1-4-search-a-local-course-by-attributes-localcourse-search)
 
 
-     - 4.1.5. [Sort a local course by attributes: `localcourse sort`](#4-1-5-sort-a-local-course-by-attributes-localcourse-sort)
+     - 4.1.5 [Sort a local course by attributes: `localcourse sort`](#4-1-5-sort-a-local-course-by-attributes-localcourse-sort)
 
 
-   - 4.2. [Commands for partnercourse](#4-2-commands-for-partnercourse)
+   - 4.2 [Commands for partnercourse](#4-2-commands-for-partnercourse)
 
 
-     - 4.2.1. [List all partnercourses: `partnercourse list`](#4-2-1-list-all-partnercourses-partnercourse-list)
+     - 4.2.1 [List all partnercourses: `partnercourse list`](#4-2-1-list-all-partnercourses-partnercourse-list)
 
 
-     - 4.2.2. [Add a partnercourse: `partnercourse add`](#4-2-2-add-a-partnercourse-partnercourse-add)
+     - 4.2.2 [Add a partnercourse: `partnercourse add`](#4-2-2-add-a-partnercourse-partnercourse-add)
 
 
-     - 4.2.3. [Delete a partnercourse: `partnercourse delete`](#4-2-3-delete-a-partnercourse-partnercourse-delete)
+     - 4.2.3 [Delete a partnercourse: `partnercourse delete`](#4-2-3-delete-a-partnercourse-partnercourse-delete)
 
 
-     - 4.2.4. [Search a partnercourse by attributes: `partnercourse search`](#4-2-4-search-a-partnercourse-by-attributes-partnercourse-search)
+     - 4.2.4 [Search a partnercourse by attributes: `partnercourse search`](#4-2-4-search-a-partnercourse-by-attributes-partnercourse-search)
 
 
-     - 4.2.5. [Sort a partnercourse by attributes: `partnercourse sort`](#4-2-5-sort-a-partnercourse-by-attributes-partnercourse-sort)
+     - 4.2.5 [Sort a partnercourse by attributes: `partnercourse sort`](#4-2-5-sort-a-partnercourse-by-attributes-partnercourse-sort)
 
 
-   - 4.3. [Commands for universities](#4-3-commands-for-universities)
+   - 4.3 [Commands for universities](#4-3-commands-for-universities)
 
 
-     - 4.3.1. [List all universities: `university list`](#4-3-1-list-all-universities-university-list)
+     - 4.3.1 [List all universities: `university list`](#4-3-1-list-all-universities-university-list)
 
 
-     - 4.3.2. [Search a university by attributes: `university search`](#4-3-2-search-a-university-by-attributes-university-search)
+     - 4.3.2 [Search a university by attributes: `university search`](#4-3-2-search-a-university-by-attributes-university-search)
 
 
-     - 4.3.3. [Sort a university by attributes: `university sort`](#4-3-3-sort-a-university-by-attributes-university-sort)
+     - 4.3.3 [Sort a university by attributes: `university sort`](#4-3-3-sort-a-university-by-attributes-university-sort)
 
 
-   - 4.4. [Commands for mappings](#4-4-commands-for-mappings)
+   - 4.4 [Commands for mappings](#4-4-commands-for-mappings)
 
 
-     - 4.4.1. [List all mappings: `mapping list`](#4-4-1-list-all-mappings-mapping-list)
+     - 4.4.1 [List all mappings: `mapping list`](#4-4-1-list-all-mappings-mapping-list)
 
 
-     - 4.4.2. [Add a mapping: `mapping add`](#4-4-2-add-a-mapping-mapping-add)
+     - 4.4.2 [Add a mapping: `mapping add`](#4-4-2-add-a-mapping-mapping-add)
 
 
-     - 4.4.3. [Delete a mapping: `mapping delete`](#4-4-3-delete-a-mapping-mapping-delete)
+     - 4.4.3 [Delete a mapping: `mapping delete`](#4-4-3-delete-a-mapping-mapping-delete)
 
 
-     - 4.4.4. [Search a mapping by attributes: `mapping search`](#4-4-4-search-a-mapping-by-attributes-mapping-search)
+     - 4.4.4 [Search a mapping by attributes: `mapping search`](#4-4-4-search-a-mapping-by-attributes-mapping-search)
 
 
-     - 4.4.5. [Sort a mapping by attributes: `mapping sort`](#4-4-5-sort-a-mapping-by-attributes-mapping-sort)
+     - 4.4.5 [Sort a mapping by attributes: `mapping sort`](#4-4-5-sort-a-mapping-by-attributes-mapping-sort)
 
 
-   - 4.5. [Commands for notes](#4-5-commands-for-notes)
+   - 4.5 [Commands for notes](#4-5-commands-for-notes)
 
 
-     - 4.5.1. [List all notes: `note list`](#4-5-1-list-all-notes-note-list)
+     - 4.5.1 [List all notes: `note list`](#4-5-1-list-all-notes-note-list)
 
 
-     - 4.5.2. [Add a note: `note add`](#4-5-2-add-a-note-note-add)
+     - 4.5.2 [Add a note: `note add`](#4-5-2-add-a-note-note-add)
 
 
-     - 4.5.3. [Delete a note: `note delete`](#4-5-3-delete-a-note-note-delete)
+     - 4.5.3 [Delete a note: `note delete`](#4-5-3-delete-a-note-note-delete)
 
 
-     - 4.5.4. [Update a note: `note update`](#4-5-4-update-a-note-note-update)
+     - 4.5.4 [Update a note: `note update`](#4-5-4-update-a-note-note-update)
 
 
-     - 4.5.5. [Tag a note: `note tag`](#4-5-5-tag-a-note-note-tag)
+     - 4.5.5 [Tag a note: `note tag`](#4-5-5-tag-a-note-note-tag)
 
 
-     - 4.5.6. [Clear tag a note: `note cleartag`](#4-5-6-clear-tags-of-a-note-note-cleartag)
+     - 4.5.6 [Clear tag a note: `note cleartag`](#4-5-6-clear-tags-of-a-note-note-cleartag)
 
 
-   - 4.6. [Viewing help : `help`](#4-5-6-viewing-help--help)
+   - 4.6 [Viewing help : `help`](#4-5-6-viewing-help--help)
 
 
-   - 4.7. [Saving the data](#4-5-7-saving-the-data)
+   - 4.7 [Saving the data](#4-5-7-saving-the-data)
 
 
 5. [FAQ](#5-faq)
@@ -150,7 +154,13 @@ If you are a new user, please head over to  [How to use the User Guide](#) to st
 
 6. [Command summary](#6-command-summary)
 
+</div>
+
+<br />
+<br />
+
 --------------------------------------------------------------------------------------------------------------------
+
 ## 2. How to use SEPlendid's User Guide
 
 As a new user in SEPlendid, this user guide serves as an easy-to-follow guide in aiding you in executing your first 
@@ -225,12 +235,15 @@ SEPlendid's GUI consists of these four main components:
 3. List Panel for Local Courses, Partner Courses, Universities, Mappings or Notes
 4. Display Panel for details of the selected item from the list panel.
 
-<insert annotated image>
+Refer to the annotated diagram of SEPlendid's GUI which is numbered accordingly:
+
+![Annotated GUI](images/AnnotatedUi.png)
 
 ## 3.2. Command Format
 We will be using SEPlendid's commands throughout this User Guide. The following figure provides a visual example on 
 what a command consist of:
-<insert image>
+
+
 
 <box type="info" seamless>
 
@@ -376,93 +389,167 @@ Conducting these checks would prevent error messages and result in more efficien
 
 ## 4. Commands
 
-This section provides an in-depth overview of each command SEPlendid has.
+This section provides an in-depth overview of each command SEPlendid offers.
 
-Key takeaways from this section: 
+Overview of SEPlendid's commands:
 - Purpose of the command
 - Command format
-- Behaviour of the command (for valid and invalid input)
+- Behaviour of the command (for both valid and invalid inputs)
 - Examples of valid and invalid inputs
 
 ## 4.1. Commands for localcourse
+
 ### 4.1.1. List all local courses: `localcourse list`
-Lists all available local courses, offered by NUS Computing.
+
+Lists all possible local courses that can be mapped, offered by NUS Computing. This is useful when:
+
+- you wish to retrieve all local courses' information.
+- you wish to view  local courses in greater detail.
+- you wish to verify that a local course has been added successfully. 
+- you wish to verify that a local course has been deleted successfully.
+- you wish to verify that a local course has been updated successfully.
 
 **Format**: `localcourse list`
 
-**Example:**
-| `localcourse list`                                   |
-|------------------------------------------------------|
-| ![localcourse-list-ui](images/LocalcourseListUi.png) |
+Refer to the figure below to view the outcome of the execution of the command:
+
+<div class="centered-container">
+  <img src="images/LocalcourseListUi.png" alt="Localcourse List UI" class="resized-image">
+</div>
+<div class = "centered-content" >
+  <p class = "image-caption"> Figure 1.1 Shows the entire list of local courses available in NUS Computing.
+</div>
+
+<br/>
+<br />
 
 ### 4.1.2. Add a local course: `localcourse add`
-Adds local course with course code identified by `localcode`, course name identified by `localname`, 
-credit units identified by `units` and course description identified by `description`. \
-\
-**Format**: `localcourse add [localcode] [localname] [units] [description]`
 
-**Example:**
-| `localcourse add [CS1234] [ProgrammingFun] [4.0] [A fun programming course.]`       |
-|----------------------------------------------------|
-| ![localcourse-add-ui](images/LocalcourseAddUi.png) |
+Adds a local course using attributes such as localcode, localname, units and description in this order. This is useful
+when:
+- you are adding a new local course offered by NUS Computing.
+- you wish to add a local course that is not preloaded in SEPlendid.
+
+**Format:** `localcourse add [localcode] [localname] [units] [description]`
+
+**Example**: `localcourse add [CS1234] [ProgrammingFun] [4.0] [fun mod]`
+
+Refer to the figure below to view the outcome of the execution of the command:
+
+<div class="centered-container">
+  <img src="images/LocalcourseAddUi.png" alt="Localcourse Add UI" class="resized-image">
+</div>
+<div class = "centered-content" >
+  <p class = "image-caption"> Figure 1.2 Shows the added local course with the course code: CS1234.
+</div>
+
+<br/>
+<br />
 
 ### 4.1.3. Delete a local course: `localcourse delete`
-Deletes local course with course code identified by `localcode`. 
-<box type="info">
-    You are unable to delete a local course if it exists in a mapping.
+Deletes local course with course code identified by `localcode`. This is useful when:
+- you wish to remove a local course that is no longer offered by NUS Computing.
+
+<box type="info" icon=":exclamation:" icon-color="red">
+    Warning: You are unable to delete a local course if it exists in a mapping.
 </box>
 
-**Format**: `localcourse delete [localcode]`
+**Format:** `localcourse delete [localcode]`
 
-**Example:**
-| `localcourse delete [CS1234]`                            |
-|----------------------------------------------------------|
-| ![localcourse-delete-ui](images/LocalcourseDeleteUi.png) |
+**Example:** `localcourse delete [CS1234]`
+
+<div class="centered-container">
+  <img src="images/LocalcourseDeleteUi.png" alt="Localcourse Delete UI" class="resized-image">
+</div>
+<div class = "centered-content" >
+  <p class = "image-caption"> Figure 1.3 Shows the deleted local course with the course code: CS1234.
+</div>
+
+<br />
+<br />
 
 ### 4.1.4. Update a local course: `localcourse update`
-Updates `localcourseattribute` of a local course, with course code identified by `localcode`, with updated value.
 
-`localcourseattribute` - `localcode`, `localname`, `localunit`, `localdescription`
+Updates specified attributes of a local course, with course code identified by `localcode`.
+These local course attributes include localcode, localname, localunit and localdescription. This is useful when:
+- you wish to update a localcourse if there are changes made by NUS Computing.
 
-**Format**: `localcourse update [localcode] [localcourseattribute] [updatedValue]`
+<box type="tip" icon=":bulb:" >
+    Tip: You can check the updated localcourse using <code>localcourse list</code>
+</box>
 
-**Example**
-| `localcourse update [BT1101] [localcode] [BT1102]`      |
-|--------------------------------------------------------------|
-| ![localcourse-update-ui](images/LocalcourseUpdateUi.png) |
+**Format:** `localcourse update [localcode] [localcourseattribute] [updatedValue]`
+
+**Example:** `localcourse update [BT1101] [localcode] [BT1102]`
+
+<div class="centered-container">
+  <img src="images/LocalcourseUpdateUi.png" alt="Localcourse Update UI" class="resized-image">
+</div>
+<div class = "centered-content" >
+  <p class = "image-caption"> Figure 1.3 Shows the updated local course BT1101 to BT1102.
+</div>
+
+<br />
+<br />
 
 ### 4.1.5. Search a localcourse by attributes: `localcourse search`
-Searches localcourse with course code identified by `localcode` or `localname`.
 
-**Format**: `localcourse search [localcode]` \
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `localcourse search [localname]`
+Searches localcourses using specified attributes such as localcode, localname, localunit, and localdescription.
+This is useful when:
+- you wish to find a specific local course you are interested in.
+- you wish to find local courses that matches with your credits required.
+- you wish to find local courses that matches with the course description you are interested in.
 
-**Example:**
-| `localcourse search [localcode] [BT2101]`                                     |
-|----------------------------------------------------------|
-| ![localcourse-search-ui](images/LocalcourseSearchUi.png) |
+**Format:** `localcourse search [localcode] [keyword]`\
+            `localcourse search [localname] [keyword]`
 
+**Example:** `localcourse search [localcode] [BT2101]`
+
+<div class="centered-container">
+  <img src="images/LocalcourseSearchUi.png" alt="Localcourse Search UI" class="resized-image">
+</div>
+<div class = "centered-content" >
+  <p class = "image-caption"> Figure 1.3 Shows the searched local course BT2102.
+</div>
+
+<br />
+<br />
 
 ### 4.1.6.: Sort local courses by attributes: `localcourse sort`
-Sorts local courses according to `localcourseattribute` - `localcode` or `localname`.
+Sorts local courses according to attributes such as localname and localcode. This is useful when:
+- you wish to find local courses with specific attributes.
 
-**Format**: `localcourse sort [localcourseattribute]` 
+**Format:** `localcourse sort [localcourseattribute]` 
 
-**Example**
-| `localcourse sort [localname]`      |
-|------------------------------------------------------|
-| ![localcourse-sort-ui](images/LocalcourseSortUi.png) |
+**Example:** `localcourse sort [localname]`
+
+<div class="centered-container">
+  <img src="images/LocalcourseSearchUi.png" alt="Localcourse Search UI" class="resized-image">
+</div>
+<div class = "centered-content" >
+  <p class = "image-caption"> Figure 1.3 Shows the searched local course BT2102.
+</div>
+
+<br />
+<br />
 
 ## 4.2. Commands for partnercourse
+<br />
+
 ### 4.2.1. List all partner courses: `partnercourse list`
-Lists all available partner courses.
+Lists all available partner courses, offered by every partner university. This is useful when:
+- you wish to retrieve all partner courses' information.
+- you wish to view  partner courses in greater detail.
+- you wish to verify that a partner course has been added successfully.
+- you wish to verify that a partner course has been deleted successfully.
+- you wish to verify that a partner course has been updated successfully.
 
-**Format**: `partnercourse list`
+**Format:** `partnercourse list`
 
-**Example:**
-| `partnercourse list`                                     |
-|----------------------------------------------------------|
-| ![partnercourse-list-ui](images/PartnercourseListUi.png) |
+**Expected Outcome:** SEPlendid's GUI will show the list of partner courses available.
+
+<br />
+<br />
 
 ### 4.2.2. Add a partnercourse: `partnercourse add`
 Adds partner course with university identified by `university`, course code identified by `partnercode`, 

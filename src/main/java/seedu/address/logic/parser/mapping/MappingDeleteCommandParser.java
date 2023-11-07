@@ -29,8 +29,12 @@ public class MappingDeleteCommandParser implements Parser<MappingDeleteCommand> 
      * @throws ParseException if the user input does not conform the expected format
      */
     public MappingDeleteCommand parse(String args) throws ParseException {
-        if (!areValuesEnclosedAndNonEmpty(args)) {
+        ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
+                areValuesEnclosedAndNonEmpty(args);
+        if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
             throw new ParseException(UsageMessage.MAPPING_DELETE.getValue());
+        } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
+            throw new ParseException(UsageMessage.MAPPING_DELETE.getValueWithEmptyArgs());
         }
 
         SeplendidArgumentMap parameterToArgMap =

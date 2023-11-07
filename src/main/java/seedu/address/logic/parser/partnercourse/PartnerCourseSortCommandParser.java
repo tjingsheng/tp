@@ -31,8 +31,12 @@ public class PartnerCourseSortCommandParser implements Parser<PartnerCourseSortC
      * @throws ParseException if the user input does not conform the expected format.
      */
     public PartnerCourseSortCommand parse(String args) throws ParseException {
-        if (!areValuesEnclosedAndNonEmpty(args)) {
+        ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
+                areValuesEnclosedAndNonEmpty(args);
+        if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
             throw new ParseException(UsageMessage.PARTNERCOURSE_SORT.getValue());
+        } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
+            throw new ParseException(UsageMessage.PARTNERCOURSE_SORT.getValueWithEmptyArgs());
         }
 
         SeplendidArgumentMap parameterToArgMap =

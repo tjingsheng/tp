@@ -6,13 +6,14 @@ import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty
 
 import java.util.Comparator;
 
-import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.partnercourse.PartnerCourseSortCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.SeplendidArgumentMap;
 import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.messages.ConstraintMessage;
+import seedu.address.messages.UsageMessage;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
 import seedu.address.model.partnercourse.comparator.PartnerCourseComparatorByPartnerCode;
@@ -62,7 +63,7 @@ public class PartnerCourseSortCommandParser implements Parser<PartnerCourseSortC
         case UNIVERSITY:
             return new PartnerCourseComparatorByUniversity();
         default:
-            throw new ParseException(PartnerCourseAttribute.MESSAGE_CONSTRAINTS_SORT);
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_SORT.getValue());
         }
     }
 }

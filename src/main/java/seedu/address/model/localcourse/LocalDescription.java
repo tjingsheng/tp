@@ -3,7 +3,7 @@ package seedu.address.model.localcourse;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
-import seedu.address.model.ConstraintMessage;
+import seedu.address.messages.ConstraintMessage;
 
 /**
  * Represents a Local Course's local description in SEPlendid.

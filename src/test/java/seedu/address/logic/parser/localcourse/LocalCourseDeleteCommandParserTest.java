@@ -12,13 +12,14 @@ import static seedu.address.testutil.TypicalObjects.INVALID_LOCAL_COURSE_CODE;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.localcourse.LocalCourseCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseDeleteCommand;
-import seedu.address.model.ConstraintMessage;
+import seedu.address.messages.ConstraintMessage;
+import seedu.address.messages.UsageMessage;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.testutil.LocalCourseUtil;
 import seedu.address.testutil.TypicalObjects;
+
 
 public class LocalCourseDeleteCommandParserTest {
 

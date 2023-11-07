@@ -1,5 +1,7 @@
-package seedu.address.logic.commands;
+package seedu.address.messages;
 
+import seedu.address.logic.commands.ExitCommand;
+import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseAddCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseDeleteCommand;
@@ -175,7 +177,7 @@ public enum UsageMessage {
             PartnerCourseSearchCommand.ACTION_WORD,
             "[attribute] [query]",
             "Searches for a partner course where query is found in the selected attribute\nAttributes:\n"
-                    + "partnercode\npartnername\nuniversity"),
+                    + "partnercode\npartnername\ndescription\nuniversity"),
     PARTNERCOURSE_SORT(
             PartnerCourseCommand.COMMAND_WORD,
             PartnerCourseSortCommand.ACTION_WORD,
@@ -210,17 +212,22 @@ public enum UsageMessage {
             UniversityCommand.COMMAND_WORD,
             UniversitySortCommand.ACTION_WORD,
             "",
-            "Sorts the universities by the name"),
+            "Sorts the universities by the university name"),
     UNIVERSITY(String.join("\n",
             "University Commands:\n",
             UNIVERSITY_LIST.getValue(),
             UNIVERSITY_SEARCH.getValue(),
             UNIVERSITY_SORT.getValue())),
     HELP(
-            HelpCommand.COMMAND_WORD,
-            "",
-            "",
-            "Shows a help window for the program usage");
+        HelpCommand.COMMAND_WORD,
+        "",
+        "",
+        "Shows a help window for the program usage"),
+    EXIT(
+        ExitCommand.COMMAND_WORD,
+        "",
+        "",
+        "Exit SEPlendid.");
 
     private final String value;
 

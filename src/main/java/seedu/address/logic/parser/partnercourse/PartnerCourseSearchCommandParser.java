@@ -5,13 +5,13 @@ import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERATTRIBUTE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_QUERY;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
-import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.partnercourse.PartnerCourseSearchCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.SeplendidArgumentMap;
 import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.messages.UsageMessage;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
 import seedu.address.model.partnercourse.PartnerCourseContainsKeywordsPredicate;

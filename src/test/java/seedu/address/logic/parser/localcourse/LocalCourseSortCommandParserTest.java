@@ -11,10 +11,10 @@ import java.util.Comparator;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.localcourse.LocalCourseCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseSortCommand;
-import seedu.address.model.ConstraintMessage;
+import seedu.address.messages.ConstraintMessage;
+import seedu.address.messages.UsageMessage;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.localcourse.LocalCourseAttribute;
 import seedu.address.model.localcourse.comparator.LocalCourseComparatorByLocalCode;
@@ -70,11 +70,11 @@ public class LocalCourseSortCommandParserTest {
     @Test
     public void parse_validArguments_success() {
         assertParseSuccess(parser, commandActionWord
-                        + getSquareBracketWrappedArgument(LocalCourseAttribute.LOCALCODE.getValue()),
+                + getSquareBracketWrappedArgument(LocalCourseAttribute.LOCALCODE.toString()),
                 new LocalCourseSortCommand(new LocalCourseComparatorByLocalCode()));
 
         assertParseSuccess(parser, commandActionWord
-                        + getSquareBracketWrappedArgument(LocalCourseAttribute.LOCALNAME.getValue()),
+                        + getSquareBracketWrappedArgument(LocalCourseAttribute.LOCALNAME.toString()),
                 new LocalCourseSortCommand(new LocalCourseComparatorByLocalName()));
 
     }

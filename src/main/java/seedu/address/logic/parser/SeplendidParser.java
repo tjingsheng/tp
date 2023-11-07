@@ -8,7 +8,6 @@ import seedu.address.commons.core.SeplendidLogsCenter;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.localcourse.LocalCourseAddCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseDeleteCommand;
@@ -63,7 +62,8 @@ import seedu.address.logic.parser.partnercourse.PartnerCourseSearchCommandParser
 import seedu.address.logic.parser.partnercourse.PartnerCourseSortCommandParser;
 import seedu.address.logic.parser.partnercourse.PartnerCourseUpdateCommandParser;
 import seedu.address.logic.parser.university.UniversitySearchCommandParser;
-import seedu.address.logic.parser.university.UniversitySortCommandParser;
+import seedu.address.messages.UsageMessage;
+import seedu.address.model.university.comparator.UniversityComparatorByUniversityName;
 
 /**
  * Parses user input into the SEPlendid CLI.
@@ -194,9 +194,13 @@ public class SeplendidParser {
         case NoteCommand.COMMAND_WORD:
             return getNoteCommandWithoutArg(userInput, actionWord);
         default:
-            logger.finer("This user input caused a ParseException: " + userInput);
-            throw new ParseException(UsageMessage.HELP.getValue());
         }
+
+        logger.finer("This user input caused a ParseException: " + userInput);
+        if (commandWord.equals(ExitCommand.COMMAND_WORD)) {
+            throw new ParseException(UsageMessage.EXIT.getValue());
+        }
+        throw new ParseException(UsageMessage.HELP.getValue());
     }
 
     /**
@@ -232,9 +236,13 @@ public class SeplendidParser {
         case MappingCommand.COMMAND_WORD:
             return getMappingCommandWithArg(userInput, actionWord, arguments);
         default:
-            logger.finer("This user input caused a ParseException: " + userInput);
-            throw new ParseException(UsageMessage.HELP.getValue());
         }
+
+        logger.finer("This user input caused a ParseException: " + userInput);
+        if (commandWord.equals(ExitCommand.COMMAND_WORD)) {
+            throw new ParseException(UsageMessage.EXIT.getValue());
+        }
+        throw new ParseException(UsageMessage.HELP.getValue());
     }
 
     private LocalCourseCommand getLocalCourseCommandWithArg(String userInput, String actionWord, String arguments)
@@ -251,9 +259,13 @@ public class SeplendidParser {
         case LocalCourseUpdateCommand.ACTION_WORD:
             return new LocalCourseUpdateCommandParser().parse(arguments);
         default:
-            logger.finer("This user input caused a ParseException: " + userInput);
-            throw new ParseException(UsageMessage.LOCALCOURSE.getValue());
         }
+
+        logger.finer("This user input caused a ParseException: " + userInput);
+        if (actionWord.equals(LocalCourseListCommand.ACTION_WORD)) {
+            throw new ParseException(UsageMessage.LOCALCOURSE_LIST.getValue());
+        }
+        throw new ParseException(UsageMessage.LOCALCOURSE.getValue());
     }
 
     private LocalCourseCommand getLocalCourseCommandWithoutArg(String userInput, String actionWord)
@@ -293,9 +305,13 @@ public class SeplendidParser {
         case PartnerCourseUpdateCommand.ACTION_WORD:
             return new PartnerCourseUpdateCommandParser().parse(arguments);
         default:
-            logger.finer("This user input caused a ParseException: " + userInput);
-            throw new ParseException(UsageMessage.PARTNERCOURSE.getValue());
         }
+
+        logger.finer("This user input caused a ParseException: " + userInput);
+        if (actionWord.equals(PartnerCourseListCommand.ACTION_WORD)) {
+            throw new ParseException(UsageMessage.PARTNERCOURSE_LIST.getValue());
+        }
+        throw new ParseException(UsageMessage.PARTNERCOURSE.getValue());
     }
 
     private PartnerCourseCommand getPartnerCourseCommandWithoutArg(String userInput, String actionWord)
@@ -321,8 +337,42 @@ public class SeplendidParser {
         }
     }
 
-    private MappingCommand getMappingCommandWithArg(String userInput, String actionWord, String arguments)
+    private UniversityCommand getUniversityCommandWithoutArg(String userInput, String actionWord)
+            throws ParseException {
+        switch (actionWord) {
+        case UniversityListCommand.ACTION_WORD:
+            return new UniversityListCommand();
+        case UniversitySortCommand.ACTION_WORD:
+            return new UniversitySortCommand(new UniversityComparatorByUniversityName());
+        default:
+        }
+
+        logger.finer("This user input caused a ParseException: " + userInput);
+        if (actionWord.equals(UniversitySearchCommand.ACTION_WORD)) {
+            throw new ParseException(UsageMessage.UNIVERSITY_SEARCH.getValue());
+        }
+        throw new ParseException(UsageMessage.UNIVERSITY.getValue());
+    }
+
+    private UniversityCommand getUniversityCommandWithArg(String userInput, String actionWord, String arguments)
                 throws ParseException {
+        if (actionWord.equals(UniversitySearchCommand.ACTION_WORD)) {
+            return new UniversitySearchCommandParser().parse(arguments);
+        }
+
+        logger.finer("This user input caused a ParseException: " + userInput);
+        switch (actionWord) {
+        case UniversityListCommand.ACTION_WORD:
+            throw new ParseException(UsageMessage.UNIVERSITY_LIST.getValue());
+        case UniversitySortCommand.ACTION_WORD:
+            throw new ParseException(UsageMessage.UNIVERSITY_SORT.getValue());
+        default:
+            throw new ParseException(UsageMessage.UNIVERSITY.getValue());
+        }
+    }
+
+    private MappingCommand getMappingCommandWithArg(String userInput, String actionWord, String arguments)
+            throws ParseException {
         switch (actionWord) {
         case MappingAddCommand.ACTION_WORD:
             return new MappingAddCommandParser().parse(arguments);
@@ -333,39 +383,13 @@ public class SeplendidParser {
         case MappingSortCommand.ACTION_WORD:
             return new MappingSortCommandParser().parse(arguments);
         default:
-            logger.finer("This user input caused a ParseException: " + userInput);
-            throw new ParseException(UsageMessage.MAPPING.getValue());
-        }
-    }
-
-    private UniversityCommand getUniversityCommandWithoutArg(String userInput, String actionWord)
-                throws ParseException {
-        if (actionWord.equals(UniversityListCommand.ACTION_WORD)) {
-            return new UniversityListCommand();
         }
 
         logger.finer("This user input caused a ParseException: " + userInput);
-        switch (actionWord) {
-        case UniversitySearchCommand.ACTION_WORD:
-            throw new ParseException(UsageMessage.UNIVERSITY_SEARCH.getValue());
-        case UniversitySortCommand.ACTION_WORD:
-            throw new ParseException(UsageMessage.UNIVERSITY_SORT.getValue());
-        default:
-            throw new ParseException(UsageMessage.UNIVERSITY.getValue());
+        if (actionWord.equals(MappingListCommand.ACTION_WORD)) {
+            throw new ParseException(UsageMessage.MAPPING_LIST.getValue());
         }
-    }
-
-    private UniversityCommand getUniversityCommandWithArg(String userInput, String actionWord, String arguments)
-                throws ParseException {
-        switch (actionWord) {
-        case UniversitySearchCommand.ACTION_WORD:
-            return new UniversitySearchCommandParser().parse(arguments);
-        case UniversitySortCommand.ACTION_WORD:
-            return new UniversitySortCommandParser().parse(arguments);
-        default:
-            logger.finer("This user input caused a ParseException: " + userInput);
-            throw new ParseException(UsageMessage.UNIVERSITY.getValue());
-        }
+        throw new ParseException(UsageMessage.MAPPING.getValue());
     }
 
     private MappingCommand getMappingCommandWithoutArg(String userInput, String actionWord) throws ParseException {
@@ -403,9 +427,13 @@ public class SeplendidParser {
         case NoteClearTagCommand.ACTION_WORD:
             return new NoteClearTagCommandParser().parse(arguments);
         default:
-            logger.finer("This user input caused a ParseException: " + userInput);
-            throw new ParseException(UsageMessage.NOTE.getValue());
         }
+
+        logger.finer("This user input caused a ParseException: " + userInput);
+        if (actionWord.equals(NoteListCommand.ACTION_WORD)) {
+            throw new ParseException(UsageMessage.NOTE_LIST.getValue());
+        }
+        throw new ParseException(UsageMessage.NOTE.getValue());
     }
 
     private NoteCommand getNoteCommandWithoutArg(String userInput, String actionWord) throws ParseException {

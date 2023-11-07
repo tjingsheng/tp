@@ -6,14 +6,14 @@ import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty
 
 import java.util.Comparator;
 
-import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.localcourse.LocalCourseSortCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.SeplendidArgumentMap;
 import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.ConstraintMessage;
+import seedu.address.messages.ConstraintMessage;
+import seedu.address.messages.UsageMessage;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.localcourse.LocalCourseAttribute;
 import seedu.address.model.localcourse.comparator.LocalCourseComparatorByLocalCode;
@@ -53,7 +53,7 @@ public class LocalCourseSortCommandParser implements Parser<LocalCourseSortComma
 
     private Comparator<LocalCourse> parseLocalCourseComparator(String args) throws ParseException {
         LocalCourseAttribute localCourseAttribute = ParserUtil.parseLocalCourseAttributeForSort(args);
-        switch (localCourseAttribute) {
+        switch(localCourseAttribute) {
         case LOCALCODE:
             return new LocalCourseComparatorByLocalCode();
         case LOCALNAME:

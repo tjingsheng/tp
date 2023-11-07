@@ -11,9 +11,10 @@ import java.util.Comparator;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.partnercourse.PartnerCourseCommand;
 import seedu.address.logic.commands.partnercourse.PartnerCourseSortCommand;
+import seedu.address.messages.ConstraintMessage;
+import seedu.address.messages.UsageMessage;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
 import seedu.address.model.partnercourse.comparator.PartnerCourseComparatorByPartnerCode;
@@ -23,8 +24,10 @@ import seedu.address.testutil.PartnerCourseUtil;
 
 public class PartnerCourseSortCommandParserTest {
 
-    private static final String commandActionWord = PartnerCourseCommand.COMMAND_WORD
-            + PartnerCourseSortCommand.ACTION_WORD;
+    private static final String commandActionWord =
+        PartnerCourseCommand.COMMAND_WORD
+        + " "
+        + PartnerCourseSortCommand.ACTION_WORD;
 
     private PartnerCourseSortCommandParser parser = new PartnerCourseSortCommandParser();
 
@@ -63,13 +66,13 @@ public class PartnerCourseSortCommandParserTest {
         // invalid attribute
         assertParseFailure(parser, commandActionWord
                         + getSquareBracketWrappedArgument(INVALID_PARTNER_COURSE_ATTRIBUTE),
-                PartnerCourseAttribute.MESSAGE_CONSTRAINTS_SORT);
+                           ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_SORT.getValue());
     }
 
     @Test
     public void parse_validArguments_success() {
         assertParseSuccess(parser, commandActionWord
-                        + getSquareBracketWrappedArgument(PartnerCourseAttribute.PARTNERCODE.toString()),
+                + getSquareBracketWrappedArgument(PartnerCourseAttribute.PARTNERCODE.toString()),
                 new PartnerCourseSortCommand(new PartnerCourseComparatorByPartnerCode()));
 
         assertParseSuccess(parser, commandActionWord

@@ -13,7 +13,7 @@ import static seedu.address.testutil.TypicalObjects.getTypicalUniversityCatalogu
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.Messages;
+import seedu.address.messages.Messages;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.SeplendidModelManager;
 import seedu.address.model.UserPrefs;
@@ -106,7 +106,7 @@ public class PartnerCourseUpdateCommandTest {
                 new PartnerCourseUpdateCommand(
                         COMP3000.getPartnerUniversity().getUniversityName(),
                         COMP3000.getPartnerCode(),
-                        PartnerCourseAttribute.UNIT,
+                        PartnerCourseAttribute.PARTNERUNIT,
                         "10.0"),
                 model,
                 String.format(PartnerCourseUpdateCommand.MESSAGE_SUCCESS,
@@ -132,7 +132,7 @@ public class PartnerCourseUpdateCommandTest {
                 new PartnerCourseUpdateCommand(
                         COMP3000.getPartnerUniversity().getUniversityName(),
                         COMP3000.getPartnerCode(),
-                        PartnerCourseAttribute.DESCRIPTION,
+                        PartnerCourseAttribute.PARTNERDESCRIPTION,
                         "Fun course about networks!"),
                 model,
                 String.format(PartnerCourseUpdateCommand.MESSAGE_SUCCESS,
@@ -146,7 +146,7 @@ public class PartnerCourseUpdateCommandTest {
                 new PartnerCourseUpdateCommand(
                         COMP3000.getPartnerUniversity().getUniversityName(),
                         COMP3000.getPartnerCode(),
-                        PartnerCourseAttribute.DESCRIPTION,
+                        PartnerCourseAttribute.PARTNERDESCRIPTION,
                         "Fun course about networks!"),
                 model,
                 PartnerCourseUpdateCommand.MESSAGE_NONEXISTENT_PARTNER_COURSE);

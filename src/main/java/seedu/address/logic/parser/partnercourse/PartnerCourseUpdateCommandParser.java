@@ -7,13 +7,13 @@ import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERUPDATEDVALUE
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_UNIVERSITYNAME;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
-import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.partnercourse.PartnerCourseUpdateCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.SeplendidArgumentMap;
 import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.messages.UsageMessage;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
 import seedu.address.model.partnercourse.PartnerDescription;
@@ -81,12 +81,12 @@ public class PartnerCourseUpdateCommandParser implements Parser<PartnerCourseUpd
                 throw new ParseException(PartnerName.MESSAGE_CONSTRAINTS);
             }
             break;
-        case UNIT:
+        case PARTNERUNIT:
             if (!PartnerUnit.isValidPartnerUnit(trimmedUpdatedValue)) {
                 throw new ParseException(PartnerUnit.MESSAGE_CONSTRAINTS);
             }
             break;
-        case DESCRIPTION:
+        case PARTNERDESCRIPTION:
             if (!PartnerDescription.isValidPartnerDescription(trimmedUpdatedValue)) {
                 throw new ParseException(PartnerDescription.MESSAGE_CONSTRAINTS);
             }

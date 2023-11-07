@@ -1,23 +1,24 @@
-package seedu.address.model.partnercourse;
+package seedu.address.model.mapping;
 
 /**
- * Represents the attribute related to a partner course.
+ * Represents the attribute related to mapping.
  */
-public enum PartnerCourseAttribute {
+public enum MappingAttribute {
+    LOCALCODE("localcode"),
+    LOCALNAME("localname"),
     PARTNERCODE("partnercode"),
     PARTNERNAME("partnername"),
-    PARTNERUNIT("partnerunit"),
-    PARTNERDESCRIPTION("partnerdescription"),
-    UNIVERSITY("university");
+    UNIVERSITY("university"),
+    INFORMATION("information");
 
     private final String value;
 
     /**
-     * Constructor for PartnerCourseAttribute.
+     * Constructor for MappingAttribute.
      *
      * @param value The string representation of the attribute.
      */
-    PartnerCourseAttribute(String value) {
+    MappingAttribute(String value) {
         this.value = value;
     }
 
@@ -32,16 +33,16 @@ public enum PartnerCourseAttribute {
     }
 
     /**
-     * Converts a string to the corresponding PartnerCourseAttribute.
+     * Converts a string to the corresponding MappingAttribute.
      *
      * @param text The string to be converted.
-     * @return The PartnerCourseAttribute corresponding to the input string, or null if not found.
+     * @return The MappingAttribute corresponding to the input string, or null if not found.
      */
-    public static PartnerCourseAttribute fromString(String text) {
+    public static MappingAttribute fromString(String text) {
         if (text == null) {
             return null;
         }
-        for (PartnerCourseAttribute enumValue : PartnerCourseAttribute.values()) {
+        for (MappingAttribute enumValue : MappingAttribute.values()) {
             if (enumValue.value.equals(text)) {
                 return enumValue;
             }
@@ -56,38 +57,18 @@ public enum PartnerCourseAttribute {
      * @return True if the attribute is valid for sorting, false otherwise.
      */
     public static boolean isValidAttributeForSort(String test) {
-        PartnerCourseAttribute attribute = PartnerCourseAttribute.fromString(test);
+        MappingAttribute attribute = MappingAttribute.fromString(test);
         if (attribute == null) {
             return false;
         }
 
         switch (attribute) {
+        case LOCALCODE:
+        case LOCALNAME:
         case PARTNERCODE:
         case PARTNERNAME:
         case UNIVERSITY:
-            return true;
-        default:
-            return false;
-        }
-    }
-
-    /**
-     * Checks if the given attribute is valid for updating.
-     *
-     * @param test The string to be tested.
-     * @return True if the attribute is valid for updating, false otherwise.
-     */
-    public static boolean isValidAttributeForUpdate(String test) {
-        PartnerCourseAttribute attribute = PartnerCourseAttribute.fromString(test);
-        if (attribute == null) {
-            return false;
-        }
-
-        switch (attribute) {
-        case PARTNERCODE:
-        case PARTNERNAME:
-        case PARTNERUNIT:
-        case PARTNERDESCRIPTION:
+        case INFORMATION:
             return true;
         default:
             return false;
@@ -101,16 +82,18 @@ public enum PartnerCourseAttribute {
      * @return True if the attribute is valid for searching, false otherwise.
      */
     public static boolean isValidAttributeForSearch(String test) {
-        PartnerCourseAttribute attribute = PartnerCourseAttribute.fromString(test);
+        MappingAttribute attribute = MappingAttribute.fromString(test);
         if (attribute == null) {
             return false;
         }
 
         switch (attribute) {
+        case LOCALCODE:
+        case LOCALNAME:
         case PARTNERCODE:
         case PARTNERNAME:
-        case PARTNERDESCRIPTION:
         case UNIVERSITY:
+        case INFORMATION:
             return true;
         default:
             return false;

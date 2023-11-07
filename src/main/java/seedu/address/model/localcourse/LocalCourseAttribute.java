@@ -25,7 +25,8 @@ public enum LocalCourseAttribute {
      *
      * @return The string representation of the attribute.
      */
-    public String getValue() {
+    @Override
+    public String toString() {
         return value;
     }
 

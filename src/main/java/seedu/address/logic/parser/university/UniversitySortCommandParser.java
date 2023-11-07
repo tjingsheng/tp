@@ -6,13 +6,14 @@ import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty
 
 import java.util.Comparator;
 
-import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.university.UniversitySortCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.SeplendidArgumentMap;
 import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.messages.ConstraintMessage;
+import seedu.address.messages.UsageMessage;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityAttribute;
 import seedu.address.model.university.comparator.UniversityComparatorByUniversityName;
@@ -29,7 +30,6 @@ public class UniversitySortCommandParser implements Parser<UniversitySortCommand
      * @throws ParseException if the user input does not conform the expected format.
      */
     public UniversitySortCommand parse(String args) throws ParseException {
-
         ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
                 areValuesEnclosedAndNonEmpty(args);
         if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
@@ -52,12 +52,12 @@ public class UniversitySortCommandParser implements Parser<UniversitySortCommand
     }
 
     private Comparator<University> parseUniversityComparator(String args) throws ParseException {
-        UniversityAttribute universityAttribute = ParserUtil.parseUniversityAttribute(args);
-        switch (universityAttribute) {
-        case UNIVERSITYNAME:
+        UniversityAttribute universityAttribute = ParserUtil.parseUniversityAttributeForSort(args);
+        switch(universityAttribute) {
+        case UNIVERSITY:
             return new UniversityComparatorByUniversityName();
         default:
-            throw new ParseException(UniversityAttribute.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.UNIVERSITY_ATTRIBUTE_SEARCH.getValue());
         }
     }
 }

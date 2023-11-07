@@ -12,7 +12,7 @@ public enum ConstraintMessage {
             + "Must be non-empty, and must be between 1-76 characters long."),
     LOCALCOURSE_UNIT("LocalUnit:\n"
             + "Must not be blank\n"
-            + "Must be a non-negative numeric value\n"),
+            + "Must be a non-negative numeric value between 0 and 10000\n"),
     LOCALCOURSE_DESCRIPTION("LocalDescription must:"
             + "Must not be blank"),
     LOCALCOURSE_ATTRIBUTE_SEARCH("There are only 3 attributes available for localcourse search:\n"

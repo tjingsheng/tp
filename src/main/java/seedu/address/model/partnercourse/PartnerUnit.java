@@ -11,7 +11,7 @@ public class PartnerUnit {
 
     // Used in AppUtil#checkArgument and ParserUtil, JsonAdaptedXXX exceptions
     public static final String MESSAGE_CONSTRAINTS =
-        "PartnerUnit can only take non-negative numeric values and should not be blank";
+            "PartnerUnit can only take non-negative numeric values and should not be blank";
 
     private final Double value;
 
@@ -57,7 +57,7 @@ public class PartnerUnit {
                 double parsedValue = Double.parseDouble((String) test);
 
                 // Check if the parsed value is greater than 0
-                return parsedValue >= 0;
+                return parsedValue >= 0 && parsedValue <= 10000;
             } catch (NumberFormatException e) {
                 // If parsing fails, return false
                 return false;

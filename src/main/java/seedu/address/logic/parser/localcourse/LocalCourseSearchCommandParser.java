@@ -3,6 +3,7 @@ package seedu.address.logic.parser.localcourse;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_LOCALATTRIBUTE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_QUERY;
+import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
 import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.localcourse.LocalCourseSearchCommand;
@@ -29,8 +30,12 @@ public class LocalCourseSearchCommandParser implements Parser<LocalCourseSearchC
      * @throws ParseException if the user input does not conform the expected format.
      */
     public LocalCourseSearchCommand parse(String args) throws ParseException {
-        if (!ParserUtil.areValuesEnclosedAndNonEmpty(args)) {
+        ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
+                areValuesEnclosedAndNonEmpty(args);
+        if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
             throw new ParseException(UsageMessage.LOCALCOURSE_SEARCH.getValue());
+        } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
+            throw new ParseException(UsageMessage.LOCALCOURSE_SEARCH.getValueWithEmptyArgs());
         }
 
         SeplendidArgumentMap parameterToArgMap =
@@ -39,7 +44,7 @@ public class LocalCourseSearchCommandParser implements Parser<LocalCourseSearchC
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap,
                 PARAMETER_LOCALATTRIBUTE, PARAMETER_QUERY)) {
             throw new ParseException(
-                UsageMessage.LOCALCOURSE_SEARCH.getValue());
+                    UsageMessage.LOCALCOURSE_SEARCH.getValue());
         }
 
         LocalCourseAttribute localCourseAttribute = ParserUtil.parseLocalCourseAttributeForSearch(
@@ -48,6 +53,7 @@ public class LocalCourseSearchCommandParser implements Parser<LocalCourseSearchC
         return new LocalCourseSearchCommand(localCourseAttribute,
                 new LocalCourseContainsKeywordsPredicate(query, localCourseAttribute), query);
     }
+
     private String parseQuery(LocalCourseAttribute localCourseAttribute, String query)
             throws ParseException {
         requireAllNonNull(localCourseAttribute, query);

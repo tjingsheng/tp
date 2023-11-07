@@ -37,190 +37,190 @@ import seedu.address.logic.commands.university.UniversitySortCommand;
  */
 public enum UsageMessage {
     LOCALCOURSE_ADD(
-        LocalCourseCommand.COMMAND_WORD,
-        LocalCourseAddCommand.ACTION_WORD,
-        "[localcode] [localname] [units] [description]",
-        "Adds a local course"),
+            LocalCourseCommand.COMMAND_WORD,
+            LocalCourseAddCommand.ACTION_WORD,
+            "[localcode] [localname] [localunit] [localdescription]",
+            "Adds a local course"),
     LOCALCOURSE_DELETE(
-        LocalCourseCommand.COMMAND_WORD,
-        LocalCourseDeleteCommand.ACTION_WORD,
-        "[localcode]",
-        "Deletes a local course"),
+            LocalCourseCommand.COMMAND_WORD,
+            LocalCourseDeleteCommand.ACTION_WORD,
+            "[localcode]",
+            "Deletes a local course"),
     LOCALCOURSE_LIST(
-        LocalCourseCommand.COMMAND_WORD,
-        LocalCourseListCommand.ACTION_WORD,
-        "",
-        "Lists all local courses"),
+            LocalCourseCommand.COMMAND_WORD,
+            LocalCourseListCommand.ACTION_WORD,
+            "",
+            "Lists all local courses"),
     LOCALCOURSE_SEARCH(
-        LocalCourseCommand.COMMAND_WORD,
-        LocalCourseSearchCommand.ACTION_WORD,
-        "[attribute] [query]",
-        "Searches for a local course where query is found in the selected attribute\nAttributes:\n"
-            + "localcode\nlocalname\ndescription"),
+            LocalCourseCommand.COMMAND_WORD,
+            LocalCourseSearchCommand.ACTION_WORD,
+            "[attribute] [query]",
+            "Searches for a local course where query is found in the selected attribute\nAttributes:\n"
+                    + "localcode\nlocalname\nlocaldescription"),
     LOCALCOURSE_SORT(
-        LocalCourseCommand.COMMAND_WORD,
-        LocalCourseSortCommand.ACTION_WORD,
-        "[attribute]",
-        "Sorts local courses by the selected attribute\nAttributes:\n"
-            + "localcode\nlocalname"),
+            LocalCourseCommand.COMMAND_WORD,
+            LocalCourseSortCommand.ACTION_WORD,
+            "[attribute]",
+            "Sorts local courses by the selected attribute\nAttributes:\n"
+                    + "localcode\nlocalname"),
     LOCALCOURSE_UPDATE(
-        LocalCourseCommand.COMMAND_WORD,
-        LocalCourseUpdateCommand.ACTION_WORD,
-        "[localcode] [attribute] [newvalue]",
-        "Updates the attribute of the local course with a new value.\nAttributes:\n"
-            + "localcode\nlocalname\nunits\ndescription'"),
+            LocalCourseCommand.COMMAND_WORD,
+            LocalCourseUpdateCommand.ACTION_WORD,
+            "[localcode] [attribute] [newvalue]",
+            "Updates the attribute of the local course with a new value.\nAttributes:\n"
+                    + "localcode\nlocalname\nlocalunit\nlocaldescription'"),
     LOCALCOURSE(String.join("\n",
-                    "Local Courses Commands:\n",
-                    LOCALCOURSE_ADD.getValue(),
-                    LOCALCOURSE_LIST.getValue(),
-                    LOCALCOURSE_UPDATE.getValue(),
-                    LOCALCOURSE_DELETE.getValue(),
-                    LOCALCOURSE_SEARCH.getValue(),
-                    LOCALCOURSE_SORT.getValue())),
+            "Local Courses Commands:\n",
+            LOCALCOURSE_ADD.getValue(),
+            LOCALCOURSE_LIST.getValue(),
+            LOCALCOURSE_UPDATE.getValue(),
+            LOCALCOURSE_DELETE.getValue(),
+            LOCALCOURSE_SEARCH.getValue(),
+            LOCALCOURSE_SORT.getValue())),
     MAPPING_ADD(
-        MappingCommand.COMMAND_WORD,
-        MappingAddCommand.ACTION_WORD,
-        "[localcode] [university] [partnercode] [information]",
-        "Adds a mapping to the mapping catalogue"),
+            MappingCommand.COMMAND_WORD,
+            MappingAddCommand.ACTION_WORD,
+            "[localcode] [university] [partnercode] [information]",
+            "Adds a mapping to the mapping catalogue"),
     MAPPING_DELETE(
-        MappingCommand.COMMAND_WORD,
-        MappingDeleteCommand.ACTION_WORD,
-        "[localcode] [university] [partnercode]",
-        "Deletes a course mapping."),
+            MappingCommand.COMMAND_WORD,
+            MappingDeleteCommand.ACTION_WORD,
+            "[localcode] [university] [partnercode]",
+            "Deletes a course mapping."),
     MAPPING_LIST(
-        MappingCommand.COMMAND_WORD,
-        MappingListCommand.ACTION_WORD,
-        "",
-        "Lists all mappings"),
+            MappingCommand.COMMAND_WORD,
+            MappingListCommand.ACTION_WORD,
+            "",
+            "Lists all mappings"),
     MAPPING_SEARCH(
-        MappingCommand.COMMAND_WORD,
-        MappingSearchCommand.ACTION_WORD,
-        "[attribute] [query]",
-        "Searches for a mapping where query is found in the selected attribute\nAttributes:\n"
-        + "localcode\nlocalname\npartnercode\npartnername\nuniversity\ninformation"),
+            MappingCommand.COMMAND_WORD,
+            MappingSearchCommand.ACTION_WORD,
+            "[attribute] [query]",
+            "Searches for a mapping where query is found in the selected attribute\nAttributes:\n"
+                    + "localcode\nlocalname\npartnercode\npartnername\nuniversity\ninformation"),
     MAPPING_SORT(
-        MappingCommand.COMMAND_WORD,
-        MappingSearchCommand.ACTION_WORD,
-        "[attribute]",
-        "Sorts local courses by the selected attribute\nAttributes:\n"
-            + "localcode\nlocalname\npartnercode\npartnername\nuniversity\ninformation"),
+            MappingCommand.COMMAND_WORD,
+            MappingSearchCommand.ACTION_WORD,
+            "[attribute]",
+            "Sorts local courses by the selected attribute\nAttributes:\n"
+                    + "localcode\nlocalname\npartnercode\npartnername\nuniversity\ninformation"),
     MAPPING(String.join("\n",
-                        "Mapping Commands:\n",
-                        MAPPING_LIST.getValue(),
-                        MAPPING_ADD.getValue(),
-                        MAPPING_DELETE.getValue(),
-                        MAPPING_SEARCH.getValue(),
-                        MAPPING_SORT.getValue())),
+            "Mapping Commands:\n",
+            MAPPING_LIST.getValue(),
+            MAPPING_ADD.getValue(),
+            MAPPING_DELETE.getValue(),
+            MAPPING_SEARCH.getValue(),
+            MAPPING_SORT.getValue())),
     NOTE_ADD(
-        NoteCommand.COMMAND_WORD,
-        NoteAddCommand.ACTION_WORD,
-        "[content] [tags]",
-        "Adds a note"),
+            NoteCommand.COMMAND_WORD,
+            NoteAddCommand.ACTION_WORD,
+            "[content] [tags]",
+            "Adds a note"),
     NOTE_DELETE(
-        NoteCommand.COMMAND_WORD,
-        NoteDeleteCommand.ACTION_WORD,
-        "[index]",
-        "Deletes a note"),
+            NoteCommand.COMMAND_WORD,
+            NoteDeleteCommand.ACTION_WORD,
+            "[index]",
+            "Deletes a note"),
     NOTE_LIST(
-        NoteCommand.COMMAND_WORD,
-        NoteListCommand.ACTION_WORD,
-        "",
-        "Lists all notes"),
+            NoteCommand.COMMAND_WORD,
+            NoteListCommand.ACTION_WORD,
+            "",
+            "Lists all notes"),
     NOTE_SEARCH(
-        NoteCommand.COMMAND_WORD,
-        NoteSearchCommand.ACTION_WORD,
-        "[query]",
-        "Searches for notes with query is found in the note tag"),
+            NoteCommand.COMMAND_WORD,
+            NoteSearchCommand.ACTION_WORD,
+            "[query]",
+            "Searches for notes with query is found in the note tag"),
     NOTE_TAG(
-        NoteCommand.COMMAND_WORD,
-        NoteTagCommand.ACTION_WORD,
-        "[index] [tag]",
-        "Add a tag to a note"),
+            NoteCommand.COMMAND_WORD,
+            NoteTagCommand.ACTION_WORD,
+            "[index] [tag]",
+            "Add a tag to a note"),
     NOTE_UPDATE(
-        NoteCommand.COMMAND_WORD,
-        NoteUpdateCommand.ACTION_WORD,
-        "[index] [content]",
-        "Updates a note to the specified content"),
+            NoteCommand.COMMAND_WORD,
+            NoteUpdateCommand.ACTION_WORD,
+            "[index] [content]",
+            "Updates a note to the specified content"),
     NOTE_CLEAR_TAG(
-        NoteCommand.COMMAND_WORD,
-        NoteClearTagCommand.ACTION_WORD,
-        "[index]",
-        "Removes all tags to a note"),
+            NoteCommand.COMMAND_WORD,
+            NoteClearTagCommand.ACTION_WORD,
+            "[index]",
+            "Removes all tags to a note"),
     NOTE(String.join("\n",
-                     "Note Commands:\n",
-                     NOTE_ADD.getValue(),
-                     NOTE_CLEAR_TAG.getValue(),
-                     NOTE_DELETE.getValue(),
-                     NOTE_LIST.getValue(),
-                     NOTE_SEARCH.getValue(),
-                     NOTE_TAG.getValue(),
-                     NOTE_UPDATE.getValue())),
+            "Note Commands:\n",
+            NOTE_ADD.getValue(),
+            NOTE_CLEAR_TAG.getValue(),
+            NOTE_DELETE.getValue(),
+            NOTE_LIST.getValue(),
+            NOTE_SEARCH.getValue(),
+            NOTE_TAG.getValue(),
+            NOTE_UPDATE.getValue())),
     PARTNERCOURSE_ADD(
-        PartnerCourseCommand.COMMAND_WORD,
-        PartnerCourseAddCommand.ACTION_WORD,
-        "[university] [partnercode] [partnername] [units] [description]",
-        "Adds a partner course"),
+            PartnerCourseCommand.COMMAND_WORD,
+            PartnerCourseAddCommand.ACTION_WORD,
+            "[university] [partnercode] [partnername] [partnerunit] [partnerdescription]",
+            "Adds a partner course"),
     PARTNERCOURSE_DELETE(
-        PartnerCourseCommand.COMMAND_WORD,
-        PartnerCourseDeleteCommand.ACTION_WORD,
-        "[university] [partnercode] ",
-        "Deletes a partner course"),
+            PartnerCourseCommand.COMMAND_WORD,
+            PartnerCourseDeleteCommand.ACTION_WORD,
+            "[university] [partnercode] ",
+            "Deletes a partner course"),
     PARTNERCOURSE_LIST(
-        PartnerCourseCommand.COMMAND_WORD,
-        PartnerCourseListCommand.ACTION_WORD,
-        "",
-        "Lists all partner courses"),
+            PartnerCourseCommand.COMMAND_WORD,
+            PartnerCourseListCommand.ACTION_WORD,
+            "",
+            "Lists all partner courses"),
     PARTNERCOURSE_SEARCH(
-        PartnerCourseCommand.COMMAND_WORD,
-        PartnerCourseSearchCommand.ACTION_WORD,
-        "[attribute] [query]",
-        "Searches for a partner course where query is found in the selected attribute\nAttributes:\n"
-            + "partnercode\npartnername\ndescription\nuniversity"),
+            PartnerCourseCommand.COMMAND_WORD,
+            PartnerCourseSearchCommand.ACTION_WORD,
+            "[attribute] [query]",
+            "Searches for a partner course where query is found in the selected attribute\nAttributes:\n"
+                    + "partnercode\npartnername\ndescription\nuniversity"),
     PARTNERCOURSE_SORT(
-        PartnerCourseCommand.COMMAND_WORD,
-        PartnerCourseSortCommand.ACTION_WORD,
-        "[attribute]",
-        "Sorts partner courses by the selected attribute\nAttributes:\n"
-            + "partnercode\npartnername\nuniversity"),
+            PartnerCourseCommand.COMMAND_WORD,
+            PartnerCourseSortCommand.ACTION_WORD,
+            "[attribute]",
+            "Sorts partner courses by the selected attribute\nAttributes:\n"
+                    + "partnercode\npartnername\nuniversity"),
     PARTNERCOURSE_UPDATE(
-        PartnerCourseCommand.COMMAND_WORD,
-        PartnerCourseUpdateCommand.ACTION_WORD,
-        "[university] [partnercode] [attribute] [newvalue]",
-        "Updates the attribute of the partner course with a new value.\nAttributes:\n"
-            + "partnercode\npartnername\nunits\ndescription"),
+            PartnerCourseCommand.COMMAND_WORD,
+            PartnerCourseUpdateCommand.ACTION_WORD,
+            "[university] [partnercode] [attribute] [newvalue]",
+            "Updates the attribute of the partner course with a new value.\nAttributes:\n"
+                    + "partnercode\npartnername\npartnerunit\npartnerdescription"),
     PARTNERCOURSE(String.join("\n",
-                              "Partner Course Commands:\n",
-                              PARTNERCOURSE_LIST.getValue(),
-                              PARTNERCOURSE_ADD.getValue(),
-                              PARTNERCOURSE_UPDATE.getValue(),
-                              PARTNERCOURSE_DELETE.getValue(),
-                              PARTNERCOURSE_SEARCH.getValue(),
-                              PARTNERCOURSE_SORT.getValue())),
+            "Partner Course Commands:\n",
+            PARTNERCOURSE_LIST.getValue(),
+            PARTNERCOURSE_ADD.getValue(),
+            PARTNERCOURSE_UPDATE.getValue(),
+            PARTNERCOURSE_DELETE.getValue(),
+            PARTNERCOURSE_SEARCH.getValue(),
+            PARTNERCOURSE_SORT.getValue())),
     UNIVERSITY_LIST(
-        UniversityCommand.COMMAND_WORD,
-        UniversityListCommand.ACTION_WORD,
-        "",
-        "Lists all universities"),
+            UniversityCommand.COMMAND_WORD,
+            UniversityListCommand.ACTION_WORD,
+            "",
+            "Lists all universities"),
     UNIVERSITY_SEARCH(
-        UniversityCommand.COMMAND_WORD,
-        UniversitySearchCommand.ACTION_WORD,
-        "[query]",
-        "Searches for a university where query is found in the university name."),
+            UniversityCommand.COMMAND_WORD,
+            UniversitySearchCommand.ACTION_WORD,
+            "[query]",
+            "Searches for a university where query is found in the university name"),
     UNIVERSITY_SORT(
-        UniversityCommand.COMMAND_WORD,
-        UniversitySortCommand.ACTION_WORD,
-        "",
-        "Sorts universities by their university name"),
+            UniversityCommand.COMMAND_WORD,
+            UniversitySortCommand.ACTION_WORD,
+            "",
+            "Sorts the universities by the university name"),
     UNIVERSITY(String.join("\n",
-                           "University Commands:\n",
-                           UNIVERSITY_LIST.getValue(),
-                           UNIVERSITY_SEARCH.getValue(),
-                           UNIVERSITY_SORT.getValue())),
+            "University Commands:\n",
+            UNIVERSITY_LIST.getValue(),
+            UNIVERSITY_SEARCH.getValue(),
+            UNIVERSITY_SORT.getValue())),
     HELP(
-        HelpCommand.COMMAND_WORD,
-        "",
-        "",
-        "Shows a help window for the program usage");
+            HelpCommand.COMMAND_WORD,
+            "",
+            "",
+            "Shows a help window for the program usage");
 
     private final String value;
 
@@ -237,8 +237,8 @@ public enum UsageMessage {
      * Constructs a UsageMessage with the specified values.
      *
      * @param commandWord The command word for the command.
-     * @param actionWord The action word for the command.
-     * @param args The arguments for the command.
+     * @param actionWord  The action word for the command.
+     * @param args        The arguments for the command.
      * @param description The description of the command.
      */
     UsageMessage(String commandWord, String actionWord, String args, String description) {
@@ -252,5 +252,12 @@ public enum UsageMessage {
      */
     public String getValue() {
         return value;
+    }
+
+    /**
+     * Gets usage message with message that arguments cannot be empty.
+     */
+    public String getValueWithEmptyArgs() {
+        return String.format("%s\n%s", value, "Arguments cannot be empty.\n");
     }
 }

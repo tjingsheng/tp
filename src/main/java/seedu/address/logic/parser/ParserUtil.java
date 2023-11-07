@@ -40,6 +40,13 @@ public class ParserUtil {
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
 
     /**
+     * Represents the result for areValuesEnclosedAndNonEmpty method.
+     */
+    public enum AreValuesEnclosedAndNonEmptyResult {
+        SUCCESS, FAILURE, EMPTY
+    }
+
+    /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
      *
@@ -437,15 +444,16 @@ public class ParserUtil {
     // SEPlendid ParserUtil starts here
 
     /**
-     * Returns true if all arguments are enclosed in square brackets, and are non-empty.
-     * The input string must be non-empty.
+     * Returns SUCCESS if all arguments are enclosed in square brackets, and are non-empty.
+     * The input string must be non-empty. Returns FAILURE if not valid, and EMPTY if argument
+     * within square bracket is not present.
      *
      * @param args Arguments in the format of {@code [args1] [args2] ...}.
-     * @return true if in correct format.
+     * @return AreValuesEnclosedAndNonEmptyResult based on the validity of the input.
      */
-    public static boolean areValuesEnclosedAndNonEmpty(String args) {
+    public static AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmpty(String args) {
         if (args.isEmpty()) {
-            return false;
+            return AreValuesEnclosedAndNonEmptyResult.FAILURE;
         }
         // The number of unclosed open square brackets, used to validate input.
         int bracketCount = 0;
@@ -457,7 +465,7 @@ public class ParserUtil {
                 currValue.setLength(0);
                 bracketCount++;
             } else if (currChar.equals(']') && currValue.toString().trim().isEmpty()) {
-                return false;
+                return AreValuesEnclosedAndNonEmptyResult.EMPTY;
             } else if (currChar.equals(']')) {
                 bracketCount--;
             } else {
@@ -465,11 +473,13 @@ public class ParserUtil {
             }
 
             if (bracketCount < 0 || bracketCount > 1) {
-                return false;
+                return AreValuesEnclosedAndNonEmptyResult.FAILURE;
             }
         }
 
-        return bracketCount == 0;
+        return bracketCount == 0
+                ? AreValuesEnclosedAndNonEmptyResult.SUCCESS
+                : AreValuesEnclosedAndNonEmptyResult.FAILURE;
     }
 
     /**

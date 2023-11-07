@@ -17,17 +17,23 @@ import seedu.address.model.tag.Tag;
 /**
  * Parses the given {@code String} of arguments in the context of the TagCommand
  * and returns a TagCommand object for execution.
+ *
  * @throws ParseException if the user input does not conform the expected format
  */
 public class NoteTagCommandParser implements Parser<NoteTagCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the NoteTagCommand
      * and returns a NoteTagCommand object for execution.
+     *
      * @throws ParseException if the user input does not conform the expected format
      */
     public NoteTagCommand parse(String args) throws ParseException {
-        if (!areValuesEnclosedAndNonEmpty(args)) {
+        ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
+                areValuesEnclosedAndNonEmpty(args);
+        if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
             throw new ParseException(UsageMessage.NOTE_TAG.getValue());
+        } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
+            throw new ParseException(UsageMessage.NOTE_TAG.getValueWithEmptyArgs());
         }
 
         SeplendidArgumentMap parameterToArgMap =

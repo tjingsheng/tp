@@ -31,8 +31,12 @@ public class MappingAddCommandParser implements Parser<MappingAddCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public MappingAddCommand parse(String args) throws ParseException {
-        if (!areValuesEnclosedAndNonEmpty(args)) {
+        ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
+                areValuesEnclosedAndNonEmpty(args);
+        if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
             throw new ParseException(UsageMessage.MAPPING_ADD.getValue());
+        } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
+            throw new ParseException(UsageMessage.MAPPING_ADD.getValueWithEmptyArgs());
         }
 
         SeplendidArgumentMap parameterToArgMap =

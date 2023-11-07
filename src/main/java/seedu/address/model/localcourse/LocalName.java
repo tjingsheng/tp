@@ -13,7 +13,7 @@ public class LocalName {
     /*
      * This matches a string that starts with a non-whitespace character.
      */
-    public static final String VALIDATION_REGEX = "[^\\s].*";
+    public static final String VALIDATION_REGEX = "[^\\s].{0,75}";
 
     private final String value;
 

@@ -28,8 +28,12 @@ public class NoteAddCommandParser implements Parser<NoteAddCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public NoteAddCommand parse(String args) throws ParseException {
-        if (!areValuesEnclosedAndNonEmpty(args)) {
+        ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
+                areValuesEnclosedAndNonEmpty(args);
+        if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
             throw new ParseException(UsageMessage.NOTE_ADD.getValue());
+        } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
+            throw new ParseException(UsageMessage.NOTE_ADD.getValueWithEmptyArgs());
         }
 
         SeplendidArgumentMap parameterToArgMap =

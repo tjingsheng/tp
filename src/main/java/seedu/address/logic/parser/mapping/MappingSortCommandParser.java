@@ -27,8 +27,12 @@ public class MappingSortCommandParser implements Parser<MappingSortCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public MappingSortCommand parse(String args) throws ParseException {
-        if (!areValuesEnclosedAndNonEmpty(args)) {
+        ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
+                areValuesEnclosedAndNonEmpty(args);
+        if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
             throw new ParseException(UsageMessage.MAPPING_SORT.getValue());
+        } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
+            throw new ParseException(UsageMessage.MAPPING_SORT.getValueWithEmptyArgs());
         }
 
         SeplendidArgumentMap parameterToArgMap =

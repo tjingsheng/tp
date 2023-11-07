@@ -1,7 +1,6 @@
 package seedu.address.logic.parser.note;
 
 
-
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_CONTENT;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_INDEX;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
@@ -18,17 +17,23 @@ import seedu.address.model.note.Content;
 /**
  * Parses the given {@code String} of arguments in the context of the UpdateCommand
  * and returns a UpdateCommand object for execution.
+ *
  * @throws ParseException if the user input does not conform the expected format
  */
 public class NoteUpdateCommandParser implements Parser<NoteUpdateCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the NoteUpdateCommand
      * and returns a NoteUpdateCommand object for execution.
+     *
      * @throws ParseException if the user input does not conform the expected format
      */
     public NoteUpdateCommand parse(String args) throws ParseException {
-        if (!areValuesEnclosedAndNonEmpty(args)) {
+        ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
+                areValuesEnclosedAndNonEmpty(args);
+        if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
             throw new ParseException(UsageMessage.NOTE_UPDATE.getValue());
+        } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
+            throw new ParseException(UsageMessage.NOTE_UPDATE.getValueWithEmptyArgs());
         }
 
         SeplendidArgumentMap parameterToArgMap =
@@ -45,7 +50,8 @@ public class NoteUpdateCommandParser implements Parser<NoteUpdateCommand> {
             Content newContent = new Content(parameterToArgMap.getValue(PARAMETER_CONTENT).get());
             return new NoteUpdateCommand(noteIndex, newContent);
         } catch (NumberFormatException e) {
-            throw new ParseException(UsageMessage.NOTE_UPDATE.getValue());
+            Content newContent = new Content(parameterToArgMap.getValue(PARAMETER_CONTENT).get());
+            return new NoteUpdateCommand(-1, newContent);
         }
     }
 }

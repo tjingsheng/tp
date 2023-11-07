@@ -11,7 +11,7 @@ public class PartnerName {
 
     public static final String MESSAGE_CONSTRAINTS = "PartnerName can take any values, and it should not be blank";
 
-    public static final String VALIDATION_REGEX = "[^\\s].*";
+    public static final String VALIDATION_REGEX = "[^\\s].{0,75}";
 
     private final String value;
 

@@ -33,21 +33,25 @@ public class PartnerCourseUpdateCommandParser implements Parser<PartnerCourseUpd
      * @throws ParseException if the user input does not conform the expected format.
      */
     public PartnerCourseUpdateCommand parse(String args) throws ParseException {
-        if (!areValuesEnclosedAndNonEmpty(args)) {
+        ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
+                areValuesEnclosedAndNonEmpty(args);
+        if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
             throw new ParseException(UsageMessage.PARTNERCOURSE_UPDATE.getValue());
+        } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
+            throw new ParseException(UsageMessage.PARTNERCOURSE_UPDATE.getValueWithEmptyArgs());
         }
 
         SeplendidArgumentMap parameterToArgMap = SeplendidArgumentTokenizer.tokenize(args,
-                                                                                     PARAMETER_UNIVERSITYNAME,
-                                                                                     PARAMETER_PARTNERCODE,
-                                                                                     PARAMETER_PARTNERATTRIBUTE,
-                                                                                     PARAMETER_PARTNERUPDATEDVALUE);
+                PARAMETER_UNIVERSITYNAME,
+                PARAMETER_PARTNERCODE,
+                PARAMETER_PARTNERATTRIBUTE,
+                PARAMETER_PARTNERUPDATEDVALUE);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap,
-                                            PARAMETER_UNIVERSITYNAME,
-                                            PARAMETER_PARTNERCODE,
-                                            PARAMETER_PARTNERATTRIBUTE,
-                                            PARAMETER_PARTNERUPDATEDVALUE)) {
+                PARAMETER_UNIVERSITYNAME,
+                PARAMETER_PARTNERCODE,
+                PARAMETER_PARTNERATTRIBUTE,
+                PARAMETER_PARTNERUPDATEDVALUE)) {
             throw new ParseException(UsageMessage.PARTNERCOURSE_UPDATE.getValue());
         }
 

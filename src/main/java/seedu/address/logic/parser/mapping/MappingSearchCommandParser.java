@@ -28,9 +28,12 @@ public class MappingSearchCommandParser implements Parser<MappingSearchCommand> 
      * @throws ParseException if the user input does not conform the expected format
      */
     public MappingSearchCommand parse(String args) throws ParseException {
-        if (!areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(
-                UsageMessage.MAPPING_SEARCH.getValue());
+        ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
+                areValuesEnclosedAndNonEmpty(args);
+        if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
+            throw new ParseException(UsageMessage.MAPPING_SEARCH.getValue());
+        } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
+            throw new ParseException(UsageMessage.MAPPING_SEARCH.getValueWithEmptyArgs());
         }
 
         SeplendidArgumentMap parameterToArgMap =
@@ -39,7 +42,7 @@ public class MappingSearchCommandParser implements Parser<MappingSearchCommand> 
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_MAPPINGATTRIBUTE, PARAMETER_QUERY)) {
             throw new ParseException(
-                UsageMessage.MAPPING_SEARCH.getValue());
+                    UsageMessage.MAPPING_SEARCH.getValue());
         }
 
         // All arguments should be a non-empty {@code Optional}

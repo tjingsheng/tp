@@ -26,7 +26,7 @@ public class NoteUpdateCommand extends NoteCommand {
      * Creates a NoteUpdateCommand to update the specified {@code Note}
      *
      * @param noteIndexToUpdate The Index of Note to be updated into Storage.
-     * @param updateContent The updated content of the note
+     * @param updateContent     The updated content of the note
      */
     public NoteUpdateCommand(int noteIndexToUpdate, Content updateContent) {
         super();
@@ -44,7 +44,7 @@ public class NoteUpdateCommand extends NoteCommand {
     public CommandResult execute(SeplendidModel seplendidModel) throws CommandException {
         requireNonNull(seplendidModel);
         int noteListSize = seplendidModel.getNoteCatalogue().getNoteList().size();
-        if (noteListSize < this.noteIndexToUpdate) {
+        if (this.noteIndexToUpdate == -1 || noteListSize < this.noteIndexToUpdate) {
             throw new CommandException(MESSAGE_NONEXISTENT_NOTE);
         }
         Note oldNote = seplendidModel.getNoteCatalogue().getNoteList().get(this.noteIndexToUpdate - 1);

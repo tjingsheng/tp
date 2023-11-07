@@ -7,11 +7,8 @@ import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_OBJECT;
-import static seedu.address.testutil.TypicalObjects.INVALID_LOCAL_COURSE_ATTRIBUTE;
 import static seedu.address.testutil.TypicalObjects.INVALID_LOCAL_COURSE_CODE;
 import static seedu.address.testutil.TypicalObjects.INVALID_LOCAL_COURSE_NAME;
-import static seedu.address.testutil.TypicalObjects.INVALID_PARTNER_COURSE_ATTRIBUTE;
-import static seedu.address.testutil.TypicalObjects.INVALID_PARTNER_COURSE_ATTRIBUTE_UPDATE;
 import static seedu.address.testutil.TypicalObjects.INVALID_PARTNER_COURSE_CODE;
 import static seedu.address.testutil.TypicalObjects.INVALID_PARTNER_COURSE_NAME;
 import static seedu.address.testutil.TypicalObjects.INVALID_UNIVERSITY_NAME;
@@ -80,7 +77,7 @@ public class ParserUtilTest {
 
     @Test
     public void parseName_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseName((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseName(null));
     }
 
     @Test
@@ -103,7 +100,7 @@ public class ParserUtilTest {
 
     @Test
     public void parsePhone_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parsePhone((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parsePhone(null));
     }
 
     @Test
@@ -126,7 +123,7 @@ public class ParserUtilTest {
 
     @Test
     public void parseAddress_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseAddress((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseAddress(null));
     }
 
     @Test
@@ -149,7 +146,7 @@ public class ParserUtilTest {
 
     @Test
     public void parseEmail_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseEmail((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseEmail(null));
     }
 
     @Test
@@ -217,10 +214,9 @@ public class ParserUtilTest {
     }
 
     //localcourse
-
     @Test
     public void parseLocalCode_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseLocalCode((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseLocalCode(null));
     }
 
     @Test
@@ -243,7 +239,7 @@ public class ParserUtilTest {
 
     @Test
     public void parseLocalName_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseLocalName((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseLocalName(null));
     }
 
     @Test
@@ -264,11 +260,89 @@ public class ParserUtilTest {
         assertEquals(expectedLocalName, ParserUtil.parseLocalName(localNameWithWhitespace));
     }
 
+    @Test
+    public void parseLocalCourseAttributeForSearch_validValues() throws ParseException {
+        assertEquals(LocalCourseAttribute.CODE, ParserUtil.parseLocalCourseAttributeForSearch("localcode"));
+        assertEquals(LocalCourseAttribute.NAME, ParserUtil.parseLocalCourseAttributeForSearch("localname"));
+        assertEquals(LocalCourseAttribute.DESCRIPTION, ParserUtil.parseLocalCourseAttributeForSearch("description"));
+    }
+
+    @Test
+    public void parseLocalCourseAttributeForSearch_invalidValues_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSearch(""));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSearch("a"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSearch("1"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSearch("@"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSearch("abc123"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSearch("local code"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSearch("localcode "));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSearch(" localcode"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSearch(null));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSearch("localunit"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSearch("LOCALCODE"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSearch("LOCALNAME"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSearch("UNITS"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSearch("DESCRIPTION"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSearch("invalid_attribute"));
+    }
+
+    @Test
+    public void parseLocalCourseAttributeForSort_validValues() throws ParseException {
+        assertEquals(LocalCourseAttribute.CODE, ParserUtil.parseLocalCourseAttributeForSort("localcode"));
+        assertEquals(LocalCourseAttribute.NAME, ParserUtil.parseLocalCourseAttributeForSort("localname"));
+    }
+
+    @Test
+    public void parseLocalCourseAttributeForSort_invalidValues_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSort(""));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSort("a"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSort("1"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSort("@"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSort("abc123"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSort("local code"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSort("localcode "));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSort(" localcode"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSort(null));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSort("localunit"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSort("localdescription"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSort("LOCALCODE"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSort("LOCALNAME"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSort("UNITS"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSort("DESCRIPTION"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSort("invalid_attribute"));
+    }
+
+    @Test
+    public void parseLocalCourseAttributeForUpdate_validValues() throws ParseException {
+        assertEquals(LocalCourseAttribute.CODE, ParserUtil.parseLocalCourseAttributeForUpdate("localcode"));
+        assertEquals(LocalCourseAttribute.NAME, ParserUtil.parseLocalCourseAttributeForUpdate("localname"));
+        assertEquals(LocalCourseAttribute.UNIT, ParserUtil.parseLocalCourseAttributeForUpdate("units"));
+        assertEquals(LocalCourseAttribute.DESCRIPTION, ParserUtil.parseLocalCourseAttributeForUpdate("description"));
+    }
+
+    @Test
+    public void parseLocalCourseAttributeForUpdate_invalidValues_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForUpdate(""));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForUpdate("a"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForUpdate("1"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForUpdate("@"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForUpdate("abc123"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForUpdate("local code"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForUpdate("localcode "));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForUpdate(" localcode"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForUpdate(null));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForUpdate("LOCALCODE"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForUpdate("LOCALNAME"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForUpdate("UNITS"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForUpdate("DESCRIPTION"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForUpdate("invalid_attribute"));
+    }
+
     //partner course
 
     @Test
     public void parseUniversityName_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseUniversityName((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseUniversityName(null));
     }
 
     @Test
@@ -291,7 +365,7 @@ public class ParserUtilTest {
 
     @Test
     public void parsePartnerCode_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parsePartnerCode((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parsePartnerCode(null));
     }
 
     @Test
@@ -314,7 +388,7 @@ public class ParserUtilTest {
 
     @Test
     public void parsePartnerName_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parsePartnerName((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parsePartnerName(null));
     }
 
     @Test
@@ -370,39 +444,6 @@ public class ParserUtilTest {
     @Test
     public void areValuesEnclosedAndNonEmpty_trailingWhiteSpaceValue_returnsTrue() throws Exception {
         assertTrue(areValuesEnclosedAndNonEmpty("[CS2103T] [Software Engineering]       "));
-    }
-
-    @Test
-    public void parseLocalCourseAttributeForSearch_validValue() throws ParseException {
-        assertEquals(LocalCourseAttribute.LOCALNAME, ParserUtil.parseLocalCourseAttributeForSearch("localname"));
-    }
-
-    @Test
-    public void parseLocalCourseAttributeForSearch_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSearch("local unit"));
-    }
-
-    @Test
-    public void parseLocalCourseAttributeForSort_null_throwsNullPointerException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSort((String) null));
-    }
-
-    @Test
-    public void parseLocalCourseAttributeForSort_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () ->
-            ParserUtil.parseLocalCourseAttributeForSort(INVALID_LOCAL_COURSE_ATTRIBUTE));
-    }
-
-    @Test
-    public void parseLocalCourseAttributeForUpdate_validValue() throws ParseException {
-        assertEquals(LocalCourseAttribute.LOCALNAME, ParserUtil.parseLocalCourseAttributeForSearch("localname"));
-    }
-
-    @Test
-    public void parseLocalCourseAttributeForUpdate_validValueWithWhitespace_throwsParseException() {
-        String localCourseAttributeWithWhitespace = WHITESPACE + "localname" + WHITESPACE;
-        assertThrows(ParseException.class, (
-            ) -> ParserUtil.parseLocalCourseAttributeForUpdate(localCourseAttributeWithWhitespace));
     }
 
     @Test

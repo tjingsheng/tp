@@ -39,7 +39,7 @@ public enum UsageMessage {
     LOCALCOURSE_ADD(
         LocalCourseCommand.COMMAND_WORD,
         LocalCourseAddCommand.ACTION_WORD,
-        "[localcode] [localname] [localunit] [localdescription]",
+        "[localcode] [localname] [units] [description]",
         "Adds a local course"),
     LOCALCOURSE_DELETE(
         LocalCourseCommand.COMMAND_WORD,
@@ -56,7 +56,7 @@ public enum UsageMessage {
         LocalCourseSearchCommand.ACTION_WORD,
         "[attribute] [query]",
         "Searches for a local course where query is found in the selected attribute\nAttributes:\n"
-            + "localcode\nlocalname\nlocaldescription"),
+            + "localcode\nlocalname\ndescription"),
     LOCALCOURSE_SORT(
         LocalCourseCommand.COMMAND_WORD,
         LocalCourseSortCommand.ACTION_WORD,
@@ -68,7 +68,7 @@ public enum UsageMessage {
         LocalCourseUpdateCommand.ACTION_WORD,
         "[localcode] [attribute] [newvalue]",
         "Updates the attribute of the local course with a new value.\nAttributes:\n"
-            + "localcode\nlocalname\nlocalunit\nlocaldescription'"),
+            + "localcode\nlocalname\nunits\ndescription'"),
     LOCALCOURSE(String.join("\n",
                     "Local Courses Commands:\n",
                     LOCALCOURSE_ADD.getValue(),
@@ -158,7 +158,7 @@ public enum UsageMessage {
     PARTNERCOURSE_ADD(
         PartnerCourseCommand.COMMAND_WORD,
         PartnerCourseAddCommand.ACTION_WORD,
-        "[university] [partnercode] [partnername] [partnerunit] [partnerdescription]",
+        "[university] [partnercode] [partnername] [units] [description]",
         "Adds a partner course"),
     PARTNERCOURSE_DELETE(
         PartnerCourseCommand.COMMAND_WORD,
@@ -187,7 +187,7 @@ public enum UsageMessage {
         PartnerCourseUpdateCommand.ACTION_WORD,
         "[university] [partnercode] [attribute] [newvalue]",
         "Updates the attribute of the partner course with a new value.\nAttributes:\n"
-            + "partnercode\npartnername\npartnerunit\npartnerdescription"),
+            + "partnercode\npartnername\nunits\ndescription"),
     PARTNERCOURSE(String.join("\n",
                               "Partner Course Commands:\n",
                               PARTNERCOURSE_LIST.getValue(),

@@ -53,17 +53,17 @@ public class LocalCourseSearchCommandParser implements Parser<LocalCourseSearchC
         requireAllNonNull(localCourseAttribute, query);
         String trimmedQuery = query.trim();
         switch (localCourseAttribute) {
-        case LOCALCODE:
+        case CODE:
             if (!LocalCode.isValidLocalCode(trimmedQuery)) {
                 throw new ParseException(ConstraintMessage.LOCALCOURSE_CODE.getValue());
             }
             break;
-        case LOCALNAME:
+        case NAME:
             if (!LocalName.isValidLocalName(trimmedQuery)) {
                 throw new ParseException(ConstraintMessage.LOCALCOURSE_NAME.getValue());
             }
             break;
-        case LOCALDESCRIPTION:
+        case DESCRIPTION:
             if (!LocalDescription.isValidLocalDescription(trimmedQuery)) {
                 throw new ParseException(ConstraintMessage.LOCALCOURSE_DESCRIPTION.getValue());
             }

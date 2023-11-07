@@ -69,11 +69,11 @@ public class LocalCourseSortCommandParserTest {
     @Test
     public void parse_validArguments_success() {
         assertParseSuccess(parser, commandActionWord
-                + getSquareBracketWrappedArgument(LocalCourseAttribute.LOCALCODE.getValue()),
+                + getSquareBracketWrappedArgument(LocalCourseAttribute.CODE.toString()),
                 new LocalCourseSortCommand(new LocalCourseComparatorByLocalCode()));
 
         assertParseSuccess(parser, commandActionWord
-                        + getSquareBracketWrappedArgument(LocalCourseAttribute.LOCALNAME.getValue()),
+                        + getSquareBracketWrappedArgument(LocalCourseAttribute.NAME.toString()),
                 new LocalCourseSortCommand(new LocalCourseComparatorByLocalName()));
 
     }

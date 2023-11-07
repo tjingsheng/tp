@@ -382,7 +382,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String attribute} for search.
+     * Parses a {@code String attribute} for localCourse search.
      *
      * @throws ParseException if the given {@code attribute} is invalid.
      */
@@ -394,19 +394,19 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String attribute} for sort.
+     * Parses a {@code String attribute} for localCourse sort.
      *
      * @throws ParseException if the given {@code attribute} is invalid.
      */
     public static LocalCourseAttribute parseLocalCourseAttributeForSort(String attribute) throws ParseException {
-        if (!LocalCourseAttribute.isValidAttributeForUpdate(attribute)) {
+        if (!LocalCourseAttribute.isValidAttributeForSort(attribute)) {
             throw new ParseException(ConstraintMessage.LOCALCOURSE_ATTRIBUTE_SORT.getValue());
         }
         return LocalCourseAttribute.fromString(attribute);
     }
 
     /**
-     * Parses a {@code String attribute} for update.
+     * Parses a {@code String attribute} for localCourse update.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code attribute} is invalid.

@@ -22,11 +22,11 @@ public class LocalCourseContainsKeywordsPredicate implements Predicate<LocalCour
     @Override
     public boolean test(LocalCourse localCourse) {
         switch (attribute) {
-        case LOCALNAME:
+        case NAME:
             return localCourse.getLocalName().getValue().toLowerCase().contains(keyword.toLowerCase());
-        case LOCALCODE:
+        case CODE:
             return localCourse.getLocalCode().getValue().toLowerCase().contains(keyword.toLowerCase());
-        case LOCALDESCRIPTION:
+        case DESCRIPTION:
             return localCourse.getLocalDescription().getValue().toLowerCase().contains(keyword.toLowerCase());
         default:
             return false;

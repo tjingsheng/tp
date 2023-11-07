@@ -10,7 +10,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class UniversityName {
     public static final String MESSAGE_CONSTRAINTS = "UniversityName can take any values, and it should not be blank";
 
-    public static final String VALIDATION_REGEX = "[^\\s].*";
+    public static final String VALIDATION_REGEX = "[^\\s].{0,50}";
 
     private final String value;
 

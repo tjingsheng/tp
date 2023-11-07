@@ -13,9 +13,9 @@ import static seedu.address.testutil.TypicalObjects.INVALID_UNIVERSITY_NAME;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.partnercourse.PartnerCourseCommand;
 import seedu.address.logic.commands.partnercourse.PartnerCourseUpdateCommand;
+import seedu.address.messages.UsageMessage;
 import seedu.address.model.ConstraintMessage;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;

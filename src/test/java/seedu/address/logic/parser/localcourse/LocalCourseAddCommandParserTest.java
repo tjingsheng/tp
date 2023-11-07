@@ -18,9 +18,9 @@ import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE_UNIT;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.localcourse.LocalCourseAddCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseCommand;
+import seedu.address.messages.UsageMessage;
 import seedu.address.model.ConstraintMessage;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.testutil.LocalCourseBuilder;

@@ -1,5 +1,6 @@
-package seedu.address.logic.commands;
+package seedu.address.messages;
 
+import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseAddCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseDeleteCommand;
@@ -217,10 +218,10 @@ public enum UsageMessage {
             UNIVERSITY_SEARCH.getValue(),
             UNIVERSITY_SORT.getValue())),
     HELP(
-            HelpCommand.COMMAND_WORD,
-            "",
-            "",
-            "Shows a help window for the program usage");
+        HelpCommand.COMMAND_WORD,
+        "",
+        "",
+        "Shows a help window for the program usage");
 
     private final String value;
 

@@ -8,7 +8,6 @@ import seedu.address.commons.core.SeplendidLogsCenter;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.localcourse.LocalCourseAddCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseDeleteCommand;
@@ -64,6 +63,7 @@ import seedu.address.logic.parser.partnercourse.PartnerCourseSortCommandParser;
 import seedu.address.logic.parser.partnercourse.PartnerCourseUpdateCommandParser;
 import seedu.address.logic.parser.university.UniversitySearchCommandParser;
 import seedu.address.logic.parser.university.UniversitySortCommandParser;
+import seedu.address.messages.UsageMessage;
 
 /**
  * Parses user input into the SEPlendid CLI.

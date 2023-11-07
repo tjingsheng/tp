@@ -50,7 +50,8 @@ public class NoteUpdateCommandParser implements Parser<NoteUpdateCommand> {
             Content newContent = new Content(parameterToArgMap.getValue(PARAMETER_CONTENT).get());
             return new NoteUpdateCommand(noteIndex, newContent);
         } catch (NumberFormatException e) {
-            throw new ParseException(UsageMessage.NOTE_UPDATE.getValue());
+            Content newContent = new Content(parameterToArgMap.getValue(PARAMETER_CONTENT).get());
+            return new NoteUpdateCommand(-1, newContent);
         }
     }
 }

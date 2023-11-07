@@ -25,8 +25,12 @@ public class LocalCourseDeleteCommandParser implements Parser<LocalCourseDeleteC
      * @throws ParseException if the user input does not conform the expected format
      */
     public LocalCourseDeleteCommand parse(String args) throws ParseException {
-        if (!areValuesEnclosedAndNonEmpty(args)) {
+        ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
+                areValuesEnclosedAndNonEmpty(args);
+        if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
             throw new ParseException(UsageMessage.LOCALCOURSE_DELETE.getValue());
+        } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
+            throw new ParseException(UsageMessage.LOCALCOURSE_DELETE.getValueWithEmptyArgs());
         }
 
         SeplendidArgumentMap parameterToArgMap =

@@ -28,7 +28,8 @@ import seedu.address.testutil.LocalCourseUtil;
 import seedu.address.testutil.TypicalObjects;
 
 public class LocalCourseAddCommandParserTest {
-    private static final String commandActionWord = LocalCourseCommand.COMMAND_WORD + LocalCourseAddCommand.ACTION_WORD;
+    private static final String commandActionWord = LocalCourseCommand.COMMAND_WORD + " "
+            + LocalCourseAddCommand.ACTION_WORD;
     private LocalCourseAddCommandParser parser = new LocalCourseAddCommandParser();
 
     @Test
@@ -37,35 +38,37 @@ public class LocalCourseAddCommandParserTest {
 
         // add unnecessary whitespace
         assertParseSuccess(parser, UNNECESSARY_WHITESPACE
-            + LocalCourseCommand.COMMAND_WORD
-            + UNNECESSARY_WHITESPACE
-            + LocalCourseAddCommand.ACTION_WORD
-            + UNNECESSARY_WHITESPACE
-            + getSquareBracketWrappedArgument(expectedLocalCourse.getLocalCode().toString())
-            + UNNECESSARY_WHITESPACE
-            + getSquareBracketWrappedArgument(expectedLocalCourse.getLocalName().toString())
-            + UNNECESSARY_WHITESPACE
-            + getSquareBracketWrappedArgument(expectedLocalCourse.getLocalUnit().toString())
-            + UNNECESSARY_WHITESPACE
-            + getSquareBracketWrappedArgument(expectedLocalCourse.getLocalDescription()
-                                                                 .toString()),
-            new LocalCourseAddCommand(expectedLocalCourse));
+                        + LocalCourseCommand.COMMAND_WORD
+                        + UNNECESSARY_WHITESPACE
+                        + LocalCourseAddCommand.ACTION_WORD
+                        + UNNECESSARY_WHITESPACE
+                        + getSquareBracketWrappedArgument(expectedLocalCourse.getLocalCode().toString())
+                        + UNNECESSARY_WHITESPACE
+                        + getSquareBracketWrappedArgument(expectedLocalCourse.getLocalName().toString())
+                        + UNNECESSARY_WHITESPACE
+                        + getSquareBracketWrappedArgument(expectedLocalCourse.getLocalUnit().toString())
+                        + UNNECESSARY_WHITESPACE
+                        + getSquareBracketWrappedArgument(expectedLocalCourse.getLocalDescription()
+                        .toString()),
+                new LocalCourseAddCommand(expectedLocalCourse));
     }
 
     @Test
     void parse_argumentNotClosedOrEmpty_failure() {
         String expectedMessage =
-            UsageMessage.LOCALCOURSE_ADD.getValue();
+                UsageMessage.LOCALCOURSE_ADD.getValue();
 
         // missing open bracket
         assertParseFailure(parser, commandActionWord
-            + LocalCourseUtil.getLocalCourseArgumentsForAddCommand(TypicalObjects.CS3230)
-                             .substring(1), expectedMessage);
+                + LocalCourseUtil.getLocalCourseArgumentsForAddCommand(TypicalObjects.CS3230)
+                .substring(1), expectedMessage);
 
+        String expectedMessageForEmptyArg =
+                UsageMessage.LOCALCOURSE_ADD.getValueWithEmptyArgs();
         // empty argument
         assertParseFailure(parser, commandActionWord
-            + getSquareBracketWrappedArgument(TYPICAL_LOCAL_COURSE_CODE)
-            + getSquareBracketWrappedArgument(""), expectedMessage);
+                + getSquareBracketWrappedArgument(TYPICAL_LOCAL_COURSE_CODE)
+                + getSquareBracketWrappedArgument(""), expectedMessageForEmptyArg);
     }
 
 
@@ -75,11 +78,11 @@ public class LocalCourseAddCommandParserTest {
 
         // missing localcode argument
         assertParseFailure(parser, commandActionWord
-            + getSquareBracketWrappedArgument(TYPICAL_LOCAL_COURSE_NAME), expectedMessage);
+                + getSquareBracketWrappedArgument(TYPICAL_LOCAL_COURSE_NAME), expectedMessage);
 
         // missing localname prefix
         assertParseFailure(parser, commandActionWord
-            + getSquareBracketWrappedArgument(TYPICAL_LOCAL_COURSE_CODE), expectedMessage);
+                + getSquareBracketWrappedArgument(TYPICAL_LOCAL_COURSE_CODE), expectedMessage);
 
         // all arguments missing
         assertParseFailure(parser, commandActionWord, expectedMessage);
@@ -89,10 +92,11 @@ public class LocalCourseAddCommandParserTest {
     public void parse_invalidValue_failure() {
         // Invalid localCode
         String invalidLocalCodeCommand = commandActionWord
-            + getSquareBracketWrappedArgument(INVALID_LOCAL_COURSE_CODE)
-            + getSquareBracketWrappedArgument(TYPICAL_LOCAL_COURSE_NAME)
-            + getSquareBracketWrappedArgument(TYPICAL_LOCAL_COURSE_UNIT.toString())
-            + getSquareBracketWrappedArgument(TYPICAL_LOCAL_COURSE_DESCRIPTION);
+                + " " + getSquareBracketWrappedArgument(INVALID_LOCAL_COURSE_CODE)
+                + " " + getSquareBracketWrappedArgument(TYPICAL_LOCAL_COURSE_NAME)
+                + " " + getSquareBracketWrappedArgument(TYPICAL_LOCAL_COURSE_UNIT.toString())
+                + " " + getSquareBracketWrappedArgument(TYPICAL_LOCAL_COURSE_DESCRIPTION);
+
 
         assertParseFailure(parser, invalidLocalCodeCommand, ConstraintMessage.LOCALCOURSE_CODE.getValue());
 
@@ -103,28 +107,28 @@ public class LocalCourseAddCommandParserTest {
         // while a whitespace alone will not. A whitespace alone will trigger
         // ParseException due to ParserUtil#areValuesEncloseAndNonEmpty.
         String invalidLocalNameCommand = commandActionWord
-            + getSquareBracketWrappedArgument(TYPICAL_LOCAL_COURSE_CODE)
-            + getSquareBracketWrappedArgument(INVALID_LOCAL_COURSE_NAME)
-            + getSquareBracketWrappedArgument(TYPICAL_LOCAL_COURSE_DESCRIPTION);
+                + " " + getSquareBracketWrappedArgument(TYPICAL_LOCAL_COURSE_CODE)
+                + " " + getSquareBracketWrappedArgument(INVALID_LOCAL_COURSE_NAME)
+                + " " + getSquareBracketWrappedArgument(TYPICAL_LOCAL_COURSE_DESCRIPTION);
 
-        assertParseFailure(parser, invalidLocalNameCommand, UsageMessage.LOCALCOURSE_ADD.getValue());
+        assertParseFailure(parser, invalidLocalNameCommand, UsageMessage.LOCALCOURSE_ADD.getValueWithEmptyArgs());
     }
 
 
     @Test
     public void parse_edgeCaseLocalNameValue_success() {
         String command = commandActionWord
-            + getSquareBracketWrappedArgument(EDGE_CASE_VALID_LOCAL_COURSE_CODE)
-            + getSquareBracketWrappedArgument(EDGE_CASE_VALID_LOCAL_COURSE_NAME)
-            + getSquareBracketWrappedArgument(EDGE_CASE_VALID_LOCAL_COURSE_UNIT.toString())
-            + getSquareBracketWrappedArgument(EDGE_CASE_VALID_LOCAL_COURSE_DESCRIPTION);
+                + getSquareBracketWrappedArgument(EDGE_CASE_VALID_LOCAL_COURSE_CODE)
+                + getSquareBracketWrappedArgument(EDGE_CASE_VALID_LOCAL_COURSE_NAME)
+                + getSquareBracketWrappedArgument(EDGE_CASE_VALID_LOCAL_COURSE_UNIT.toString())
+                + getSquareBracketWrappedArgument(EDGE_CASE_VALID_LOCAL_COURSE_DESCRIPTION);
 
         LocalCourse localCourse =
-            new LocalCourseBuilder().withLocalCode(EDGE_CASE_VALID_LOCAL_COURSE_CODE)
-                                      .withLocalName(EDGE_CASE_VALID_LOCAL_COURSE_NAME)
-                                      .withLocalUnit(EDGE_CASE_VALID_LOCAL_COURSE_UNIT)
-                                      .withLocalDescription(EDGE_CASE_VALID_LOCAL_COURSE_DESCRIPTION)
-                                      .build();
+                new LocalCourseBuilder().withLocalCode(EDGE_CASE_VALID_LOCAL_COURSE_CODE)
+                        .withLocalName(EDGE_CASE_VALID_LOCAL_COURSE_NAME)
+                        .withLocalUnit(EDGE_CASE_VALID_LOCAL_COURSE_UNIT)
+                        .withLocalDescription(EDGE_CASE_VALID_LOCAL_COURSE_DESCRIPTION)
+                        .build();
         assertParseSuccess(parser, command, new LocalCourseAddCommand(localCourse));
     }
 }

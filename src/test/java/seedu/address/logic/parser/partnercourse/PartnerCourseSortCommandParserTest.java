@@ -52,9 +52,10 @@ public class PartnerCourseSortCommandParserTest {
                 + PartnerCourseUtil.getPartnerCourseArgumentsForSortCommand(new PartnerCourseComparatorByPartnerCode())
                 .substring(1), expectedMessage);
 
+        String expectedMessageForEmptyArg = UsageMessage.PARTNERCOURSE_SORT.getValueWithEmptyArgs();
         // empty argument
         assertParseFailure(parser, commandActionWord
-                + getSquareBracketWrappedArgument(""), expectedMessage);
+                + getSquareBracketWrappedArgument(""), expectedMessageForEmptyArg);
     }
 
     @Test
@@ -68,7 +69,7 @@ public class PartnerCourseSortCommandParserTest {
     @Test
     public void parse_validArguments_success() {
         assertParseSuccess(parser, commandActionWord
-                + getSquareBracketWrappedArgument(PartnerCourseAttribute.PARTNERCODE.toString()),
+                        + getSquareBracketWrappedArgument(PartnerCourseAttribute.PARTNERCODE.toString()),
                 new PartnerCourseSortCommand(new PartnerCourseComparatorByPartnerCode()));
 
         assertParseSuccess(parser, commandActionWord

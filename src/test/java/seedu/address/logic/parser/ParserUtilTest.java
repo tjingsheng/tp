@@ -1,7 +1,6 @@
 package seedu.address.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
@@ -336,40 +335,46 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void areValuesEnclosedAndNonEmpty_emptyArgs_returnsFalse() throws Exception {
-        assertFalse(areValuesEnclosedAndNonEmpty(""));
+    public void areValuesEnclosedAndNonEmpty_emptyArgs_returnsFailure() {
+        assertEquals(ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE, areValuesEnclosedAndNonEmpty(""));
     }
 
     @Test
-    public void areValuesEnclosedAndNonEmpty_invalidValueWithMismatchBrackets1_returnsFalse() throws Exception {
-        assertFalse(areValuesEnclosedAndNonEmpty("[CS2103T [Software Engineering]"));
+    public void areValuesEnclosedAndNonEmpty_invalidValueWithMismatchBrackets1_returnsFailure() {
+        assertEquals(ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE,
+                areValuesEnclosedAndNonEmpty("[CS2103T [Software Engineering]"));
     }
 
     @Test
-    public void areValuesEnclosedAndNonEmpty_validValue1_returnsTrue() throws Exception {
-        assertTrue(areValuesEnclosedAndNonEmpty("[CS2103T] [Software Engineering]"));
+    public void areValuesEnclosedAndNonEmpty_validValue1_returnsSuccess() {
+        assertEquals(ParserUtil.AreValuesEnclosedAndNonEmptyResult.SUCCESS,
+                areValuesEnclosedAndNonEmpty("[CS2103T] [Software Engineering]"));
     }
 
     @Test
-    public void areValuesEnclosedAndNonEmpty_invalidValueWithMismatchBrackets2_returnsFalse() throws Exception {
-        assertFalse(areValuesEnclosedAndNonEmpty("[CS2103T] [Software Engineering [potato tomato]"));
+    public void areValuesEnclosedAndNonEmpty_invalidValueWithMismatchBrackets2_returnsFalse() {
+        assertEquals(ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE,
+                areValuesEnclosedAndNonEmpty("[CS2103T] [Software Engineering [potato tomato]"));
     }
 
     @Test
-    public void areValuesEnclosedAndNonEmpty_validValue2_returnsTrue() throws Exception {
-        assertTrue(areValuesEnclosedAndNonEmpty("[CS2103T] [Software Engineering] [potato tomato]"));
+    public void areValuesEnclosedAndNonEmpty_validValue2_returnsTrue() {
+        assertEquals(ParserUtil.AreValuesEnclosedAndNonEmptyResult.SUCCESS,
+                areValuesEnclosedAndNonEmpty("[CS2103T] [Software Engineering] [potato tomato]"));
     }
 
     // This shouldn't happen though, due to initial trim in SeplendidParser.
     @Test
-    public void areValuesEnclosedAndNonEmpty_precedingWhiteSpaceValue_returnsTrue() throws Exception {
-        assertTrue(areValuesEnclosedAndNonEmpty("      [CS2103T] [Software Engineering]"));
+    public void areValuesEnclosedAndNonEmpty_precedingWhiteSpaceValue_returnsTrue() {
+        assertEquals(ParserUtil.AreValuesEnclosedAndNonEmptyResult.SUCCESS,
+                areValuesEnclosedAndNonEmpty("      [CS2103T] [Software Engineering]"));
     }
 
     // This shouldn't happen though, due to initial trim in SeplendidParser.
     @Test
-    public void areValuesEnclosedAndNonEmpty_trailingWhiteSpaceValue_returnsTrue() throws Exception {
-        assertTrue(areValuesEnclosedAndNonEmpty("[CS2103T] [Software Engineering]       "));
+    public void areValuesEnclosedAndNonEmpty_trailingWhiteSpaceValue_returnsTrue() {
+        assertEquals(ParserUtil.AreValuesEnclosedAndNonEmptyResult.SUCCESS,
+                areValuesEnclosedAndNonEmpty("[CS2103T] [Software Engineering]       "));
     }
 
     @Test
@@ -390,7 +395,7 @@ public class ParserUtilTest {
     @Test
     public void parseLocalCourseAttributeForSort_invalidValue_throwsParseException() {
         assertThrows(ParseException.class, () ->
-            ParserUtil.parseLocalCourseAttributeForSort(INVALID_LOCAL_COURSE_ATTRIBUTE));
+                ParserUtil.parseLocalCourseAttributeForSort(INVALID_LOCAL_COURSE_ATTRIBUTE));
     }
 
     @Test
@@ -402,7 +407,7 @@ public class ParserUtilTest {
     public void parseLocalCourseAttributeForUpdate_validValueWithWhitespace_throwsParseException() {
         String localCourseAttributeWithWhitespace = WHITESPACE + "localname" + WHITESPACE;
         assertThrows(ParseException.class, (
-            ) -> ParserUtil.parseLocalCourseAttributeForUpdate(localCourseAttributeWithWhitespace));
+        ) -> ParserUtil.parseLocalCourseAttributeForUpdate(localCourseAttributeWithWhitespace));
     }
 
     @Test
@@ -471,8 +476,7 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void
-        parsePartnerCourseAttributeForSearch_validValueWithoutWhitespaceAndAllCaps_returnsPartnerCourseAttribute()
+    public void parsePartnerCourseAttributeForSearch_validValueWithoutWhitespaceAndAllCaps_returnsPartnerAttribute()
             throws Exception {
         PartnerCourseAttribute expectedPartnerCourseAttribute = PartnerCourseAttribute.PARTNERCODE;
         assertEquals(expectedPartnerCourseAttribute, ParserUtil.parsePartnerCourseAttributeForSearch("partnErcoDe"));

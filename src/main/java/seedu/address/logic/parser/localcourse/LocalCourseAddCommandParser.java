@@ -32,28 +32,32 @@ public class LocalCourseAddCommandParser implements Parser<LocalCourseAddCommand
      * @throws ParseException if the user input does not conform the expected format
      */
     public LocalCourseAddCommand parse(String args) throws ParseException {
-        if (!areValuesEnclosedAndNonEmpty(args)) {
+        ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
+                areValuesEnclosedAndNonEmpty(args);
+        if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
             throw new ParseException(UsageMessage.LOCALCOURSE_ADD.getValue());
+        } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
+            throw new ParseException(UsageMessage.LOCALCOURSE_ADD.getValueWithEmptyArgs());
         }
 
         SeplendidArgumentMap parameterToArgMap =
-            SeplendidArgumentTokenizer.tokenize(args, PARAMETER_LOCALCODE, PARAMETER_LOCALNAME, PARAMETER_LOCALUNIT,
-                PARAMETER_LOCALDESCRIPTION);
+                SeplendidArgumentTokenizer.tokenize(args, PARAMETER_LOCALCODE, PARAMETER_LOCALNAME, PARAMETER_LOCALUNIT,
+                        PARAMETER_LOCALDESCRIPTION);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_LOCALCODE, PARAMETER_LOCALNAME,
-            PARAMETER_LOCALUNIT, PARAMETER_LOCALDESCRIPTION)) {
+                PARAMETER_LOCALUNIT, PARAMETER_LOCALDESCRIPTION)) {
             throw new ParseException(UsageMessage.LOCALCOURSE_ADD.getValue());
         }
 
         // All arguments should be a non-empty {@code Optional}
         LocalCode localCode = ParserUtil.parseLocalCode(parameterToArgMap.getValue(PARAMETER_LOCALCODE)
-                                                                         .get());
+                .get());
         LocalName localName = ParserUtil.parseLocalName(parameterToArgMap.getValue(PARAMETER_LOCALNAME)
-                                                                         .get());
+                .get());
         LocalUnit localUnit = ParserUtil.parseLocalUnit(parameterToArgMap.getValue(PARAMETER_LOCALUNIT)
-                                                                         .get());
+                .get());
         LocalDescription localDescription =
-            ParserUtil.parseLocalDescription(parameterToArgMap.getValue(PARAMETER_LOCALDESCRIPTION).get());
+                ParserUtil.parseLocalDescription(parameterToArgMap.getValue(PARAMETER_LOCALDESCRIPTION).get());
 
         LocalCourse localCourse = new LocalCourse(localCode, localName, localUnit, localDescription);
 

@@ -24,9 +24,9 @@ import seedu.address.testutil.LocalCourseUtil;
 public class LocalCourseSortCommandParserTest {
 
     private static final String commandActionWord =
-        LocalCourseCommand.COMMAND_WORD
-        + " "
-        + LocalCourseSortCommand.ACTION_WORD;
+            LocalCourseCommand.COMMAND_WORD
+                    + " "
+                    + LocalCourseSortCommand.ACTION_WORD;
 
     private LocalCourseSortCommandParser parser = new LocalCourseSortCommandParser();
 
@@ -53,23 +53,24 @@ public class LocalCourseSortCommandParserTest {
                 + LocalCourseUtil.getLocalCourseArgumentsForSortCommand(new LocalCourseComparatorByLocalCode())
                 .substring(1), expectedMessage);
 
+        String expectedMessageWithEmptyArg = UsageMessage.LOCALCOURSE_SORT.getValueWithEmptyArgs();
         // empty argument
         assertParseFailure(parser, commandActionWord
-                + getSquareBracketWrappedArgument(""), expectedMessage);
+                + getSquareBracketWrappedArgument(""), expectedMessageWithEmptyArg);
     }
 
     @Test
     public void parse_invalidValue_failure() {
         // invalid attribute
         assertParseFailure(parser, commandActionWord
-                + getSquareBracketWrappedArgument(INVALID_LOCAL_COURSE_ATTRIBUTE),
-                           ConstraintMessage.LOCALCOURSE_ATTRIBUTE_SORT.getValue());
+                        + getSquareBracketWrappedArgument(INVALID_LOCAL_COURSE_ATTRIBUTE),
+                ConstraintMessage.LOCALCOURSE_ATTRIBUTE_SORT.getValue());
     }
 
     @Test
     public void parse_validArguments_success() {
         assertParseSuccess(parser, commandActionWord
-                + getSquareBracketWrappedArgument(LocalCourseAttribute.LOCALCODE.getValue()),
+                        + getSquareBracketWrappedArgument(LocalCourseAttribute.LOCALCODE.getValue()),
                 new LocalCourseSortCommand(new LocalCourseComparatorByLocalCode()));
 
         assertParseSuccess(parser, commandActionWord

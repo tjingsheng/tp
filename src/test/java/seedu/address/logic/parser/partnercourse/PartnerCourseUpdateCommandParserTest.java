@@ -56,7 +56,7 @@ public class PartnerCourseUpdateCommandParserTest {
     public void parse_argumentNotClosedOrEmpty_failure() {
         // empty argument
         assertParseFailure(parser, commandActionWord
-                + getSquareBracketWrappedArgument(""), UsageMessage.PARTNERCOURSE_UPDATE.getValue());
+                + getSquareBracketWrappedArgument(""), UsageMessage.PARTNERCOURSE_UPDATE.getValueWithEmptyArgs());
     }
 
     @Test
@@ -119,7 +119,7 @@ public class PartnerCourseUpdateCommandParserTest {
                         + getSquareBracketWrappedArgument(COMP1000.getPartnerCode().toString())
                         + getSquareBracketWrappedArgument(PartnerCourseAttribute.UNIT.toString())
                         + getSquareBracketWrappedArgument("10.0"),
-                UsageMessage.PARTNERCOURSE_UPDATE.getValue());
+                UsageMessage.PARTNERCOURSE_UPDATE.getValueWithEmptyArgs());
 
         // invalid partnerCode
         assertParseFailure(

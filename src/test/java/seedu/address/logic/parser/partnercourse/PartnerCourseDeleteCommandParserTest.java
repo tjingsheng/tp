@@ -57,9 +57,10 @@ public class PartnerCourseDeleteCommandParserTest {
                 + PartnerCourseUtil.getPartnerCourseArgumentsForDeleteCommand(TypicalObjects.COMP1000).substring(
                 1), expectedMessage);
 
+        String expectedMessageForEmptyArg = UsageMessage.PARTNERCOURSE_DELETE.getValueWithEmptyArgs();
         // empty argument
         assertParseFailure(parser, commandActionWord
-                + getSquareBracketWrappedArgument(""), expectedMessage);
+                + getSquareBracketWrappedArgument(""), expectedMessageForEmptyArg);
     }
 
 

@@ -51,9 +51,10 @@ public class LocalCourseDeleteCommandParserTest {
                 + LocalCourseUtil.getLocalCourseArgumentsForDeleteCommand(TypicalObjects.CS3230).substring(
                 1), expectedMessage);
 
+        String expectedMessageForEmptyArg = UsageMessage.LOCALCOURSE_DELETE.getValueWithEmptyArgs();
         // empty argument
         assertParseFailure(parser, commandActionWord
-                + getSquareBracketWrappedArgument(""), expectedMessage);
+                + getSquareBracketWrappedArgument(""), expectedMessageForEmptyArg);
     }
 
 
@@ -70,7 +71,7 @@ public class LocalCourseDeleteCommandParserTest {
         // invalid localCode
         assertParseFailure(parser, commandActionWord
                         + getSquareBracketWrappedArgument(INVALID_LOCAL_COURSE_CODE),
-                           ConstraintMessage.LOCALCOURSE_CODE.getValue());
+                ConstraintMessage.LOCALCOURSE_CODE.getValue());
     }
 
     @Test

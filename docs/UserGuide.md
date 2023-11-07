@@ -444,9 +444,10 @@ Refer to the figure below to view the outcome of the execution of the command:
 </div>
 
 <br/>
-<br />
+<br/>
 
 ### 4.1.3. Delete a local course: `localcourse delete`
+
 Deletes local course with course code identified by `localcode`. This is useful when:
 - you wish to remove a local course that is no longer offered by NUS Computing.
 
@@ -465,8 +466,8 @@ Deletes local course with course code identified by `localcode`. This is useful 
   <p class = "image-caption"> Figure 1.3 Shows the deleted local course with the course code: CS1234.
 </div>
 
-<br />
-<br />
+<br/>
+<br/>
 
 ### 4.1.4. Update a local course: `localcourse update`
 
@@ -537,6 +538,7 @@ Sorts local courses according to attributes such as localname and localcode. Thi
 <br />
 
 ### 4.2.1. List all partner courses: `partnercourse list`
+
 Lists all available partner courses, offered by every partner university. This is useful when:
 - you wish to retrieve all partner courses' information.
 - you wish to view  partner courses in greater detail.
@@ -552,69 +554,91 @@ Lists all available partner courses, offered by every partner university. This i
 <br />
 
 ### 4.2.2. Add a partnercourse: `partnercourse add`
-Adds partner course with university identified by `university`, course code identified by `partnercode`, 
-course name identified by `partnername`, credit units identified by `units` and 
-course description identified by `description`. 
 
-<box type="info">
-    You are unable to add a partner course if the university does not exist in SEPlendid.
+Adds a partner course with the specified partner course attributes. This is useful when:
+- you are adding a new partner course offered by the particular partner university.
+- you wish to add a partner course that is not preloaded in SEPlendid.
+
+<box type="warning" icon=":exclamation:" icon-color="red">
+    Warning: You are unable to add a partner course if the university does not exist in SEPlendid.
 </box>
 
 **Format**: `partnercourse add [university] [partnercode] [partnername] [units] [description]`
 
-**Example:**
-| `partnercourse add [University of Toronto] [ROB311] [Artificial Intelligence] [5.0] [Introduction module to AI]` |
-|------------------------------------------------------------------------------------------------------------------|
-| ![partnercourse-add-ui](images/PartnercourseAddUi.png)                                                           |
+**Example:** `partnercourse add [University of Toronto] [ROB311] [Artificial Intelligence] [5.0] 
+[Introduction module to AI]`
+                                                          
+**Expected Outcome:** SEPlendid's GUI will show you the added partnercourse.
+
+<br />
+<br />
 
 ### 4.2.3. Delete a partner course: `partnercourse delete`
-Deletes partner course with university identified by `university` and course code identified by `partnercode`.
-<box type="info">
-    You are unable to delete a partner course if it exists in a mapping.
+
+Deletes partner course with attributes such as university and partnercode respectively. This is useful when:
+- you wish to remove a partner course that is no longer offered by the partner university.
+
+<box type="warning" icon=":exclamation:" >
+    Warning: You are unable to delete a partner course if it exists in a mapping.
 </box>
 
-**Format**: `partnercourse delete [university] [partnercode]`
+**Format:** `partnercourse delete [university] [partnercode]`
 
-**Example:**
-| `partnercourse delete [University of Toronto] [ROB311]`      |
-|--------------------------------------------------------------|
-| ![partnercourse-delete-ui](images/PartnercourseDeleteUi.png) |
+**Example:** `partnercourse delete [University of Toronto] [ROB311]`
+
+**Expected Outcome:** SEPlendid's GUI will show the deleted partnercourse. 
+
+<br />
+<br />
 
 ### 4.2.4. Update a partner course: `partnercourse update`
-Updates `partnercourseattribute` of partner course, with university identified by `universityname` and 
-partner code identified by `partnercode`, with updated value.
 
-`partnercourseattribute` - `partnercode`, `partnername`, `unit`, `description`
+Updates specified attributes of a partner course, with the partner course identified by `universityname`.
+These partner course attributes include partnercode, partnername, partnerunit and partnerdescription. This is useful when:
+- you wish to update a partnercourse if there are changes made by the partner university.
 
 **Format**: `partnercourse update [universityname] [partnercode] [partnercourseattribute] [updatedValue]`
 
-**Example**
-| `partnercourse update [University of Toronto] [ROB311] [unit] [10.0]`      |
-|----------------------------------------------------------------------------|
-| ![partnercourse-update-ui](images/PartnercourseUpdateUi.png)               |
+**Example:** `partnercourse update [University of Toronto] [ROB311] [unit] [10.0]`
+
+**Expected Outcome:** SEPlendid's GUI will show the updated partnercourse.
+
+<br />
+<br />
 
 ### 4.2.5. Search a partnercourse by attributes: `partnercourse search`
-Searches partner course with course name identified by `partnername`.
-**Format**: `partnercourse search [partnercode]` \
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `partnercourse search [partnername]`
 
-**Example:**
-| `partnercourse search [partnercode] [CSE469]`                                  |
-|----------------------------------------------------|
-| ![partnercourse-search-ui](images/PartnercourseSearchUi.png) |
+Searches partnercourse using specified attributes such as partnercode, partnername, partnerunit, and partnerdescription.
+This is useful when:
+- you wish to find a specific partner course you are interested in.
+- you wish to find partner courses that matches with your credits required.
+- you wish to find partner courses that matches with the course description you are interested in.
+
+**Format:** `partnercourse search [partnercode]` \
+`partnercourse search [partnername]`
+
+**Example:** `partnercourse search [partnercode] [CSE469]` 
+
+**Expected Outcome:** SEPlendid's GUI will show you the searched partnercourse, CSE 469.
+
+<br />
+<br />
 
 ### 4.2.6. Sort partner courses by attributes: `partnercourse sort`
-Sorts partner courses according to `partnercourseattribute` - `university`, `partnercode` or `partnername`.
+Sorts local courses according to attributes such as partnername and partnercode. This is useful when:
+- you wish to find partner courses with specific attributes.
 
-**Format**: `partnercourse sort [partnercourseattribute]`
+**Format:** `partnercourse sort [partnercourseattribute]`
 
-**Example**
-| `partnercourse sort [partnercode]`      |
-|----------------------------------------------------------|
-| ![partnercourse-sort-ui](images/PartnercourseSortUi.png) |
+**Example:** `partnercourse sort [partnercode]`
+
+**Expected Outcome:** SEPlendid's GUI will show you the sorted partnercourses according to partnercode. 
 
 ## 4.3. Commands for universities
+<br />
+
 ### 4.3.1. List all universities: `university list`
+
 Lists all available partner universities, paginated if dataset is too huge.
 **Format**: `university list`
 

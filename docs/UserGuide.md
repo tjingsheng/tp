@@ -10,105 +10,205 @@
 # SEPlendid User Guide
 <br />
 
-## Table of Contents
+## 1. About SEPlendid
+SEPlendid is a **Course Mapping System** that allows NUS Computing students to seamlessly plan for
+their overseas courses, for the highly coveted Student Exchange Programmes (SEP). As a student, you can view and find 
+course mappings in order to plan for your overseas studies without the hassle of creating complex Excel sheets. 
+Utilise SEPlendid's **course mapping** function in order to quickly find possible mappings for certain courses you want
+to map. Finally, SEPlendid's **note-taking system** will assist you in organising your important information you 
+will need for planning for your courses.
 
---------------------------------------------------------------------------------------------------------------------
-
-1. [About SEPlendid](#1-about-seplendid)
-2. [Quick start](#2-quick-start)
-3. [A Short Tutorial](#3-a-short-tutorial)
-   - 3.1. [Graphical User Interface (GUI)](#3-1-graphical-user-interface-gui)
-   - 3.2. [Command Format](#3-2-command-format)
-   - 3.3. [Execute your first command](#3-3-execute-your-first-command)
-4. [Commands](#4-commands)
-   - 4.1. [Commands for localcourse](#4-1-commands-for-localcourse)
-     - 4.1.1. [List all localcourses: `localcourse list`](#4-1-1-list-all-localcourses-localcourse-list)
-     - 4.1.2. [Add a local course: `localcourse add`](#4-1-2-add-a-local-course-localcourse-add)
-     - 4.1.3. [Delete a local course: `localcourse delete`](#4-1-3-delete-a-local-course-localcourse-delete)
-     - 4.1.4. [Search a local course by attributes: `localcourse search`](#4-1-4-search-a-local-course-by-attributes-localcourse-search)
-     - 4.1.5. [Sort a local course by attributes: `localcourse sort`](#4-1-5-sort-a-local-course-by-attributes-localcourse-sort)
-   - 4.2. [Commands for partnercourse](#4-2-commands-for-partnercourse)
-     - 4.2.1. [List all partnercourses: `partnercourse list`](#4-2-1-list-all-partnercourses-partnercourse-list)
-     - 4.2.2. [Add a partnercourse: `partnercourse add`](#4-2-2-add-a-partnercourse-partnercourse-add)
-     - 4.2.3. [Delete a partnercourse: `partnercourse delete`](#4-2-3-delete-a-partnercourse-partnercourse-delete)
-     - 4.2.4. [Search a partnercourse by attributes: `partnercourse search`](#4-2-4-search-a-partnercourse-by-attributes-partnercourse-search)
-     - 4.2.5. [Sort a partnercourse by attributes: `partnercourse sort`](#4-2-5-sort-a-partnercourse-by-attributes-partnercourse-sort)
-   - 4.3. [Commands for universities](#4-3-commands-for-universities)
-     - 4.3.1. [List all universities: `university list`](#4-3-1-list-all-universities-university-list)
-     - 4.3.2. [Search a university by attributes: `university search`](#4-3-2-search-a-university-by-attributes-university-search)
-     - 4.3.3. [Sort a university by attributes: `university sort`](#4-3-3-sort-a-university-by-attributes-university-sort)
-   - 4.4. [Commands for mappings](#4-4-commands-for-mappings)
-     - 4.4.1. [List all mappings: `mapping list`](#4-4-1-list-all-mappings-mapping-list)
-     - 4.4.2. [Add a mapping: `mapping add`](#4-4-2-add-a-mapping-mapping-add)
-     - 4.4.3. [Delete a mapping: `mapping delete`](#4-4-3-delete-a-mapping-mapping-delete)
-     - 4.4.4. [Search a mapping by attributes: `mapping search`](#4-4-4-search-a-mapping-by-attributes-mapping-search)
-     - 4.4.5. [Sort a mapping by attributes: `mapping sort`](#4-4-5-sort-a-mapping-by-attributes-mapping-sort)
-   - 4.5. [Commands for notes](#4-5-commands-for-notes)
-     - 4.5.1. [List all notes: `note list`](#4-5-1-list-all-notes-note-list)
-     - 4.5.2. [Add a note: `note add`](#4-5-2-add-a-note-note-add)
-     - 4.5.3. [Delete a note: `note delete`](#4-5-3-delete-a-note-note-delete)
-     - 4.5.4. [Update a note: `note update`](#4-5-4-update-a-note-note-update)
-     - 4.5.5. [Tag a note: `note tag`](#4-5-5-tag-a-note-note-tag)
-     - 4.5.6. [Clear tag a note: `note cleartag`](#4-5-6-clear-tags-of-a-note-note-cleartag)
-   - 4.6. [Viewing help : `help`](#4-5-6-viewing-help--help)
-   - 4.7. [Saving the data](#4-5-7-saving-the-data)
-5. [FAQ](#5-faq)
-6. [Command summary](#6-command-summary)
-
---------------------------------------------------------------------------------------------------------------------
-
-# 1. About SEPlendid
-SEPlendid is a **Course Mapping System** that allows NUS Computing students to seamlessly plan for 
-their overseas courses, for the Student Exchange Programmes (SEP). As a student, you can view and find course 
-mappings in order to plan for your overseas studies without the hassle of creating Excel sheets. Utilise SEPlendid' 
-**course mapping** function in order to quickly find possible mappings for certain courses. Finally, SEPlendid's 
-**note-taking system** will assist you in organising your notes and bookmarking important information you will 
-need for planning.
-
-This User Guide provides a comprehensive documentation on how you can streamline your process in your application for 
+This User Guide provides a comprehensive documentation on how you can streamline your process in your application for
 SEP. It includes:
-- Detailed instructions on how to launch SEPlendid
+- **Step-by-step** instructions on how to launch SEPlendid
 - SEPlendid's myriad of features and commands
-- Common parameters used in SEPlendid
+- **Key parameters** to run SEPlendid smoothly
 
+If you are a new user, please head over to  [How to use the User Guide](#) to start planning for your study guide!
 
 <page-nav-print />
 
 --------------------------------------------------------------------------------------------------------------------
+## Table of Contents
 
-# 2. Quick start
+1. [About SEPlendid](#1-about-seplendid)
+
+
+2. [Quick start](#2-quick-start)
+
+
+3. [A Short Tutorial](#3-a-short-tutorial)
+
+
+   - 3.1. [Graphical User Interface (GUI)](#3-1-graphical-user-interface-gui)
+
+
+   - 3.2. [Command Format](#3-2-command-format)
+
+
+   - 3.3. [Execute your first command](#3-3-execute-your-first-command)
+
+
+4. [Commands](#4-commands)
+
+
+   - 4.1. [Commands for localcourse](#4-1-commands-for-localcourse)
+
+
+     - 4.1.1. [List all localcourses: `localcourse list`](#4-1-1-list-all-localcourses-localcourse-list)
+
+
+     - 4.1.2. [Add a local course: `localcourse add`](#4-1-2-add-a-local-course-localcourse-add)
+
+
+     - 4.1.3. [Delete a local course: `localcourse delete`](#4-1-3-delete-a-local-course-localcourse-delete)
+
+
+     - 4.1.4. [Search a local course by attributes: `localcourse search`](#4-1-4-search-a-local-course-by-attributes-localcourse-search)
+
+
+     - 4.1.5. [Sort a local course by attributes: `localcourse sort`](#4-1-5-sort-a-local-course-by-attributes-localcourse-sort)
+
+
+   - 4.2. [Commands for partnercourse](#4-2-commands-for-partnercourse)
+
+
+     - 4.2.1. [List all partnercourses: `partnercourse list`](#4-2-1-list-all-partnercourses-partnercourse-list)
+
+
+     - 4.2.2. [Add a partnercourse: `partnercourse add`](#4-2-2-add-a-partnercourse-partnercourse-add)
+
+
+     - 4.2.3. [Delete a partnercourse: `partnercourse delete`](#4-2-3-delete-a-partnercourse-partnercourse-delete)
+
+
+     - 4.2.4. [Search a partnercourse by attributes: `partnercourse search`](#4-2-4-search-a-partnercourse-by-attributes-partnercourse-search)
+
+
+     - 4.2.5. [Sort a partnercourse by attributes: `partnercourse sort`](#4-2-5-sort-a-partnercourse-by-attributes-partnercourse-sort)
+
+
+   - 4.3. [Commands for universities](#4-3-commands-for-universities)
+
+
+     - 4.3.1. [List all universities: `university list`](#4-3-1-list-all-universities-university-list)
+
+
+     - 4.3.2. [Search a university by attributes: `university search`](#4-3-2-search-a-university-by-attributes-university-search)
+
+
+     - 4.3.3. [Sort a university by attributes: `university sort`](#4-3-3-sort-a-university-by-attributes-university-sort)
+
+
+   - 4.4. [Commands for mappings](#4-4-commands-for-mappings)
+
+
+     - 4.4.1. [List all mappings: `mapping list`](#4-4-1-list-all-mappings-mapping-list)
+
+
+     - 4.4.2. [Add a mapping: `mapping add`](#4-4-2-add-a-mapping-mapping-add)
+
+
+     - 4.4.3. [Delete a mapping: `mapping delete`](#4-4-3-delete-a-mapping-mapping-delete)
+
+
+     - 4.4.4. [Search a mapping by attributes: `mapping search`](#4-4-4-search-a-mapping-by-attributes-mapping-search)
+
+
+     - 4.4.5. [Sort a mapping by attributes: `mapping sort`](#4-4-5-sort-a-mapping-by-attributes-mapping-sort)
+
+
+   - 4.5. [Commands for notes](#4-5-commands-for-notes)
+
+
+     - 4.5.1. [List all notes: `note list`](#4-5-1-list-all-notes-note-list)
+
+
+     - 4.5.2. [Add a note: `note add`](#4-5-2-add-a-note-note-add)
+
+
+     - 4.5.3. [Delete a note: `note delete`](#4-5-3-delete-a-note-note-delete)
+
+
+     - 4.5.4. [Update a note: `note update`](#4-5-4-update-a-note-note-update)
+
+
+     - 4.5.5. [Tag a note: `note tag`](#4-5-5-tag-a-note-note-tag)
+
+
+     - 4.5.6. [Clear tag a note: `note cleartag`](#4-5-6-clear-tags-of-a-note-note-cleartag)
+
+
+   - 4.6. [Viewing help : `help`](#4-5-6-viewing-help--help)
+
+
+   - 4.7. [Saving the data](#4-5-7-saving-the-data)
+
+
+5. [FAQ](#5-faq)
+
+
+6. [Command summary](#6-command-summary)
+
+--------------------------------------------------------------------------------------------------------------------
+## 2. How to use SEPlendid's User Guide
+
+As a new user in SEPlendid, this user guide serves as an easy-to-follow guide in aiding you in executing your first 
+commands in SEPlendid, utilising SEPlendid to it's fullest potential!
+
+Here is a step-by-step instruction in using SEPlendid for **new** users:
+1. Download SEPlendid by heading over to the [installation](#) section which provides a guided tour for you to get
+   started with SEPlendid.
+2. Get familiar with SEPlendid by heading over to the [Quick Reference Guide](#) section which shows you how to navigate
+   SEPlendid efficiently.
+
+If you are an **experienced** user, you can head over to the [Command Summary](#) section for a well-curated overview
+of the commands available in SEPlendid.
+
+<Add admonition: INFO> 
+
+## 3. Admonitions used in this User Guide
+
+Throughout this guide, admonitions are used to highlight important information, so do pay **special** attention to them:
+
+| Icon                     | Meaning                                  |
+|--------------------------|------------------------------------------|
+| :information_source: Info | Information you should keep in mind      | 
+| :bulb: Tip               | Information you might find useful        |
+| :exclamation: Warning    | Information you should be cautious about | 
+
+
+## 4. Installation
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `seplendid.jar` from [here](https://github.com/AY2324S1-CS2103T-W10-2/tp/releases).
+2. Download the latest `seplendid.jar` from [here](https://github.com/AY2324S1-CS2103T-W10-2/tp/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for SEPlendid.
+3. Copy the file to the folder you want to use as the _home folder_ for SEPlendid.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar seplendid.jar`
+4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar seplendid.jar`
    command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+   You would be able to view SEPlendid's GUI shown below in a few seconds. The app contains a large sample data of 
+   courses so that you can start planning for SEP immediately.<br>
    ![Ui](images/StartupWindowUI.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will
+5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will
    open the help window.<br>
    Some example commands you can try:
 
     * `university list` : Lists all of NUS' partner universities.
    
     * `mapping search [localcode] [CS2103]`: Searches and displays all NUS-to-partner university course mappings 
-    based on 
-    local 
-    NUS course code `CS2103`.
+    based on local NUS course code `CS2103`.
 
-    * `exit` : Exits the app.
+    * `exit` : Exits SEPlendid.
 
+6. Refer to the [Commands](#4-commands) below for more details of each feature and command.
 
-1. Refer to the [Commands](#4-commands) below for more details. If you are a new user, proceed with the [short 
-tutorial](#3-a-short-tutorial) below to learn how to use SEPlendid.
 --------------------------------------------------------------------------------------------------------------------
 
 
-# 3. A Short Tutorial
+# 3. Quick Reference Guide
 This tutorial covers on the important information for you to utilise SEPlendid to its fullest capacity. Do pay special
 attention to the Key Definitions and Command Format sections which cover on how you can run essential features on 
 SEPlendid.

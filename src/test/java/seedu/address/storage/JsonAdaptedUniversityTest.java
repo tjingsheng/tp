@@ -9,6 +9,7 @@ import static seedu.address.testutil.TypicalObjects.NTU;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.messages.ConstraintMessage;
 import seedu.address.model.university.UniversityName;
 
 public class JsonAdaptedUniversityTest {
@@ -22,7 +23,7 @@ public class JsonAdaptedUniversityTest {
     public void toModelType_invalidUniversityName_throwsIllegalValueException() {
         JsonAdaptedUniversity university =
                 new JsonAdaptedUniversity(INVALID_UNIVERSITY_NAME);
-        String expectedMessage = UniversityName.MESSAGE_CONSTRAINTS;
+        String expectedMessage = ConstraintMessage.UNIVERSITY_NAME.getValue();
         assertThrows(IllegalValueException.class, expectedMessage, university::toModelType);
     }
 

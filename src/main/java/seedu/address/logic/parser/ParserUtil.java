@@ -350,7 +350,7 @@ public class ParserUtil {
         requireNonNull(universityName);
         String trimmedUniversityName = universityName.trim();
         if (!UniversityName.isValidUniversityName(trimmedUniversityName)) {
-            throw new ParseException(UniversityName.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.UNIVERSITY_NAME.getValue());
         }
         return new UniversityName(universityName);
     }

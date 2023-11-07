@@ -3,7 +3,7 @@ package seedu.address.logic.parser.mapping;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_MAPPINGATTRIBUTE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_QUERY;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
-import static seedu.address.logic.parser.ParserUtil.parseMappingAttribute;
+import static seedu.address.logic.parser.ParserUtil.parseMappingAttributeForSearch;
 
 import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.mapping.MappingSearchCommand;
@@ -12,8 +12,9 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.SeplendidArgumentMap;
 import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.mapping.MappingAttribute;
 import seedu.address.model.mapping.MappingAttributeContainsKeywordPredicate;
-import seedu.address.model.mapping.MappingAttributeEnum;
+
 
 /**
  * Parses input arguments and creates a new MappingSearchCommandParser object.
@@ -42,7 +43,7 @@ public class MappingSearchCommandParser implements Parser<MappingSearchCommand> 
         }
 
         // All arguments should be a non-empty {@code Optional}
-        MappingAttributeEnum attributeEnumValue = parseMappingAttribute(parameterToArgMap.getValue(
+        MappingAttribute attributeEnumValue = parseMappingAttributeForSearch(parameterToArgMap.getValue(
                 PARAMETER_MAPPINGATTRIBUTE).get().toLowerCase());
         // query is non-empty
         String query = parameterToArgMap.getValue(PARAMETER_QUERY).get();

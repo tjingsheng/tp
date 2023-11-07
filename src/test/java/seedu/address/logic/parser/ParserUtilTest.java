@@ -29,6 +29,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourseAttribute;
 import seedu.address.model.localcourse.LocalName;
+import seedu.address.model.mapping.MappingAttribute;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
 import seedu.address.model.partnercourse.PartnerName;
@@ -494,6 +495,67 @@ public class ParserUtilTest {
         assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForUpdate("DESCRIPTION"));
         assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForUpdate("UNIVERSITY"));
         assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForUpdate("invalid_attribute"));
+    }
+
+    // mapping
+    @Test
+    public void parseMappingAttributeForSearch_validValues() throws ParseException {
+        assertEquals(MappingAttribute.LOCALCODE, ParserUtil.parseMappingAttributeForSearch("localcode"));
+        assertEquals(MappingAttribute.LOCALNAME, ParserUtil.parseMappingAttributeForSearch("localname"));
+        assertEquals(MappingAttribute.PARTNERCODE, ParserUtil.parseMappingAttributeForSearch("partnercode"));
+        assertEquals(MappingAttribute.PARTNERNAME, ParserUtil.parseMappingAttributeForSearch("partnername"));
+        assertEquals(MappingAttribute.UNIVERSITY, ParserUtil.parseMappingAttributeForSearch("university"));
+        assertEquals(MappingAttribute.INFORMATION, ParserUtil.parseMappingAttributeForSearch("information"));
+    }
+
+    @Test
+    public void parseMappingAttributeForSearch_invalidValues_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSearch(""));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSearch("a"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSearch("1"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSearch("@"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSearch("abc123"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSearch("local code"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSearch("localcode "));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSearch(" localcode"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSearch(null));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSearch("LOCALCODE"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSearch("LOCALNAME"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSearch("PARTNERCODE"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSearch("PARTNERNAME"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSearch("UNIVERSITY"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSearch("DESCRIPTION"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSearch("invalid_attribute"));
+    }
+
+    @Test
+    public void parseMappingAttributeForSort_validValues() throws ParseException {
+        assertEquals(MappingAttribute.LOCALCODE, ParserUtil.parseMappingAttributeForSort("localcode"));
+        assertEquals(MappingAttribute.LOCALNAME, ParserUtil.parseMappingAttributeForSort("localname"));
+        assertEquals(MappingAttribute.PARTNERCODE, ParserUtil.parseMappingAttributeForSort("partnercode"));
+        assertEquals(MappingAttribute.PARTNERNAME, ParserUtil.parseMappingAttributeForSort("partnername"));
+        assertEquals(MappingAttribute.UNIVERSITY, ParserUtil.parseMappingAttributeForSort("university"));
+        assertEquals(MappingAttribute.INFORMATION, ParserUtil.parseMappingAttributeForSort("information"));
+    }
+
+    @Test
+    public void parseMappingAttributeForSort_invalidValues_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSort(""));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSort("a"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSort("1"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSort("@"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSort("abc123"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSort("local code"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSort("localcode "));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSort(" localcode"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSort(null));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSort("LOCALCODE"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSort("LOCALNAME"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSort("PARTNERCODE"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSort("PARTNERNAME"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSort("UNIVERSITY"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSort("DESCRIPTION"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSort("invalid_attribute"));
     }
 
     @Test

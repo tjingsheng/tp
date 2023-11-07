@@ -51,7 +51,21 @@ public enum ConstraintMessage {
                                      + "partnercode\n"
                                      + "partnername\n"
                                      + "unit\n"
-                                     + "description\n");
+                                     + "description\n"),
+    MAPPING_ATTRIBUTE_SEARCH("There are only 6 available for mapping search:\n"
+                                 + "localcode\n"
+                                 + "localname\n"
+                                 + "partnercode\n"
+                                 + "partnername\n"
+                                 + "university\n"
+                                 + "information\n"),
+    MAPPING_ATTRIBUTE_SORT("There are only 6 available for mapping sort:\n"
+                                 + "localcode\n"
+                                 + "localname\n"
+                                 + "partnercode\n"
+                                 + "partnername\n"
+                                 + "university\n"
+                                 + "information\n");
 
     private final String value;
 

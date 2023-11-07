@@ -65,22 +65,22 @@ public class LocalCourseUpdateCommandParser implements Parser<LocalCourseUpdateC
         requireAllNonNull(localCourseAttribute, updatedValue);
         String trimmedUpdatedValue = updatedValue.trim();
         switch (localCourseAttribute) {
-        case CODE:
+        case LOCALCODE:
             if (!LocalCode.isValidLocalCode(trimmedUpdatedValue)) {
                 throw new ParseException(ConstraintMessage.LOCALCOURSE_CODE.getValue());
             }
             break;
-        case NAME:
+        case LOCALNAME:
             if (!LocalName.isValidLocalName(trimmedUpdatedValue)) {
                 throw new ParseException(ConstraintMessage.LOCALCOURSE_NAME.getValue());
             }
             break;
-        case UNIT:
+        case LOCALUNIT:
             if (!LocalUnit.isValidLocalUnit(trimmedUpdatedValue)) {
                 throw new ParseException(ConstraintMessage.LOCALCOURSE_UNIT.getValue());
             }
             break;
-        case DESCRIPTION:
+        case LOCALDESCRIPTION:
             if (!LocalDescription.isValidLocalDescription(trimmedUpdatedValue)) {
                 throw new ParseException(ConstraintMessage.LOCALCOURSE_DESCRIPTION.getValue());
             }

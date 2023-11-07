@@ -54,9 +54,9 @@ public class LocalCourseSortCommandParser implements Parser<LocalCourseSortComma
     private Comparator<LocalCourse> parseLocalCourseComparator(String args) throws ParseException {
         LocalCourseAttribute localCourseAttribute = ParserUtil.parseLocalCourseAttributeForSort(args);
         switch(localCourseAttribute) {
-        case CODE:
+        case LOCALCODE:
             return new LocalCourseComparatorByLocalCode();
-        case NAME:
+        case LOCALNAME:
             return new LocalCourseComparatorByLocalName();
         default:
             throw new ParseException(ConstraintMessage.LOCALCOURSE_ATTRIBUTE_SORT.getValue());

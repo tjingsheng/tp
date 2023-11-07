@@ -83,16 +83,16 @@ public class LocalCourseUpdateCommand extends LocalCourseCommand {
         localDescription = localCourseToUpdate.getLocalDescription();
 
         switch (localCourseAttribute) {
-        case CODE:
+        case LOCALCODE:
             localCode = new LocalCode(updatedValue);
             break;
-        case NAME:
+        case LOCALNAME:
             localName = new LocalName(updatedValue);
             break;
-        case UNIT:
+        case LOCALUNIT:
             localUnit = new LocalUnit(updatedValue);
             break;
-        case DESCRIPTION:
+        case LOCALDESCRIPTION:
             localDescription = new LocalDescription(updatedValue);
             break;
         default:

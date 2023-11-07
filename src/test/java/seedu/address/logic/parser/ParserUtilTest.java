@@ -263,9 +263,10 @@ public class ParserUtilTest {
 
     @Test
     public void parseLocalCourseAttributeForSearch_validValues() throws ParseException {
-        assertEquals(LocalCourseAttribute.CODE, ParserUtil.parseLocalCourseAttributeForSearch("localcode"));
-        assertEquals(LocalCourseAttribute.NAME, ParserUtil.parseLocalCourseAttributeForSearch("localname"));
-        assertEquals(LocalCourseAttribute.DESCRIPTION, ParserUtil.parseLocalCourseAttributeForSearch("description"));
+        assertEquals(LocalCourseAttribute.LOCALCODE, ParserUtil.parseLocalCourseAttributeForSearch("localcode"));
+        assertEquals(LocalCourseAttribute.LOCALNAME, ParserUtil.parseLocalCourseAttributeForSearch("localname"));
+        assertEquals(LocalCourseAttribute.LOCALDESCRIPTION,
+                     ParserUtil.parseLocalCourseAttributeForSearch("localdescription"));
     }
 
     @Test
@@ -289,8 +290,8 @@ public class ParserUtilTest {
 
     @Test
     public void parseLocalCourseAttributeForSort_validValues() throws ParseException {
-        assertEquals(LocalCourseAttribute.CODE, ParserUtil.parseLocalCourseAttributeForSort("localcode"));
-        assertEquals(LocalCourseAttribute.NAME, ParserUtil.parseLocalCourseAttributeForSort("localname"));
+        assertEquals(LocalCourseAttribute.LOCALCODE, ParserUtil.parseLocalCourseAttributeForSort("localcode"));
+        assertEquals(LocalCourseAttribute.LOCALNAME, ParserUtil.parseLocalCourseAttributeForSort("localname"));
     }
 
     @Test
@@ -315,10 +316,11 @@ public class ParserUtilTest {
 
     @Test
     public void parseLocalCourseAttributeForUpdate_validValues() throws ParseException {
-        assertEquals(LocalCourseAttribute.CODE, ParserUtil.parseLocalCourseAttributeForUpdate("localcode"));
-        assertEquals(LocalCourseAttribute.NAME, ParserUtil.parseLocalCourseAttributeForUpdate("localname"));
-        assertEquals(LocalCourseAttribute.UNIT, ParserUtil.parseLocalCourseAttributeForUpdate("units"));
-        assertEquals(LocalCourseAttribute.DESCRIPTION, ParserUtil.parseLocalCourseAttributeForUpdate("description"));
+        assertEquals(LocalCourseAttribute.LOCALCODE, ParserUtil.parseLocalCourseAttributeForUpdate("localcode"));
+        assertEquals(LocalCourseAttribute.LOCALNAME, ParserUtil.parseLocalCourseAttributeForUpdate("localname"));
+        assertEquals(LocalCourseAttribute.LOCALUNIT, ParserUtil.parseLocalCourseAttributeForUpdate("localunit"));
+        assertEquals(LocalCourseAttribute.LOCALDESCRIPTION,
+                     ParserUtil.parseLocalCourseAttributeForUpdate("localdescription"));
     }
 
     @Test

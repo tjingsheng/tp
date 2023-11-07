@@ -4,10 +4,10 @@ package seedu.address.model.localcourse;
  * Represents the attribute related to a local course.
  */
 public enum LocalCourseAttribute {
-    CODE("localcode"),
-    NAME("localname"),
-    UNIT("units"),
-    DESCRIPTION("description");
+    LOCALCODE("localcode"),
+    LOCALNAME("localname"),
+    LOCALUNIT("localunit"),
+    LOCALDESCRIPTION("localdescription");
 
     private final String value;
 
@@ -61,9 +61,9 @@ public enum LocalCourseAttribute {
         }
 
         switch (attribute) {
-        case CODE:
-        case NAME:
-        case DESCRIPTION:
+        case LOCALCODE:
+        case LOCALNAME:
+        case LOCALDESCRIPTION:
             return true;
         default:
             return false;
@@ -83,8 +83,8 @@ public enum LocalCourseAttribute {
         }
 
         switch (attribute) {
-        case CODE:
-        case NAME:
+        case LOCALCODE:
+        case LOCALNAME:
             return true;
         default:
             return false;
@@ -104,10 +104,10 @@ public enum LocalCourseAttribute {
         }
 
         switch (attribute) {
-        case CODE:
-        case NAME:
-        case UNIT:
-        case DESCRIPTION:
+        case LOCALCODE:
+        case LOCALNAME:
+        case LOCALUNIT:
+        case LOCALDESCRIPTION:
             return true;
         default:
             return false;

@@ -4,10 +4,10 @@ package seedu.address.model.partnercourse;
  * Represents the attribute related to a partner course.
  */
 public enum PartnerCourseAttribute {
-    CODE("partnercode"),
-    NAME("partnername"),
-    UNIT("units"),
-    DESCRIPTION("description"),
+    PARTNERCODE("partnercode"),
+    PARTNERNAME("partnername"),
+    PARTNERUNIT("partnerunit"),
+    PARTNERDESCRIPTION("partnerdescription"),
     UNIVERSITY("university");
 
     private final String value;
@@ -62,8 +62,8 @@ public enum PartnerCourseAttribute {
         }
 
         switch (attribute) {
-        case CODE:
-        case NAME:
+        case PARTNERCODE:
+        case PARTNERNAME:
         case UNIVERSITY:
             return true;
         default:
@@ -84,10 +84,10 @@ public enum PartnerCourseAttribute {
         }
 
         switch (attribute) {
-        case CODE:
-        case NAME:
-        case UNIT:
-        case DESCRIPTION:
+        case PARTNERCODE:
+        case PARTNERNAME:
+        case PARTNERUNIT:
+        case PARTNERDESCRIPTION:
             return true;
         default:
             return false;
@@ -107,9 +107,9 @@ public enum PartnerCourseAttribute {
         }
 
         switch (attribute) {
-        case CODE:
-        case NAME:
-        case DESCRIPTION:
+        case PARTNERCODE:
+        case PARTNERNAME:
+        case PARTNERDESCRIPTION:
         case UNIVERSITY:
             return true;
         default:

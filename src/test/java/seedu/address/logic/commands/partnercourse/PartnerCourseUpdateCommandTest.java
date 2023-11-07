@@ -54,7 +54,7 @@ public class PartnerCourseUpdateCommandTest {
                 new PartnerCourseUpdateCommand(
                         COMP3000.getPartnerUniversity().getUniversityName(),
                         COMP3000.getPartnerCode(),
-                        PartnerCourseAttribute.CODE,
+                        PartnerCourseAttribute.PARTNERCODE,
                         "COMP3001"),
                 model,
                 String.format(PartnerCourseUpdateCommand.MESSAGE_SUCCESS,
@@ -80,7 +80,7 @@ public class PartnerCourseUpdateCommandTest {
                 new PartnerCourseUpdateCommand(
                         COMP3000.getPartnerUniversity().getUniversityName(),
                         COMP3000.getPartnerCode(),
-                        PartnerCourseAttribute.NAME,
+                        PartnerCourseAttribute.PARTNERNAME,
                         "Advanced Networks"),
                 model,
                 String.format(PartnerCourseUpdateCommand.MESSAGE_SUCCESS,
@@ -106,7 +106,7 @@ public class PartnerCourseUpdateCommandTest {
                 new PartnerCourseUpdateCommand(
                         COMP3000.getPartnerUniversity().getUniversityName(),
                         COMP3000.getPartnerCode(),
-                        PartnerCourseAttribute.UNIT,
+                        PartnerCourseAttribute.PARTNERUNIT,
                         "10.0"),
                 model,
                 String.format(PartnerCourseUpdateCommand.MESSAGE_SUCCESS,
@@ -132,7 +132,7 @@ public class PartnerCourseUpdateCommandTest {
                 new PartnerCourseUpdateCommand(
                         COMP3000.getPartnerUniversity().getUniversityName(),
                         COMP3000.getPartnerCode(),
-                        PartnerCourseAttribute.DESCRIPTION,
+                        PartnerCourseAttribute.PARTNERDESCRIPTION,
                         "Fun course about networks!"),
                 model,
                 String.format(PartnerCourseUpdateCommand.MESSAGE_SUCCESS,
@@ -146,7 +146,7 @@ public class PartnerCourseUpdateCommandTest {
                 new PartnerCourseUpdateCommand(
                         COMP3000.getPartnerUniversity().getUniversityName(),
                         COMP3000.getPartnerCode(),
-                        PartnerCourseAttribute.DESCRIPTION,
+                        PartnerCourseAttribute.PARTNERDESCRIPTION,
                         "Fun course about networks!"),
                 model,
                 PartnerCourseUpdateCommand.MESSAGE_NONEXISTENT_PARTNER_COURSE);
@@ -168,7 +168,7 @@ public class PartnerCourseUpdateCommandTest {
                 new PartnerCourseUpdateCommand(
                         COMP3000.getPartnerUniversity().getUniversityName(),
                         COMP1000.getPartnerCode(),
-                        PartnerCourseAttribute.CODE,
+                        PartnerCourseAttribute.PARTNERCODE,
                         "comp3000"),
                 model,
                 PartnerCourseUpdateCommand.MESSAGE_DUPLICATE_PARTNER_COURSE);

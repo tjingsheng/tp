@@ -72,11 +72,11 @@ public class PartnerCourseSortCommandParserTest {
     @Test
     public void parse_validArguments_success() {
         assertParseSuccess(parser, commandActionWord
-                + getSquareBracketWrappedArgument(PartnerCourseAttribute.CODE.toString()),
+                + getSquareBracketWrappedArgument(PartnerCourseAttribute.PARTNERCODE.toString()),
                 new PartnerCourseSortCommand(new PartnerCourseComparatorByPartnerCode()));
 
         assertParseSuccess(parser, commandActionWord
-                        + getSquareBracketWrappedArgument(PartnerCourseAttribute.NAME.toString()),
+                        + getSquareBracketWrappedArgument(PartnerCourseAttribute.PARTNERNAME.toString()),
                 new PartnerCourseSortCommand(new PartnerCourseComparatorByPartnerName()));
 
         assertParseSuccess(parser, commandActionWord

@@ -71,22 +71,22 @@ public class PartnerCourseUpdateCommandParser implements Parser<PartnerCourseUpd
         requireAllNonNull(partnerCourseAttribute, updatedValue);
         String trimmedUpdatedValue = updatedValue.trim();
         switch (partnerCourseAttribute) {
-        case CODE:
+        case PARTNERCODE:
             if (!PartnerCode.isValidPartnerCode(trimmedUpdatedValue)) {
                 throw new ParseException(PartnerCode.MESSAGE_CONSTRAINTS);
             }
             break;
-        case NAME:
+        case PARTNERNAME:
             if (!PartnerName.isValidPartnerName(trimmedUpdatedValue)) {
                 throw new ParseException(PartnerName.MESSAGE_CONSTRAINTS);
             }
             break;
-        case UNIT:
+        case PARTNERUNIT:
             if (!PartnerUnit.isValidPartnerUnit(trimmedUpdatedValue)) {
                 throw new ParseException(PartnerUnit.MESSAGE_CONSTRAINTS);
             }
             break;
-        case DESCRIPTION:
+        case PARTNERDESCRIPTION:
             if (!PartnerDescription.isValidPartnerDescription(trimmedUpdatedValue)) {
                 throw new ParseException(PartnerDescription.MESSAGE_CONSTRAINTS);
             }

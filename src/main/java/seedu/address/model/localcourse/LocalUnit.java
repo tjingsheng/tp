@@ -52,8 +52,8 @@ public class LocalUnit {
             try {
                 double parsedValue = Double.parseDouble((String) test);
 
-                // Check if the parsed value is greater than 0
-                return parsedValue >= 0;
+                // Check if the parsed value is greater than 0 and lte 10000
+                return parsedValue >= 0 && parsedValue <= 10000;
             } catch (NumberFormatException e) {
                 // If parsing fails, return false
                 return false;

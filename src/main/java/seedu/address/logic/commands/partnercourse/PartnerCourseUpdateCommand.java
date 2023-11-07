@@ -92,10 +92,10 @@ public class PartnerCourseUpdateCommand extends PartnerCourseCommand {
         partnerDescription = partnerCourseToUpdate.getPartnerDescription();
 
         switch (partnerCourseAttribute) {
-        case PARTNERCODE:
+        case CODE:
             partnerCode = new PartnerCode(updatedValue);
             break;
-        case PARTNERNAME:
+        case NAME:
             partnerName = new PartnerName(updatedValue);
             break;
         case UNIT:

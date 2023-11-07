@@ -213,7 +213,7 @@ public class ParserUtilTest {
         assertEquals(expectedTagSet, actualTagSet);
     }
 
-    //localcourse
+    // localcourse
     @Test
     public void parseLocalCode_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> ParserUtil.parseLocalCode(null));
@@ -338,7 +338,7 @@ public class ParserUtilTest {
         assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForUpdate("invalid_attribute"));
     }
 
-    //partner course
+    // partner course
 
     @Test
     public void parseUniversityName_null_throwsNullPointerException() {
@@ -410,6 +410,93 @@ public class ParserUtilTest {
     }
 
     @Test
+    public void parsePartnerCourseAttributeForSearch_validValues() throws ParseException {
+        assertEquals(PartnerCourseAttribute.CODE, ParserUtil.parsePartnerCourseAttributeForSearch("partnercode"));
+        assertEquals(PartnerCourseAttribute.NAME, ParserUtil.parsePartnerCourseAttributeForSearch("partnername"));
+        assertEquals(PartnerCourseAttribute.DESCRIPTION,
+                     ParserUtil.parsePartnerCourseAttributeForSearch("description"));
+        assertEquals(PartnerCourseAttribute.UNIVERSITY, ParserUtil.parsePartnerCourseAttributeForSearch("university"));
+    }
+
+    @Test
+    public void parsePartnerCourseAttributeForSearch_invalidValues_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSearch(""));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSearch("a"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSearch("1"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSearch("@"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSearch("abc123"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSearch("partner code"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSearch("partnercode "));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSearch(" partnercode"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSearch(null));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSearch("units"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSearch("PARTNERCODE"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSearch("PARTNERNAME"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSearch("UNITS"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSearch("DESCRIPTION"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSearch("UNIVERSITY"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSearch("invalid_attribute"));
+    }
+
+    @Test
+    public void parsePartnerCourseAttributeForSort_validValues() throws ParseException {
+        assertEquals(PartnerCourseAttribute.CODE, ParserUtil.parsePartnerCourseAttributeForSort("partnercode"));
+        assertEquals(PartnerCourseAttribute.NAME, ParserUtil.parsePartnerCourseAttributeForSort("partnername"));
+        assertEquals(PartnerCourseAttribute.UNIVERSITY, ParserUtil.parsePartnerCourseAttributeForSort("university"));
+    }
+
+    @Test
+    public void parsePartnerCourseAttributeForSort_invalidValues_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort(""));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("a"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("1"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("@"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("abc123"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("partner code"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("partnercode "));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort(" partnercode"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort(null));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("units"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("partnerdescription"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("PARTNERCODE"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("PARTNERNAME"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("UNITS"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("DESCRIPTION"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("UNIVERSITY"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("invalid_attribute"));
+    }
+
+    @Test
+    public void parsePartnerCourseAttributeForUpdate_validValues() throws ParseException {
+        assertEquals(PartnerCourseAttribute.CODE, ParserUtil.parsePartnerCourseAttributeForUpdate("partnercode"));
+        assertEquals(PartnerCourseAttribute.NAME, ParserUtil.parsePartnerCourseAttributeForUpdate("partnername"));
+        assertEquals(PartnerCourseAttribute.UNIT, ParserUtil.parsePartnerCourseAttributeForUpdate("units"));
+        assertEquals(PartnerCourseAttribute.DESCRIPTION,
+                     ParserUtil.parsePartnerCourseAttributeForUpdate("description"));
+    }
+
+    @Test
+    public void parsePartnerCourseAttributeForUpdate_invalidValues_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForUpdate(""));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForUpdate("a"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForUpdate("1"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForUpdate("@"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForUpdate("abc123"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForUpdate("partner code"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForUpdate("partnercode "));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForUpdate(" partnercode"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForUpdate(null));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForUpdate("partnerunit"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForUpdate("university"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForUpdate("PARTNERCODE"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForUpdate("PARTNERNAME"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForUpdate("PARTNERUNIT"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForUpdate("DESCRIPTION"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForUpdate("UNIVERSITY"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForUpdate("invalid_attribute"));
+    }
+
+    @Test
     public void areValuesEnclosedAndNonEmpty_emptyArgs_returnsFalse() throws Exception {
         assertFalse(areValuesEnclosedAndNonEmpty(""));
     }
@@ -444,87 +531,5 @@ public class ParserUtilTest {
     @Test
     public void areValuesEnclosedAndNonEmpty_trailingWhiteSpaceValue_returnsTrue() throws Exception {
         assertTrue(areValuesEnclosedAndNonEmpty("[CS2103T] [Software Engineering]       "));
-    }
-
-    @Test
-    public void parsePartnerCourseAttributeForSort_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort((String) null));
-    }
-
-    @Test
-    public void parsePartnerCourseAttributeForSort_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () ->
-                ParserUtil.parsePartnerCourseAttributeForSort(INVALID_PARTNER_COURSE_ATTRIBUTE));
-    }
-
-    @Test
-    public void parsePartnerCourseAttributeForSort_validValueWithoutWhitespaceAndAllCaps_returnsPartnerCourseAttribute()
-            throws Exception {
-        PartnerCourseAttribute expectedPartnerCourseAttribute = PartnerCourseAttribute.PARTNERCODE;
-        assertEquals(expectedPartnerCourseAttribute, ParserUtil.parsePartnerCourseAttributeForSort("partnErcoDe"));
-    }
-
-    @Test
-    public void parsePartnerCourseAttributeForSort_validValueWithWhitespace_returnsTrimmedPartnerCourseAttribute()
-            throws Exception {
-        String partnerCourseAttributeWithWhitespace = WHITESPACE + "PartnerName" + WHITESPACE;
-        PartnerCourseAttribute expectedPartnerCourseAttribute = PartnerCourseAttribute.PARTNERNAME;
-        assertEquals(expectedPartnerCourseAttribute,
-                ParserUtil.parsePartnerCourseAttributeForSort(partnerCourseAttributeWithWhitespace));
-    }
-
-    @Test
-    public void parsePartnerCourseAttributeForUpdate_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parsePartnerCourseAttributeForUpdate((String) null));
-    }
-
-    @Test
-    public void parsePartnerCourseAttributeForUpdate_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () ->
-                ParserUtil.parsePartnerCourseAttributeForUpdate(INVALID_PARTNER_COURSE_ATTRIBUTE_UPDATE));
-    }
-
-    @Test
-    public void parsePartnerCourseAttributeForUpdate_validValueWithoutAllCaps_returnsPartnerCourseAttribute()
-            throws Exception {
-        PartnerCourseAttribute expectedPartnerCourseAttribute = PartnerCourseAttribute.PARTNERCODE;
-        assertEquals(expectedPartnerCourseAttribute, ParserUtil.parsePartnerCourseAttributeForUpdate("partnErcoDe"));
-    }
-
-    @Test
-    public void parsePartnerCourseAttributeForUpdate_validValueWithWhitespace_returnsTrimmedPartnerCourseAttribute()
-            throws Exception {
-        String partnerCourseAttributeWithWhitespace = WHITESPACE + "PartnerName" + WHITESPACE;
-        PartnerCourseAttribute expectedPartnerCourseAttribute = PartnerCourseAttribute.PARTNERNAME;
-        assertEquals(expectedPartnerCourseAttribute,
-                ParserUtil.parsePartnerCourseAttributeForUpdate(partnerCourseAttributeWithWhitespace));
-    }
-
-    @Test
-    public void parsePartnerCourseAttributeForSearch_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parsePartnerCourseAttributeForSearch((String) null));
-    }
-
-    @Test
-    public void parsePartnerCourseAttributeForSearch_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () ->
-                ParserUtil.parsePartnerCourseAttributeForSearch(INVALID_PARTNER_COURSE_ATTRIBUTE));
-    }
-
-    @Test
-    public void
-        parsePartnerCourseAttributeForSearch_validValueWithoutWhitespaceAndAllCaps_returnsPartnerCourseAttribute()
-            throws Exception {
-        PartnerCourseAttribute expectedPartnerCourseAttribute = PartnerCourseAttribute.PARTNERCODE;
-        assertEquals(expectedPartnerCourseAttribute, ParserUtil.parsePartnerCourseAttributeForSearch("partnErcoDe"));
-    }
-
-    @Test
-    public void parsePartnerCourseAttributeForSearch_validValueWithWhitespace_returnsTrimmedPartnerCourseAttribute()
-            throws Exception {
-        String partnerCourseAttributeWithWhitespace = WHITESPACE + "PartnerName" + WHITESPACE;
-        PartnerCourseAttribute expectedPartnerCourseAttribute = PartnerCourseAttribute.PARTNERNAME;
-        assertEquals(expectedPartnerCourseAttribute,
-                ParserUtil.parsePartnerCourseAttributeForSearch(partnerCourseAttributeWithWhitespace));
     }
 }

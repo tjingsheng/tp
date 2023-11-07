@@ -22,9 +22,9 @@ public class PartnerCourseContainsKeywordsPredicate implements Predicate<Partner
     @Override
     public boolean test(PartnerCourse partnerCourse) {
         switch (attribute) {
-        case PARTNERNAME:
+        case NAME:
             return partnerCourse.getPartnerName().getValue().toLowerCase().contains(keyword.toLowerCase());
-        case PARTNERCODE:
+        case CODE:
             return partnerCourse.getPartnerCode().getValue().toLowerCase().contains(keyword.toLowerCase());
         case DESCRIPTION:
             return partnerCourse.getPartnerDescription().getValue().toLowerCase().contains(keyword.toLowerCase());

@@ -175,7 +175,7 @@ public enum UsageMessage {
         PartnerCourseSearchCommand.ACTION_WORD,
         "[attribute] [query]",
         "Searches for a partner course where query is found in the selected attribute\nAttributes:\n"
-            + "partnercode\npartnername\nuniversity"),
+            + "partnercode\npartnername\ndescription\nuniversity"),
     PARTNERCOURSE_SORT(
         PartnerCourseCommand.COMMAND_WORD,
         PartnerCourseSortCommand.ACTION_WORD,

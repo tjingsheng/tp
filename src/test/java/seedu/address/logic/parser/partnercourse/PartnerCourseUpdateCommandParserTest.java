@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.UsageMessage;
 import seedu.address.logic.commands.partnercourse.PartnerCourseCommand;
 import seedu.address.logic.commands.partnercourse.PartnerCourseUpdateCommand;
+import seedu.address.model.ConstraintMessage;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
 import seedu.address.model.partnercourse.PartnerUnit;
@@ -133,13 +134,13 @@ public class PartnerCourseUpdateCommandParserTest {
 
         // invalid partnerAttribute
         assertParseFailure(
-                parser,
-                commandActionWord
+            parser,
+            commandActionWord
                         + getSquareBracketWrappedArgument(COMP1000.getPartnerUniversity().toString())
                         + getSquareBracketWrappedArgument(COMP1000.getPartnerCode().toString())
                         + getSquareBracketWrappedArgument(INVALID_PARTNER_COURSE_ATTRIBUTE)
                         + getSquareBracketWrappedArgument("10.0"),
-                PartnerCourseAttribute.MESSAGE_CONSTRAINTS_UPDATE);
+            ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_UPDATE.getValue());
 
         // invalid updatedValue for partnerCode
         assertParseFailure(
@@ -147,7 +148,7 @@ public class PartnerCourseUpdateCommandParserTest {
                 commandActionWord
                         + getSquareBracketWrappedArgument(COMP1000.getPartnerUniversity().toString())
                         + getSquareBracketWrappedArgument(COMP1000.getPartnerCode().toString())
-                        + getSquareBracketWrappedArgument(PartnerCourseAttribute.PARTNERCODE.toString())
+                        + getSquareBracketWrappedArgument(PartnerCourseAttribute.CODE.toString())
                         + getSquareBracketWrappedArgument(INVALID_PARTNER_COURSE_CODE),
                 PartnerCode.MESSAGE_CONSTRAINTS);
 

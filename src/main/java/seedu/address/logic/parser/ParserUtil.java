@@ -419,102 +419,40 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String attribute}.
-     * Leading and trailing whitespaces will be trimmed.
+     * Parses a {@code String attribute} for partnerCourse search.
      *
      * @throws ParseException if the given {@code attribute} is invalid.
      */
     public static PartnerCourseAttribute parsePartnerCourseAttributeForSearch(String attribute) throws ParseException {
-        requireNonNull(attribute);
-        String attributeLowerCase = attribute.toLowerCase().trim();
-        String resultAttribute = attributeLowerCase;
-
-        switch (attributeLowerCase) {
-        case ("partnercode"):
-            resultAttribute = "PARTNERCODE";
-            break;
-        case ("partnername"):
-            resultAttribute = "PARTNERNAME";
-            break;
-        case ("university"):
-            resultAttribute = "UNIVERSITY";
-            break;
-        default:
-            break;
+        if (!PartnerCourseAttribute.isValidAttributeForSearch(attribute)) {
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_SEARCH.getValue());
         }
-
-        if (!PartnerCourseAttribute.isValidAttributeForSearch(resultAttribute)) {
-            throw new ParseException(PartnerCourseAttribute.MESSAGE_CONSTRAINTS_SEARCH);
-        }
-
-        return PartnerCourseAttribute.valueOf(resultAttribute);
+        return PartnerCourseAttribute.fromString(attribute);
     }
 
     /**
-     * Parses a {@code String attribute}.
-     * Leading and trailing whitespaces will be trimmed.
+     * Parses a {@code String attribute} for partnerCourse sort.
      *
      * @throws ParseException if the given {@code attribute} is invalid.
      */
     public static PartnerCourseAttribute parsePartnerCourseAttributeForSort(String attribute) throws ParseException {
-        requireNonNull(attribute);
-        String attributeLowerCase = attribute.toLowerCase().trim();
-        String resultAttribute = attributeLowerCase;
-
-        switch (attributeLowerCase) {
-        case ("partnercode"):
-            resultAttribute = "PARTNERCODE";
-            break;
-        case ("partnername"):
-            resultAttribute = "PARTNERNAME";
-            break;
-        case ("university"):
-            resultAttribute = "UNIVERSITY";
-            break;
-        default:
-            break;
+        if (!PartnerCourseAttribute.isValidAttributeForSort(attribute)) {
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_SORT.getValue());
         }
-
-        if (!PartnerCourseAttribute.isValidAttributeForSort(resultAttribute)) {
-            throw new ParseException(PartnerCourseAttribute.MESSAGE_CONSTRAINTS_SORT);
-        }
-
-        return PartnerCourseAttribute.valueOf(resultAttribute);
+        return PartnerCourseAttribute.fromString(attribute);
     }
 
     /**
-     * Parses a {@code String attribute}.
+     * Parses a {@code String attribute} for partnerCourse update.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code attribute} is invalid.
      */
     public static PartnerCourseAttribute parsePartnerCourseAttributeForUpdate(String attribute) throws ParseException {
-        requireNonNull(attribute);
-        String attributeLowerCase = attribute.toLowerCase().trim();
-        String resultAttribute = attributeLowerCase;
-
-        switch (attributeLowerCase) {
-        case ("partnercode"):
-            resultAttribute = "PARTNERCODE";
-            break;
-        case ("partnername"):
-            resultAttribute = "PARTNERNAME";
-            break;
-        case ("unit"):
-            resultAttribute = "UNIT";
-            break;
-        case ("description"):
-            resultAttribute = "DESCRIPTION";
-            break;
-        default:
-            break;
+        if (!PartnerCourseAttribute.isValidAttributeForUpdate(attribute)) {
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_UPDATE.getValue());
         }
-
-        if (!PartnerCourseAttribute.isValidAttributeForUpdate(resultAttribute)) {
-            throw new ParseException(PartnerCourseAttribute.MESSAGE_CONSTRAINTS_UPDATE);
-        }
-
-        return PartnerCourseAttribute.valueOf(resultAttribute);
+        return PartnerCourseAttribute.fromString(attribute);
     }
 
     /**

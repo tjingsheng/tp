@@ -51,12 +51,12 @@ public class PartnerCourseSearchCommandParser implements Parser<PartnerCourseSea
         requireAllNonNull(partnerCourseAttribute, query);
         String trimmedQuery = query.trim();
         switch (partnerCourseAttribute) {
-        case PARTNERCODE:
+        case CODE:
             if (!PartnerCode.isValidPartnerCode(trimmedQuery)) {
                 throw new ParseException(PartnerCode.MESSAGE_CONSTRAINTS);
             }
             break;
-        case PARTNERNAME:
+        case NAME:
             if (!PartnerName.isValidPartnerName(trimmedQuery)) {
                 throw new ParseException(PartnerName.MESSAGE_CONSTRAINTS);
             }

@@ -38,6 +38,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.university.UniversityAttribute;
 import seedu.address.model.university.UniversityName;
 
 public class ParserUtilTest {
@@ -557,6 +558,52 @@ public class ParserUtilTest {
         assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSort("DESCRIPTION"));
         assertThrows(ParseException.class, () -> ParserUtil.parseMappingAttributeForSort("invalid_attribute"));
     }
+
+    // university
+    @Test
+    public void parseUniversityAttributeForSearch_validValues() throws ParseException {
+        assertEquals(UniversityAttribute.UNIVERSITY, ParserUtil.parseUniversityAttributeForSearch("university"));
+    }
+
+    @Test
+    public void parseUniversityAttributeForSearch_invalidValues_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityAttributeForSort("units"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityAttributeForSort(""));
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityAttributeForSort(" "));
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityAttributeForSort("a"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityAttributeForSort("1"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityAttributeForSort("@"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityAttributeForSort("abc123"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityAttributeForSort("univer sity"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityAttributeForSort("university "));
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityAttributeForSort(" university"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityAttributeForSort(null));
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityAttributeForSort("UNIVERSITY"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityAttributeForSort("invalid_attribute"));
+    }
+
+    @Test
+    public void parseUniversityAttributeForSort_validValues() throws ParseException {
+        assertEquals(UniversityAttribute.UNIVERSITY, ParserUtil.parseUniversityAttributeForSearch("university"));
+    }
+
+    @Test
+    public void parseUniversityAttributeForSort_invalidValues_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityAttributeForSort("units"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityAttributeForSort(""));
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityAttributeForSort(" "));
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityAttributeForSort("a"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityAttributeForSort("1"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityAttributeForSort("@"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityAttributeForSort("abc123"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityAttributeForSort("univer sity"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityAttributeForSort("university "));
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityAttributeForSort(" university"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityAttributeForSort(null));
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityAttributeForSort("UNIVERSITY"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseUniversityAttributeForSort("invalid_attribute"));
+    }
+
 
     @Test
     public void areValuesEnclosedAndNonEmpty_emptyArgs_returnsFalse() throws Exception {

@@ -204,13 +204,15 @@ public enum UsageMessage {
     UNIVERSITY_SEARCH(
         UniversityCommand.COMMAND_WORD,
         UniversitySearchCommand.ACTION_WORD,
-        "[query]",
-        "Searches for a university where query is found in the university name"),
+        "[attribute] [query]",
+        "Searches for a university where query is found in the selected attribute\nAttributes:\n"
+            + "university\n"),
     UNIVERSITY_SORT(
         UniversityCommand.COMMAND_WORD,
         UniversitySortCommand.ACTION_WORD,
-        "",
-        "Sorts the universities by the name"),
+        "[attribute]",
+        "Sorts universities by the selected attribute\nAttributes:\n"
+            + "university"),
     UNIVERSITY(String.join("\n",
                            "University Commands:\n",
                            UNIVERSITY_LIST.getValue(),

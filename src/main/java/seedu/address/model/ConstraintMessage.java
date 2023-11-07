@@ -65,7 +65,11 @@ public enum ConstraintMessage {
                                  + "partnercode\n"
                                  + "partnername\n"
                                  + "university\n"
-                                 + "information\n");
+                                 + "information\n"),
+    UNIVERSITY_ATTRIBUTE_SEARCH("There is only 1 available for university search:\n"
+                                 + "university\n"),
+    UNIVERSITY_ATTRIBUTE_SORT("There is only 1 available for university sort:\n"
+                                 + "university\n");
 
     private final String value;
 

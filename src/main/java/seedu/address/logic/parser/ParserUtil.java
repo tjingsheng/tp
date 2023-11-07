@@ -334,6 +334,7 @@ public class ParserUtil {
         return PartnerCourseAttribute.fromString(attribute);
     }
 
+    // university
     /**
      * Parses a {@code String universityName}.
      * Leading and trailing whitespaces will be trimmed.
@@ -345,6 +346,30 @@ public class ParserUtil {
             throw new ParseException(UniversityName.MESSAGE_CONSTRAINTS);
         }
         return new UniversityName(universityName);
+    }
+
+    /**
+     * Parses a {@code String attribute} for university search.
+     *
+     * @throws ParseException if the given {@code attribute} is invalid.
+     */
+    public static UniversityAttribute parseUniversityAttributeForSearch(String attribute) throws ParseException {
+        if (!UniversityAttribute.isValidAttributeForSearch(attribute)) {
+            throw new ParseException(ConstraintMessage.UNIVERSITY_ATTRIBUTE_SEARCH.getValue());
+        }
+        return UniversityAttribute.fromString(attribute);
+    }
+
+    /**
+     * Parses a {@code String attribute} for university sort.
+     *
+     * @throws ParseException if the given {@code attribute} is invalid.
+     */
+    public static UniversityAttribute parseUniversityAttributeForSort(String attribute) throws ParseException {
+        if (!UniversityAttribute.isValidAttributeForSort(attribute)) {
+            throw new ParseException(ConstraintMessage.UNIVERSITY_ATTRIBUTE_SORT.getValue());
+        }
+        return UniversityAttribute.fromString(attribute);
     }
 
     /**
@@ -453,31 +478,5 @@ public class ParserUtil {
      */
     public static boolean areArgumentsPresent(SeplendidArgumentMap argumentMap, SeplendidParameter... parameters) {
         return Stream.of(parameters).allMatch(parameter -> argumentMap.getValue(parameter).isPresent());
-    }
-
-    /**
-     * Parses a {@code String attribute}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code attribute} is invalid.
-     */
-    public static UniversityAttribute parseUniversityAttribute(String attribute) throws ParseException {
-        requireNonNull(attribute);
-        String attributeLowerCase = attribute.toLowerCase().trim();
-        String resultAttribute = attributeLowerCase;
-
-        switch (attributeLowerCase) {
-        case ("universityname"):
-            resultAttribute = "UNIVERSITYNAME";
-            break;
-        default:
-            break;
-        }
-
-        if (!UniversityAttribute.isValidAttribute(resultAttribute)) {
-            throw new ParseException(UniversityAttribute.MESSAGE_CONSTRAINTS);
-        }
-
-        return UniversityAttribute.valueOf(resultAttribute);
     }
 }

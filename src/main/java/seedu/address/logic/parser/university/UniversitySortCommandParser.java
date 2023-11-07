@@ -13,6 +13,7 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.SeplendidArgumentMap;
 import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.ConstraintMessage;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityAttribute;
 import seedu.address.model.university.comparator.UniversityComparatorByUniversityName;
@@ -47,12 +48,12 @@ public class UniversitySortCommandParser implements Parser<UniversitySortCommand
     }
 
     private Comparator<University> parseUniversityComparator(String args) throws ParseException {
-        UniversityAttribute universityAttribute = ParserUtil.parseUniversityAttribute(args);
+        UniversityAttribute universityAttribute = ParserUtil.parseUniversityAttributeForSort(args);
         switch(universityAttribute) {
-        case UNIVERSITYNAME:
+        case UNIVERSITY:
             return new UniversityComparatorByUniversityName();
         default:
-            throw new ParseException(UniversityAttribute.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.UNIVERSITY_ATTRIBUTE_SEARCH.getValue());
         }
     }
 }

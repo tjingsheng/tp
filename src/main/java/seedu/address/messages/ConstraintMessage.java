@@ -1,4 +1,4 @@
-package seedu.address.model;
+package seedu.address.messages;
 
 /**
  * Enum for model constraint messages.

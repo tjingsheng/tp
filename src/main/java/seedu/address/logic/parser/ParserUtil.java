@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.ConstraintMessage;
+import seedu.address.messages.ConstraintMessage;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourseAttribute;
 import seedu.address.model.localcourse.LocalDescription;

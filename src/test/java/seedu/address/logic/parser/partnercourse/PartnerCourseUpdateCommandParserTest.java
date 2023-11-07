@@ -15,8 +15,8 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.partnercourse.PartnerCourseCommand;
 import seedu.address.logic.commands.partnercourse.PartnerCourseUpdateCommand;
+import seedu.address.messages.ConstraintMessage;
 import seedu.address.messages.UsageMessage;
-import seedu.address.model.ConstraintMessage;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
 import seedu.address.model.partnercourse.PartnerUnit;

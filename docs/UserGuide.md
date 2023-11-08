@@ -213,7 +213,7 @@ Throughout this guide, admonitions are used to highlight important information, 
 
     * `exit` : Exits SEPlendid.
 
-6. Refer to the [Commands](#4-commands) below for more details of each feature and command.
+6. If you are an experienced user, refer to the [Commands](#4-commands) below for more details of each feature and command.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -326,16 +326,15 @@ An invocation of the command is exemplified by:
 
 </box>
 
-## 3.3. Execute your first command
-In order to get you familiar with SEPlendid, we should try a command together!
+## 3.3. Let's try your first command
+
+In order to get you started with SEPlendid's commands, we should try out a command together!
 
 Let's start with the most basic command `add` command. `add` command allows you to add a local, partner course or note.
 
 One of the available commands for `add` is the command to add a localcourse into your storage.
 
-**Format**: `localcourse add [localcode] [localname] [units]`
-
-**Why is the format is created in this manner?**
+**Format:** `localcourse add [localcode] [localname] [units]`
 
 The first word of each command specifies the different core features with its own unique sets of functionalities.
 - `localcourse` tells SEPlendid that this command word would execute actions only for local courses
@@ -344,9 +343,9 @@ The first word of each command specifies the different core features with its ow
 <Add note on [] -> shows compulsory attributes>
 
 **Example**
-Let's imagine this, you want to add a localcourse to your storage since this localcourse could be a new course offered 
-by NUS and has yet been entered in the database. For instance, a newly offered course by NUS is CS2105 which is an 
-Introduction to Computer Networks. The course is will fufil four course credits, and you would like to map this course 
+Let's imagine this scenario, you want to add a localcourse to your storage since this localcourse could be a new course 
+offered by NUS Computing. For instance, a newly offered course by NUS is CS2105 which is an 
+Introduction to Computer Networks. The course is will fulfil four course credits, and you would like to map this course 
 for SEP.
 
 The command you would like to input:
@@ -760,70 +759,144 @@ Sorts all the mappings by the specified attribute (one of `localcode`, `localnam
 |--------------------------------------------------------------|
 | ![mapping-search-ui](images/MappingSortUi.png)             |
 
+<br />
+<br />
+
 ## 4.5. Commands for notes
+<br />
+
 ### 4.5.1. List all notes: `note list`
-Lists all notes that you have.
+
+Lists all notes that you have recorded in SEPlendid. This is useful when:
+- you wish to retrieve all of your consolidated notes.
+- you wish to verify that your note has been added successfully.
+- you wish to verify that your note has been deleted successfully.
+- you wish to verify that your note has been updated successfully.
+
 **Format:** `note list`
 
-**Example:**
-| `note list`                            |
-|----------------------------------------|
-| ![note-list-ui](images/NoteListUi.png) |
+**Example:** 
+<div class="centered-container">
+  <img src="images/NoteListUi.png" alt="Note List UI" class="resized-image">
+</div>
+<div class = "centered-content" >
+  <p class = "image-caption"> Figure 1.3 Shows the list of notes you have recorded.
+</div>
+
+<br />
+<br />
 
 ### 4.5.2. Add a note: `note add`
-Adds note with content as `[content]` and tags it with `[tag]`.
+
+Adds a note with the content you wish to add with a tag. This is useful when:
+- you wish to record a course or mapping you would are interested in doing for exchange.
+- you wish to record down important information.
 
 **Format:** `note add [content] [tag]`
 
 **Example:**
-| `note add [You can do this!] [motivation]` |
-|-------------------------------------------------|
-| ![note-add-ui](images/NoteAddUi.png)            |
+<div class="centered-container">
+  <img src="images/NoteAddUi.png" alt="Note Add UI" class="resized-image">
+</div>
+<div class = "centered-content" >
+  <p class = "image-caption"> Figure 1.3 Shows the note you have added.
+</div>
+
+<br />
+<br />
 
 ### 4.5.3. Delete a note: `note delete`
-Deletes note with index of `index`.
+
+Deletes specified index of the note. This is useful when:
+- you wish to remove a note that contains outdated information.
+
 **Format:** `note delete [index]`
 
 **Example:**
-| `note delete [3]` |
-|-----------------------------------------------------------------------|
-| ![note-delete-ui](images/NoteDeleteUi.png)
+<div class="centered-container">
+  <img src="images/NoteDeleteUi.png" alt="Note Delete UI" class="resized-image">
+</div>
+<div class = "centered-content" >
+  <p class = "image-caption"> Figure 1.3 Shows the note you have deleted.
+</div>
+
+<br />
+<br />
 
 ### 4.5.4. Update a note: `note update`
-Updates note with index `[index]` and changes its content to be `[content]`.
+
+Updates specified note according to the index and updates the content of the note. This is useful when:
+- you wish to edit to correct your mistakes made in the note.
+- you wish to update the note with new information.
 
 **Format:** `note update [index] [content]`
 
 **Example:**
-| `note update [1] [Exchange Application Deadline: 25 September 2023]` |
-|-----------------------------------------------------------------------|
-| ![note-update-ui](images/NoteUpdateUi.png)                            |
+<div class="centered-container">
+  <img src="images/NoteDeleteUi.png" alt="Note Delete UI" class="resized-image">
+</div>
+<div class = "centered-content" >
+  <p class = "image-caption"> Figure 1.3 Shows the note you want to delete.
+</div>
+
+<br />
+<br />
 
 ### 4.5.5. Tag a note: `note tag`
-Updates note with index `[index]` and adds `[tag]` tag to the note.
+
+Adds a tag to the specified note according to the index. This is useful when:
+- you want to easily view the different key points of the note.
 
 **Format:** `note tag [index] [tag]`
 
 **Example:**
-| `note tag [1] [important]`          |
-|-------------------------------------|
-| ![note-tag-ui](images/NoteTagUi.png) |
+<div class="centered-container">
+  <img src="images/NoteTagUi.png" alt="Note Tag UI" class="resized-image">
+</div>
+<div class = "centered-content" >
+  <p class = "image-caption"> Figure 1.3 Shows the notes updated with a tag you have specified.
+</div>
+
+<br />
+<br />
 
 ### 4.5.6. Clear tags of a note: `note cleartag`
-Updates note with index `[index]` and removes all tags for this note.
+
+Clears all tags for the specified note according to its index. This is useful when:
+- you wish to remove all the tags that are no longer relevant to your note.
 
 **Format:** `note cleartag [index]`
 
 **Example:**
-| `note cleartag [1]`          |
-|-------------------------------------|
-| ![note-cleartag-ui](images/NoteTagUi.png) |
+<div class="centered-container">
+  <img src="images/NoteTagUi.png" alt="Note Tag UI" class="resized-image">
+</div>
+<div class = "centered-content" >
+  <p class = "image-caption"> Figure 1.3 Shows the note where all the tags have been removed.
+</div>
+
+<br />
+<br />
 
 ### 4.6. Viewing help : `help` 
 
-Displays the help menu.
+Results in a pop-up window for you to copy the URL into an external browser to view SEPlendid's user guide.
 
 Format: `help`
+
+![Help](Images/Help.jpg)
+
+<br />
+<br />
+
+### 4.6. Exiting SEPlendid : `exit`
+
+Exits SEPlendid app.
+
+Format: `exit`
+
+<br />
+<br />
 
 ### 4.7. Saving the data
 
@@ -835,12 +908,11 @@ save manually.
 SEPlendid data are saved automatically as a JSON file `[JAR file location]/data/seplendid.json`. Advanced users are
 welcome to update data directly by editing that data file.
 
-<box type="warning" seamless>
-
-**Caution:**
-If your changes to the data file makes its format invalid, SEPlendid will discard all data and start with an empty data 
+<box type="warning" icon=":exclamation:" icon-color="red">
+    <b>Warning:</b> If your changes to the data file makes its format invalid, SEPlendid will discard all data and start with an empty data 
 file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
 </box>
+
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -850,11 +922,20 @@ file at the next run.  Hence, it is recommended to take a backup of the file bef
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that 
 contains the data of your previous SEPlendid home folder.
 
-**Q**: How do I view more information about the localcourse or partnercourse
+**Q**: Can I run SEPlendid without the need for internet connection? <br>
+**A**: No, SEPlendid is designed as an offline application to enhance your convenience of using the app.
+
+**Q**: Why do I get an error message when searching a local course by its description?<br>
+**A**: The attributes used for local course search is restricted. To search the local course, you must use this command:
+- `localcourse search [localdescription] [description_keyword]`
+
+<br />
+<br />
 
 --------------------------------------------------------------------------------------------------------------------
 ## 6. Command summary
 
+### 6.1 
 <table class="bordered-table">
     <tr>
         <td><code>command-word</code></td>

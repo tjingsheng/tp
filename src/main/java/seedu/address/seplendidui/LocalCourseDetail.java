@@ -34,11 +34,12 @@ public class LocalCourseDetail extends UiPart<Region> {
     public LocalCourseDetail(LocalCourse localCourse) {
         super(FXML);
         this.localCourse = localCourse;
+        TextFlowHeightUpdater.setAutoFitText(localName);
+        TextFlowHeightUpdater.setAutoFitText(localDescription);
+
         localCode.setText(localCourse.getLocalCode().toString());
         localUnit.setText("Units: " + localCourse.getLocalUnit().toString());
-        TextFlowHeightUpdater.setAutoFitText(localName);
         localName.getChildren().add(new Text(localCourse.getLocalName().toString()));
-        TextFlowHeightUpdater.setAutoFitText(localDescription);
         localDescription.getChildren().add(new Text(localCourse.getLocalDescription().toString()));
     }
 }

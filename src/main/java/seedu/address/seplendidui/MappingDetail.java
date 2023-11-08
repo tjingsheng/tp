@@ -48,23 +48,25 @@ public class MappingDetail extends UiPart<Region> {
                          String partnerUnitInput) {
         super(FXML);
         this.mapping = mapping;
+        TextFlowHeightUpdater.setAutoFitText(universityName);
+        TextFlowHeightUpdater.setAutoFitText(localName);
+        TextFlowHeightUpdater.setAutoFitText(partnerName);
+        TextFlowHeightUpdater.setAutoFitText(mappingMiscInformation);
+
         String localCodeInput = mapping.getLocalCode().toString();
         String partnerCodeInput = mapping.getPartnerCode().toString();
-        TextFlowHeightUpdater.setAutoFitText(universityName);
+
         universityName.getChildren().add(new Text(mapping.getUniversityName().toString()));
         title.setText(localCodeInput + " maps to " + partnerCodeInput);
 
         localCode.setText(localCodeInput);
-        TextFlowHeightUpdater.setAutoFitText(localName);
         localName.getChildren().add(new Text(localNameInput));
         localUnit.setText("Units: " + localUnitInput);
 
         partnerCode.setText(partnerCodeInput);
-        TextFlowHeightUpdater.setAutoFitText(partnerName);
         partnerName.getChildren().add(new Text(partnerNameInput));
         partnerUnit.setText("Units: " + partnerUnitInput);
 
-        TextFlowHeightUpdater.setAutoFitText(mappingMiscInformation);
         mappingMiscInformation.getChildren().add(new Text(mapping.getMappingMiscInformation().toString()));
     }
 }

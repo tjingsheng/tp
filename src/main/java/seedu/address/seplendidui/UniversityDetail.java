@@ -28,6 +28,7 @@ public class UniversityDetail extends UiPart<Region> {
         super(FXML);
         this.university = university;
         TextFlowHeightUpdater.setAutoFitText(universityName);
+
         universityName.getChildren().add(new Text(university.getUniversityName().toString()));
     }
 }

@@ -37,12 +37,13 @@ public class PartnerCourseDetail extends UiPart<Region> {
         super(FXML);
         this.partnerCourse = partnerCourse;
         TextFlowHeightUpdater.setAutoFitText(partnerUniversity);
+        TextFlowHeightUpdater.setAutoFitText(partnerName);
+        TextFlowHeightUpdater.setAutoFitText(partnerDescription);
+
         partnerUniversity.getChildren().add(new Text(partnerCourse.getPartnerUniversity().toString()));
         partnerCode.setText(partnerCourse.getPartnerCode().toString());
-        TextFlowHeightUpdater.setAutoFitText(partnerName);
         partnerName.getChildren().add(new Text(partnerCourse.getPartnerName().toString()));
         partnerUnit.setText("Units: " + partnerCourse.getPartnerUnit().toString());
-        TextFlowHeightUpdater.setAutoFitText(partnerDescription);
         partnerDescription.getChildren().add(new Text(partnerCourse.getPartnerDescription().toString()));
     }
 }

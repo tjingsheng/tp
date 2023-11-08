@@ -175,7 +175,8 @@ Here is a step-by-step instruction in using SEPlendid for **new** users:
 If you are an **experienced** user, you can head over to the [Command Summary](#) section for a well-curated overview
 of the commands available in SEPlendid.
 
-<Add admonition: INFO> 
+<br />
+<br />
 
 ## 3. Admonitions used in this User Guide
 
@@ -237,7 +238,15 @@ SEPlendid's GUI consists of these four main components:
 
 Refer to the annotated diagram of SEPlendid's GUI which is numbered accordingly:
 
-![Annotated GUI](images/AnnotatedUi.png)
+<div class="centered-container">
+  <img src="images/AnnotatedUi.png" alt="Annotateed GUI" class="resized-image">
+</div>
+<div class = "centered-content" >
+  <p class = "image-caption"> Figure 1.2 Shows the SEPlendid's Starting GUI.
+</div>
+
+<br />
+<br />
 
 ## 3.2. Command Format
 We will be using SEPlendid's commands throughout this User Guide. The following figure provides a visual example on 
@@ -334,29 +343,36 @@ Let's start with the most basic command `add` command. `add` command allows you 
 
 One of the available commands for `add` is the command to add a localcourse into your storage.
 
-**Format:** `localcourse add [localcode] [localname] [units]`
+
+**Format:** `localcourse add [localcode] [localname] [localunit] [localdescription]`
 
 The first word of each command specifies the different core features with its own unique sets of functionalities.
 - `localcourse` tells SEPlendid that this command word would execute actions only for local courses
 - Attributes such as `localcode` and `localname` shows you what you should place in each portion of the command
 
-<Add note on [] -> shows compulsory attributes>
+<box type="tip" icon=":bulb:" >
+    Tip: All the attributes for localcourse needs to be added.
+</box>
+
 
 **Example**
-Let's imagine this scenario, you want to add a localcourse to your storage since this localcourse could be a new course 
-offered by NUS Computing. For instance, a newly offered course by NUS is CS2105 which is an 
-Introduction to Computer Networks. The course is will fulfil four course credits, and you would like to map this course 
-for SEP.
+Let's imagine this scenario, there is a newly offered course by NUS Computing, CS2105. Interested with this course, you 
+want to add this localcourse in SEPlendid.
 
-The command you would like to input:
-`localcourse add [CS2105] [Introduction to Computer Networks] [4.0]`
+<br/> 
 
-These are the fields you would take note of:
+**So how can you add CS2105 to SEPlendid?**
+
+Firstly, you would need to input this command:
+`localcourse add [CS2105] [Introduction to Computer Networks] [4.0] [Web and Web applications]`
+
+Secondly, you would need to take note of the parameters that are required to be added:
 - `localcode`: CS2105
 - `localname`: Introduction to Computer Networks
-- `units`: 4.0 
+- `localunit`: 4.0 
+- `localdescription`: Web and Web applications
 
-Do take note of invalid formats:
+Lastly, you should take note of invalid formats:
 - `localcourse add [CS2105]`
   The attributes such as localname and units are compulsory.
 - `localcourse add CS2105 Introduction to Computer Networks 4.0`
@@ -364,27 +380,17 @@ Do take note of invalid formats:
 - `localcourse add`
   There is insufficient information on what localcourse to add.
 
-**Another Example!**
-Let's imagine this, you want to go to a specific partner university like Imperial College of London. You would like to
-know whether this partner university is available for SEP.
-
-**Format**: `university search [university]`
-
-The command you would like to input:
-`university search [Imperial]`
-
-Do take note of invalid formats:
-- `university search [university] [university]`
-  The attribute `university` only takes in a String instead of List<String>.
-- `university search`
-  There is insufficient information on what university to query.
-
-Conduct these checks before executing the commands:
-- I know what I would like query e.g. localcourse, partnercourse, university etc.
-- I know the restrictions of each command
-- I know "[ ]" are compulsory for wrapping each attribute
+You should conduct these checks before executing the commands:
+- [ ] I know what I would like query e.g. localcourse, partnercourse, university etc.
+- [ ] I know the restrictions of each command
+- [ ] I know "[ ]" are compulsory for wrapping each attribute
 
 Conducting these checks would prevent error messages and result in more efficient querying of results!
+
+Now, you are equipped with the basics to start using SEPlendid!
+
+<br />
+<br />
 
 ## 4. Commands
 
@@ -559,7 +565,7 @@ Adds a partner course with the specified partner course attributes. This is usef
 - you wish to add a partner course that is not preloaded in SEPlendid.
 
 <box type="warning" icon=":exclamation:" icon-color="red">
-    Warning: You are unable to add a partner course if the university does not exist in SEPlendid.
+    <b>Warning:</b> You are unable to add a partner course if the university does not exist in SEPlendid.
 </box>
 
 **Format**: `partnercourse add [university] [partnercode] [partnername] [units] [description]`
@@ -578,7 +584,7 @@ Deletes partner course with attributes such as university and partnercode respec
 - you wish to remove a partner course that is no longer offered by the partner university.
 
 <box type="warning" icon=":exclamation:" >
-    Warning: You are unable to delete a partner course if it exists in a mapping.
+    <b>Warning:</b> You are unable to delete a partner course if it exists in a mapping.
 </box>
 
 **Format:** `partnercourse delete [university] [partnercode]`

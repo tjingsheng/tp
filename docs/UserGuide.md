@@ -381,7 +381,7 @@ Lastly, you should take note of invalid formats:
   There is insufficient information on what localcourse to add.
 
 You should conduct these checks before executing the commands:
-- [ ] I know what I would like query e.g. localcourse, partnercourse, university etc.
+- [ ] I know what I would like to query e.g. localcourse, partnercourse, university etc.
 - [ ] I know the restrictions of each command
 - [ ] I know "[ ]" are compulsory for wrapping each attribute
 
@@ -599,7 +599,7 @@ Deletes partner course with attributes such as university and partnercode respec
 ### 4.2.4. Update a partner course: `partnercourse update`
 
 Updates specified attributes of a partner course, with the partner course identified by `universityname`.
-These partner course attributes include partnercode, partnername, partnerunit and partnerdescription. This is useful when:
+These partner course attributes include partnercode, partnername, unit and description. This is useful when:
 - you wish to update a partnercourse if there are changes made by the partner university.
 
 **Format**: `partnercourse update [universityname] [partnercode] [partnercourseattribute] [updatedValue]`

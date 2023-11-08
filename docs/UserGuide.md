@@ -1033,7 +1033,7 @@ contains the data of your previous SEPlendid home folder.
         <td><code>[universityname]</code></td>
     </tr>
     <tr>
-        <td rowspan="5"><code>note</code></td>
+        <td rowspan="6"><code>note</code></td>
         <td><code>list</code></td>
         <td>None.</td>
     </tr>
@@ -1052,6 +1052,10 @@ contains the data of your previous SEPlendid home folder.
     <tr>
         <td><code>tag</code></td>
         <td><code>[index] [tagname]</code></td>
+    </tr>
+    <tr>
+        <td><code>cleartag</code></td>
+        <td><code>[index]</code></td>
     </tr>
 </table>
 

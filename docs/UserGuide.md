@@ -425,7 +425,7 @@ Refer to the figure below to view the outcome of the execution of the command:
 
 ### 4.1.2. Add a local course: `localcourse add`
 
-Adds a local course using attributes such as localcode, localname, units and description in this order. This is useful
+Adds a local course using attributes such as localcode, localname, localunit and localdescription in this order. This is useful
 when:
 - you are adding a new local course offered by NUS Computing.
 - you wish to add a local course that is not preloaded in SEPlendid.
@@ -619,7 +619,7 @@ This is useful when:
 
 **Example:** `partnercourse search [partnercode] [CSE469]` 
 
-**Expected Outcome:** SEPlendid's GUI will show you the searched partnercourse, CSE 469.
+**Expected Outcome:** SEPlendid's GUI will show you the searched partnercourse, CSE469.
 
 <br />
 <br />
@@ -634,39 +634,72 @@ Sorts local courses according to attributes such as partnername and partnercode.
 
 **Expected Outcome:** SEPlendid's GUI will show you the sorted partnercourses according to partnercode. 
 
+<br />
+<br />
+
 ## 4.3. Commands for universities
 <br />
 
 ### 4.3.1. List all universities: `university list`
 
-Lists all available partner universities, paginated if dataset is too huge.
-**Format**: `university list`
+Lists all available partner universities that NUS Computing students are able to exchange at. This is useful when:
+- you wish to retrieve all the universities available for you to exchange at.
+
+**Format:** `university list`
 
 **Example:**
-| `university list`                                  |
-|----------------------------------------------------|
-| ![university-list-ui](images/UniversityListUi.png) |
+Refer to the figure below to view the outcome of the execution of the command:
+
+<div class="centered-container">
+  <img src="images/UniversityListUi.png" alt="University List UI" class="resized-image">
+</div>
+<div class = "centered-content" >
+  <p class = "image-caption"> Figure 1.3 Shows the list of partner universities available for NUS Computing students.
+</div>
+
+<br />
+<br />
 
 ### 4.3.2. Search a university by attributes: `university search`
-Searches universities with the same keyword, paginated if dataset is too huge.
-**Format**: `university search [university]`
+
+Searches universities that matches the keyword of the university name. This is useful when:
+- you wish to find a specific university you are interested in.
+
+**Format:** `university search [university]`
 
 **Example:**
-| `university search [imperial]`                         |
-|--------------------------------------------------------|
-| ![university-search-ui](images/UniversitySearchUi.png) |
+<div class="centered-container">
+  <img src="images/UniversitySearchUi.png" alt="University Search UI" class="resized-image">
+</div>
+<div class = "centered-content" >
+  <p class = "image-caption"> Figure 1.3 Shows the searched university, Imperial College of London.
+</div>
+
+<br />
+<br />
 
 ### 4.3.3. Sort universities by attributes: `university sort`
-Sorts universities according to `universityattribute` - `universityname`.
 
-**Format**: `university sort [universityname]`
+Sorts universities by the university name, alphabetically. This is useful when:
+- you wish to view universities alphabetically.
 
-**Example**
-| `university sort [universityname]`                       |
-|----------------------------------------------------------|
-| ![university-sort-ui](images/UniversitySortUi.png)       |
+**Format:** `university sort [universityname]`
+
+**Example:** `university sort [universityname]` 
+
+<div class="centered-container">
+  <img src="images/UniversitySortUi.png" alt="University Sort UI" class="resized-image">
+</div>
+<div class = "centered-content" >
+  <p class = "image-caption"> Figure 1.3 Shows the sorted university list.
+</div>
+
+<br />
+<br />
 
 ## 4.4. Commands for mappings
+<br />
+
 ### 4.4.1. List all mappings: `mapping list`
 Lists all available mappings.
 <box type="tip">

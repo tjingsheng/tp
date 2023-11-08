@@ -1,6 +1,6 @@
 ---
   layout: default.md
-  title: "John Doe's Project Portfolio Page"
+  title: "Jing Sheng's Project Portfolio Page"
 ---
 
 ### Project: SEPlendid
@@ -19,23 +19,23 @@ Given below are my contributions to the project.
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=lamchenghou&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code&since=2023-09-22&tabOpen=true&tabType=zoom&zFR=false&zA=lamchenghou&zR=AY2324S1-CS2103T-W10-2%2Ftp%5Bmaster%5D&zACS=NaN&zS=2023-09-22&zFS=lamchenghou&zU=2023-10-03&zMG=false&zFTF=commit&zFGS=groupByRepos)
 
 * **Project management**:
-  * Managed releases `v1.1` (1 release) on GitHub
+  * Managed releases `to be added soon` (1 release) on GitHub
 
 * **Enhancements to existing features**:
   * `to be added soon`
 
 * **Documentation**:
   * User Guide:
-    * Added documentation for the features `mapping` for `v1.1` [\#29](https://github.com/AY2324S1-CS2103T-W10-2/tp/issues/29)
-    * Did cosmetic tweaks to product website: [\#28](https://github.com/AY2324S1-CS2103T-W10-2/tp/issues/28)
+    * Added documentation for the features: (`to be added soon`)
+    * Did cosmetic tweaks to product website: (`to be added soon`)
   * Developer Guide:
     * `to be added soon`
 
 * **Community**:
-  * PRs reviewed (with non-trivial review comments): [\#12](), [\#32](), [\#19](), [\#42]() (`to be added soon`)
-  * Contributed to forum discussions (examples: [1](), [2](), [3](), [4]()) (`to be added soon`)
-  * Reported bugs and suggestions for other teams in the class (examples: [1](), [2](), [3]()) (`to be added soon`)
-  * Some parts of the history feature I added was adopted by several other class mates ([1](), [2]()) (`to be added soon`)
+  * PRs reviewed (with non-trivial review comments): (`to be added soon`)
+  * Contributed to forum discussions (`to be added soon`)
+  * Reported bugs and suggestions for other teams in the class (`to be added soon`)
+  * Some parts of the history feature I added was adopted by several other classmates (`to be added soon`)
 
 * **Tools**:
   * Integrated a third party library (`to be added soon`)

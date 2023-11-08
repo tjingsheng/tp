@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-
+<?import javafx.scene.text.TextFlow?>
 <HBox xmlns:fx="http://javafx.com/fxml/1"
       id="universityDetailPane"
       fx:id="universityDetailPane"
@@ -15,6 +14,6 @@
         <padding>
             <Insets top="17" right="25" bottom="17" left="25"/>
         </padding>
-        <Label fx:id="universityName" styleClass="big-heading-font-size"/>
+        <TextFlow fx:id="universityName" styleClass="title-font-size "/>
     </VBox>
 </HBox>

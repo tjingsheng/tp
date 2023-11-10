@@ -129,8 +129,8 @@ Given below are my contributions to the project.
   [9](https://github.com/AY2324S1-CS2103T-W10-2/tp/pull/167),
   [10](https://github.com/AY2324S1-CS2103T-W10-2/tp/pull/236)
   
-  * Contributed to forum discussions: [1](https://github.
-  com/nus-cs2103-AY2324S1/forum/issues/17#issuecomment-1690925221),
+  * Contributed to forum discussions: 
+  [1](https://github.com/nus-cs2103-AY2324S1/forum/issues/17#issuecomment-1690925221),
   [2](https://github.com/nus-cs2103-AY2324S1/forum/issues/32#issuecomment-1694675009),
   [3](https://github.com/nus-cs2103-AY2324S1/forum/issues/66#issuecomment-1703777885),
   [4](https://github.com/nus-cs2103-AY2324S1/forum/issues/130#issuecomment-1712751815),

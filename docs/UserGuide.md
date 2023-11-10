@@ -24,7 +24,7 @@ SEP. It includes:
 - SEPlendid's myriad of features and commands
 - **Key parameters** to run SEPlendid smoothly
 
-If you are a new user, please head over to  [How to use the User Guide](#) to start planning for your study guide!
+If you are a new user, please head over to  [How to Use the User Guide](#) to start planning for your study guide!
 
 <page-nav-print />
 <br />
@@ -37,29 +37,29 @@ If you are a new user, please head over to  [How to use the User Guide](#) to st
 
 1. [About SEPlendid](#1-about-seplendid)
 2. [Quick start](#2-quick-start)
-3. [A Short Tutorial](#3-a-short-tutorial)
+3. [A short tutorial](#3-a-short-tutorial)
    - 3.1 [Graphical User Interface (GUI)](#3-1-graphical-user-interface-gui)
-   - 3.2 [Command Format](#3-2-command-format)
+   - 3.2 [Command format](#3-2-command-format)
    - 3.3 [Execute your first command](#3-3-execute-your-first-command)
 4. [Commands](#4-commands)
    - 4.1 [Commands for localcourse](#4-1-commands-for-localcourse)
-     - 4.1.1 [List all localcourses: `localcourse list`](#4-1-1-list-all-localcourses-localcourse-list)
+     - 4.1.1 [List all local courses: `localcourse list`](#4-1-1-list-all-localcourses-localcourse-list)
      - 4.1.2 [Add a local course: `localcourse add`](#4-1-2-add-a-local-course-localcourse-add)
      - 4.1.3 [Delete a local course: `localcourse delete`](#4-1-3-delete-a-local-course-localcourse-delete)
      - 4.1.4 [Search a local course by attributes: `localcourse search`](#4-1-4-search-a-local-course-by-attributes-localcourse-search)
      - 4.1.5 [Sort a local course by attributes: `localcourse sort`](#4-1-5-sort-a-local-course-by-attributes-localcourse-sort)
-   - 4.2 [Commands for partnercourse](#4-2-commands-for-partnercourse)
-     - 4.2.1 [List all partnercourses: `partnercourse list`](#4-2-1-list-all-partnercourses-partnercourse-list)
-     - 4.2.2 [Add a partnercourse: `partnercourse add`](#4-2-2-add-a-partnercourse-partnercourse-add)
-     - 4.2.3 [Delete a partnercourse: `partnercourse delete`](#4-2-3-delete-a-partnercourse-partnercourse-delete)
-     - 4.2.4 [Search a partnercourse by attributes: `partnercourse search`](#4-2-4-search-a-partnercourse-by-attributes-partnercourse-search)
-     - 4.2.5 [Sort a partnercourse by attributes: `partnercourse sort`](#4-2-5-sort-a-partnercourse-by-attributes-partnercourse-sort)
+   - 4.2 [Commands for partner course](#4-2-commands-for-partnercourse)
+     - 4.2.1 [List all partner courses: `partnercourse list`](#4-2-1-list-all-partnercourses-partnercourse-list)
+     - 4.2.2 [Add a partner course: `partnercourse add`](#4-2-2-add-a-partnercourse-partnercourse-add)
+     - 4.2.3 [Delete a partner course: `partnercourse delete`](#4-2-3-delete-a-partnercourse-partnercourse-delete)
+     - 4.2.4 [Search a partner course by attributes: `partnercourse search`](#4-2-4-search-a-partnercourse-by-attributes-partnercourse-search)
+     - 4.2.5 [Sort a partner course by attributes: `partnercourse sort`](#4-2-5-sort-a-partnercourse-by-attributes-partnercourse-sort)
    - 4.3 [Commands for universities](#4-3-commands-for-universities)
      - 4.3.1 [List all universities: `university list`](#4-3-1-list-all-universities-university-list)
      - 4.3.2 [Search a university by attributes: `university search`](#4-3-2-search-a-university-by-attributes-university-search)
      - 4.3.3 [Sort a university by attributes: `university sort`](#4-3-3-sort-a-university-by-attributes-university-sort)
    - 4.4 [Commands for mappings](#4-4-commands-for-mappings)
-     - 4.4.1 [List all mappings: `mapping list`](#4-4-1-list-all-mappings-mapping-list
+     - 4.4.1 [List all mappings: `mapping list`](#4-4-1-list-all-mappings-mapping-list)
      - 4.4.2 [Add a mapping: `mapping add`](#4-4-2-add-a-mapping-mapping-add)
      - 4.4.3 [Delete a mapping: `mapping delete`](#4-4-3-delete-a-mapping-mapping-delete)
      - 4.4.4 [Search a mapping by attributes: `mapping search`](#4-4-4-search-a-mapping-by-attributes-mapping-search)
@@ -112,6 +112,7 @@ Throughout this guide, icons are used to highlight important information, so do 
 
 <br/>
 <br/>
+
 ## 4. Installation
 
 1. Ensure you have Java `11` or above installed in your Computer.
@@ -124,7 +125,12 @@ Throughout this guide, icons are used to highlight important information, so do 
    command to run the application.<br>
    You would be able to view SEPlendid's GUI shown below in a few seconds. The app contains a large sample data of 
    courses so that you can start planning for SEP immediately.<br>
-   ![Ui](images/StartupWindowUI.png)
+    <div class="centered-container">
+      <img src="images/StartupWindowUI.png" alt="UI" class="resized-image">
+    </div>
+    <div class = "centered-content" >
+      <p class = "image-caption"> Figure 1.1 Shows the SEPlendid's GUI upon opening.
+    </div>
 
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will
    open the help window.<br>
@@ -163,7 +169,7 @@ SEPlendid's GUI consists of these four main components:
 Refer to the annotated diagram of SEPlendid's GUI which is numbered accordingly:
 
 <div class="centered-container">
-  <img src="images/AnnotatedUi.png" alt="Annotateed GUI" class="resized-image">
+  <img src="images/AnnotatedUi.png" alt="Annotated GUI" class="resized-image">
 </div>
 <div class = "centered-content" >
   <p class = "image-caption"> Figure 1.2 Shows the SEPlendid's Starting GUI.
@@ -192,7 +198,7 @@ e.g. `localcourse sort [localname]` will sort the list of local courses by their
 | `partnercourse` | Courses offered by NUS’ partner universities       |
 | `mapping`       | Mappings between local courses and partner courses |
 | `university`    | NUS’ partner universities                          |
-| `note`          | A note to keep track of items                      |
+| `note`          | Your own notes                                     |
 
 Each of these data types have certain attributes. These are the columns or data that will be displayed for each 
 command group: 
@@ -229,11 +235,11 @@ command group:
 
 `note`:
 
-| Attribute  | Description                   |
-|------------|-------------------------------|
-| `index`    | Index for the particular note |
-| `content`  | The content of the note       |
-| `tag`      | Tag used to organise notes    |
+| Attribute | Description         |
+|-----------|---------------------|
+| `index`   | Index of the note   |
+| `content` | Content of the note |
+| `tag`     | Tag of the note     |
 
 
 * The command format is `command-word action-word [parameters]`. <br /> `action-word`s include `sort`, `search`, `add`, 
@@ -328,6 +334,7 @@ Overview of SEPlendid's commands:
 
 <br />
 <br />
+
 ## 4.1. Commands for localcourse
 
 ### 4.1.1. List all local courses: `localcourse list`
@@ -815,6 +822,24 @@ Clears all tags for the specified note according to its index. This is useful wh
 <br />
 <br />
 
+### 4.5.7. Search notes by tag: `note search`
+
+Searches for notes which tag contains the value `tagKeyword`. This is useful when:
+- you wish to find your notes with the tags you are interested in. 
+
+**Format:** `note search [tagKeyword]`
+
+**Example:**
+<div class="centered-container">
+  <img src="images/NoteSearchUi.png" alt="Note Search UI" class="resized-image">
+</div>
+<div class = "centered-content" >
+  <p class = "image-caption"> Figure 1.3 Shows the note which tags contains the keyword.
+</div>
+
+<br />
+<br />
+
 ### 4.6. Viewing help : `help` 
 
 Results in a pop-up window for you to copy the URL into an external browser to view SEPlendid's user guide.
@@ -963,7 +988,7 @@ contains the data of your previous SEPlendid home folder.
         <td><code>[universityname]</code></td>
     </tr>
     <tr>
-        <td rowspan="6"><code>note</code></td>
+        <td rowspan="7"><code>note</code></td>
         <td><code>list</code></td>
         <td>None.</td>
     </tr>
@@ -986,6 +1011,10 @@ contains the data of your previous SEPlendid home folder.
     <tr>
         <td><code>cleartag</code></td>
         <td><code>[index]</code></td>
+    </tr>
+    <tr>
+        <td><code>search</code></td>
+        <td><code>[tagKeyword]</code></td>
     </tr>
 </table>
 

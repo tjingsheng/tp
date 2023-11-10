@@ -5,6 +5,8 @@
 
 ### Project: SEPlendid
 
+**Team Member: Lam Cheng Hou**
+
 **SEPlendid** is a versatile application used by prospective exchangers to plan their Student Exchange Programme (SEP) 
 study plans. Students from NUS Computing can use this CLI-based application, with a beautiful GUI, to view partner 
 universities and course mappings. The application is also bundled with many other useful features.
@@ -109,8 +111,8 @@ Given below are my contributions to the project.
 
 * **Documentation**:
   * User Guide:
-    * Added `Command Format1` section [\#35](https://github.com/AY2324S1-CS2103T-W10-2/tp/pull/35)
-    * Add `Command Summary` section [\#35](https://github.com/AY2324S1-CS2103T-W10-2/tp/pull/35)
+    * Added `Command Format` section [\#35](https://github.com/AY2324S1-CS2103T-W10-2/tp/pull/35)
+    * Added `Command Summary` section [\#35](https://github.com/AY2324S1-CS2103T-W10-2/tp/pull/35)
     * Added documentation for the `mapping` features [\#35](https://github.com/AY2324S1-CS2103T-W10-2/tp/pull/35)
     * Modified site-wide settings: [\#35](https://github.com/AY2324S1-CS2103T-W10-2/tp/pull/35)
   * Developer Guide:
@@ -142,7 +144,6 @@ Given below are my contributions to the project.
   [forum dashboard](https://nus-cs2103-ay2324s1.github.io/dashboards/contents/forum-activities.html) and search
    for`lamchenghou`
   * Reported bugs and suggestions for other teams in the class: [PED repo](https://github.com/lamchenghou/ped/issues)
-  * Some parts of the history feature I added was adopted by several other class mates ([1](), [2]()) (`to be added soon`)
 
 * **Tools**:
   * Integrated CI

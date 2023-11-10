@@ -10,18 +10,25 @@ universities and course mappings.
 
 ## Introduction
 SEPlendid is splendid!
+Users can use commands in localcourse/partnercourse/university/mappings
+Users can also add notes.
+All in one place application! :D
 
 ## Summary of Contributions
 
 Given below are my contributions to the project.
 
-* **New Feature**: ```to be added soon```
-  * What it does: ```to be added soon```
+* **New Feature**: ```sort```
+  * What it does: 
+    - Sorts localcourse/partnercourse/university list according to their attributes
   * Justification: ```to be added soon```
   * Highlights: ```to be added soon```
   * Credits: *{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}*
 
-* **New Feature**: ```to be added soon```
+* **New Feature**: ```update partnercourse```
+  * What it does:
+    - Updates specified attribute in partnercourse.
+    - Cannot modify the university.
 
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=dlathyun&breakdown=true)
 
@@ -33,9 +40,11 @@ Given below are my contributions to the project.
 
 * **Documentation**:
   * User Guide:
-    * ```to be added```
+    * Partnercourse related commands
+    * Sort command
   * Developer Guide:
-    * ```to be added```
+    * Partnercourse related commands
+    * Sort command
 
 * **Community**:
   * PRs reviewed (with non-trivial review comments): ```to be added```

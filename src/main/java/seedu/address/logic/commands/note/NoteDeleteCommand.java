@@ -50,7 +50,7 @@ public class NoteDeleteCommand extends NoteCommand {
 
         int noteListSize = seplendidModel.getNoteCatalogue().getNoteList().size();
 
-        if (this.noteIndexToDelete == -1 || noteListSize < this.noteIndexToDelete) {
+        if (this.noteIndexToDelete <= -1 || noteListSize < this.noteIndexToDelete) {
             throw new CommandException(MESSAGE_NONEXISTENT_NOTE);
         }
 

@@ -11,18 +11,29 @@ universities and course mappings. The application is also bundled with many othe
 
 Given below are my contributions to the project.
 
-* **New Feature**: Added the ability to undo/redo previous commands.
-  * What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.
-  * Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.
-  * Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
-  * Credits: *{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}*
+* * **New Feature**: Added the ability to search for localcourses, partnercourses and universities.
+  * What it does: This feature allows the user to query for courses and universities they are interested in.
+  * Justification: This feature improves the product significantly because a user may wish to find the course or 
+    university they are interested in. The app will narrow down the search and allow for more easy retrieving and
+    viewing of the results.
 
-* **New Feature**: Added a history command that allows the user to navigate to previous commands using up/down keys.
+* * **New Feature**: Added the ability to update for localcourses
+  * What it does: This feature allows the user to sort localcourses by its attributes - localcode and localname.
+  * Justification: This feature improves the product because a user will be able to view the courses in order, 
+    organising the large number of sample data.
 
-* **Code contributed**: [RepoSense link]()
+* * **New Feature**: Added the ability to list universities
+* What it does: This feature allows the user to retrieve all the information of universities.
+* Justification: This feature allows the user to view all the universities offered by NUS Computing, allowing them to 
+  choose and research on the universities they are interested in.
+
+
+* **Code contributed**: [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=alyssaongyx&breakdown=false&sort=groupTitle%20dsc&sortWithin=title&since=2023-09-22&timeframe=commit&mergegroup=&groupSelect=groupByRepos)
 
 * **Project management**:
-  * Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
+  * Managed releases `v1.2` (1 release) on GitHub
+  * Closed milestone `v1.3` and `v1.3b` (2 milstones)
+  * Review and merge PRs
 
 * **Enhancements to existing features**:
   * Updated the GUI color scheme (Pull requests [\#33](), [\#34]())
@@ -30,8 +41,16 @@ Given below are my contributions to the project.
 
 * **Documentation**:
   * User Guide:
-    * Added documentation for the features `delete` and `find` [\#72]()
-    * Did cosmetic tweaks to existing documentation of features `clear`, `exit`: [\#74]()
+    * Added documentation for `localcourse`, `partnercourse`, `university` and `note` details 
+    * Did cosmetic tweaks to the entire document, eg. adding of whitespaces
+    * Added Icons used in the User Guide
+    * Added Screenshots and Captions for all of the features except `mapping`
+    * Added How to use the User Guide section
+    * Added the Quick Reference Guide section
+    * Added the Introduction section
+    * Edited the command summary section to add note's `cleartag` feature
+    * Fix documentation bugs in the User Guide
+    * Add description for each feature in the User Guide
   * Developer Guide:
     * Added implementation details of the `delete` feature.
 

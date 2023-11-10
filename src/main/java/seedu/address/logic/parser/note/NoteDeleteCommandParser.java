@@ -1,16 +1,19 @@
 package seedu.address.logic.parser.note;
 
 
+import static seedu.address.logic.parser.CliSyntax.PARAMETER_CONTENT;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_INDEX;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
 import seedu.address.logic.commands.note.NoteDeleteCommand;
+import seedu.address.logic.commands.note.NoteUpdateCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.SeplendidArgumentMap;
 import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.messages.UsageMessage;
+import seedu.address.model.note.Content;
 
 
 /**
@@ -41,9 +44,12 @@ public class NoteDeleteCommandParser implements Parser<NoteDeleteCommand> {
         }
 
         // All arguments should be a non-empty {@code Optional}
-        Integer noteIndex = Integer.valueOf(parameterToArgMap.getValue(PARAMETER_INDEX).get());
-
-        return new NoteDeleteCommand(noteIndex);
+        try {
+            Integer noteIndex = Integer.valueOf(parameterToArgMap.getValue(PARAMETER_INDEX).get());
+            return new NoteDeleteCommand(noteIndex);
+        } catch (NumberFormatException e) {
+            return new NoteDeleteCommand(-1);
+        }
     }
 
 }

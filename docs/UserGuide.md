@@ -36,122 +36,44 @@ If you are a new user, please head over to  [How to use the User Guide](#) to st
 <div class= "toc">
 
 1. [About SEPlendid](#1-about-seplendid)
-
-
 2. [Quick start](#2-quick-start)
-
-
 3. [A Short Tutorial](#3-a-short-tutorial)
-
-
    - 3.1 [Graphical User Interface (GUI)](#3-1-graphical-user-interface-gui)
-
-
    - 3.2 [Command Format](#3-2-command-format)
-
-
    - 3.3 [Execute your first command](#3-3-execute-your-first-command)
-
-
 4. [Commands](#4-commands)
-
-
    - 4.1 [Commands for localcourse](#4-1-commands-for-localcourse)
-
-
      - 4.1.1 [List all localcourses: `localcourse list`](#4-1-1-list-all-localcourses-localcourse-list)
-
-
      - 4.1.2 [Add a local course: `localcourse add`](#4-1-2-add-a-local-course-localcourse-add)
-
-
      - 4.1.3 [Delete a local course: `localcourse delete`](#4-1-3-delete-a-local-course-localcourse-delete)
-
-
      - 4.1.4 [Search a local course by attributes: `localcourse search`](#4-1-4-search-a-local-course-by-attributes-localcourse-search)
-
-
      - 4.1.5 [Sort a local course by attributes: `localcourse sort`](#4-1-5-sort-a-local-course-by-attributes-localcourse-sort)
-
-
    - 4.2 [Commands for partnercourse](#4-2-commands-for-partnercourse)
-
-
      - 4.2.1 [List all partnercourses: `partnercourse list`](#4-2-1-list-all-partnercourses-partnercourse-list)
-
-
      - 4.2.2 [Add a partnercourse: `partnercourse add`](#4-2-2-add-a-partnercourse-partnercourse-add)
-
-
      - 4.2.3 [Delete a partnercourse: `partnercourse delete`](#4-2-3-delete-a-partnercourse-partnercourse-delete)
-
-
      - 4.2.4 [Search a partnercourse by attributes: `partnercourse search`](#4-2-4-search-a-partnercourse-by-attributes-partnercourse-search)
-
-
      - 4.2.5 [Sort a partnercourse by attributes: `partnercourse sort`](#4-2-5-sort-a-partnercourse-by-attributes-partnercourse-sort)
-
-
    - 4.3 [Commands for universities](#4-3-commands-for-universities)
-
-
      - 4.3.1 [List all universities: `university list`](#4-3-1-list-all-universities-university-list)
-
-
      - 4.3.2 [Search a university by attributes: `university search`](#4-3-2-search-a-university-by-attributes-university-search)
-
-
      - 4.3.3 [Sort a university by attributes: `university sort`](#4-3-3-sort-a-university-by-attributes-university-sort)
-
-
    - 4.4 [Commands for mappings](#4-4-commands-for-mappings)
-
-
-     - 4.4.1 [List all mappings: `mapping list`](#4-4-1-list-all-mappings-mapping-list)
-
-
+     - 4.4.1 [List all mappings: `mapping list`](#4-4-1-list-all-mappings-mapping-list
      - 4.4.2 [Add a mapping: `mapping add`](#4-4-2-add-a-mapping-mapping-add)
-
-
      - 4.4.3 [Delete a mapping: `mapping delete`](#4-4-3-delete-a-mapping-mapping-delete)
-
-
      - 4.4.4 [Search a mapping by attributes: `mapping search`](#4-4-4-search-a-mapping-by-attributes-mapping-search)
-
-
      - 4.4.5 [Sort a mapping by attributes: `mapping sort`](#4-4-5-sort-a-mapping-by-attributes-mapping-sort)
-
-
    - 4.5 [Commands for notes](#4-5-commands-for-notes)
-
-
      - 4.5.1 [List all notes: `note list`](#4-5-1-list-all-notes-note-list)
-
-
      - 4.5.2 [Add a note: `note add`](#4-5-2-add-a-note-note-add)
-
-
      - 4.5.3 [Delete a note: `note delete`](#4-5-3-delete-a-note-note-delete)
-
-
      - 4.5.4 [Update a note: `note update`](#4-5-4-update-a-note-note-update)
-
-
      - 4.5.5 [Tag a note: `note tag`](#4-5-5-tag-a-note-note-tag)
-
-
      - 4.5.6 [Clear tag a note: `note cleartag`](#4-5-6-clear-tags-of-a-note-note-cleartag)
-
-
    - 4.6 [Viewing help : `help`](#4-5-6-viewing-help--help)
-
-
    - 4.7 [Saving the data](#4-5-7-saving-the-data)
-
-
 5. [FAQ](#5-faq)
-
-
 6. [Command summary](#6-command-summary)
 
 </div>
@@ -178,9 +100,9 @@ of the commands available in SEPlendid.
 <br />
 <br />
 
-## 3. Admonitions used in this User Guide
+## 3. Icons used in this User Guide
 
-Throughout this guide, admonitions are used to highlight important information, so do pay **special** attention to them:
+Throughout this guide, icons are used to highlight important information, so do pay **special** attention to them:
 
 | Icon                     | Meaning                                  |
 |--------------------------|------------------------------------------|
@@ -188,7 +110,8 @@ Throughout this guide, admonitions are used to highlight important information, 
 | :bulb: Tip               | Information you might find useful        |
 | :exclamation: Warning    | Information you should be cautious about | 
 
-
+<br/>
+<br/>
 ## 4. Installation
 
 1. Ensure you have Java `11` or above installed in your Computer.
@@ -214,7 +137,8 @@ Throughout this guide, admonitions are used to highlight important information, 
 
     * `exit` : Exits SEPlendid.
 
-6. If you are an experienced user, refer to the [Commands](#4-commands) below for more details of each feature and command.
+6. If you are an experienced user, refer to the [Commands](#4-commands) below for more details of each feature and 
+   command.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -402,6 +326,8 @@ Overview of SEPlendid's commands:
 - Behaviour of the command (for both valid and invalid inputs)
 - Examples of valid and invalid inputs
 
+<br />
+<br />
 ## 4.1. Commands for localcourse
 
 ### 4.1.1. List all local courses: `localcourse list`
@@ -415,6 +341,7 @@ Lists all possible local courses that can be mapped, offered by NUS Computing. T
 - you wish to verify that a local course has been updated successfully.
 
 **Format**: `localcourse list`
+- This results in the displaying of all the available localcourses provided by NUS Computing.
 
 Refer to the figure below to view the outcome of the execution of the command:
 
@@ -435,9 +362,11 @@ when:
 - you are adding a new local course offered by NUS Computing.
 - you wish to add a local course that is not preloaded in SEPlendid.
 
-**Format:** `localcourse add [localcode] [localname] [units] [description]`
+**Format:** `localcourse add [localcode] [localname] [unit] [description]`
 
 **Example**: `localcourse add [CS1234] [ProgrammingFun] [4.0] [fun mod]`
+- This adds a localcourse with the course code 'CS1234' with the localname 'ProgrammingFun' which fulfils '4.0' units 
+and has a description of a 'fun mod'
 
 Refer to the figure below to view the outcome of the execution of the command:
 
@@ -463,6 +392,7 @@ Deletes local course with course code identified by `localcode`. This is useful 
 **Format:** `localcourse delete [localcode]`
 
 **Example:** `localcourse delete [CS1234]`
+- This deletes a localcourse with the course code 'CS1234'
 
 <div class="centered-container">
   <img src="images/LocalcourseDeleteUi.png" alt="Localcourse Delete UI" class="resized-image">
@@ -477,7 +407,7 @@ Deletes local course with course code identified by `localcode`. This is useful 
 ### 4.1.4. Update a local course: `localcourse update`
 
 Updates specified attributes of a local course, with course code identified by `localcode`.
-These local course attributes include localcode, localname, localunit and localdescription. This is useful when:
+These local course attributes include localcode, localname, unit and localdescription. This is useful when:
 - you wish to update a localcourse if there are changes made by NUS Computing.
 
 <box type="tip" icon=":bulb:" >
@@ -487,6 +417,7 @@ These local course attributes include localcode, localname, localunit and locald
 **Format:** `localcourse update [localcode] [localcourseattribute] [updatedValue]`
 
 **Example:** `localcourse update [BT1101] [localcode] [BT1102]`
+- This updates a localcourse with the course code 'BT1101' to 'BT1102'
 
 <div class="centered-container">
   <img src="images/LocalcourseUpdateUi.png" alt="Localcourse Update UI" class="resized-image">
@@ -941,7 +872,6 @@ contains the data of your previous SEPlendid home folder.
 --------------------------------------------------------------------------------------------------------------------
 ## 6. Command summary
 
-### 6.1 
 <table class="bordered-table">
     <tr>
         <td><code>command-word</code></td>

@@ -8,8 +8,6 @@ title: "Home"
 
 ![Ui](images/MappingListUi.png)
 
-
-
 **SEPlendid is a desktop application for researching on your modules mapping, helping you plan for your upcoming 
 Student Exchange Programme (SEP).** While it 
 has a GUI, most of the 

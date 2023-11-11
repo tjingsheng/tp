@@ -90,7 +90,8 @@ start planning for your SEP study guide!
 7. [Command summary](#7-command-summary)
 
 </div>
-
+<br/>
+<br/>
 --------------------------------------------------------------------------------------------------------------------
 
 ## 1. How to navigate this User Guide?
@@ -157,12 +158,18 @@ Throughout this guide, icons are used to highlight important information, so do 
 6. If you are an experienced user, refer to the [Commands](#4-commands) below for more details of each feature and
    command.
 
+<br/>
+<br/>
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## 4. Quick Reference Guide
 
 This section covers important information for you to utilise SEPlendid to its fullest capacity. You will learn how to
 navigate SEPlendid effectively and the commands section will cover on how you can run essential features on SEPlendid.
+
+<br/>
+<br/>
 
 ### 4.1 Graphical User Interface (GUI)
 
@@ -186,8 +193,8 @@ Refer to the annotated diagram of SEPlendid's GUI which is numbered accordingly:
   <p class = "image-caption"> Figure 1.2 Shows the SEPlendid's Starting GUI.
 </div>
 
-<br />
-<br />
+<br/>
+<br/>
 
 ### 4.2 Command Format
 
@@ -264,7 +271,7 @@ command group:
 | `content` | Content of the note |
 | `tag`     | Tag of the note     |
 
-* The command format is `command-word action-word [parameters]`. <br /> `action-word`s include `sort`, `search`, `add`,
+* The command format is `command-word action-word [parameters]`. <br/> `action-word`s include `sort`, `search`, `add`,
   `delete`,
   `update`, `tag`, but not all `action-word`s can be used after each `command-word`. Refer to the [Command Summary]
   (#command-summary)
@@ -272,7 +279,7 @@ command group:
 
 * `[parameters]` refer to any number of parameters which can follow an `action-word`. For instance, for the
   `localcourse add` command, the full format is `localcourse add [localcode] [localname]`, which signifies that we
-  have two parameters (`localcode` and `localname`) to fill. <br />
+  have two parameters (`localcode` and `localname`) to fill. <br/>
   An invocation of the command is exemplified by:
   > `localcourse add [CS1010] [Programming Methodology]`.
 
@@ -286,6 +293,8 @@ command group:
   as space characters surrounding line-breaks may be omitted when copied over to the application.
 
 </box>
+<br/>
+<br/>
 
 ### 4.3 Your first command
 
@@ -344,8 +353,8 @@ Conducting these checks would prevent error messages and result in more efficien
 
 Now, you are equipped with the basics to start using SEPlendid!
 
-<br />
-<br />
+<br/>
+<br/>
 
 ## 5. Commands
 
@@ -358,10 +367,12 @@ Overview of SEPlendid's commands:
 - Behaviour of the command (for both valid and invalid inputs)
 - Examples of valid and invalid inputs
 
-<br />
-<br />
+<br/>
+<br/>
 
 ### 5.1 Commands for local courses
+
+<br/>
 
 #### 5.1.1 List all local courses: `localcourse list`
 
@@ -387,7 +398,7 @@ Refer to the figure below to view the outcome of the execution of the command:
 </div>
 
 <br/>
-<br />
+<br/>
 
 #### 5.1.2 Add a local course: `localcourse add`
 
@@ -467,8 +478,8 @@ These local course attributes include `localcode`, `localname`, `unit` and `loca
   <p class = "image-caption"> Figure 1.3 Shows the updated local course BT1101 to BT1102.
 </div>
 
-<br />
-<br />
+<br/>
+<br/>
 
 #### 5.1.5 Search for a local course by an attribute: `localcourse search`
 
@@ -491,8 +502,8 @@ This is useful when:
   <p class = "image-caption"> Figure 1.3 Shows the searched local course BT2102.
 </div>
 
-<br />
-<br />
+<br/>
+<br/>
 
 #### 5.1.6 Sort all local courses by an attribute: `localcourse sort`
 
@@ -511,12 +522,12 @@ Sorts local courses according to attributes such as localname and localcode. Thi
   <p class = "image-caption"> Figure 1.3 Shows the searched local course BT2102.
 </div>
 
-<br />
-<br />
+<br/>
+<br/>
 
 ### 5.2 Commands for partner courses
 
-<br />
+<br/>
 
 #### 5.2.1 List all partner courses: `partnercourse list`
 
@@ -532,8 +543,8 @@ Lists all available partner courses, offered by every partner university. This i
 
 **Expected Outcome:** SEPlendid's GUI will show the list of partner courses available.
 
-<br />
-<br />
+<br/>
+<br/>
 
 #### 5.2.2 Add a partner course: `partnercourse add`
 
@@ -553,8 +564,8 @@ Adds a partner course with the specified partner course attributes. This is usef
 
 **Expected Outcome:** SEPlendid's GUI will show you the added partnercourse.
 
-<br />
-<br />
+<br/>
+<br/>
 
 #### 5.2.3 Delete a partner course: `partnercourse delete`
 
@@ -572,8 +583,8 @@ Deletes partner course with attributes such as university and partnercode respec
 
 **Expected Outcome:** SEPlendid's GUI will show the deleted partnercourse.
 
-<br />
-<br />
+<br/>
+<br/>
 
 #### 5.2.4 Update a partner course: `partnercourse update`
 
@@ -588,8 +599,8 @@ These partner course attributes include partnercode, partnername, unit and descr
 
 **Expected Outcome:** SEPlendid's GUI will show the updated partnercourse.
 
-<br />
-<br />
+<br/>
+<br/>
 
 #### 5.2.5 Search for a partner course by an attribute: `partnercourse search`
 
@@ -607,8 +618,8 @@ This is useful when:
 
 **Expected Outcome:** SEPlendid's GUI will show you the searched partner course, CSE469.
 
-<br />
-<br />
+<br/>
+<br/>
 
 #### 5.2.6 Sort all partner courses by an attribute: `partnercourse sort`
 
@@ -622,12 +633,12 @@ Sorts local courses according to attributes such as `partnername` and `partnerco
 
 **Expected Outcome:** SEPlendid's GUI will show you the sorted partner courses according to `partnercode`.
 
-<br />
-<br />
+<br/>
+<br/>
 
 ### 5.3 Commands for universities
 
-<br />
+<br/>
 
 #### 5.3.1 List all universities: `university list`
 
@@ -647,8 +658,8 @@ Refer to the figure below to view the outcome of the execution of the command:
   <p class = "image-caption"> Figure 1.3 Shows the list of partner universities available for NUS Computing students.
 </div>
 
-<br />
-<br />
+<br/>
+<br/>
 
 #### 5.3.2 Search for a university by an attribute: `university search`
 
@@ -666,8 +677,8 @@ Searches universities that matches the keyword of the university name. This is u
   <p class = "image-caption"> Figure 1.3 Shows the searched university, Imperial College of London.
 </div>
 
-<br />
-<br />
+<br/>
+<br/>
 
 #### 5.3.3 Sort all universities by an attribute: `university sort`
 
@@ -686,12 +697,12 @@ Sorts universities by the university name, alphabetically. This is useful when:
   <p class = "image-caption"> Figure 1.3 Shows the sorted university list.
 </div>
 
-<br />
-<br />
+<br/>
+<br/>
 
 ### 5.4 Commands for mappings
 
-<br />
+<br/>
 
 #### 5.4.1 List all mappings: `mapping list`
 
@@ -719,8 +730,8 @@ Refer to the figure below to view the outcome of the execution of the command:
   <p class="image-caption"> Figure 3.1 Shows the entire list of mappings stored in SEPlendid.
 </div>
 
-<br />
-<br />
+<br/>
+<br/>
 
 #### 5.4.2 Add a mapping: `mapping add`
 
@@ -748,8 +759,8 @@ Refer to the figure below to view the outcome of the execution of the command:
   <p class="image-caption"> Figure 3.2 Shows the added mapping of local course IS4231 to INFC40 offered by Lund University.
 </div>
 
-<br />
-<br />
+<br/>
+<br/>
 
 #### 5.4.3 Delete a mapping: `mapping delete`
 
@@ -774,8 +785,8 @@ Refer to the figure below to view the outcome of the execution of the command:
   University.
 </div>
 
-<br />
-<br />
+<br/>
+<br/>
 
 #### 5.4.4 Search a mapping by attributes: `mapping search`
 
@@ -799,8 +810,8 @@ Refer to the figure below to view the outcome of the execution of the command:
   <p class="image-caption"> Figure 3.4 Shows the search for mappings of local course CS3230.
 </div>
 
-<br />
-<br />
+<br/>
+<br/>
 
 #### 5.4.5 Sort a mapping by attributes: `mapping sort`
 
@@ -825,12 +836,12 @@ Refer to the figure below to view the outcome of the execution of the command:
   <p class="image-caption"> Figure 3.5 shows the sorting of mappings by their local course codes in ascending order.
 </div>
 
-<br />
-<br />
+<br/>
+<br/>
 
 ### 5.5 Commands for notes
 
-<br />
+<br/>
 
 #### 5.5.1 List all notes: `note list`
 
@@ -851,8 +862,8 @@ Lists all notes that you have recorded in SEPlendid. This is useful when:
   <p class = "image-caption"> Figure 1.3 Shows the list of notes you have recorded.
 </div>
 
-<br />
-<br />
+<br/>
+<br/>
 
 #### 5.5.2 Add a note: `note add`
 
@@ -871,8 +882,8 @@ Adds a note with the content you wish to add with a tag. This is useful when:
   <p class = "image-caption"> Figure 1.3 Shows the note you have added.
 </div>
 
-<br />
-<br />
+<br/>
+<br/>
 
 #### 5.5.3 Delete a note: `note delete`
 
@@ -890,8 +901,8 @@ Deletes specified index of the note. This is useful when:
   <p class = "image-caption"> Figure 1.3 Shows the note you have deleted.
 </div>
 
-<br />
-<br />
+<br/>
+<br/>
 
 #### 5.5.4 Update a note: `note update`
 
@@ -910,8 +921,8 @@ Updates specified note according to the index and updates the content of the not
   <p class = "image-caption"> Figure 1.3 Shows the note you want to delete.
 </div>
 
-<br />
-<br />
+<br/>
+<br/>
 
 #### 5.5.5 Tag a note: `note tag`
 
@@ -929,8 +940,8 @@ Adds a tag to the specified note according to the index. This is useful when:
   <p class = "image-caption"> Figure 1.3 Shows the notes updated with a tag you have specified.
 </div>
 
-<br />
-<br />
+<br/>
+<br/>
 
 #### 5.5.6 Clear tags of a note: `note cleartag`
 
@@ -948,8 +959,8 @@ Clears all tags for the specified note according to its index. This is useful wh
   <p class = "image-caption"> Figure 1.3 Shows the note where all the tags have been removed.
 </div>
 
-<br />
-<br />
+<br/>
+<br/>
 
 #### 5.5.7 Search notes by tag: `note search`
 
@@ -967,8 +978,8 @@ Searches for notes which tag contains the value `tagKeyword`. This is useful whe
   <p class = "image-caption"> Figure 1.3 Shows the note which tags contains the keyword.
 </div>
 
-<br />
-<br />
+<br/>
+<br/>
 
 #### 5.6 View help : `help`
 
@@ -978,8 +989,8 @@ Format: `help`
 
 ![Help](Images/Help.jpg)
 
-<br />
-<br />
+<br/>
+<br/>
 
 #### 5.7 Exit SEPlendid : `exit`
 
@@ -987,13 +998,16 @@ Exits SEPlendid app.
 
 Format: `exit`
 
-<br />
-<br />
+<br/>
+<br/>
 
 #### 5.8 Save the data
 
 SEPlendid's data are saved in the hard disk automatically after any command that changes the data. There is no need to
 save manually.
+
+<br/>
+<br/>
 
 #### Editing the data file
 
@@ -1005,6 +1019,8 @@ welcome to update data directly by editing that data file.
 file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
 </box>
 
+<br/>
+<br/>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -1022,8 +1038,8 @@ contains the data of your previous SEPlendid home folder.
 
 - `localcourse search [localdescription] [description_keyword]`
 
-<br />
-<br />
+<br/>
+<br/>
 
 --------------------------------------------------------------------------------------------------------------------
 

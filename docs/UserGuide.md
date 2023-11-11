@@ -82,8 +82,8 @@ start planning for your SEP study guide!
         - 5.5.3 [Delete a note: `note delete`](#553-delete-a-note-note-delete)
         - 5.5.4 [Update a note: `note update`](#554-update-a-note-note-update)
         - 5.5.5 [Tag a note: `note tag`](#555-tag-a-note-note-tag)
-        - 5.5.6 [Clear tag a note: `note cleartag`](#556-clear-tags-of-a-note-note-cleartag)
-    - 5.6 [View help : `help`](#56-view-help--help-)
+        - 5.5.6 [Clear all tags from a note: `note cleartag`](#556-clear-all-tags-in-a-note-note-cleartag)
+    - 5.6 [View help : `help`](#56-view-help--help)
     - 5.7 [Exit SEPlendid: `exit`](#57-exit-seplendid--exit)
     - 5.8 [Save the data](#58-save-the-data)
 6. [FAQ](#6-faq)
@@ -944,7 +944,7 @@ Adds a tag to the specified note according to the index. This is useful when:
 <br>
 <br>
 
-#### 5.5.6 Clear tags of a note: `note cleartag`
+#### 5.5.6 Clear all tags in a note: `note cleartag`
 
 Clears all tags for the specified note according to its index. This is useful when:
 

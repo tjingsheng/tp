@@ -202,13 +202,11 @@ Refer to the annotated diagram of SEPlendid's GUI which is annotated respectivel
 We will be using SEPlendid's commands throughout this User Guide. The following figure provides a visual example on
 what a command consist of:
 
-<box type="info" seamless>
-
 **Notes about the data and command format:**<br>
 
-The commands of SEPlendid can be classified into five groups for your easy recall. Each group corresponds to one of
-SEPlendid's data type and also represents a 'Command Word'. Each command begins with a 'Command Word,' coupled with an
-'Action Word,' followed by either an attribute, the required command arguments, or both.
+The commands of SEPlendid can be classified into five main groups for your easy recall. Each group corresponds to one of
+SEPlendid's data type and also represents a 'Command Word'. Each command begins with a 'Command Word' coupled with an
+'Action Word' followed by either an 'Attribute', the required command 'Argument(s)', or both.
 
 For example:
 
@@ -216,13 +214,14 @@ For example:
 localcourse search [localname] [computing]
 ```
 
-This command consists of the Command Word `localcourse`, the Action Word `sort`, the attribute `localname` and the
-required argument `computing`. This command returns you the all local courses with the word 'computing' within its local
+This command consists of the Command Word `localcourse`, the Action Word `sort`, the Attribute `localname` and the
+required Argument `computing`. This command returns you the all local courses with the word 'computing' in its local
 name.
 
-**Command Words:**
+**Command Words** :
 
-There are five command words. Each of the commad
+There are seven Command Words you may use. The first five corresponds to a SEPlendid data type. The remaining two,
+`exit` and `help` command exists as a single 'Command Word' with their own unique purposes.
 
 | Command Word    | Description                                        |
 |-----------------|----------------------------------------------------|
@@ -231,36 +230,64 @@ There are five command words. Each of the commad
 | `mapping`       | Mappings between local courses and partner courses |
 | `university`    | NUS’ partner universities                          |
 | `note`          | Your own notes                                     |
+| `help`          | The help command to open the help window           |
+| `exit`          | The exit command to exit SEPlendid                 |
 
-Each of these data types have certain attributes. These are the columns or data that will be displayed for each
-command group:
+<br>
+
+**Action Words** :
+
+<box type="warning" seamless>
+Not all Action Words are available for every Command Word.<br>
+
+You can visit the [command summary](#7-command-summary) section to see which Action Words are available for each Command
+Word.
+</box>
+
+| Action Word | Description                                        |
+|-------------|----------------------------------------------------|
+| `list`      | List all the data of the data type                 |
+| `add`       | Add a record of the data type                      |
+| `delete`    | Delete a record of the data type                   |
+| `update`    | Update a record of the data type                   |
+| `search`    | Search for a data type by an attribute             |
+| `sort`      | Sort all the data of the data type by an attribute |
+| `tag`       | Tag a note                                         |
+| `cleartag`  | Clear all tags from a note                         |
+
+<br>
+
+**Attributes** :
+
+Each of SEPlendid data types (or Command Words) have certain attributes. <br>
+These are the attributes for each data type:
 
 `localcourse`:
 
-| Attribute          | Description                          |
-|--------------------|--------------------------------------|
-| `localcode`        | Course code for the local course     |
-| `localname`        | Name of the local course             |
-| `unit`             | Number of units  of the local course |
-| `localdescription` | Description of the local course      |
+| Attribute          | Description                         |
+|--------------------|-------------------------------------|
+| `localcode`        | Course code of the local course     |
+| `localname`        | Name of the local course            |
+| `unit`             | Number of units of the local course |
+| `localdescription` | Description of the local course     |
 
 `partnercourse`:
 
 | Attribute     | Description                                        |
 |---------------|----------------------------------------------------|
-| `partnercode` | Course code for the partner course                 |
+| `partnercode` | Course code of the partner course                  |
 | `partnername` | Name of the partner course                         |
 | `university`  | The partner university offering the partner course |
-| `unit`        | Number of units  of the partner course             |
+| `unit`        | Number of units of the partner course              |
 | `description` | Description of the partner course                  |
 
 `mapping`:
 
 | Attribute     | Description                                        |
 |---------------|----------------------------------------------------|
-| `localcode`   | Course code for the local course                   |
+| `localcode`   | Course code of the local course                    |
 | `localname`   | Name of the local course                           |
-| `partnercode` | Course code for the partner course                 |
+| `partnercode` | Course code of the partner course                  |
 | `partnername` | Name of the partner course                         |
 | `university`  | The partner university offering the partner course |
 
@@ -272,28 +299,17 @@ command group:
 | `content` | Content of the note |
 | `tag`     | Tag of the note     |
 
-* The command format is `command-word action-word [parameters]`. <br> `action-word`s include `sort`, `search`, `add`,
-  `delete`,
-  `update`, `tag`, but not all `action-word`s can be used after each `command-word`. Refer to the [Command Summary]
-  (#command-summary)
-  for a quick overview of which `action-word`s can follow a `command-word`.
+<br>
 
-* `[parameters]` refer to any number of parameters which can follow an `action-word`. For instance, for the
-  `localcourse add` command, the full format is `localcourse add [localcode] [localname]`, which signifies that we
-  have two parameters (`localcode` and `localname`) to fill. <br>
-  An invocation of the command is exemplified by:
-  > `localcourse add [CS1010] [Programming Methodology]`.
-
-* The following characters do not exist in our datasets and are not accepted in our input: `[` and `]`.
-
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `exit`) will be
-  ignored.<br>
-  e.g. if the command specifies `help 123`, it will be interpreted as `help` `[coming soon]`.
-
-* If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines
-  as space characters surrounding line-breaks may be omitted when copied over to the application.
-
+<box type="warning" seamless>
+The following characters do not exist in our datasets and are not accepted in our input: `[` and `]`.
 </box>
+
+<box type="warning" seamless>
+If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines
+as space characters surrounding line-breaks may be omitted when copied over to the application.
+</box>
+
 <br>
 <br>
 

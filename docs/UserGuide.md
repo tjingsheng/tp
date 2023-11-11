@@ -12,23 +12,29 @@
 
 ## About SEPlendid
 
-SEPlendid is a **Course Mapping System** that allows NUS Computing students to seamlessly plan for
-their overseas courses, for the highly coveted Student Exchange Programmes (SEP). As a student, you can view and find
-course mappings in order to plan for your overseas studies without the hassle of creating complex Excel sheets.
-Utilise SEPlendid's **course mapping** function in order to quickly find possible mappings for certain courses you want
-to map. Finally, SEPlendid's **note-taking system** will assist you in organising your important information you
-will need for planning for your courses.
+SEPlendid is designed as a **Course Mapping System** specifically for you, NUS Computing students. It empowers you to
+seamlessly plan for your overseas courses, making the highly coveted Student Exchange Program (SEP) hassle-free. With
+SEPlendid, you can effortlessly view and find course mappings without the need for complex Excel sheets.
 
-This User Guide provides a comprehensive documentation on how you can streamline your process in your application for
-SEP. It includes:
+Take advantage of SEPlendid's **course mapping** function to quickly discover possible mappings for the courses you want
+to explore during your overseas studies. This feature is tailored to make your planning process smoother and more
+user-friendly.
 
-- **Step-by-step** instructions on how to launch SEPlendid
-- SEPlendid's myriad of features and commands
-- **Key parameters** to run SEPlendid smoothly
+Additionally, utilise SEPlendid's **note-taking system** to effortlessly organise crucial information for planning your
+courses. It's here to assist you in keeping track of all the important details you'll need for a successful SEP
+application.
 
-If you are a new user, please head over to  [How to navigate this User Guide?](#2-how-to-navigate-this-user-guide) to
-start planning for your study
-guide!
+This user guide has been crafted to provide you with comprehensive documentation on how you can streamline your
+application process for SEP. So, dive in and let SEPlendid be your guide as you embark on this exciting journey!
+
+This user guide bring you:
+
+- Easy-to-follow **Step-by-Step** instructions for launching SEPlendid
+- A comprehensive overview of **SEPlendid's** myriad of features and commands
+- Essential **Key Instructions** to run SEPlendid smoothly
+
+If you are a new user, please head over to  [How to navigate this User Guide?](#1-how-to-navigate-this-user-guide) to
+start planning for your SEP study guide!
 
 <br/> 
 

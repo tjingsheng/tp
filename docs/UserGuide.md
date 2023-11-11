@@ -96,21 +96,20 @@ start planning for your SEP study guide!
 
 ## 1. How to navigate this User Guide?
 
-As a new user in SEPlendid, this user guide serves as an easy-to-follow guide in aiding you in executing your first
-commands in SEPlendid, utilising SEPlendid to it's fullest potential!
+As a new user in SEPlendid, this user guide serves as an easy-to-follow guide, guiding you through the execution of your
+first commands in SEPlendid. You can unlock SEPlendid full potential in this guide!
 
-Here is a step-by-step instruction in navigating this user guide for **new** users:
+Here is a step-by-step instruction for you to navigate the user guide:
 
-1. Download SEPlendid by heading over to the [installation](#) section which provides a guided tour for you to get
-   started with SEPlendid.
-2. Get familiar with SEPlendid by heading over to the [Quick Reference Guide](#) section which shows you how to use
-   navigate SEPlendid efficiently.
+1. Download SEPlendid in your device by heading over to the [Installation](#3-installation) section.
+2. Quickly familarise yourself with SEPlendid by heading over to the [Quick Reference Guide](#4-quick-reference-guide)
+   section.
 
-If you are an **experienced** user, you can head over to the [Command Summary](#) section for a well-curated overview
-of the commands available in SEPlendid.
+If you are an **experienced** user, you can head over to the [Command summary](#7-command-summary) section for a
+well-curated overview of the commands available in SEPlendid.
 
-<br />
-<br />
+<br/>
+<br/>
 
 ## 2. Icons used in this User Guide
 

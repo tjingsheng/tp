@@ -133,9 +133,11 @@ Throughout this guide, icons are used to highlight important information, so do 
 3. Copy the file to the folder you want to use as the _home folder_ for SEPlendid.
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar seplendid.jar`
-   command to run the application.<br>
-   You would be able to view SEPlendid's GUI shown below in a few seconds. The app contains a large sample data of
-   courses so that you can start planning for SEP immediately.<br>
+   command to run SEPlendid.
+   <box type="info" seamless>
+   SEPlendid's GUI will appear on your screen in a few seconds. SEPlendid is preloaded with a large sample data of for
+   you to start planning for your SEP immediately.
+   </box>
     <div class="centered-container">
       <img src="images/StartupWindowUI.png" alt="UI" class="resized-image">
     </div>
@@ -147,14 +149,14 @@ Throughout this guide, icons are used to highlight important information, so do 
    open the help window.<br>
    Some example commands you can try:
 
-    * `university list` : Lists all of NUS' partner universities.
+    * `university list`: Lists all of NUS' partner universities.
 
     * `mapping search [localcode] [CS2103]`: Searches and displays all NUS-to-partner university course mappings
-      based on local NUS course code `CS2103`.
+      with the local code `CS2103`.
 
-    * `exit` : Exits SEPlendid.
+    * `exit`: Exits SEPlendid.
 
-6. If you are an experienced user, refer to the [Commands](#4-commands) below for more details of each feature and
+6. If you are an experienced user, refer to the [Commands](#5-commands) below for more details of each feature and
    command.
 
 <br>

@@ -145,8 +145,8 @@ Throughout this guide, icons are used to highlight important information, so do 
       <p class = "image-caption"> Figure 1.1 Shows the SEPlendid's GUI upon opening.
     </div>
 
-5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will
-   open the help window.<br>
+5. Type the command in the command box and press Enter to execute it. For example, typing **`help`** and pressing Enter
+   will open the help window.<br>
    Some example commands you can try:
 
     * `university list`: Lists all of NUS' partner universities.
@@ -315,60 +315,76 @@ as space characters surrounding line-breaks may be omitted when copied over to t
 
 ### 4.3 Your first command
 
-In order to get you started with SEPlendid's commands, we should try out a command together!
+In order to get you started with SEPlendid's commands, we should try out some commands together!
 
-Let's start with the most basic command `add` command. `add` command allows you to add a local, partner course or note.
+**The First Command** :
+Let's start with a `localcourse` command. The `localcourse` has an `add` Action Word to allow you to add a new local
+course into your SEPlendid. On top of that, we need some Arguments. For the `localcourse add` command, the arguments
+are `localcode`, `localname`, `unit` and, `localdescription`.
 
-One of the available commands for `add` is the command to add a localcourse into your storage.
+Here is how it looks like:
 
-**Format:** `localcourse add [localcode] [localname] [unit] [localdescription]`
-
-The first word of each command specifies the different core features with its own unique sets of functionalities.
-
-- `localcourse` tells SEPlendid that this command word would execute actions only for local courses
-- Attributes such as `localcode` and `localname` shows you what you should place in each portion of the command
+```
+localcourse add [localcode] [localname] [unit] [localdescription]
+```
 
 <box type="tip" icon=":bulb:" >
-    Tip: All the attributes for localcourse needs to be added.
+    None of the Arguments are optional. You have to provide all the required Arguments to SEPlendid. 
 </box>
 
+Now that you know how a `localcourse add` Command looks like, let's imagine a scenario:
 
-**Example**
-Let's imagine this scenario, there is a newly offered course by NUS Computing, CS2105. Interested with this course, you
-want to add this localcourse in SEPlendid.
+There is a newly offered course by NUS Computing, CS2105. Interested in this course, you want to add this localcourse
+into your SEPlendid.
 
-<br> 
+**Step-by-Step of your First Command** :
 
-**So how can you add CS2105 to SEPlendid?**
+Let's go build the command together.
 
-Firstly, you would need to input this command:
-`localcourse add [CS2105] [Introduction to Computer Networks] [4.0] [Web and Web applications]`
-
-Secondly, you would need to take note of the parameters that are required to be added:
+Firstly, you need to take note of the required Arguments:
 
 - `localcode`: CS2105
 - `localname`: Introduction to Computer Networks
 - `unit`: 4.0
-- `localdescription`: Web and Web applications
+- `localdescription`: This course provides computer networks teachings.
 
-Lastly, you should take note of invalid formats:
+Secondly, you must make sure your command is not invalid, here are some examples for you:
 
-- `localcourse add [CS2105]`
-  The attributes such as localname and units are compulsory.
-- `localcourse add CS2105 Introduction to Computer Networks 4.0`
-  The brackets ("[ ]") wrapping each attribute is compulsory.
-- `localcourse add`
-  There is insufficient information on what localcourse to add.
+- `localcourse add` You have provided no Arguments.
+- `localcourse add [CS2105]` You are missing the Arguments providing the local name and units.
+- `localcourse add CS2105 Introduction to Computer Networks 4.0` You are missing the compulsory square brackets ("[ ]")
+  wrapping each attribute.
 
-You should conduct these checks before executing the commands:
+Thirdly, you should conduct these checks before executing the commands:
 
-- [ ] I know what I would like to query e.g. localcourse, partnercourse, university etc.
+- [ ] I know what I would like to query For example, local course, partner course, university etc.
 - [ ] I know the restrictions of each command
 - [ ] I know "[ ]" are compulsory for wrapping each attribute
 
-Conducting these checks would prevent error messages and result in more efficient querying of results!
+<box type="tip" icon=":bulb:" >
+   Conducting these checks would prevent error messages and result in more efficient querying of results!
+</box>
 
-Now, you are equipped with the basics to start using SEPlendid!
+Lastly, putting it all together:
+Copy and execute the command into your SEPlendid's command input box
+
+```
+localcourse add [CS2105] [Introduction to Computer Networks] [4.0] [This course provides computer networks teachings.]
+```
+
+**Summarising Your First Command** :
+
+- The Command Word `localcourse` lets you inform SEPlendid that this command is related to your local courses.
+- The Action Word `add` lets you inform SEPlendid that you are adding a new record of the data type, in this case, a
+  local course.
+- The Argument `CS2105` lets you inform SEPlendid that the new local course has a local code of 'CS1234'.
+- The Argument `Introduction to Computer Networks` lets you inform SEPlendid that the new local course has a local name
+  of 'Introduction to Computer Networks'.
+- The Argument `4.0` lets you inform SEPlendid that the new local course is worth four units.
+- The Argument `This course provides computer networks teachings.` lets you inform SEPlendid that the new local course
+  has a description of 'This course provides computer networks teachings.'.
+
+Well done making your first command! Now, you are equipped with the basics to start using SEPlendid!
 
 <br>
 <br>
@@ -479,7 +495,7 @@ These local course attributes include `localcode`, `localname`, `unit` and `loca
 - you wish to update a local course if there are changes made by NUS Computing.
 
 <box type="tip" icon=":bulb:" >
-    Tip: You can check the updated localcourse using <code>localcourse list</code>
+    You can check the updated localcourse using <code>localcourse list</code>
 </box>
 
 **Format:** `localcourse update [localcode] [attribute] [updatedValue]`

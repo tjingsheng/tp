@@ -17,6 +17,7 @@ import seedu.address.seplendidui.UiUtil;
  */
 public class NoteTagCommand extends NoteCommand {
     public static final String MESSAGE_NONEXISTENT_NOTE = "Note not found, please put a valid index.";
+    public static final String MESSAGE_DUPLICATE_TAGS = "Note cannot have duplicated tags.";
     public static final String ACTION_WORD = "tag";
     public static final String MESSAGE_SUCCESS = "Note tagged: %1$s";
     private final Integer noteIndexToUpdate;
@@ -48,6 +49,9 @@ public class NoteTagCommand extends NoteCommand {
             throw new CommandException(MESSAGE_NONEXISTENT_NOTE);
         }
         Note oldNote = seplendidModel.getNoteCatalogue().getNoteList().get(this.noteIndexToUpdate - 1);
+        if (oldNote.getTags().contains(addTag)) {
+            throw new CommandException(MESSAGE_DUPLICATE_TAGS);
+        }
         oldNote.getTags().add(addTag);
         Note newNote = new Note(oldNote.getContent(), oldNote.getTags(), oldNote.getIndex());
         seplendidModel.setNote(oldNote, newNote);

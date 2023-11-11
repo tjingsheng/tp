@@ -9,7 +9,6 @@ public class PartnerCourseAttributeTest {
     @Test
     public void isValidPartnerCourseAttributeForSearch() {
         // invalid partnerCourseAttribute
-        assertFalse(PartnerCourseAttribute.isValidAttributeForSearch("units"));
         assertFalse(PartnerCourseAttribute.isValidAttributeForSearch(""));
         assertFalse(PartnerCourseAttribute.isValidAttributeForSearch(" "));
         assertFalse(PartnerCourseAttribute.isValidAttributeForSearch("a"));
@@ -18,13 +17,13 @@ public class PartnerCourseAttributeTest {
         assertFalse(PartnerCourseAttribute.isValidAttributeForSearch(null));
         assertFalse(PartnerCourseAttribute.isValidAttributeForSearch("PARTNERCODE"));
         assertFalse(PartnerCourseAttribute.isValidAttributeForSearch("PARTNERNAME"));
-        assertFalse(PartnerCourseAttribute.isValidAttributeForSearch("PARTNERUNIT"));
-        assertFalse(PartnerCourseAttribute.isValidAttributeForSearch("PARTNERDESCRIPTION"));
+        assertFalse(PartnerCourseAttribute.isValidAttributeForSearch("UNIT"));
+        assertFalse(PartnerCourseAttribute.isValidAttributeForSearch("DESCRIPTION"));
         assertFalse(PartnerCourseAttribute.isValidAttributeForSearch("UNIVERSITY"));
-        assertFalse(PartnerCourseAttribute.isValidAttributeForSearch("UNITS"));
         assertFalse(PartnerCourseAttribute.isValidAttributeForSearch("partner code"));
         assertFalse(PartnerCourseAttribute.isValidAttributeForSearch("PartnerCode"));
         assertFalse(PartnerCourseAttribute.isValidAttributeForSearch("PartnerName"));
+        assertFalse(PartnerCourseAttribute.isValidAttributeForSearch("unit"));
 
         // valid partnerCourseAttribute
         assertTrue(PartnerCourseAttribute.isValidAttributeForSearch("partnercode"));
@@ -36,8 +35,6 @@ public class PartnerCourseAttributeTest {
     @Test
     public void isValidPartnerCourseAttributeForSort() {
         // invalid partnerCourseAttribute
-        assertFalse(PartnerCourseAttribute.isValidAttributeForSort("units"));
-        assertFalse(PartnerCourseAttribute.isValidAttributeForSort("description"));
         assertFalse(PartnerCourseAttribute.isValidAttributeForSort(""));
         assertFalse(PartnerCourseAttribute.isValidAttributeForSort(" "));
         assertFalse(PartnerCourseAttribute.isValidAttributeForSort("a"));
@@ -46,28 +43,24 @@ public class PartnerCourseAttributeTest {
         assertFalse(PartnerCourseAttribute.isValidAttributeForSort(null));
         assertFalse(PartnerCourseAttribute.isValidAttributeForSort("PARTNERCODE"));
         assertFalse(PartnerCourseAttribute.isValidAttributeForSort("PARTNERNAME"));
-        assertFalse(PartnerCourseAttribute.isValidAttributeForSort("PARTNERUNIT"));
-        assertFalse(PartnerCourseAttribute.isValidAttributeForSort("PARTNERDESCRIPTION"));
-        assertFalse(PartnerCourseAttribute.isValidAttributeForSort("UNIVERSITY"));
+        assertFalse(PartnerCourseAttribute.isValidAttributeForSort("UNIT"));
         assertFalse(PartnerCourseAttribute.isValidAttributeForSort("DESCRIPTION"));
+        assertFalse(PartnerCourseAttribute.isValidAttributeForSort("UNIVERSITY"));
+        assertFalse(PartnerCourseAttribute.isValidAttributeForSort("partner code"));
+        assertFalse(PartnerCourseAttribute.isValidAttributeForSort("PartnerCode"));
+        assertFalse(PartnerCourseAttribute.isValidAttributeForSort("PartnerName"));
+        assertFalse(PartnerCourseAttribute.isValidAttributeForSort("unit"));
+        assertFalse(PartnerCourseAttribute.isValidAttributeForSort("description"));
 
         // valid partnerCourseAttribute
         assertTrue(PartnerCourseAttribute.isValidAttributeForSort("partnercode"));
         assertTrue(PartnerCourseAttribute.isValidAttributeForSort("partnername"));
         assertTrue(PartnerCourseAttribute.isValidAttributeForSort("university"));
-
-        // Additional invalid cases
-        assertFalse(PartnerCourseAttribute.isValidAttributeForSort("partner code"));
-        assertFalse(PartnerCourseAttribute.isValidAttributeForSort("PartnerCode"));
-        assertFalse(PartnerCourseAttribute.isValidAttributeForSort("PartnerName"));
-        assertFalse(PartnerCourseAttribute.isValidAttributeForSort("partnerunit"));
-        assertFalse(PartnerCourseAttribute.isValidAttributeForSort("description"));
     }
 
     @Test
     public void isValidPartnerCourseAttributeForUpdate() {
         // invalid partnerCourseAttribute
-        assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate("university"));
         assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate(""));
         assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate(" "));
         assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate("a"));
@@ -76,12 +69,13 @@ public class PartnerCourseAttributeTest {
         assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate(null));
         assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate("PARTNERCODE"));
         assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate("PARTNERNAME"));
-        assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate("UNITS"));
+        assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate("UNIT"));
         assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate("DESCRIPTION"));
         assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate("UNIVERSITY"));
         assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate("partner code"));
         assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate("PartnerCode"));
         assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate("PartnerName"));
+        assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate("university"));
 
         // valid partnerCourseAttribute
         assertTrue(PartnerCourseAttribute.isValidAttributeForUpdate("partnercode"));

@@ -249,7 +249,7 @@ public enum UsageMessage {
      * @param description The description of the command.
      */
     UsageMessage(String commandWord, String actionWord, String args, String description) {
-        this.value = String.format(">>> %s %s %s\n%s\n", commandWord, actionWord, args, description);
+        this.value = String.format("%s %s %s: %s\n", commandWord, actionWord, args, description);
     }
 
     /**

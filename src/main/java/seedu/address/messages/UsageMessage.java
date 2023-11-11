@@ -41,7 +41,7 @@ public enum UsageMessage {
     LOCALCOURSE_ADD(
             LocalCourseCommand.COMMAND_WORD,
             LocalCourseAddCommand.ACTION_WORD,
-            "[localcode] [localname] [localunit] [localdescription]",
+            "[localcode] [localname] [unit] [localdescription]",
             "Adds a local course"),
     LOCALCOURSE_DELETE(
             LocalCourseCommand.COMMAND_WORD,
@@ -70,7 +70,7 @@ public enum UsageMessage {
             LocalCourseUpdateCommand.ACTION_WORD,
             "[localcode] [attribute] [newvalue]",
             "Updates the attribute of the local course with a new value.\nAttributes:\n"
-                    + "localcode\nlocalname\nlocalunit\nlocaldescription'"),
+                    + "localcode\nlocalname\nunit\nlocaldescription'"),
     LOCALCOURSE(String.join("\n",
             "Local Courses Commands:\n",
             LOCALCOURSE_ADD.getValue(),

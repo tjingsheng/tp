@@ -6,7 +6,7 @@ package seedu.address.model.localcourse;
 public enum LocalCourseAttribute {
     LOCALCODE("localcode"),
     LOCALNAME("localname"),
-    LOCALUNIT("localunit"),
+    LOCALUNIT("unit"),
     LOCALDESCRIPTION("localdescription");
 
     private final String value;

@@ -1,7 +1,7 @@
 ---
  layout: default.md
- title: "User Guide"
- pageNav: 3
+   title: "User Guide"
+   pageNav: 3
 ---
 
 <bottom-head>
@@ -9,8 +9,6 @@
 </bottom-head>
 
 # SEPlendid User Guide
-
-<br />
 
 ## About SEPlendid
 
@@ -53,31 +51,24 @@ guide!
         - 5.1.2 [Add a local course: `localcourse add`](#512-add-a-local-course-localcourse-add)
         - 5.1.3 [Delete a local course: `localcourse delete`](#513-delete-a-local-course-localcourse-delete)
         - 5.1.4 [Update a local course: `localcourse update`](#514-update-a-local-course-localcourse-update)
-        -
-      5.1.5 [Search for a local course by an attribute: `localcourse search`](#515-search-for-a-local-course-by-an-attribute-localcourse-search)
-      -
-      5.1.6 [Sort all local courses by an attribute: `localcourse sort`](#516-sort-all-local-courses-by-an-attribute-localcourse-sort)
+        - 5.1.5 [Search for a local course by an attribute: `localcourse search`](#515-search-for-a-local-course-by-an-attribute-localcourse-search)
+        - 5.1.6 [Sort all local courses by an attribute: `localcourse sort`](#516-sort-all-local-courses-by-an-attribute-localcourse-sort)
     - 5.2 [Commands for partner courses](#52-commands-for-partner-courses)
         - 5.2.1 [List all partner courses: `partnercourse list`](#521-list-all-partner-courses-partnercourse-list)
         - 5.2.2 [Add a partner course: `partnercourse add`](#522-add-a-partner-course-partnercourse-add)
         - 5.2.3 [Delete a partner course: `partnercourse delete`](#523-delete-a-partner-course-partnercourse-delete)
         - 5.2.4 [Update a partner course: `partnercourse update`](#524-update-a-partner-course-partnercourse-update)
-        -
-      5.2.5 [Search for a partner course by an attribute: `partnercourse search`](#525-search-for-a-partner-course-by-an-attribute-partnercourse-search)
-      -
-      5.2.6 [Sort all partner courses by an attribute: `partnercourse sort`](#526-sort-all-partner-courses-by-an-attribute-partnercourse-sort)
+        - 5.2.5 [Search for a partner course by an attribute: `partnercourse search`](#525-search-for-a-partner-course-by-an-attribute-partnercourse-search)
+      - 5.2.6 [Sort all partner courses by an attribute: `partnercourse sort`](#526-sort-all-partner-courses-by-an-attribute-partnercourse-sort)
     - 5.3 [Commands for universities](#53-commands-for-universities)
         - 5.3.1 [List all universities: `university list`](#531-list-all-universities-university-list)
-        -
-      5.3.2 [Search for a university by an attribute: `university search`](#532-search-for-a-university-by-an-attribute-university-search)
-      -
-      5.3.3 [Sort all universities by an attribute: `university sort`](#533-sort-all-universities-by-an-attribute-university-sort)
+        - 5.3.2 [Search for a university by an attribute: `university search`](#532-search-for-a-university-by-an-attribute-university-search)
+      - 5.3.3 [Sort all universities by an attribute: `university sort`](#533-sort-all-universities-by-an-attribute-university-sort)
     - 5.4 [Commands for mappings](#54-commands-for-mappings)
         - 5.4.1 [List all mappings: `mapping list`](#541-list-all-mappings-mapping-list)
         - 5.4.2 [Add a mapping: `mapping add`](#542-add-a-mapping-mapping-add)
         - 5.4.3 [Delete a mapping: `mapping delete`](#543-delete-a-mapping-mapping-delete)
-        -
-      5.4.4 [Search for a mapping by an attribute: `mapping search`](#544-search-a-mapping-by-attributes-mapping-search)
+        - 5.4.4 [Search for a mapping by an attribute: `mapping search`](#544-search-a-mapping-by-attributes-mapping-search)
         - 5.4.5 [Sort all mappings by an attribute: `mapping sort`](#545-sort-a-mapping-by-attributes-mapping-sort)
     - 5.5 [Commands for notes](#55-commands-for-notes)
         - 5.5.1 [List all notes: `note list`](#551-list-all-notes-note-list)

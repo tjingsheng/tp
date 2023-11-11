@@ -116,7 +116,7 @@ public enum UsageMessage {
     NOTE_ADD(
             NoteCommand.COMMAND_WORD,
             NoteAddCommand.ACTION_WORD,
-            "[content] [tags]",
+            "[content] [tag]",
             "Adds a note"),
     NOTE_DELETE(
             NoteCommand.COMMAND_WORD,

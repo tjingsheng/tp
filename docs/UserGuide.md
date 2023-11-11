@@ -1078,123 +1078,32 @@ contains the data of your previous SEPlendid home folder.
 
 ## 7. Command summary
 
-<table class="bordered-table">
-    <tr>
-        <td><code>command-word</code></td>
-        <td><code>action-word</code></td>
-        <td><code>parameters</code></td>
-    </tr>
-    <tr>
-        <td rowspan="6"><code>localcourse</code></td>
-        <td><code>list</code></td>
-        <td> None.</td>
-    </tr>
-    <tr>
-        <td><code>add</code></td>
-        <td><code>[localcode] [localname] [units] [description]</code></td>
-    </tr>
-    <tr>
-        <td><code>delete</code></td>
-        <td><code>[localcode]</code></td>
-    </tr>
-    <tr>
-        <td><code>update</code></td>
-        <td><code>[localcode] [attribute] [updatedValue]</code></td>
-    </tr>
-    <tr>
-        <td><code>search</code></td>
-        <td><code>[localcode] [localname]</code></td>
-    </tr>
-    <tr>
-        <td><code>sort</code></td>
-        <td><code>[localcode/localname]</code></td>
-    </tr>   
-    <tr>
-        <td rowspan="6"><code>partnercourse</code></td>
-        <td><code>list</code></td>
-        <td> None.</td>
-    </tr>
-    <tr>
-        <td><code>add</code></td>
-        <td><code>[university] [partnercode] [partnername] [units] [description]</code></td>
-    </tr>
-    <tr>
-        <td><code>delete</code></td>
-        <td><code>[university] [partnercode]</code></td>
-    </tr>
-    <tr>
-        <td><code>update</code></td>
-        <td><code>[university] [partnercode] [attribute] [updatedValue]</code></td>
-    </tr>
-    <tr>
-        <td><code>search</code></td>
-        <td><code>[partnercode] [partnername]</code></td>
-    </tr>
-    <tr>
-        <td><code>sort</code></td>
-        <td><code>[university/partnercode/partnername]</code></td>
-    </tr>
-    <tr>
-        <td rowspan="5"><code>mapping</code></td>
-        <td><code>list</code></td>
-        <td> None.</td>
-    </tr>
-    <tr>
-        <td><code>add</code></td>
-        <td><code>[localcode] [university] [partnercode] [information]</code></td>
-    </tr>
-    <tr>
-        <td><code>delete</code></td>
-        <td><code>[localcode] [university] [partnercode]</code></td>
-    </tr>
-    <tr>
-        <td><code>search</code></td>
-        <td><code>[localcode/localname/partnercode/partnername/university/information] [query]</code></td>
-    </tr>
-    <tr>
-        <td><code>sort</code></td>
-        <td><code>[localcode/localname/partnercode/partnername/university/information]</code></td>
-    </tr>
-    <tr>
-        <td rowspan="3"><code>university</code></td>
-        <td><code>list</code></td>
-        <td>None.</td>
-    </tr>
-    <tr>
-        <td><code>search</code></td>
-        <td><code>[universityname]</code></td>
-    </tr>
-    <tr>
-        <td><code>sort</code></td>
-        <td><code>[universityname]</code></td>
-    </tr>
-    <tr>
-        <td rowspan="7"><code>note</code></td>
-        <td><code>list</code></td>
-        <td>None.</td>
-    </tr>
-    <tr>
-        <td><code>add</code></td>
-        <td><code>[content] [tag]</code></td>
-    </tr>
-    <tr>
-        <td><code>delete</code></td>
-        <td><code>[index]</code></td>
-    </tr>
-    <tr>
-        <td><code>update</code></td>
-        <td><code>[index] [content]</code></td>
-    </tr>
-    <tr>
-        <td><code>tag</code></td>
-        <td><code>[index] [tagname]</code></td>
-    </tr>
-    <tr>
-        <td><code>cleartag</code></td>
-        <td><code>[index]</code></td>
-    </tr>
-    <tr>
-        <td><code>search</code></td>
-        <td><code>[tagKeyword]</code></td>
-    </tr>
-</table>
+| Command Word    | Action Word | Parameters                                                       |
+|-----------------|-------------|------------------------------------------------------------------|
+| `localcourse`   | `list`      | None.                                                            |
+|                 | `add`       | `[localcode] [localname] [units] [description]`                  |
+|                 | `delete`    | `[localcode]`                                                    |
+|                 | `update`    | `[localcode] [attribute] [newvalue]`                             |
+|                 | `search`    | `[attribute] [query]`                                            |
+|                 | `sort`      | `[attribute]`                                                    |
+| `partnercourse` | `list`      | None.                                                            |
+|                 | `add`       | `[university] [partnercode] [partnername] [units] [description]` |
+|                 | `delete`    | `[university] [partnercode]`                                     |
+|                 | `update`    | `[university] [partnercode] [attribute] [newvalue]`              |
+|                 | `search`    | `[attribute] [query]`                                            |
+|                 | `sort`      | `[attribute]`                                                    |
+| `mapping`       | `list`      | None.                                                            |
+|                 | `add`       | `[localcode] [university] [partnercode] [information]`           |
+|                 | `delete`    | `[localcode] [university] [partnercode]`                         |
+|                 | `search`    | `[attribute] [query]`                                            |
+|                 | `sort`      | `[attribute]`                                                    |
+| `university`    | `list`      | None.                                                            |
+|                 | `search`    | `[query]`                                                        |
+|                 | `sort`      | None.                                                            |
+| `note`          | `list`      | None.                                                            |
+|                 | `add`       | `[content] [tag]`                                                |
+|                 | `delete`    | `[index]`                                                        |
+|                 | `update`    | `[index] [content]`                                              |
+|                 | `tag`       | `[index] [tag]`                                                  |
+|                 | `cleartag`  | `[index]`                                                        |
+|                 | `search`    | `[query]`                                                        |

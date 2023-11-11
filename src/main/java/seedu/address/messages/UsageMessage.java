@@ -160,7 +160,7 @@ public enum UsageMessage {
     PARTNERCOURSE_ADD(
             PartnerCourseCommand.COMMAND_WORD,
             PartnerCourseAddCommand.ACTION_WORD,
-            "[university] [partnercode] [partnername] [partnerunit] [partnerdescription]",
+            "[university] [partnercode] [partnername] [unit] [description]",
             "Adds a partner course"),
     PARTNERCOURSE_DELETE(
             PartnerCourseCommand.COMMAND_WORD,
@@ -189,7 +189,7 @@ public enum UsageMessage {
             PartnerCourseUpdateCommand.ACTION_WORD,
             "[university] [partnercode] [attribute] [newvalue]",
             "Updates the attribute of the partner course with a new value.\nAttributes:\n"
-                    + "partnercode\npartnername\npartnerunit\npartnerdescription"),
+                    + "partnercode\npartnername\nunit\ndescription"),
     PARTNERCOURSE(String.join("\n",
             "Partner Course Commands:\n",
             PARTNERCOURSE_LIST.getValue(),

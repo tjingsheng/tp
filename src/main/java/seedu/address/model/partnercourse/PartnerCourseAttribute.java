@@ -6,8 +6,8 @@ package seedu.address.model.partnercourse;
 public enum PartnerCourseAttribute {
     PARTNERCODE("partnercode"),
     PARTNERNAME("partnername"),
-    PARTNERUNIT("partnerunit"),
-    PARTNERDESCRIPTION("partnerdescription"),
+    PARTNERUNIT("unit"),
+    PARTNERDESCRIPTION("description"),
     UNIVERSITY("university");
 
     private final String value;

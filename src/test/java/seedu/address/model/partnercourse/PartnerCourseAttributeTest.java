@@ -22,18 +22,15 @@ public class PartnerCourseAttributeTest {
         assertFalse(PartnerCourseAttribute.isValidAttributeForSearch("PARTNERDESCRIPTION"));
         assertFalse(PartnerCourseAttribute.isValidAttributeForSearch("UNIVERSITY"));
         assertFalse(PartnerCourseAttribute.isValidAttributeForSearch("UNITS"));
-
+        assertFalse(PartnerCourseAttribute.isValidAttributeForSearch("partner code"));
+        assertFalse(PartnerCourseAttribute.isValidAttributeForSearch("PartnerCode"));
+        assertFalse(PartnerCourseAttribute.isValidAttributeForSearch("PartnerName"));
 
         // valid partnerCourseAttribute
         assertTrue(PartnerCourseAttribute.isValidAttributeForSearch("partnercode"));
         assertTrue(PartnerCourseAttribute.isValidAttributeForSearch("partnername"));
-        assertTrue(PartnerCourseAttribute.isValidAttributeForSearch("partnerdescription"));
+        assertTrue(PartnerCourseAttribute.isValidAttributeForSearch("description"));
         assertTrue(PartnerCourseAttribute.isValidAttributeForSearch("university"));
-
-        // Additional invalid cases
-        assertFalse(PartnerCourseAttribute.isValidAttributeForSearch("partner code"));
-        assertFalse(PartnerCourseAttribute.isValidAttributeForSearch("PartnerCode"));
-        assertFalse(PartnerCourseAttribute.isValidAttributeForSearch("PartnerName"));
     }
 
     @Test
@@ -82,16 +79,14 @@ public class PartnerCourseAttributeTest {
         assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate("UNITS"));
         assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate("DESCRIPTION"));
         assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate("UNIVERSITY"));
+        assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate("partner code"));
+        assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate("PartnerCode"));
+        assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate("PartnerName"));
 
         // valid partnerCourseAttribute
         assertTrue(PartnerCourseAttribute.isValidAttributeForUpdate("partnercode"));
         assertTrue(PartnerCourseAttribute.isValidAttributeForUpdate("partnername"));
-        assertTrue(PartnerCourseAttribute.isValidAttributeForUpdate("partnerunit"));
-        assertTrue(PartnerCourseAttribute.isValidAttributeForUpdate("partnerdescription"));
-
-        // Additional invalid cases
-        assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate("partner code"));
-        assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate("PartnerCode"));
-        assertFalse(PartnerCourseAttribute.isValidAttributeForUpdate("PartnerName"));
+        assertTrue(PartnerCourseAttribute.isValidAttributeForUpdate("unit"));
+        assertTrue(PartnerCourseAttribute.isValidAttributeForUpdate("description"));
     }
 }

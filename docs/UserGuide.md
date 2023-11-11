@@ -182,10 +182,10 @@ SEPlendid's GUI consists of these four main components:
 
 1. Command Input Box
 2. Command Result Box
-3. List Panel for Local Courses, Partner Courses, Universities, Mappings or Notes
+3. List Panel for the list of local courses, partner courses, universities, mappings or notes
 4. Display Panel for details of the selected item from the list panel.
 
-Refer to the annotated diagram of SEPlendid's GUI which is numbered accordingly:
+Refer to the annotated diagram of SEPlendid's GUI which is annotated respectively:
 
 <div class="centered-container">
   <img src="images/AnnotatedUi.png" alt="Annotated GUI" class="resized-image">

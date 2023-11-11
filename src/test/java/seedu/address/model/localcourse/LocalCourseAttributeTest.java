@@ -23,6 +23,7 @@ public class LocalCourseAttributeTest {
         assertFalse(LocalCourseAttribute.isValidAttributeForSearch("local code"));
         assertFalse(LocalCourseAttribute.isValidAttributeForSearch("LocalCode"));
         assertFalse(LocalCourseAttribute.isValidAttributeForSearch("LocalName"));
+        assertFalse(LocalCourseAttribute.isValidAttributeForSearch("unit"));
 
         // valid localCourseAttribute
         assertTrue(LocalCourseAttribute.isValidAttributeForSearch("localcode"));

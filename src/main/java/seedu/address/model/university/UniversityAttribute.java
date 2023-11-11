@@ -1,5 +1,6 @@
 package seedu.address.model.university;
 
+import java.util.Objects;
 /**
  * Represents the attribute related to university.
  */
@@ -57,13 +58,7 @@ public enum UniversityAttribute {
         if (attribute == null) {
             return false;
         }
-
-        switch (attribute) {
-        case UNIVERSITY:
-            return true;
-        default:
-            return false;
-        }
+        return Objects.equals(UNIVERSITY, attribute);
     }
 
     /**
@@ -77,12 +72,6 @@ public enum UniversityAttribute {
         if (attribute == null) {
             return false;
         }
-
-        switch (attribute) {
-        case UNIVERSITY:
-            return true;
-        default:
-            return false;
-        }
+        return Objects.equals(UNIVERSITY, attribute);
     }
 }

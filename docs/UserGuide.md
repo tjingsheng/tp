@@ -96,10 +96,8 @@ start planning for your SEP study guide!
 
 ## 1. How to navigate this User Guide?
 
-As a new user in SEPlendid, this user guide serves as an easy-to-follow guide, guiding you through the execution of your
-first commands in SEPlendid. You can unlock SEPlendid full potential in this guide!
-
-Here is a step-by-step instruction for you to navigate the user guide:
+As a new user in SEPlendid, this user guide serves as an easy-to-follow guide in aiding you in executing your first
+commands in SEPlendid, utilising SEPlendid to it's fullest potential!
 
 1. Download SEPlendid in your device by heading over to the [Installation](#3-installation) section.
 2. Quickly familarise yourself with SEPlendid by heading over to the [Quick Reference Guide](#4-quick-reference-guide)

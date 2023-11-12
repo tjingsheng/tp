@@ -144,6 +144,12 @@ public interface SeplendidModel {
     void searchPartnerCourses(PartnerCourseAttribute attribute,
                               PartnerCourseContainsKeywordsPredicate predicate);
 
+
+    /**
+     * Replaces partnercourse list data with the data in {@code partnerCourseCatalogue}.
+     */
+    void setPartnerCourseCatalogue(ReadOnlyPartnerCourseCatalogue partnerCourseCatalogue);
+
     ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue();
 
     /**
@@ -337,14 +343,6 @@ public interface SeplendidModel {
      * The {@code mapping} must not already exist in the MappingCatalogue.
      */
     void addMapping(Mapping mapping);
-
-    /**
-     * Replaces the given mapping {@code target} with {@code editedMapping}.
-     * {@code target} must exist in the catalogue.
-     * The mapping identity of {@code editedMapping} must not be the same as another
-     * existing mapping in the MappingCatalogue.
-     */
-    void setMapping(Mapping mapping, Mapping editedMapping);
 
     /**
      * Returns the sorted mapping list.

@@ -47,7 +47,7 @@ public class NoteTagCommandParser implements Parser<NoteTagCommand> {
 
         try {
             int noteIndex = Integer.parseInt(parameterToArgMap.getValue(PARAMETER_INDEX).get());
-            Tag newTag = new Tag(parameterToArgMap.getValue(PARAMETER_TAGS).get());
+            Tag newTag = ParserUtil.parseTag(parameterToArgMap.getValue(PARAMETER_TAGS).get());
             return new NoteTagCommand(noteIndex, newTag);
         } catch (NumberFormatException e) {
             throw new ParseException(UsageMessage.NOTE_TAG.getValue());

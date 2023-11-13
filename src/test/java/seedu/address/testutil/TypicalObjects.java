@@ -87,6 +87,31 @@ public class TypicalObjects {
             + "heaps, trees, and graphs), searching"
             + " and sorting algorithms, and basic "
             + "analysis of algorithms.").build();
+
+    public static final LocalCourse CS2041S = new LocalCourseBuilder().withLocalCode("CS2041S").withLocalName(
+            "Data Structures & Algorithms").withLocalUnit(4.0).withLocalDescription(
+            "This course introduces students to the "
+                    + "design and implementation of "
+                    + "fundamental data structures and "
+                    + "algorithms. The course covers basic "
+                    + "data structures (linked lists, "
+                    + "stacks, queues, hash tables, binary "
+                    + "heaps, trees, and graphs), searching"
+                    + " and sorting algorithms, and basic "
+                    + "analysis of algorithms.").build();
+
+    public static final LocalCourse CS2042S = new LocalCourseBuilder().withLocalCode("CS2042S").withLocalName(
+            "Data Structures & Algorithms").withLocalUnit(4.0).withLocalDescription(
+            "This course introduces students to the "
+                    + "design and implementation of "
+                    + "fundamental data structures and "
+                    + "algorithms. The course covers basic "
+                    + "data structures (linked lists, "
+                    + "stacks, queues, hash tables, binary "
+                    + "heaps, trees, and graphs), searching"
+                    + " and sorting algorithms, and basic "
+                    + "analysis of algorithms.").build();
+
     public static final LocalCourse CS3230 = new LocalCourseBuilder().withLocalCode("CS3230").withLocalName(
         "Design & Analysis of Algorithms").withLocalUnit(4.0).withLocalDescription(
         "This course introduces different techniques"

@@ -18,6 +18,7 @@ public class NoteAddCommand extends NoteCommand {
 
     public static final String ACTION_WORD = "add";
     public static final String MESSAGE_SUCCESS = "New note added: %1$s";
+    public static final String MESSAGE_DUPLICATE_NOTE = "Note cannot have duplicated content from existing notes.";
 
     private final Note noteToAdd;
 
@@ -47,6 +48,10 @@ public class NoteAddCommand extends NoteCommand {
     @Override
     public CommandResult execute(SeplendidModel seplendidModel) throws CommandException {
         requireNonNull(seplendidModel);
+
+        if (seplendidModel.hasNote(noteToAdd)) {
+            throw new CommandException(MESSAGE_DUPLICATE_NOTE);
+        }
 
         seplendidModel.addNote(noteToAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(noteToAdd)),

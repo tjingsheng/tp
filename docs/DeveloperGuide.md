@@ -162,6 +162,16 @@ The below diagram gives a high-level overview on how the `SeplendidParser` parse
 <puml src="diagrams/SeplendidParserActivityDiagram.puml" alt="SeplendidParserActivityDiagram" />
 
 --------------------------------------------------------------------------------------------------------------------
+## Implementation
+
+### Listing of courses, universities and notes
+
+**Overview**
+The `list` command generates a list of courses and universities' sample data. This allows the viewing of all the
+courses.
+
+The activity diagram is as such:
+
 
 ### Mapping feature
 

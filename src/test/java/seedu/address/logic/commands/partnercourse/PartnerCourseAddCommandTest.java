@@ -435,7 +435,8 @@ public class PartnerCourseAddCommandTest {
         }
 
         @Override
-        public boolean hasMappingWithPartnerCode(PartnerCode partnerCode) {
+        public boolean hasMappingWithPartnerCodeAndUniversityName(PartnerCode partnerCode,
+                                                                  UniversityName universityName) {
             throw new AssertionError("This method should not be called.");
         }
 

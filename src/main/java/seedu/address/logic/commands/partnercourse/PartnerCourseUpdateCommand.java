@@ -121,7 +121,7 @@ public class PartnerCourseUpdateCommand extends PartnerCourseCommand {
                 && !partnerCourseToUpdate.isSamePartnerCourse(updatedPartnerCourse)) {
             throw new CommandException(MESSAGE_DUPLICATE_PARTNER_COURSE);
         }
-3
+
         seplendidModel.setPartnerCourse(partnerCourseToUpdate, updatedPartnerCourse);
 
         return new CommandResult(

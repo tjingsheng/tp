@@ -8,8 +8,6 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 
 public class NoteCommandTest {
@@ -38,11 +36,6 @@ public class NoteCommandTest {
      * A concrete subclass of NoteCommand for testing.
      */
     private static class NoteCommandStub extends NoteCommand {
-        @Override
-        public CommandResult execute(Model model) throws CommandException {
-            return null;
-        }
-
         @Override
         public CommandResult execute(SeplendidModel model) {
             return null;

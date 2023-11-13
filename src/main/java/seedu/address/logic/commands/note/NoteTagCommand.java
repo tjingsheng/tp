@@ -6,7 +6,6 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.messages.Messages;
-import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.note.Note;
 import seedu.address.model.tag.Tag;
@@ -34,11 +33,6 @@ public class NoteTagCommand extends NoteCommand {
         requireNonNull(noteIndexToUpdate);
         this.noteIndexToUpdate = noteIndexToUpdate;
         this.addTag = addTag;
-    }
-
-    @Override
-    public CommandResult execute(Model model) throws CommandException {
-        return null;
     }
 
     @Override

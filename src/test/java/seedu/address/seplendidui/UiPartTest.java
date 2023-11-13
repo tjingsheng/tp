@@ -1,4 +1,4 @@
-package seedu.address.ui;
+package seedu.address.seplendidui;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -76,7 +76,7 @@ public class UiPartTest {
     }
 
     private URL getTestFileUrl(String testFilePath) {
-        String testFilePathInView = "/view/" + testFilePath;
+        String testFilePathInView = "/seplendidview/" + testFilePath;
         URL testFileUrl = MainApp.class.getResource(testFilePathInView);
         assertNotNull(testFileUrl, testFilePathInView + " does not exist.");
         return testFileUrl;

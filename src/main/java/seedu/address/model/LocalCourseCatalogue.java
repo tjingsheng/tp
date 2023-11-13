@@ -86,7 +86,7 @@ public class LocalCourseCatalogue implements ReadOnlyLocalCourseCatalogue {
 
     /**
      * Adds a LocalCourse to the LocalCourseCatalogue.
-     * The LocalCourse must not already exist in the address book.
+     * The LocalCourse must not already exist in SEPlendid.
      */
     public void addLocalCourse(LocalCourse lc) {
         localCourses.add(lc);

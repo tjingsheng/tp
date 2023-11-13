@@ -6,7 +6,6 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.messages.Messages;
-import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.note.Note;
 import seedu.address.seplendidui.UiUtil;
@@ -28,11 +27,6 @@ public class NoteClearTagCommand extends NoteCommand {
         super();
         requireNonNull(noteIndexToUpdate);
         this.noteIndexToUpdate = noteIndexToUpdate;
-    }
-
-    @Override
-    public CommandResult execute(Model model) throws CommandException {
-        return null;
     }
 
     @Override

@@ -115,8 +115,8 @@ public interface SeplendidModel {
 
     /**
      * Replaces the given localCourse {@code target} with {@code editedLocalCourse}.
-     * {@code target} must exist in the address book.
-     * The person identity of {@code editedLocalCourse} must not be the same as another
+     * {@code target} must exist in SEPlendid.
+     * The localCourse of {@code editedLocalCourse} must not be the same as another
      * existing localCourse in the LocalCourseCatalogue.
      */
     void setLocalCourse(LocalCourse localCourse, LocalCourse editedLocalCourse);
@@ -134,7 +134,7 @@ public interface SeplendidModel {
 
 
     /**
-     * Updates the filter of the filtered person list to filter by the given {@code predicate}.
+     * Updates the filter of the filtered local course list to filter by the given {@code predicate}.
      *
      * @throws NullPointerException if {@code predicate} is null.
      */

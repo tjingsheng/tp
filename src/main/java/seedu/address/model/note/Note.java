@@ -115,6 +115,9 @@ public class Note implements SeplendidDataType {
         }
 
         Note otherNote = (Note) other;
+        if (index == null) {
+            return content.equals(otherNote.content);
+        }
         return index.equals(otherNote.index) || content.equals(otherNote.content);
     }
 

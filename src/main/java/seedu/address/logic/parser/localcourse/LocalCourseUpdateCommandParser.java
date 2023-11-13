@@ -34,7 +34,7 @@ public class LocalCourseUpdateCommandParser implements Parser<LocalCourseUpdateC
         ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
                 areValuesEnclosedAndNonEmpty(args);
         if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
-            throw new ParseException(UsageMessage.LOCALCOURSE_UPDATE.getValue());
+            throw new ParseException(UsageMessage.LOCALCOURSE_UPDATE.toString());
         } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
             throw new ParseException(UsageMessage.LOCALCOURSE_UPDATE.getValueWithEmptyArgs());
         }
@@ -48,7 +48,7 @@ public class LocalCourseUpdateCommandParser implements Parser<LocalCourseUpdateC
                 PARAMETER_LOCALCODE,
                 PARAMETER_LOCALATTRIBUTE,
                 PARAMETER_LOCALUPDATEDVALUE)) {
-            throw new ParseException(UsageMessage.LOCALCOURSE_UPDATE.getValue());
+            throw new ParseException(UsageMessage.LOCALCOURSE_UPDATE.toString());
         }
 
         LocalCode localCode = ParserUtil.parseLocalCode(parameterToArgMap.getValue(PARAMETER_LOCALCODE).get());

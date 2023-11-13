@@ -38,7 +38,7 @@ public class AddressBookParser {
     public Command parseCommand(String userInput) throws ParseException {
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
         if (!matcher.matches()) {
-            throw new ParseException(UsageMessage.HELP.getValue());
+            throw new ParseException(UsageMessage.HELP.toString());
         }
 
         final String commandWord = matcher.group("commandWord");

@@ -29,7 +29,7 @@ public class NoteClearTagCommandParser implements Parser<NoteClearTagCommand> {
         ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
                 areValuesEnclosedAndNonEmpty(args);
         if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
-            throw new ParseException(UsageMessage.NOTE_CLEAR_TAG.getValue());
+            throw new ParseException(UsageMessage.NOTE_CLEAR_TAG.toString());
         } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
             throw new ParseException(UsageMessage.NOTE_CLEAR_TAG.getValueWithEmptyArgs());
         }
@@ -38,7 +38,7 @@ public class NoteClearTagCommandParser implements Parser<NoteClearTagCommand> {
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_INDEX);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_INDEX)) {
-            throw new ParseException(UsageMessage.NOTE_CLEAR_TAG.getValue());
+            throw new ParseException(UsageMessage.NOTE_CLEAR_TAG.toString());
         }
 
         // All arguments should be a non-empty {@code Optional}

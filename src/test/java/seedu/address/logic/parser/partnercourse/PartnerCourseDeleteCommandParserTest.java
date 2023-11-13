@@ -51,7 +51,7 @@ public class PartnerCourseDeleteCommandParserTest {
 
     @Test
     void parse_argumentNotClosedOrEmpty_failure() {
-        String expectedMessage = UsageMessage.PARTNERCOURSE_DELETE.getValue();
+        String expectedMessage = UsageMessage.PARTNERCOURSE_DELETE.toString();
 
         // missing open bracket
         assertParseFailure(parser, commandActionWord
@@ -67,7 +67,7 @@ public class PartnerCourseDeleteCommandParserTest {
 
     @Test
     public void parse_argumentMissing_failure() {
-        String expectedMessage = UsageMessage.PARTNERCOURSE_DELETE.getValue();
+        String expectedMessage = UsageMessage.PARTNERCOURSE_DELETE.toString();
 
         // all arguments missing
         assertParseFailure(parser, commandActionWord, expectedMessage);

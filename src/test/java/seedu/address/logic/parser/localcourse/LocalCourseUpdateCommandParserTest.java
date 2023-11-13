@@ -56,7 +56,7 @@ public class LocalCourseUpdateCommandParserTest {
 
     @Test
     public void parse_argumentMissing_failure() {
-        String expectedMessage = UsageMessage.LOCALCOURSE_UPDATE.getValue();
+        String expectedMessage = UsageMessage.LOCALCOURSE_UPDATE.toString();
 
         // missing localCode argument
         assertParseFailure(

@@ -32,7 +32,7 @@ public class MappingDeleteCommandParser implements Parser<MappingDeleteCommand> 
         ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
                 areValuesEnclosedAndNonEmpty(args);
         if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
-            throw new ParseException(UsageMessage.MAPPING_DELETE.getValue());
+            throw new ParseException(UsageMessage.MAPPING_DELETE.toString());
         } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
             throw new ParseException(UsageMessage.MAPPING_DELETE.getValueWithEmptyArgs());
         }
@@ -43,7 +43,7 @@ public class MappingDeleteCommandParser implements Parser<MappingDeleteCommand> 
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_LOCALCODE, PARAMETER_UNIVERSITY,
                 PARAMETER_PARTNERCODE)) {
-            throw new ParseException(UsageMessage.MAPPING_DELETE.getValue());
+            throw new ParseException(UsageMessage.MAPPING_DELETE.toString());
         }
 
         // All arguments should be a non-empty {@code Optional}

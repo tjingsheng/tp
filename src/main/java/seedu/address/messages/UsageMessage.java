@@ -74,12 +74,12 @@ public enum UsageMessage {
                     + "localcode\nlocalname\nunit\nlocaldescription'"),
     LOCALCOURSE(String.join("\n",
             "Local Courses Commands:\n",
-            LOCALCOURSE_ADD.getValue(),
-            LOCALCOURSE_LIST.getValue(),
-            LOCALCOURSE_UPDATE.getValue(),
-            LOCALCOURSE_DELETE.getValue(),
-            LOCALCOURSE_SEARCH.getValue(),
-            LOCALCOURSE_SORT.getValue())),
+            LOCALCOURSE_ADD.toString(),
+            LOCALCOURSE_LIST.toString(),
+            LOCALCOURSE_UPDATE.toString(),
+            LOCALCOURSE_DELETE.toString(),
+            LOCALCOURSE_SEARCH.toString(),
+            LOCALCOURSE_SORT.toString())),
     MAPPING_ADD(
             MappingCommand.COMMAND_WORD,
             MappingAddCommand.ACTION_WORD,
@@ -109,11 +109,11 @@ public enum UsageMessage {
                     + "localcode\nlocalname\npartnercode\npartnername\nuniversity\ninformation"),
     MAPPING(String.join("\n",
             "Mapping Commands:\n",
-            MAPPING_LIST.getValue(),
-            MAPPING_ADD.getValue(),
-            MAPPING_DELETE.getValue(),
-            MAPPING_SEARCH.getValue(),
-            MAPPING_SORT.getValue())),
+            MAPPING_LIST.toString(),
+            MAPPING_ADD.toString(),
+            MAPPING_DELETE.toString(),
+            MAPPING_SEARCH.toString(),
+            MAPPING_SORT.toString())),
     NOTE_ADD(
             NoteCommand.COMMAND_WORD,
             NoteAddCommand.ACTION_WORD,
@@ -151,13 +151,13 @@ public enum UsageMessage {
             "Removes all tags to a note"),
     NOTE(String.join("\n",
             "Note Commands:\n",
-            NOTE_ADD.getValue(),
-            NOTE_CLEAR_TAG.getValue(),
-            NOTE_DELETE.getValue(),
-            NOTE_LIST.getValue(),
-            NOTE_SEARCH.getValue(),
-            NOTE_TAG.getValue(),
-            NOTE_UPDATE.getValue())),
+            NOTE_ADD.toString(),
+            NOTE_CLEAR_TAG.toString(),
+            NOTE_DELETE.toString(),
+            NOTE_LIST.toString(),
+            NOTE_SEARCH.toString(),
+            NOTE_TAG.toString(),
+            NOTE_UPDATE.toString())),
     PARTNERCOURSE_ADD(
             PartnerCourseCommand.COMMAND_WORD,
             PartnerCourseAddCommand.ACTION_WORD,
@@ -193,12 +193,12 @@ public enum UsageMessage {
                     + "partnercode\npartnername\nunit\ndescription"),
     PARTNERCOURSE(String.join("\n",
             "Partner Course Commands:\n",
-            PARTNERCOURSE_LIST.getValue(),
-            PARTNERCOURSE_ADD.getValue(),
-            PARTNERCOURSE_UPDATE.getValue(),
-            PARTNERCOURSE_DELETE.getValue(),
-            PARTNERCOURSE_SEARCH.getValue(),
-            PARTNERCOURSE_SORT.getValue())),
+            PARTNERCOURSE_LIST.toString(),
+            PARTNERCOURSE_ADD.toString(),
+            PARTNERCOURSE_UPDATE.toString(),
+            PARTNERCOURSE_DELETE.toString(),
+            PARTNERCOURSE_SEARCH.toString(),
+            PARTNERCOURSE_SORT.toString())),
     UNIVERSITY_LIST(
             UniversityCommand.COMMAND_WORD,
             UniversityListCommand.ACTION_WORD,
@@ -216,9 +216,9 @@ public enum UsageMessage {
             "Sorts the universities by the university name"),
     UNIVERSITY(String.join("\n",
             "University Commands:\n",
-            UNIVERSITY_LIST.getValue(),
-            UNIVERSITY_SEARCH.getValue(),
-            UNIVERSITY_SORT.getValue())),
+            UNIVERSITY_LIST.toString(),
+            UNIVERSITY_SEARCH.toString(),
+            UNIVERSITY_SORT.toString())),
     HELP(
         HelpCommand.COMMAND_WORD,
         "",
@@ -258,7 +258,8 @@ public enum UsageMessage {
      *
      * @return The usage message value.
      */
-    public String getValue() {
+    @Override
+    public String toString() {
         return value;
     }
 

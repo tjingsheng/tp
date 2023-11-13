@@ -33,7 +33,7 @@ public class UniversitySortCommandParser implements Parser<UniversitySortCommand
         ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
                 areValuesEnclosedAndNonEmpty(args);
         if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
-            throw new ParseException(UsageMessage.UNIVERSITY_SORT.getValue());
+            throw new ParseException(UsageMessage.UNIVERSITY_SORT.toString());
         } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
             throw new ParseException(UsageMessage.UNIVERSITY_SORT.getValueWithEmptyArgs());
         }
@@ -42,7 +42,7 @@ public class UniversitySortCommandParser implements Parser<UniversitySortCommand
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_UNIVERSITYATTRIBUTE);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_UNIVERSITYATTRIBUTE)) {
-            throw new ParseException(UsageMessage.UNIVERSITY_SORT.getValue());
+            throw new ParseException(UsageMessage.UNIVERSITY_SORT.toString());
         }
 
         Comparator<University> universityComparator =

@@ -47,7 +47,7 @@ public class LocalCourseSortCommandParserTest {
 
     @Test
     public void parse_argumentNotClosedOrEmpty_failure() {
-        String expectedMessage = UsageMessage.LOCALCOURSE_SORT.getValue();
+        String expectedMessage = UsageMessage.LOCALCOURSE_SORT.toString();
         // missing open bracket
         assertParseFailure(parser, commandActionWord
                 + LocalCourseUtil.getLocalCourseArgumentsForSortCommand(new LocalCourseComparatorByLocalCode())

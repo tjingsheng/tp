@@ -60,7 +60,7 @@ public class PartnerCourseUpdateCommandParserTest {
 
     @Test
     public void parse_argumentMissing_failure() {
-        String expectedMessage = UsageMessage.PARTNERCOURSE_UPDATE.getValue();
+        String expectedMessage = UsageMessage.PARTNERCOURSE_UPDATE.toString();
 
         // missing universityName argument
         assertParseFailure(

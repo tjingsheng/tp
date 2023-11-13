@@ -55,7 +55,7 @@ public class MappingDeleteCommandParserTest {
 
     @Test
     void parse_argumentNotClosedOrEmpty_failure() {
-        String expectedMessage = UsageMessage.MAPPING_DELETE.getValue();
+        String expectedMessage = UsageMessage.MAPPING_DELETE.toString();
 
         // missing open bracket
         assertParseFailure(parser, commandActionWord
@@ -73,7 +73,7 @@ public class MappingDeleteCommandParserTest {
 
     @Test
     public void parse_allArgumentMissing_failure() {
-        String expectedMessage = UsageMessage.MAPPING_DELETE.getValue();
+        String expectedMessage = UsageMessage.MAPPING_DELETE.toString();
 
         // all arguments missing
         assertParseFailure(parser, commandActionWord, expectedMessage);

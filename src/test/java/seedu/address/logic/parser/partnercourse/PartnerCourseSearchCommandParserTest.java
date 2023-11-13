@@ -17,7 +17,7 @@ public class PartnerCourseSearchCommandParserTest {
 
     @Test
     public void parse_emptyArg_throwsParseException() {
-        assertParseFailure(parser, "     ", UsageMessage.PARTNERCOURSE_SEARCH.getValue());
+        assertParseFailure(parser, "     ", UsageMessage.PARTNERCOURSE_SEARCH.toString());
     }
 
     @Test

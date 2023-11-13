@@ -37,7 +37,7 @@ public class PartnerCourseUpdateCommandParser implements Parser<PartnerCourseUpd
         ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
                 areValuesEnclosedAndNonEmpty(args);
         if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
-            throw new ParseException(UsageMessage.PARTNERCOURSE_UPDATE.getValue());
+            throw new ParseException(UsageMessage.PARTNERCOURSE_UPDATE.toString());
         } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
             throw new ParseException(UsageMessage.PARTNERCOURSE_UPDATE.getValueWithEmptyArgs());
         }
@@ -53,7 +53,7 @@ public class PartnerCourseUpdateCommandParser implements Parser<PartnerCourseUpd
                 PARAMETER_PARTNERCODE,
                 PARAMETER_PARTNERATTRIBUTE,
                 PARAMETER_PARTNERUPDATEDVALUE)) {
-            throw new ParseException(UsageMessage.PARTNERCOURSE_UPDATE.getValue());
+            throw new ParseException(UsageMessage.PARTNERCOURSE_UPDATE.toString());
         }
 
         UniversityName universityName =

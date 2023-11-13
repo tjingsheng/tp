@@ -66,7 +66,7 @@ public class PartnerCourseAddCommandParserTest {
 
     @Test
     void parse_argumentNotClosedOrEmpty_failure() {
-        String expectedMessage = UsageMessage.PARTNERCOURSE_ADD.getValue();
+        String expectedMessage = UsageMessage.PARTNERCOURSE_ADD.toString();
 
         // missing open bracket
         assertParseFailure(
@@ -89,7 +89,7 @@ public class PartnerCourseAddCommandParserTest {
 
     @Test
     public void parse_argumentMissing_failure() {
-        String expectedMessage = UsageMessage.PARTNERCOURSE_ADD.getValue();
+        String expectedMessage = UsageMessage.PARTNERCOURSE_ADD.toString();
 
         // missing patrtnercode argument
         assertParseFailure(parser,
@@ -112,7 +112,7 @@ public class PartnerCourseAddCommandParserTest {
         // Therefore an argument starting with a whitespace will pass,
         // while a whitespace alone will not. A whitespace alone will trigger
         // ParseException due to ParserUtil#areValuesEncloseAndNonEmpty.
-        String expectedMessage = UsageMessage.PARTNERCOURSE_ADD.getValue();
+        String expectedMessage = UsageMessage.PARTNERCOURSE_ADD.toString();
 
         String expectedMessageForEmptyArg = UsageMessage.PARTNERCOURSE_ADD.getValueWithEmptyArgs();
 

@@ -32,7 +32,7 @@ public class PartnerCourseSearchCommandParser implements Parser<PartnerCourseSea
         ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
                 areValuesEnclosedAndNonEmpty(args);
         if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
-            throw new ParseException(UsageMessage.PARTNERCOURSE_SEARCH.getValue());
+            throw new ParseException(UsageMessage.PARTNERCOURSE_SEARCH.toString());
         } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
             throw new ParseException(UsageMessage.PARTNERCOURSE_SEARCH.getValueWithEmptyArgs());
         }
@@ -43,7 +43,7 @@ public class PartnerCourseSearchCommandParser implements Parser<PartnerCourseSea
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap,
                 PARAMETER_PARTNERATTRIBUTE, PARAMETER_QUERY)) {
-            throw new ParseException(UsageMessage.PARTNERCOURSE_SEARCH.getValue());
+            throw new ParseException(UsageMessage.PARTNERCOURSE_SEARCH.toString());
         }
 
         PartnerCourseAttribute partnerCourseAttribute = ParserUtil.parsePartnerCourseAttributeForSearch(

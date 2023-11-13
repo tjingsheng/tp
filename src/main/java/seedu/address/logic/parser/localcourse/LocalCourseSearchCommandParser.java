@@ -33,7 +33,7 @@ public class LocalCourseSearchCommandParser implements Parser<LocalCourseSearchC
         ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
                 areValuesEnclosedAndNonEmpty(args);
         if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
-            throw new ParseException(UsageMessage.LOCALCOURSE_SEARCH.getValue());
+            throw new ParseException(UsageMessage.LOCALCOURSE_SEARCH.toString());
         } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
             throw new ParseException(UsageMessage.LOCALCOURSE_SEARCH.getValueWithEmptyArgs());
         }
@@ -44,7 +44,7 @@ public class LocalCourseSearchCommandParser implements Parser<LocalCourseSearchC
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap,
                 PARAMETER_LOCALATTRIBUTE, PARAMETER_QUERY)) {
             throw new ParseException(
-                    UsageMessage.LOCALCOURSE_SEARCH.getValue());
+                    UsageMessage.LOCALCOURSE_SEARCH.toString());
         }
 
         LocalCourseAttribute localCourseAttribute = ParserUtil.parseLocalCourseAttributeForSearch(

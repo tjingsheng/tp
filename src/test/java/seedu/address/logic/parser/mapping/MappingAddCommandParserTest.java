@@ -51,7 +51,7 @@ public class MappingAddCommandParserTest {
 
     @Test
     void parse_argumentNotClosedOrEmpty_failure() {
-        String expectedMessage = UsageMessage.MAPPING_ADD.getValue();
+        String expectedMessage = UsageMessage.MAPPING_ADD.toString();
 
         // missing open bracket
         assertParseFailure(parser, commandActionWord
@@ -70,7 +70,7 @@ public class MappingAddCommandParserTest {
 
     @Test
     public void parse_allArgumentMissing_failure() {
-        String expectedMessage = UsageMessage.MAPPING_ADD.getValue();
+        String expectedMessage = UsageMessage.MAPPING_ADD.toString();
 
         // all arguments missing
         assertParseFailure(parser, commandActionWord, expectedMessage);

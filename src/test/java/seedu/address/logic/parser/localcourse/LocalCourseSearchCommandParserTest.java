@@ -17,7 +17,7 @@ public class LocalCourseSearchCommandParserTest {
 
     @Test
     public void parse_emptyArg_throwsParseException() {
-        assertParseFailure(parser, "     ", UsageMessage.LOCALCOURSE_SEARCH.getValue());
+        assertParseFailure(parser, "     ", UsageMessage.LOCALCOURSE_SEARCH.toString());
     }
 
     @Test

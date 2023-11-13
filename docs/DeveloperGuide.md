@@ -337,6 +337,27 @@ _{Explain here how the data archiving feature will be implemented}_
 
 --------------------------------------------------------------------------------------------------------------------
 
+## **Effort**
+
+The implementation of SEPlendid proved to be a challenging endeavor. Below is the highlights of the extensive effort our
+team dedicated to developing SEPlendid, along with a mention of some of the challenges we encountered along the way.
+
+### Morphing of AB3 to SEPlendid
+
+A large portion of code had to be refactored to morph AB3 to SEPlendid.
+
+### Redesigning the UI
+
+In recognising the significance of minimalism for achieving simplicity, we embarked on the task of redesigning the
+original AB3 UI into our custom SEPlendid interface. The endeavor underscored the essential balance between simplicity
+and functionality. The effort invested in the redesigning process was substantial, requiring meticulous design
+considerations. Striving to meet both aesthetic standards and high functionality, we faced a steep learning curve with
+JavaFX. Despite the initial challenges, our team persevered, overcoming obstacles and ultimately producing a UI that not
+only met our design goals but also offered a visually appealing and highly functional experience tailored to the
+requirements of a student exchange program mapping tool.
+
+--------------------------------------------------------------------------------------------------------------------
+
 ## **Appendix: Requirements**
 
 ### Product scope

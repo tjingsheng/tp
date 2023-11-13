@@ -778,14 +778,20 @@ Lists all notes that you have recorded in SEPlendid. This is useful when:
 - you wish to verify that your note has been deleted successfully.
 - you wish to verify that your note has been updated successfully.
 
-**Format:** `note list`
+<box type="tip">
+    Click on a note in the list to bring up a detailed view.
+</box>
 
-**Example:** 
+**Format:** `note list`
+* This results in the displaying of all notes, sorted by their index number in ascending order. 
+
+Refer to Figure 5.5.1 to view the outcome of the execution of the command:
+
 <div class="centered-container">
   <img src="images/NoteListUi.png" alt="Note List UI" class="resized-image">
 </div>
 <div class = "centered-content" >
-  <p class = "image-caption"> Figure 1.3 Shows the list of notes you have recorded.
+  <p class = "image-caption"> Figure 5.5.1 Shows the list of notes that you have.
 </div>
 
 <br />
@@ -793,18 +799,27 @@ Lists all notes that you have recorded in SEPlendid. This is useful when:
 
 #### 5.5.2 Add a note: `note add`
 
-Adds a note with the content you wish to add with a tag. This is useful when:
+Adds a note with the content you wish to add and the tag you wish your note to have. This is useful when:
 - you wish to record a course or mapping you would are interested in doing for exchange.
 - you wish to record down important information.
 
 **Format:** `note add [content] [tag]`
 
-**Example:**
+<box type="info">
+    Tag must only be a single word with no whitespaces and only contain alphabets and numbers. You can only add 1 tag
+    for your note with this command. 
+    If you wish to have more tags for your note, you can do so with the command <code>note tag</code>.
+</box>
+
+**Example:** `note add [You can do this!] [motivation]`
+- This adds a note with a content of "You can do this!" and tags the note with "motivation". 
+
+Refer to Figure 5.5.2 to view the outcome of the execution of the command:
 <div class="centered-container">
   <img src="images/NoteAddUi.png" alt="Note Add UI" class="resized-image">
 </div>
 <div class = "centered-content" >
-  <p class = "image-caption"> Figure 1.3 Shows the note you have added.
+  <p class = "image-caption"> Figure 5.5.2 Shows the note you have added.
 </div>
 
 <br />
@@ -817,12 +832,19 @@ Deletes specified index of the note. This is useful when:
 
 **Format:** `note delete [index]`
 
-**Example:**
+<box type="warning" icon=":exclamation:" icon-color="red">
+    <b>Warning:</b> This action is irreversible! Be careful when you want to delete your note. 
+</box>
+
+**Example:** `note delete [3]`
+- This deletes the note with index 3.
+
+Refer to Figure 5.5.3 to view the outcome of the execution of the command:
 <div class="centered-container">
   <img src="images/NoteDeleteUi.png" alt="Note Delete UI" class="resized-image">
 </div>
 <div class = "centered-content" >
-  <p class = "image-caption"> Figure 1.3 Shows the note you have deleted.
+  <p class = "image-caption"> Figure 5.5.3 Shows the note you have deleted and the updated note list.
 </div>
 
 <br />
@@ -836,12 +858,19 @@ Updates specified note according to the index and updates the content of the not
 
 **Format:** `note update [index] [content]`
 
-**Example:**
+<box type="warning" icon=":exclamation:" icon-color="red">
+    <b>Warning:</b> This command will overwrite your old content with the new content you specified. 
+</box>
+
+**Example:** `note update [1] [Exchange Application Deadline: 25 September 2023]`
+- This updates the content of the note with index 1 to "Exchange Application Deadline: 25 September 2023". 
+
+Refer to Figure 5.5.4 to view the outcome of the execution of the command:
 <div class="centered-container">
-  <img src="images/NoteDeleteUi.png" alt="Note Delete UI" class="resized-image">
+  <img src="images/NoteUpdateUi.png" alt="Note Update UI" class="resized-image">
 </div>
 <div class = "centered-content" >
-  <p class = "image-caption"> Figure 1.3 Shows the note you want to delete.
+  <p class = "image-caption"> Figure 5.5.4 Shows the note you updated and the updated note list.
 </div>
 
 <br />
@@ -850,16 +879,21 @@ Updates specified note according to the index and updates the content of the not
 #### 5.5.5 Tag a note: `note tag`
 
 Adds a tag to the specified note according to the index. This is useful when:
-- you want to easily view the different key points of the note.
+- you wish to group your notes with specific words.
+- you wish to easily view the different key points of the note.
 
 **Format:** `note tag [index] [tag]`
 
-**Example:**
+**Example:** `note tag [1] [important]`
+- This adds "important" tag to the note with index 1. 
+
+Refer to Figure 5.5.5 to view the outcome of the execution of the command:
+
 <div class="centered-container">
   <img src="images/NoteTagUi.png" alt="Note Tag UI" class="resized-image">
 </div>
 <div class = "centered-content" >
-  <p class = "image-caption"> Figure 1.3 Shows the notes updated with a tag you have specified.
+  <p class = "image-caption"> Figure 5.5.5 Shows the notes updated with a tag you have specified.
 </div>
 
 <br />
@@ -871,13 +905,21 @@ Clears all tags for the specified note according to its index. This is useful wh
 - you wish to remove all the tags that are no longer relevant to your note.
 
 **Format:** `note cleartag [index]`
+<box type="warning" icon=":exclamation:" icon-color="red">
+<b>Warning:</b> This command will remove all tags for your specified note. 
+</box>
 
-**Example:**
+
+**Example:** `note cleartag [1]`
+- This removes all the tags for the note with index 1.
+
+Refer to Figure 5.5.6 to view the outcome of the execution of the command:
+
 <div class="centered-container">
-  <img src="images/NoteTagUi.png" alt="Note Tag UI" class="resized-image">
+  <img src="images/NoteClearTagUi.png" alt="Note Tag UI" class="resized-image">
 </div>
 <div class = "centered-content" >
-  <p class = "image-caption"> Figure 1.3 Shows the note where all the tags have been removed.
+  <p class = "image-caption"> Figure 5.5.6 Shows the note where all the tags have been removed.
 </div>
 
 <br />
@@ -886,16 +928,24 @@ Clears all tags for the specified note according to its index. This is useful wh
 #### 5.5.7 Search notes by tag: `note search`
 
 Searches for notes which tag contains the value `tagKeyword`. This is useful when:
-- you wish to find your notes with the tags you are interested in. 
+- you wish to filter your notes with the tags you are interested in. 
 
 **Format:** `note search [tagKeyword]`
 
-**Example:**
+<box type="info">
+<code>tagKeyword</code> is case-insensitive.
+</box>
+
+**Example:** `note search [plans]`
+- This searches all notes with the tag that contains the word "plans".
+
+Refer to Figure 5.5.7 to view the outcome of the execution of the command:
+
 <div class="centered-container">
   <img src="images/NoteSearchUi.png" alt="Note Search UI" class="resized-image">
 </div>
 <div class = "centered-content" >
-  <p class = "image-caption"> Figure 1.3 Shows the note which tags contains the keyword.
+  <p class = "image-caption"> Figure 5.5.7 Shows the note with the tags that contains the tagKeyword.
 </div>
 
 <br />
@@ -906,6 +956,8 @@ Searches for notes which tag contains the value `tagKeyword`. This is useful whe
 Results in a pop-up window for you to copy the URL into an external browser to view SEPlendid's user guide.
 
 Format: `help`
+
+Refer to the figure below to view the outcome of the execution of the command:
 
 ![Help](Images/Help.jpg)
 

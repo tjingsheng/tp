@@ -1,22 +1,85 @@
 package seedu.address.model.university;
 
 /**
- * Represents the attribute which is related to university.
+ * Represents the attribute related to university.
  */
 public enum UniversityAttribute {
-    UNIVERSITYNAME;
+    UNIVERSITY("university");
 
-    public static final String MESSAGE_CONSTRAINTS =
-            "There are only 1 attribute: universityname";
+    private final String value;
 
     /**
-     * Returns trye if the given attribute is valid.
-     * @param test String to be tested.
-     * @return True if attribute is valid.
+     * Constructor for UniversityAttribute.
+     *
+     * @param value The string representation of the attribute.
      */
-    public static boolean isValidAttribute(String test) {
-        switch(test) {
-        case ("UNIVERSITYNAME"):
+    UniversityAttribute(String value) {
+        this.value = value;
+    }
+
+    /**
+     * Gets the string representation of the attribute.
+     *
+     * @return The string representation of the attribute.
+     */
+    @Override
+    public String toString() {
+        return value;
+    }
+
+    /**
+     * Converts a string to the corresponding UniversityAttribute.
+     *
+     * @param text The string to be converted.
+     * @return The UniversityAttribute corresponding to the input string, or null if not found.
+     */
+    public static UniversityAttribute fromString(String text) {
+        if (text == null) {
+            return null;
+        }
+        for (UniversityAttribute enumValue : UniversityAttribute.values()) {
+            if (enumValue.value.equals(text)) {
+                return enumValue;
+            }
+        }
+        return null;
+    }
+
+
+    /**
+     * Checks if the given attribute is valid for sorting.
+     *
+     * @param test The string to be tested.
+     * @return True if the attribute is valid for sorting, false otherwise.
+     */
+    public static boolean isValidAttributeForSort(String test) {
+        UniversityAttribute attribute = UniversityAttribute.fromString(test);
+        if (attribute == null) {
+            return false;
+        }
+
+        switch (attribute) {
+        case UNIVERSITY:
+            return true;
+        default:
+            return false;
+        }
+    }
+
+    /**
+     * Checks if the given attribute is valid for searching.
+     *
+     * @param test The string to be tested.
+     * @return True if the attribute is valid for searching, false otherwise.
+     */
+    public static boolean isValidAttributeForSearch(String test) {
+        UniversityAttribute attribute = UniversityAttribute.fromString(test);
+        if (attribute == null) {
+            return false;
+        }
+
+        switch (attribute) {
+        case UNIVERSITY:
             return true;
         default:
             return false;

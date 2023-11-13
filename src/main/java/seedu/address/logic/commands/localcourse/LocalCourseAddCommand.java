@@ -3,9 +3,9 @@ package seedu.address.logic.commands.localcourse;
 import static java.util.Objects.requireNonNull;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.logic.Messages;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.messages.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCourse;
@@ -15,10 +15,6 @@ import seedu.address.seplendidui.UiUtil;
  * Adds a local course to the LocalCourseCatalogue.
  */
 public class LocalCourseAddCommand extends LocalCourseCommand {
-
-    // Also available in abstract class LocalCourseCommand to support polymorphism
-    public static final String LOCAL_COURSE_ADD_MESSAGE_USAGE =
-        COMMAND_WORD + " add [localcode] [localname] [localunit] [localdescription]: Adds a local course.";
     public static final String ACTION_WORD = "add";
 
     public static final String MESSAGE_SUCCESS = "New local course added: %1$s";

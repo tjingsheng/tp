@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.messages.ConstraintMessage;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.localcourse.LocalDescription;
@@ -58,7 +59,7 @@ class JsonAdaptedLocalCourse {
                 String.format(MISSING_FIELD_MESSAGE_FORMAT, LocalCode.class.getSimpleName()));
         }
         if (!LocalCode.isValidLocalCode(localCode)) {
-            throw new IllegalValueException(LocalCode.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(ConstraintMessage.LOCALCOURSE_CODE.getValue());
         }
         final LocalCode modelLocalCode = new LocalCode(localCode);
 
@@ -67,7 +68,7 @@ class JsonAdaptedLocalCourse {
                 String.format(MISSING_FIELD_MESSAGE_FORMAT, LocalName.class.getSimpleName()));
         }
         if (!LocalName.isValidLocalName(localName)) {
-            throw new IllegalValueException(LocalName.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(ConstraintMessage.LOCALCOURSE_NAME.getValue());
         }
         final LocalName modelLocalName = new LocalName(localName);
 
@@ -76,7 +77,7 @@ class JsonAdaptedLocalCourse {
                 String.format(MISSING_FIELD_MESSAGE_FORMAT, LocalUnit.class.getSimpleName()));
         }
         if (!LocalUnit.isValidLocalUnit(localUnit)) {
-            throw new IllegalValueException(LocalUnit.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(ConstraintMessage.LOCALCOURSE_UNIT.getValue());
         }
         final LocalUnit modelLocalUnit = new LocalUnit(localUnit);
 
@@ -85,7 +86,7 @@ class JsonAdaptedLocalCourse {
                 String.format(MISSING_FIELD_MESSAGE_FORMAT, LocalDescription.class.getSimpleName()));
         }
         if (!LocalDescription.isValidLocalDescription(localDescription)) {
-            throw new IllegalValueException(LocalDescription.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(ConstraintMessage.LOCALCOURSE_DESCRIPTION.getValue());
         }
         final LocalDescription modelLocalDescription = new LocalDescription(localDescription);
 

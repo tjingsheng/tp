@@ -1,7 +1,6 @@
-package seedu.address.logic.parser;
+package seedu.address.logic.parser.partnercourse;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERATTRIBUTE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERCODE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERUPDATEDVALUE;
@@ -9,7 +8,12 @@ import static seedu.address.logic.parser.CliSyntax.PARAMETER_UNIVERSITYNAME;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
 import seedu.address.logic.commands.partnercourse.PartnerCourseUpdateCommand;
+import seedu.address.logic.parser.Parser;
+import seedu.address.logic.parser.ParserUtil;
+import seedu.address.logic.parser.SeplendidArgumentMap;
+import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.messages.UsageMessage;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
 import seedu.address.model.partnercourse.PartnerDescription;
@@ -29,9 +33,12 @@ public class PartnerCourseUpdateCommandParser implements Parser<PartnerCourseUpd
      * @throws ParseException if the user input does not conform the expected format.
      */
     public PartnerCourseUpdateCommand parse(String args) throws ParseException {
-        if (!areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    PartnerCourseUpdateCommand.PARTNER_COURSE_UPDATE_MESSAGE_USAGE));
+        ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
+                areValuesEnclosedAndNonEmpty(args);
+        if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
+            throw new ParseException(UsageMessage.PARTNERCOURSE_UPDATE.getValue());
+        } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
+            throw new ParseException(UsageMessage.PARTNERCOURSE_UPDATE.getValueWithEmptyArgs());
         }
 
         SeplendidArgumentMap parameterToArgMap = SeplendidArgumentTokenizer.tokenize(args,
@@ -45,8 +52,7 @@ public class PartnerCourseUpdateCommandParser implements Parser<PartnerCourseUpd
                 PARAMETER_PARTNERCODE,
                 PARAMETER_PARTNERATTRIBUTE,
                 PARAMETER_PARTNERUPDATEDVALUE)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    PartnerCourseUpdateCommand.PARTNER_COURSE_UPDATE_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.PARTNERCOURSE_UPDATE.getValue());
         }
 
         UniversityName universityName =
@@ -75,12 +81,12 @@ public class PartnerCourseUpdateCommandParser implements Parser<PartnerCourseUpd
                 throw new ParseException(PartnerName.MESSAGE_CONSTRAINTS);
             }
             break;
-        case UNIT:
+        case PARTNERUNIT:
             if (!PartnerUnit.isValidPartnerUnit(trimmedUpdatedValue)) {
                 throw new ParseException(PartnerUnit.MESSAGE_CONSTRAINTS);
             }
             break;
-        case DESCRIPTION:
+        case PARTNERDESCRIPTION:
             if (!PartnerDescription.isValidPartnerDescription(trimmedUpdatedValue)) {
                 throw new ParseException(PartnerDescription.MESSAGE_CONSTRAINTS);
             }

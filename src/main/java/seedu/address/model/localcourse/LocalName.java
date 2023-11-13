@@ -3,19 +3,17 @@ package seedu.address.model.localcourse;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import seedu.address.messages.ConstraintMessage;
+
 /**
  * Represents a Local Course's local name in SEPlendid.
  * Guarantees: immutable; is valid as declared in {@link #isValidLocalName(String)}
  */
 public class LocalName {
-    // Used in AppUtil#checkArgument and ParserUtil, JsonAdaptedXXX exceptions
-    public static final String MESSAGE_CONSTRAINTS = "LocalName can take any values, given it starts with a "
-            + "whitespace, and it should not be blank";
-
     /*
      * This matches a string that starts with a non-whitespace character.
      */
-    public static final String VALIDATION_REGEX = "[^\\s].*";
+    public static final String VALIDATION_REGEX = "[^\\s].{0,75}";
 
     private final String value;
 
@@ -28,7 +26,7 @@ public class LocalName {
     public LocalName(String localName) {
         localName = localName.trim();
         requireNonNull(localName);
-        checkArgument(isValidLocalName(localName), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidLocalName(localName), ConstraintMessage.LOCALCOURSE_NAME.getValue());
         value = localName;
     }
 

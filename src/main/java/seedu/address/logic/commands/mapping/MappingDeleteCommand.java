@@ -6,9 +6,9 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.Optional;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.logic.Messages;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.messages.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCode;
@@ -21,11 +21,7 @@ import seedu.address.seplendidui.UiUtil;
  * Deletes a mapping identified using its local code, university and partner code.
  */
 public class MappingDeleteCommand extends MappingCommand {
-
-    public static final String MAPPING_DELETE_MESSAGE_USAGE = COMMAND_WORD
-            + " delete [localcode] [university] [partnercode]: Deletes a course mapping.";
     public static final String ACTION_WORD = "delete";
-
     public static final String MESSAGE_SUCCESS = "Deleted Mapping: %1$s";
     public static final String MESSAGE_NONEXISTENT_MAPPING = "This course mapping does not exist in SEPlendid.";
 

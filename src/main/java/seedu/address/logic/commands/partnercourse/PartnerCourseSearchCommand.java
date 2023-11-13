@@ -5,9 +5,9 @@ import static java.util.Objects.requireNonNull;
 import java.util.Objects;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.logic.Messages;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.messages.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
@@ -20,13 +20,7 @@ import seedu.address.seplendidui.UiUtil;
  */
 public class PartnerCourseSearchCommand extends PartnerCourseCommand {
     public static final String ACTION_WORD = "search"; // Use "search" as the command word
-
     public static final String MESSAGE_SUCCESS = "Partner courses searched: %1$s";
-
-
-    public static final String PARTNERCOURSE_SEARCH_MESSAGE_USAGE = COMMAND_WORD
-            + " : Search local courses by attributes - partnercode and partnername and partneruniversity "
-            + "and partnerdescription";
 
     private final PartnerCourseAttribute attribute;
 

@@ -1,6 +1,6 @@
 package seedu.address.logic.parser.localcourse;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_LOCALCODE;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
@@ -10,6 +10,7 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.SeplendidArgumentMap;
 import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.messages.UsageMessage;
 import seedu.address.model.localcourse.LocalCode;
 
 /**
@@ -24,18 +25,19 @@ public class LocalCourseDeleteCommandParser implements Parser<LocalCourseDeleteC
      * @throws ParseException if the user input does not conform the expected format
      */
     public LocalCourseDeleteCommand parse(String args) throws ParseException {
-        if (!areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                            LocalCourseDeleteCommand.LOCAL_COURSE_DELETE_MESSAGE_USAGE));
+        ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
+                areValuesEnclosedAndNonEmpty(args);
+        if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
+            throw new ParseException(UsageMessage.LOCALCOURSE_DELETE.getValue());
+        } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
+            throw new ParseException(UsageMessage.LOCALCOURSE_DELETE.getValueWithEmptyArgs());
         }
 
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_LOCALCODE);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_LOCALCODE)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    LocalCourseDeleteCommand.LOCAL_COURSE_DELETE_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.LOCALCOURSE_DELETE.getValue());
         }
 
         // All arguments should be a non-empty {@code Optional}

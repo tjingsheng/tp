@@ -1,13 +1,19 @@
-package seedu.address.logic.parser;
+package seedu.address.logic.parser.university;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_UNIVERSITYATTRIBUTE;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
 import java.util.Comparator;
 
 import seedu.address.logic.commands.university.UniversitySortCommand;
+import seedu.address.logic.parser.Parser;
+import seedu.address.logic.parser.ParserUtil;
+import seedu.address.logic.parser.SeplendidArgumentMap;
+import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.messages.ConstraintMessage;
+import seedu.address.messages.UsageMessage;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityAttribute;
 import seedu.address.model.university.comparator.UniversityComparatorByUniversityName;
@@ -24,17 +30,19 @@ public class UniversitySortCommandParser implements Parser<UniversitySortCommand
      * @throws ParseException if the user input does not conform the expected format.
      */
     public UniversitySortCommand parse(String args) throws ParseException {
-        if (!areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    UniversitySortCommand.UNIVERSITY_SORT_MESSAGE_USAGE));
+        ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
+                areValuesEnclosedAndNonEmpty(args);
+        if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
+            throw new ParseException(UsageMessage.UNIVERSITY_SORT.getValue());
+        } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
+            throw new ParseException(UsageMessage.UNIVERSITY_SORT.getValueWithEmptyArgs());
         }
 
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_UNIVERSITYATTRIBUTE);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_UNIVERSITYATTRIBUTE)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    UniversitySortCommand.UNIVERSITY_SORT_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.UNIVERSITY_SORT.getValue());
         }
 
         Comparator<University> universityComparator =
@@ -44,12 +52,12 @@ public class UniversitySortCommandParser implements Parser<UniversitySortCommand
     }
 
     private Comparator<University> parseUniversityComparator(String args) throws ParseException {
-        UniversityAttribute universityAttribute = ParserUtil.parseUniversityAttribute(args);
+        UniversityAttribute universityAttribute = ParserUtil.parseUniversityAttributeForSort(args);
         switch(universityAttribute) {
-        case UNIVERSITYNAME:
+        case UNIVERSITY:
             return new UniversityComparatorByUniversityName();
         default:
-            throw new ParseException(UniversityAttribute.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.UNIVERSITY_ATTRIBUTE_SEARCH.getValue());
         }
     }
 }

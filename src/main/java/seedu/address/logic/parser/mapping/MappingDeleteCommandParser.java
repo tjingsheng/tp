@@ -1,6 +1,6 @@
 package seedu.address.logic.parser.mapping;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_LOCALCODE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERCODE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_UNIVERSITY;
@@ -12,6 +12,7 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.SeplendidArgumentMap;
 import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.messages.UsageMessage;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.university.UniversityName;
@@ -28,10 +29,12 @@ public class MappingDeleteCommandParser implements Parser<MappingDeleteCommand> 
      * @throws ParseException if the user input does not conform the expected format
      */
     public MappingDeleteCommand parse(String args) throws ParseException {
-        if (!areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                            MappingDeleteCommand.MAPPING_DELETE_MESSAGE_USAGE));
+        ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
+                areValuesEnclosedAndNonEmpty(args);
+        if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
+            throw new ParseException(UsageMessage.MAPPING_DELETE.getValue());
+        } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
+            throw new ParseException(UsageMessage.MAPPING_DELETE.getValueWithEmptyArgs());
         }
 
         SeplendidArgumentMap parameterToArgMap =
@@ -40,8 +43,7 @@ public class MappingDeleteCommandParser implements Parser<MappingDeleteCommand> 
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_LOCALCODE, PARAMETER_UNIVERSITY,
                 PARAMETER_PARTNERCODE)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    MappingDeleteCommand.MAPPING_DELETE_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.MAPPING_DELETE.getValue());
         }
 
         // All arguments should be a non-empty {@code Optional}

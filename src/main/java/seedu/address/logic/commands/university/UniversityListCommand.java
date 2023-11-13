@@ -12,11 +12,7 @@ import seedu.address.seplendidui.UiUtil;
  * Lists all universities in the UniversitiesCatalogue.
  */
 public class UniversityListCommand extends UniversityCommand {
-    public static final String UNIVERSITY_LIST_MESSAGE_USAGE = COMMAND_WORD
-            + "list: Lists all universities";
-
     public static final String ACTION_WORD = "list";
-
     public static final String MESSAGE_SUCCESS = "Listed all universities";
 
     @Override

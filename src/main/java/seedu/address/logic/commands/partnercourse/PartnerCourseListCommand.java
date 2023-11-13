@@ -12,10 +12,7 @@ import seedu.address.seplendidui.UiUtil;
  * Lists all partner courses in the PartnerCourseCatalogue
  */
 public class PartnerCourseListCommand extends PartnerCourseCommand {
-    public static final String PARTNER_COURSE_LIST_MESSAGE_USAGE = COMMAND_WORD
-            + "list: Lists all partner courses.";
     public static final String ACTION_WORD = "list";
-
     public static final String MESSAGE_SUCCESS = "Listed all partner courses";
 
     /**

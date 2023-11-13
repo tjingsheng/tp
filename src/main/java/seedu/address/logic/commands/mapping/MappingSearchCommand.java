@@ -14,10 +14,6 @@ import seedu.address.seplendidui.UiUtil;
  * Lists all mappings in the MappingCatalogue.
  */
 public class MappingSearchCommand extends MappingCommand {
-
-    public static final String MAPPING_SEARCH_MESSAGE_USAGE = COMMAND_WORD
-            + " search [localcode/localname/partnercode/partnername/university/information] [query]: Lists all "
-            + "mappings based on queried value for the specified attribute.";
     public static final String ACTION_WORD = "search";
 
     public static final String MESSAGE_SUCCESS = "Searched mappings where %1$s contains %2$s.";

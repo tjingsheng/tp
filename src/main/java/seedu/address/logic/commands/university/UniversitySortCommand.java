@@ -16,8 +16,6 @@ import seedu.address.seplendidui.UiUtil;
  * Sorts university list.
  */
 public class UniversitySortCommand extends UniversityCommand {
-    public static final String UNIVERSITY_SORT_MESSAGE_USAGE = COMMAND_WORD
-            + " sort: Sorts all universities in alphabetical order";
     public static final String ACTION_WORD = "sort";
 
     public static final String MESSAGE_SUCCESS = "Sorted all universities";

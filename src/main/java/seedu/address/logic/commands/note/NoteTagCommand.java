@@ -3,9 +3,9 @@ package seedu.address.logic.commands.note;
 import static java.util.Objects.requireNonNull;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.logic.Messages;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.messages.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.note.Note;
@@ -16,10 +16,8 @@ import seedu.address.seplendidui.UiUtil;
  * Adds a tag to a note to the NoteList.
  */
 public class NoteTagCommand extends NoteCommand {
-
-    public static final String NOTE_TAG_MESSAGE_USAGE = COMMAND_WORD
-            + " tag [index] [tag]: Add a tag to a note.";
     public static final String MESSAGE_NONEXISTENT_NOTE = "Note not found, please put a valid index.";
+    public static final String MESSAGE_DUPLICATE_TAGS = "Note cannot have duplicated tags.";
     public static final String ACTION_WORD = "tag";
     public static final String MESSAGE_SUCCESS = "Note tagged: %1$s";
     private final Integer noteIndexToUpdate;
@@ -51,6 +49,9 @@ public class NoteTagCommand extends NoteCommand {
             throw new CommandException(MESSAGE_NONEXISTENT_NOTE);
         }
         Note oldNote = seplendidModel.getNoteCatalogue().getNoteList().get(this.noteIndexToUpdate - 1);
+        if (oldNote.getTags().contains(addTag)) {
+            throw new CommandException(MESSAGE_DUPLICATE_TAGS);
+        }
         oldNote.getTags().add(addTag);
         Note newNote = new Note(oldNote.getContent(), oldNote.getTags(), oldNote.getIndex());
         seplendidModel.setNote(oldNote, newNote);

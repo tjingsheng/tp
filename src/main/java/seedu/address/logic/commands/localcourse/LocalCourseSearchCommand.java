@@ -5,9 +5,9 @@ import static java.util.Objects.requireNonNull;
 import java.util.Objects;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.logic.Messages;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.messages.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCourseAttribute;
@@ -22,11 +22,6 @@ public class LocalCourseSearchCommand extends LocalCourseCommand {
     public static final String ACTION_WORD = "search"; // Use "search" as the command word
 
     public static final String MESSAGE_SUCCESS = "Local courses searched: %1$s";
-
-
-    public static final String LOCALCOURSE_SEARCH_MESSAGE_USAGE = COMMAND_WORD
-            + " : Search local courses by attributes - localcode and localname and localdescription";
-
     private final LocalCourseAttribute attribute;
 
     private final LocalCourseContainsKeywordsPredicate predicate;

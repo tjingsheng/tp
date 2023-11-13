@@ -7,15 +7,7 @@ import seedu.address.logic.commands.Command;
  * Abstract class for NoteCommands.
  */
 public abstract class NoteCommand extends Command {
-
     public static final String COMMAND_WORD = "note";
-
-    /* The message shown upon a ParseException */
-    private static final String MESSAGE_USAGE = COMMAND_WORD + ": Courses offered by NUS Computing"
-            + "Commands: "
-            + "note list: Lists all notess."
-            + "note add [content] : Adds a note without tags."
-            + "note add [content] [tags]: Adds a note with tags.";
 
     protected NoteCommand() {
     }

@@ -1,6 +1,6 @@
 package seedu.address.logic.parser.localcourse;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.commands.CommandTestUtil.UNNECESSARY_WHITESPACE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -13,6 +13,8 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.localcourse.LocalCourseCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseSortCommand;
+import seedu.address.messages.ConstraintMessage;
+import seedu.address.messages.UsageMessage;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.localcourse.LocalCourseAttribute;
 import seedu.address.model.localcourse.comparator.LocalCourseComparatorByLocalCode;
@@ -21,8 +23,10 @@ import seedu.address.testutil.LocalCourseUtil;
 
 public class LocalCourseSortCommandParserTest {
 
-    private static final String commandActionWord = LocalCourseCommand.COMMAND_WORD
-            + LocalCourseSortCommand.ACTION_WORD;
+    private static final String commandActionWord =
+            LocalCourseCommand.COMMAND_WORD
+                    + " "
+                    + LocalCourseSortCommand.ACTION_WORD;
 
     private LocalCourseSortCommandParser parser = new LocalCourseSortCommandParser();
 
@@ -43,25 +47,24 @@ public class LocalCourseSortCommandParserTest {
 
     @Test
     public void parse_argumentNotClosedOrEmpty_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                LocalCourseSortCommand.LOCAL_COURSE_SORT_MESSAGE_USAGE);
-
+        String expectedMessage = UsageMessage.LOCALCOURSE_SORT.getValue();
         // missing open bracket
         assertParseFailure(parser, commandActionWord
                 + LocalCourseUtil.getLocalCourseArgumentsForSortCommand(new LocalCourseComparatorByLocalCode())
                 .substring(1), expectedMessage);
 
+        String expectedMessageWithEmptyArg = UsageMessage.LOCALCOURSE_SORT.getValueWithEmptyArgs();
         // empty argument
         assertParseFailure(parser, commandActionWord
-                + getSquareBracketWrappedArgument(""), expectedMessage);
+                + getSquareBracketWrappedArgument(""), expectedMessageWithEmptyArg);
     }
 
     @Test
     public void parse_invalidValue_failure() {
         // invalid attribute
         assertParseFailure(parser, commandActionWord
-                + getSquareBracketWrappedArgument(INVALID_LOCAL_COURSE_ATTRIBUTE),
-                LocalCourseAttribute.MESSAGE_CONSTRAINTS);
+                        + getSquareBracketWrappedArgument(INVALID_LOCAL_COURSE_ATTRIBUTE),
+                ConstraintMessage.LOCALCOURSE_ATTRIBUTE_SORT.getValue());
     }
 
     @Test

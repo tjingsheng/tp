@@ -1,9 +1,9 @@
 package seedu.address.logic.parser.mapping;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_MAPPINGATTRIBUTE;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
-import static seedu.address.logic.parser.ParserUtil.parseMappingAttribute;
+import static seedu.address.logic.parser.ParserUtil.parseMappingAttributeForSort;
 
 import seedu.address.logic.commands.mapping.MappingSortCommand;
 import seedu.address.logic.parser.Parser;
@@ -11,7 +11,8 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.SeplendidArgumentMap;
 import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.mapping.MappingAttributeEnum;
+import seedu.address.messages.UsageMessage;
+import seedu.address.model.mapping.MappingAttribute;
 import seedu.address.model.mapping.MappingComparatorByAttribute;
 
 /**
@@ -26,9 +27,12 @@ public class MappingSortCommandParser implements Parser<MappingSortCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public MappingSortCommand parse(String args) throws ParseException {
-        if (!areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    MappingSortCommand.MAPPING_SORT_MESSAGE_USAGE));
+        ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
+                areValuesEnclosedAndNonEmpty(args);
+        if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
+            throw new ParseException(UsageMessage.MAPPING_SORT.getValue());
+        } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
+            throw new ParseException(UsageMessage.MAPPING_SORT.getValueWithEmptyArgs());
         }
 
         SeplendidArgumentMap parameterToArgMap =
@@ -36,12 +40,11 @@ public class MappingSortCommandParser implements Parser<MappingSortCommand> {
 
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_MAPPINGATTRIBUTE)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    MappingSortCommand.MAPPING_SORT_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.MAPPING_SORT.getValue());
         }
 
         // All arguments should be a non-empty {@code Optional}
-        MappingAttributeEnum attributeEnumValue = parseMappingAttribute(parameterToArgMap.getValue(
+        MappingAttribute attributeEnumValue = parseMappingAttributeForSort(parameterToArgMap.getValue(
                 PARAMETER_MAPPINGATTRIBUTE).get().toLowerCase());
 
         MappingComparatorByAttribute mappingComparator = new MappingComparatorByAttribute(attributeEnumValue);

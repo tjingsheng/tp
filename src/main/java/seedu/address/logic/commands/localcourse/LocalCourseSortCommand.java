@@ -16,8 +16,6 @@ import seedu.address.seplendidui.UiUtil;
  * Sorts local course list.
  */
 public class LocalCourseSortCommand extends LocalCourseCommand {
-    public static final String LOCAL_COURSE_SORT_MESSAGE_USAGE = COMMAND_WORD
-            + " sort: Sorts all local courses by attributes - localcode & localname";
     public static final String ACTION_WORD = "sort";
 
     public static final String MESSAGE_SUCCESS = "Sorted all local courses";

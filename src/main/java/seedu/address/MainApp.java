@@ -61,7 +61,7 @@ import seedu.address.storage.UserPrefsStorage;
  */
 public class MainApp extends Application {
 
-    public static final Version VERSION = new Version(1, 3, 0, true);
+    public static final Version VERSION = new Version(1, 3, 1, true);
 
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
@@ -96,20 +96,20 @@ public class MainApp extends Application {
         PartnerCourseCatalogueStorage partnerCourseCatalogue =
                 new JsonPartnerCourseCatalogueStorage(userPrefs.getPartnerCourseCatalogueFilePath());
         UniversityCatalogueStorage universityCatalogueStorage =
-            new JsonUniversityCatalogueStorage(userPrefs.getUniversityCatalogueFilePath());
+                new JsonUniversityCatalogueStorage(userPrefs.getUniversityCatalogueFilePath());
         MappingCatalogueStorage mappingCatalogueStorage =
                 new JsonMappingCatalogueStorage(userPrefs.getMappingCatalogueFilePath());
         NoteCatalogueStorage noteCatalogueStorage =
-            new JsonNoteCatalogueStorage(userPrefs.getNoteCatalogueFilePath());
+                new JsonNoteCatalogueStorage(userPrefs.getNoteCatalogueFilePath());
 
         storage = new StorageManager(
-            addressBookStorage,
-            userPrefsStorage,
-            localCourseCatalogueStorage,
-            partnerCourseCatalogue,
-            universityCatalogueStorage,
-            mappingCatalogueStorage,
-            noteCatalogueStorage);
+                addressBookStorage,
+                userPrefsStorage,
+                localCourseCatalogueStorage,
+                partnerCourseCatalogue,
+                universityCatalogueStorage,
+                mappingCatalogueStorage,
+                noteCatalogueStorage);
         // AB3 model
         model = initAddressBookModelManager(storage, userPrefs);
 
@@ -227,12 +227,12 @@ public class MainApp extends Application {
             initialNoteCatalogue = getSampleNoteCatalogue();
         }
         return new SeplendidModelManager(
-            userPrefs,
-            initialLocalCourseCatalogue,
-            initialPartnerCourseCatalogue,
-            initialUniversityCatalogue,
-            initialMappingCatalogue,
-            initialNoteCatalogue);
+                userPrefs,
+                initialLocalCourseCatalogue,
+                initialPartnerCourseCatalogue,
+                initialUniversityCatalogue,
+                initialMappingCatalogue,
+                initialNoteCatalogue);
     }
 
     private void initLogging(Config config) {

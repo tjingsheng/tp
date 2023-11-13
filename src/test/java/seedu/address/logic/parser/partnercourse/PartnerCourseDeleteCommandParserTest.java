@@ -1,6 +1,6 @@
 package seedu.address.logic.parser.partnercourse;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.commands.CommandTestUtil.UNNECESSARY_WHITESPACE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -18,6 +18,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.partnercourse.PartnerCourseAddCommand;
 import seedu.address.logic.commands.partnercourse.PartnerCourseCommand;
 import seedu.address.logic.commands.partnercourse.PartnerCourseDeleteCommand;
+import seedu.address.messages.UsageMessage;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.university.UniversityName;
 import seedu.address.testutil.PartnerCourseUtil;
@@ -49,24 +50,23 @@ public class PartnerCourseDeleteCommandParserTest {
 
     @Test
     void parse_argumentNotClosedOrEmpty_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                PartnerCourseDeleteCommand.PARTNER_COURSE_DELETE_MESSAGE_USAGE);
+        String expectedMessage = UsageMessage.PARTNERCOURSE_DELETE.getValue();
 
         // missing open bracket
         assertParseFailure(parser, commandActionWord
                 + PartnerCourseUtil.getPartnerCourseArgumentsForDeleteCommand(TypicalObjects.COMP1000).substring(
                 1), expectedMessage);
 
+        String expectedMessageForEmptyArg = UsageMessage.PARTNERCOURSE_DELETE.getValueWithEmptyArgs();
         // empty argument
         assertParseFailure(parser, commandActionWord
-                + getSquareBracketWrappedArgument(""), expectedMessage);
+                + getSquareBracketWrappedArgument(""), expectedMessageForEmptyArg);
     }
 
 
     @Test
     public void parse_argumentMissing_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                PartnerCourseDeleteCommand.PARTNER_COURSE_DELETE_MESSAGE_USAGE);
+        String expectedMessage = UsageMessage.PARTNERCOURSE_DELETE.getValue();
 
         // all arguments missing
         assertParseFailure(parser, commandActionWord, expectedMessage);

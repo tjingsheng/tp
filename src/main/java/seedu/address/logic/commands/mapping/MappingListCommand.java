@@ -12,11 +12,7 @@ import seedu.address.seplendidui.UiUtil;
  * Lists all mappings in the MappingCatalogue.
  */
 public class MappingListCommand extends MappingCommand {
-
-    public static final String MAPPING_LIST_MESSAGE_USAGE = COMMAND_WORD
-            + " list: Lists all mappings.";
     public static final String ACTION_WORD = "list";
-
     public static final String MESSAGE_SUCCESS = "Listed all mappings";
 
     /**

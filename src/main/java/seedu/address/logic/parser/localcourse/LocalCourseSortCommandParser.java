@@ -1,6 +1,6 @@
 package seedu.address.logic.parser.localcourse;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_LOCALATTRIBUTE;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
@@ -12,6 +12,8 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.SeplendidArgumentMap;
 import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.messages.ConstraintMessage;
+import seedu.address.messages.UsageMessage;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.localcourse.LocalCourseAttribute;
 import seedu.address.model.localcourse.comparator.LocalCourseComparatorByLocalCode;
@@ -28,17 +30,19 @@ public class LocalCourseSortCommandParser implements Parser<LocalCourseSortComma
      * @throws ParseException if the user input does not conform the expected format.
      */
     public LocalCourseSortCommand parse(String args) throws ParseException {
-        if (!areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                            LocalCourseSortCommand.LOCAL_COURSE_SORT_MESSAGE_USAGE));
+        ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
+                areValuesEnclosedAndNonEmpty(args);
+        if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
+            throw new ParseException(UsageMessage.LOCALCOURSE_SORT.getValue());
+        } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
+            throw new ParseException(UsageMessage.LOCALCOURSE_SORT.getValueWithEmptyArgs());
         }
 
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_LOCALATTRIBUTE);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_LOCALATTRIBUTE)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    LocalCourseSortCommand.LOCAL_COURSE_SORT_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.LOCALCOURSE_SORT.getValue());
         }
 
         Comparator<LocalCourse> localCourseComparator =
@@ -48,14 +52,14 @@ public class LocalCourseSortCommandParser implements Parser<LocalCourseSortComma
     }
 
     private Comparator<LocalCourse> parseLocalCourseComparator(String args) throws ParseException {
-        LocalCourseAttribute localCourseAttribute = ParserUtil.parseLocalCourseAttribute(args);
+        LocalCourseAttribute localCourseAttribute = ParserUtil.parseLocalCourseAttributeForSort(args);
         switch(localCourseAttribute) {
         case LOCALCODE:
             return new LocalCourseComparatorByLocalCode();
         case LOCALNAME:
             return new LocalCourseComparatorByLocalName();
         default:
-            throw new ParseException(LocalCourseAttribute.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_ATTRIBUTE_SORT.getValue());
         }
     }
 }

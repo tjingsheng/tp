@@ -1,6 +1,6 @@
 package seedu.address.logic.parser.localcourse;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.commands.CommandTestUtil.UNNECESSARY_WHITESPACE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -12,12 +12,14 @@ import static seedu.address.testutil.TypicalObjects.INVALID_LOCAL_COURSE_CODE;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.localcourse.LocalCourseAddCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseDeleteCommand;
+import seedu.address.messages.ConstraintMessage;
+import seedu.address.messages.UsageMessage;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.testutil.LocalCourseUtil;
 import seedu.address.testutil.TypicalObjects;
+
 
 public class LocalCourseDeleteCommandParserTest {
 
@@ -34,7 +36,7 @@ public class LocalCourseDeleteCommandParserTest {
         assertParseSuccess(parser, UNNECESSARY_WHITESPACE
                         + LocalCourseCommand.COMMAND_WORD
                         + UNNECESSARY_WHITESPACE
-                        + LocalCourseAddCommand.ACTION_WORD
+                        + LocalCourseDeleteCommand.ACTION_WORD
                         + UNNECESSARY_WHITESPACE
                         + getSquareBracketWrappedArgument(expectedLocalCode.toString())
                         + UNNECESSARY_WHITESPACE,
@@ -43,24 +45,23 @@ public class LocalCourseDeleteCommandParserTest {
 
     @Test
     void parse_argumentNotClosedOrEmpty_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                LocalCourseDeleteCommand.LOCAL_COURSE_DELETE_MESSAGE_USAGE);
+        String expectedMessage = UsageMessage.LOCALCOURSE_DELETE.getValue();
 
         // missing open bracket
         assertParseFailure(parser, commandActionWord
                 + LocalCourseUtil.getLocalCourseArgumentsForDeleteCommand(TypicalObjects.CS3230).substring(
                 1), expectedMessage);
 
+        String expectedMessageForEmptyArg = UsageMessage.LOCALCOURSE_DELETE.getValueWithEmptyArgs();
         // empty argument
         assertParseFailure(parser, commandActionWord
-                + getSquareBracketWrappedArgument(""), expectedMessage);
+                + getSquareBracketWrappedArgument(""), expectedMessageForEmptyArg);
     }
 
 
     @Test
     public void parse_allArgumentMissing_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                LocalCourseDeleteCommand.LOCAL_COURSE_DELETE_MESSAGE_USAGE);
+        String expectedMessage = UsageMessage.LOCALCOURSE_DELETE.getValue();
 
         // all arguments missing
         assertParseFailure(parser, commandActionWord, expectedMessage);
@@ -71,7 +72,7 @@ public class LocalCourseDeleteCommandParserTest {
         // invalid localCode
         assertParseFailure(parser, commandActionWord
                         + getSquareBracketWrappedArgument(INVALID_LOCAL_COURSE_CODE),
-                LocalCode.MESSAGE_CONSTRAINTS);
+                ConstraintMessage.LOCALCOURSE_CODE.getValue());
     }
 
     @Test

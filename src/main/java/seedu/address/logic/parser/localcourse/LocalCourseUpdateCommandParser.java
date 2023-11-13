@@ -1,7 +1,6 @@
 package seedu.address.logic.parser.localcourse;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_LOCALATTRIBUTE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_LOCALCODE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_LOCALUPDATEDVALUE;
@@ -13,6 +12,8 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.SeplendidArgumentMap;
 import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.messages.ConstraintMessage;
+import seedu.address.messages.UsageMessage;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourseAttribute;
 import seedu.address.model.localcourse.LocalDescription;
@@ -30,9 +31,12 @@ public class LocalCourseUpdateCommandParser implements Parser<LocalCourseUpdateC
      * @throws ParseException if the user input does not conform the expected format.
      */
     public LocalCourseUpdateCommand parse(String args) throws ParseException {
-        if (!areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    LocalCourseUpdateCommand.LOCAL_COURSE_UPDATE_MESSAGE_USAGE));
+        ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
+                areValuesEnclosedAndNonEmpty(args);
+        if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
+            throw new ParseException(UsageMessage.LOCALCOURSE_UPDATE.getValue());
+        } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
+            throw new ParseException(UsageMessage.LOCALCOURSE_UPDATE.getValueWithEmptyArgs());
         }
 
         SeplendidArgumentMap parameterToArgMap = SeplendidArgumentTokenizer.tokenize(args,
@@ -44,8 +48,7 @@ public class LocalCourseUpdateCommandParser implements Parser<LocalCourseUpdateC
                 PARAMETER_LOCALCODE,
                 PARAMETER_LOCALATTRIBUTE,
                 PARAMETER_LOCALUPDATEDVALUE)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    LocalCourseUpdateCommand.LOCAL_COURSE_UPDATE_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.LOCALCOURSE_UPDATE.getValue());
         }
 
         LocalCode localCode = ParserUtil.parseLocalCode(parameterToArgMap.getValue(PARAMETER_LOCALCODE).get());
@@ -64,22 +67,22 @@ public class LocalCourseUpdateCommandParser implements Parser<LocalCourseUpdateC
         switch (localCourseAttribute) {
         case LOCALCODE:
             if (!LocalCode.isValidLocalCode(trimmedUpdatedValue)) {
-                throw new ParseException(LocalCode.MESSAGE_CONSTRAINTS);
+                throw new ParseException(ConstraintMessage.LOCALCOURSE_CODE.getValue());
             }
             break;
         case LOCALNAME:
             if (!LocalName.isValidLocalName(trimmedUpdatedValue)) {
-                throw new ParseException(LocalName.MESSAGE_CONSTRAINTS);
+                throw new ParseException(ConstraintMessage.LOCALCOURSE_NAME.getValue());
             }
             break;
         case LOCALUNIT:
             if (!LocalUnit.isValidLocalUnit(trimmedUpdatedValue)) {
-                throw new ParseException(LocalUnit.MESSAGE_CONSTRAINTS);
+                throw new ParseException(ConstraintMessage.LOCALCOURSE_UNIT.getValue());
             }
             break;
         case LOCALDESCRIPTION:
             if (!LocalDescription.isValidLocalDescription(trimmedUpdatedValue)) {
-                throw new ParseException(LocalDescription.MESSAGE_CONSTRAINTS);
+                throw new ParseException(ConstraintMessage.LOCALCOURSE_DESCRIPTION.getValue());
             }
             break;
         default:

@@ -6,9 +6,9 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.Optional;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.logic.Messages;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.messages.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.partnercourse.PartnerCode;
@@ -25,9 +25,6 @@ import seedu.address.seplendidui.UiUtil;
  * Updates partner course.
  */
 public class PartnerCourseUpdateCommand extends PartnerCourseCommand {
-    public static final String PARTNER_COURSE_UPDATE_MESSAGE_USAGE = COMMAND_WORD
-            + " update: Updates a partner course for a particular attribute - "
-            + "partnercode & partnername & university & unit & description";
     public static final String ACTION_WORD = "update";
     public static final String MESSAGE_SUCCESS = "Updated this partner course: %1$s to this: %2$s.";
     public static final String MESSAGE_NONEXISTENT_PARTNER_COURSE = "This partner course does not exist in SEPlendid.";
@@ -101,10 +98,10 @@ public class PartnerCourseUpdateCommand extends PartnerCourseCommand {
         case PARTNERNAME:
             partnerName = new PartnerName(updatedValue);
             break;
-        case UNIT:
+        case PARTNERUNIT:
             partnerUnit = new PartnerUnit(updatedValue);
             break;
-        case DESCRIPTION:
+        case PARTNERDESCRIPTION:
             partnerDescription = new PartnerDescription(updatedValue);
             break;
         default:

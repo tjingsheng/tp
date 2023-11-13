@@ -3,9 +3,9 @@ package seedu.address.logic.commands.note;
 import static java.util.Objects.requireNonNull;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.logic.Messages;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.messages.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.note.Note;
@@ -15,12 +15,7 @@ import seedu.address.seplendidui.UiUtil;
  * Deletes a note to the NoteList.
  */
 public class NoteDeleteCommand extends NoteCommand {
-
-    // Also available in abstract class LocalCourseCommand to support polymorphism
-    public static final String NOTE_DELETE_MESSAGE_USAGE = COMMAND_WORD
-            + " delete [index]: Deletes a note.";
     public static final String ACTION_WORD = "delete";
-
     public static final String MESSAGE_SUCCESS = "Note deleted: %1$s";
 
     private final Integer noteIndexToDelete;

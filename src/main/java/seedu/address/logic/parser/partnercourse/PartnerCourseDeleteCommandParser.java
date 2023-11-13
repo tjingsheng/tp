@@ -1,8 +1,8 @@
 package seedu.address.logic.parser.partnercourse;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERCODE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_UNIVERSITYNAME;
+import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
 import seedu.address.logic.commands.partnercourse.PartnerCourseDeleteCommand;
 import seedu.address.logic.parser.Parser;
@@ -10,6 +10,7 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.SeplendidArgumentMap;
 import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.messages.UsageMessage;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.university.UniversityName;
 
@@ -25,11 +26,12 @@ public class PartnerCourseDeleteCommandParser implements Parser<PartnerCourseDel
      * @throws ParseException if the user input does not conform the expected format
      */
     public PartnerCourseDeleteCommand parse(String args) throws ParseException {
-        if (!ParserUtil.areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                            PartnerCourseDeleteCommand.PARTNER_COURSE_DELETE_MESSAGE_USAGE)
-            );
+        ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
+                areValuesEnclosedAndNonEmpty(args);
+        if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
+            throw new ParseException(UsageMessage.PARTNERCOURSE_DELETE.getValue());
+        } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
+            throw new ParseException(UsageMessage.PARTNERCOURSE_DELETE.getValueWithEmptyArgs());
         }
 
         SeplendidArgumentMap parameterToArgMap =
@@ -38,8 +40,7 @@ public class PartnerCourseDeleteCommandParser implements Parser<PartnerCourseDel
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap,
                 PARAMETER_UNIVERSITYNAME, PARAMETER_PARTNERCODE)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    PartnerCourseDeleteCommand.PARTNER_COURSE_DELETE_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.PARTNERCOURSE_DELETE.getValue());
         }
 
         UniversityName universityName =

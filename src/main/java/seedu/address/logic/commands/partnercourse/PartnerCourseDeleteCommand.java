@@ -6,9 +6,9 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.Optional;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.logic.Messages;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.messages.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.partnercourse.PartnerCode;
@@ -20,8 +20,6 @@ import seedu.address.seplendidui.UiUtil;
  * Deletes a partner course in PartnerCourseCatalogue.
  */
 public class PartnerCourseDeleteCommand extends PartnerCourseCommand {
-    public static final String PARTNER_COURSE_DELETE_MESSAGE_USAGE = COMMAND_WORD
-            + "delete [university] [partnercode]: Deletes a partner course.";
     public static final String ACTION_WORD = "delete";
     public static final String MESSAGE_SUCCESS = "Partner course deleted: %1$s";
     public static final String MESSAGE_NONEXISTENT_PARTNER_COURSE = "This partner course does not exist in SEPlendid.";

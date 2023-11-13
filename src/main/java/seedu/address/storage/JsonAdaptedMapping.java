@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.messages.ConstraintMessage;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.mapping.Mapping;
 import seedu.address.model.mapping.MappingMiscInformation;
@@ -59,7 +60,7 @@ class JsonAdaptedMapping {
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, LocalCode.class.getSimpleName()));
         }
         if (!LocalCode.isValidLocalCode(localCode)) {
-            throw new IllegalValueException(LocalCode.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(ConstraintMessage.LOCALCOURSE_CODE.getValue());
         }
         final LocalCode modelLocalCode = new LocalCode(localCode);
 
@@ -68,7 +69,7 @@ class JsonAdaptedMapping {
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, UniversityName.class.getSimpleName()));
         }
         if (!UniversityName.isValidUniversityName(universityName)) {
-            throw new IllegalValueException(UniversityName.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(ConstraintMessage.UNIVERSITY_NAME.getValue());
         }
         final UniversityName modelUniversityName = new UniversityName(universityName);
 

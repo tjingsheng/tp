@@ -5,9 +5,9 @@ import static java.util.Objects.requireNonNull;
 import java.util.Optional;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.logic.Messages;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.messages.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCode;
@@ -18,9 +18,6 @@ import seedu.address.seplendidui.UiUtil;
  * Deletes a local course identified using its local code from the address book.
  */
 public class LocalCourseDeleteCommand extends LocalCourseCommand {
-
-    public static final String LOCAL_COURSE_DELETE_MESSAGE_USAGE = COMMAND_WORD
-            + " delete [localcode]: Deletes a local course.";
     public static final String ACTION_WORD = "delete";
 
     public static final String MESSAGE_SUCCESS = "Deleted Local Course: %1$s";

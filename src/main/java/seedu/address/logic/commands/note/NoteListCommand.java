@@ -12,10 +12,7 @@ import seedu.address.seplendidui.UiUtil;
  * Lists all notes in the NoteCatalogue.
  */
 public class NoteListCommand extends NoteCommand {
-    public static final String NOTE_LIST_MESSAGE_USAGE = COMMAND_WORD + "list: Lists all notes.";
-
     public static final String ACTION_WORD = "list";
-
     public static final String MESSAGE_SUCCESS = "Listed all notes";
 
     @Override

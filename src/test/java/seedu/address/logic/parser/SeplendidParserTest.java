@@ -1,21 +1,19 @@
 package seedu.address.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.Comparator;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseAddCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseDeleteCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseSortCommand;
 import seedu.address.logic.commands.partnercourse.PartnerCourseAddCommand;
 import seedu.address.logic.commands.partnercourse.PartnerCourseDeleteCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.messages.UsageMessage;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.localcourse.comparator.LocalCourseComparatorByLocalCode;
 import seedu.address.model.partnercourse.PartnerCourse;
@@ -97,26 +95,28 @@ public class SeplendidParserTest {
      */
     @Test
     public void parseCommand_unrecognisedInput_throwsParseException() {
-        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE), ()
+        assertThrows(ParseException.class, UsageMessage.HELP.getValue(), ()
                 -> parser.parseCommand(""));
     }
 
     @Test
     public void parseCommand_unknownLocalCourseCommand_throwsParseException() {
-        assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, ()
-                -> parser.parseCommand("localcourse eject args"));
+        assertThrows(ParseException.class,
+                     UsageMessage.LOCALCOURSE.getValue(), (
+                     ) -> parser.parseCommand("localcourse eject args"));
     }
 
     @Test
     public void parseCommand_unknownPartnerCourseCommand_throwsParseException() {
-        assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, ()
-                -> parser.parseCommand("partnercourse eject args"));
+        assertThrows(ParseException.class,
+                     UsageMessage.PARTNERCOURSE.getValue(), (
+                     ) -> parser.parseCommand("partnercourse eject args"));
     }
 
     @Test
     public void parseCommand_unknownUniversityCommand_throwsParseException() {
-        assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, ()
-                -> parser.parseCommand("university eject args"));
+        assertThrows(ParseException.class,
+                     UsageMessage.UNIVERSITY.getValue(), (
+                     )-> parser.parseCommand("university eject args"));
     }
-
 }

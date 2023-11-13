@@ -19,7 +19,7 @@ public class MappingAttributeContainsKeywordPredicate implements Predicate<Mappi
     private final String keyword;
 
     /* Crucial that this is initialised with a correct attribute */
-    private final MappingAttributeEnum attribute;
+    private final MappingAttribute attribute;
 
     private Function<? super LocalCode, ? extends Optional<? extends LocalCourse>> getLocalCourseIfExists;
     private BiFunction<? super PartnerCode, ? super UniversityName, ? extends
@@ -33,7 +33,7 @@ public class MappingAttributeContainsKeywordPredicate implements Predicate<Mappi
      * @param keyword   This is the query.
      * @param attribute This is the attribute to be searched.
      */
-    public MappingAttributeContainsKeywordPredicate(String keyword, MappingAttributeEnum attribute) {
+    public MappingAttributeContainsKeywordPredicate(String keyword, MappingAttribute attribute) {
         this.keyword = keyword;
         this.attribute = attribute;
     }
@@ -53,7 +53,7 @@ public class MappingAttributeContainsKeywordPredicate implements Predicate<Mappi
     /**
      * Returns the mapping attribute.
      */
-    public MappingAttributeEnum getAttribute() {
+    public MappingAttribute getAttribute() {
         return attribute;
     }
 

@@ -1,13 +1,19 @@
-package seedu.address.logic.parser;
+package seedu.address.logic.parser.partnercourse;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERATTRIBUTE;
 import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
 import java.util.Comparator;
 
 import seedu.address.logic.commands.partnercourse.PartnerCourseSortCommand;
+import seedu.address.logic.parser.Parser;
+import seedu.address.logic.parser.ParserUtil;
+import seedu.address.logic.parser.SeplendidArgumentMap;
+import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.messages.ConstraintMessage;
+import seedu.address.messages.UsageMessage;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
 import seedu.address.model.partnercourse.comparator.PartnerCourseComparatorByPartnerCode;
@@ -26,17 +32,19 @@ public class PartnerCourseSortCommandParser implements Parser<PartnerCourseSortC
      * @throws ParseException if the user input does not conform the expected format.
      */
     public PartnerCourseSortCommand parse(String args) throws ParseException {
-        if (!areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    PartnerCourseSortCommand.PARTNER_COURSE_SORT_MESSAGE_USAGE));
+        ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
+                areValuesEnclosedAndNonEmpty(args);
+        if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
+            throw new ParseException(UsageMessage.PARTNERCOURSE_SORT.getValue());
+        } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
+            throw new ParseException(UsageMessage.PARTNERCOURSE_SORT.getValueWithEmptyArgs());
         }
 
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_PARTNERATTRIBUTE);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_PARTNERATTRIBUTE)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    PartnerCourseSortCommand.PARTNER_COURSE_SORT_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.PARTNERCOURSE_SORT.getValue());
         }
 
         Comparator<PartnerCourse> partnerCourseComparator =
@@ -55,7 +63,7 @@ public class PartnerCourseSortCommandParser implements Parser<PartnerCourseSortC
         case UNIVERSITY:
             return new PartnerCourseComparatorByUniversity();
         default:
-            throw new ParseException(PartnerCourseAttribute.MESSAGE_CONSTRAINTS_SORT);
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_SORT.getValue());
         }
     }
 }

@@ -1,11 +1,11 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.note;
 
 import static java.util.Objects.requireNonNull;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.logic.Messages;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.commands.note.NoteCommand;
+import seedu.address.messages.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.note.Note;
@@ -15,9 +15,6 @@ import seedu.address.seplendidui.UiUtil;
  * Clears all tags to a note to the NoteList.
  */
 public class NoteClearTagCommand extends NoteCommand {
-
-    public static final String NOTE_CLEAR_TAG_MESSAGE_USAGE = COMMAND_WORD
-            + " cleartag [index] : Removes all tags to a note.";
     public static final String MESSAGE_NONEXISTENT_NOTE = "Note not found, please put a valid index.";
     public static final String ACTION_WORD = "cleartag";
     public static final String MESSAGE_SUCCESS = "Removed tag for Note: %1$s";

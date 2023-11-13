@@ -4,19 +4,19 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Stream;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.messages.ConstraintMessage;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourseAttribute;
 import seedu.address.model.localcourse.LocalDescription;
 import seedu.address.model.localcourse.LocalName;
 import seedu.address.model.localcourse.LocalUnit;
-import seedu.address.model.mapping.MappingAttributeEnum;
+import seedu.address.model.mapping.MappingAttribute;
 import seedu.address.model.mapping.MappingMiscInformation;
 import seedu.address.model.note.Content;
 import seedu.address.model.partnercourse.PartnerCode;
@@ -38,6 +38,13 @@ import seedu.address.model.university.UniversityName;
 public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+
+    /**
+     * Represents the result for areValuesEnclosedAndNonEmpty method.
+     */
+    public enum AreValuesEnclosedAndNonEmptyResult {
+        SUCCESS, FAILURE, EMPTY
+    }
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -150,7 +157,7 @@ public class ParserUtil {
         requireNonNull(localCode);
         String trimmedLocalCode = localCode.trim();
         if (!LocalCode.isValidLocalCode(trimmedLocalCode)) {
-            throw new ParseException(LocalCode.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_CODE.getValue());
         }
         return new LocalCode(localCode);
     }
@@ -165,7 +172,7 @@ public class ParserUtil {
         requireNonNull(localName);
         String trimmedLocalName = localName.trim();
         if (!LocalName.isValidLocalName(trimmedLocalName)) {
-            throw new ParseException(LocalName.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_NAME.getValue());
         }
         return new LocalName(localName);
     }
@@ -180,7 +187,7 @@ public class ParserUtil {
         requireNonNull(localUnit);
         String trimmedLocalUnit = localUnit.trim();
         if (!LocalUnit.isValidLocalUnit(trimmedLocalUnit)) {
-            throw new ParseException(LocalUnit.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_UNIT.getValue());
         }
         return new LocalUnit(localUnit);
     }
@@ -195,9 +202,46 @@ public class ParserUtil {
         requireNonNull(localDescription);
         String trimmedLocalDescription = localDescription.trim();
         if (!LocalDescription.isValidLocalDescription(trimmedLocalDescription)) {
-            throw new ParseException(LocalDescription.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_DESCRIPTION.getValue());
         }
         return new LocalDescription(localDescription);
+    }
+
+    /**
+     * Parses a {@code String attribute} for localCourse search.
+     *
+     * @throws ParseException if the given {@code attribute} is invalid.
+     */
+    public static LocalCourseAttribute parseLocalCourseAttributeForSearch(String attribute) throws ParseException {
+        if (!LocalCourseAttribute.isValidAttributeForSearch(attribute)) {
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_ATTRIBUTE_SEARCH.getValue());
+        }
+        return LocalCourseAttribute.fromString(attribute);
+    }
+
+    /**
+     * Parses a {@code String attribute} for localCourse sort.
+     *
+     * @throws ParseException if the given {@code attribute} is invalid.
+     */
+    public static LocalCourseAttribute parseLocalCourseAttributeForSort(String attribute) throws ParseException {
+        if (!LocalCourseAttribute.isValidAttributeForSort(attribute)) {
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_ATTRIBUTE_SORT.getValue());
+        }
+        return LocalCourseAttribute.fromString(attribute);
+    }
+
+    /**
+     * Parses a {@code String attribute} for localCourse update.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code attribute} is invalid.
+     */
+    public static LocalCourseAttribute parseLocalCourseAttributeForUpdate(String attribute) throws ParseException {
+        if (!LocalCourseAttribute.isValidAttributeForUpdate(attribute)) {
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_ATTRIBUTE_UPDATE.getValue());
+        }
+        return LocalCourseAttribute.fromString(attribute);
     }
 
     /**
@@ -261,6 +305,44 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String attribute} for partnerCourse search.
+     *
+     * @throws ParseException if the given {@code attribute} is invalid.
+     */
+    public static PartnerCourseAttribute parsePartnerCourseAttributeForSearch(String attribute) throws ParseException {
+        if (!PartnerCourseAttribute.isValidAttributeForSearch(attribute)) {
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_SEARCH.getValue());
+        }
+        return PartnerCourseAttribute.fromString(attribute);
+    }
+
+    /**
+     * Parses a {@code String attribute} for partnerCourse sort.
+     *
+     * @throws ParseException if the given {@code attribute} is invalid.
+     */
+    public static PartnerCourseAttribute parsePartnerCourseAttributeForSort(String attribute) throws ParseException {
+        if (!PartnerCourseAttribute.isValidAttributeForSort(attribute)) {
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_SORT.getValue());
+        }
+        return PartnerCourseAttribute.fromString(attribute);
+    }
+
+    /**
+     * Parses a {@code String attribute} for partnerCourse update.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code attribute} is invalid.
+     */
+    public static PartnerCourseAttribute parsePartnerCourseAttributeForUpdate(String attribute) throws ParseException {
+        if (!PartnerCourseAttribute.isValidAttributeForUpdate(attribute)) {
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_UPDATE.getValue());
+        }
+        return PartnerCourseAttribute.fromString(attribute);
+    }
+
+    // university
+    /**
      * Parses a {@code String universityName}.
      * Leading and trailing whitespaces will be trimmed.
      */
@@ -268,9 +350,33 @@ public class ParserUtil {
         requireNonNull(universityName);
         String trimmedUniversityName = universityName.trim();
         if (!UniversityName.isValidUniversityName(trimmedUniversityName)) {
-            throw new ParseException(UniversityName.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.UNIVERSITY_NAME.getValue());
         }
         return new UniversityName(universityName);
+    }
+
+    /**
+     * Parses a {@code String attribute} for university search.
+     *
+     * @throws ParseException if the given {@code attribute} is invalid.
+     */
+    public static UniversityAttribute parseUniversityAttributeForSearch(String attribute) throws ParseException {
+        if (!UniversityAttribute.isValidAttributeForSearch(attribute)) {
+            throw new ParseException(ConstraintMessage.UNIVERSITY_ATTRIBUTE_SEARCH.getValue());
+        }
+        return UniversityAttribute.fromString(attribute);
+    }
+
+    /**
+     * Parses a {@code String attribute} for university sort.
+     *
+     * @throws ParseException if the given {@code attribute} is invalid.
+     */
+    public static UniversityAttribute parseUniversityAttributeForSort(String attribute) throws ParseException {
+        if (!UniversityAttribute.isValidAttributeForSort(attribute)) {
+            throw new ParseException(ConstraintMessage.UNIVERSITY_ATTRIBUTE_SORT.getValue());
+        }
+        return UniversityAttribute.fromString(attribute);
     }
 
     /**
@@ -311,41 +417,43 @@ public class ParserUtil {
     }
 
     /**
-     * Parse a {@code String MappingAttribute}.
-     * Leading and trailing whitespaces will be trimmed.
+     * Parses a {@code String attribute} for mapping search.
+     *
+     * @throws ParseException if the given {@code attribute} is invalid.
      */
-    public static MappingAttributeEnum parseMappingAttribute(String attributeInput)
-            throws ParseException {
-        requireNonNull(attributeInput);
-        String trimmedAttributeInput = attributeInput.trim();
-
-        if (!MappingAttributeEnum.isValidAttribute(trimmedAttributeInput)) {
-            throw new ParseException(MappingAttributeEnum.MESSAGE_CONSTRAINTS);
+    public static MappingAttribute parseMappingAttributeForSearch(String attribute) throws ParseException {
+        if (!MappingAttribute.isValidAttributeForSearch(attribute)) {
+            throw new ParseException(ConstraintMessage.MAPPING_ATTRIBUTE_SEARCH.getValue());
         }
+        return MappingAttribute.fromString(attribute);
+    }
 
-        Optional<MappingAttributeEnum> mappingAttributeOptional = MappingAttributeEnum.getAttributeEnumValue(
-                trimmedAttributeInput);
-
-        if (mappingAttributeOptional.isEmpty()) {
-            // Defensive programming
-            throw new ParseException(MappingAttributeEnum.MESSAGE_CONSTRAINTS);
+    /**
+     * Parses a {@code String attribute} for mapping sort.
+     *
+     * @throws ParseException if the given {@code attribute} is invalid.
+     */
+    public static MappingAttribute parseMappingAttributeForSort(String attribute) throws ParseException {
+        if (!MappingAttribute.isValidAttributeForSearch(attribute)) {
+            throw new ParseException(ConstraintMessage.MAPPING_ATTRIBUTE_SORT.getValue());
         }
-        return mappingAttributeOptional.get();
+        return MappingAttribute.fromString(attribute);
     }
 
 
     // SEPlendid ParserUtil starts here
 
     /**
-     * Returns true if all arguments are enclosed in square brackets, and are non-empty.
-     * The input string must be non-empty.
+     * Returns SUCCESS if all arguments are enclosed in square brackets, and are non-empty.
+     * The input string must be non-empty. Returns FAILURE if not valid, and EMPTY if argument
+     * within square bracket is not present.
      *
      * @param args Arguments in the format of {@code [args1] [args2] ...}.
-     * @return true if in correct format.
+     * @return AreValuesEnclosedAndNonEmptyResult based on the validity of the input.
      */
-    public static boolean areValuesEnclosedAndNonEmpty(String args) {
+    public static AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmpty(String args) {
         if (args.isEmpty()) {
-            return false;
+            return AreValuesEnclosedAndNonEmptyResult.FAILURE;
         }
         // The number of unclosed open square brackets, used to validate input.
         int bracketCount = 0;
@@ -357,7 +465,7 @@ public class ParserUtil {
                 currValue.setLength(0);
                 bracketCount++;
             } else if (currChar.equals(']') && currValue.toString().trim().isEmpty()) {
-                return false;
+                return AreValuesEnclosedAndNonEmptyResult.EMPTY;
             } else if (currChar.equals(']')) {
                 bracketCount--;
             } else {
@@ -365,11 +473,13 @@ public class ParserUtil {
             }
 
             if (bracketCount < 0 || bracketCount > 1) {
-                return false;
+                return AreValuesEnclosedAndNonEmptyResult.FAILURE;
             }
         }
 
-        return bracketCount == 0;
+        return bracketCount == 0
+                ? AreValuesEnclosedAndNonEmptyResult.SUCCESS
+                : AreValuesEnclosedAndNonEmptyResult.FAILURE;
     }
 
     /**
@@ -378,200 +488,5 @@ public class ParserUtil {
      */
     public static boolean areArgumentsPresent(SeplendidArgumentMap argumentMap, SeplendidParameter... parameters) {
         return Stream.of(parameters).allMatch(parameter -> argumentMap.getValue(parameter).isPresent());
-    }
-
-    /**
-     * Parses a {@code String attribute}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code attribute} is invalid.
-     */
-    public static LocalCourseAttribute parseLocalCourseAttribute(String attribute) throws ParseException {
-        requireNonNull(attribute);
-        String attributeLowerCase = attribute.toLowerCase().trim();
-        String resultAttribute = attributeLowerCase;
-
-        switch (attributeLowerCase) {
-        case ("localcode"):
-            resultAttribute = "LOCALCODE";
-            break;
-        case ("localname"):
-            resultAttribute = "LOCALNAME";
-            break;
-        case ("localdescription"):
-            resultAttribute = "LOCALDESCRIPTION";
-            break;
-        default:
-            break;
-        }
-
-        if (!LocalCourseAttribute.isValidAttribute(resultAttribute)) {
-            throw new ParseException(LocalCourseAttribute.MESSAGE_CONSTRAINTS);
-        }
-
-        return LocalCourseAttribute.valueOf(resultAttribute);
-
-    }
-
-    /**
-     * Parses a {@code String attribute}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code attribute} is invalid.
-     */
-    public static LocalCourseAttribute parseLocalCourseAttributeForUpdate(String attribute) throws ParseException {
-        requireNonNull(attribute);
-        String attributeLowerCase = attribute.toLowerCase().trim();
-        String resultAttribute = attributeLowerCase;
-
-        switch (attributeLowerCase) {
-        case ("localcode"):
-            resultAttribute = "LOCALCODE";
-            break;
-        case ("localname"):
-            resultAttribute = "LOCALNAME";
-            break;
-        case ("unit"):
-            resultAttribute = "LOCALUNIT";
-            break;
-        case ("localdescription"):
-            resultAttribute = "LOCALDESCRIPTION";
-            break;
-        default:
-            break;
-        }
-
-        if (!LocalCourseAttribute.isValidAttributeForUpdate(resultAttribute)) {
-            throw new ParseException(LocalCourseAttribute.MESSAGE_CONSTRAINTS_UPDATE);
-        }
-
-        return LocalCourseAttribute.valueOf(resultAttribute);
-    }
-
-
-
-    /**
-     * Parses a {@code String attribute}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code attribute} is invalid.
-     */
-    public static PartnerCourseAttribute parsePartnerCourseAttributeForSearch(String attribute) throws ParseException {
-        requireNonNull(attribute);
-        String attributeLowerCase = attribute.toLowerCase().trim();
-        String resultAttribute = attributeLowerCase;
-
-        switch (attributeLowerCase) {
-        case ("partnercode"):
-            resultAttribute = "PARTNERCODE";
-            break;
-        case ("partnername"):
-            resultAttribute = "PARTNERNAME";
-            break;
-        case ("university"):
-            resultAttribute = "UNIVERSITY";
-            break;
-        default:
-            break;
-        }
-
-        if (!PartnerCourseAttribute.isValidAttributeForSearch(resultAttribute)) {
-            throw new ParseException(PartnerCourseAttribute.MESSAGE_CONSTRAINTS_SEARCH);
-        }
-
-        return PartnerCourseAttribute.valueOf(resultAttribute);
-    }
-
-    /**
-     * Parses a {@code String attribute}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code attribute} is invalid.
-     */
-    public static PartnerCourseAttribute parsePartnerCourseAttributeForSort(String attribute) throws ParseException {
-        requireNonNull(attribute);
-        String attributeLowerCase = attribute.toLowerCase().trim();
-        String resultAttribute = attributeLowerCase;
-
-        switch (attributeLowerCase) {
-        case ("partnercode"):
-            resultAttribute = "PARTNERCODE";
-            break;
-        case ("partnername"):
-            resultAttribute = "PARTNERNAME";
-            break;
-        case ("university"):
-            resultAttribute = "UNIVERSITY";
-            break;
-        default:
-            break;
-        }
-
-        if (!PartnerCourseAttribute.isValidAttributeForSort(resultAttribute)) {
-            throw new ParseException(PartnerCourseAttribute.MESSAGE_CONSTRAINTS_SORT);
-        }
-
-        return PartnerCourseAttribute.valueOf(resultAttribute);
-    }
-
-    /**
-     * Parses a {@code String attribute}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code attribute} is invalid.
-     */
-    public static PartnerCourseAttribute parsePartnerCourseAttributeForUpdate(String attribute) throws ParseException {
-        requireNonNull(attribute);
-        String attributeLowerCase = attribute.toLowerCase().trim();
-        String resultAttribute = attributeLowerCase;
-
-        switch (attributeLowerCase) {
-        case ("partnercode"):
-            resultAttribute = "PARTNERCODE";
-            break;
-        case ("partnername"):
-            resultAttribute = "PARTNERNAME";
-            break;
-        case ("unit"):
-            resultAttribute = "UNIT";
-            break;
-        case ("description"):
-            resultAttribute = "DESCRIPTION";
-            break;
-        default:
-            break;
-        }
-
-        if (!PartnerCourseAttribute.isValidAttributeForUpdate(resultAttribute)) {
-            throw new ParseException(PartnerCourseAttribute.MESSAGE_CONSTRAINTS_UPDATE);
-        }
-
-        return PartnerCourseAttribute.valueOf(resultAttribute);
-    }
-
-    /**
-     * Parses a {@code String attribute}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code attribute} is invalid.
-     */
-    public static UniversityAttribute parseUniversityAttribute(String attribute) throws ParseException {
-        requireNonNull(attribute);
-        String attributeLowerCase = attribute.toLowerCase().trim();
-        String resultAttribute = attributeLowerCase;
-
-        switch (attributeLowerCase) {
-        case ("universityname"):
-            resultAttribute = "UNIVERSITYNAME";
-            break;
-        default:
-            break;
-        }
-
-        if (!UniversityAttribute.isValidAttribute(resultAttribute)) {
-            throw new ParseException(UniversityAttribute.MESSAGE_CONSTRAINTS);
-        }
-
-        return UniversityAttribute.valueOf(resultAttribute);
     }
 }

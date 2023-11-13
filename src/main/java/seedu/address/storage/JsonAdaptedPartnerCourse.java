@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.messages.ConstraintMessage;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.partnercourse.PartnerDescription;
@@ -65,7 +66,7 @@ public class JsonAdaptedPartnerCourse {
                 UniversityName.class.getSimpleName()));
         }
         if (!UniversityName.isValidUniversityName(universityName)) {
-            throw new IllegalValueException(UniversityName.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(ConstraintMessage.UNIVERSITY_NAME.getValue());
         }
         final University modelUniversity = new University(new UniversityName(universityName));
 

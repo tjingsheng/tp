@@ -3,9 +3,9 @@ package seedu.address.logic.commands.university;
 import static java.util.Objects.requireNonNull;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.logic.Messages;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.messages.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
@@ -18,13 +18,8 @@ import seedu.address.seplendidui.UiUtil;
 public class UniversitySearchCommand extends UniversityCommand {
 
     public static final String ACTION_WORD = "search";
-
     public static final String MESSAGE_SUCCESS = "Universities searched: %1$s";
-
     public static final String MESSAGE_NONEXISTENT_UNIVERSITIES = "This university does not exist in SEPlendid";
-
-    public static final String UNIVERSITY_SEARCH_MESSAGE_USAGE = COMMAND_WORD
-        + " search [university_keyword]: Search universities with the same keyword";
     private final UniversityNameContainsKeywordsPredicate predicate;
 
     public UniversitySearchCommand(UniversityNameContainsKeywordsPredicate predicate) {

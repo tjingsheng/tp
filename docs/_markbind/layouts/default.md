@@ -27,10 +27,14 @@
       <site-nav>
 * [Home]({{ baseUrl }}/index.html)
 * [User Guide]({{ baseUrl }}/UserGuide.html) :expanded:
-  * [Quick Start]({{ baseUrl }}/UserGuide.html#quick-start)
-  * [Features]({{ baseUrl }}/UserGuide.html#features)
-  * [FAQ]({{ baseUrl }}/UserGuide.html#faq)
-  * [Command Summary]({{ baseUrl }}/UserGuide.html#faq)
+  * [About SEPlendid]({{ baseUrl }}/UserGuide.html#1-about-seplendid)
+  * [Navigate this User Guide]({{ baseUrl }}/UserGuide.html#2-navigate-this-user-guide)
+  * [Icons used in this User Guide]({{ baseUrl }}/UserGuide.html#3-icons-used-in-this-user-guide)
+  * [Installation]({{ baseUrl }}/UserGuide.html#4-installation)
+  * [Quick Reference Guide]({{ baseUrl }}/UserGuide.html#5-quick-reference-guide)
+  * [Commands]({{ baseUrl }}/UserGuide.html#6-commands)
+  * [FAQ]({{ baseUrl }}/UserGuide.html#7-faq)
+  * [Command Summary]({{ baseUrl }}/UserGuide.html#8-command-summary)
 * [Developer Guide]({{ baseUrl }}/DeveloperGuide.html) :expanded:
   * [Acknowledgements]({{ baseUrl }}/DeveloperGuide.html#acknowledgements)
   * [Setting Up]({{ baseUrl }}/DeveloperGuide.html#setting-up-getting-started)

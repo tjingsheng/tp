@@ -1,9 +1,9 @@
 package seedu.address.logic.parser.partnercourse;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERATTRIBUTE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_QUERY;
+import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
 import seedu.address.logic.commands.partnercourse.PartnerCourseSearchCommand;
 import seedu.address.logic.parser.Parser;
@@ -11,6 +11,7 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.SeplendidArgumentMap;
 import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.messages.UsageMessage;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
 import seedu.address.model.partnercourse.PartnerCourseContainsKeywordsPredicate;
@@ -27,11 +28,12 @@ public class PartnerCourseSearchCommandParser implements Parser<PartnerCourseSea
      * @throws ParseException if the user input does not conform the expected format.
      */
     public PartnerCourseSearchCommand parse(String args) throws ParseException {
-        if (!ParserUtil.areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                            PartnerCourseSearchCommand.PARTNERCOURSE_SEARCH_MESSAGE_USAGE)
-            );
+        ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
+                areValuesEnclosedAndNonEmpty(args);
+        if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
+            throw new ParseException(UsageMessage.PARTNERCOURSE_SEARCH.getValue());
+        } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
+            throw new ParseException(UsageMessage.PARTNERCOURSE_SEARCH.getValueWithEmptyArgs());
         }
 
         SeplendidArgumentMap parameterToArgMap =
@@ -40,8 +42,7 @@ public class PartnerCourseSearchCommandParser implements Parser<PartnerCourseSea
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap,
                 PARAMETER_PARTNERATTRIBUTE, PARAMETER_QUERY)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    PartnerCourseSearchCommand.PARTNERCOURSE_SEARCH_MESSAGE_USAGE));
+            throw new ParseException(UsageMessage.PARTNERCOURSE_SEARCH.getValue());
         }
 
         PartnerCourseAttribute partnerCourseAttribute = ParserUtil.parsePartnerCourseAttributeForSearch(
@@ -50,6 +51,7 @@ public class PartnerCourseSearchCommandParser implements Parser<PartnerCourseSea
         return new PartnerCourseSearchCommand(partnerCourseAttribute,
                 new PartnerCourseContainsKeywordsPredicate(query, partnerCourseAttribute), query);
     }
+
     private String parseQuery(PartnerCourseAttribute partnerCourseAttribute, String query)
             throws ParseException {
         requireAllNonNull(partnerCourseAttribute, query);

@@ -18,7 +18,7 @@ import seedu.address.model.university.UniversityName;
 public class MappingComparatorByAttribute implements Comparator<Mapping> {
 
     /* Crucial that this is initialised with a correct attribute */
-    private final MappingAttributeEnum attribute;
+    private final MappingAttribute attribute;
 
     private Function<? super LocalCode, ? extends Optional<? extends LocalCourse>> getLocalCourseIfExists;
     private BiFunction<? super PartnerCode, ? super UniversityName, ? extends
@@ -26,7 +26,7 @@ public class MappingComparatorByAttribute implements Comparator<Mapping> {
 
     private boolean isGetLocalPartnerCourseInitialised = false;
 
-    public MappingComparatorByAttribute(MappingAttributeEnum attribute) {
+    public MappingComparatorByAttribute(MappingAttribute attribute) {
         this.attribute = attribute;
     }
 
@@ -45,7 +45,7 @@ public class MappingComparatorByAttribute implements Comparator<Mapping> {
     /**
      * Returns the mapping attribute.
      */
-    public MappingAttributeEnum getAttribute() {
+    public MappingAttribute getAttribute() {
         return attribute;
     }
 

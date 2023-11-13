@@ -1,11 +1,12 @@
 package seedu.address.logic.parser.partnercourse;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERCODE;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERDESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERNAME;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_PARTNERUNIT;
 import static seedu.address.logic.parser.CliSyntax.PARAMETER_UNIVERSITY;
+import static seedu.address.logic.parser.ParserUtil.areValuesEnclosedAndNonEmpty;
 
 import seedu.address.logic.commands.partnercourse.PartnerCourseAddCommand;
 import seedu.address.logic.parser.Parser;
@@ -13,6 +14,7 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.SeplendidArgumentMap;
 import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.messages.UsageMessage;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
 import seedu.address.model.partnercourse.PartnerDescription;
@@ -33,43 +35,46 @@ public class PartnerCourseAddCommandParser implements Parser<PartnerCourseAddCom
      * @throws ParseException if the user input does not conform the expected format
      */
     public PartnerCourseAddCommand parse(String args) throws ParseException {
-        if (!ParserUtil.areValuesEnclosedAndNonEmpty(args)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                PartnerCourseAddCommand.PARTNER_COURSE_ADD_MESSAGE_USAGE));
+
+        ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
+                areValuesEnclosedAndNonEmpty(args);
+        if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
+            throw new ParseException(UsageMessage.PARTNERCOURSE_ADD.getValue());
+        } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
+            throw new ParseException(UsageMessage.PARTNERCOURSE_ADD.getValueWithEmptyArgs());
         }
 
         SeplendidArgumentMap parameterToArgMap = SeplendidArgumentTokenizer.tokenize(args,
-            PARAMETER_UNIVERSITY,
-            PARAMETER_PARTNERCODE,
-            PARAMETER_PARTNERNAME,
-            PARAMETER_PARTNERUNIT,
-            PARAMETER_PARTNERDESCRIPTION);
+                PARAMETER_UNIVERSITY,
+                PARAMETER_PARTNERCODE,
+                PARAMETER_PARTNERNAME,
+                PARAMETER_PARTNERUNIT,
+                PARAMETER_PARTNERDESCRIPTION);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap,
-            PARAMETER_UNIVERSITY,
-            PARAMETER_PARTNERCODE,
-            PARAMETER_PARTNERNAME,
-            PARAMETER_PARTNERUNIT,
-            PARAMETER_PARTNERDESCRIPTION)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                PartnerCourseAddCommand.PARTNER_COURSE_ADD_MESSAGE_USAGE));
+                PARAMETER_UNIVERSITY,
+                PARAMETER_PARTNERCODE,
+                PARAMETER_PARTNERNAME,
+                PARAMETER_PARTNERUNIT,
+                PARAMETER_PARTNERDESCRIPTION)) {
+            throw new ParseException(UsageMessage.PARTNERCOURSE_ADD.getValue());
         }
 
         UniversityName universityName = ParserUtil.parseUniversityName(parameterToArgMap.getValue(PARAMETER_UNIVERSITY)
-                                                                                        .get());
+                .get());
         University university = new University(universityName);
         PartnerCode partnerCode = ParserUtil.parsePartnerCode(parameterToArgMap.getValue(PARAMETER_PARTNERCODE).get());
         PartnerName partnerName = ParserUtil.parsePartnerName(parameterToArgMap.getValue(PARAMETER_PARTNERNAME).get());
         PartnerUnit partnerUnit = ParserUtil.parsePartnerUnit(parameterToArgMap.getValue(PARAMETER_PARTNERUNIT).get());
         PartnerDescription partnerDescription = ParserUtil.parsePartnerDescription(parameterToArgMap.getValue(
-            PARAMETER_PARTNERDESCRIPTION).get());
+                PARAMETER_PARTNERDESCRIPTION).get());
 
         PartnerCourse partnerCourse = new PartnerCourse(
-            university,
-            partnerCode,
-            partnerName,
-            partnerUnit,
-            partnerDescription);
+                university,
+                partnerCode,
+                partnerName,
+                partnerUnit,
+                partnerDescription);
         return new PartnerCourseAddCommand(partnerCourse);
     }
 }

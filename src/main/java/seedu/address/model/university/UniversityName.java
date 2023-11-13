@@ -3,14 +3,14 @@ package seedu.address.model.university;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import seedu.address.messages.ConstraintMessage;
+
 /**
  * Represents a University's local name in SEPlendid.
  * Guarantees: immutable; is valid as declared in {@link #isValidUniversityName(String)}
  */
 public class UniversityName {
-    public static final String MESSAGE_CONSTRAINTS = "UniversityName can take any values, and it should not be blank";
-
-    public static final String VALIDATION_REGEX = "[^\\s].*";
+    public static final String VALIDATION_REGEX = "[^\\s].{0,50}";
 
     private final String value;
 
@@ -23,7 +23,7 @@ public class UniversityName {
     public UniversityName(String universityname) {
         universityname = universityname.trim();
         requireNonNull(universityname);
-        checkArgument(isValidUniversityName(universityname), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidUniversityName(universityname), ConstraintMessage.UNIVERSITY_NAME.getValue());
         value = universityname;
     }
 

@@ -14,9 +14,9 @@ import static seedu.address.testutil.Assert.assertThrows;
 
 public class JsonAdaptedNoteTest {
 
-    private static final String VALID_CONTENT1 = "Nanyang Technological University";
+    private static final String VALID_CONTENT1 = "Exchange Application Deadline: 25 September 2023";
 
-    private static final String VALID_CONTENT2 = "Application Deadline 1 December 2023";
+    private static final String VALID_CONTENT2 = "SEP Country Choices: Canada, Australia";
 
     private static final Note VALID_NOTE1 = TypicalObjects.NOTE1;
 
@@ -33,6 +33,8 @@ public class JsonAdaptedNoteTest {
     private static final Integer VALID_INDEX1 = 1;
 
     private static final Integer VALID_INDEX2 = 2;
+
+    private static final Integer INVALID_INDEX = -1;
 
 
     @Test
@@ -64,6 +66,13 @@ public class JsonAdaptedNoteTest {
     public void toModelType_invalidContent_returnsNote() {
         JsonAdaptedNote note1 = new JsonAdaptedNote("", VALID_TAGS1, VALID_INDEX1);
         String expectedMessage = Content.MESSAGE_CONSTRAINTS;
+        assertThrows(IllegalValueException.class, expectedMessage, note1::toModelType);
+    }
+
+    @Test
+    public void toModelType_invalidIndex_returnsNote() {
+        JsonAdaptedNote note1 = new JsonAdaptedNote("test", VALID_TAGS1, INVALID_INDEX);
+        String expectedMessage = JsonAdaptedNote.INVALID_INDEX_MESSAGE;
         assertThrows(IllegalValueException.class, expectedMessage, note1::toModelType);
     }
 

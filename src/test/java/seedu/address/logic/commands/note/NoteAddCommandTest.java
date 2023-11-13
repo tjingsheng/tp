@@ -35,8 +35,8 @@ public class NoteAddCommandTest {
 
     @Test
     public void equals() {
-        Note note1 = new NoteBuilder().withContent("Note 1").build();
-        Note note2 = new NoteBuilder().withContent("Note 2").build();
+        Note note1 = new NoteBuilder().withContent("Note 1").withIndex(1).build();
+        Note note2 = new NoteBuilder().withContent("Note 2").withIndex(2).build();
         NoteAddCommand addNote1Command = new NoteAddCommand(note1);
         NoteAddCommand addNote2Command = new NoteAddCommand(note2);
 

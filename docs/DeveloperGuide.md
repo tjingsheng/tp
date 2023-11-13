@@ -181,6 +181,13 @@ The activity diagram is as such:
 3. If Step 2 completes without any exceptions, then the `list` of sample data depending on the datatype will be 
    successfully generated.
 
+**Feature Considerations**
+
+Each data type has to be specified to ensure organisation of sample data.
+
+<br>
+
+--------------------------------------------------------------------------------------------------------------------
 ### Adding of courses, universities and notes
 
 **Overview**
@@ -188,6 +195,7 @@ The `add` command allows for the adding of new courses, universities and notes. 
 datatypes.
 
 The activity diagram is as such:
+<puml src="diagrams/AddActivityDiagram.puml" width="300" />
 
 <br>
 
@@ -211,7 +219,33 @@ and `universityname`. This is because courses have unique course codes and is sp
 check would also prevent confusion for users if they have mistakenly added courses that are already in the database. 
 Furthermore, this would confuse the user on which is the most accurate information available as well. 
 
+### Searching of courses, universities and notes
 
+**Overview**
+The `search` command allows users find specific courses or universities they are interested in. This allows for faster
+querying of courses, universities and notes.
+
+The activity diagram is as such:
+<puml src="diagrams/SearchActivityDiagram.puml" width="300" />
+
+
+**Feature Details**
+1. The user specifies a data object with its unique identity attribute, attribute that they are querying and the 
+   keyword for the query.
+2. If the data object is non-existent, the user will be prompted to enter the identity attributes correctly via an 
+   error message.
+3. If not all the identity attributes are provided, the user will be prompted to enter the command correctly via an 
+   error message.
+4. If the attribute is not applicable for `search`, the user will be prompted to enter the attribute correctly via an
+   error message.
+5. If all the above steps are completed without exceptions, then the data object is successfully queried.
+
+**Feature Considerations**
+The data object is only searched when all the specified identity attributes are identical to the existing data object.
+Each data type has different attributes that can be used for searching.
+
+
+--------------------------------------------------------------------------------------------------------------------
 ### Mapping feature
 
 The mapping `list/add/delete` mechanism is facilitated by `MappingCatalogue`. It stores `Mapping` objects which

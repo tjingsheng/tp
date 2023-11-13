@@ -162,6 +162,65 @@ The below diagram gives a high-level overview on how the `SeplendidParser` parse
 <puml src="diagrams/SeplendidParserActivityDiagram.puml" alt="SeplendidParserActivityDiagram" />
 
 --------------------------------------------------------------------------------------------------------------------
+### Delete feature
+#### Overview
+The `delete` command deletes specified data object in SEPlendid, specified by their unique identity attributes.
+
+Here is an activity diagram for `delete localcourse`:
+<puml src="diagrams/DeleteActivityDiagram.puml" alt="DeleteActivityDiagram" />
+
+Here is a sequence diagram for `delete`:
+<puml src="diagrams/DeleteSequenceDiagram.puml" alt="DeleteSequenceDiagram" />
+
+#### Feature details
+1. The user specifies a data object with its unique identity attribute(s).
+2. If the data object is non-existent, the user will be prompted to enter the identity attributes correctly via an error message.
+3. If not all the identity attributes are provided, the user will be prompted to enter the command correctly via an error message.
+4. If all the above steps complete without any exceptions, then the data object is successfully deleted.
+
+#### Feature considerations
+The data object is only deleted when all the specified identity attributes are identical to an existing data object.
+--------------------------------------------------------------------------------------------------------------------
+### Update feature
+#### Overview
+The `update` command updates specified attribute of a data object with updated value.
+
+Here is an activity diagram for `update localcourse`:
+<puml src="diagrams/UpdateActivityDiagram.puml" alt="UpdateActivityDiagram" />
+
+Here is a sequence diagram for `update`:
+<puml src="diagrams/UpdateSequenceDiagram.puml" alt="UpdateSequenceDiagram" />
+
+#### Feature details
+1. The user specifies a data object with its unique identity attribute, attribute to be updated, and new value.
+2. If the data object is non-existent, the user will be prompted to enter the identity attributes correctly via an error message.
+3. If not all the identity attributes are provided, the user will be prompted to enter the command correctly via an error message.
+4. If the attribute is not applicable for `update`, the user will be prompted to enter the attribute correctly via an error message.
+5. If the updated data object exists in SEPlendid, an error is raised to inform the user.
+6. If all the above steps complete without any exceptions, then the data object is successfully updated.
+
+#### Feature considerations
+The data object is only updated when all the specified identity attributes are identical to an existing data object.
+Each data type has different attributes that can be used for updating.
+--------------------------------------------------------------------------------------------------------------------
+### Sort feature
+#### Overview
+The `sort` command sorts specified data objects by specified attributes.
+
+Here is an activity diagram for `sort localcourse`:
+<puml src="diagrams/SortActivityDiagram.puml" alt="SortActivityDiagram" />
+
+Here is an sequence diagram for `sort`:
+<puml src="diagrams/SortSequenceDiagram.puml" alt="SortSequenceDiagram" />
+
+#### Feature details
+1. The user specifies a data object and its attribute to sort.
+2. If the attribute is not applicable for `sort`, the user will be prompted to enter the attribute correctly via an error message.
+3. If all the above steps complete without any exceptions, then the data objects will be sorted by specified attribute.
+
+#### Feature considerations
+Each data type has different attributes that can be used for sorting.
+--------------------------------------------------------------------------------------------------------------------
 
 ### Mapping feature
 
@@ -253,18 +312,6 @@ mapping.
   * Pros: Don't need to create new enum classes
   * Cons: Hard to keep track of attributes of each data types.
 
-### Sorting feature
-#### Implementation
-#### Design considerations
-
-**Aspect: Usage of enum class for attributes**
-
-* **Alternative 1 (implemented choice)**: Use enum class for LocalCourse, PartnerCourse, and Mapping to store the attributes of each data types.
-  * Pros: Easy to store constraint messages, easier to keep track of the attributes, can use for other commands such as ```search```.
-  * Cons: Need to create new enum classes for each data types.
-* **Alternative 2**: Use String to check
-  * Pros: Don't need to create new enum classes
-  * Cons: 
 
 --------------------------------------------------------------------------------------------------------------------
 ### University Feature

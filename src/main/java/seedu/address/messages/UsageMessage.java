@@ -41,7 +41,7 @@ public enum UsageMessage {
     LOCALCOURSE_ADD(
             LocalCourseCommand.COMMAND_WORD,
             LocalCourseAddCommand.ACTION_WORD,
-            "[localcode] [localname] [unit] [localdescription]",
+            "[localcode] [localname] [localunit] [localdescription]",
             "Adds a local course"),
     LOCALCOURSE_DELETE(
             LocalCourseCommand.COMMAND_WORD,

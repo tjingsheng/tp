@@ -11,6 +11,7 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.SeplendidArgumentMap;
 import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.messages.ConstraintMessage;
 import seedu.address.messages.UsageMessage;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
@@ -31,7 +32,7 @@ public class PartnerCourseSearchCommandParser implements Parser<PartnerCourseSea
         ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
                 areValuesEnclosedAndNonEmpty(args);
         if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
-            throw new ParseException(UsageMessage.PARTNERCOURSE_SEARCH.getValue());
+            throw new ParseException(UsageMessage.PARTNERCOURSE_SEARCH.toString());
         } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
             throw new ParseException(UsageMessage.PARTNERCOURSE_SEARCH.getValueWithEmptyArgs());
         }
@@ -42,7 +43,7 @@ public class PartnerCourseSearchCommandParser implements Parser<PartnerCourseSea
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap,
                 PARAMETER_PARTNERATTRIBUTE, PARAMETER_QUERY)) {
-            throw new ParseException(UsageMessage.PARTNERCOURSE_SEARCH.getValue());
+            throw new ParseException(UsageMessage.PARTNERCOURSE_SEARCH.toString());
         }
 
         PartnerCourseAttribute partnerCourseAttribute = ParserUtil.parsePartnerCourseAttributeForSearch(
@@ -59,12 +60,12 @@ public class PartnerCourseSearchCommandParser implements Parser<PartnerCourseSea
         switch (partnerCourseAttribute) {
         case PARTNERCODE:
             if (!PartnerCode.isValidPartnerCode(trimmedQuery)) {
-                throw new ParseException(PartnerCode.MESSAGE_CONSTRAINTS);
+                throw new ParseException(ConstraintMessage.PARTNERCOURSE_CODE.toString());
             }
             break;
         case PARTNERNAME:
             if (!PartnerName.isValidPartnerName(trimmedQuery)) {
-                throw new ParseException(PartnerName.MESSAGE_CONSTRAINTS);
+                throw new ParseException(ConstraintMessage.PARTNERCOURSE_NAME.toString());
             }
             break;
         default:

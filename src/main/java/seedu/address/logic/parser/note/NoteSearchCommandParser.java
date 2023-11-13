@@ -31,7 +31,7 @@ public class NoteSearchCommandParser implements Parser<NoteSearchCommand> {
         ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
                 areValuesEnclosedAndNonEmpty(args);
         if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
-            throw new ParseException(UsageMessage.NOTE_SEARCH.getValue());
+            throw new ParseException(UsageMessage.NOTE_SEARCH.toString());
         } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
             throw new ParseException(UsageMessage.NOTE_SEARCH.getValueWithEmptyArgs());
         }
@@ -42,7 +42,7 @@ public class NoteSearchCommandParser implements Parser<NoteSearchCommand> {
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap,
                 PARAMETER_TAGS)) {
-            throw new ParseException(UsageMessage.NOTE_SEARCH.getValue());
+            throw new ParseException(UsageMessage.NOTE_SEARCH.toString());
         }
 
         Tag tag = ParserUtil.parseTag(

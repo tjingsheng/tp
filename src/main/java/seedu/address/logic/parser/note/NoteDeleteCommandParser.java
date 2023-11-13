@@ -28,7 +28,7 @@ public class NoteDeleteCommandParser implements Parser<NoteDeleteCommand> {
         ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
                 areValuesEnclosedAndNonEmpty(args);
         if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
-            throw new ParseException(UsageMessage.NOTE_DELETE.getValue());
+            throw new ParseException(UsageMessage.NOTE_DELETE.toString());
         } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
             throw new ParseException(UsageMessage.NOTE_DELETE.getValueWithEmptyArgs());
         }
@@ -37,7 +37,7 @@ public class NoteDeleteCommandParser implements Parser<NoteDeleteCommand> {
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_INDEX);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_INDEX)) {
-            throw new ParseException(UsageMessage.NOTE_DELETE.getValue());
+            throw new ParseException(UsageMessage.NOTE_DELETE.toString());
         }
 
         // All arguments should be a non-empty {@code Optional}

@@ -29,7 +29,7 @@ public class PartnerCourseDeleteCommandParser implements Parser<PartnerCourseDel
         ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
                 areValuesEnclosedAndNonEmpty(args);
         if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
-            throw new ParseException(UsageMessage.PARTNERCOURSE_DELETE.getValue());
+            throw new ParseException(UsageMessage.PARTNERCOURSE_DELETE.toString());
         } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
             throw new ParseException(UsageMessage.PARTNERCOURSE_DELETE.getValueWithEmptyArgs());
         }
@@ -40,7 +40,7 @@ public class PartnerCourseDeleteCommandParser implements Parser<PartnerCourseDel
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap,
                 PARAMETER_UNIVERSITYNAME, PARAMETER_PARTNERCODE)) {
-            throw new ParseException(UsageMessage.PARTNERCOURSE_DELETE.getValue());
+            throw new ParseException(UsageMessage.PARTNERCOURSE_DELETE.toString());
         }
 
         UniversityName universityName =

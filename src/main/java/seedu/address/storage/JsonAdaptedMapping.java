@@ -60,7 +60,7 @@ class JsonAdaptedMapping {
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, LocalCode.class.getSimpleName()));
         }
         if (!LocalCode.isValidLocalCode(localCode)) {
-            throw new IllegalValueException(ConstraintMessage.LOCALCOURSE_CODE.getValue());
+            throw new IllegalValueException(ConstraintMessage.LOCALCOURSE_CODE.toString());
         }
         final LocalCode modelLocalCode = new LocalCode(localCode);
 
@@ -69,7 +69,7 @@ class JsonAdaptedMapping {
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, UniversityName.class.getSimpleName()));
         }
         if (!UniversityName.isValidUniversityName(universityName)) {
-            throw new IllegalValueException(ConstraintMessage.UNIVERSITY_NAME.getValue());
+            throw new IllegalValueException(ConstraintMessage.UNIVERSITY_NAME.toString());
         }
         final UniversityName modelUniversityName = new UniversityName(universityName);
 
@@ -78,7 +78,7 @@ class JsonAdaptedMapping {
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, PartnerCode.class.getSimpleName()));
         }
         if (!PartnerCode.isValidPartnerCode(partnerCode)) {
-            throw new IllegalValueException(PartnerCode.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(ConstraintMessage.PARTNERCOURSE_CODE.toString());
         }
         final PartnerCode modelPartnerCode = new PartnerCode(partnerCode);
 

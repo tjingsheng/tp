@@ -33,7 +33,7 @@ public class JsonAdaptedMappingTest {
                         TYPICAL_UNIVERSITY_NAME,
                         TYPICAL_PARTNER_COURSE_CODE,
                         TYPICAL_MAPPING_MISC_INFORMATION);
-        String expectedMessage = ConstraintMessage.LOCALCOURSE_CODE.getValue();
+        String expectedMessage = ConstraintMessage.LOCALCOURSE_CODE.toString();
         assertThrows(IllegalValueException.class, expectedMessage, mapping::toModelType);
     }
 

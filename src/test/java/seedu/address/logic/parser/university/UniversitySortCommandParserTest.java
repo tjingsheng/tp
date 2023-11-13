@@ -44,7 +44,7 @@ public class UniversitySortCommandParserTest {
 
     @Test
     public void parse_argumentNotClosedOrEmpty_failure() {
-        String expectedMessage = UsageMessage.UNIVERSITY_SORT.getValue();
+        String expectedMessage = UsageMessage.UNIVERSITY_SORT.toString();
 
         // missing open bracket
         assertParseFailure(parser, commandActionWord

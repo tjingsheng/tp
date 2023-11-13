@@ -103,28 +103,28 @@ public class SeplendidParserTest {
      */
     @Test
     public void parseCommand_unrecognisedInput_throwsParseException() {
-        assertThrows(ParseException.class, UsageMessage.HELP.getValue(), ()
+        assertThrows(ParseException.class, UsageMessage.HELP.toString(), ()
                 -> parser.parseCommand(""));
     }
 
     @Test
     public void parseCommand_unknownLocalCourseCommand_throwsParseException() {
         assertThrows(ParseException.class,
-                     UsageMessage.LOCALCOURSE.getValue(), (
+                     UsageMessage.LOCALCOURSE.toString(), (
                      ) -> parser.parseCommand("localcourse eject args"));
     }
 
     @Test
     public void parseCommand_unknownPartnerCourseCommand_throwsParseException() {
         assertThrows(ParseException.class,
-                     UsageMessage.PARTNERCOURSE.getValue(), (
+                     UsageMessage.PARTNERCOURSE.toString(), (
                      ) -> parser.parseCommand("partnercourse eject args"));
     }
 
     @Test
     public void parseCommand_unknownUniversityCommand_throwsParseException() {
         assertThrows(ParseException.class,
-                     UsageMessage.UNIVERSITY.getValue(), (
+                     UsageMessage.UNIVERSITY.toString(), (
                      )-> parser.parseCommand("university eject args"));
     }
 

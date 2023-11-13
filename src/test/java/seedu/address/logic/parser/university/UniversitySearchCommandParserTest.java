@@ -16,7 +16,7 @@ public class UniversitySearchCommandParserTest {
 
     @Test
     public void parse_emptyArg_throwsParseException() {
-        assertParseFailure(parser, "     ", UsageMessage.UNIVERSITY_SEARCH.getValue());
+        assertParseFailure(parser, "     ", UsageMessage.UNIVERSITY_SEARCH.toString());
     }
 
     @Test

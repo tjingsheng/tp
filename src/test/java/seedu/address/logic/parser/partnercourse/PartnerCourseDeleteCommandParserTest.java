@@ -18,6 +18,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.partnercourse.PartnerCourseAddCommand;
 import seedu.address.logic.commands.partnercourse.PartnerCourseCommand;
 import seedu.address.logic.commands.partnercourse.PartnerCourseDeleteCommand;
+import seedu.address.messages.ConstraintMessage;
 import seedu.address.messages.UsageMessage;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.university.UniversityName;
@@ -50,7 +51,7 @@ public class PartnerCourseDeleteCommandParserTest {
 
     @Test
     void parse_argumentNotClosedOrEmpty_failure() {
-        String expectedMessage = UsageMessage.PARTNERCOURSE_DELETE.getValue();
+        String expectedMessage = UsageMessage.PARTNERCOURSE_DELETE.toString();
 
         // missing open bracket
         assertParseFailure(parser, commandActionWord
@@ -66,7 +67,7 @@ public class PartnerCourseDeleteCommandParserTest {
 
     @Test
     public void parse_argumentMissing_failure() {
-        String expectedMessage = UsageMessage.PARTNERCOURSE_DELETE.getValue();
+        String expectedMessage = UsageMessage.PARTNERCOURSE_DELETE.toString();
 
         // all arguments missing
         assertParseFailure(parser, commandActionWord, expectedMessage);
@@ -88,7 +89,7 @@ public class PartnerCourseDeleteCommandParserTest {
         assertParseFailure(parser, commandActionWord
                         + getSquareBracketWrappedArgument(INVALID_PARTNER_COURSE_CODE)
                         + getSquareBracketWrappedArgument(TYPICAL_UNIVERSITY_NAME),
-                PartnerCode.MESSAGE_CONSTRAINTS);
+                           ConstraintMessage.PARTNERCOURSE_CODE.toString());
     }
 
     @Test

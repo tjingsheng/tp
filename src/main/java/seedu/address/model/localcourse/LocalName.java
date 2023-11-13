@@ -26,7 +26,7 @@ public class LocalName {
     public LocalName(String localName) {
         localName = localName.trim();
         requireNonNull(localName);
-        checkArgument(isValidLocalName(localName), ConstraintMessage.LOCALCOURSE_NAME.getValue());
+        checkArgument(isValidLocalName(localName), ConstraintMessage.LOCALCOURSE_NAME.toString());
         value = localName;
     }
 

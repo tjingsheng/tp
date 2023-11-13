@@ -56,7 +56,7 @@ public class LocalCourseAddCommandParserTest {
     @Test
     void parse_argumentNotClosedOrEmpty_failure() {
         String expectedMessage =
-                UsageMessage.LOCALCOURSE_ADD.getValue();
+                UsageMessage.LOCALCOURSE_ADD.toString();
 
         // missing open bracket
         assertParseFailure(parser, commandActionWord
@@ -74,7 +74,7 @@ public class LocalCourseAddCommandParserTest {
 
     @Test
     public void parse_allArgumentMissing_failure() {
-        String expectedMessage = UsageMessage.LOCALCOURSE_ADD.getValue();
+        String expectedMessage = UsageMessage.LOCALCOURSE_ADD.toString();
 
         // missing localcode argument
         assertParseFailure(parser, commandActionWord
@@ -98,7 +98,7 @@ public class LocalCourseAddCommandParserTest {
                 + " " + getSquareBracketWrappedArgument(TYPICAL_LOCAL_COURSE_DESCRIPTION);
 
 
-        assertParseFailure(parser, invalidLocalCodeCommand, ConstraintMessage.LOCALCOURSE_CODE.getValue());
+        assertParseFailure(parser, invalidLocalCodeCommand, ConstraintMessage.LOCALCOURSE_CODE.toString());
 
         // Invalid localName
         // This test also ensures that the input to checkArgument and parseLocalName matches.

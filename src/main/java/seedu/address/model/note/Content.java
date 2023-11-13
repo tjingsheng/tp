@@ -3,13 +3,12 @@ package seedu.address.model.note;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import seedu.address.messages.ConstraintMessage;
+
 /**
  * Represents a Note's content in SEPlendid.
  */
 public class Content {
-    public static final String MESSAGE_CONSTRAINTS =
-            "Content should only contain alphanumeric characters and spaces, and it should not be blank";
-
     /*
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
@@ -26,7 +25,7 @@ public class Content {
     public Content(String content) {
         content = content.trim();
         requireNonNull(content);
-        checkArgument(isValidContent(content), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidContent(content), ConstraintMessage.NOTE_CONTENT.toString());
         this.content = content;
     }
 

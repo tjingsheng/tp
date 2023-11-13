@@ -26,10 +26,9 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.partnercourse.PartnerCourseAddCommand;
 import seedu.address.logic.commands.partnercourse.PartnerCourseCommand;
+import seedu.address.messages.ConstraintMessage;
 import seedu.address.messages.UsageMessage;
-import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourse;
-import seedu.address.model.partnercourse.PartnerUnit;
 import seedu.address.testutil.PartnerCourseBuilder;
 import seedu.address.testutil.PartnerCourseUtil;
 import seedu.address.testutil.TypicalObjects;
@@ -67,7 +66,7 @@ public class PartnerCourseAddCommandParserTest {
 
     @Test
     void parse_argumentNotClosedOrEmpty_failure() {
-        String expectedMessage = UsageMessage.PARTNERCOURSE_ADD.getValue();
+        String expectedMessage = UsageMessage.PARTNERCOURSE_ADD.toString();
 
         // missing open bracket
         assertParseFailure(
@@ -90,7 +89,7 @@ public class PartnerCourseAddCommandParserTest {
 
     @Test
     public void parse_argumentMissing_failure() {
-        String expectedMessage = UsageMessage.PARTNERCOURSE_ADD.getValue();
+        String expectedMessage = UsageMessage.PARTNERCOURSE_ADD.toString();
 
         // missing patrtnercode argument
         assertParseFailure(parser,
@@ -113,7 +112,7 @@ public class PartnerCourseAddCommandParserTest {
         // Therefore an argument starting with a whitespace will pass,
         // while a whitespace alone will not. A whitespace alone will trigger
         // ParseException due to ParserUtil#areValuesEncloseAndNonEmpty.
-        String expectedMessage = UsageMessage.PARTNERCOURSE_ADD.getValue();
+        String expectedMessage = UsageMessage.PARTNERCOURSE_ADD.toString();
 
         String expectedMessageForEmptyArg = UsageMessage.PARTNERCOURSE_ADD.getValueWithEmptyArgs();
 
@@ -129,14 +128,14 @@ public class PartnerCourseAddCommandParserTest {
                 expectedMessageForEmptyArg);
         // invalid partnerCode
         assertParseFailure(
-                parser,
+            parser,
                 commandActionWord
                         + getSquareBracketWrappedArgument(TYPICAL_UNIVERSITY_NAME)
                         + getSquareBracketWrappedArgument(INVALID_PARTNER_COURSE_CODE)
                         + getSquareBracketWrappedArgument(TYPICAL_PARTNER_COURSE_NAME)
                         + getSquareBracketWrappedArgument(TYPICAL_PARTNER_COURSE_UNIT.toString())
                         + getSquareBracketWrappedArgument(TYPICAL_PARTNER_COURSE_DESCRIPTION),
-                PartnerCode.MESSAGE_CONSTRAINTS);
+            ConstraintMessage.PARTNERCOURSE_CODE.toString());
 
         // invalid partnerName
         assertParseFailure(parser,
@@ -156,7 +155,7 @@ public class PartnerCourseAddCommandParserTest {
                         + getSquareBracketWrappedArgument(TYPICAL_PARTNER_COURSE_NAME)
                         + getSquareBracketWrappedArgument(INVALID_PARTNER_COURSE_UNIT.toString())
                         + getSquareBracketWrappedArgument(TYPICAL_PARTNER_COURSE_DESCRIPTION),
-                PartnerUnit.MESSAGE_CONSTRAINTS);
+                ConstraintMessage.PARTNERCOURSE_UNIT.toString());
 
         // invalid partnerDescription
         assertParseFailure(

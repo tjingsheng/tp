@@ -33,7 +33,7 @@ public class LocalCourseSortCommandParser implements Parser<LocalCourseSortComma
         ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
                 areValuesEnclosedAndNonEmpty(args);
         if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
-            throw new ParseException(UsageMessage.LOCALCOURSE_SORT.getValue());
+            throw new ParseException(UsageMessage.LOCALCOURSE_SORT.toString());
         } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
             throw new ParseException(UsageMessage.LOCALCOURSE_SORT.getValueWithEmptyArgs());
         }
@@ -42,7 +42,7 @@ public class LocalCourseSortCommandParser implements Parser<LocalCourseSortComma
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_LOCALATTRIBUTE);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_LOCALATTRIBUTE)) {
-            throw new ParseException(UsageMessage.LOCALCOURSE_SORT.getValue());
+            throw new ParseException(UsageMessage.LOCALCOURSE_SORT.toString());
         }
 
         Comparator<LocalCourse> localCourseComparator =
@@ -59,7 +59,7 @@ public class LocalCourseSortCommandParser implements Parser<LocalCourseSortComma
         case LOCALNAME:
             return new LocalCourseComparatorByLocalName();
         default:
-            throw new ParseException(ConstraintMessage.LOCALCOURSE_ATTRIBUTE_SORT.getValue());
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_ATTRIBUTE_SORT.toString());
         }
     }
 }

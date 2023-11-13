@@ -32,7 +32,7 @@ public class UniversitySearchCommandParser implements Parser<UniversitySearchCom
         ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
                 areValuesEnclosedAndNonEmpty(args);
         if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
-            throw new ParseException(UsageMessage.UNIVERSITY_SEARCH.getValue());
+            throw new ParseException(UsageMessage.UNIVERSITY_SEARCH.toString());
         } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
             throw new ParseException(UsageMessage.UNIVERSITY_SEARCH.getValueWithEmptyArgs());
         }
@@ -43,7 +43,7 @@ public class UniversitySearchCommandParser implements Parser<UniversitySearchCom
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap,
                 PARAMETER_UNIVERSITYNAME)) {
-            throw new ParseException(UsageMessage.UNIVERSITY_SEARCH.getValue());
+            throw new ParseException(UsageMessage.UNIVERSITY_SEARCH.toString());
         }
 
         UniversityName universityName = ParserUtil.parseUniversityName(

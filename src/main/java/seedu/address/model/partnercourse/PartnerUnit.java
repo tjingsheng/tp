@@ -3,16 +3,13 @@ package seedu.address.model.partnercourse;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import seedu.address.messages.ConstraintMessage;
+
 /**
  * Represents a Partner Course's unit in SEPlendid.
  * Guarantees: immutable; is valid as declared in {@link #isValidPartnerUnit(Object)}
  */
 public class PartnerUnit {
-
-    // Used in AppUtil#checkArgument and ParserUtil, JsonAdaptedXXX exceptions
-    public static final String MESSAGE_CONSTRAINTS =
-            "PartnerUnit can only take non-negative numeric values and should not be blank";
-
     private final Double value;
 
     /**
@@ -22,7 +19,7 @@ public class PartnerUnit {
      */
     public PartnerUnit(String partnerUnit) {
         requireNonNull(partnerUnit);
-        checkArgument(isValidPartnerUnit(partnerUnit), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidPartnerUnit(partnerUnit), ConstraintMessage.PARTNERCOURSE_UNIT.toString());
         value = Double.parseDouble(partnerUnit);
     }
 
@@ -33,7 +30,7 @@ public class PartnerUnit {
      */
     public PartnerUnit(Double partnerUnit) {
         requireNonNull(partnerUnit);
-        checkArgument(isValidPartnerUnit(partnerUnit), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidPartnerUnit(partnerUnit), ConstraintMessage.PARTNERCOURSE_UNIT.toString());
         value = partnerUnit;
     }
 

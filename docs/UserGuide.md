@@ -461,17 +461,17 @@ This is useful when:
 
 #### 5.1.6 Sort local courses by attributes: `localcourse sort`
 Sorts local courses according to attributes such as localname and localcode. This is useful when:
-- you wish to find local courses with specific attributes.
+- you wish to view local courses sorted by specific attributes.
 
 **Format:** `localcourse sort [localcourseattribute]` 
 
 **Example:** `localcourse sort [localname]`
 
 <div class="centered-container">
-  <img src="images/LocalcourseSearchUi.png" alt="Localcourse Search UI" class="resized-image">
+  <img src="images/LocalcourseSortUi.png" alt="Localcourse Sort UI" class="resized-image">
 </div>
 <div class = "centered-content" >
-  <p class = "image-caption"> Figure 1.3 Shows the searched local course BT2102.
+  <p class = "image-caption"> Figure 1.3 Shows the sorted local courses by localname.
 </div>
 
 <br />
@@ -484,7 +484,7 @@ Sorts local courses according to attributes such as localname and localcode. Thi
 
 Lists all available partner courses, offered by every partner university. This is useful when:
 - you wish to retrieve all partner courses' information.
-- you wish to view  partner courses in greater detail.
+- you wish to view partner courses in greater detail.
 - you wish to verify that a partner course has been added successfully.
 - you wish to verify that a partner course has been deleted successfully.
 - you wish to verify that a partner course has been updated successfully.
@@ -506,12 +506,12 @@ Adds a partner course with the specified partner course attributes. This is usef
     <b>Warning:</b> You are unable to add a partner course if the university does not exist in SEPlendid.
 </box>
 
-**Format**: `partnercourse add [university] [partnercode] [partnername] [units] [description]`
+**Format**: `partnercourse add [university] [partnercode] [partnername] [unit] [description]`
 
 **Example:** `partnercourse add [University of Toronto] [ROB311] [Artificial Intelligence] [5.0] 
 [Introduction module to AI]`
                                                           
-**Expected Outcome:** SEPlendid's GUI will show you the added partnercourse.
+**Expected Outcome:** SEPlendid's GUI will show you the added partner course.
 
 <br />
 <br />
@@ -529,53 +529,54 @@ Deletes partner course with attributes such as university and partnercode respec
 
 **Example:** `partnercourse delete [University of Toronto] [ROB311]`
 
-**Expected Outcome:** SEPlendid's GUI will show the deleted partnercourse. 
+**Expected Outcome:** SEPlendid's GUI will show the deleted partner course. 
 
 <br />
 <br />
 
 #### 5.2.4 Update a partner course: `partnercourse update`
 
-Updates specified attributes of a partner course, with the partner course identified by `universityname`.
+Updates specified attributes of a partner course, with the partner course identified by 
+`universityname` and `partnercode`.
 These partner course attributes include partnercode, partnername, unit and description. This is useful when:
-- you wish to update a partnercourse if there are changes made by the partner university.
+- you wish to update a partner course if there are changes made by the partner university.
 
 **Format**: `partnercourse update [universityname] [partnercode] [partnercourseattribute] [updatedValue]`
 
 **Example:** `partnercourse update [University of Toronto] [ROB311] [unit] [10.0]`
 
-**Expected Outcome:** SEPlendid's GUI will show the updated partnercourse.
+**Expected Outcome:** SEPlendid's GUI will show the updated partner course.
 
 <br />
 <br />
 
 #### 5.2.5 Search a partner course by attributes: `partnercourse search`
 
-Searches partnercourse using specified attributes such as partnercode, partnername, partnerunit, and partnerdescription.
+Searches partner course using specified attributes such as partnercode, partnername, unit, and description.
 This is useful when:
 - you wish to find a specific partner course you are interested in.
 - you wish to find partner courses that matches with your credits required.
 - you wish to find partner courses that matches with the course description you are interested in.
 
-**Format:** `partnercourse search [partnercode]` \
-`partnercourse search [partnername]`
+**Format:** `partnercourse search [partnercode] [keyword]` \
+`partnercourse search [partnername] [keyword]`
 
 **Example:** `partnercourse search [partnercode] [CSE469]` 
 
-**Expected Outcome:** SEPlendid's GUI will show you the searched partnercourse, CSE469.
+**Expected Outcome:** SEPlendid's GUI will show you the searched partner course, CSE469.
 
 <br />
 <br />
 
 #### 5.2.6 Sort partner courses by attributes: `partnercourse sort`
-Sorts local courses according to attributes such as partnername and partnercode. This is useful when:
-- you wish to find partner courses with specific attributes.
+Sorts partner courses according to attributes such as partnername, partnercode and university. This is useful when:
+- you wish to view partner courses sorted by specific attributes.
 
 **Format:** `partnercourse sort [partnercourseattribute]`
 
 **Example:** `partnercourse sort [partnercode]`
 
-**Expected Outcome:** SEPlendid's GUI will show you the sorted partnercourses according to partnercode. 
+**Expected Outcome:** SEPlendid's GUI will show you the sorted partner courses according to partnercode. 
 
 <br />
 <br />
@@ -1028,7 +1029,7 @@ contains the data of your previous SEPlendid home folder.
     </tr>
     <tr>
         <td><code>add</code></td>
-        <td><code>[localcode] [localname] [units] [description]</code></td>
+        <td><code>[localcode] [localname] [unit] [description]</code></td>
     </tr>
     <tr>
         <td><code>delete</code></td>
@@ -1053,7 +1054,7 @@ contains the data of your previous SEPlendid home folder.
     </tr>
     <tr>
         <td><code>add</code></td>
-        <td><code>[university] [partnercode] [partnername] [units] [description]</code></td>
+        <td><code>[university] [partnercode] [partnername] [unit] [description]</code></td>
     </tr>
     <tr>
         <td><code>delete</code></td>

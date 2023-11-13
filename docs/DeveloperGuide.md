@@ -379,7 +379,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | student | sort the list of universities alphabetically                          | easily review the universities                             |
 | `* *`    | student | delete a local course                                                 | remove local courses that can no longer be mapped          |
 | `* *`    | junior  | delete a partner course                                               | remove partner courses that can no longer be mapped        |
+| `* * *`  | student | view the list of mappings in SEPlendid                                | consider existing mappings for my exchange study plan      |
+| `* * *`  | student | add a mapping                                                         | to keep track of new mappings I discovered                 |
 | `* *`    | student | delete a mapping                                                      | remove mappings that are obsolete                          |
+| `* *`    | student | search for a mapping based on the code of the local/partner course    | find the universities offering the course based on code    |
+| `* *`    | student | search for a mapping based on the name of the local/partner course    | find the universities offering the course based on name    |
+| `* *`    | student | search for a mapping based on the name of a university                | find the courses mappings offered by a partner university  |
+| `*`      | student | sort the list of mappings based on any attribute                      | easily review the mappings                                 |
 | `* *`    | student | update a local course                                                 | update the mapping list based on new information           |
 | `* * *`  | student | add notes                                                             | take note of the things I want to remember                 |
 | `* *`    | student | view the list of my notes                                             | easily view my notes that I have taken                     |
@@ -527,8 +533,13 @@ Use case ends.
 **MSS:**
 1. User requests to list available mappings.
 2. SEPlendid shows all available mappings.
+   Use case ends.
 
-3. Use case ends.
+**Extension:**
+* 1a. Afterwards, the user can choose to bring up a detail panel of a mapping.
+  * 1a1. User clicks on a mapping item in the list.
+  * 1a2. SEPlendid shows the corresponding detail panel of the clicked-on mapping. 
+  Use case ends.
 
 **Use case: Add mappings**
 
@@ -542,20 +553,22 @@ Use case ends.
 
 * 1a. The command format is invalid. 
   * 1a1. SEPlendid shows an error message.
-  
   Use case resumes at step 1.
-* 1b. The mappingis already added.
+
+* 1b. The mapping is already added.
   * 1b1. SEPlendid shows an error message.
-  
   Use case resumes at step 1.
+
+* 1c. A local course or partner course specified by user for the mapping does not exist.
+  * 1c1. SEPlendid informs the user through an error message that the course does not exist.
+  Use case ends resumes at step 1.
 
 **Use case: Delete mappings**
 
 **MSS:**
 1. User requests to delete a mapping.
 2. SEPlendid deletes and shows the mappings deleted.
-
-Use case ends.
+   Use case ends.
 
 **Extension:**
 
@@ -567,6 +580,53 @@ Use case ends.
   * 1b1. SEPlendid shows an error message.
   
   Use case resumes at step 1.
+
+**Use case: Sort mappings** \
+Actor: User \
+**MSS:**
+1. User requests to sort the list of mappings based on an attribute.
+2. SEPlendid sorts and shows sorted list of all available mappings, based on specified attribute. \
+   Use case ends.
+
+**Extension:**
+* 1a. The mapping command format is invalid.
+  * 1a1. SEPlendid shows an error message, detailing the mapping command set. \
+  Use case resumes at step 1.
+
+* 1b. The mapping attribute specified is invalid.
+  * 1b1. SEPlendid shows an error message, detailing what attributes are available for sorting. \
+  Use case resumes at step 1.
+
+* 2a. Afterwards, the user can choose to bring up a detail panel of a mapping.
+  * 2a1. User clicks on a mapping item in the list.
+  * 2a2. SEPlendid shows the corresponding detail panel of the clicked-on mapping. \
+  Use case ends.
+
+**Use case: Search mappings** \
+Actor: User \
+**MSS:**
+1. User requests to search the list of mappings based on an attribute, and given query.
+2. SEPlendid searches and shows sorted list of all available mappings, each which has a value for the specified 
+attribute that contains the query. \
+   Use case ends.
+
+**Extension:**
+* 1a. The mapping command format is invalid.
+  * 1a1. SEPlendid shows an error message, detailing the mapping command set. \
+  Use case resumes at step 1.
+
+* 1b. The mapping attribute specified is invalid.
+  * 1b1. SEPlendid shows an error message, detailing what attributes are available for sorting. \
+  Use case resumes at step 1.
+
+* 1c. The query is empty.
+  * 1c1. SEPlendid shows an error message, detailing that the mapping command format. \
+  Use case resumes at step 1.
+
+* 2a. Afterwards, the user can choose to bring up a detail panel of a mapping.
+  * 2a1. User clicks on a mapping item in the list.
+  * 2a2. SEPlendid shows the corresponding detail panel of the clicked-on mapping. \
+  Use case ends.
 
 
 #### Universities
@@ -739,38 +799,36 @@ testers are expected to do more *exploratory* testing.
 
    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   1. Double-click the jar file Expected: Shows the GUI with a set of sample courses. The window size may not be 
+   optimum.
 
-1. Saving window preferences
+### Adding and delete a mapping
 
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+1. Add a mapping while all mappings are being shown)
 
-   1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+   1. Prerequisites: List all mappings using the `mapping list` command. Multiple mappings in the list.
 
-1. _{ more test cases …​ }_
+   1. Ensure your scroll to the bottom.
 
-### Deleting a person
+   1. Test case: `mapping add [IS4231] [Lund University] [INFC40] [Sem 1 only.]`<br>
+      Expected: A new mapping is added, and will appear at the bottom of the list.
 
-1. Deleting a person while all persons are being shown
+   1. Test case: `mapping delete [IS4231] [Lund University] [INFC40] [Sem 1 only.]`<br>
+      Expected: The mapping is deleted, and disappears from the list. 
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
-
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
-
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
-
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
-
-1. _{ more test cases …​ }_
+   1. Other incorrect delete commands to try: `mapping ad`, `mapping add []`, `...` <br>
+      Expected: An error message will appear.
 
 ### Saving data
 
 1. Dealing with missing/corrupted data files
+- If any of the `.json` files found under the `data/` directory created is edited to have invalid data. SEPlendid 
+will reset to the default data, which has been programmatically added.
+- Therefore, it is recommended to make a copy and keep a backup of existing data before making any changes to any of 
+the files under `data/*.json`.
+- One corrupted file will lead to a full reset of the application.
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
-1. _{ more test cases …​ }_
+2. To simulate a missing/corrupted data file, delete the `data/` directory.
+- A new director will be created in its place, with the default seed data.
+- To corrupt the data, open any of the `.json` files under `data/` and edit the data in it. For instance, you may 
+change a `localCode` to the empty string `""`. Restart the application, and observe that the data has been reset.

@@ -84,6 +84,8 @@ public class TypicalObjects {
     public static final Double INVALID_PARTNER_COURSE_UNIT = -1.0;
     public static final String INVALID_PARTNER_COURSE_DESCRIPTION = " ";
 
+    public static final String INVALID_MAPPING_ATTRIBUTE = "index";
+
     public static final LocalCourse CS2040S = new LocalCourseBuilder().withLocalCode("CS2040S").withLocalName(
             "Data Structures & Algorithms").withLocalUnit(4.0).withLocalDescription(
             "This course introduces students to the "

@@ -41,9 +41,12 @@ public class NoteDeleteCommandParser implements Parser<NoteDeleteCommand> {
         }
 
         // All arguments should be a non-empty {@code Optional}
-        Integer noteIndex = Integer.valueOf(parameterToArgMap.getValue(PARAMETER_INDEX).get());
-
-        return new NoteDeleteCommand(noteIndex);
+        try {
+            Integer noteIndex = Integer.valueOf(parameterToArgMap.getValue(PARAMETER_INDEX).get());
+            return new NoteDeleteCommand(noteIndex);
+        } catch (NumberFormatException e) {
+            return new NoteDeleteCommand(-1);
+        }
     }
 
 }

@@ -23,5 +23,4 @@ public abstract class NoteCommand extends Command {
     public String toString() {
         return new ToStringBuilder(this).toString();
     }
-
 }

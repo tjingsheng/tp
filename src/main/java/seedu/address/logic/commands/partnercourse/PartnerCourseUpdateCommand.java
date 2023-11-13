@@ -30,6 +30,8 @@ public class PartnerCourseUpdateCommand extends PartnerCourseCommand {
     public static final String MESSAGE_NONEXISTENT_PARTNER_COURSE = "This partner course does not exist in SEPlendid.";
     public static final String MESSAGE_DUPLICATE_PARTNER_COURSE =
             "This updated partner course already exists in SEPlendid.";
+    public static final String MESSAGE_MAPPING_DEPENDENT_ON_PARTNER_COURSE = "This partner course is mapped to a "
+            + "local course. Please delete the mapping first.";
     private PartnerCourse partnerCourseToUpdate;
     private PartnerCourse updatedPartnerCourse;
 
@@ -46,10 +48,10 @@ public class PartnerCourseUpdateCommand extends PartnerCourseCommand {
     /**
      * Creates a PartnerCourseEditCommand to edit the given partner course.
      *
-     * @param universityName University name of the course to be edited.
-     * @param partnerCode Partner code of the course to be edited.
+     * @param universityName         University name of the course to be edited.
+     * @param partnerCode            Partner code of the course to be edited.
      * @param partnerCourseAttribute Attribute of the course to be edited.
-     * @param updatedValue Edited value of the specified attribute.
+     * @param updatedValue           Edited value of the specified attribute.
      */
     public PartnerCourseUpdateCommand(UniversityName universityName, PartnerCode partnerCode,
                                       PartnerCourseAttribute partnerCourseAttribute, String updatedValue) {
@@ -119,13 +121,13 @@ public class PartnerCourseUpdateCommand extends PartnerCourseCommand {
                 && !partnerCourseToUpdate.isSamePartnerCourse(updatedPartnerCourse)) {
             throw new CommandException(MESSAGE_DUPLICATE_PARTNER_COURSE);
         }
-
+3
         seplendidModel.setPartnerCourse(partnerCourseToUpdate, updatedPartnerCourse);
 
         return new CommandResult(
-            String.format(MESSAGE_SUCCESS,
-                    Messages.format(partnerCourseToUpdate), Messages.format(updatedPartnerCourse)),
-            UiUtil.ListViewModel.PARTNER_COURSE_LIST);
+                String.format(MESSAGE_SUCCESS,
+                        Messages.format(partnerCourseToUpdate), Messages.format(updatedPartnerCourse)),
+                UiUtil.ListViewModel.PARTNER_COURSE_LIST);
     }
 
     @Override

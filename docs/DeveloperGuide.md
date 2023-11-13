@@ -162,7 +162,9 @@ The below diagram gives a high-level overview on how the `SeplendidParser` parse
 <puml src="diagrams/SeplendidParserActivityDiagram.puml" alt="SeplendidParserActivityDiagram" />
 
 --------------------------------------------------------------------------------------------------------------------
+
 ## Implementation
+
 <br>
 
 ### Listing of courses, universities and notes
@@ -174,14 +176,16 @@ courses.
 The activity diagram is as such:
 <puml src="diagrams/ListActivityDiagram.puml" width="300" />
 
-Here 
+Here is a sequence diagram for `localcourse list`:
+<puml src="diagrams/ListSequenceDiagram.puml" width="300" />
+
 **Feature Details**
-1. The user specifies the command word. Possible command words include `localcourse`, `partnercourse`, `university`,
-   `mapping` and `note`.
-2. If the command word is not specified, or invalid command arguments are provided, the user will be prompted 
-   to enter the command correctly via an error message.
-3. If Step 2 completes without any exceptions, then the `list` of sample data depending on the datatype will be 
-   successfully generated.
+
+1. The user specifies a data object with its required command word.
+2. If invalid command arguments are provided, the user will be prompted to enter the command correctly via an
+   error message.
+3. If all the above steps are completed without exceptions, then the sample data of the specific data type will be
+   displayed.
 
 **Feature Considerations**
 
@@ -190,41 +194,42 @@ Each data type has to be specified to ensure organisation of sample data.
 <br>
 
 --------------------------------------------------------------------------------------------------------------------
+
 ### Adding of courses, universities and notes
 
 **Overview**
-The `add` command allows for the adding of new courses, universities and notes. This allows the creation of new 
+The `add` command allows for the adding of new courses, universities and notes. This allows the creation of new
 datatypes.
 
 The activity diagram is as such:
 <puml src="diagrams/AddActivityDiagram.puml" width="300" />
 
 <br>
-Here is a sequence diagram for 'add note`:
+Here is a sequence diagram for 'note add`:
 <puml src="diagrams/NoteAddSequenceDiagram.puml" width="300" />
 
 Here is a sequence diagram for 'partnercourse add':
 <puml src="diagrams/PartnercourseAddSequenceDiagram.puml" width="300" />
 
 **Feature Details**
-1. The user specifies the command word. Possible command words include `localcourse`, `partnercourse`,
-   and `note`.
-2. If the command word is not specified, or invalid command arguments are provided, the user will be promopted
-   to enter the command correctly via an error message.
-3. The course is cross-referenced in `SEPlendidModel` to check if the course already exist based on the `localcode` or
-   `partnercode`. If there are duplicates found in the data, an error message will be raised to informt the user.
-4. If Step 3 completes without any exceptions, then the new course or note is successfully created and stored in 
-   SEPlendid's database.
+
+1. The user is required to fill up all the attributes require to add the data object.
+2. If not all the identity attributes are provided, the user will be prompted to enter the command correctly via an
+   error message.
+3. If the attribute is not applicable for `add`, the user will be prompted to enter the attribute correctly via an
+   error message.
+4. If there exist the same identifying attributes, SEPlendid will raise an error message to the user.
+4. If all the above steps are completed without exceptions, then the data object is successfully queried.
 
 <br>
 
 **Feature Considerations**
 
 It should be noted that when checking for duplicates in the `UniqueLocalCourseList` and `UniquePartnerCourseList` inside
-`SEPlendidModel`, `localcourse` cannot have the same `localcode` and `partnercourse` cannot have the same `partnercode` 
-and `universityname`. This is because courses have unique course codes and is specific to the university, having this 
-check would also prevent confusion for users if they have mistakenly added courses that are already in the database. 
-Furthermore, this would confuse the user on which is the most accurate information available as well. 
+`SEPlendidModel`, `localcourse` cannot have the same `localcode` and `partnercourse` cannot have the same `partnercode`
+and `universityname`. This is because courses have unique course codes and is specific to the university, having this
+check would also prevent confusion for users if they have mistakenly added courses that are already in the database.
+Furthermore, this would confuse the user on which is the most accurate information available as well.
 
 <br>
 
@@ -243,11 +248,12 @@ Here is a sequence diagram for `partnercourse search`:
 <puml src="diagrams/PartnerCourseSearchSequenceDiagram.puml" width="300" />
 
 **Feature Details**
-1. The user specifies a data object with its unique identity attribute, attribute that they are querying and the 
+
+1. The user specifies a data object with its unique identity attribute, attribute that they are querying and the
    keyword for the query.
-2. If the data object is non-existent, the user will be prompted to enter the identity attributes correctly via an 
+2. If the data object is non-existent, the user will be prompted to enter the identity attributes correctly via an
    error message.
-3. If not all the identity attributes are provided, the user will be prompted to enter the command correctly via an 
+3. If not all the identity attributes are provided, the user will be prompted to enter the command correctly via an
    error message.
 4. If the attribute is not applicable for `search`, the user will be prompted to enter the attribute correctly via an
    error message.

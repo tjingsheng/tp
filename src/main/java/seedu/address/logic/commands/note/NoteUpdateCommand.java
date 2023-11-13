@@ -70,6 +70,10 @@ public class NoteUpdateCommand extends NoteCommand {
                 && updateContent.equals(otherNoteDeleteCommand.updateContent);
     }
 
+    public Integer getNoteIndexToUpdate() {
+        return noteIndexToUpdate;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this)

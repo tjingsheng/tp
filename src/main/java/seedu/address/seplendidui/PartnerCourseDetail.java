@@ -20,13 +20,13 @@ public class PartnerCourseDetail extends UiPart<Region> {
     @FXML
     private HBox partnerCourseDetailPane;
     @FXML
-    private Label partnerName;
+    private TextFlow partnerName;
     @FXML
     private Label partnerCode;
     @FXML
     private Label partnerUnit;
     @FXML
-    private Label partnerUniversity;
+    private TextFlow partnerUniversity;
     @FXML
     private TextFlow partnerDescription;
 
@@ -36,11 +36,14 @@ public class PartnerCourseDetail extends UiPart<Region> {
     public PartnerCourseDetail(PartnerCourse partnerCourse) {
         super(FXML);
         this.partnerCourse = partnerCourse;
-        partnerName.setText(partnerCourse.getPartnerName().toString());
-        partnerCode.setText(partnerCourse.getPartnerCode().toString());
-        partnerUnit.setText("Units: " + partnerCourse.getPartnerUnit().toString());
-        partnerUniversity.setText(partnerCourse.getPartnerUniversity().toString());
+        TextFlowHeightUpdater.setAutoFitText(partnerUniversity);
+        TextFlowHeightUpdater.setAutoFitText(partnerName);
         TextFlowHeightUpdater.setAutoFitText(partnerDescription);
+
+        partnerUniversity.getChildren().add(new Text(partnerCourse.getPartnerUniversity().toString()));
+        partnerCode.setText(partnerCourse.getPartnerCode().toString());
+        partnerName.getChildren().add(new Text(partnerCourse.getPartnerName().toString()));
+        partnerUnit.setText("Units: " + partnerCourse.getPartnerUnit().toString());
         partnerDescription.getChildren().add(new Text(partnerCourse.getPartnerDescription().toString()));
     }
 }

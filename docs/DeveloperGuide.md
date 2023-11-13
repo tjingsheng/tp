@@ -42,15 +42,15 @@ Given below is a quick overview of main components and how they interact with ea
 The bulk of the app's work is done by the following four components:
 
 * [**`UI`**](#ui-component): The UI of the App.
-* [**`Logic`**](#logic-component): The command executor.
-* [**`Model`**](#model-component): Holds the data of the App in memory.
+* [**`SeplendidLogic`**](#logic-component): The command executor.
+* [**`SeplendidModel`**](#model-component): Holds the data of the App in memory.
 * [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
 
 [**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
 
 **How the architecture components interact with each other**
 
-The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
+The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `note delete [1]`.
 
 <puml src="diagrams/ArchitectureSequenceDiagram.puml" width="574" />
 
@@ -59,7 +59,7 @@ Each of the four main components (also shown in the diagram above),
 * defines its *API* in an `interface` with the same name as the Component.
 * implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
 
-For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
+For example, the `SeplendidLogic` component defines its API in the `SeplendidLogic.java` interface and implements its functionality using the `SeplendidLogicManager.java` class which follows the `SeplendidLogic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
 
 <puml src="diagrams/ComponentManagers.puml" width="300" />
 
@@ -82,37 +82,37 @@ The `UI` component,
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
 * depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
 
-### Logic component
+### SeplendidLogic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`SeplendidLogic.java`](https://github.com/AY2324S1-CS2103T-W10-2/tp/blob/master/src/main/java/seedu/address/logic/SeplendidLogic.java)
 
-Here's a (partial) class diagram of the `Logic` component:
+Here's a (partial) class diagram of the `SeplendidLogic` component:
 
 <puml src="diagrams/LogicClassDiagram.puml" width="550"/>
 
-The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("delete 1")` API call as an example.
+The sequence diagram below illustrates the interactions within the `SeplendidLogic` component, taking `execute("note delete [1]")` API call as an example.
 
 <puml src="diagrams/DeleteSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `delete 1` Command" />
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+**Note:** The lifeline for `NoteDeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </box>
 
-How the `Logic` component works:
+How the `SeplendidLogic` component works:
 
-1. When `Logic` is called upon to execute a command, it is passed to an `AddressBookParser` object which in turn creates a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
-1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `DeleteCommand`) which is executed by the `LogicManager`.
-1. The command can communicate with the `Model` when it is executed (e.g. to delete a person).
-1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
+1. When `SeplendidLogic` is called upon to execute a command, it is passed to an `SeplendidParser` object which in turn creates a parser that matches the command (e.g., `NoteDeleteCommandParser`) and uses it to parse the command.
+1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `NoteDeleteCommand`) which is executed by the `SeplendidLogicManager`.
+1. The command can communicate with the `SeplendidModel` when it is executed (e.g. to delete a note).
+1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `SeplendidLogic`.
 
-Here are the other classes in `Logic` (omitted from the class diagram above) that are used for parsing a user command:
+Here are the other classes in `SeplendidLogic` (omitted from the class diagram above) that are used for parsing a user command:
 
 <puml src="diagrams/ParserClasses.puml" width="600"/>
 
 How the parsing works:
-* When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
-* All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
+* When called upon to parse a user command, the `SeplendidParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `LocalCourseAddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `LocalCourseAddCommand`) which the `SeplendidParser` returns back as a `Command` object.
+* All `XYZCommandParser` classes (e.g., `LocalCourseAddCommandParser`, `NoteDeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
 **API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
@@ -379,7 +379,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | student | sort the list of universities alphabetically                          | easily review the universities                             |
 | `* *`    | student | delete a local course                                                 | remove local courses that can no longer be mapped          |
 | `* *`    | junior  | delete a partner course                                               | remove partner courses that can no longer be mapped        |
+| `* * *`  | student | view the list of mappings in SEPlendid                                | consider existing mappings for my exchange study plan      |
+| `* * *`  | student | add a mapping                                                         | to keep track of new mappings I discovered                 |
 | `* *`    | student | delete a mapping                                                      | remove mappings that are obsolete                          |
+| `* *`    | student | search for a mapping based on the code of the local/partner course    | find the universities offering the course based on code    |
+| `* *`    | student | search for a mapping based on the name of the local/partner course    | find the universities offering the course based on name    |
+| `* *`    | student | search for a mapping based on the name of a university                | find the courses mappings offered by a partner university  |
+| `*`      | student | sort the list of mappings based on any attribute                      | easily review the mappings                                 |
 | `* *`    | student | update a local course                                                 | update the mapping list based on new information           |
 | `* * *`  | student | add notes                                                             | take note of the things I want to remember                 |
 | `* *`    | student | view the list of my notes                                             | easily view my notes that I have taken                     |
@@ -527,8 +533,13 @@ Use case ends.
 **MSS:**
 1. User requests to list available mappings.
 2. SEPlendid shows all available mappings.
+   Use case ends.
 
-3. Use case ends.
+**Extension:**
+* 1a. Afterwards, the user can choose to bring up a detail panel of a mapping.
+  * 1a1. User clicks on a mapping item in the list.
+  * 1a2. SEPlendid shows the corresponding detail panel of the clicked-on mapping. 
+  Use case ends.
 
 **Use case: Add mappings**
 
@@ -542,20 +553,22 @@ Use case ends.
 
 * 1a. The command format is invalid. 
   * 1a1. SEPlendid shows an error message.
-  
   Use case resumes at step 1.
-* 1b. The mappingis already added.
+
+* 1b. The mapping is already added.
   * 1b1. SEPlendid shows an error message.
-  
   Use case resumes at step 1.
+
+* 1c. A local course or partner course specified by user for the mapping does not exist.
+  * 1c1. SEPlendid informs the user through an error message that the course does not exist.
+  Use case ends resumes at step 1.
 
 **Use case: Delete mappings**
 
 **MSS:**
 1. User requests to delete a mapping.
 2. SEPlendid deletes and shows the mappings deleted.
-
-Use case ends.
+   Use case ends.
 
 **Extension:**
 
@@ -567,6 +580,53 @@ Use case ends.
   * 1b1. SEPlendid shows an error message.
   
   Use case resumes at step 1.
+
+**Use case: Sort mappings** \
+Actor: User \
+**MSS:**
+1. User requests to sort the list of mappings based on an attribute.
+2. SEPlendid sorts and shows sorted list of all available mappings, based on specified attribute. \
+   Use case ends.
+
+**Extension:**
+* 1a. The mapping command format is invalid.
+  * 1a1. SEPlendid shows an error message, detailing the mapping command set. \
+  Use case resumes at step 1.
+
+* 1b. The mapping attribute specified is invalid.
+  * 1b1. SEPlendid shows an error message, detailing what attributes are available for sorting. \
+  Use case resumes at step 1.
+
+* 2a. Afterwards, the user can choose to bring up a detail panel of a mapping.
+  * 2a1. User clicks on a mapping item in the list.
+  * 2a2. SEPlendid shows the corresponding detail panel of the clicked-on mapping. \
+  Use case ends.
+
+**Use case: Search mappings** \
+Actor: User \
+**MSS:**
+1. User requests to search the list of mappings based on an attribute, and given query.
+2. SEPlendid searches and shows sorted list of all available mappings, each which has a value for the specified 
+attribute that contains the query. \
+   Use case ends.
+
+**Extension:**
+* 1a. The mapping command format is invalid.
+  * 1a1. SEPlendid shows an error message, detailing the mapping command set. \
+  Use case resumes at step 1.
+
+* 1b. The mapping attribute specified is invalid.
+  * 1b1. SEPlendid shows an error message, detailing what attributes are available for sorting. \
+  Use case resumes at step 1.
+
+* 1c. The query is empty.
+  * 1c1. SEPlendid shows an error message, detailing that the mapping command format. \
+  Use case resumes at step 1.
+
+* 2a. Afterwards, the user can choose to bring up a detail panel of a mapping.
+  * 2a1. User clicks on a mapping item in the list.
+  * 2a2. SEPlendid shows the corresponding detail panel of the clicked-on mapping. \
+  Use case ends.
 
 
 #### Universities
@@ -739,38 +799,36 @@ testers are expected to do more *exploratory* testing.
 
    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   1. Double-click the jar file Expected: Shows the GUI with a set of sample courses. The window size may not be 
+   optimum.
 
-1. Saving window preferences
+### Adding and delete a mapping
 
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+1. Add a mapping while all mappings are being shown)
 
-   1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+   1. Prerequisites: List all mappings using the `mapping list` command. Multiple mappings in the list.
 
-1. _{ more test cases …​ }_
+   1. Ensure your scroll to the bottom.
 
-### Deleting a person
+   1. Test case: `mapping add [IS4231] [Lund University] [INFC40] [Sem 1 only.]`<br>
+      Expected: A new mapping is added, and will appear at the bottom of the list.
 
-1. Deleting a person while all persons are being shown
+   1. Test case: `mapping delete [IS4231] [Lund University] [INFC40] [Sem 1 only.]`<br>
+      Expected: The mapping is deleted, and disappears from the list. 
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
-
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
-
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
-
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
-
-1. _{ more test cases …​ }_
+   1. Other incorrect delete commands to try: `mapping ad`, `mapping add []`, `...` <br>
+      Expected: An error message will appear.
 
 ### Saving data
 
 1. Dealing with missing/corrupted data files
+- If any of the `.json` files found under the `data/` directory created is edited to have invalid data. SEPlendid 
+will reset to the default data, which has been programmatically added.
+- Therefore, it is recommended to make a copy and keep a backup of existing data before making any changes to any of 
+the files under `data/*.json`.
+- One corrupted file will lead to a full reset of the application.
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
-1. _{ more test cases …​ }_
+2. To simulate a missing/corrupted data file, delete the `data/` directory.
+- A new director will be created in its place, with the default seed data.
+- To corrupt the data, open any of the `.json` files under `data/` and edit the data in it. For instance, you may 
+change a `localCode` to the empty string `""`. Restart the application, and observe that the data has been reset.

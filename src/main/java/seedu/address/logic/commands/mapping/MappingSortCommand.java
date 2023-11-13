@@ -46,7 +46,7 @@ public class MappingSortCommand extends MappingCommand {
     public CommandResult execute(SeplendidModel seplendidModel) throws CommandException {
         requireNonNull(seplendidModel);
         // Inject model functions into mappingComparator
-        mappingComparator.initialiseGetLocalPartnercourse(seplendidModel::getLocalCourseIfExists,
+        mappingComparator.initialiseGetLocalPartnerCourse(seplendidModel::getLocalCourseIfExists,
                 seplendidModel::getPartnerCourseIfExists);
         seplendidModel.updateSortedMappingList(mappingComparator);
         return new CommandResult(

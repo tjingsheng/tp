@@ -279,6 +279,11 @@ public class SeplendidModelManager implements SeplendidModel {
     }
 
     @Override
+    public void setPartnerCourseCatalogue(ReadOnlyPartnerCourseCatalogue partnerCourseCatalogue) {
+        this.partnerCourseCatalogue.resetData(partnerCourseCatalogue);
+    }
+
+    @Override
     public ReadOnlyPartnerCourseCatalogue getPartnerCourseCatalogue() {
         return partnerCourseCatalogue;
     }
@@ -610,20 +615,6 @@ public class SeplendidModelManager implements SeplendidModel {
     public void addMapping(Mapping mapping) {
         mappingCatalogue.addMapping(mapping);
         updateFilteredMappingList(PREDICATE_SHOW_ALL_MAPPINGS);
-    }
-
-
-    /**
-     * Replaces the given mapping {@code target} with {@code editedMapping}.
-     * {@code target} must exist in the catalogue.
-     * The mapping identity of {@code editedMapping} must not be the same as another
-     * existing mapping in the MappingCatalogue.
-     */
-    @Override
-    public void setMapping(Mapping mapping, Mapping editedMapping) {
-        requireAllNonNull(mapping, editedMapping);
-
-        mappingCatalogue.setMapping(mapping, editedMapping);
     }
 
     @Override

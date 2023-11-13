@@ -147,6 +147,7 @@ public class MainWindow extends UiPart<Stage> {
         try {
             CommandResult commandResult = seplendidLogic.execute(commandText);
             itemDetailPanel.setItemDetail(null);
+            itemListPanel.unselectAllItems();
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultBox.setFeedbackToUser(commandResult.getFeedbackToUser());
 

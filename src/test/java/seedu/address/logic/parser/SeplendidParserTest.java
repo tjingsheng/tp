@@ -7,9 +7,11 @@ import java.util.Comparator;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.localcourse.LocalCourseAddCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseDeleteCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseSortCommand;
+import seedu.address.logic.commands.note.*;
 import seedu.address.logic.commands.partnercourse.PartnerCourseAddCommand;
 import seedu.address.logic.commands.partnercourse.PartnerCourseDeleteCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -118,5 +120,251 @@ public class SeplendidParserTest {
         assertThrows(ParseException.class,
                      UsageMessage.UNIVERSITY.getValue(), (
                      )-> parser.parseCommand("university eject args"));
+    }
+
+    /**
+     * Positive note command parsing test cases
+     */
+    @Test
+    public void parseCommand_addNote() throws Exception {
+        String command = "note add [test note] [test]";
+        Command c = parser.parseCommand(command);
+        assert c instanceof NoteAddCommand;
+    }
+
+    @Test
+    public void parseCommand_addNoteNumericSpecial() throws Exception {
+        String command = "note add [test 1234 @#$%^&] [test]";
+        Command c = parser.parseCommand(command);
+        assert c instanceof NoteAddCommand;
+    }
+
+    @Test
+    public void parseCommand_listNote() throws Exception {
+        String command = "note list";
+        Command c = parser.parseCommand(command);
+        assert c instanceof NoteListCommand;
+    }
+
+    @Test
+    public void parseCommand_updateNote() throws Exception {
+        String command = "note update [1] [new content]";
+        Command c = parser.parseCommand(command);
+        assert c instanceof NoteUpdateCommand;
+    }
+
+    @Test
+    public void parseCommand_tagNote() throws Exception {
+        String command = "note tag [1] [newtag]";
+        Command c = parser.parseCommand(command);
+        assert c instanceof NoteTagCommand;
+    }
+
+    @Test
+    public void parseCommand_deleteNote() throws Exception {
+        String command = "note delete [1]";
+        Command c = parser.parseCommand(command);
+        assert c instanceof NoteDeleteCommand;
+    }
+
+    @Test
+    public void parseCommand_clearTagNote() throws Exception {
+        String command = "note cleartag [1]";
+        Command c = parser.parseCommand(command);
+        assert c instanceof NoteClearTagCommand;
+    }
+
+    @Test
+    public void parseCommand_searchNote() throws Exception {
+        String command = "note search [tag]";
+        Command c = parser.parseCommand(command);
+        assert c instanceof NoteSearchCommand;
+    }
+
+    /**
+     * Negative note command parsing test cases
+     */
+    @Test
+    public void parseCommand_addNoteInvalidCommand_throwsParseException() {
+        String command = "note_add [test] [test]";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_addNoteWrongSpelling_throwsParseException() {
+        String command = "not add [test] [test]";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_unknownInstruction_throwsParseException() {
+        String command = "note idk [test] [test]";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_addNoteExtraBracket_throwsParseException() {
+        String command = "note add [[111] [test]]";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_addNoteExtraBrackets_throwsParseException() {
+        String command = "note add [[111]] [test]]]";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_listNoteExtraSpace_throwsParseException() {
+        String command = "note  list          ";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_listNoteExtraArgs_throwsParseException() {
+        String command = "note list 1";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_listNoteInvalidInstruction_throwsParseException() {
+        String command = "note li  st";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_updateNoteInvalidInstruction_throwsParseException()  {
+        String command = "note up  date [1] [new content]";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_updateNoteInvalidIndex_throwsParseException() throws Exception {
+        String command = "note update [1     0] [new content]";
+        NoteUpdateCommand c = (NoteUpdateCommand) parser.parseCommand(command);
+        assert c.getNoteIndexToUpdate() == -1;
+    }
+
+    @Test
+    public void parseCommand_updateNoteNoIndex_throwsParseException()  {
+        String command = "note update [] [new content]";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+    @Test
+    public void parseCommand_updateNoteNoContent_throwsParseException() {
+        String command = "note update [1] []";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_updateNoteNoContentMissingOneArg_throwsParseException() {
+        String command = "note update [1]";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_updateNoteNoBracket_throwsParseException() {
+        String command = "note update 1 content";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_tagNoteInvalidIndex() throws Exception {
+        String command = "note tag [1   0] [newtag]";
+        NoteTagCommand c = (NoteTagCommand) parser.parseCommand(command);
+        assert c.getNoteIndexToUpdate() == -1;
+    }
+
+    @Test
+    public void parseCommand_tagNoteNoBracket_throwsParseException() {
+        String command = "note tag 1 content";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_tagNoteWithSpaces_throwsParseException() {
+        String command = "note tag [1] [content   content]";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_tagNoteWithSpecialChar_throwsParseException() {
+        String command = "note tag [1] [content@content]";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_tagNoteInvalidInstruction_throwsParseException() {
+        String command = "note tagtag [1] [content@content]";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_tagNoteMissingSpaceBetweenArgs_throwsParseException() {
+        String command = "note tag [1][contentcontent]";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_tagNoteWrongBracketType_throwsParseException() {
+        String command = "note tag (1) (contentcontent)";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_deleteNoteWrongIndex_throwsParseException() throws Exception {
+        String command = "note delete [1   00 0]";
+        NoteDeleteCommand c = (NoteDeleteCommand) parser.parseCommand(command);
+        assert c.getNoteIndexToDelete() == -1;
+    }
+
+    @Test
+    public void parseCommand_deleteNoteExtraArgs_throwsParseException() {
+        String command = "note delete [1000] [hi]";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_deleteNoteInvalidIndex_throwsParseException() throws Exception {
+        String command = "note delete [abc]";
+        NoteDeleteCommand c = (NoteDeleteCommand) parser.parseCommand(command);
+        assert c.getNoteIndexToDelete() == -1;
+    }
+
+    @Test
+    public void parseCommand_deleteNoteExtraBracket_throwsParseException() {
+        String command = "note delete [[1]";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_cleartagNoteInvalidIndex_throwsParseException() throws Exception {
+        String command = "note cleartag [abc]";
+        NoteClearTagCommand c = (NoteClearTagCommand) parser.parseCommand(command);
+        assert c.getNoteIndexToUpdate() == -1;
+    }
+
+    @Test
+    public void parseCommand_cleartagNoteExtraBracket_throwsParseException() {
+        String command = "note cleartag [[1]";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_searchNoteEmptyArg_throwsParseException() {
+        String command = "note search []";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_searchNoteArgWithSpaces_throwsParseException() {
+        String command = "note search [test test]";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_searchNoteArgWithSpecialChar_throwsParseException() {
+        String command = "note search [tes$test]";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
     }
 }

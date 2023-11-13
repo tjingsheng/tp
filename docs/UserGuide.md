@@ -305,7 +305,7 @@ The first word of each command specifies the different core features with its ow
 - Attributes such as `localcode` and `localname` shows you what you should place in each portion of the command
 
 <box type="tip" icon=":bulb:" >
-    Tip: All the attributes for localcourse needs to be added.
+    <b>Tip:</b> All the attributes for localcourse needs to be added.
 </box>
 
 
@@ -427,8 +427,8 @@ Deletes local course with course code identified by `localcode`. This is useful 
 
 - you wish to remove a local course that is no longer offered by NUS Computing.
 
-<box type="info" icon=":exclamation:" icon-color="red">
-    Warning: You are unable to delete a local course if it exists in a mapping.
+<box type="warning" icon=":exclamation:" icon-color="red">
+    <b>Warning:</b> You are unable to delete a local course if it exists in a mapping.
 </box>
 
 **Format:** `localcourse delete [localcode]`
@@ -455,7 +455,7 @@ These local course attributes include localcode, localname, unit and localdescri
 - you wish to update a localcourse if there are changes made by NUS Computing.
 
 <box type="tip" icon=":bulb:" >
-    Tip: You can check the updated localcourse using <code>localcourse list</code>
+    <b>Tip:</b> You can check the updated localcourse using <code>localcourse list</code>
 </box>
 
 **Format:** `localcourse update [localcode] [localcourseattribute] [updatedValue]`
@@ -566,7 +566,7 @@ Deletes partner course with attributes such as university and partnercode respec
 
 - you wish to remove a partner course that is no longer offered by the partner university.
 
-<box type="warning" icon=":exclamation:" >
+<box type="warning" icon=":exclamation:" icon-color="red">
     <b>Warning:</b> You are unable to delete a partner course if it exists in a mapping.
 </box>
 
@@ -706,8 +706,8 @@ university. This is useful when:
 * you wish to view mappings in greater detail.
 * you wish to verify that a mapping has been added, deleted or updated successfully.
 
-<box type="tip">
-    Click on a mapping in the list to bring up a detailed view.
+<box type="tip" icon=":bulb:" >
+    <b>Tip:</b> Click on a mapping in the list to bring up a detailed view.
 </box>
 
 **Format:** `mapping list`
@@ -845,8 +845,8 @@ Lists all notes that you have recorded in SEPlendid. This is useful when:
 - you wish to verify that your note has been deleted successfully.
 - you wish to verify that your note has been updated successfully.
 
-<box type="tip">
-    Click on a note in the list to bring up a detailed view.
+<box type="tip" icon=":bulb:" >
+    <b>Tip:</b> Click on a note in the list to bring up a detailed view.
 </box>
 
 **Format:** `note list`
@@ -983,7 +983,7 @@ Clears all tags for the specified note according to its index. This is useful wh
 
 **Format:** `note cleartag [index]`
 <box type="warning" icon=":exclamation:" icon-color="red">
-<b>Warning:</b> This command will remove all tags for your specified note.
+    <b>Warning:</b> This command will remove all tags for your specified note.
 </box>
 
 **Example:** `note cleartag [1]`

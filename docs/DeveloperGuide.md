@@ -174,10 +174,10 @@ The `list` command generates a list of courses and universities' sample data. Th
 courses.
 
 The activity diagram is as such:
-<puml src="diagrams/ListActivityDiagram.puml" width="300" />
+<puml src="diagrams/ListActivityDiagram.puml" width="500" />
 
 Here is a sequence diagram for `localcourse list`:
-<puml src="diagrams/ListSequenceDiagram.puml" width="300" />
+<puml src="diagrams/ListSequenceDiagram.puml" width="500" />
 
 **Feature Details**
 
@@ -202,14 +202,15 @@ The `add` command allows for the adding of new courses, universities and notes. 
 datatypes.
 
 The activity diagram is as such:
-<puml src="diagrams/AddActivityDiagram.puml" width="300" />
+<puml src="diagrams/AddActivityDiagram.puml" width="500" />
 
 <br>
-Here is a sequence diagram for 'note add`:
-<puml src="diagrams/NoteAddSequenceDiagram.puml" width="300" />
 
-Here is a sequence diagram for 'partnercourse add':
-<puml src="diagrams/PartnercourseAddSequenceDiagram.puml" width="300" />
+Here is a sequence diagram for `note add`:
+<puml src="diagrams/NoteAddSequenceDiagram.puml" width="500" />
+
+Here is a sequence diagram for `partnercourse add`:
+<puml src="diagrams/PartnercourseAddSequenceDiagram.puml" width="500" />
 
 **Feature Details**
 
@@ -245,7 +246,7 @@ The activity diagram is as such:
 <puml src="diagrams/SearchActivityDiagram.puml" width="300" />
 
 Here is a sequence diagram for `partnercourse search`:
-<puml src="diagrams/PartnerCourseSearchSequenceDiagram.puml" width="300" />
+<puml src="diagrams/PartnerCourseSearchSequenceDiagram.puml" width="500" />
 
 **Feature Details**
 

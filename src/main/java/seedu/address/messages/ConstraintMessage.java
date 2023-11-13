@@ -137,9 +137,9 @@ public enum ConstraintMessage {
     }
 
     /**
-     * Gets the value of the constraint message.
+     * Gets the string representation of the constraint message.
      *
-     * @return The usage message value.
+     * @return The usage message string.
      */
     @Override
     public String toString() {

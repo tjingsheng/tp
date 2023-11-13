@@ -24,17 +24,17 @@ public class MappingDetail extends UiPart<Region> {
     @FXML
     private Label localCode;
     @FXML
-    private Label localName;
+    private TextFlow localName;
     @FXML
     private Label localUnit;
     @FXML
     private Label partnerCode;
     @FXML
-    private Label partnerName;
+    private TextFlow partnerName;
     @FXML
     private Label partnerUnit;
     @FXML
-    private Label universityName;
+    private TextFlow universityName;
     @FXML
     private TextFlow mappingMiscInformation;
 
@@ -48,17 +48,25 @@ public class MappingDetail extends UiPart<Region> {
                          String partnerUnitInput) {
         super(FXML);
         this.mapping = mapping;
+        TextFlowHeightUpdater.setAutoFitText(universityName);
+        TextFlowHeightUpdater.setAutoFitText(localName);
+        TextFlowHeightUpdater.setAutoFitText(partnerName);
+        TextFlowHeightUpdater.setAutoFitText(mappingMiscInformation);
+
         String localCodeInput = mapping.getLocalCode().toString();
         String partnerCodeInput = mapping.getPartnerCode().toString();
+
+        universityName.getChildren().add(new Text(mapping.getUniversityName().toString()));
         title.setText(localCodeInput + " maps to " + partnerCodeInput);
+
         localCode.setText(localCodeInput);
-        localName.setText(localNameInput);
+        localName.getChildren().add(new Text(localNameInput));
         localUnit.setText("Units: " + localUnitInput);
+
         partnerCode.setText(partnerCodeInput);
-        partnerName.setText(partnerNameInput);
+        partnerName.getChildren().add(new Text(partnerNameInput));
         partnerUnit.setText("Units: " + partnerUnitInput);
-        universityName.setText(mapping.getUniversityName().toString());
-        TextFlowHeightUpdater.setAutoFitText(mappingMiscInformation);
+
         mappingMiscInformation.getChildren().add(new Text(mapping.getMappingMiscInformation().toString()));
     }
 }

@@ -31,6 +31,7 @@ public class NoteDetail extends UiPart<Region> {
         super(FXML);
         this.note = note;
         TextFlowHeightUpdater.setAutoFitText(noteContent);
+
         noteContent.getChildren().add(new Text(note.getContent().toString()));
         tags.setText("Tags:" + note.getTags().toString());
     }

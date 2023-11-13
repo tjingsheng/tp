@@ -15,10 +15,11 @@
         <padding>
             <Insets top="17" right="25" bottom="17" left="25"/>
         </padding>
-        <Label fx:id="partnerUniversity" styleClass="small-heading-font-size"/>
+        <TextFlow fx:id="partnerUniversity" styleClass="big-heading-font-size"/>
+        <Label/>
         <Label fx:id="partnerCode" styleClass="title-font-size"/>
-        <Label fx:id="partnerName" styleClass="small-heading-font-size"/>
-        <Label fx:id="partnerUnit" styleClass="small-heading-font-size"/>
+        <TextFlow fx:id="partnerName" styleClass="big-heading-font-size"/>
+        <Label fx:id="partnerUnit" styleClass="big-heading-font-size"/>
         <Label/>
         <TextFlow fx:id="partnerDescription" styleClass="text-font-size"/>
     </VBox>

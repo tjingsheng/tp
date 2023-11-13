@@ -174,6 +174,7 @@ courses.
 The activity diagram is as such:
 <puml src="diagrams/ListActivityDiagram.puml" width="300" />
 
+Here 
 **Feature Details**
 1. The user specifies the command word. Possible command words include `localcourse`, `partnercourse`, `university`,
    `mapping` and `note`.
@@ -238,7 +239,8 @@ querying of courses, universities and notes.
 The activity diagram is as such:
 <puml src="diagrams/SearchActivityDiagram.puml" width="300" />
 
-Here is a sequence diagram for `search`:
+Here is a sequence diagram for `partnercourse search`:
+<puml src="diagrams/PartnerCourseSearchSequenceDiagram.puml" width="300" />
 
 **Feature Details**
 1. The user specifies a data object with its unique identity attribute, attribute that they are querying and the 

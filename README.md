@@ -1,16 +1,27 @@
-[![Java CI](https://github.com/AY2324S1-CS2103T-W10-2/tp/actions/workflows/gradle.yml/badge.svg)](https://github.com/AY2324S1-CS2103T-W10-2/tp/actions/workflows/gradle.yml)
+# SEPlendid
+> Your Ultimate SEP Planning tool
 
-![Ui](docs/images/Ui.png)
+![Ui](docs/images/MappingListUi.png)
 
-# Introduction
-SEPlendid is your passport to a seamless and enriched Student Exchange Programme (SEP) planning experience.
+**SEPlendid is a desktop application for researching on your modules mapping, helping you plan for your upcoming
+Student Exchange Programme (SEP).** While it
+has a GUI, most of the
+user
+interactions happen using a CLI (Command Line Interface).
 
-## Example usages
-1. listing local/partner university courses
-2. sorting courses by various attributes
-3. searching for courses using keywords
-4. taking notes for courses/universities
+* If you are interested in using SEPlendid, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.md#2-quick-start).
+* If you are interested about contributing to SEPlendid, the [**Developer Guide**](DeveloperGuide.html) is a good
+  place to start.
 
-# Additional Notes
-* For the detailed documentation of this project, see the **[SEPlendid Product Website](https://ay2324s1-cs2103t-w10-2.github.io/tp/)**.
-* This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
+
+**Acknowledgements**
+
+* Libraries used: [JavaFX](https://openjfx.io/), [Jackson](https://github.com/FasterXML/jackson), [JUnit5](https://github.com/junit-team/junit5)
+
+**CI and Codecov status**
+> [![Java CI](https://github.com/AY2324S1-CS2103T-W10-2/tp/actions/workflows/gradle.yml/badge.svg)](https://github.com/AY2324S1-CS2103T-W10-2/tp/actions/workflows/gradle.yml)
+[![MarkBind Action](https://github.com/AY2324S1-CS2103T-W10-2/tp/actions/workflows/docs.yml/badge.svg)](https://github.com/AY2324S1-CS2103T-W10-2/tp/actions/workflows/docs.yml)
+[![pages-build-deployment](https://github.com/AY2324S1-CS2103T-W10-2/tp/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/AY2324S1-CS2103T-W10-2/tp/actions/workflows/pages/pages-build-deployment)
+[![codecov](https://codecov.io/gh/AY2324S1-CS2103T-W10-2/tp/graph/badge.svg?token=6GEPWNR01R)](https://codecov.io/gh/AY2324S1-CS2103T-W10-2/tp)
+
+

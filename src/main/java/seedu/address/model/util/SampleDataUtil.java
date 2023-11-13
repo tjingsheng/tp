@@ -1,11 +1,9 @@
 package seedu.address.model.util;
 
-import seedu.address.model.AddressBook;
 import seedu.address.model.LocalCourseCatalogue;
 import seedu.address.model.MappingCatalogue;
 import seedu.address.model.NoteCatalogue;
 import seedu.address.model.PartnerCourseCatalogue;
-import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
 import seedu.address.model.ReadOnlyMappingCatalogue;
 import seedu.address.model.ReadOnlyNoteCatalogue;
@@ -16,31 +14,17 @@ import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.mapping.Mapping;
 import seedu.address.model.note.Note;
 import seedu.address.model.partnercourse.PartnerCourse;
-import seedu.address.model.person.Person;
 import seedu.address.model.sampledata.SampleLocalCourses;
 import seedu.address.model.sampledata.SampleMappings;
 import seedu.address.model.sampledata.SampleNotes;
 import seedu.address.model.sampledata.SamplePartnerCourses;
-import seedu.address.model.sampledata.SamplePersons;
 import seedu.address.model.sampledata.SampleUniversities;
 import seedu.address.model.university.University;
 
 /**
- * Contains utility methods for populating {@code AddressBook} with sample data.
+ * Contains utility methods for populating SEPlendid with sample data.
  */
 public class SampleDataUtil {
-    public static Person[] getSamplePersons() {
-        return SamplePersons.getSamplePersons();
-    }
-
-    public static ReadOnlyAddressBook getSampleAddressBook() {
-        AddressBook sampleAb = new AddressBook();
-        for (Person samplePerson : getSamplePersons()) {
-            sampleAb.addPerson(samplePerson);
-        }
-        return sampleAb;
-    }
-
     public static LocalCourse[] getSampleLocalCourses() {
         return SampleLocalCourses.getSampleLocalCourses();
     }

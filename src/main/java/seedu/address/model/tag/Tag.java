@@ -6,7 +6,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 import seedu.address.messages.ConstraintMessage;
 
 /**
- * Represents a Tag in the address book.
+ * Represents a Tag in a note.
  * Guarantees: immutable; name is valid as declared in {@link #isValidTagName(String)}
  */
 public class Tag {

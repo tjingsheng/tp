@@ -254,9 +254,9 @@ public enum UsageMessage {
     }
 
     /**
-     * Gets the value of the usage message.
+     * Gets the string representation of the usage message.
      *
-     * @return The usage message value.
+     * @return The usage message string.
      */
     @Override
     public String toString() {

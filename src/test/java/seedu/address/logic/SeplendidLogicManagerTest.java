@@ -31,7 +31,6 @@ import seedu.address.logic.commands.partnercourse.PartnerCourseAddCommand;
 import seedu.address.logic.commands.partnercourse.PartnerCourseCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.messages.UsageMessage;
-import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
 import seedu.address.model.ReadOnlyMappingCatalogue;
 import seedu.address.model.ReadOnlyNoteCatalogue;
@@ -41,7 +40,6 @@ import seedu.address.model.SeplendidModel;
 import seedu.address.model.SeplendidModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.university.University;
-import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonLocalCourseCatalogueStorage;
 import seedu.address.storage.JsonMappingCatalogueStorage;
 import seedu.address.storage.JsonNoteCatalogueStorage;
@@ -62,8 +60,6 @@ public class SeplendidLogicManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonAddressBookStorage addressBookStorage = new JsonAddressBookStorage(temporaryFolder.resolve(
-            "addressBook.json"));
         JsonLocalCourseCatalogueStorage localCourseCatalogueStorage = new JsonLocalCourseCatalogueStorage(
             temporaryFolder.resolve("localcoursecatalogue.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
@@ -76,7 +72,6 @@ public class SeplendidLogicManagerTest {
         JsonMappingCatalogueStorage mappingCatalogueStorage = new JsonMappingCatalogueStorage(temporaryFolder.resolve(
             "mappingcatalogue.json"));
         StorageManager storage = new StorageManager(
-            addressBookStorage,
             userPrefsStorage,
             localCourseCatalogueStorage,
             partnerCourseCatalogueStorage,
@@ -205,14 +200,6 @@ public class SeplendidLogicManagerTest {
     private void assertCommandFailureForExceptionFromStorage(IOException e, String expectedMessage) {
         Path prefPath = temporaryFolder.resolve("ExceptionUserPrefs.json");
 
-        // Inject LogicManager with an AddressBookStorage that throws the IOException e when saving
-        JsonAddressBookStorage addressBookStorage = new JsonAddressBookStorage(prefPath) {
-            @Override
-            public void saveAddressBook(ReadOnlyAddressBook addressBook, Path filePath) throws IOException {
-                throw e;
-            }
-        };
-
         JsonLocalCourseCatalogueStorage localCourseCatalogueStorage = new JsonLocalCourseCatalogueStorage(prefPath) {
             @Override
             public void saveLocalCourseCatalogue(ReadOnlyLocalCourseCatalogue localCourseCatalogue, Path filePath)
@@ -255,7 +242,6 @@ public class SeplendidLogicManagerTest {
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve(
             "ExceptionUserPrefs.json"));
         StorageManager storage = new StorageManager(
-            addressBookStorage,
             userPrefsStorage,
             localCourseCatalogueStorage,
             partnerCourseCatalogueStorage,

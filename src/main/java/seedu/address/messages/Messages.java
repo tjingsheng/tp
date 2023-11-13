@@ -10,7 +10,6 @@ import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.mapping.Mapping;
 import seedu.address.model.note.Note;
 import seedu.address.model.partnercourse.PartnerCourse;
-import seedu.address.model.person.Person;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityName;
 
@@ -35,23 +34,6 @@ public class Messages {
                 Stream.of(duplicatePrefixes).map(Prefix::toString).collect(Collectors.toSet());
 
         return MESSAGE_DUPLICATE_FIELDS + String.join(" ", duplicateFields);
-    }
-
-    /**
-     * Formats the {@code person} for display to the user.
-     */
-    public static String format(Person person) {
-        final StringBuilder builder = new StringBuilder();
-        builder.append(person.getName())
-                .append("; Phone: ")
-                .append(person.getPhone())
-                .append("; Email: ")
-                .append(person.getEmail())
-                .append("; Address: ")
-                .append(person.getAddress())
-                .append("; Tags: ");
-        person.getTags().forEach(builder::append);
-        return builder.toString();
     }
 
     /**

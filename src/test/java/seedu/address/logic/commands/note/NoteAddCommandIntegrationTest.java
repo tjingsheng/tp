@@ -11,8 +11,8 @@ import static seedu.address.testutil.TypicalObjects.getTypicalUniversityCatalogu
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.messages.Messages;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.SeplendidModelManager;
 import seedu.address.model.UserPrefs;
@@ -60,6 +60,6 @@ public class NoteAddCommandIntegrationTest {
     public void execute_duplicateNote_throwsDuplicateNoteException() {
         Note noteInList = model.getNoteCatalogue().getNoteList().get(0);
         NoteAddCommand noteAddCommand = new NoteAddCommand(noteInList);
-        assertThrows(DuplicateNoteException.class, () -> noteAddCommand.execute(model));
+        assertThrows(CommandException.class, () -> noteAddCommand.execute(model));
     }
 }

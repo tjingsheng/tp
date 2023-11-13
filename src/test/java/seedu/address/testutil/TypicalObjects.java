@@ -270,6 +270,7 @@ public class TypicalObjects {
     public static final University WATERLOO = new University(new UniversityName("University of Waterloo"));
     public static final University SNU = new University(new UniversityName("Seoul National University"));
     public static final University YONSEI = new University(new UniversityName("Yonsei University"));
+    public static final University HYUN = new University(new UniversityName("Hyun University"));
     // Note
     public static final Note NOTE1 = new Note(new Content("Nanyang Technological University"), new Tag("university"));
     public static final Note NOTE2 = new Note(new Content("Application Deadline 1 December 2023"), new Tag("deadline"));

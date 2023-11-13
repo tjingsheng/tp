@@ -3,29 +3,70 @@
   title: "Developer Guide"
   pageNav: 3
 ---
+<bottom-head>
+    <link rel="stylesheet" href="stylesheets/userguide.css">
+</bottom-head>
 
 # SEPlendid Developer Guide
 
-<!-- * Table of Contents -->
-<page-nav-print />
+## 1. About SEPlendid
+
+SEPlendid is a Course Mapping System that allows NUS Computing students to seamlessly plan for their overseas courses,
+for the highly coveted Student Exchange Programmes (SEP). As a student, you can view and find course mappings in order
+to plan for your overseas studies without the hassle of creating complex Excel sheets. Utilise SEPlendid's course
+mapping function in order to quickly find possible mappings for certain courses you want to map. Finally, SEPlendid's
+note-taking system will assist you in organising your important information you will need for planning for your courses.
+
+## 2. Table of Contents
+<div class= "toc">
+
+1. [About SEPlendid](#1-about-seplendid)
+2. [Table of Contents](#2-table-of-contents)
+3. [Setting up, Getting Started](#3-setting-up-getting-started)
+4. [Design](#4-design)
+   - 4.1 [Architecture](#4-1-architecture)
+   - 4.2 [UI Component](#4-2-ui-component)
+   - 4.3 [SEPlendidLogic Component](#4-3-seplendidlogic-component)
+   - 4.4 [Model Component](#4-4-model-component)
+   - 4.5 [Storage Component](#4-5-storage-component)
+   - 4.6 [Common Classes](#4-6-common-classes)
+5. [Implementation](#5-implementation)
+   - 5.1 [Parser to Handle Commands with Optional Arguments](#5-1-parser-to-handle-commands-with-optional-arguments)
+   - 5.2 [Mapping Feature](#5-2-mapping-feature)
+   - 5.3 [Sorting Feature](#5-3-sorting-feature)
+   - 5.4 [University Feature](#5-4-university-feature)
+   - 5.5 [[Proposed] Data Archiving](#5-5-proposed-data-archiving)
+6. [Other Helpful Guides](#6-other-helpful-guides)
+7. [Effort](#7-effort)
+   - 7.1 [Morphing of AB3 to SEPlendid](#7-1-morphing-of-ab3-to-seplendid)
+   - 7.2 [Redesigning the UI](#7-2-redesigning-the-ui)
+8. [Requirements](#8-requirements)
+   - 8.1 [Product Scope](#8-1-product-scope)
+   - 8.2 [User Stories](#8-2-user-stories)
+   - 8.3 [Use Cases](#8-3-use-cases)
+   - 8.4 [Non-Functional Requirements](#8-4-non-functional-requirements)
+   - 8.5 [Glossary](#8-5-glossary)
+9. [Instructions for Manual Testing](#9-instructions-for-manual-testing)
+   - 9.1 [Launch and Shutdown](#9-1-launch-and-shutdown)
+   - 9.2 [Local Course](#9-2-local-course)
+   - 9.3 [Partner Course](#9-3-partner-course)
+   - 9.4 [University](#9-4-university)
+   - 9.5 [Mapping](#9-5-mapping)
+   - 9.6 [Note](#9-6-note)
+
+</div>
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Acknowledgements**
-
-_{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
-
---------------------------------------------------------------------------------------------------------------------
-
-## **Setting up, getting started**
+## 3. Setting up, Getting Started
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Design**
+## 4. Design
 
-### Architecture
+### 4.1 Architecture
 
 <puml src="diagrams/ArchitectureDiagram.puml" width="280" />
 
@@ -66,7 +107,7 @@ For example, the `SeplendidLogic` component defines its API in the `SeplendidLog
 
 The sections below give more details of each component.
 
-### UI component
+### 4.2 UI Component
 
 **API** : [`Ui.java`](https://github.com/AY2324S1-CS2103T-W10-2/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
@@ -83,7 +124,7 @@ The `UI` component,
 * keeps a reference to the `SeplendidLogic` component, because the `UI` relies on the `SeplendidLogic` to execute commands.
 * depends on some classes in the `Model` component, as it displays `LocalCourse`, `PartnerCourse`, `University`, `Mapping`, and `Note` objects residing in the `Model`.
 
-### SeplendidLogic component
+### 4.3 SeplendidLogic Component
 
 **API** : [`SeplendidLogic.java`](https://github.com/AY2324S1-CS2103T-W10-2/tp/blob/master/src/main/java/seedu/address/logic/SeplendidLogic.java)
 
@@ -115,7 +156,13 @@ How the parsing works:
 * When called upon to parse a user command, the `SeplendidParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `LocalCourseAddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `LocalCourseAddCommand`) which the `SeplendidParser` returns back as a `Command` object.
 * All `XYZCommandParser` classes (e.g., `LocalCourseAddCommandParser`, `NoteDeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
-### Model component
+### 4.4 Model Component
+**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+
+<puml src="diagrams/ModelClassDiagram.puml" width="450" />
+
+
+The `Model` component,
 
 **API
 ** : [`SeplendidModel.java`](https://github.com/AY2324S1-CS2103T-W10-2/tp/blob/master/src/main/java/seedu/address/model/SeplendidModel.java)
@@ -139,7 +186,7 @@ The `SeplendidModel` component,
 * does not depend on any of the other three components (as the `SeplendidModel` represents data entities of the domain,
   they should make sense on their own without depending on other components)
 
-### Storage component
+### 4.5 Storage Component
 
 **API
 ** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
@@ -156,17 +203,16 @@ The `Storage` component,
 * depends on some classes in the `SeplendidModel` component (because the `Storage` component's job is to save/retrieve
   objects that belong to the `SeplendidModel`).
 
-### Common classes
+### 4.6 Common Classes
 
 Classes used by multiple components are in the `seedu.addressbook.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Implementation**
+## 5. Implementation
 
 This section describes some noteworthy details on how certain features are implemented.
-
-### Parser to handle both commands with and without arguments
+### 5.1 Parser to Handle Commands with Optional Arguments
 
 The below diagram gives a high-level overview on how the `SeplendidParser` parses a command from our command set:
 <puml src="diagrams/SeplendidParserActivityDiagram.puml" alt="SeplendidParserActivityDiagram" />
@@ -234,7 +280,7 @@ Each data type has different attributes
 that can be used for sorting.
 --------------------------------------------------------------------------------------------------------------------
 
-### Mapping feature
+### 5.2 Mapping Feature
 
 The mapping `list/add/delete` mechanism is facilitated by `MappingCatalogue`. It stores `Mapping` objects which
 contain the `LocalCode`, `UniversityName`, `PartnerCode` and `MappingMiscInformation` objects. This means that
@@ -312,9 +358,7 @@ non-empty, the deletion will be performed, otherwise a `CommandException` will b
       done correctly.
 
 --------------------------------------------------------------------------------------------------------------------
-
-### Sorting feature
-
+### 5.3 Sorting Feature
 #### Implementation
 
 #### Design considerations
@@ -332,7 +376,7 @@ non-empty, the deletion will be performed, otherwise a `CommandException` will b
 
 
 --------------------------------------------------------------------------------------------------------------------
-### University Feature
+### 5.4 University Feature
 
 The university `list/search/sort` mechanism is facilitated by `UniversityCatalogue`. It stores `University` objects
 which contain the `UniversityName` object. This means that `University` is dependent on `University` class.
@@ -385,14 +429,14 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 _{more aspects and alternatives to be added}_
 
-### \[Proposed\] Data archiving
+### 5.5 \[Proposed\] Data Archiving
 
 _{Explain here how the data archiving feature will be implemented}_
 
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Documentation, logging, testing, configuration, dev-ops**
+## 6. Other Helpful Guides
 
 * [Documentation guide](Documentation.md)
 * [Testing guide](Testing.md)
@@ -402,16 +446,16 @@ _{Explain here how the data archiving feature will be implemented}_
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Effort
+## 7. Effort
 
 The implementation of SEPlendid proved to be a challenging endeavor. Below is the highlights of the extensive effort our
 team dedicated to developing SEPlendid, along with a mention of some of the challenges we encountered along the way.
 
-### Morphing of AB3 to SEPlendid
+### 7.1 Morphing of AB3 to SEPlendid
 
 A large portion of code had to be refactored to morph AB3 to SEPlendid.
 
-### Redesigning the UI
+### 7.2 Redesigning the UI
 
 In recognising the significance of minimalism for achieving simplicity, we embarked on the task of redesigning the
 original AB3 UI into our custom SEPlendid interface. The endeavor underscored the essential balance between simplicity
@@ -423,9 +467,9 @@ requirements of a student exchange program mapping tool.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Requirements**
+## 8. Requirements
 
-### Product scope
+### 8.1 Product Scope
 
 **Target user profile**:
 
@@ -448,7 +492,7 @@ SEPlendid aims to provide an advanced search, allowing users to search for mappi
 as partner universities' course names, and NUS course codes. We aim to also include features such as the ability to
 contribute course mappings, and note-taking.
 
-### User stories
+### 8.2 User Stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
@@ -481,7 +525,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 *{More to be added}*
 
-### Use cases
+### 8.3 Use Cases
 
 (For all use cases below, the **System** is the `SEPlendid` and the **Actor** is the `user`, unless specified otherwise)
 
@@ -854,7 +898,7 @@ Use case ends
   Use case resumes at step 2.
 
 
-### Non-Functional Requirements
+### 8.4 Non-Functional Requirements
 
 1. Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
 2. Should be able to hold up to 1000 course mappings, along with its dependent data such as local courses, without a
@@ -865,7 +909,7 @@ Use case ends
 5. The user interface should be intuitive enough for users who are not IT-savvy.
 6. The application should be designed to handle a growing database of course mappings and related data.
 
-### Glossary
+### 8.5 Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X.
 * **Course Mapping**: A course offered by a partner university, which NUS Computing students going on exchange can
@@ -875,7 +919,7 @@ Use case ends
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Instructions for manual testing**
+## 9. Instructions for Manual Testing
 
 Given below are instructions to test the app manually.
 
@@ -886,7 +930,7 @@ testers are expected to do more *exploratory* testing.
 
 </box>
 
-### Launch and shutdown
+### 9.1 Launch and Shutdown
 
 1. Initial launch
 
@@ -897,7 +941,7 @@ testers are expected to do more *exploratory* testing.
   1. Double-click the jar file <br>
      Expected: Shows the GUI with a set of sample local course. The window size may not be optimum.
 
-### Local Course
+### 9.2 Local Course
 
 #### List all local courses
 
@@ -994,7 +1038,7 @@ Expected Output in the Command Output Box: Sorted all local courses
 
 </box> 
 
-### Partner Course
+### 9.3 Partner Course
 
 #### List all partner courses
 
@@ -1114,7 +1158,7 @@ Expected Output in the Command Output Box: Sorted all partner courses
 
 </box> 
 
-### University
+### 9.4 University
 
 #### List all universities
 
@@ -1170,7 +1214,7 @@ Expected Output in the Command Output Box: Sorted all universities
 
 </box> 
 
-### Mapping
+### 9.5 Mapping
 
 #### List all mappings
 
@@ -1255,7 +1299,7 @@ Expected Output in the Command Output Box: Sorted all mappings
 </box> 
 
 
-### Note
+### 9.6 Note
 
 #### List all notes
 

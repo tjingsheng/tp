@@ -1,13 +1,15 @@
 package seedu.address.logic.parser.partnercourse;
 
+import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+
 import org.junit.jupiter.api.Test;
+
 import seedu.address.logic.commands.partnercourse.PartnerCourseSearchCommand;
 import seedu.address.messages.UsageMessage;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
 import seedu.address.model.partnercourse.PartnerCourseContainsKeywordsPredicate;
 
-import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
-import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
 public class PartnerCourseSearchCommandParserTest {
     private PartnerCourseSearchCommandParser parser = new PartnerCourseSearchCommandParser();

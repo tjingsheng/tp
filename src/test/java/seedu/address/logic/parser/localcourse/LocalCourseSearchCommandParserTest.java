@@ -24,10 +24,12 @@ public class LocalCourseSearchCommandParserTest {
     public void parse_validLocalCodeArg_returnsLocalCourseSearchCommand() {
         // no leading and trailing whitespaces
         LocalCourseSearchCommand expectedLocalCourseSearchCommand =
-                new LocalCourseSearchCommand(LocalCourseAttribute.LOCALCODE,  new LocalCourseContainsKeywordsPredicate(
+                new LocalCourseSearchCommand(LocalCourseAttribute.LOCALCODE,
+                        new LocalCourseContainsKeywordsPredicate(
                         "CS2042S", LocalCourseAttribute.LOCALCODE), "CS2042S");
 
-        assertParseSuccess(parser, "localcourse search [localcode] [CS2042S]",
+        assertParseSuccess(parser,
+                "localcourse search [localcode] [CS2042S]",
                 expectedLocalCourseSearchCommand);
 
         // multiple whitespaces between keywords
@@ -38,7 +40,8 @@ public class LocalCourseSearchCommandParserTest {
     public void parse_validLocalNameArg_returnsLocalCourseSearchCommand() {
         // no leading and trailing whitespaces
         LocalCourseSearchCommand expectedLocalCourseSearchCommand =
-                new LocalCourseSearchCommand(LocalCourseAttribute.LOCALNAME,  new LocalCourseContainsKeywordsPredicate(
+                new LocalCourseSearchCommand(LocalCourseAttribute.LOCALNAME,
+                        new LocalCourseContainsKeywordsPredicate(
                         "Data Structures & Algorithms", LocalCourseAttribute.LOCALNAME),
                         "Data Structures & Algorithms");
 

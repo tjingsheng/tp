@@ -1,18 +1,7 @@
 package seedu.address.logic.commands.localcourse;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import seedu.address.messages.Messages;
-import seedu.address.model.SeplendidModel;
-import seedu.address.model.SeplendidModelManager;
-import seedu.address.model.UserPrefs;
-import seedu.address.model.localcourse.LocalCourse;
-import seedu.address.model.localcourse.LocalCourseAttribute;
-import seedu.address.testutil.LocalCourseBuilder;
-
 import static seedu.address.logic.commands.CommandTestUtil.assertSeplendidCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertSeplendidCommandSuccess;
-import static seedu.address.testutil.TypicalObjects.CS2040S;
 import static seedu.address.testutil.TypicalObjects.CS2041S;
 import static seedu.address.testutil.TypicalObjects.CS2042S;
 import static seedu.address.testutil.TypicalObjects.CS3230;
@@ -21,6 +10,17 @@ import static seedu.address.testutil.TypicalObjects.getTypicalMappingCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalNoteCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalPartnerCourseCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalUniversityCatalogue;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import seedu.address.messages.Messages;
+import seedu.address.model.SeplendidModel;
+import seedu.address.model.SeplendidModelManager;
+import seedu.address.model.UserPrefs;
+import seedu.address.model.localcourse.LocalCourse;
+import seedu.address.model.localcourse.LocalCourseAttribute;
+import seedu.address.testutil.LocalCourseBuilder;
 
 public class LocalCourseUpdateCommandTest {
 

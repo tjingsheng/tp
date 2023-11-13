@@ -1,11 +1,15 @@
 package seedu.address.testutil;
 
+import java.util.Comparator;
+
 import seedu.address.logic.commands.university.UniversitySearchCommand;
 import seedu.address.logic.commands.university.UniversitySortCommand;
 import seedu.address.model.university.University;
 
-import java.util.Comparator;
 
+/**
+ * A Utility Class for University.
+ */
 public class UniversityUtil {
     /**
      * Returns a sort command string for sorting the university list.

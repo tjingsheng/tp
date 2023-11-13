@@ -1,17 +1,5 @@
 package seedu.address.logic.commands.partnercourse;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.messages.Messages;
-import seedu.address.model.SeplendidModel;
-import seedu.address.model.SeplendidModelManager;
-import seedu.address.model.UserPrefs;
-import seedu.address.model.partnercourse.PartnerCourse;
-import seedu.address.model.partnercourse.PartnerCourseAttribute;
-import seedu.address.model.partnercourse.PartnerCourseContainsKeywordsPredicate;
-import seedu.address.testutil.PartnerCourseBuilder;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertSeplendidCommandSuccess;
@@ -21,6 +9,19 @@ import static seedu.address.testutil.TypicalObjects.getTypicalMappingCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalNoteCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalPartnerCourseCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalUniversityCatalogue;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.messages.Messages;
+import seedu.address.model.SeplendidModel;
+import seedu.address.model.SeplendidModelManager;
+import seedu.address.model.UserPrefs;
+import seedu.address.model.partnercourse.PartnerCourse;
+import seedu.address.model.partnercourse.PartnerCourseAttribute;
+import seedu.address.model.partnercourse.PartnerCourseContainsKeywordsPredicate;
+import seedu.address.testutil.PartnerCourseBuilder;
 
 public class PartnerCourseSearchCommandTest {
     private SeplendidModel model;

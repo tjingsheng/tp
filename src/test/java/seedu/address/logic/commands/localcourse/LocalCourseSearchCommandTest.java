@@ -1,8 +1,24 @@
 package seedu.address.logic.commands.localcourse;
 
-import javafx.collections.ObservableList;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.assertSeplendidCommandSuccess;
+import static seedu.address.testutil.TypicalObjects.CS2042S;
+import static seedu.address.testutil.TypicalObjects.getTypicalLocalCourseCatalogue;
+import static seedu.address.testutil.TypicalObjects.getTypicalMappingCatalogue;
+import static seedu.address.testutil.TypicalObjects.getTypicalNoteCatalogue;
+import static seedu.address.testutil.TypicalObjects.getTypicalPartnerCourseCatalogue;
+import static seedu.address.testutil.TypicalObjects.getTypicalUniversityCatalogue;
+
+import java.nio.file.Path;
+import java.util.Comparator;
+import java.util.Optional;
+import java.util.function.Predicate;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.messages.Messages;
@@ -29,23 +45,7 @@ import seedu.address.model.partnercourse.PartnerCourseContainsKeywordsPredicate;
 import seedu.address.model.university.University;
 import seedu.address.model.university.UniversityName;
 import seedu.address.model.university.UniversityNameContainsKeywordsPredicate;
-import seedu.address.testutil.Assert;
 import seedu.address.testutil.LocalCourseBuilder;
-
-import java.nio.file.Path;
-import java.util.Comparator;
-import java.util.Optional;
-import java.util.function.Predicate;
-
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.assertSeplendidCommandSuccess;
-import static seedu.address.testutil.TypicalObjects.CS2042S;
-import static seedu.address.testutil.TypicalObjects.getTypicalLocalCourseCatalogue;
-import static seedu.address.testutil.TypicalObjects.getTypicalMappingCatalogue;
-import static seedu.address.testutil.TypicalObjects.getTypicalNoteCatalogue;
-import static seedu.address.testutil.TypicalObjects.getTypicalPartnerCourseCatalogue;
-import static seedu.address.testutil.TypicalObjects.getTypicalUniversityCatalogue;
 
 public class LocalCourseSearchCommandTest {
     private SeplendidModel model;
@@ -194,19 +194,16 @@ public class LocalCourseSearchCommandTest {
 
     @Test
     public void equals() {
-        
         LocalCourseContainsKeywordsPredicate firstPredicate = new LocalCourseContainsKeywordsPredicate(
                 "CS2042S",
                 LocalCourseAttribute.LOCALCODE);
-        
         LocalCourseContainsKeywordsPredicate secondPredicate = new LocalCourseContainsKeywordsPredicate(
                 "CS2041S",
                 LocalCourseAttribute.LOCALCODE);
-
-        LocalCourseSearchCommand searchCommandWithFirstPredicate = 
-                new LocalCourseSearchCommand(LocalCourseAttribute.LOCALCODE, firstPredicate, "CS2042S");
-        LocalCourseSearchCommand searchCommandWithSecondPredicate = 
-                new LocalCourseSearchCommand(LocalCourseAttribute.LOCALCODE, secondPredicate, "CS2041S");
+        LocalCourseSearchCommand searchCommandWithFirstPredicate = new LocalCourseSearchCommand(
+                LocalCourseAttribute.LOCALCODE, firstPredicate, "CS2042S");
+        LocalCourseSearchCommand searchCommandWithSecondPredicate = new LocalCourseSearchCommand(
+                LocalCourseAttribute.LOCALCODE, secondPredicate, "CS2041S");
 
         // same object -> returns true
         assertTrue(

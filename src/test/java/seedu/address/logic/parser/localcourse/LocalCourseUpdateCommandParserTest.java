@@ -1,33 +1,22 @@
 package seedu.address.logic.parser.localcourse;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.logic.commands.localcourse.LocalCourseCommand;
-import seedu.address.logic.commands.localcourse.LocalCourseUpdateCommand;
-import seedu.address.logic.commands.partnercourse.PartnerCourseCommand;
-import seedu.address.logic.commands.partnercourse.PartnerCourseUpdateCommand;
-import seedu.address.logic.parser.partnercourse.PartnerCourseUpdateCommandParser;
-import seedu.address.messages.ConstraintMessage;
-import seedu.address.messages.UsageMessage;
-import seedu.address.model.localcourse.LocalCode;
-import seedu.address.model.localcourse.LocalCourseAttribute;
-import seedu.address.model.partnercourse.PartnerCode;
-import seedu.address.model.partnercourse.PartnerCourseAttribute;
-import seedu.address.model.partnercourse.PartnerUnit;
-
 import static seedu.address.logic.commands.CommandTestUtil.UNNECESSARY_WHITESPACE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TestUtil.getSquareBracketWrappedArgument;
-import static seedu.address.testutil.TypicalObjects.COMP1000;
 import static seedu.address.testutil.TypicalObjects.CS2042S;
 import static seedu.address.testutil.TypicalObjects.INVALID_LOCAL_COURSE_ATTRIBUTE;
 import static seedu.address.testutil.TypicalObjects.INVALID_LOCAL_COURSE_CODE;
 import static seedu.address.testutil.TypicalObjects.INVALID_LOCAL_COURSE_UNIT;
-import static seedu.address.testutil.TypicalObjects.INVALID_PARTNER_COURSE_ATTRIBUTE;
 import static seedu.address.testutil.TypicalObjects.INVALID_PARTNER_COURSE_CODE;
-import static seedu.address.testutil.TypicalObjects.INVALID_PARTNER_COURSE_UNIT;
-import static seedu.address.testutil.TypicalObjects.INVALID_UNIVERSITY_NAME;
 
+import org.junit.jupiter.api.Test;
+
+import seedu.address.logic.commands.localcourse.LocalCourseCommand;
+import seedu.address.logic.commands.localcourse.LocalCourseUpdateCommand;
+import seedu.address.messages.ConstraintMessage;
+import seedu.address.messages.UsageMessage;
+import seedu.address.model.localcourse.LocalCourseAttribute;
 
 public class LocalCourseUpdateCommandParserTest {
 
@@ -43,7 +32,7 @@ public class LocalCourseUpdateCommandParserTest {
         // add unnecessary whitespace
         assertParseSuccess(parser,
                 UNNECESSARY_WHITESPACE
-                        +LocalCourseCommand.COMMAND_WORD
+                        + LocalCourseCommand.COMMAND_WORD
                         + UNNECESSARY_WHITESPACE
                         + LocalCourseUpdateCommand.ACTION_WORD
                         + UNNECESSARY_WHITESPACE
@@ -142,3 +131,4 @@ public class LocalCourseUpdateCommandParserTest {
                 ConstraintMessage.LOCALCOURSE_UNIT.getValue());
     }
 }
+

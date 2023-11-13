@@ -1,23 +1,22 @@
 package seedu.address.logic.parser.university;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.logic.commands.partnercourse.PartnerCourseSortCommand;
-import seedu.address.logic.commands.university.UniversityCommand;
-import seedu.address.logic.commands.university.UniversitySortCommand;
-import seedu.address.messages.UsageMessage;
-import seedu.address.model.partnercourse.PartnerCourseAttribute;
-import seedu.address.model.partnercourse.comparator.PartnerCourseComparatorByUniversity;
-import seedu.address.model.university.University;
-import seedu.address.model.university.comparator.UniversityComparatorByUniversityName;
-import seedu.address.testutil.UniversityUtil;
-
-import java.util.Comparator;
-
 import static seedu.address.logic.commands.CommandTestUtil.UNNECESSARY_WHITESPACE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TestUtil.getSquareBracketWrappedArgument;
 import static seedu.address.testutil.TypicalObjects.INVALID_UNIVERSITY;
+
+import java.util.Comparator;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.address.logic.commands.university.UniversityCommand;
+import seedu.address.logic.commands.university.UniversitySortCommand;
+import seedu.address.messages.UsageMessage;
+import seedu.address.model.university.University;
+import seedu.address.model.university.comparator.UniversityComparatorByUniversityName;
+import seedu.address.testutil.UniversityUtil;
+
 
 public class UniversitySortCommandParserTest {
     private static final String commandActionWord =

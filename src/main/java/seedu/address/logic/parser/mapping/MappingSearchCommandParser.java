@@ -36,6 +36,8 @@ public class MappingSearchCommandParser implements Parser<MappingSearchCommand> 
             throw new ParseException(UsageMessage.MAPPING_SEARCH.getValueWithEmptyArgs());
         }
 
+        assert areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.SUCCESS;
+
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_MAPPINGATTRIBUTE, PARAMETER_QUERY);
 

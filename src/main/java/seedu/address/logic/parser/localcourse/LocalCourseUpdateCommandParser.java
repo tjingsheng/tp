@@ -39,6 +39,8 @@ public class LocalCourseUpdateCommandParser implements Parser<LocalCourseUpdateC
             throw new ParseException(UsageMessage.LOCALCOURSE_UPDATE.getValueWithEmptyArgs());
         }
 
+        assert areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.SUCCESS;
+
         SeplendidArgumentMap parameterToArgMap = SeplendidArgumentTokenizer.tokenize(args,
                 PARAMETER_LOCALCODE,
                 PARAMETER_LOCALATTRIBUTE,

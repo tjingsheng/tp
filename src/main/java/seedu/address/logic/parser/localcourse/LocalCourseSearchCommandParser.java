@@ -38,6 +38,8 @@ public class LocalCourseSearchCommandParser implements Parser<LocalCourseSearchC
             throw new ParseException(UsageMessage.LOCALCOURSE_SEARCH.getValueWithEmptyArgs());
         }
 
+        assert areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.SUCCESS;
+
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_LOCALATTRIBUTE, PARAMETER_QUERY);
 

@@ -39,6 +39,8 @@ public class MappingAddCommandParser implements Parser<MappingAddCommand> {
             throw new ParseException(UsageMessage.MAPPING_ADD.getValueWithEmptyArgs());
         }
 
+        assert areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.SUCCESS;
+
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_LOCALCODE, PARAMETER_UNIVERSITY,
                         PARAMETER_PARTNERCODE, PARAMETER_INFORMATION);

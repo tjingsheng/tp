@@ -216,8 +216,8 @@ public class MainApp extends Application {
             }
             initialMappingCatalogue = mappingCatalogueOptional.orElseGet(
                     SampleDataUtil::getSampleMappingCatalogue);
-
         } catch (DataLoadingException e) {
+            // Defensive programming
             logger.warning("Data file(s) could not be loaded."
                     + " Will be starting with empty catalogues.");
             initialLocalCourseCatalogue = getSampleLocalCourseCatalogue();

@@ -92,6 +92,7 @@ public class TypicalObjects {
     public static final String INVALID_MAPPING_ATTRIBUTE = "index";
 
     public static final LocalCourse CS2040S = new LocalCourseBuilder().withLocalCode("CS2040S").withLocalName(
+
         "Data Structures & Algorithms").withLocalUnit(4.0).withLocalDescription(
         "This course introduces students to the "
             + "design and implementation of "
@@ -104,6 +105,7 @@ public class TypicalObjects {
             + "analysis of algorithms.").build();
 
     public static final LocalCourse CS2041S = new LocalCourseBuilder().withLocalCode("CS2041S").withLocalName(
+
             "Data Structures & Algorithms").withLocalUnit(4.0).withLocalDescription(
             "This course introduces students to the "
                     + "design and implementation of "
@@ -126,31 +128,6 @@ public class TypicalObjects {
                     + "heaps, trees, and graphs), searching"
                     + " and sorting algorithms, and basic "
                     + "analysis of algorithms.").build();
-
-    public static final LocalCourse CS3230 = new LocalCourseBuilder().withLocalCode("CS3230").withLocalName(
-        "Design & Analysis of Algorithms").withLocalUnit(4.0).withLocalDescription(
-        "This course introduces different techniques"
-            + " of designing and analysing "
-            + "algorithms. Students will learn about"
-            + " the framework for algorithm "
-            + "analysis, for example, lower bound "
-            + "arguments, average case analysis, and"
-            + " the theory of NP-completeness. In "
-            + "addition, students are exposed to "
-            + "various algorithm design paradigms. "
-            + "The course serves two purposes: to "
-            + "improve the students' ability to "
-            + "design algorithms in different areas,"
-            + " and to prepare students for the "
-            + "study of more advanced algorithms. "
-            + "The course covers lower and upper "
-            + "bounds, recurrences, basic algorithm "
-            + "paradigms (such as prune-and-search, "
-            + "dynamic programming, "
-            + "branch-and-bound, graph traversal, "
-            + "and randomised approaches), amortized"
-            + " analysis, NP-completeness, and some "
-            + "selected advanced topics.").build();
 
     public static final LocalCourse CS1231S = new LocalCourseBuilder().withLocalCode("CS1231S").withLocalName(
         "Discrete Structures").withLocalUnit(4.0).withLocalDescription("This course introduces mathematical tools "
@@ -177,6 +154,31 @@ public class TypicalObjects {
         + "infinite set has a countably "
         + "infinite subset. Subsets of "
         + "countable sets are countable.").build();
+
+    public static final LocalCourse CS3230 = new LocalCourseBuilder().withLocalCode("CS3230").withLocalName(
+            "Design & Analysis of Algorithms").withLocalUnit(4.0).withLocalDescription(
+            "This course introduces different techniques"
+                    + " of designing and analysing "
+                    + "algorithms. Students will learn about"
+                    + " the framework for algorithm "
+                    + "analysis, for example, lower bound "
+                    + "arguments, average case analysis, and"
+                    + " the theory of NP-completeness. In "
+                    + "addition, students are exposed to "
+                    + "various algorithm design paradigms. "
+                    + "The course serves two purposes: to "
+                    + "improve the students' ability to "
+                    + "design algorithms in different areas,"
+                    + " and to prepare students for the "
+                    + "study of more advanced algorithms. "
+                    + "The course covers lower and upper "
+                    + "bounds, recurrences, basic algorithm "
+                    + "paradigms (such as prune-and-search, "
+                    + "dynamic programming, "
+                    + "branch-and-bound, graph traversal, "
+                    + "and randomised approaches), amortized"
+                    + " analysis, NP-completeness, and some "
+                    + "selected advanced topics.").build();
 
     public static final LocalCourse CS2030S = new LocalCourseBuilder().withLocalCode("CS2030S").withLocalName(
             "Programming Methodology II").withLocalUnit(4.0).build();
@@ -289,6 +291,7 @@ public class TypicalObjects {
     public static final University SNU = new University(new UniversityName("Seoul National University"));
     public static final University YONSEI = new University(new UniversityName("Yonsei University"));
     public static final University HYUN = new University(new UniversityName("Hyun University"));
+
     public static final University EDINBURGH = new University(new UniversityName("University of Edinburgh"));
     public static final University ZURICH = new University(new UniversityName("University of Zurich"));
 

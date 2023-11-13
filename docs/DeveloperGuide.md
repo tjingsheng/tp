@@ -179,7 +179,8 @@ Here is a sequence diagram for `delete`:
 4. If all the above steps complete without any exceptions, then the data object is successfully deleted.
 
 #### Feature considerations
-The data object is only deleted when all the specified identity attributes are identical to an existing data object.
+The data object is only deleted when all the specified identity attributes 
+are identical to an existing data object.
 --------------------------------------------------------------------------------------------------------------------
 ### Update feature
 #### Overview
@@ -219,7 +220,8 @@ Here is an sequence diagram for `sort`:
 3. If all the above steps complete without any exceptions, then the data objects will be sorted by specified attribute.
 
 #### Feature considerations
-Each data type has different attributes that can be used for sorting.
+Each data type has different attributes 
+that can be used for sorting.
 --------------------------------------------------------------------------------------------------------------------
 
 ### Mapping feature

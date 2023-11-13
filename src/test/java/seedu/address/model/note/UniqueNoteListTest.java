@@ -47,10 +47,10 @@ public class UniqueNoteListTest {
     @Test
     public void add_duplicateNote_throwsDuplicateNoteException() {
         UniqueNoteList uniqueNoteList = new UniqueNoteList();
-        Note note = new NoteBuilder().withContent("Content A").withTag(new Tag("Tag1")).build();
+        Note note = new NoteBuilder().withContent("Content A").withTag(new Tag("Tag1")).withIndex(1).build();
         uniqueNoteList.add(note);
 
-        Note duplicateNote = new NoteBuilder().withContent("Content A").withTag(new Tag("Tag1")).build();
+        Note duplicateNote = new NoteBuilder().withContent("Content A").withTag(new Tag("Tag1")).withIndex(1).build();
         assertThrows(DuplicateNoteException.class, () -> uniqueNoteList.add(duplicateNote));
     }
 
@@ -101,8 +101,8 @@ public class UniqueNoteListTest {
     public void setNotes_replacementSetsUniqueNotes() {
         UniqueNoteList uniqueNoteList = new UniqueNoteList();
         List<Note> notes = new ArrayList<>();
-        notes.add(new NoteBuilder().withContent("Content A").withTag(new Tag("Tag1")).build());
-        notes.add(new NoteBuilder().withContent("Content B").withTag(new Tag("Tag2")).build());
+        notes.add(new NoteBuilder().withContent("Content A").withTag(new Tag("Tag1")).withIndex(1).build());
+        notes.add(new NoteBuilder().withContent("Content B").withTag(new Tag("Tag2")).withIndex(2).build());
         UniqueNoteList replacement = new UniqueNoteList();
         replacement.setNotes(notes);
 
@@ -121,8 +121,8 @@ public class UniqueNoteListTest {
     public void setNotes_duplicateNotesList_throwsDuplicateNoteException() {
         UniqueNoteList uniqueNoteList = new UniqueNoteList();
         List<Note> notes = new ArrayList<>();
-        notes.add(new NoteBuilder().withContent("Content A").withTag(new Tag("Tag1")).build());
-        notes.add(new NoteBuilder().withContent("Content A").withTag(new Tag("Tag1")).build());
+        notes.add(new NoteBuilder().withContent("Content A").withTag(new Tag("Tag1")).withIndex(1).build());
+        notes.add(new NoteBuilder().withContent("Content A").withTag(new Tag("Tag1")).withIndex(1).build());
         assertThrows(DuplicateNoteException.class, () -> uniqueNoteList.setNotes(notes));
     }
 }

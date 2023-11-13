@@ -19,6 +19,7 @@ import seedu.address.model.tag.Tag;
  */
 public class JsonAdaptedNote {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Note's %s field is missing!";
+    public static final String INVALID_INDEX_MESSAGE = "Invalid index given!";
 
     private final String content;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
@@ -66,10 +67,12 @@ public class JsonAdaptedNote {
         if (!Content.isValidContent(content)) {
             throw new IllegalValueException(Content.MESSAGE_CONSTRAINTS);
         }
+        if (index < 0) {
+            throw new IllegalValueException(INVALID_INDEX_MESSAGE);
+        }
         final Content modelContent = new Content(content);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        final Integer modelIndex = index;
-        return new Note(modelContent, modelTags, modelIndex);
+        return new Note(modelContent, modelTags, index);
     }
 }

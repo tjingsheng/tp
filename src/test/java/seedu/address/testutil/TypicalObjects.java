@@ -73,6 +73,8 @@ public class TypicalObjects {
     public static final String INVALID_PARTNER_COURSE_CODE = "$H23Y1";
     public static final String INVALID_PARTNER_COURSE_NAME = " ";
     public static final String INVALID_UNIVERSITY_NAME = " ";
+
+    public static final String INVALID_UNIVERSITY = "!!!";
     public static final Double INVALID_PARTNER_COURSE_UNIT = -1.0;
     public static final String INVALID_PARTNER_COURSE_DESCRIPTION = " ";
 

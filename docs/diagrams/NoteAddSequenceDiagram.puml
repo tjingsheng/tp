@@ -5,7 +5,7 @@ skinparam ArrowFontStyle plain
 box SeplendidLogic LOGIC_COLOR_T1
 participant ":SeplendidLogicManager" as SeplendidLogicManager LOGIC_COLOR
 participant ":SeplendidParser" as SeplendidParser LOGIC_COLOR
-participant ":NoteAddCommandParser" as NoteAddCommandParser LOGIC_COLOR
+participant ":PartnerCourseAddCommandParser" as NoteAddCommandParser LOGIC_COLOR
 participant "d:NoteAddCommand" as NoteAddCommand LOGIC_COLOR
 participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box

@@ -163,6 +163,7 @@ The below diagram gives a high-level overview on how the `SeplendidParser` parse
 
 --------------------------------------------------------------------------------------------------------------------
 ## Implementation
+<br>
 
 ### Listing of courses, universities and notes
 
@@ -201,6 +202,8 @@ The activity diagram is as such:
 Here is a sequence diagram for 'add note`:
 <puml src="diagrams/NoteAddSequenceDiagram.puml" width="300" />
 
+Here is a sequence diagram for 'partnercourse add':
+<puml src="diagrams/PartnercourseAddSequenceDiagram.puml" width="300" />
 
 **Feature Details**
 1. The user specifies the command word. Possible command words include `localcourse`, `partnercourse`,
@@ -235,6 +238,7 @@ querying of courses, universities and notes.
 The activity diagram is as such:
 <puml src="diagrams/SearchActivityDiagram.puml" width="300" />
 
+Here is a sequence diagram for `search`:
 
 **Feature Details**
 1. The user specifies a data object with its unique identity attribute, attribute that they are querying and the 

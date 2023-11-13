@@ -42,15 +42,15 @@ Given below is a quick overview of main components and how they interact with ea
 The bulk of the app's work is done by the following four components:
 
 * [**`UI`**](#ui-component): The UI of the App.
-* [**`Logic`**](#logic-component): The command executor.
-* [**`Model`**](#model-component): Holds the data of the App in memory.
+* [**`SeplendidLogic`**](#logic-component): The command executor.
+* [**`SeplendidModel`**](#model-component): Holds the data of the App in memory.
 * [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
 
 [**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
 
 **How the architecture components interact with each other**
 
-The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
+The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `note delete [1]`.
 
 <puml src="diagrams/ArchitectureSequenceDiagram.puml" width="574" />
 
@@ -59,7 +59,7 @@ Each of the four main components (also shown in the diagram above),
 * defines its *API* in an `interface` with the same name as the Component.
 * implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
 
-For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
+For example, the `SeplendidLogic` component defines its API in the `SeplendidLogic.java` interface and implements its functionality using the `SeplendidLogicManager.java` class which follows the `SeplendidLogic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
 
 <puml src="diagrams/ComponentManagers.puml" width="300" />
 
@@ -82,37 +82,37 @@ The `UI` component,
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
 * depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
 
-### Logic component
+### SeplendidLogic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`SeplendidLogic.java`](https://github.com/AY2324S1-CS2103T-W10-2/tp/blob/master/src/main/java/seedu/address/logic/SeplendidLogic.java)
 
-Here's a (partial) class diagram of the `Logic` component:
+Here's a (partial) class diagram of the `SeplendidLogic` component:
 
 <puml src="diagrams/LogicClassDiagram.puml" width="550"/>
 
-The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("delete 1")` API call as an example.
+The sequence diagram below illustrates the interactions within the `SeplendidLogic` component, taking `execute("note delete [1]")` API call as an example.
 
 <puml src="diagrams/DeleteSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `delete 1` Command" />
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+**Note:** The lifeline for `NoteDeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </box>
 
-How the `Logic` component works:
+How the `SeplendidLogic` component works:
 
-1. When `Logic` is called upon to execute a command, it is passed to an `AddressBookParser` object which in turn creates a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
-1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `DeleteCommand`) which is executed by the `LogicManager`.
-1. The command can communicate with the `Model` when it is executed (e.g. to delete a person).
-1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
+1. When `SeplendidLogic` is called upon to execute a command, it is passed to an `SeplendidParser` object which in turn creates a parser that matches the command (e.g., `NoteDeleteCommandParser`) and uses it to parse the command.
+1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `NoteDeleteCommand`) which is executed by the `SeplendidLogicManager`.
+1. The command can communicate with the `SeplendidModel` when it is executed (e.g. to delete a note).
+1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `SeplendidLogic`.
 
-Here are the other classes in `Logic` (omitted from the class diagram above) that are used for parsing a user command:
+Here are the other classes in `SeplendidLogic` (omitted from the class diagram above) that are used for parsing a user command:
 
 <puml src="diagrams/ParserClasses.puml" width="600"/>
 
 How the parsing works:
-* When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
-* All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
+* When called upon to parse a user command, the `SeplendidParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `LocalCourseAddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `LocalCourseAddCommand`) which the `SeplendidParser` returns back as a `Command` object.
+* All `XYZCommandParser` classes (e.g., `LocalCourseAddCommandParser`, `NoteDeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
 **API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)

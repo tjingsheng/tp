@@ -3,6 +3,7 @@
  title: "User Guide"
  pageNav: 3
 ---
+
 <bottom-head>
     <link rel="stylesheet" href="stylesheets/userguide.css">
 </bottom-head>
@@ -12,20 +13,23 @@
 <br />
 
 ## About SEPlendid
+
 SEPlendid is a **Course Mapping System** that allows NUS Computing students to seamlessly plan for
-their overseas courses, for the highly coveted Student Exchange Programmes (SEP). As a student, you can view and find 
-course mappings in order to plan for your overseas studies without the hassle of creating complex Excel sheets. 
+their overseas courses, for the highly coveted Student Exchange Programmes (SEP). As a student, you can view and find
+course mappings in order to plan for your overseas studies without the hassle of creating complex Excel sheets.
 Utilise SEPlendid's **course mapping** function in order to quickly find possible mappings for certain courses you want
-to map. Finally, SEPlendid's **note-taking system** will assist you in organising your important information you 
+to map. Finally, SEPlendid's **note-taking system** will assist you in organising your important information you
 will need for planning for your courses.
 
 This User Guide provides a comprehensive documentation on how you can streamline your process in your application for
 SEP. It includes:
+
 - **Step-by-step** instructions on how to launch SEPlendid
 - SEPlendid's myriad of features and commands
 - **Key parameters** to run SEPlendid smoothly
 
-If you are a new user, please head over to  [How to navigate this User Guide?](#2-how-to-navigate-this-user-guide) to start planning for your study 
+If you are a new user, please head over to  [How to navigate this User Guide?](#2-how-to-navigate-this-user-guide) to
+start planning for your study
 guide!
 
 <br/> 
@@ -33,50 +37,51 @@ guide!
 --------------------------------------------------------------------------------------------------------------------
 
 ## Table of Contents
+
 <div class= "toc">
 
 1. [How to navigate this User Guide?](#1-navigate-this-user-guide)
 2. [Icons used in this User Guide](#2-icons-used-in-this-user-guide)
 3. [Installation](#3-installation)
 4. [Quick Reference Guide](#4-quick-reference-guide)
-   - 4.1 [Graphical User Interface (GUI)](#4-1-graphical-user-interface-gui)
-   - 4.2 [Command format](#4-2-command-format)
-   - 4.3 [Your first command](#4-3-your-first-command)
+    - 4.1 [Graphical User Interface (GUI)](#4-1-graphical-user-interface-gui)
+    - 4.2 [Command format](#4-2-command-format)
+    - 4.3 [Your first command](#4-3-your-first-command)
 5. [Commands](#5-commands)
-   - 5.1 [Commands for local courses](#5-1-commands-for-local-courses)
-     - 5.1.1 [List all local courses: `localcourse list`](#5-1-1-list-all-local-courses-localcourse-list)
-     - 5.1.2 [Add a local course: `localcourse add`](#5-1-2-add-a-local-course-localcourse-add)
-     - 5.1.3 [Delete a local course: `localcourse delete`](#5-1-3-delete-a-local-course-localcourse-delete)
-     - 5.1.4 [Update a local course: `localcourse update`](#5-1-4-update-a-local-course-localcourse-update)
-     - 5.1.5 [Search a local course by attributes: `localcourse search`](#5-1-5-search-a-localcourse-by-attributes-localcourse-search)
-     - 5.1.6 [Sort a local course by attributes: `localcourse sort`](#5-1-6-sort-local-courses-by-attributes-localcourse-sort)
-   - 5.2 [Commands for partner courses](#5-2-commands-for-partner-courses)
-     - 5.2.1 [List all partner courses: `partnercourse list`](#5-2-1-list-all-partner-courses-partnercourse-list)
-     - 5.2.2 [Add a partner course: `partnercourse add`](#5-2-2-add-a-partner-course-partnercourse-add)
-     - 5.2.3 [Delete a partner course: `partnercourse delete`](#5-2-3-delete-a-partner-course-partnercourse-delete)
-     - 5.2.4 [Update a partner course: `partnercourse update`](#5-2-4-update-a-partner-course-partnercourse-update)
-     - 5.2.5 [Search a partner course by attributes: `partnercourse search`](#5-2-4-update-a-partner-course-partnercourse-update)
-     - 5.2.6 [Sort a partner course by attributes: `partnercourse sort`](#5-2-6-sort-partner-courses-by-attributes-partnercourse-sort)
-   - 5.3 [Commands for universities](#5-3-commands-for-universities)
-     - 5.3.1 [List all universities: `university list`](#5-3-1-list-all-universities-university-list)
-     - 5.3.2 [Search a university by attributes: `university search`](#5-3-2-search-a-university-by-attributes-university-search)
-     - 5.3.3 [Sort a university by attributes: `university sort`](#5-3-3-sort-universities-by-attributes-university-sort)
-   - 5.4 [Commands for mappings](#5-4-commands-for-mappings)
-     - 5.4.1 [List all mappings: `mapping list`](#5-4-1-list-all-mappings-mapping-list)
-     - 5.4.2 [Add a mapping: `mapping add`](#5-4-2-add-a-mapping-mapping-add)
-     - 5.4.3 [Delete a mapping: `mapping delete`](#5-4-3-delete-a-mapping-mapping-delete)
-     - 5.4.4 [Search a mapping by attributes: `mapping search`](#5-4-4-search-a-mapping-by-attributes-mapping-search)
-     - 5.4.5 [Sort a mapping by attributes: `mapping sort`](#5-4-5-sort-a-mapping-by-attributes-mapping-sort)
-   - 5.5 [Commands for notes](#5-5-commands-for-notes)
-     - 5.5.1 [List all notes: `note list`](#5-5-1-list-all-notes-note-list)
-     - 5.5.2 [Add a note: `note add`](#5-5-2-add-a-note-note-add)
-     - 5.5.3 [Delete a note: `note delete`](#5-5-3-delete-a-note-note-delete)
-     - 5.5.4 [Update a note: `note update`](#5-5-4-update-a-note-note-update)
-     - 5.5.5 [Tag a note: `note tag`](#5-5-5-tag-a-note-note-tag)
-     - 5.5.6 [Clear tag a note: `note cleartag`](#5-5-6-clear-tags-of-a-note-note-cleartag)
-   - 5.6 [View help : `help`](#5-6-view-help--help-)
-   - 5.7 [Exit SEPlendid: `exit`](#5-7-exit-seplendid--exit)
-   - 5.8 [Save the data](#5-8-save-the-data)
+    - 5.1 [Commands for local courses](#5-1-commands-for-local-courses)
+        - 5.1.1 [List all local courses: `localcourse list`](#5-1-1-list-all-local-courses-localcourse-list)
+        - 5.1.2 [Add a local course: `localcourse add`](#5-1-2-add-a-local-course-localcourse-add)
+        - 5.1.3 [Delete a local course: `localcourse delete`](#5-1-3-delete-a-local-course-localcourse-delete)
+        - 5.1.4 [Update a local course: `localcourse update`](#5-1-4-update-a-local-course-localcourse-update)
+        - 5.1.5 [Search a local course by attributes: `localcourse search`](#5-1-5-search-a-localcourse-by-attributes-localcourse-search)
+        - 5.1.6 [Sort a local course by attributes: `localcourse sort`](#5-1-6-sort-local-courses-by-attributes-localcourse-sort)
+    - 5.2 [Commands for partner courses](#5-2-commands-for-partner-courses)
+        - 5.2.1 [List all partner courses: `partnercourse list`](#5-2-1-list-all-partner-courses-partnercourse-list)
+        - 5.2.2 [Add a partner course: `partnercourse add`](#5-2-2-add-a-partner-course-partnercourse-add)
+        - 5.2.3 [Delete a partner course: `partnercourse delete`](#5-2-3-delete-a-partner-course-partnercourse-delete)
+        - 5.2.4 [Update a partner course: `partnercourse update`](#5-2-4-update-a-partner-course-partnercourse-update)
+        - 5.2.5 [Search a partner course by attributes: `partnercourse search`](#5-2-4-update-a-partner-course-partnercourse-update)
+        - 5.2.6 [Sort a partner course by attributes: `partnercourse sort`](#5-2-6-sort-partner-courses-by-attributes-partnercourse-sort)
+    - 5.3 [Commands for universities](#5-3-commands-for-universities)
+        - 5.3.1 [List all universities: `university list`](#5-3-1-list-all-universities-university-list)
+        - 5.3.2 [Search a university by attributes: `university search`](#5-3-2-search-a-university-by-attributes-university-search)
+        - 5.3.3 [Sort a university by attributes: `university sort`](#5-3-3-sort-universities-by-attributes-university-sort)
+    - 5.4 [Commands for mappings](#5-4-commands-for-mappings)
+        - 5.4.1 [List all mappings: `mapping list`](#5-4-1-list-all-mappings-mapping-list)
+        - 5.4.2 [Add a mapping: `mapping add`](#5-4-2-add-a-mapping-mapping-add)
+        - 5.4.3 [Delete a mapping: `mapping delete`](#5-4-3-delete-a-mapping-mapping-delete)
+        - 5.4.4 [Search a mapping by attributes: `mapping search`](#5-4-4-search-a-mapping-by-attributes-mapping-search)
+        - 5.4.5 [Sort a mapping by attributes: `mapping sort`](#5-4-5-sort-a-mapping-by-attributes-mapping-sort)
+    - 5.5 [Commands for notes](#5-5-commands-for-notes)
+        - 5.5.1 [List all notes: `note list`](#5-5-1-list-all-notes-note-list)
+        - 5.5.2 [Add a note: `note add`](#5-5-2-add-a-note-note-add)
+        - 5.5.3 [Delete a note: `note delete`](#5-5-3-delete-a-note-note-delete)
+        - 5.5.4 [Update a note: `note update`](#5-5-4-update-a-note-note-update)
+        - 5.5.5 [Tag a note: `note tag`](#5-5-5-tag-a-note-note-tag)
+        - 5.5.6 [Clear tag a note: `note cleartag`](#5-5-6-clear-tags-of-a-note-note-cleartag)
+    - 5.6 [View help : `help`](#5-6-view-help--help-)
+    - 5.7 [Exit SEPlendid: `exit`](#5-7-exit-seplendid--exit)
+    - 5.8 [Save the data](#5-8-save-the-data)
 6. [FAQ](#6-faq)
 7. [Command summary](#7-command-summary)
 
@@ -86,14 +91,15 @@ guide!
 
 ## 1. How to navigate this User Guide?
 
-As a new user in SEPlendid, this user guide serves as an easy-to-follow guide in aiding you in executing your first 
+As a new user in SEPlendid, this user guide serves as an easy-to-follow guide in aiding you in executing your first
 commands in SEPlendid, utilising SEPlendid to it's fullest potential!
 
 Here is a step-by-step instruction in navigating this user guide for **new** users:
+
 1. Download SEPlendid by heading over to the [installation](#) section which provides a guided tour for you to get
    started with SEPlendid.
-2. Get familiar with SEPlendid by heading over to the [Quick Reference Guide](#) section which shows you how to use 
-navigate SEPlendid efficiently.
+2. Get familiar with SEPlendid by heading over to the [Quick Reference Guide](#) section which shows you how to use
+   navigate SEPlendid efficiently.
 
 If you are an **experienced** user, you can head over to the [Command Summary](#) section for a well-curated overview
 of the commands available in SEPlendid.
@@ -105,11 +111,11 @@ of the commands available in SEPlendid.
 
 Throughout this guide, icons are used to highlight important information, so do pay **special** attention to them:
 
-| Icon                     | Meaning                                  |
-|--------------------------|------------------------------------------|
+| Icon                      | Meaning                                  |
+|---------------------------|------------------------------------------|
 | :information_source: Info | Information you should keep in mind      | 
-| :bulb: Tip               | Information you might find useful        |
-| :exclamation: Warning    | Information you should be cautious about | 
+| :bulb: Tip                | Information you might find useful        |
+| :exclamation: Warning     | Information you should be cautious about | 
 
 <br/>
 <br/>
@@ -124,7 +130,7 @@ Throughout this guide, icons are used to highlight important information, so do 
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar seplendid.jar`
    command to run the application.<br>
-   You would be able to view SEPlendid's GUI shown below in a few seconds. The app contains a large sample data of 
+   You would be able to view SEPlendid's GUI shown below in a few seconds. The app contains a large sample data of
    courses so that you can start planning for SEP immediately.<br>
     <div class="centered-container">
       <img src="images/StartupWindowUI.png" alt="UI" class="resized-image">
@@ -138,20 +144,20 @@ Throughout this guide, icons are used to highlight important information, so do 
    Some example commands you can try:
 
     * `university list` : Lists all of NUS' partner universities.
-   
-    * `mapping search [localcode] [CS2103]`: Searches and displays all NUS-to-partner university course mappings 
-    based on local NUS course code `CS2103`.
+
+    * `mapping search [localcode] [CS2103]`: Searches and displays all NUS-to-partner university course mappings
+      based on local NUS course code `CS2103`.
 
     * `exit` : Exits SEPlendid.
 
-6. If you are an experienced user, refer to the [Commands](#4-commands) below for more details of each feature and 
+6. If you are an experienced user, refer to the [Commands](#4-commands) below for more details of each feature and
    command.
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## 4. Quick Reference Guide
 
-This section covers important information for you to utilise SEPlendid to its fullest capacity. You will learn how to 
+This section covers important information for you to utilise SEPlendid to its fullest capacity. You will learn how to
 navigate SEPlendid effectively and the commands section will cover on how you can run essential features on SEPlendid.
 
 ### 4.1 Graphical User Interface (GUI)
@@ -161,6 +167,7 @@ click and view the different courses which provides an in-depth insight about th
 description. Let's now take a look at the different components available in SEPlendid's GUI.
 
 SEPlendid's GUI consists of these four main components:
+
 1. Command Input Box
 2. Command Result Box
 3. List Panel for Local Courses, Partner Courses, Universities, Mappings or Notes
@@ -179,7 +186,8 @@ Refer to the annotated diagram of SEPlendid's GUI which is numbered accordingly:
 <br />
 
 ### 4.2 Command Format
-We will be using SEPlendid's commands throughout this User Guide. The following figure provides a visual example on 
+
+We will be using SEPlendid's commands throughout this User Guide. The following figure provides a visual example on
 what a command consist of:
 
 
@@ -188,9 +196,9 @@ what a command consist of:
 
 **Notes about the data and command format:**<br>
 
-* Within SEPlendid, there are five main types of data. Each also represents a 'Command Word'. Each 'Command Word' 
-begins a command, which can be coupled with an attribute, to narrow down to a specific functionality. \
-e.g. `localcourse sort [localname]` will sort the list of local courses by their `localname`.
+* Within SEPlendid, there are five main types of data. Each also represents a 'Command Word'. Each 'Command Word'
+  begins a command, which can be coupled with an attribute, to narrow down to a specific functionality. \
+  e.g. `localcourse sort [localname]` will sort the list of local courses by their `localname`.
 
 | Command Word    | Description                                        |
 |-----------------|----------------------------------------------------|
@@ -200,8 +208,8 @@ e.g. `localcourse sort [localname]` will sort the list of local courses by their
 | `university`    | NUS’ partner universities                          |
 | `note`          | Your own notes                                     |
 
-Each of these data types have certain attributes. These are the columns or data that will be displayed for each 
-command group: 
+Each of these data types have certain attributes. These are the columns or data that will be displayed for each
+command group:
 
 `localcourse`:
 
@@ -222,7 +230,6 @@ command group:
 | `partnerunit`        | Number of units  of the partner course             |
 | `partnerdescription` | Description of the partner course                  |
 
-
 `mapping`:
 
 | Attribute     | Description                                        |
@@ -241,18 +248,17 @@ command group:
 | `content` | Content of the note |
 | `tag`     | Tag of the note     |
 
-
-* The command format is `command-word action-word [parameters]`. <br /> `action-word`s include `sort`, `search`, `add`, 
-`delete`,
- `update`, `tag`, but not all `action-word`s can be used after each `command-word`. Refer to the [Command Summary]
- (#command-summary)
+* The command format is `command-word action-word [parameters]`. <br /> `action-word`s include `sort`, `search`, `add`,
+  `delete`,
+  `update`, `tag`, but not all `action-word`s can be used after each `command-word`. Refer to the [Command Summary]
+  (#command-summary)
   for a quick overview of which `action-word`s can follow a `command-word`.
 
-* `[parameters]` refer to any number of parameters which can follow an `action-word`. For instance, for the 
-`localcourse add` command, the full format is `localcourse add [localcode] [localname]`, which signifies that we 
-have two parameters (`localcode` and `localname`) to fill. <br />
-An invocation of the command is exemplified by: 
-  > `localcourse add [CS1010] [Programming Methodology]`. 
+* `[parameters]` refer to any number of parameters which can follow an `action-word`. For instance, for the
+  `localcourse add` command, the full format is `localcourse add [localcode] [localname]`, which signifies that we
+  have two parameters (`localcode` and `localname`) to fill. <br />
+  An invocation of the command is exemplified by:
+  > `localcourse add [CS1010] [Programming Methodology]`.
 
 * The following characters do not exist in our datasets and are not accepted in our input: `[` and `]`.
 
@@ -273,10 +279,10 @@ Let's start with the most basic command `add` command. `add` command allows you 
 
 One of the available commands for `add` is the command to add a localcourse into your storage.
 
-
 **Format:** `localcourse add [localcode] [localname] [localunit] [localdescription]`
 
 The first word of each command specifies the different core features with its own unique sets of functionalities.
+
 - `localcourse` tells SEPlendid that this command word would execute actions only for local courses
 - Attributes such as `localcode` and `localname` shows you what you should place in each portion of the command
 
@@ -286,7 +292,7 @@ The first word of each command specifies the different core features with its ow
 
 
 **Example**
-Let's imagine this scenario, there is a newly offered course by NUS Computing, CS2105. Interested with this course, you 
+Let's imagine this scenario, there is a newly offered course by NUS Computing, CS2105. Interested with this course, you
 want to add this localcourse in SEPlendid.
 
 <br/> 
@@ -297,12 +303,14 @@ Firstly, you would need to input this command:
 `localcourse add [CS2105] [Introduction to Computer Networks] [4.0] [Web and Web applications]`
 
 Secondly, you would need to take note of the parameters that are required to be added:
+
 - `localcode`: CS2105
 - `localname`: Introduction to Computer Networks
-- `localunit`: 4.0 
+- `localunit`: 4.0
 - `localdescription`: Web and Web applications
 
 Lastly, you should take note of invalid formats:
+
 - `localcourse add [CS2105]`
   The attributes such as localname and units are compulsory.
 - `localcourse add CS2105 Introduction to Computer Networks 4.0`
@@ -311,6 +319,7 @@ Lastly, you should take note of invalid formats:
   There is insufficient information on what localcourse to add.
 
 You should conduct these checks before executing the commands:
+
 - [ ] I know what I would like to query e.g. localcourse, partnercourse, university etc.
 - [ ] I know the restrictions of each command
 - [ ] I know "[ ]" are compulsory for wrapping each attribute
@@ -327,6 +336,7 @@ Now, you are equipped with the basics to start using SEPlendid!
 This section provides an in-depth overview of each command SEPlendid offers.
 
 Overview of SEPlendid's commands:
+
 - Purpose of the command
 - Command format
 - Behaviour of the command (for both valid and invalid inputs)
@@ -342,12 +352,13 @@ Overview of SEPlendid's commands:
 Lists all possible local courses that can be mapped, offered by NUS Computing. This is useful when:
 
 - you wish to retrieve all local courses' information.
-- you wish to view  local courses in greater detail.
-- you wish to verify that a local course has been added successfully. 
+- you wish to view local courses in greater detail.
+- you wish to verify that a local course has been added successfully.
 - you wish to verify that a local course has been deleted successfully.
 - you wish to verify that a local course has been updated successfully.
 
 **Format**: `localcourse list`
+
 - This results in the displaying of all the available localcourses provided by NUS Computing.
 
 Refer to the figure below to view the outcome of the execution of the command:
@@ -364,16 +375,19 @@ Refer to the figure below to view the outcome of the execution of the command:
 
 #### 5.1.2 Add a local course: `localcourse add`
 
-Adds a local course using attributes such as localcode, localname, localunit and localdescription in this order. This is useful
+Adds a local course using attributes such as localcode, localname, localunit and localdescription in this order. This is
+useful
 when:
+
 - you are adding a new local course offered by NUS Computing.
 - you wish to add a local course that is not preloaded in SEPlendid.
 
 **Format:** `localcourse add [localcode] [localname] [unit] [description]`
 
 **Example**: `localcourse add [CS1234] [ProgrammingFun] [4.0] [fun mod]`
-- This adds a localcourse with the course code 'CS1234' with the localname 'ProgrammingFun' which fulfils '4.0' units 
-and has a description of a 'fun mod'
+
+- This adds a localcourse with the course code 'CS1234' with the localname 'ProgrammingFun' which fulfils '4.0' units
+  and has a description of a 'fun mod'
 
 Refer to the figure below to view the outcome of the execution of the command:
 
@@ -390,6 +404,7 @@ Refer to the figure below to view the outcome of the execution of the command:
 #### 5.1.3 Delete a local course: `localcourse delete`
 
 Deletes local course with course code identified by `localcode`. This is useful when:
+
 - you wish to remove a local course that is no longer offered by NUS Computing.
 
 <box type="info" icon=":exclamation:" icon-color="red">
@@ -399,6 +414,7 @@ Deletes local course with course code identified by `localcode`. This is useful 
 **Format:** `localcourse delete [localcode]`
 
 **Example:** `localcourse delete [CS1234]`
+
 - This deletes a localcourse with the course code 'CS1234'
 
 <div class="centered-container">
@@ -415,6 +431,7 @@ Deletes local course with course code identified by `localcode`. This is useful 
 
 Updates specified attributes of a local course, with course code identified by `localcode`.
 These local course attributes include localcode, localname, unit and localdescription. This is useful when:
+
 - you wish to update a localcourse if there are changes made by NUS Computing.
 
 <box type="tip" icon=":bulb:" >
@@ -424,6 +441,7 @@ These local course attributes include localcode, localname, unit and localdescri
 **Format:** `localcourse update [localcode] [localcourseattribute] [updatedValue]`
 
 **Example:** `localcourse update [BT1101] [localcode] [BT1102]`
+
 - This updates a localcourse with the course code 'BT1101' to 'BT1102'
 
 <div class="centered-container">
@@ -440,12 +458,13 @@ These local course attributes include localcode, localname, unit and localdescri
 
 Searches localcourses using specified attributes such as localcode, localname, localunit, and localdescription.
 This is useful when:
+
 - you wish to find a specific local course you are interested in.
 - you wish to find local courses that matches with your credits required.
 - you wish to find local courses that matches with the course description you are interested in.
 
 **Format:** `localcourse search [localcode] [keyword]`\
-            `localcourse search [localname] [keyword]`
+`localcourse search [localname] [keyword]`
 
 **Example:** `localcourse search [localcode] [BT2101]`
 
@@ -460,10 +479,12 @@ This is useful when:
 <br />
 
 #### 5.1.6 Sort local courses by attributes: `localcourse sort`
+
 Sorts local courses according to attributes such as localname and localcode. This is useful when:
+
 - you wish to find local courses with specific attributes.
 
-**Format:** `localcourse sort [localcourseattribute]` 
+**Format:** `localcourse sort [localcourseattribute]`
 
 **Example:** `localcourse sort [localname]`
 
@@ -478,13 +499,15 @@ Sorts local courses according to attributes such as localname and localcode. Thi
 <br />
 
 ### 5.2 Commands for partner courses
+
 <br />
 
 #### 5.2.1 List all partner courses: `partnercourse list`
 
 Lists all available partner courses, offered by every partner university. This is useful when:
+
 - you wish to retrieve all partner courses' information.
-- you wish to view  partner courses in greater detail.
+- you wish to view partner courses in greater detail.
 - you wish to verify that a partner course has been added successfully.
 - you wish to verify that a partner course has been deleted successfully.
 - you wish to verify that a partner course has been updated successfully.
@@ -499,6 +522,7 @@ Lists all available partner courses, offered by every partner university. This i
 #### 5.2.2 Add a partner course: `partnercourse add`
 
 Adds a partner course with the specified partner course attributes. This is useful when:
+
 - you are adding a new partner course offered by the particular partner university.
 - you wish to add a partner course that is not preloaded in SEPlendid.
 
@@ -508,9 +532,9 @@ Adds a partner course with the specified partner course attributes. This is usef
 
 **Format**: `partnercourse add [university] [partnercode] [partnername] [units] [description]`
 
-**Example:** `partnercourse add [University of Toronto] [ROB311] [Artificial Intelligence] [5.0] 
+**Example:** `partnercourse add [University of Toronto] [ROB311] [Artificial Intelligence] [5.0]
 [Introduction module to AI]`
-                                                          
+
 **Expected Outcome:** SEPlendid's GUI will show you the added partnercourse.
 
 <br />
@@ -519,6 +543,7 @@ Adds a partner course with the specified partner course attributes. This is usef
 #### 5.2.3 Delete a partner course: `partnercourse delete`
 
 Deletes partner course with attributes such as university and partnercode respectively. This is useful when:
+
 - you wish to remove a partner course that is no longer offered by the partner university.
 
 <box type="warning" icon=":exclamation:" >
@@ -529,7 +554,7 @@ Deletes partner course with attributes such as university and partnercode respec
 
 **Example:** `partnercourse delete [University of Toronto] [ROB311]`
 
-**Expected Outcome:** SEPlendid's GUI will show the deleted partnercourse. 
+**Expected Outcome:** SEPlendid's GUI will show the deleted partnercourse.
 
 <br />
 <br />
@@ -538,6 +563,7 @@ Deletes partner course with attributes such as university and partnercode respec
 
 Updates specified attributes of a partner course, with the partner course identified by `universityname`.
 These partner course attributes include partnercode, partnername, unit and description. This is useful when:
+
 - you wish to update a partnercourse if there are changes made by the partner university.
 
 **Format**: `partnercourse update [universityname] [partnercode] [partnercourseattribute] [updatedValue]`
@@ -553,6 +579,7 @@ These partner course attributes include partnercode, partnername, unit and descr
 
 Searches partnercourse using specified attributes such as partnercode, partnername, partnerunit, and partnerdescription.
 This is useful when:
+
 - you wish to find a specific partner course you are interested in.
 - you wish to find partner courses that matches with your credits required.
 - you wish to find partner courses that matches with the course description you are interested in.
@@ -560,7 +587,7 @@ This is useful when:
 **Format:** `partnercourse search [partnercode]` \
 `partnercourse search [partnername]`
 
-**Example:** `partnercourse search [partnercode] [CSE469]` 
+**Example:** `partnercourse search [partnercode] [CSE469]`
 
 **Expected Outcome:** SEPlendid's GUI will show you the searched partnercourse, CSE469.
 
@@ -568,24 +595,28 @@ This is useful when:
 <br />
 
 #### 5.2.6 Sort partner courses by attributes: `partnercourse sort`
+
 Sorts local courses according to attributes such as partnername and partnercode. This is useful when:
+
 - you wish to find partner courses with specific attributes.
 
 **Format:** `partnercourse sort [partnercourseattribute]`
 
 **Example:** `partnercourse sort [partnercode]`
 
-**Expected Outcome:** SEPlendid's GUI will show you the sorted partnercourses according to partnercode. 
+**Expected Outcome:** SEPlendid's GUI will show you the sorted partnercourses according to partnercode.
 
 <br />
 <br />
 
 ### 5.3 Commands for universities
+
 <br />
 
 #### 5.3.1 List all universities: `university list`
 
 Lists all available partner universities that NUS Computing students are able to exchange at. This is useful when:
+
 - you wish to retrieve all the universities available for you to exchange at.
 
 **Format:** `university list`
@@ -606,6 +637,7 @@ Refer to the figure below to view the outcome of the execution of the command:
 #### 5.3.2 Search a university by attributes: `university search`
 
 Searches universities that matches the keyword of the university name. This is useful when:
+
 - you wish to find a specific university you are interested in.
 
 **Format:** `university search [university]`
@@ -624,11 +656,12 @@ Searches universities that matches the keyword of the university name. This is u
 #### 5.3.3 Sort universities by attributes: `university sort`
 
 Sorts universities by the university name, alphabetically. This is useful when:
+
 - you wish to view universities alphabetically.
 
 **Format:** `university sort [universityname]`
 
-**Example:** `university sort [universityname]` 
+**Example:** `university sort [universityname]`
 
 <div class="centered-container">
   <img src="images/UniversitySortUi.png" alt="University Sort UI" class="resized-image">
@@ -641,11 +674,14 @@ Sorts universities by the university name, alphabetically. This is useful when:
 <br />
 
 ### 5.4 Commands for mappings
+
 <br />
 
 #### 5.4.1 List all mappings: `mapping list`
-Lists all available mappings from a local course offered by NUS Computing, to a partner course offered by a partner 
+
+Lists all available mappings from a local course offered by NUS Computing, to a partner course offered by a partner
 university. This is useful when:
+
 * you wish to retrieve all mappings' information.
 * you wish to view mappings in greater detail.
 * you wish to verify that a mapping has been added, deleted or updated successfully.
@@ -671,8 +707,10 @@ Refer to the figure below to view the outcome of the execution of the command:
 <br />
 
 #### 5.4.2 Add a mapping: `mapping add`
+
 Adds mapping for local course identified by `localcode`, offered by partner `university`, has partner course with code
 `partnercode` and has information `information`. This is useful when:
+
 * you wish to add a mapping between a local course and a partner course.
 
 <box type="info">
@@ -698,12 +736,15 @@ Refer to the figure below to view the outcome of the execution of the command:
 <br />
 
 #### 5.4.3 Delete a mapping: `mapping delete`
-Deletes mapping for local course identified by `localcode`, offered by partner `university`, and has partner course with code `partnercode`. This is useful when:
+
+Deletes mapping for local course identified by `localcode`, offered by partner `university`, and has partner course with
+code `partnercode`. This is useful when:
+
 * you wish to remove a mapping between a local course and a partner course.
 
 **Format:** `mapping delete [localcode] [university] [partnercode]`
 
-**Example:** `mapping delete [IS4231] [Lund University] [INFC40]` 
+**Example:** `mapping delete [IS4231] [Lund University] [INFC40]`
 
 - This deletes a mapping of local course `IS4231` to `INFC40` offered by `Lund University`.
 
@@ -721,11 +762,13 @@ Refer to the figure below to view the outcome of the execution of the command:
 <br />
 
 #### 5.4.4 Search a mapping by attributes: `mapping search`
-Searches for mappings using specified attribute such as `localcode`, `localname`, `partnercode`, `partnername`, 
-`university`, `information`. This is useful when:
-* you wish to find a mapping which you are interested in, or have added. 
 
-**Format:** `mapping search [localcode/localname/partnercode/partnername/university/information] [query]` 
+Searches for mappings using specified attribute such as `localcode`, `localname`, `partnercode`, `partnername`,
+`university`, `information`. This is useful when:
+
+* you wish to find a mapping which you are interested in, or have added.
+
+**Format:** `mapping search [localcode/localname/partnercode/partnername/university/information] [query]`
 
 **Example:** `mapping search [localcode] [CS3230]`
 
@@ -744,11 +787,13 @@ Refer to the figure below to view the outcome of the execution of the command:
 <br />
 
 #### 5.4.5 Sort a mapping by attributes: `mapping sort`
-Sorts mappings according to attributes such as `localcode`, `localname`, `partnercode`, `partnername`, `university`, 
-`information`) in ascending order. This is useful when:
-* you wish to view or find mappings alphabetically 
 
-**Format:**  `mapping sort [localcode/localname/partnercode/partnername/university/information]` 
+Sorts mappings according to attributes such as `localcode`, `localname`, `partnercode`, `partnername`, `university`,
+`information`) in ascending order. This is useful when:
+
+* you wish to view or find mappings alphabetically
+
+**Format:**  `mapping sort [localcode/localname/partnercode/partnername/university/information]`
 
 **Example:**
 `mapping sort [localcode]`
@@ -768,11 +813,13 @@ Refer to the figure below to view the outcome of the execution of the command:
 <br />
 
 ### 5.5 Commands for notes
+
 <br />
 
 #### 5.5.1 List all notes: `note list`
 
 Lists all notes that you have recorded in SEPlendid. This is useful when:
+
 - you wish to retrieve all of your consolidated notes.
 - you wish to verify that your note has been added successfully.
 - you wish to verify that your note has been deleted successfully.
@@ -783,7 +830,8 @@ Lists all notes that you have recorded in SEPlendid. This is useful when:
 </box>
 
 **Format:** `note list`
-* This results in the displaying of all notes, sorted by their index number in ascending order. 
+
+* This results in the displaying of all notes, sorted by their index number in ascending order.
 
 Refer to Figure 5.5.1 to view the outcome of the execution of the command:
 
@@ -800,6 +848,7 @@ Refer to Figure 5.5.1 to view the outcome of the execution of the command:
 #### 5.5.2 Add a note: `note add`
 
 Adds a note with the content you wish to add and the tag you wish your note to have. This is useful when:
+
 - you wish to record a course or mapping you would are interested in doing for exchange.
 - you wish to record down important information.
 
@@ -812,7 +861,8 @@ Adds a note with the content you wish to add and the tag you wish your note to h
 </box>
 
 **Example:** `note add [You can do this!] [motivation]`
-- This adds a note with a content of "You can do this!" and tags the note with "motivation". 
+
+- This adds a note with a content of "You can do this!" and tags the note with "motivation".
 
 Refer to Figure 5.5.2 to view the outcome of the execution of the command:
 <div class="centered-container">
@@ -828,6 +878,7 @@ Refer to Figure 5.5.2 to view the outcome of the execution of the command:
 #### 5.5.3 Delete a note: `note delete`
 
 Deletes specified index of the note. This is useful when:
+
 - you wish to remove a note that contains outdated information.
 
 **Format:** `note delete [index]`
@@ -837,6 +888,7 @@ Deletes specified index of the note. This is useful when:
 </box>
 
 **Example:** `note delete [3]`
+
 - This deletes the note with index 3.
 
 Refer to Figure 5.5.3 to view the outcome of the execution of the command:
@@ -853,6 +905,7 @@ Refer to Figure 5.5.3 to view the outcome of the execution of the command:
 #### 5.5.4 Update a note: `note update`
 
 Updates specified note according to the index and updates the content of the note. This is useful when:
+
 - you wish to edit to correct your mistakes made in the note.
 - you wish to update the note with new information.
 
@@ -863,7 +916,8 @@ Updates specified note according to the index and updates the content of the not
 </box>
 
 **Example:** `note update [1] [Exchange Application Deadline: 25 September 2023]`
-- This updates the content of the note with index 1 to "Exchange Application Deadline: 25 September 2023". 
+
+- This updates the content of the note with index 1 to "Exchange Application Deadline: 25 September 2023".
 
 Refer to Figure 5.5.4 to view the outcome of the execution of the command:
 <div class="centered-container">
@@ -879,13 +933,15 @@ Refer to Figure 5.5.4 to view the outcome of the execution of the command:
 #### 5.5.5 Tag a note: `note tag`
 
 Adds a tag to the specified note according to the index. This is useful when:
+
 - you wish to group your notes with specific words.
 - you wish to easily view the different key points of the note.
 
 **Format:** `note tag [index] [tag]`
 
 **Example:** `note tag [1] [important]`
-- This adds "important" tag to the note with index 1. 
+
+- This adds "important" tag to the note with index 1.
 
 Refer to Figure 5.5.5 to view the outcome of the execution of the command:
 
@@ -902,15 +958,16 @@ Refer to Figure 5.5.5 to view the outcome of the execution of the command:
 #### 5.5.6 Clear tags of a note: `note cleartag`
 
 Clears all tags for the specified note according to its index. This is useful when:
+
 - you wish to remove all the tags that are no longer relevant to your note.
 
 **Format:** `note cleartag [index]`
 <box type="warning" icon=":exclamation:" icon-color="red">
-<b>Warning:</b> This command will remove all tags for your specified note. 
+<b>Warning:</b> This command will remove all tags for your specified note.
 </box>
 
-
 **Example:** `note cleartag [1]`
+
 - This removes all the tags for the note with index 1.
 
 Refer to Figure 5.5.6 to view the outcome of the execution of the command:
@@ -928,7 +985,8 @@ Refer to Figure 5.5.6 to view the outcome of the execution of the command:
 #### 5.5.7 Search notes by tag: `note search`
 
 Searches for notes which tag contains the value `tagKeyword`. This is useful when:
-- you wish to filter your notes with the tags you are interested in. 
+
+- you wish to filter your notes with the tags you are interested in.
 
 **Format:** `note search [tagKeyword]`
 
@@ -937,6 +995,7 @@ Searches for notes which tag contains the value `tagKeyword`. This is useful whe
 </box>
 
 **Example:** `note search [plans]`
+
 - This searches all notes with the tag that contains the word "plans".
 
 Refer to Figure 5.5.7 to view the outcome of the execution of the command:
@@ -951,7 +1010,7 @@ Refer to Figure 5.5.7 to view the outcome of the execution of the command:
 <br />
 <br />
 
-#### 5.6 View help : `help` 
+#### 5.6 View help : `help`
 
 Results in a pop-up window for you to copy the URL into an external browser to view SEPlendid's user guide.
 
@@ -999,7 +1058,7 @@ file at the next run.  Hence, it is recommended to take a backup of the file bef
 ## 6. FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that 
+**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that
 contains the data of your previous SEPlendid home folder.
 
 **Q**: Can I run SEPlendid without the need for internet connection? <br>
@@ -1007,12 +1066,14 @@ contains the data of your previous SEPlendid home folder.
 
 **Q**: Why do I get an error message when searching a local course by its description?<br>
 **A**: The attributes used for local course search is restricted. To search the local course, you must use this command:
+
 - `localcourse search [localdescription] [description_keyword]`
 
 <br />
 <br />
 
 --------------------------------------------------------------------------------------------------------------------
+
 ## 7. Command summary
 
 <table class="bordered-table">

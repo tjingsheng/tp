@@ -59,6 +59,36 @@ public class MappingAddCommandTest {
     }
 
     @Test
+    public void execute_nonExistentLocalCourse_throwsCommandException() {
+        Mapping validMapping = new MappingBuilder().build();
+        MappingAddCommand mappingAddCommand = new MappingAddCommand(validMapping);
+        SeplendidModelStub modelStub = new ModelStubWithNoLocalCourses();
+
+        assertThrows(CommandException.class,
+                MappingAddCommand.MESSAGE_NONEXISTENT_LOCALCODE, () -> mappingAddCommand.execute(modelStub));
+    }
+
+    @Test
+    public void execute_nonExistentPartnerCode_throwsCommandException() {
+        Mapping validMapping = new MappingBuilder().build();
+        MappingAddCommand mappingAddCommand = new MappingAddCommand(validMapping);
+        SeplendidModelStub modelStub = new ModelStubWithNoPartnerCourses();
+
+        assertThrows(CommandException.class,
+                MappingAddCommand.MESSAGE_NONEXISTENT_PARTNERCODE, () -> mappingAddCommand.execute(modelStub));
+    }
+
+    @Test
+    public void execute_nonExistentLocalCode_throwsCommandException() {
+        Mapping validMapping = new MappingBuilder().build();
+        MappingAddCommand mappingAddCommand = new MappingAddCommand(validMapping);
+        SeplendidModelStub modelStub = new ModelStubWithNoUniversities();
+
+        assertThrows(CommandException.class,
+                MappingAddCommand.MESSAGE_NONEXISTENT_UNIVERSITY, () -> mappingAddCommand.execute(modelStub));
+    }
+
+    @Test
     public void equals() {
         MappingAddCommand addCs2030sMappingCommand = new MappingAddCommand(CS2030S_TO_ZURICH_COMP3000);
         MappingAddCommand addCs2040sMappingCommand = new MappingAddCommand(CS2040S_TO_NTU_S0402SC);
@@ -137,6 +167,75 @@ public class MappingAddCommandTest {
         @Override
         public boolean hasUniversity(UniversityName universityName) {
             return true;
+        }
+    }
+
+    /**
+     * A Model stub that always returns false for hasLocalCourse.
+     */
+    private class ModelStubWithNoLocalCourses extends SeplendidModelStub {
+
+        @Override
+        public boolean hasMapping(Mapping mapping) {
+            return false;
+        }
+
+        @Override
+        public boolean hasLocalCourse(LocalCode localCode) {
+            return false;
+        }
+    }
+
+    /**
+     * A Model stub that always returns false for hasPartnerCourse.
+     */
+    private class ModelStubWithNoPartnerCourses extends SeplendidModelStub {
+
+        @Override
+        public boolean hasMapping(Mapping mapping) {
+            return false;
+        }
+
+        /**
+         * Required to specifically reach hasPartnerCourse method in execution of commands.
+         */
+        @Override
+        public boolean hasLocalCourse(LocalCode localCode) {
+            return true;
+        }
+
+        @Override
+        public boolean hasPartnerCourse(PartnerCode partnerCode, UniversityName universityName) {
+            return false;
+        }
+    }
+
+    /**
+     * A Model stub that always returns false for hasUniversity.
+     */
+    private class ModelStubWithNoUniversities extends SeplendidModelStub {
+
+        @Override
+        public boolean hasMapping(Mapping mapping) {
+            return false;
+        }
+
+        /**
+         * Required to specifically reach hasUniversity method in execution of commands.
+         */
+        @Override
+        public boolean hasLocalCourse(LocalCode localCode) {
+            return true;
+        }
+
+        @Override
+        public boolean hasPartnerCourse(PartnerCode partnerCode, UniversityName universityName) {
+            return true;
+        }
+
+        @Override
+        public boolean hasUniversity(UniversityName universityName) {
+            return false;
         }
     }
 

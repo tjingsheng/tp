@@ -68,3 +68,4 @@ deactivate PartnerCourseAddCommand
 [<--SeplendidLogicManager
 deactivate SeplendidLogicManager
 @enduml
+

@@ -79,3 +79,4 @@ deactivate LocalCourseListCommand
 [<--SeplendidLogicManager
 deactivate SeplendidLogicManager
 @enduml
+

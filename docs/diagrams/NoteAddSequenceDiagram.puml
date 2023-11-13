@@ -68,3 +68,4 @@ deactivate NoteAddCommand
 [<--SeplendidLogicManager
 deactivate SeplendidLogicManager
 @enduml
+

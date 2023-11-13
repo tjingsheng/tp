@@ -45,7 +45,7 @@ public class NoteTagCommand extends NoteCommand {
     public CommandResult execute(SeplendidModel seplendidModel) throws CommandException {
         requireNonNull(seplendidModel);
         int noteListSize = seplendidModel.getNoteCatalogue().getNoteList().size();
-        if (noteListSize < this.noteIndexToUpdate) {
+        if (this.noteIndexToUpdate <= -1 || noteListSize < this.noteIndexToUpdate) {
             throw new CommandException(MESSAGE_NONEXISTENT_NOTE);
         }
         Note oldNote = seplendidModel.getNoteCatalogue().getNoteList().get(this.noteIndexToUpdate - 1);

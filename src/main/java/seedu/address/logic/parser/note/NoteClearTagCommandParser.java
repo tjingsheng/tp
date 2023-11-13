@@ -47,7 +47,7 @@ public class NoteClearTagCommandParser implements Parser<NoteClearTagCommand> {
             Integer noteIndex = Integer.valueOf(parameterToArgMap.getValue(PARAMETER_INDEX).get());
             return new NoteClearTagCommand(noteIndex);
         } catch (NumberFormatException e) {
-            throw new ParseException(UsageMessage.NOTE_CLEAR_TAG.getValue());
+            return new NoteClearTagCommand(-1);
         }
     }
 }

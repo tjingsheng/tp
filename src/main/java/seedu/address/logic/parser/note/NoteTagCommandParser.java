@@ -50,7 +50,7 @@ public class NoteTagCommandParser implements Parser<NoteTagCommand> {
             Tag newTag = ParserUtil.parseTag(parameterToArgMap.getValue(PARAMETER_TAGS).get());
             return new NoteTagCommand(noteIndex, newTag);
         } catch (NumberFormatException e) {
-            throw new ParseException(UsageMessage.NOTE_TAG.getValue());
+            return new NoteTagCommand(-1, new Tag("error"));
         }
     }
 }

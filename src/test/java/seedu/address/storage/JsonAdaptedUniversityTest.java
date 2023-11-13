@@ -23,7 +23,7 @@ public class JsonAdaptedUniversityTest {
     public void toModelType_invalidUniversityName_throwsIllegalValueException() {
         JsonAdaptedUniversity university =
                 new JsonAdaptedUniversity(INVALID_UNIVERSITY_NAME);
-        String expectedMessage = ConstraintMessage.UNIVERSITY_NAME.getValue();
+        String expectedMessage = ConstraintMessage.UNIVERSITY_NAME.toString();
         assertThrows(IllegalValueException.class, expectedMessage, university::toModelType);
     }
 

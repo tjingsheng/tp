@@ -28,16 +28,18 @@ public class LocalCourseDeleteCommandParser implements Parser<LocalCourseDeleteC
         ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
                 areValuesEnclosedAndNonEmpty(args);
         if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
-            throw new ParseException(UsageMessage.LOCALCOURSE_DELETE.getValue());
+            throw new ParseException(UsageMessage.LOCALCOURSE_DELETE.toString());
         } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
             throw new ParseException(UsageMessage.LOCALCOURSE_DELETE.getValueWithEmptyArgs());
         }
+
+        assert areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.SUCCESS;
 
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_LOCALCODE);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_LOCALCODE)) {
-            throw new ParseException(UsageMessage.LOCALCOURSE_DELETE.getValue());
+            throw new ParseException(UsageMessage.LOCALCOURSE_DELETE.toString());
         }
 
         // All arguments should be a non-empty {@code Optional}

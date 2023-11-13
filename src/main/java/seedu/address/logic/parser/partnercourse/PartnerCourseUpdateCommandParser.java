@@ -13,6 +13,7 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.SeplendidArgumentMap;
 import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.messages.ConstraintMessage;
 import seedu.address.messages.UsageMessage;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
@@ -36,7 +37,7 @@ public class PartnerCourseUpdateCommandParser implements Parser<PartnerCourseUpd
         ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
                 areValuesEnclosedAndNonEmpty(args);
         if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
-            throw new ParseException(UsageMessage.PARTNERCOURSE_UPDATE.getValue());
+            throw new ParseException(UsageMessage.PARTNERCOURSE_UPDATE.toString());
         } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
             throw new ParseException(UsageMessage.PARTNERCOURSE_UPDATE.getValueWithEmptyArgs());
         }
@@ -52,7 +53,7 @@ public class PartnerCourseUpdateCommandParser implements Parser<PartnerCourseUpd
                 PARAMETER_PARTNERCODE,
                 PARAMETER_PARTNERATTRIBUTE,
                 PARAMETER_PARTNERUPDATEDVALUE)) {
-            throw new ParseException(UsageMessage.PARTNERCOURSE_UPDATE.getValue());
+            throw new ParseException(UsageMessage.PARTNERCOURSE_UPDATE.toString());
         }
 
         UniversityName universityName =
@@ -73,22 +74,22 @@ public class PartnerCourseUpdateCommandParser implements Parser<PartnerCourseUpd
         switch (partnerCourseAttribute) {
         case PARTNERCODE:
             if (!PartnerCode.isValidPartnerCode(trimmedUpdatedValue)) {
-                throw new ParseException(PartnerCode.MESSAGE_CONSTRAINTS);
+                throw new ParseException(ConstraintMessage.PARTNERCOURSE_CODE.toString());
             }
             break;
         case PARTNERNAME:
             if (!PartnerName.isValidPartnerName(trimmedUpdatedValue)) {
-                throw new ParseException(PartnerName.MESSAGE_CONSTRAINTS);
+                throw new ParseException(ConstraintMessage.PARTNERCOURSE_NAME.toString());
             }
             break;
         case PARTNERUNIT:
             if (!PartnerUnit.isValidPartnerUnit(trimmedUpdatedValue)) {
-                throw new ParseException(PartnerUnit.MESSAGE_CONSTRAINTS);
+                throw new ParseException(ConstraintMessage.PARTNERCOURSE_UNIT.toString());
             }
             break;
         case PARTNERDESCRIPTION:
             if (!PartnerDescription.isValidPartnerDescription(trimmedUpdatedValue)) {
-                throw new ParseException(PartnerDescription.MESSAGE_CONSTRAINTS);
+                throw new ParseException(ConstraintMessage.PARTNERCOURSE_DESCRIPTION.toString());
             }
             break;
         default:

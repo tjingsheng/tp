@@ -31,7 +31,7 @@ public class NoteTagCommandParser implements Parser<NoteTagCommand> {
         ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
                 areValuesEnclosedAndNonEmpty(args);
         if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
-            throw new ParseException(UsageMessage.NOTE_TAG.getValue());
+            throw new ParseException(UsageMessage.NOTE_TAG.toString());
         } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
             throw new ParseException(UsageMessage.NOTE_TAG.getValueWithEmptyArgs());
         }
@@ -40,7 +40,7 @@ public class NoteTagCommandParser implements Parser<NoteTagCommand> {
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_INDEX, PARAMETER_TAGS);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_INDEX, PARAMETER_TAGS)) {
-            throw new ParseException(UsageMessage.NOTE_TAG.getValue());
+            throw new ParseException(UsageMessage.NOTE_TAG.toString());
         }
 
         // All arguments should be a non-empty {@code Optional}

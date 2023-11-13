@@ -24,10 +24,6 @@ import seedu.address.model.partnercourse.PartnerCourseAttribute;
 import seedu.address.model.partnercourse.PartnerDescription;
 import seedu.address.model.partnercourse.PartnerName;
 import seedu.address.model.partnercourse.PartnerUnit;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.university.UniversityAttribute;
 import seedu.address.model.university.UniversityName;
@@ -60,65 +56,6 @@ public class ParserUtil {
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
     }
 
-    /**
-     * Parses a {@code String name} into a {@code Name}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code name} is invalid.
-     */
-    public static Name parseName(String name) throws ParseException {
-        requireNonNull(name);
-        String trimmedName = name.trim();
-        if (!Name.isValidName(trimmedName)) {
-            throw new ParseException(Name.MESSAGE_CONSTRAINTS);
-        }
-        return new Name(trimmedName);
-    }
-
-    /**
-     * Parses a {@code String phone} into a {@code Phone}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code phone} is invalid.
-     */
-    public static Phone parsePhone(String phone) throws ParseException {
-        requireNonNull(phone);
-        String trimmedPhone = phone.trim();
-        if (!Phone.isValidPhone(trimmedPhone)) {
-            throw new ParseException(Phone.MESSAGE_CONSTRAINTS);
-        }
-        return new Phone(trimmedPhone);
-    }
-
-    /**
-     * Parses a {@code String address} into an {@code Address}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code address} is invalid.
-     */
-    public static Address parseAddress(String address) throws ParseException {
-        requireNonNull(address);
-        String trimmedAddress = address.trim();
-        if (!Address.isValidAddress(trimmedAddress)) {
-            throw new ParseException(Address.MESSAGE_CONSTRAINTS);
-        }
-        return new Address(trimmedAddress);
-    }
-
-    /**
-     * Parses a {@code String email} into an {@code Email}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code email} is invalid.
-     */
-    public static Email parseEmail(String email) throws ParseException {
-        requireNonNull(email);
-        String trimmedEmail = email.trim();
-        if (!Email.isValidEmail(trimmedEmail)) {
-            throw new ParseException(Email.MESSAGE_CONSTRAINTS);
-        }
-        return new Email(trimmedEmail);
-    }
 
     /**
      * Parses a {@code String tag} into a {@code Tag}.
@@ -130,7 +67,7 @@ public class ParserUtil {
         requireNonNull(tag);
         String trimmedTag = tag.trim();
         if (!Tag.isValidTagName(trimmedTag)) {
-            throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.TAG_NAME.toString());
         }
         return new Tag(trimmedTag);
     }
@@ -157,7 +94,7 @@ public class ParserUtil {
         requireNonNull(localCode);
         String trimmedLocalCode = localCode.trim();
         if (!LocalCode.isValidLocalCode(trimmedLocalCode)) {
-            throw new ParseException(ConstraintMessage.LOCALCOURSE_CODE.getValue());
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_CODE.toString());
         }
         return new LocalCode(localCode);
     }
@@ -172,7 +109,7 @@ public class ParserUtil {
         requireNonNull(localName);
         String trimmedLocalName = localName.trim();
         if (!LocalName.isValidLocalName(trimmedLocalName)) {
-            throw new ParseException(ConstraintMessage.LOCALCOURSE_NAME.getValue());
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_NAME.toString());
         }
         return new LocalName(localName);
     }
@@ -187,7 +124,7 @@ public class ParserUtil {
         requireNonNull(localUnit);
         String trimmedLocalUnit = localUnit.trim();
         if (!LocalUnit.isValidLocalUnit(trimmedLocalUnit)) {
-            throw new ParseException(ConstraintMessage.LOCALCOURSE_UNIT.getValue());
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_UNIT.toString());
         }
         return new LocalUnit(localUnit);
     }
@@ -202,7 +139,7 @@ public class ParserUtil {
         requireNonNull(localDescription);
         String trimmedLocalDescription = localDescription.trim();
         if (!LocalDescription.isValidLocalDescription(trimmedLocalDescription)) {
-            throw new ParseException(ConstraintMessage.LOCALCOURSE_DESCRIPTION.getValue());
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_DESCRIPTION.toString());
         }
         return new LocalDescription(localDescription);
     }
@@ -214,7 +151,7 @@ public class ParserUtil {
      */
     public static LocalCourseAttribute parseLocalCourseAttributeForSearch(String attribute) throws ParseException {
         if (!LocalCourseAttribute.isValidAttributeForSearch(attribute)) {
-            throw new ParseException(ConstraintMessage.LOCALCOURSE_ATTRIBUTE_SEARCH.getValue());
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_ATTRIBUTE_SEARCH.toString());
         }
         return LocalCourseAttribute.fromString(attribute);
     }
@@ -226,7 +163,7 @@ public class ParserUtil {
      */
     public static LocalCourseAttribute parseLocalCourseAttributeForSort(String attribute) throws ParseException {
         if (!LocalCourseAttribute.isValidAttributeForSort(attribute)) {
-            throw new ParseException(ConstraintMessage.LOCALCOURSE_ATTRIBUTE_SORT.getValue());
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_ATTRIBUTE_SORT.toString());
         }
         return LocalCourseAttribute.fromString(attribute);
     }
@@ -239,7 +176,7 @@ public class ParserUtil {
      */
     public static LocalCourseAttribute parseLocalCourseAttributeForUpdate(String attribute) throws ParseException {
         if (!LocalCourseAttribute.isValidAttributeForUpdate(attribute)) {
-            throw new ParseException(ConstraintMessage.LOCALCOURSE_ATTRIBUTE_UPDATE.getValue());
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_ATTRIBUTE_UPDATE.toString());
         }
         return LocalCourseAttribute.fromString(attribute);
     }
@@ -254,7 +191,7 @@ public class ParserUtil {
         requireNonNull(partnerCode);
         String trimmedPartnerCode = partnerCode.trim();
         if (!PartnerCode.isValidPartnerCode(trimmedPartnerCode)) {
-            throw new ParseException(PartnerCode.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_CODE.toString());
         }
         return new PartnerCode(partnerCode);
     }
@@ -269,7 +206,7 @@ public class ParserUtil {
         requireNonNull(partnerName);
         String trimmedPartnerName = partnerName.trim();
         if (!PartnerName.isValidPartnerName(trimmedPartnerName)) {
-            throw new ParseException(PartnerName.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_NAME.toString());
         }
         return new PartnerName(partnerName);
     }
@@ -284,7 +221,7 @@ public class ParserUtil {
         requireNonNull(partnerUnit);
         String trimmedPartnerUnit = partnerUnit.trim();
         if (!PartnerUnit.isValidPartnerUnit(trimmedPartnerUnit)) {
-            throw new ParseException(PartnerUnit.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_UNIT.toString());
         }
         return new PartnerUnit(partnerUnit);
     }
@@ -299,7 +236,7 @@ public class ParserUtil {
         requireNonNull(partnerDescription);
         String trimmedPartnerDescription = partnerDescription.trim();
         if (!PartnerDescription.isValidPartnerDescription(trimmedPartnerDescription)) {
-            throw new ParseException(PartnerDescription.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_DESCRIPTION.toString());
         }
         return new PartnerDescription(partnerDescription);
     }
@@ -311,7 +248,7 @@ public class ParserUtil {
      */
     public static PartnerCourseAttribute parsePartnerCourseAttributeForSearch(String attribute) throws ParseException {
         if (!PartnerCourseAttribute.isValidAttributeForSearch(attribute)) {
-            throw new ParseException(ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_SEARCH.getValue());
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_SEARCH.toString());
         }
         return PartnerCourseAttribute.fromString(attribute);
     }
@@ -323,7 +260,7 @@ public class ParserUtil {
      */
     public static PartnerCourseAttribute parsePartnerCourseAttributeForSort(String attribute) throws ParseException {
         if (!PartnerCourseAttribute.isValidAttributeForSort(attribute)) {
-            throw new ParseException(ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_SORT.getValue());
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_SORT.toString());
         }
         return PartnerCourseAttribute.fromString(attribute);
     }
@@ -336,7 +273,7 @@ public class ParserUtil {
      */
     public static PartnerCourseAttribute parsePartnerCourseAttributeForUpdate(String attribute) throws ParseException {
         if (!PartnerCourseAttribute.isValidAttributeForUpdate(attribute)) {
-            throw new ParseException(ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_UPDATE.getValue());
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_UPDATE.toString());
         }
         return PartnerCourseAttribute.fromString(attribute);
     }
@@ -350,7 +287,7 @@ public class ParserUtil {
         requireNonNull(universityName);
         String trimmedUniversityName = universityName.trim();
         if (!UniversityName.isValidUniversityName(trimmedUniversityName)) {
-            throw new ParseException(ConstraintMessage.UNIVERSITY_NAME.getValue());
+            throw new ParseException(ConstraintMessage.UNIVERSITY_NAME.toString());
         }
         return new UniversityName(universityName);
     }
@@ -362,7 +299,7 @@ public class ParserUtil {
      */
     public static UniversityAttribute parseUniversityAttributeForSearch(String attribute) throws ParseException {
         if (!UniversityAttribute.isValidAttributeForSearch(attribute)) {
-            throw new ParseException(ConstraintMessage.UNIVERSITY_ATTRIBUTE_SEARCH.getValue());
+            throw new ParseException(ConstraintMessage.UNIVERSITY_ATTRIBUTE_SEARCH.toString());
         }
         return UniversityAttribute.fromString(attribute);
     }
@@ -374,7 +311,7 @@ public class ParserUtil {
      */
     public static UniversityAttribute parseUniversityAttributeForSort(String attribute) throws ParseException {
         if (!UniversityAttribute.isValidAttributeForSort(attribute)) {
-            throw new ParseException(ConstraintMessage.UNIVERSITY_ATTRIBUTE_SORT.getValue());
+            throw new ParseException(ConstraintMessage.UNIVERSITY_ATTRIBUTE_SORT.toString());
         }
         return UniversityAttribute.fromString(attribute);
     }
@@ -387,7 +324,7 @@ public class ParserUtil {
         requireNonNull(content);
         String trimmedContent = content.trim();
         if (!Content.isValidContent(trimmedContent)) {
-            throw new ParseException(Name.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.NOTE_CONTENT.toString());
         }
         return new Content(trimmedContent);
     }
@@ -423,7 +360,7 @@ public class ParserUtil {
      */
     public static MappingAttribute parseMappingAttributeForSearch(String attribute) throws ParseException {
         if (!MappingAttribute.isValidAttributeForSearch(attribute)) {
-            throw new ParseException(ConstraintMessage.MAPPING_ATTRIBUTE_SEARCH.getValue());
+            throw new ParseException(ConstraintMessage.MAPPING_ATTRIBUTE_SEARCH.toString());
         }
         return MappingAttribute.fromString(attribute);
     }
@@ -435,7 +372,7 @@ public class ParserUtil {
      */
     public static MappingAttribute parseMappingAttributeForSort(String attribute) throws ParseException {
         if (!MappingAttribute.isValidAttributeForSearch(attribute)) {
-            throw new ParseException(ConstraintMessage.MAPPING_ATTRIBUTE_SORT.getValue());
+            throw new ParseException(ConstraintMessage.MAPPING_ATTRIBUTE_SORT.toString());
         }
         return MappingAttribute.fromString(attribute);
     }

@@ -6,7 +6,6 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.messages.Messages;
-import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.note.Content;
 import seedu.address.model.note.Note;
@@ -33,11 +32,6 @@ public class NoteUpdateCommand extends NoteCommand {
         requireNonNull(noteIndexToUpdate);
         this.noteIndexToUpdate = noteIndexToUpdate;
         this.updateContent = updateContent;
-    }
-
-    @Override
-    public CommandResult execute(Model model) throws CommandException {
-        return null;
     }
 
     @Override
@@ -68,6 +62,10 @@ public class NoteUpdateCommand extends NoteCommand {
         NoteUpdateCommand otherNoteDeleteCommand = (NoteUpdateCommand) other;
         return noteIndexToUpdate.equals(otherNoteDeleteCommand.noteIndexToUpdate)
                 && updateContent.equals(otherNoteDeleteCommand.updateContent);
+    }
+
+    public Integer getNoteIndexToUpdate() {
+        return noteIndexToUpdate;
     }
 
     @Override

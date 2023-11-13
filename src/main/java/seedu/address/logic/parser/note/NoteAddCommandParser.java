@@ -31,7 +31,7 @@ public class NoteAddCommandParser implements Parser<NoteAddCommand> {
         ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
                 areValuesEnclosedAndNonEmpty(args);
         if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
-            throw new ParseException(UsageMessage.NOTE_ADD.getValue());
+            throw new ParseException(UsageMessage.NOTE_ADD.toString());
         } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
             throw new ParseException(UsageMessage.NOTE_ADD.getValueWithEmptyArgs());
         }
@@ -40,7 +40,7 @@ public class NoteAddCommandParser implements Parser<NoteAddCommand> {
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_CONTENT, PARAMETER_TAGS);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_CONTENT, PARAMETER_TAGS)) {
-            throw new ParseException(UsageMessage.NOTE_ADD.getValue());
+            throw new ParseException(UsageMessage.NOTE_ADD.toString());
         }
 
         // All arguments should be a non-empty {@code Optional}

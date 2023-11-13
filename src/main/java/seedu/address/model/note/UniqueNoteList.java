@@ -15,10 +15,9 @@ import seedu.address.model.note.exceptions.NoteNotFoundException;
 /**
  * A list of notes that enforces uniqueness between its elements and does not allow nulls.
  * A note is considered unique by comparing using {@code Note#isSameNote(Note)}. As such, adding and updating of
- * persons uses Note#isSameNote(Note) for equality to ensure that the person being added or updated is
+ * note uses Note#isSameNote(Note) for equality to ensure that the note being added or updated is
  * unique in terms of identity in the UniqueNoteList. However, the removal of a note uses Note#equals(Object)
  * to ensure that the note with exactly the same fields will be removed.
- *
  * Supports a minimal set of list operations.
  *
  * @see Note#isSameNote(Note)
@@ -42,7 +41,7 @@ public class UniqueNoteList implements Iterable<Note> {
      */
     public void add(Note toAdd) {
         requireNonNull(toAdd);
-        if (contains(toAdd)) {
+        if (toAdd.getIndex() != null && contains(toAdd)) {
             throw new DuplicateNoteException();
         }
         toAdd.setIndex(internalList.size() + 1);

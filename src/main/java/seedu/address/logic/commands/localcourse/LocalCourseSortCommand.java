@@ -7,7 +7,6 @@ import java.util.Comparator;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.seplendidui.UiUtil;
@@ -28,18 +27,6 @@ public class LocalCourseSortCommand extends LocalCourseCommand {
      */
     public LocalCourseSortCommand(Comparator<LocalCourse> comparator) {
         this.comparator = comparator;
-    }
-
-    /**
-     * TBD: This stub is to be removed after morphing is complete.
-     *
-     * @param model {@code Model} which the command should operate on.
-     * @return Nothing.
-     * @throws CommandException Always.
-     */
-    @Override
-    public CommandResult execute(Model model) throws CommandException {
-        throw new CommandException("TBD: this is a stub and should be removed after morph.");
     }
 
     @Override

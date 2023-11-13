@@ -55,6 +55,13 @@ public class ItemListPanel<T extends SeplendidDataType> extends UiPart<Region> {
     }
 
     /**
+     * Unselect all items in the list view.
+     */
+    public void unselectAllItems() {
+        itemListView.getSelectionModel().clearSelection();
+    }
+
+    /**
      * Custom {@code ListCell} that displays the graphics of a {@code Item} using a {@code ItemCard}.
      */
     class ItemListViewCell<T extends SeplendidDataType> extends ListCell<T> {

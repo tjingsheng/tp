@@ -53,8 +53,6 @@ public class SeplendidModelManagerTest {
     @Test
     public void setUserPrefs_validUserPrefs_copiesUserPrefs() {
         UserPrefs userPrefs = new UserPrefs();
-        // TBD: remove when morph is done
-        userPrefs.setAddressBookFilePath(Paths.get("address/book/file/path"));
         userPrefs.setLocalCourseCatalogueFilePath(Paths.get("local/course/catalogue/file/path"));
         userPrefs.setGuiSettings(new GuiSettings(1, 2, 3, 4));
         modelManager.setUserPrefs(userPrefs);
@@ -62,7 +60,6 @@ public class SeplendidModelManagerTest {
 
         // Modifying userPrefs should not modify modelManager's userPrefs
         UserPrefs oldUserPrefs = new UserPrefs(userPrefs);
-        userPrefs.setAddressBookFilePath(Paths.get("new/address/book/file/path"));
         userPrefs.setLocalCourseCatalogueFilePath(Paths.get("local/course/catalogue/file/path"));
         assertEquals(oldUserPrefs, modelManager.getUserPrefs());
     }

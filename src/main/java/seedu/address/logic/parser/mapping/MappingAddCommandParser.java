@@ -34,10 +34,12 @@ public class MappingAddCommandParser implements Parser<MappingAddCommand> {
         ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
                 areValuesEnclosedAndNonEmpty(args);
         if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
-            throw new ParseException(UsageMessage.MAPPING_ADD.getValue());
+            throw new ParseException(UsageMessage.MAPPING_ADD.toString());
         } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
             throw new ParseException(UsageMessage.MAPPING_ADD.getValueWithEmptyArgs());
         }
+
+        assert areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.SUCCESS;
 
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_LOCALCODE, PARAMETER_UNIVERSITY,
@@ -45,7 +47,7 @@ public class MappingAddCommandParser implements Parser<MappingAddCommand> {
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_LOCALCODE, PARAMETER_UNIVERSITY,
                 PARAMETER_PARTNERCODE, PARAMETER_INFORMATION)) {
-            throw new ParseException(UsageMessage.MAPPING_ADD.getValue());
+            throw new ParseException(UsageMessage.MAPPING_ADD.toString());
         }
 
         // All arguments should be a non-empty {@code Optional}

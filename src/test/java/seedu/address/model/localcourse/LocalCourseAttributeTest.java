@@ -18,18 +18,17 @@ public class LocalCourseAttributeTest {
         assertFalse(LocalCourseAttribute.isValidAttributeForSearch(null));
         assertFalse(LocalCourseAttribute.isValidAttributeForSearch("LOCALCODE"));
         assertFalse(LocalCourseAttribute.isValidAttributeForSearch("LOCALNAME"));
-        assertFalse(LocalCourseAttribute.isValidAttributeForSearch("LOCALUNIT"));
+        assertFalse(LocalCourseAttribute.isValidAttributeForSearch("UNIT"));
         assertFalse(LocalCourseAttribute.isValidAttributeForSearch("LOCALDESCRIPTION"));
+        assertFalse(LocalCourseAttribute.isValidAttributeForSearch("local code"));
+        assertFalse(LocalCourseAttribute.isValidAttributeForSearch("LocalCode"));
+        assertFalse(LocalCourseAttribute.isValidAttributeForSearch("LocalName"));
+        assertFalse(LocalCourseAttribute.isValidAttributeForSearch("unit"));
 
         // valid localCourseAttribute
         assertTrue(LocalCourseAttribute.isValidAttributeForSearch("localcode"));
         assertTrue(LocalCourseAttribute.isValidAttributeForSearch("localname"));
         assertTrue(LocalCourseAttribute.isValidAttributeForSearch("localdescription"));
-
-        // Additional invalid cases
-        assertFalse(LocalCourseAttribute.isValidAttributeForSearch("local code"));
-        assertFalse(LocalCourseAttribute.isValidAttributeForSearch("LocalCode"));
-        assertFalse(LocalCourseAttribute.isValidAttributeForSearch("LocalName"));
     }
 
     @Test
@@ -40,23 +39,20 @@ public class LocalCourseAttributeTest {
         assertFalse(LocalCourseAttribute.isValidAttributeForSort("a"));
         assertFalse(LocalCourseAttribute.isValidAttributeForSort("123"));
         assertFalse(LocalCourseAttribute.isValidAttributeForSort("LOCAL"));
-        assertFalse(LocalCourseAttribute.isValidAttributeForSort("localunit"));
         assertFalse(LocalCourseAttribute.isValidAttributeForSort(null));
         assertFalse(LocalCourseAttribute.isValidAttributeForSort("LOCALCODE"));
         assertFalse(LocalCourseAttribute.isValidAttributeForSort("LOCALNAME"));
-        assertFalse(LocalCourseAttribute.isValidAttributeForSort("LOCALUNIT"));
+        assertFalse(LocalCourseAttribute.isValidAttributeForSort("UNIT"));
         assertFalse(LocalCourseAttribute.isValidAttributeForSort("LOCALDESCRIPTION"));
+        assertFalse(LocalCourseAttribute.isValidAttributeForSort("local code"));
+        assertFalse(LocalCourseAttribute.isValidAttributeForSort("LocalCode"));
+        assertFalse(LocalCourseAttribute.isValidAttributeForSort("LocalName"));
+        assertFalse(LocalCourseAttribute.isValidAttributeForSort("unit"));
+        assertFalse(LocalCourseAttribute.isValidAttributeForSort("localdescription"));
 
         // valid localCourseAttribute
         assertTrue(LocalCourseAttribute.isValidAttributeForSort("localcode"));
         assertTrue(LocalCourseAttribute.isValidAttributeForSort("localname"));
-
-        // Additional invalid cases
-        assertFalse(LocalCourseAttribute.isValidAttributeForSort("local code"));
-        assertFalse(LocalCourseAttribute.isValidAttributeForSort("LocalCode"));
-        assertFalse(LocalCourseAttribute.isValidAttributeForSort("LocalName"));
-        assertFalse(LocalCourseAttribute.isValidAttributeForSort("localunit"));
-        assertFalse(LocalCourseAttribute.isValidAttributeForSort("localdescription"));
     }
 
     @Test
@@ -70,18 +66,16 @@ public class LocalCourseAttributeTest {
         assertFalse(LocalCourseAttribute.isValidAttributeForUpdate(null));
         assertFalse(LocalCourseAttribute.isValidAttributeForUpdate("LOCALCODE"));
         assertFalse(LocalCourseAttribute.isValidAttributeForUpdate("LOCALNAME"));
-        assertFalse(LocalCourseAttribute.isValidAttributeForUpdate("LOCALUNIT"));
+        assertFalse(LocalCourseAttribute.isValidAttributeForUpdate("UNIT"));
         assertFalse(LocalCourseAttribute.isValidAttributeForUpdate("LOCALDESCRIPTION"));
+        assertFalse(LocalCourseAttribute.isValidAttributeForUpdate("local code"));
+        assertFalse(LocalCourseAttribute.isValidAttributeForUpdate("LocalCode"));
+        assertFalse(LocalCourseAttribute.isValidAttributeForUpdate("LocalName"));
 
         // valid localCourseAttribute
         assertTrue(LocalCourseAttribute.isValidAttributeForUpdate("localcode"));
         assertTrue(LocalCourseAttribute.isValidAttributeForUpdate("localname"));
-        assertTrue(LocalCourseAttribute.isValidAttributeForUpdate("localunit"));
+        assertTrue(LocalCourseAttribute.isValidAttributeForUpdate("unit"));
         assertTrue(LocalCourseAttribute.isValidAttributeForUpdate("localdescription"));
-
-        // Additional invalid cases
-        assertFalse(LocalCourseAttribute.isValidAttributeForUpdate("local code"));
-        assertFalse(LocalCourseAttribute.isValidAttributeForUpdate("LocalCode"));
-        assertFalse(LocalCourseAttribute.isValidAttributeForUpdate("LocalName"));
     }
 }

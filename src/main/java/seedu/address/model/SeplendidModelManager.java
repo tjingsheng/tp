@@ -147,10 +147,9 @@ public class SeplendidModelManager implements SeplendidModel {
         return userPrefs.getLocalCourseCatalogueFilePath();
     }
 
-
     @Override
     public Path getUniversityCatalogueFilePath() {
-        return userPrefs.getAddressBookFilePath();
+        return userPrefs.getUniversityCatalogueFilePath();
     }
 
     @Override
@@ -168,7 +167,7 @@ public class SeplendidModelManager implements SeplendidModel {
     @Override
     public void setUniversityCatalogueFilePath(Path universityCatalogueFilePath) {
         requireNonNull(universityCatalogueFilePath);
-        userPrefs.setAddressBookFilePath(universityCatalogueFilePath);
+        userPrefs.setUniversitiesCatalogueFilePath(universityCatalogueFilePath);
     }
 
     //=========== LocalCourseCatalogue ================================================================================

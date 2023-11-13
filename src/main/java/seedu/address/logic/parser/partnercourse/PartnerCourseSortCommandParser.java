@@ -35,7 +35,7 @@ public class PartnerCourseSortCommandParser implements Parser<PartnerCourseSortC
         ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
                 areValuesEnclosedAndNonEmpty(args);
         if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
-            throw new ParseException(UsageMessage.PARTNERCOURSE_SORT.getValue());
+            throw new ParseException(UsageMessage.PARTNERCOURSE_SORT.toString());
         } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
             throw new ParseException(UsageMessage.PARTNERCOURSE_SORT.getValueWithEmptyArgs());
         }
@@ -44,7 +44,7 @@ public class PartnerCourseSortCommandParser implements Parser<PartnerCourseSortC
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_PARTNERATTRIBUTE);
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_PARTNERATTRIBUTE)) {
-            throw new ParseException(UsageMessage.PARTNERCOURSE_SORT.getValue());
+            throw new ParseException(UsageMessage.PARTNERCOURSE_SORT.toString());
         }
 
         Comparator<PartnerCourse> partnerCourseComparator =
@@ -63,7 +63,7 @@ public class PartnerCourseSortCommandParser implements Parser<PartnerCourseSortC
         case UNIVERSITY:
             return new PartnerCourseComparatorByUniversity();
         default:
-            throw new ParseException(ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_SORT.getValue());
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_SORT.toString());
         }
     }
 }

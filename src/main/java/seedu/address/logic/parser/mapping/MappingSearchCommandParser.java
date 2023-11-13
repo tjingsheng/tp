@@ -31,10 +31,12 @@ public class MappingSearchCommandParser implements Parser<MappingSearchCommand> 
         ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
                 areValuesEnclosedAndNonEmpty(args);
         if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
-            throw new ParseException(UsageMessage.MAPPING_SEARCH.getValue());
+            throw new ParseException(UsageMessage.MAPPING_SEARCH.toString());
         } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
             throw new ParseException(UsageMessage.MAPPING_SEARCH.getValueWithEmptyArgs());
         }
+
+        assert areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.SUCCESS;
 
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_MAPPINGATTRIBUTE, PARAMETER_QUERY);
@@ -42,7 +44,7 @@ public class MappingSearchCommandParser implements Parser<MappingSearchCommand> 
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_MAPPINGATTRIBUTE, PARAMETER_QUERY)) {
             throw new ParseException(
-                    UsageMessage.MAPPING_SEARCH.getValue());
+                    UsageMessage.MAPPING_SEARCH.toString());
         }
 
         // All arguments should be a non-empty {@code Optional}

@@ -17,9 +17,7 @@ import seedu.address.logic.commands.partnercourse.PartnerCourseCommand;
 import seedu.address.logic.commands.partnercourse.PartnerCourseUpdateCommand;
 import seedu.address.messages.ConstraintMessage;
 import seedu.address.messages.UsageMessage;
-import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
-import seedu.address.model.partnercourse.PartnerUnit;
 
 public class PartnerCourseUpdateCommandParserTest {
 
@@ -62,7 +60,7 @@ public class PartnerCourseUpdateCommandParserTest {
 
     @Test
     public void parse_argumentMissing_failure() {
-        String expectedMessage = UsageMessage.PARTNERCOURSE_UPDATE.getValue();
+        String expectedMessage = UsageMessage.PARTNERCOURSE_UPDATE.toString();
 
         // missing universityName argument
         assertParseFailure(
@@ -130,7 +128,7 @@ public class PartnerCourseUpdateCommandParserTest {
                         + getSquareBracketWrappedArgument(INVALID_PARTNER_COURSE_CODE)
                         + getSquareBracketWrappedArgument(PartnerCourseAttribute.PARTNERUNIT.toString())
                         + getSquareBracketWrappedArgument("10.0"),
-                PartnerCode.MESSAGE_CONSTRAINTS);
+                ConstraintMessage.PARTNERCOURSE_CODE.toString());
 
         // invalid partnerAttribute
         assertParseFailure(
@@ -140,7 +138,7 @@ public class PartnerCourseUpdateCommandParserTest {
                         + getSquareBracketWrappedArgument(COMP1000.getPartnerCode().toString())
                         + getSquareBracketWrappedArgument(INVALID_PARTNER_COURSE_ATTRIBUTE)
                         + getSquareBracketWrappedArgument("10.0"),
-            ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_UPDATE.getValue());
+            ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_UPDATE.toString());
 
         // invalid updatedValue for partnerCode
         assertParseFailure(
@@ -150,7 +148,7 @@ public class PartnerCourseUpdateCommandParserTest {
                         + getSquareBracketWrappedArgument(COMP1000.getPartnerCode().toString())
                         + getSquareBracketWrappedArgument(PartnerCourseAttribute.PARTNERCODE.toString())
                         + getSquareBracketWrappedArgument(INVALID_PARTNER_COURSE_CODE),
-                PartnerCode.MESSAGE_CONSTRAINTS);
+                ConstraintMessage.PARTNERCOURSE_CODE.toString());
 
         // invalid updatedValue for unit
         assertParseFailure(
@@ -160,6 +158,6 @@ public class PartnerCourseUpdateCommandParserTest {
                         + getSquareBracketWrappedArgument(COMP1000.getPartnerCode().toString())
                         + getSquareBracketWrappedArgument(PartnerCourseAttribute.PARTNERUNIT.toString())
                         + getSquareBracketWrappedArgument(INVALID_PARTNER_COURSE_UNIT.toString()),
-                PartnerUnit.MESSAGE_CONSTRAINTS);
+                ConstraintMessage.PARTNERCOURSE_UNIT.toString());
     }
 }

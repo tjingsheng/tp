@@ -23,7 +23,7 @@ public class UniversityName {
     public UniversityName(String universityname) {
         universityname = universityname.trim();
         requireNonNull(universityname);
-        checkArgument(isValidUniversityName(universityname), ConstraintMessage.UNIVERSITY_NAME.getValue());
+        checkArgument(isValidUniversityName(universityname), ConstraintMessage.UNIVERSITY_NAME.toString());
         value = universityname;
     }
 

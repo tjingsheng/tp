@@ -8,7 +8,6 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.messages.Messages;
-import seedu.address.model.Model;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
 import seedu.address.model.partnercourse.PartnerCourseContainsKeywordsPredicate;
@@ -48,11 +47,6 @@ public class PartnerCourseSearchCommand extends PartnerCourseCommand {
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(model.getFilteredPartnerCourseList())),
                 UiUtil.ListViewModel.PARTNER_COURSE_LIST);
-    }
-
-    @Override
-    public CommandResult execute(Model model) throws CommandException {
-        throw new CommandException("TBD: this is a stub and should be removed after morph.");
     }
 
     @Override

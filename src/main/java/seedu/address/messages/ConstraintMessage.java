@@ -6,22 +6,22 @@ package seedu.address.messages;
 public enum ConstraintMessage {
     // LocalCourse messages
     LOCALCOURSE_CODE(
-        "LocalCode:\n"
+        "localcode:\n"
         + "Must be non-empty\n"
         + "Must only contain alphanumeric characters\n"
         + "Be no more than 10 characters long\n"),
 
     LOCALCOURSE_NAME(
-       "LocalName:\n"
+       "localname:\n"
         + "Must be non-empty\n"
         + "Must be between 1-76 characters long\n"),
 
     LOCALCOURSE_UNIT(
-        "LocalUnit:\n"
+        "unit:\n"
         + "Must be non-empty\n"
         + "Must be a numeric value between 0 and 10000\n"),
 
-    LOCALCOURSE_DESCRIPTION("LocalDescription must:\n"
+    LOCALCOURSE_DESCRIPTION("localdescription must:\n"
                             + "Must be non-empty\n"),
 
     LOCALCOURSE_ATTRIBUTE_SEARCH(
@@ -44,22 +44,22 @@ public enum ConstraintMessage {
 
     // PartnerCourse messages
     PARTNERCOURSE_CODE(
-        "PartnerCode:\n"
+        "partnercode:\n"
         + "Must be non-empty\n"
         + "Must only contain alphanumeric characters\n"
         + "Be no more than 10 characters long\n"),
 
     PARTNERCOURSE_NAME(
-        "PartnerName:\n"
+        "partnername:\n"
         + "Must not be blank\n"),
 
     PARTNERCOURSE_UNIT(
-        "PartnerUnit:\n"
+        "unit:\n"
         + "Must be non-empty\n"
         + "Must be a non-negative numeric value\n"),
 
     PARTNERCOURSE_DESCRIPTION(
-        "PartnerDescription must:\n"
+        "description must:\n"
         + "Must be non-empty\n"),
 
     PARTNERCOURSE_ATTRIBUTE_SEARCH(
@@ -103,7 +103,7 @@ public enum ConstraintMessage {
 
     // University messages
     UNIVERSITY_NAME(
-        "UniversityName:"
+        "university:"
         + "Must be non-empty"),
 
     UNIVERSITY_ATTRIBUTE_SEARCH(
@@ -112,7 +112,18 @@ public enum ConstraintMessage {
 
     UNIVERSITY_ATTRIBUTE_SORT(
         "There is only 1 available for university sort:\n"
-        + "university\n");
+        + "university\n"),
+    // Note messages
+    NOTE_CONTENT(
+        "content:\n"
+        + "Must only contain alphanumeric characters or spaces\n"
+        + "Must be non-empty"),
+
+    // Tag messages
+    TAG_NAME(
+        "tag:\n"
+        + "Must only contain alphanumeric characters\n"
+        + "Must not contain whitespaces");
 
     private final String value;
 
@@ -126,11 +137,12 @@ public enum ConstraintMessage {
     }
 
     /**
-     * Gets the value of the constraint message.
+     * Gets the string representation of the constraint message.
      *
-     * @return The usage message value.
+     * @return The usage message string.
      */
-    public String getValue() {
+    @Override
+    public String toString() {
         return value;
     }
 }

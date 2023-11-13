@@ -66,7 +66,7 @@ public class JsonAdaptedPartnerCourse {
                 UniversityName.class.getSimpleName()));
         }
         if (!UniversityName.isValidUniversityName(universityName)) {
-            throw new IllegalValueException(ConstraintMessage.UNIVERSITY_NAME.getValue());
+            throw new IllegalValueException(ConstraintMessage.UNIVERSITY_NAME.toString());
         }
         final University modelUniversity = new University(new UniversityName(universityName));
 
@@ -76,7 +76,7 @@ public class JsonAdaptedPartnerCourse {
                 PartnerCode.class.getSimpleName()));
         }
         if (!PartnerCode.isValidPartnerCode(partnerCode)) {
-            throw new IllegalValueException(PartnerCode.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(ConstraintMessage.PARTNERCOURSE_CODE.toString());
         }
         final PartnerCode modelPartnerCode = new PartnerCode(partnerCode);
 
@@ -86,7 +86,7 @@ public class JsonAdaptedPartnerCourse {
                 PartnerName.class.getSimpleName()));
         }
         if (!PartnerName.isValidPartnerName(partnerName)) {
-            throw new IllegalValueException(PartnerName.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(ConstraintMessage.PARTNERCOURSE_NAME.toString());
         }
         final PartnerName modelPartnerName = new PartnerName(partnerName);
 
@@ -96,7 +96,7 @@ public class JsonAdaptedPartnerCourse {
                 PartnerUnit.class.getSimpleName()));
         }
         if (!PartnerUnit.isValidPartnerUnit(partnerUnit)) {
-            throw new IllegalValueException(PartnerUnit.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(ConstraintMessage.PARTNERCOURSE_UNIT.toString());
         }
         final PartnerUnit modelPartnerUnit = new PartnerUnit(partnerUnit);
 
@@ -106,7 +106,7 @@ public class JsonAdaptedPartnerCourse {
                 PartnerDescription.class.getSimpleName()));
         }
         if (!PartnerDescription.isValidPartnerDescription(partnerDescription)) {
-            throw new IllegalValueException(PartnerUnit.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(ConstraintMessage.PARTNERCOURSE_UNIT.toString());
         }
         final PartnerDescription modelPartnerDescription = new PartnerDescription(partnerDescription);
 

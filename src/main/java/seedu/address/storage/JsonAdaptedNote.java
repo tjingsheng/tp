@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.messages.ConstraintMessage;
 import seedu.address.model.note.Content;
 import seedu.address.model.note.Note;
 import seedu.address.model.tag.Tag;
@@ -19,6 +20,7 @@ import seedu.address.model.tag.Tag;
  */
 public class JsonAdaptedNote {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Note's %s field is missing!";
+    public static final String INVALID_INDEX_MESSAGE = "Invalid index given!";
 
     private final String content;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
@@ -64,12 +66,14 @@ public class JsonAdaptedNote {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Content.class.getSimpleName()));
         }
         if (!Content.isValidContent(content)) {
-            throw new IllegalValueException(Content.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(ConstraintMessage.NOTE_CONTENT.toString());
+        }
+        if (index < 0) {
+            throw new IllegalValueException(INVALID_INDEX_MESSAGE);
         }
         final Content modelContent = new Content(content);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        final Integer modelIndex = index;
-        return new Note(modelContent, modelTags, modelIndex);
+        return new Note(modelContent, modelTags, index);
     }
 }

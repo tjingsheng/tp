@@ -20,13 +20,8 @@ import seedu.address.commons.core.Version;
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
-import seedu.address.logic.Logic;
 import seedu.address.logic.SeplendidLogic;
 import seedu.address.logic.SeplendidLogicManager;
-import seedu.address.model.AddressBook;
-import seedu.address.model.Model;
-import seedu.address.model.ModelManager;
-import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyLocalCourseCatalogue;
 import seedu.address.model.ReadOnlyMappingCatalogue;
 import seedu.address.model.ReadOnlyNoteCatalogue;
@@ -39,8 +34,6 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.seplendidui.Ui;
 import seedu.address.seplendidui.UiManager;
-import seedu.address.storage.AddressBookStorage;
-import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonLocalCourseCatalogueStorage;
 import seedu.address.storage.JsonMappingCatalogueStorage;
 import seedu.address.storage.JsonNoteCatalogueStorage;
@@ -66,16 +59,14 @@ public class MainApp extends Application {
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
     protected Ui ui;
-    // Deprecate after morphing
-    protected Logic ab3Logic;
-    // New logic class
+
     protected SeplendidLogic seplendidLogic;
+
     protected Storage storage;
-    // Deprecate after morphing
-    protected Model model;
-    // New model class
+
     protected SeplendidModel seplendidModel;
     protected Config config;
+
     protected Font font;
 
     @Override
@@ -89,7 +80,6 @@ public class MainApp extends Application {
 
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
-        AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
 
         LocalCourseCatalogueStorage localCourseCatalogueStorage =
                 new JsonLocalCourseCatalogueStorage(userPrefs.getLocalCourseCatalogueFilePath());
@@ -103,48 +93,18 @@ public class MainApp extends Application {
                 new JsonNoteCatalogueStorage(userPrefs.getNoteCatalogueFilePath());
 
         storage = new StorageManager(
-                addressBookStorage,
                 userPrefsStorage,
                 localCourseCatalogueStorage,
                 partnerCourseCatalogue,
                 universityCatalogueStorage,
                 mappingCatalogueStorage,
                 noteCatalogueStorage);
-        // AB3 model
-        model = initAddressBookModelManager(storage, userPrefs);
 
-        // SEPlendid model
         seplendidModel = initSeplendidModelManager(storage, userPrefs);
         seplendidLogic = new SeplendidLogicManager(seplendidModel, storage);
 
         ui = new UiManager(seplendidLogic);
         seplendidLogic.setUi(ui);
-    }
-
-    /**
-     * Returns a {@code ModelManager} with the data from {@code storage}'s address book and {@code userPrefs}. <br>
-     * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
-     * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
-     */
-    private Model initAddressBookModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
-        logger.info("Using data file : " + storage.getAddressBookFilePath());
-
-        Optional<ReadOnlyAddressBook> addressBookOptional;
-        ReadOnlyAddressBook initialData;
-        try {
-            addressBookOptional = storage.readAddressBook();
-            if (addressBookOptional.isEmpty()) {
-                logger.info("Creating a new data file " + storage.getAddressBookFilePath()
-                        + " populated with a sample AddressBook.");
-            }
-            initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
-        } catch (DataLoadingException e) {
-            logger.warning("Data file at " + storage.getAddressBookFilePath() + " could not be loaded."
-                    + " Will be starting with an empty AddressBook.");
-            initialData = new AddressBook();
-        }
-
-        return new ModelManager(initialData, userPrefs);
     }
 
     /**
@@ -216,8 +176,8 @@ public class MainApp extends Application {
             }
             initialMappingCatalogue = mappingCatalogueOptional.orElseGet(
                     SampleDataUtil::getSampleMappingCatalogue);
-
         } catch (DataLoadingException e) {
+            // Defensive programming
             logger.warning("Data file(s) could not be loaded."
                     + " Will be starting with empty catalogues.");
             initialLocalCourseCatalogue = getSampleLocalCourseCatalogue();
@@ -330,7 +290,7 @@ public class MainApp extends Application {
     public void stop() {
         logger.info("============================ [ Stopping Address Book ] =============================");
         try {
-            storage.saveUserPrefs(model.getUserPrefs());
+            storage.saveUserPrefs(seplendidModel.getUserPrefs());
         } catch (IOException e) {
             logger.severe("Failed to save preferences " + StringUtil.getDetails(e));
         }

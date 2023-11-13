@@ -11,7 +11,13 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.localcourse.LocalCourseAddCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseDeleteCommand;
 import seedu.address.logic.commands.localcourse.LocalCourseSortCommand;
-import seedu.address.logic.commands.note.*;
+import seedu.address.logic.commands.note.NoteAddCommand;
+import seedu.address.logic.commands.note.NoteClearTagCommand;
+import seedu.address.logic.commands.note.NoteDeleteCommand;
+import seedu.address.logic.commands.note.NoteListCommand;
+import seedu.address.logic.commands.note.NoteSearchCommand;
+import seedu.address.logic.commands.note.NoteTagCommand;
+import seedu.address.logic.commands.note.NoteUpdateCommand;
 import seedu.address.logic.commands.partnercourse.PartnerCourseAddCommand;
 import seedu.address.logic.commands.partnercourse.PartnerCourseDeleteCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -258,7 +264,7 @@ public class SeplendidParserTest {
     }
 
     @Test
-    public void parseCommand_updateNoteInvalidInstruction_throwsParseException()  {
+    public void parseCommand_updateNoteInvalidInstruction_throwsParseException() {
         String command = "note up  date [1] [new content]";
         assertThrows(ParseException.class, () -> parser.parseCommand(command));
     }
@@ -271,7 +277,7 @@ public class SeplendidParserTest {
     }
 
     @Test
-    public void parseCommand_updateNoteNoIndex_throwsParseException()  {
+    public void parseCommand_updateNoteNoIndex_throwsParseException() {
         String command = "note update [] [new content]";
         assertThrows(ParseException.class, () -> parser.parseCommand(command));
     }

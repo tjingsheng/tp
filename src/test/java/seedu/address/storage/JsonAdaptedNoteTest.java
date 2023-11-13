@@ -1,16 +1,17 @@
 package seedu.address.storage;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.note.Content;
-import seedu.address.testutil.TypicalObjects;
-import seedu.address.model.note.Note;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.address.testutil.Assert.assertThrows;
+import org.junit.jupiter.api.Test;
+
+import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.note.Content;
+import seedu.address.model.note.Note;
+import seedu.address.testutil.TypicalObjects;
 
 public class JsonAdaptedNoteTest {
 
@@ -58,7 +59,8 @@ public class JsonAdaptedNoteTest {
     @Test
     public void toModelType_invalidNoteNullContent_returnsNote() {
         JsonAdaptedNote note1 = new JsonAdaptedNote(null, VALID_TAGS1, VALID_INDEX1);
-        String expectedMessage = String.format(JsonAdaptedNote.MISSING_FIELD_MESSAGE_FORMAT, Content.class.getSimpleName());
+        String expectedMessage = String.format(JsonAdaptedNote.MISSING_FIELD_MESSAGE_FORMAT,
+                Content.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, note1::toModelType);
     }
 

@@ -14,6 +14,8 @@ import seedu.address.model.SeplendidModel;
 import seedu.address.model.SeplendidModelManager;
 import seedu.address.model.UserPrefs;
 
+//@@author lamchenghou
+
 /**
  * Contains integration tests (interaction with the SeplendidModel) and unit tests for MappingListCommand.
  */

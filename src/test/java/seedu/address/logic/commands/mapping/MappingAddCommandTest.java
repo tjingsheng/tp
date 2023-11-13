@@ -23,6 +23,8 @@ import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.university.UniversityName;
 import seedu.address.testutil.MappingBuilder;
 
+//@@author lamchenghou
+
 /**
  * Unit testing of MappingAddCommand, with stubs / dependency injection.
  */

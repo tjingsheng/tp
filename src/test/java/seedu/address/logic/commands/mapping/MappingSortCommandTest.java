@@ -26,6 +26,8 @@ import seedu.address.model.mapping.Mapping;
 import seedu.address.model.mapping.MappingAttribute;
 import seedu.address.model.mapping.MappingComparatorByAttribute;
 
+//@@author lamchenghou
+
 public class MappingSortCommandTest {
     private SeplendidModel model;
     private SeplendidModel expectedModel;

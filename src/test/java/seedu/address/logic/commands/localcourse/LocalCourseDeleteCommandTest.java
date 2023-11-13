@@ -261,6 +261,11 @@ public class LocalCourseDeleteCommandTest {
         }
 
         @Override
+        public void setPartnerCourseCatalogue(ReadOnlyPartnerCourseCatalogue partnerCourseCatalogue) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public boolean hasPartnerCourse(PartnerCourse partnerCourse) {
             throw new AssertionError("This method should not be called.");
         }
@@ -453,11 +458,6 @@ public class LocalCourseDeleteCommandTest {
 
         @Override
         public void addMapping(Mapping mapping) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void setMapping(Mapping mapping, Mapping editedMapping) {
             throw new AssertionError("This method should not be called.");
         }
 

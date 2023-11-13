@@ -33,7 +33,7 @@ public class MappingComparatorByAttribute implements Comparator<Mapping> {
     /**
      * Initialises the getLocalCourseIfExists and getPartnerCourseIfExists functions.
      */
-    public void initialiseGetLocalPartnercourse(Function<? super LocalCode, ? extends Optional<? extends LocalCourse>>
+    public void initialiseGetLocalPartnerCourse(Function<? super LocalCode, ? extends Optional<? extends LocalCourse>>
                                                         getLocalCourseIfExists,
                                                 BiFunction<? super PartnerCode, ? super UniversityName, ? extends
                                                         Optional<? extends PartnerCourse>> getPartnerCourseIfExists) {

@@ -1,9 +1,13 @@
-package seedu.address.logic.commands.localcourse;
+package seedu.address.logic.commands.mapping;
 
 import static seedu.address.logic.commands.CommandTestUtil.assertSeplendidCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertSeplendidCommandSuccess;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_LOCAL_COURSE;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_COURSE;
+import static seedu.address.testutil.TypicalObjects.TYPICAL_PARTNER_UNIVERSITY_NAME;
 import static seedu.address.testutil.TypicalObjects.getTypicalLocalCourseCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalMappingCatalogue;
+import static seedu.address.testutil.TypicalObjects.getTypicalMappings;
 import static seedu.address.testutil.TypicalObjects.getTypicalNoteCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalPartnerCourseCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalUniversityCatalogue;
@@ -15,15 +19,14 @@ import seedu.address.messages.Messages;
 import seedu.address.model.SeplendidModel;
 import seedu.address.model.SeplendidModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.localcourse.LocalCourse;
-import seedu.address.testutil.LocalCourseBuilder;
+import seedu.address.model.mapping.Mapping;
 
 //@@author lamchenghou
 
 /**
- * Contains integration tests (interaction with the SeplendidModel) for {@code LocalCourseAddCommand}.
+ * Contains integration tests (interaction with the SeplendidModel) for {@code MappingDeleteCommand}.
  */
-public class LocalCourseAddCommandIntegrationTest {
+public class MappingDeleteCommandIntegrationTest {
 
     private SeplendidModel model;
 
@@ -38,30 +41,32 @@ public class LocalCourseAddCommandIntegrationTest {
     }
 
     @Test
-    public void execute_newLocalCourse_success() {
-        LocalCourse validLocalCourse = new LocalCourseBuilder().build();
+    public void execute_deleteMapping_success() {
+        Mapping validExistingMapping = getTypicalMappings().get(0);
 
         SeplendidModel expectedModel = new SeplendidModelManager(new UserPrefs(),
                 model.getLocalCourseCatalogue(),
                 model.getPartnerCourseCatalogue(),
                 model.getUniversityCatalogue(),
-                model.getMappingCatalogue(),
+                getTypicalMappingCatalogue(),
                 model.getNoteCatalogue());
-        expectedModel.addLocalCourse(validLocalCourse);
+        expectedModel.deleteMapping(validExistingMapping);
 
-        assertSeplendidCommandSuccess(new LocalCourseAddCommand(validLocalCourse),
+        assertSeplendidCommandSuccess(new MappingDeleteCommand(validExistingMapping.getLocalCode(),
+                        validExistingMapping.getUniversityName(), validExistingMapping.getPartnerCode()),
                 model,
-                String.format(LocalCourseAddCommand.MESSAGE_SUCCESS,
-                        Messages.format(validLocalCourse)),
+                String.format(
+                        MappingDeleteCommand.MESSAGE_SUCCESS,
+                        Messages.format(validExistingMapping)),
                 expectedModel);
     }
 
     @Test
-    public void execute_duplicateLocalCourse_throwsCommandException() {
-        LocalCourse localCourseInList = model.getLocalCourseCatalogue().getLocalCourseList().get(0);
-        assertSeplendidCommandFailure(new LocalCourseAddCommand(localCourseInList),
+    public void execute_nonExistingMapping_throwsCommandException() {
+        assertSeplendidCommandFailure(new MappingDeleteCommand(TYPICAL_LOCAL_COURSE.getLocalCode(),
+                        TYPICAL_PARTNER_UNIVERSITY_NAME, TYPICAL_PARTNER_COURSE.getPartnerCode()),
                 model,
-                LocalCourseAddCommand.MESSAGE_DUPLICATE_LOCAL_COURSE);
+                MappingDeleteCommand.MESSAGE_NONEXISTENT_MAPPING);
     }
 
 }

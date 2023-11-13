@@ -107,17 +107,6 @@ public class MappingCatalogue implements ReadOnlyMappingCatalogue {
     }
 
     /**
-     * Replaces the given Mapping {@code target} in the list with {@code editedMapping}.
-     * {@code target} must exist in the MappingCatalogue.
-     * The Mapping identity of {@code editedMapping} must not be the same as another existing Mapping.
-     */
-    public void setMapping(Mapping target, Mapping editedMapping) {
-        requireNonNull(editedMapping);
-
-        mappings.setMapping(target, editedMapping);
-    }
-
-    /**
      * Removes {@code toRemove} from this {@code MappingCatalogue}.
      * {@code toRemove} must exist in the mappings catalogue.
      */

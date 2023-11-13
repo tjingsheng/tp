@@ -87,27 +87,6 @@ public class UniqueMappingList implements Iterable<Mapping> {
     }
 
     /**
-     * Replaces the Mapping {@code target} in the list with {@code editedMapping}.
-     * {@code target} must exist in the list.
-     * The Mapping identity of {@code editedMapping} must not be the same as another
-     * existing Mapping in the list.
-     */
-    public void setMapping(Mapping target, Mapping editedMapping) {
-        requireAllNonNull(target, editedMapping);
-
-        int index = internalList.indexOf(target);
-        if (index == -1) {
-            throw new MappingNotFoundException();
-        }
-
-        if (!target.isSameMapping(editedMapping) && contains(editedMapping)) {
-            throw new DuplicateMappingException();
-        }
-
-        internalList.set(index, editedMapping);
-    }
-
-    /**
      * Removes the equivalent (as per {@code Mapping#equals(Object)}) Mapping from the list.
      * The Mapping must exist in the list.
      */

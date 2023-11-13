@@ -174,10 +174,13 @@ The `list` command generates a list of courses and universities' sample data. Th
 courses.
 
 The activity diagram is as such:
-<puml src="diagrams/ListActivityDiagram.puml" width="500" />
+<puml src="diagrams/ListActivityDiagram.puml" width="100%" />
 
 Here is a sequence diagram for `localcourse list`:
-<puml src="diagrams/ListSequenceDiagram.puml" width="500" />
+<puml src="diagrams/ListSequenceDiagram.puml" width="100%" />
+
+<br>
+<br>
 
 **Feature Details**
 
@@ -186,6 +189,9 @@ Here is a sequence diagram for `localcourse list`:
    error message.
 3. If all the above steps are completed without exceptions, then the sample data of the specific data type will be
    displayed.
+
+<br>
+<br>
 
 **Feature Considerations**
 
@@ -202,15 +208,18 @@ The `add` command allows for the adding of new courses, universities and notes. 
 datatypes.
 
 The activity diagram is as such:
-<puml src="diagrams/AddActivityDiagram.puml" width="500" />
+<puml src="diagrams/AddActivityDiagram.puml" width="100%" />
 
 <br>
 
 Here is a sequence diagram for `note add`:
-<puml src="diagrams/NoteAddSequenceDiagram.puml" width="500" />
+<puml src="diagrams/NoteAddSequenceDiagram.puml" width="100%" />
 
 Here is a sequence diagram for `partnercourse add`:
-<puml src="diagrams/PartnercourseAddSequenceDiagram.puml" width="500" />
+<puml src="diagrams/PartnercourseAddSequenceDiagram.puml" width="100%" />
+
+<br>
+<br>
 
 **Feature Details**
 
@@ -223,6 +232,7 @@ Here is a sequence diagram for `partnercourse add`:
 4. If all the above steps are completed without exceptions, then the data object is successfully queried.
 
 <br>
+<br>
 
 **Feature Considerations**
 
@@ -232,6 +242,7 @@ and `universityname`. This is because courses have unique course codes and is sp
 check would also prevent confusion for users if they have mistakenly added courses that are already in the database.
 Furthermore, this would confuse the user on which is the most accurate information available as well.
 
+<br>
 <br>
 
 --------------------------------------------------------------------------------------------------------------------
@@ -243,10 +254,13 @@ The `search` command allows users find specific courses or universities they are
 querying of courses, universities and notes.
 
 The activity diagram is as such:
-<puml src="diagrams/SearchActivityDiagram.puml" width="300" />
+<puml src="diagrams/SearchActivityDiagram.puml" width="100%" />
 
 Here is a sequence diagram for `partnercourse search`:
-<puml src="diagrams/PartnerCourseSearchSequenceDiagram.puml" width="500" />
+<puml src="diagrams/SearchSequenceDiagram.puml" width="100%" />
+
+<br>
+<br>
 
 **Feature Details**
 
@@ -259,6 +273,9 @@ Here is a sequence diagram for `partnercourse search`:
 4. If the attribute is not applicable for `search`, the user will be prompted to enter the attribute correctly via an
    error message.
 5. If all the above steps are completed without exceptions, then the data object is successfully queried.
+
+<br>
+<br>
 
 **Feature Considerations**
 The data object is only searched when all the specified identity attributes are identical to the existing data object.

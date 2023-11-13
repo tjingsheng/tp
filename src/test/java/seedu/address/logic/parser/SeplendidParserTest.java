@@ -133,6 +133,13 @@ public class SeplendidParserTest {
     }
 
     @Test
+    public void parseCommand_addNote2() throws Exception {
+        String command = "note add [t] [t]";
+        Command c = parser.parseCommand(command);
+        assert c instanceof NoteAddCommand;
+    }
+
+    @Test
     public void parseCommand_addNoteNumericSpecial() throws Exception {
         String command = "note add [test 1234 @#$%^&] [test]";
         Command c = parser.parseCommand(command);
@@ -209,6 +216,24 @@ public class SeplendidParserTest {
     }
 
     @Test
+    public void parseCommand_addNoteEmptyArgs_throwsParseException() {
+        String command = "note add [] []";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_addNoteMissingArgs_throwsParseException() {
+        String command = "note add [1]";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_addNoteNoArgs_throwsParseException() {
+        String command = "note add";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
     public void parseCommand_addNoteExtraBrackets_throwsParseException() {
         String command = "note add [[111]] [test]]]";
         assertThrows(ParseException.class, () -> parser.parseCommand(command));
@@ -263,8 +288,20 @@ public class SeplendidParserTest {
     }
 
     @Test
+    public void parseCommand_updateNoteNoArg_throwsParseException() {
+        String command = "note update";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
     public void parseCommand_updateNoteNoBracket_throwsParseException() {
         String command = "note update 1 content";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_updateNoteInvalidArgs_throwsParseException() {
+        String command = "note update [[1] [content]";
         assertThrows(ParseException.class, () -> parser.parseCommand(command));
     }
 
@@ -273,6 +310,18 @@ public class SeplendidParserTest {
         String command = "note tag [1   0] [newtag]";
         NoteTagCommand c = (NoteTagCommand) parser.parseCommand(command);
         assert c.getNoteIndexToUpdate() == -1;
+    }
+
+    @Test
+    public void parseCommand_tagNoteNoArgs_throwsParseException() {
+        String command = "note tag";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_noteNoArgs_throwsParseException() {
+        String command = "note";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
     }
 
     @Test
@@ -300,14 +349,20 @@ public class SeplendidParserTest {
     }
 
     @Test
-    public void parseCommand_tagNoteMissingSpaceBetweenArgs_throwsParseException() {
-        String command = "note tag [1][contentcontent]";
+    public void parseCommand_tagNoteWrongBracketType_throwsParseException() {
+        String command = "note tag (1) (contentcontent)";
         assertThrows(ParseException.class, () -> parser.parseCommand(command));
     }
 
     @Test
-    public void parseCommand_tagNoteWrongBracketType_throwsParseException() {
-        String command = "note tag (1) (contentcontent)";
+    public void parseCommand_tagNoteEmptyArgs_throwsParseException() {
+        String command = "note tag [] []";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_tagNoteMissingArgs_throwsParseException() {
+        String command = "note tag [[1] ";
         assertThrows(ParseException.class, () -> parser.parseCommand(command));
     }
 
@@ -316,12 +371,6 @@ public class SeplendidParserTest {
         String command = "note delete [1   00 0]";
         NoteDeleteCommand c = (NoteDeleteCommand) parser.parseCommand(command);
         assert c.getNoteIndexToDelete() == -1;
-    }
-
-    @Test
-    public void parseCommand_deleteNoteExtraArgs_throwsParseException() {
-        String command = "note delete [1000] [hi]";
-        assertThrows(ParseException.class, () -> parser.parseCommand(command));
     }
 
     @Test
@@ -334,6 +383,30 @@ public class SeplendidParserTest {
     @Test
     public void parseCommand_deleteNoteExtraBracket_throwsParseException() {
         String command = "note delete [[1]";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_deleteNoteEmptyArgs_throwsParseException() {
+        String command = "note delete []";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_deleteNoteMissingArgs_throwsParseException() {
+        String command = "note delete   ";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_clearTagEmptyArgs_throwsParseException() {
+        String command = "note cleartag []";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_clearTagMissingArgs_throwsParseException() {
+        String command = "note cleartag   ";
         assertThrows(ParseException.class, () -> parser.parseCommand(command));
     }
 
@@ -353,6 +426,18 @@ public class SeplendidParserTest {
     @Test
     public void parseCommand_searchNoteEmptyArg_throwsParseException() {
         String command = "note search []";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_searchNoteMissingBracket_throwsParseException() {
+        String command = "note search [";
+        assertThrows(ParseException.class, () -> parser.parseCommand(command));
+    }
+
+    @Test
+    public void parseCommand_searchNoteMissingArgs_throwsParseException() {
+        String command = "note search ";
         assertThrows(ParseException.class, () -> parser.parseCommand(command));
     }
 

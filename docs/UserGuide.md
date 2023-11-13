@@ -957,9 +957,14 @@ Results in a pop-up window for you to copy the URL into an external browser to v
 
 Format: `help`
 
-Refer to the figure below to view the outcome of the execution of the command:
+Refer to Figure 5.6 to view the outcome of the execution of the command:
 
-![Help](Images/Help.jpg)
+<div class="centered-container">
+  <img src="images/Help.jpg" alt="Help" class="resized-image">
+</div>
+<div class = "centered-content" >
+  <p class = "image-caption"> Figure 5.6 Shows the exit pop up window.
+</div>
 
 <br />
 <br />

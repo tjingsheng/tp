@@ -41,7 +41,7 @@ public enum UsageMessage {
     LOCALCOURSE_ADD(
             LocalCourseCommand.COMMAND_WORD,
             LocalCourseAddCommand.ACTION_WORD,
-            "[localcode] [localname] [localunit] [localdescription]",
+            "[localcode] [localname] [unit] [localdescription]",
             "Adds a local course"),
     LOCALCOURSE_DELETE(
             LocalCourseCommand.COMMAND_WORD,
@@ -70,7 +70,7 @@ public enum UsageMessage {
             LocalCourseUpdateCommand.ACTION_WORD,
             "[localcode] [attribute] [newvalue]",
             "Updates the attribute of the local course with a new value.\nAttributes:\n"
-                    + "localcode\nlocalname\nlocalunit\nlocaldescription'"),
+                    + "localcode\nlocalname\nunit\nlocaldescription'"),
     LOCALCOURSE(String.join("\n",
             "Local Courses Commands:\n",
             LOCALCOURSE_ADD.getValue(),
@@ -160,7 +160,7 @@ public enum UsageMessage {
     PARTNERCOURSE_ADD(
             PartnerCourseCommand.COMMAND_WORD,
             PartnerCourseAddCommand.ACTION_WORD,
-            "[university] [partnercode] [partnername] [partnerunit] [partnerdescription]",
+            "[university] [partnercode] [partnername] [unit] [description]",
             "Adds a partner course"),
     PARTNERCOURSE_DELETE(
             PartnerCourseCommand.COMMAND_WORD,
@@ -189,7 +189,7 @@ public enum UsageMessage {
             PartnerCourseUpdateCommand.ACTION_WORD,
             "[university] [partnercode] [attribute] [newvalue]",
             "Updates the attribute of the partner course with a new value.\nAttributes:\n"
-                    + "partnercode\npartnername\npartnerunit\npartnerdescription"),
+                    + "partnercode\npartnername\nunit\ndescription"),
     PARTNERCOURSE(String.join("\n",
             "Partner Course Commands:\n",
             PARTNERCOURSE_LIST.getValue(),
@@ -249,7 +249,7 @@ public enum UsageMessage {
      * @param description The description of the command.
      */
     UsageMessage(String commandWord, String actionWord, String args, String description) {
-        this.value = String.format(">>> %s %s %s\n%s\n", commandWord, actionWord, args, description);
+        this.value = String.format("%s %s %s: %s\n", commandWord, actionWord, args, description);
     }
 
     /**

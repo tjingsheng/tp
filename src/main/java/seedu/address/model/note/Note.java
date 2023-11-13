@@ -83,6 +83,10 @@ public class Note implements SeplendidDataType {
         return index;
     }
 
+    public Note getCopy() {
+        return new Note(this.content, this.tags, this.index);
+    }
+
     /**
      * Returns true if both notes have the same content.
      * This defines a weaker notion of equality between two notes.
@@ -92,8 +96,7 @@ public class Note implements SeplendidDataType {
             return true;
         }
 
-        return otherNote != null
-                && otherNote.getContent().equals(getContent());
+        return this.equals(otherNote);
     }
 
     /**
@@ -112,9 +115,7 @@ public class Note implements SeplendidDataType {
         }
 
         Note otherNote = (Note) other;
-        return content.equals(otherNote.content)
-                && tags.equals(otherNote.tags)
-                && index.equals(otherNote.index);
+        return index.equals(otherNote.index) || content.equals(otherNote.content);
     }
 
     @Override

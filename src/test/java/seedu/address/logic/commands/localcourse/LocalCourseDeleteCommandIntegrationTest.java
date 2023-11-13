@@ -20,6 +20,8 @@ import seedu.address.model.SeplendidModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.localcourse.LocalCourse;
 
+//@@author lamchenghou
+
 /**
  * Contains integration tests (interaction with the SeplendidModel) for {@code LocalCourseDeleteCommand}.
  */
@@ -30,11 +32,11 @@ public class LocalCourseDeleteCommandIntegrationTest {
     @BeforeEach
     public void setUp() {
         model = new SeplendidModelManager(new UserPrefs(),
-                                          getTypicalLocalCourseCatalogue(),
-                                          getTypicalPartnerCourseCatalogue(),
-                                          getTypicalUniversityCatalogue(),
-                                          getTypicalMappingCatalogue(),
-                                          getTypicalNoteCatalogue());
+                getTypicalLocalCourseCatalogue(),
+                getTypicalPartnerCourseCatalogue(),
+                getTypicalUniversityCatalogue(),
+                getTypicalMappingCatalogue(),
+                getTypicalNoteCatalogue());
     }
 
     @Test
@@ -42,26 +44,26 @@ public class LocalCourseDeleteCommandIntegrationTest {
         LocalCourse validExistingLocalCourse = getTypicalLocalCourses().get(0);
 
         SeplendidModel expectedModel = new SeplendidModelManager(new UserPrefs(),
-                                                                 model.getLocalCourseCatalogue(),
-                                                                 model.getPartnerCourseCatalogue(),
-                                                                 model.getUniversityCatalogue(),
-                                                                 getTypicalMappingCatalogue(),
-                                                                 model.getNoteCatalogue());
+                model.getLocalCourseCatalogue(),
+                model.getPartnerCourseCatalogue(),
+                model.getUniversityCatalogue(),
+                getTypicalMappingCatalogue(),
+                model.getNoteCatalogue());
         expectedModel.deleteLocalCourse(validExistingLocalCourse);
 
         assertSeplendidCommandSuccess(new LocalCourseDeleteCommand(validExistingLocalCourse.getLocalCode()),
-                                      model,
-                                      String.format(
-                                          LocalCourseDeleteCommand.MESSAGE_SUCCESS,
-                                          Messages.format(validExistingLocalCourse)),
-                                      expectedModel);
+                model,
+                String.format(
+                        LocalCourseDeleteCommand.MESSAGE_SUCCESS,
+                        Messages.format(validExistingLocalCourse)),
+                expectedModel);
     }
 
     @Test
     public void execute_nonExistingLocalCourse_throwsCommandException() {
         assertSeplendidCommandFailure(new LocalCourseDeleteCommand(TYPICAL_LOCAL_COURSE.getLocalCode()),
-                                      model,
-                                      LocalCourseDeleteCommand.MESSAGE_NONEXISTENT_LOCAL_COURSE);
+                model,
+                LocalCourseDeleteCommand.MESSAGE_NONEXISTENT_LOCAL_COURSE);
     }
 
 }

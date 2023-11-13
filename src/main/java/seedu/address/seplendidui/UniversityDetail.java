@@ -1,9 +1,10 @@
 package seedu.address.seplendidui;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import seedu.address.model.university.University;
 
 /**
@@ -18,7 +19,7 @@ public class UniversityDetail extends UiPart<Region> {
     @FXML
     private HBox universityDetailPane;
     @FXML
-    private Label universityName;
+    private TextFlow universityName;
 
     /**
      * Creates a {@code UniversityDetail} with the given {@code University}
@@ -26,6 +27,8 @@ public class UniversityDetail extends UiPart<Region> {
     public UniversityDetail(University university) {
         super(FXML);
         this.university = university;
-        universityName.setText(university.getUniversityName().toString());
+        TextFlowHeightUpdater.setAutoFitText(universityName);
+
+        universityName.getChildren().add(new Text(university.getUniversityName().toString()));
     }
 }

@@ -20,7 +20,7 @@ public class LocalCourseDetail extends UiPart<Region> {
     @FXML
     private HBox localCourseDetailPane;
     @FXML
-    private Label localName;
+    private TextFlow localName;
     @FXML
     private Label localCode;
     @FXML
@@ -34,10 +34,12 @@ public class LocalCourseDetail extends UiPart<Region> {
     public LocalCourseDetail(LocalCourse localCourse) {
         super(FXML);
         this.localCourse = localCourse;
-        localName.setText(localCourse.getLocalName().toString());
+        TextFlowHeightUpdater.setAutoFitText(localName);
+        TextFlowHeightUpdater.setAutoFitText(localDescription);
+
         localCode.setText(localCourse.getLocalCode().toString());
         localUnit.setText("Units: " + localCourse.getLocalUnit().toString());
-        TextFlowHeightUpdater.setAutoFitText(localDescription);
+        localName.getChildren().add(new Text(localCourse.getLocalName().toString()));
         localDescription.getChildren().add(new Text(localCourse.getLocalDescription().toString()));
     }
 }

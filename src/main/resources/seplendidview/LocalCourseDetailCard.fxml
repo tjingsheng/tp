@@ -19,10 +19,9 @@
                     left="25"/>
         </padding>
         <Label fx:id="localCode" styleClass="title-font-size"/>
-        <Label fx:id="localName" styleClass="small-heading-font-size"/>
-        <Label fx:id="localUnit" styleClass="small-heading-font-size"/>
+        <TextFlow fx:id="localName" styleClass="big-heading-font-size"/>
+        <Label fx:id="localUnit" styleClass="big-heading-font-size"/>
         <Label/>
-        <TextFlow fx:id="localDescription"
-                  styleClass="text-font-size"/>
+        <TextFlow fx:id="localDescription" styleClass="text-font-size"/>
     </VBox>
 </HBox>

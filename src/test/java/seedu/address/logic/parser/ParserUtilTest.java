@@ -283,7 +283,7 @@ public class ParserUtilTest {
         assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSearch("localunit"));
         assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSearch("LOCALCODE"));
         assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSearch("LOCALNAME"));
-        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSearch("UNITS"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSearch("UNIT"));
         assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSearch("DESCRIPTION"));
         assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSearch("invalid_attribute"));
     }
@@ -309,7 +309,7 @@ public class ParserUtilTest {
         assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSort("localdescription"));
         assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSort("LOCALCODE"));
         assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSort("LOCALNAME"));
-        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSort("UNITS"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSort("UNIT"));
         assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSort("DESCRIPTION"));
         assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForSort("invalid_attribute"));
     }
@@ -318,7 +318,7 @@ public class ParserUtilTest {
     public void parseLocalCourseAttributeForUpdate_validValues() throws ParseException {
         assertEquals(LocalCourseAttribute.LOCALCODE, ParserUtil.parseLocalCourseAttributeForUpdate("localcode"));
         assertEquals(LocalCourseAttribute.LOCALNAME, ParserUtil.parseLocalCourseAttributeForUpdate("localname"));
-        assertEquals(LocalCourseAttribute.LOCALUNIT, ParserUtil.parseLocalCourseAttributeForUpdate("localunit"));
+        assertEquals(LocalCourseAttribute.LOCALUNIT, ParserUtil.parseLocalCourseAttributeForUpdate("unit"));
         assertEquals(LocalCourseAttribute.LOCALDESCRIPTION,
                      ParserUtil.parseLocalCourseAttributeForUpdate("localdescription"));
     }
@@ -336,7 +336,7 @@ public class ParserUtilTest {
         assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForUpdate(null));
         assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForUpdate("LOCALCODE"));
         assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForUpdate("LOCALNAME"));
-        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForUpdate("UNITS"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForUpdate("UNIT"));
         assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForUpdate("DESCRIPTION"));
         assertThrows(ParseException.class, () -> ParserUtil.parseLocalCourseAttributeForUpdate("invalid_attribute"));
     }
@@ -419,7 +419,7 @@ public class ParserUtilTest {
         assertEquals(PartnerCourseAttribute.PARTNERNAME,
                      ParserUtil.parsePartnerCourseAttributeForSearch("partnername"));
         assertEquals(PartnerCourseAttribute.PARTNERDESCRIPTION,
-                     ParserUtil.parsePartnerCourseAttributeForSearch("partnerdescription"));
+                     ParserUtil.parsePartnerCourseAttributeForSearch("description"));
         assertEquals(PartnerCourseAttribute.UNIVERSITY, ParserUtil.parsePartnerCourseAttributeForSearch("university"));
     }
 
@@ -457,18 +457,18 @@ public class ParserUtilTest {
         assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("1"));
         assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("@"));
         assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("abc123"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort(null));
         assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("partner code"));
         assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("partnercode "));
         assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort(" partnercode"));
-        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort(null));
-        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("partnerunit"));
-        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("partnerdescription"));
         assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("PARTNERCODE"));
         assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("PARTNERNAME"));
         assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("PARTNERUNIT"));
         assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("PARTNERDESCRIPTION"));
         assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("UNIVERSITY"));
         assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("invalid_attribute"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("partnerunit"));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePartnerCourseAttributeForSort("partnerdescription"));
     }
 
     @Test
@@ -478,9 +478,9 @@ public class ParserUtilTest {
         assertEquals(PartnerCourseAttribute.PARTNERNAME,
                      ParserUtil.parsePartnerCourseAttributeForUpdate("partnername"));
         assertEquals(PartnerCourseAttribute.PARTNERUNIT,
-                     ParserUtil.parsePartnerCourseAttributeForUpdate("partnerunit"));
+                     ParserUtil.parsePartnerCourseAttributeForUpdate("unit"));
         assertEquals(PartnerCourseAttribute.PARTNERDESCRIPTION,
-                     ParserUtil.parsePartnerCourseAttributeForUpdate("partnerdescription"));
+                     ParserUtil.parsePartnerCourseAttributeForUpdate("description"));
     }
 
     @Test

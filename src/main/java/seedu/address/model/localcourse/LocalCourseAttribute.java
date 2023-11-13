@@ -1,12 +1,14 @@
 package seedu.address.model.localcourse;
 
+import java.util.Set;
+
 /**
  * Represents the attribute related to a local course.
  */
 public enum LocalCourseAttribute {
     LOCALCODE("localcode"),
     LOCALNAME("localname"),
-    LOCALUNIT("localunit"),
+    LOCALUNIT("unit"),
     LOCALDESCRIPTION("localdescription");
 
     private final String value;
@@ -59,15 +61,7 @@ public enum LocalCourseAttribute {
         if (attribute == null) {
             return false;
         }
-
-        switch (attribute) {
-        case LOCALCODE:
-        case LOCALNAME:
-        case LOCALDESCRIPTION:
-            return true;
-        default:
-            return false;
-        }
+        return Set.of(LOCALCODE, LOCALNAME, LOCALDESCRIPTION).contains(attribute);
     }
 
     /**
@@ -81,14 +75,7 @@ public enum LocalCourseAttribute {
         if (attribute == null) {
             return false;
         }
-
-        switch (attribute) {
-        case LOCALCODE:
-        case LOCALNAME:
-            return true;
-        default:
-            return false;
-        }
+        return Set.of(LOCALCODE, LOCALNAME).contains(attribute);
     }
 
     /**
@@ -102,15 +89,6 @@ public enum LocalCourseAttribute {
         if (attribute == null) {
             return false;
         }
-
-        switch (attribute) {
-        case LOCALCODE:
-        case LOCALNAME:
-        case LOCALUNIT:
-        case LOCALDESCRIPTION:
-            return true;
-        default:
-            return false;
-        }
+        return Set.of(LOCALCODE, LOCALNAME, LOCALUNIT, LOCALDESCRIPTION).contains(attribute);
     }
 }

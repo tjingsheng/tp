@@ -115,37 +115,41 @@ How the parsing works:
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`SeplendidModel.java`](https://github.com/AY2324S1-CS2103T-W10-2/tp/blob/master/src/main/java/seedu/address/model/SeplendidModel.java)
 
-<puml src="diagrams/ModelClassDiagram.puml" width="450" />
+<puml src="diagrams/ModelClassDiagram.puml" width="100%" />
 
 
-The `Model` component,
+The `SeplendidModel` component,
 
-* stores the address book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
-* stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
-* stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
-* does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
-
-<box type="info" seamless>
-
-**Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
-
-<puml src="diagrams/BetterModelClassDiagram.puml" width="450" />
-
-</box>
-
+* stores the local course, partner course, university, mapping and note data. `SeplendidModelManager` also serves as 
+the facade class, for other components to access the data. It stores all the data, which the UI can access to 
+display. Commands also take in the `SeplendidModel` object to perform their operations on the data.
+* Local course are represented by `LocalCourse` objects, which are stored in a `UniqueLocalCourseList` object. Each 
+`LocalCourse` has `LocalCode`, `LocalName`, `LocalDescription` and `LocalUnit` objects. `PartnerCourse` follows 
+similarly, and `Mapping` depends on `LocalCode`, `PartnerCode` and `UniversityName` objects (on top of its own 
+`MappingMiscInformation`).
+* stores the currently 'searched for' `LocalCourse`, `PartnerCourse`, `University`, `Mapping` objects as separate 
+filtered lists, exposed to outsiders as unmodifiable `ObservableList<LocalCourse>`, `ObservableList<PartnerCourse>`,
+`ObservableList<University>` and `ObservableList<Mapping>` objects respectively (e.g. the UI can be bound to one of 
+these lists so that the UI automatically updates when the data in the list changes). 
+* does not depend on any of the other three components (as the `SeplendidModel` represents data entities of the domain, 
+they should make sense on their own without depending on other components)
 
 ### Storage component
 
 **API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
 
-<puml src="diagrams/StorageClassDiagram.puml" width="550" />
+<puml src="diagrams/StorageClassDiagram.puml" width="100%" />
 
 The `Storage` component,
-* can save both address book data and user preference data in JSON format, and read them back into corresponding objects.
-* inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
-* depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
+* can save local course, partner course, university, mapping, note data and user preference data in JSON format, and 
+read them back into corresponding objects.
+* inherits from both `LocalCourseStorage`, `PartnerCourseCatalogueStorage`, `UniversityCatalogueStorage`, 
+`MappingCatalogueStorage`, `NoteCatalogueStorage` and `UserPrefStorage` 
+, which means it can be treated as either one (if only the functionality of only one is needed).
+* depends on some classes in the `SeplendidModel` component (because the `Storage` component's job is to save/retrieve 
+objects that belong to the `SeplendidModel`).
 
 ### Common classes
 

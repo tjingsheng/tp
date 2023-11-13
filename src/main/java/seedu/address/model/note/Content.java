@@ -25,7 +25,7 @@ public class Content {
     public Content(String content) {
         content = content.trim();
         requireNonNull(content);
-        checkArgument(isValidContent(content), ConstraintMessage.NOTE_CONTENT.getValue());
+        checkArgument(isValidContent(content), ConstraintMessage.NOTE_CONTENT.toString());
         this.content = content;
     }
 

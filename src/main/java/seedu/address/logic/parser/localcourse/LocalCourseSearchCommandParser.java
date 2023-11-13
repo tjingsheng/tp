@@ -61,17 +61,17 @@ public class LocalCourseSearchCommandParser implements Parser<LocalCourseSearchC
         switch (localCourseAttribute) {
         case LOCALCODE:
             if (!LocalCode.isValidLocalCode(trimmedQuery)) {
-                throw new ParseException(ConstraintMessage.LOCALCOURSE_CODE.getValue());
+                throw new ParseException(ConstraintMessage.LOCALCOURSE_CODE.toString());
             }
             break;
         case LOCALNAME:
             if (!LocalName.isValidLocalName(trimmedQuery)) {
-                throw new ParseException(ConstraintMessage.LOCALCOURSE_NAME.getValue());
+                throw new ParseException(ConstraintMessage.LOCALCOURSE_NAME.toString());
             }
             break;
         case LOCALDESCRIPTION:
             if (!LocalDescription.isValidLocalDescription(trimmedQuery)) {
-                throw new ParseException(ConstraintMessage.LOCALCOURSE_DESCRIPTION.getValue());
+                throw new ParseException(ConstraintMessage.LOCALCOURSE_DESCRIPTION.toString());
             }
             break;
         default:

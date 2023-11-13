@@ -57,7 +57,7 @@ public class UniversitySortCommandParser implements Parser<UniversitySortCommand
         case UNIVERSITY:
             return new UniversityComparatorByUniversityName();
         default:
-            throw new ParseException(ConstraintMessage.UNIVERSITY_ATTRIBUTE_SEARCH.getValue());
+            throw new ParseException(ConstraintMessage.UNIVERSITY_ATTRIBUTE_SEARCH.toString());
         }
     }
 }

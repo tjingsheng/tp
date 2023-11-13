@@ -66,7 +66,7 @@ public class JsonAdaptedNote {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Content.class.getSimpleName()));
         }
         if (!Content.isValidContent(content)) {
-            throw new IllegalValueException(ConstraintMessage.NOTE_CONTENT.getValue());
+            throw new IllegalValueException(ConstraintMessage.NOTE_CONTENT.toString());
         }
         if (index < 0) {
             throw new IllegalValueException(INVALID_INDEX_MESSAGE);

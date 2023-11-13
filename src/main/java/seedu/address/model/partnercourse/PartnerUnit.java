@@ -19,7 +19,7 @@ public class PartnerUnit {
      */
     public PartnerUnit(String partnerUnit) {
         requireNonNull(partnerUnit);
-        checkArgument(isValidPartnerUnit(partnerUnit), ConstraintMessage.PARTNERCOURSE_UNIT.getValue());
+        checkArgument(isValidPartnerUnit(partnerUnit), ConstraintMessage.PARTNERCOURSE_UNIT.toString());
         value = Double.parseDouble(partnerUnit);
     }
 
@@ -30,7 +30,7 @@ public class PartnerUnit {
      */
     public PartnerUnit(Double partnerUnit) {
         requireNonNull(partnerUnit);
-        checkArgument(isValidPartnerUnit(partnerUnit), ConstraintMessage.PARTNERCOURSE_UNIT.getValue());
+        checkArgument(isValidPartnerUnit(partnerUnit), ConstraintMessage.PARTNERCOURSE_UNIT.toString());
         value = partnerUnit;
     }
 

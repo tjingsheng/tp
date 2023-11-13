@@ -74,22 +74,22 @@ public class PartnerCourseUpdateCommandParser implements Parser<PartnerCourseUpd
         switch (partnerCourseAttribute) {
         case PARTNERCODE:
             if (!PartnerCode.isValidPartnerCode(trimmedUpdatedValue)) {
-                throw new ParseException(ConstraintMessage.PARTNERCOURSE_CODE.getValue());
+                throw new ParseException(ConstraintMessage.PARTNERCOURSE_CODE.toString());
             }
             break;
         case PARTNERNAME:
             if (!PartnerName.isValidPartnerName(trimmedUpdatedValue)) {
-                throw new ParseException(ConstraintMessage.PARTNERCOURSE_NAME.getValue());
+                throw new ParseException(ConstraintMessage.PARTNERCOURSE_NAME.toString());
             }
             break;
         case PARTNERUNIT:
             if (!PartnerUnit.isValidPartnerUnit(trimmedUpdatedValue)) {
-                throw new ParseException(ConstraintMessage.PARTNERCOURSE_UNIT.getValue());
+                throw new ParseException(ConstraintMessage.PARTNERCOURSE_UNIT.toString());
             }
             break;
         case PARTNERDESCRIPTION:
             if (!PartnerDescription.isValidPartnerDescription(trimmedUpdatedValue)) {
-                throw new ParseException(ConstraintMessage.PARTNERCOURSE_DESCRIPTION.getValue());
+                throw new ParseException(ConstraintMessage.PARTNERCOURSE_DESCRIPTION.toString());
             }
             break;
         default:

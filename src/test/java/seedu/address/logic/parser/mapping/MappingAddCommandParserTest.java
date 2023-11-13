@@ -85,7 +85,7 @@ public class MappingAddCommandParserTest {
                 + " " + getSquareBracketWrappedArgument(TYPICAL_LOCAL_COURSE_UNIT.toString())
                 + " " + getSquareBracketWrappedArgument(TYPICAL_LOCAL_COURSE_DESCRIPTION);
 
-        assertParseFailure(parser, invalidLocalCodeCommand, ConstraintMessage.LOCALCOURSE_CODE.getValue());
+        assertParseFailure(parser, invalidLocalCodeCommand, ConstraintMessage.LOCALCOURSE_CODE.toString());
     }
 }
 

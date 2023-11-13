@@ -59,7 +59,7 @@ class JsonAdaptedLocalCourse {
                 String.format(MISSING_FIELD_MESSAGE_FORMAT, LocalCode.class.getSimpleName()));
         }
         if (!LocalCode.isValidLocalCode(localCode)) {
-            throw new IllegalValueException(ConstraintMessage.LOCALCOURSE_CODE.getValue());
+            throw new IllegalValueException(ConstraintMessage.LOCALCOURSE_CODE.toString());
         }
         final LocalCode modelLocalCode = new LocalCode(localCode);
 
@@ -68,7 +68,7 @@ class JsonAdaptedLocalCourse {
                 String.format(MISSING_FIELD_MESSAGE_FORMAT, LocalName.class.getSimpleName()));
         }
         if (!LocalName.isValidLocalName(localName)) {
-            throw new IllegalValueException(ConstraintMessage.LOCALCOURSE_NAME.getValue());
+            throw new IllegalValueException(ConstraintMessage.LOCALCOURSE_NAME.toString());
         }
         final LocalName modelLocalName = new LocalName(localName);
 
@@ -77,7 +77,7 @@ class JsonAdaptedLocalCourse {
                 String.format(MISSING_FIELD_MESSAGE_FORMAT, LocalUnit.class.getSimpleName()));
         }
         if (!LocalUnit.isValidLocalUnit(localUnit)) {
-            throw new IllegalValueException(ConstraintMessage.LOCALCOURSE_UNIT.getValue());
+            throw new IllegalValueException(ConstraintMessage.LOCALCOURSE_UNIT.toString());
         }
         final LocalUnit modelLocalUnit = new LocalUnit(localUnit);
 
@@ -86,7 +86,7 @@ class JsonAdaptedLocalCourse {
                 String.format(MISSING_FIELD_MESSAGE_FORMAT, LocalDescription.class.getSimpleName()));
         }
         if (!LocalDescription.isValidLocalDescription(localDescription)) {
-            throw new IllegalValueException(ConstraintMessage.LOCALCOURSE_DESCRIPTION.getValue());
+            throw new IllegalValueException(ConstraintMessage.LOCALCOURSE_DESCRIPTION.toString());
         }
         final LocalDescription modelLocalDescription = new LocalDescription(localDescription);
 

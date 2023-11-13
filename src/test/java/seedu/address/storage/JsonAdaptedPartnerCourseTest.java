@@ -38,7 +38,7 @@ public class JsonAdaptedPartnerCourseTest {
                 TYPICAL_PARTNER_COURSE_NAME,
                 TYPICAL_PARTNER_COURSE_UNIT,
                 TYPICAL_PARTNER_COURSE_DESCRIPTION);
-        String expectedMessage = ConstraintMessage.PARTNERCOURSE_CODE.getValue();
+        String expectedMessage = ConstraintMessage.PARTNERCOURSE_CODE.toString();
         assertThrows(IllegalValueException.class, expectedMessage, partnerCourse::toModelType);
     }
 
@@ -64,7 +64,7 @@ public class JsonAdaptedPartnerCourseTest {
                 INVALID_PARTNER_COURSE_NAME,
                 TYPICAL_PARTNER_COURSE_UNIT,
                 TYPICAL_PARTNER_COURSE_DESCRIPTION);
-        String expectedMessage = ConstraintMessage.PARTNERCOURSE_NAME.getValue();
+        String expectedMessage = ConstraintMessage.PARTNERCOURSE_NAME.toString();
         assertThrows(IllegalValueException.class, expectedMessage, partnerCourse::toModelType);
     }
 
@@ -100,7 +100,7 @@ public class JsonAdaptedPartnerCourseTest {
             TYPICAL_PARTNER_COURSE_NAME,
             INVALID_PARTNER_COURSE_UNIT,
             TYPICAL_PARTNER_COURSE_DESCRIPTION);
-        String expectedMessage = ConstraintMessage.PARTNERCOURSE_UNIT.getValue();
+        String expectedMessage = ConstraintMessage.PARTNERCOURSE_UNIT.toString();
         assertThrows(IllegalValueException.class, expectedMessage, partnerCourse::toModelType);
     }
 }

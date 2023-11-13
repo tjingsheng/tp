@@ -23,7 +23,7 @@ public class PartnerName {
     public PartnerName(String partnerName) {
         partnerName = partnerName.trim();
         requireNonNull(partnerName);
-        checkArgument(isValidPartnerName(partnerName), ConstraintMessage.PARTNERCOURSE_NAME.getValue());
+        checkArgument(isValidPartnerName(partnerName), ConstraintMessage.PARTNERCOURSE_NAME.toString());
         value = partnerName;
     }
 

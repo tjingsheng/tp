@@ -68,7 +68,7 @@ public class JsonAdaptedNoteTest {
     @Test
     public void toModelType_invalidContent_returnsNote() {
         JsonAdaptedNote note1 = new JsonAdaptedNote("", VALID_TAGS1, VALID_INDEX1);
-        String expectedMessage = ConstraintMessage.NOTE_CONTENT.getValue();
+        String expectedMessage = ConstraintMessage.NOTE_CONTENT.toString();
         assertThrows(IllegalValueException.class, expectedMessage, note1::toModelType);
     }
 

@@ -128,7 +128,7 @@ public class PartnerCourseUpdateCommandParserTest {
                         + getSquareBracketWrappedArgument(INVALID_PARTNER_COURSE_CODE)
                         + getSquareBracketWrappedArgument(PartnerCourseAttribute.PARTNERUNIT.toString())
                         + getSquareBracketWrappedArgument("10.0"),
-                ConstraintMessage.PARTNERCOURSE_CODE.getValue());
+                ConstraintMessage.PARTNERCOURSE_CODE.toString());
 
         // invalid partnerAttribute
         assertParseFailure(
@@ -138,7 +138,7 @@ public class PartnerCourseUpdateCommandParserTest {
                         + getSquareBracketWrappedArgument(COMP1000.getPartnerCode().toString())
                         + getSquareBracketWrappedArgument(INVALID_PARTNER_COURSE_ATTRIBUTE)
                         + getSquareBracketWrappedArgument("10.0"),
-            ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_UPDATE.getValue());
+            ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_UPDATE.toString());
 
         // invalid updatedValue for partnerCode
         assertParseFailure(
@@ -148,7 +148,7 @@ public class PartnerCourseUpdateCommandParserTest {
                         + getSquareBracketWrappedArgument(COMP1000.getPartnerCode().toString())
                         + getSquareBracketWrappedArgument(PartnerCourseAttribute.PARTNERCODE.toString())
                         + getSquareBracketWrappedArgument(INVALID_PARTNER_COURSE_CODE),
-                ConstraintMessage.PARTNERCOURSE_CODE.getValue());
+                ConstraintMessage.PARTNERCOURSE_CODE.toString());
 
         // invalid updatedValue for unit
         assertParseFailure(
@@ -158,6 +158,6 @@ public class PartnerCourseUpdateCommandParserTest {
                         + getSquareBracketWrappedArgument(COMP1000.getPartnerCode().toString())
                         + getSquareBracketWrappedArgument(PartnerCourseAttribute.PARTNERUNIT.toString())
                         + getSquareBracketWrappedArgument(INVALID_PARTNER_COURSE_UNIT.toString()),
-                ConstraintMessage.PARTNERCOURSE_UNIT.getValue());
+                ConstraintMessage.PARTNERCOURSE_UNIT.toString());
     }
 }

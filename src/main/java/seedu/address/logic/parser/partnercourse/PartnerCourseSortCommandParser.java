@@ -63,7 +63,7 @@ public class PartnerCourseSortCommandParser implements Parser<PartnerCourseSortC
         case UNIVERSITY:
             return new PartnerCourseComparatorByUniversity();
         default:
-            throw new ParseException(ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_SORT.getValue());
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_SORT.toString());
         }
     }
 }

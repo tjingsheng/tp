@@ -135,7 +135,7 @@ public class PartnerCourseAddCommandParserTest {
                         + getSquareBracketWrappedArgument(TYPICAL_PARTNER_COURSE_NAME)
                         + getSquareBracketWrappedArgument(TYPICAL_PARTNER_COURSE_UNIT.toString())
                         + getSquareBracketWrappedArgument(TYPICAL_PARTNER_COURSE_DESCRIPTION),
-            ConstraintMessage.PARTNERCOURSE_CODE.getValue());
+            ConstraintMessage.PARTNERCOURSE_CODE.toString());
 
         // invalid partnerName
         assertParseFailure(parser,
@@ -155,7 +155,7 @@ public class PartnerCourseAddCommandParserTest {
                         + getSquareBracketWrappedArgument(TYPICAL_PARTNER_COURSE_NAME)
                         + getSquareBracketWrappedArgument(INVALID_PARTNER_COURSE_UNIT.toString())
                         + getSquareBracketWrappedArgument(TYPICAL_PARTNER_COURSE_DESCRIPTION),
-                ConstraintMessage.PARTNERCOURSE_UNIT.getValue());
+                ConstraintMessage.PARTNERCOURSE_UNIT.toString());
 
         // invalid partnerDescription
         assertParseFailure(

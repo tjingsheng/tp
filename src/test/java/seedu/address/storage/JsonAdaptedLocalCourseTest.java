@@ -36,7 +36,7 @@ public class JsonAdaptedLocalCourseTest {
                     TYPICAL_LOCAL_COURSE_NAME,
                     TYPICAL_LOCAL_COURSE_UNIT,
                     TYPICAL_LOCAL_COURSE_DESCRIPTION);
-        String expectedMessage = ConstraintMessage.LOCALCOURSE_CODE.getValue();
+        String expectedMessage = ConstraintMessage.LOCALCOURSE_CODE.toString();
         assertThrows(IllegalValueException.class, expectedMessage, localCourse::toModelType);
     }
 
@@ -59,7 +59,7 @@ public class JsonAdaptedLocalCourseTest {
                     INVALID_LOCAL_COURSE_NAME,
                     TYPICAL_LOCAL_COURSE_UNIT,
                     TYPICAL_LOCAL_COURSE_DESCRIPTION);
-        String expectedMessage = ConstraintMessage.LOCALCOURSE_NAME.getValue();
+        String expectedMessage = ConstraintMessage.LOCALCOURSE_NAME.toString();
         assertThrows(IllegalValueException.class, expectedMessage, localCourse::toModelType);
     }
 
@@ -92,7 +92,7 @@ public class JsonAdaptedLocalCourseTest {
             TYPICAL_LOCAL_COURSE_NAME,
             INVALID_LOCAL_COURSE_UNIT,
             TYPICAL_LOCAL_COURSE_DESCRIPTION);
-        String expectedMessage = ConstraintMessage.LOCALCOURSE_UNIT.getValue();
+        String expectedMessage = ConstraintMessage.LOCALCOURSE_UNIT.toString();
         assertThrows(IllegalValueException.class, expectedMessage, localCourse::toModelType);
     }
 }

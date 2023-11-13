@@ -64,7 +64,7 @@ public class LocalCourseSortCommandParserTest {
         // invalid attribute
         assertParseFailure(parser, commandActionWord
                         + getSquareBracketWrappedArgument(INVALID_LOCAL_COURSE_ATTRIBUTE),
-                ConstraintMessage.LOCALCOURSE_ATTRIBUTE_SORT.getValue());
+                ConstraintMessage.LOCALCOURSE_ATTRIBUTE_SORT.toString());
     }
 
     @Test

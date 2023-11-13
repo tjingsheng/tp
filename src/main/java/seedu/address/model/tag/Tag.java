@@ -21,7 +21,7 @@ public class Tag {
      */
     public Tag(String tagName) {
         requireNonNull(tagName);
-        checkArgument(isValidTagName(tagName), ConstraintMessage.TAG_NAME.getValue());
+        checkArgument(isValidTagName(tagName), ConstraintMessage.TAG_NAME.toString());
         this.tagName = tagName;
     }
 

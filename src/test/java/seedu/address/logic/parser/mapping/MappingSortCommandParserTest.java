@@ -73,7 +73,7 @@ public class MappingSortCommandParserTest {
         // invalid attribute
         assertParseFailure(parser, commandActionWord
                         + getSquareBracketWrappedArgument(INVALID_MAPPING_ATTRIBUTE),
-                ConstraintMessage.MAPPING_ATTRIBUTE_SORT.getValue());
+                ConstraintMessage.MAPPING_ATTRIBUTE_SORT.toString());
     }
 
     @Test

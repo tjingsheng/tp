@@ -142,7 +142,8 @@ public enum ConstraintMessage {
      *
      * @return The usage message value.
      */
-    public String getValue() {
+    @Override
+    public String toString() {
         return value;
     }
 }

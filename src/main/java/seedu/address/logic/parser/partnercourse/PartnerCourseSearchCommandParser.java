@@ -60,12 +60,12 @@ public class PartnerCourseSearchCommandParser implements Parser<PartnerCourseSea
         switch (partnerCourseAttribute) {
         case PARTNERCODE:
             if (!PartnerCode.isValidPartnerCode(trimmedQuery)) {
-                throw new ParseException(ConstraintMessage.PARTNERCOURSE_CODE.getValue());
+                throw new ParseException(ConstraintMessage.PARTNERCOURSE_CODE.toString());
             }
             break;
         case PARTNERNAME:
             if (!PartnerName.isValidPartnerName(trimmedQuery)) {
-                throw new ParseException(ConstraintMessage.PARTNERCOURSE_NAME.getValue());
+                throw new ParseException(ConstraintMessage.PARTNERCOURSE_NAME.toString());
             }
             break;
         default:

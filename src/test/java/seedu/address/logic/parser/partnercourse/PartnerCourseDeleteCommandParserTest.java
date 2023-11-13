@@ -89,7 +89,7 @@ public class PartnerCourseDeleteCommandParserTest {
         assertParseFailure(parser, commandActionWord
                         + getSquareBracketWrappedArgument(INVALID_PARTNER_COURSE_CODE)
                         + getSquareBracketWrappedArgument(TYPICAL_UNIVERSITY_NAME),
-                           ConstraintMessage.PARTNERCOURSE_CODE.getValue());
+                           ConstraintMessage.PARTNERCOURSE_CODE.toString());
     }
 
     @Test

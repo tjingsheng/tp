@@ -86,7 +86,7 @@ public class MappingDeleteCommandParserTest {
                         + getSquareBracketWrappedArgument(INVALID_LOCAL_COURSE_CODE) + " "
                         + getSquareBracketWrappedArgument(EDGE_CASE_VALID_UNIVERSITY_NAME) + " "
                         + getSquareBracketWrappedArgument(EDGE_CASE_VALID_PARTNER_COURSE_CODE),
-                ConstraintMessage.LOCALCOURSE_CODE.getValue());
+                ConstraintMessage.LOCALCOURSE_CODE.toString());
     }
 
     @Test

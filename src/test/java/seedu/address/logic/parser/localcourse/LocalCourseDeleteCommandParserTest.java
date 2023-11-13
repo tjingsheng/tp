@@ -72,7 +72,7 @@ public class LocalCourseDeleteCommandParserTest {
         // invalid localCode
         assertParseFailure(parser, commandActionWord
                         + getSquareBracketWrappedArgument(INVALID_LOCAL_COURSE_CODE),
-                ConstraintMessage.LOCALCOURSE_CODE.getValue());
+                ConstraintMessage.LOCALCOURSE_CODE.toString());
     }
 
     @Test

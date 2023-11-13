@@ -22,7 +22,7 @@ public class PartnerCode {
     public PartnerCode(String partnerCode) {
         partnerCode = partnerCode.trim();
         requireNonNull(partnerCode);
-        checkArgument(isValidPartnerCode(partnerCode), ConstraintMessage.PARTNERCOURSE_CODE.getValue());
+        checkArgument(isValidPartnerCode(partnerCode), ConstraintMessage.PARTNERCOURSE_CODE.toString());
         value = partnerCode;
     }
 

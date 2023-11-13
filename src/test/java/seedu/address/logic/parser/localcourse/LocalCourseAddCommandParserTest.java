@@ -98,7 +98,7 @@ public class LocalCourseAddCommandParserTest {
                 + " " + getSquareBracketWrappedArgument(TYPICAL_LOCAL_COURSE_DESCRIPTION);
 
 
-        assertParseFailure(parser, invalidLocalCodeCommand, ConstraintMessage.LOCALCOURSE_CODE.getValue());
+        assertParseFailure(parser, invalidLocalCodeCommand, ConstraintMessage.LOCALCOURSE_CODE.toString());
 
         // Invalid localName
         // This test also ensures that the input to checkArgument and parseLocalName matches.

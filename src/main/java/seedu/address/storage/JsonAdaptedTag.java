@@ -41,7 +41,7 @@ public class JsonAdaptedTag {
      */
     public Tag toModelType() throws IllegalValueException {
         if (!Tag.isValidTagName(tagName)) {
-            throw new IllegalValueException(ConstraintMessage.TAG_NAME.getValue());
+            throw new IllegalValueException(ConstraintMessage.TAG_NAME.toString());
         }
         return new Tag(tagName);
     }

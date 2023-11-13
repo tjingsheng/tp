@@ -27,7 +27,7 @@ public class PartnerDescription {
         partnerDescription = partnerDescription.trim();
         requireNonNull(partnerDescription);
         checkArgument(isValidPartnerDescription(partnerDescription),
-                      ConstraintMessage.PARTNERCOURSE_DESCRIPTION.getValue());
+                      ConstraintMessage.PARTNERCOURSE_DESCRIPTION.toString());
         value = partnerDescription;
     }
 

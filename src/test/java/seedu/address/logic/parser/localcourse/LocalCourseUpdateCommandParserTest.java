@@ -101,7 +101,7 @@ public class LocalCourseUpdateCommandParserTest {
                         + getSquareBracketWrappedArgument(INVALID_PARTNER_COURSE_CODE)
                         + getSquareBracketWrappedArgument(LocalCourseAttribute.LOCALUNIT.toString())
                         + getSquareBracketWrappedArgument("10.0"),
-                ConstraintMessage.LOCALCOURSE_CODE.getValue());
+                ConstraintMessage.LOCALCOURSE_CODE.toString());
 
         // invalid localAttribute
         assertParseFailure(
@@ -110,7 +110,7 @@ public class LocalCourseUpdateCommandParserTest {
                         + getSquareBracketWrappedArgument(CS2042S.getLocalCode().toString())
                         + getSquareBracketWrappedArgument(INVALID_LOCAL_COURSE_ATTRIBUTE)
                         + getSquareBracketWrappedArgument("10.0"),
-                ConstraintMessage.LOCALCOURSE_ATTRIBUTE_UPDATE.getValue());
+                ConstraintMessage.LOCALCOURSE_ATTRIBUTE_UPDATE.toString());
 
         // invalid updatedValue for partnerCode
         assertParseFailure(
@@ -119,7 +119,7 @@ public class LocalCourseUpdateCommandParserTest {
                         + getSquareBracketWrappedArgument(CS2042S.getLocalCode().toString())
                         + getSquareBracketWrappedArgument(LocalCourseAttribute.LOCALCODE.toString())
                         + getSquareBracketWrappedArgument(INVALID_LOCAL_COURSE_CODE),
-                ConstraintMessage.LOCALCOURSE_CODE.getValue());
+                ConstraintMessage.LOCALCOURSE_CODE.toString());
 
         // invalid updatedValue for unit
         assertParseFailure(
@@ -128,7 +128,7 @@ public class LocalCourseUpdateCommandParserTest {
                         + getSquareBracketWrappedArgument(CS2042S.getLocalCode().toString())
                         + getSquareBracketWrappedArgument(LocalCourseAttribute.LOCALUNIT.toString())
                         + getSquareBracketWrappedArgument(INVALID_LOCAL_COURSE_UNIT.toString()),
-                ConstraintMessage.LOCALCOURSE_UNIT.getValue());
+                ConstraintMessage.LOCALCOURSE_UNIT.toString());
     }
 }
 

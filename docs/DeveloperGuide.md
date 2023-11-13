@@ -198,6 +198,9 @@ The activity diagram is as such:
 <puml src="diagrams/AddActivityDiagram.puml" width="300" />
 
 <br>
+Here is a sequence diagram for 'add note`:
+<puml src="diagrams/NoteAddSequenceDiagram.puml" width="300" />
+
 
 **Feature Details**
 1. The user specifies the command word. Possible command words include `localcourse`, `partnercourse`,
@@ -218,6 +221,10 @@ It should be noted that when checking for duplicates in the `UniqueLocalCourseLi
 and `universityname`. This is because courses have unique course codes and is specific to the university, having this 
 check would also prevent confusion for users if they have mistakenly added courses that are already in the database. 
 Furthermore, this would confuse the user on which is the most accurate information available as well. 
+
+<br>
+
+--------------------------------------------------------------------------------------------------------------------
 
 ### Searching of courses, universities and notes
 

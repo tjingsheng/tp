@@ -5,9 +5,9 @@ skinparam ArrowFontStyle plain
 box SeplendidLogic LOGIC_COLOR_T1
 participant ":SeplendidLogicManager" as SeplendidLogicManager LOGIC_COLOR
 participant ":SeplendidParser" as SeplendidParser LOGIC_COLOR
-participant ":PartnerCourseSearchCommandParser" as LocalCourseUpdateCommandParser LOGIC_COLOR
-participant "d:LocalCourseUpdateCommand" as LocalCourseUpdateCommand LOGIC_COLOR
-participant ":LocalCourse" as LocalCourse LOGIC_COLOR
+participant ":PartnerCourseSearchCommandParser" as PartnerCourseUpdateCommandParser LOGIC_COLOR
+participant "d:PartnerCourseUpdateCommand" as PartnerCourseUpdateCommand LOGIC_COLOR
+participant ":PartnerCourse" as PartnerCourse LOGIC_COLOR
 participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
 
@@ -15,69 +15,65 @@ box SeplendidModel MODEL_COLOR_T1
 participant ":SeplendidModel" as SeplendidModel MODEL_COLOR
 end box
 
-[-> SeplendidLogicManager : execute("localcourse update [CS2103] [unit] [5.0]")
+[-> SeplendidLogicManager : execute("partnercourse search [partnercode] [CS2105]")
 activate SeplendidLogicManager
 
-SeplendidLogicManager -> SeplendidParser : parseCommand("localcourse update [CS2103] [unit] [5.0]")
+SeplendidLogicManager -> SeplendidParser : parseCommand("partnercourse search [partnercode] [CS2105]")
 activate SeplendidParser
 
-create LocalCourseUpdateCommandParser
-SeplendidParser -> LocalCourseUpdateCommandParser
-activate LocalCourseUpdateCommandParser
+create PartnerCourseSearchCommandParser
+SeplendidParser -> PartnerCourseSearchCommandParser
+activate PartnerCourseSearchCommandParser
 
-LocalCourseUpdateCommandParser --> SeplendidParser
-deactivate LocalCourseUpdateCommandParser
+PartnerCourseSearchCommandParser --> SeplendidParser
+deactivate PartnerCourseSearchCommandParser
 
-SeplendidParser -> LocalCourseUpdateCommandParser : parse("[CS2103] [unit] [5.0]")
-activate LocalCourseUpdateCommandParser
+SeplendidParser -> PartnerCourseSearchCommandParser : parse("[CS2103] [unit] [5.0]")
+activate PartnerCourseSearchCommandParser
 
-create LocalCourseUpdateCommand
-LocalCourseUpdateCommandParser -> LocalCourseUpdateCommand
-activate LocalCourseUpdateCommand
+create PartnerCourseSearchCommand
+PartnerCourseSearchCommandParser -> PartnerCourseSearchCommand
+activate PartnerCourseSearchCommand
 
-LocalCourseUpdateCommand --> LocalCourseUpdateCommandParser : d
-deactivate LocalCourseUpdateCommand
+PartnerCourseSearchCommand --> PartnerCourseSearchCommandParser : d
+deactivate PartnerCourseSearchCommand
 
-LocalCourseUpdateCommandParser --> SeplendidParser : d
-deactivate LocalCourseUpdateCommandParser
+PartnerCourseSearchCommandParser --> SeplendidParser : d
+deactivate PartnerCourseSearchCommandParser
 'Hidden arrow to position the destroy marker below the end of the activation bar.
-LocalCourseUpdateCommandParser -[hidden]-> SeplendidParser
-destroy LocalCourseUpdateCommandParser
+PartnerCourseSearchCommandParser -[hidden]-> SeplendidParser
+destroy PartnerCourseSearchCommandParser
 
 SeplendidParser --> SeplendidLogicManager : d
 deactivate SeplendidParser
 
-SeplendidLogicManager -> LocalCourseUpdateCommand : execute()
-activate LocalCourseUpdateCommand
+SeplendidLogicManager -> PartnerCourseSearchCommand : execute()
+activate PartnerCourseSearchCommand
 
-LocalCourseUpdateCommand -> SeplendidModel : getLocalCourseIfExists(localCode)
+PartnerCourseSearchCommand -> SeplendidModel : getPartnerCourseIfExists(localCode)
 activate SeplendidModel
 
-SeplendidModel --> LocalCourseUpdateCommand : Optional.of(localCourse)
+SeplendidModel --> PartnerCourseSearchCommand : Optional.of(partnerCourse)
 deactivate SeplendidModel
 
-create LocalCourse
-LocalCourseUpdateCommand -> LocalCourse
-activate LocalCourse
+PartnerCourse -> PartnerCourseSearchCommand
+deactivate PartnerCourse
 
-LocalCourse -> LocalCourseUpdateCommand
-deactivate LocalCourse
-
-LocalCourseUpdateCommand -> SeplendidModel : setLocalCourse(localCourse, updatedLocalCourse)
+PartnerCourseSearchCommand -> SeplendidModel : searchPartnerCourses(attribute, predicate)
 activate SeplendidModel
 
-SeplendidModel --> LocalCourseUpdateCommand
+SeplendidModel --> PartnerCourseSearchCommand
 deactivate SeplendidModel
 
 create CommandResult
-LocalCourseUpdateCommand -> CommandResult
+PartnerCourseSearchCommand -> CommandResult
 activate CommandResult
 
-CommandResult --> LocalCourseUpdateCommand
+CommandResult --> PartnerCourseSearchCommand
 deactivate CommandResult
 
-LocalCourseUpdateCommand --> SeplendidLogicManager : result
-deactivate LocalCourseUpdateCommand
+PartnerCourseSearchCommand --> SeplendidLogicManager : result
+deactivate PartnerCourseSearchCommand
 
 [<--SeplendidLogicManager
 deactivate SeplendidLogicManager

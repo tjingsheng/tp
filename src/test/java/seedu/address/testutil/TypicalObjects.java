@@ -136,6 +136,7 @@ public class TypicalObjects {
             + "and randomised approaches), amortized"
             + " analysis, NP-completeness, and some "
             + "selected advanced topics.").build();
+
     public static final LocalCourse CS1231S = new LocalCourseBuilder().withLocalCode("CS1231S").withLocalName(
         "Discrete Structures").withLocalUnit(4.0).withLocalDescription("This course introduces mathematical tools "
         + "required in the study of computer "
@@ -161,6 +162,7 @@ public class TypicalObjects {
         + "infinite set has a countably "
         + "infinite subset. Subsets of "
         + "countable sets are countable.").build();
+
     public static final LocalCourse CS2030S = new LocalCourseBuilder().withLocalCode("CS2030S").withLocalName(
         "Programming Methodology II").withLocalUnit(4.0).build();
     public static final LocalCourse MA2001 = new LocalCourseBuilder().withLocalCode("MA2001").withLocalName(

@@ -1,13 +1,15 @@
 package seedu.address.model.partnercourse;
 
+import java.util.Set;
+
 /**
  * Represents the attribute related to a partner course.
  */
 public enum PartnerCourseAttribute {
     PARTNERCODE("partnercode"),
     PARTNERNAME("partnername"),
-    PARTNERUNIT("partnerunit"),
-    PARTNERDESCRIPTION("partnerdescription"),
+    PARTNERUNIT("unit"),
+    PARTNERDESCRIPTION("description"),
     UNIVERSITY("university");
 
     private final String value;
@@ -60,15 +62,7 @@ public enum PartnerCourseAttribute {
         if (attribute == null) {
             return false;
         }
-
-        switch (attribute) {
-        case PARTNERCODE:
-        case PARTNERNAME:
-        case UNIVERSITY:
-            return true;
-        default:
-            return false;
-        }
+        return Set.of(PARTNERCODE, PARTNERNAME, UNIVERSITY).contains(attribute);
     }
 
     /**
@@ -82,16 +76,7 @@ public enum PartnerCourseAttribute {
         if (attribute == null) {
             return false;
         }
-
-        switch (attribute) {
-        case PARTNERCODE:
-        case PARTNERNAME:
-        case PARTNERUNIT:
-        case PARTNERDESCRIPTION:
-            return true;
-        default:
-            return false;
-        }
+        return Set.of(PARTNERCODE, PARTNERNAME, PARTNERUNIT, PARTNERDESCRIPTION).contains(attribute);
     }
 
     /**
@@ -105,15 +90,6 @@ public enum PartnerCourseAttribute {
         if (attribute == null) {
             return false;
         }
-
-        switch (attribute) {
-        case PARTNERCODE:
-        case PARTNERNAME:
-        case PARTNERDESCRIPTION:
-        case UNIVERSITY:
-            return true;
-        default:
-            return false;
-        }
+        return Set.of(PARTNERCODE, PARTNERNAME, PARTNERDESCRIPTION, UNIVERSITY).contains(attribute);
     }
 }

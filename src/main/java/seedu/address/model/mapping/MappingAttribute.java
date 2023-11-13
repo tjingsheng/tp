@@ -1,5 +1,7 @@
 package seedu.address.model.mapping;
 
+import java.util.Set;
+
 /**
  * Represents the attribute related to mapping.
  */
@@ -61,18 +63,7 @@ public enum MappingAttribute {
         if (attribute == null) {
             return false;
         }
-
-        switch (attribute) {
-        case LOCALCODE:
-        case LOCALNAME:
-        case PARTNERCODE:
-        case PARTNERNAME:
-        case UNIVERSITY:
-        case INFORMATION:
-            return true;
-        default:
-            return false;
-        }
+        return Set.of(LOCALCODE, LOCALNAME, PARTNERCODE, PARTNERNAME, UNIVERSITY, INFORMATION).contains(attribute);
     }
 
     /**
@@ -86,17 +77,6 @@ public enum MappingAttribute {
         if (attribute == null) {
             return false;
         }
-
-        switch (attribute) {
-        case LOCALCODE:
-        case LOCALNAME:
-        case PARTNERCODE:
-        case PARTNERNAME:
-        case UNIVERSITY:
-        case INFORMATION:
-            return true;
-        default:
-            return false;
-        }
+        return Set.of(LOCALCODE, LOCALNAME, PARTNERCODE, PARTNERNAME, UNIVERSITY, INFORMATION).contains(attribute);
     }
 }

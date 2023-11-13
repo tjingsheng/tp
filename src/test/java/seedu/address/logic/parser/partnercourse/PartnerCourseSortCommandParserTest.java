@@ -48,7 +48,7 @@ public class PartnerCourseSortCommandParserTest {
 
     @Test
     public void parse_argumentNotClosedOrEmpty_failure() {
-        String expectedMessage = UsageMessage.PARTNERCOURSE_SORT.getValue();
+        String expectedMessage = UsageMessage.PARTNERCOURSE_SORT.toString();
 
         // missing open bracket
         assertParseFailure(parser, commandActionWord
@@ -66,7 +66,7 @@ public class PartnerCourseSortCommandParserTest {
         // invalid attribute
         assertParseFailure(parser, commandActionWord
                         + getSquareBracketWrappedArgument(INVALID_PARTNER_COURSE_ATTRIBUTE),
-                           ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_SORT.getValue());
+                           ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_SORT.toString());
     }
 
     @Test

@@ -45,7 +45,7 @@ class JsonAdaptedUniversity {
                     UniversityName.class.getSimpleName()));
         }
         if (!UniversityName.isValidUniversityName(universityName)) {
-            throw new IllegalValueException(ConstraintMessage.UNIVERSITY_NAME.getValue());
+            throw new IllegalValueException(ConstraintMessage.UNIVERSITY_NAME.toString());
         }
         final UniversityName modelUniversityName = new UniversityName(universityName);
 

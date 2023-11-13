@@ -16,6 +16,7 @@ import static seedu.address.testutil.TypicalObjects.TYPICAL_UNIVERSITY_NAME;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.messages.ConstraintMessage;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerName;
 import seedu.address.model.partnercourse.PartnerUnit;
@@ -37,7 +38,7 @@ public class JsonAdaptedPartnerCourseTest {
                 TYPICAL_PARTNER_COURSE_NAME,
                 TYPICAL_PARTNER_COURSE_UNIT,
                 TYPICAL_PARTNER_COURSE_DESCRIPTION);
-        String expectedMessage = PartnerCode.MESSAGE_CONSTRAINTS;
+        String expectedMessage = ConstraintMessage.PARTNERCOURSE_CODE.toString();
         assertThrows(IllegalValueException.class, expectedMessage, partnerCourse::toModelType);
     }
 
@@ -63,7 +64,7 @@ public class JsonAdaptedPartnerCourseTest {
                 INVALID_PARTNER_COURSE_NAME,
                 TYPICAL_PARTNER_COURSE_UNIT,
                 TYPICAL_PARTNER_COURSE_DESCRIPTION);
-        String expectedMessage = PartnerName.MESSAGE_CONSTRAINTS;
+        String expectedMessage = ConstraintMessage.PARTNERCOURSE_NAME.toString();
         assertThrows(IllegalValueException.class, expectedMessage, partnerCourse::toModelType);
     }
 
@@ -99,7 +100,7 @@ public class JsonAdaptedPartnerCourseTest {
             TYPICAL_PARTNER_COURSE_NAME,
             INVALID_PARTNER_COURSE_UNIT,
             TYPICAL_PARTNER_COURSE_DESCRIPTION);
-        String expectedMessage = PartnerUnit.MESSAGE_CONSTRAINTS;
+        String expectedMessage = ConstraintMessage.PARTNERCOURSE_UNIT.toString();
         assertThrows(IllegalValueException.class, expectedMessage, partnerCourse::toModelType);
     }
 }

@@ -45,7 +45,7 @@ public class LocalCourseDeleteCommandParserTest {
 
     @Test
     void parse_argumentNotClosedOrEmpty_failure() {
-        String expectedMessage = UsageMessage.LOCALCOURSE_DELETE.getValue();
+        String expectedMessage = UsageMessage.LOCALCOURSE_DELETE.toString();
 
         // missing open bracket
         assertParseFailure(parser, commandActionWord
@@ -61,7 +61,7 @@ public class LocalCourseDeleteCommandParserTest {
 
     @Test
     public void parse_allArgumentMissing_failure() {
-        String expectedMessage = UsageMessage.LOCALCOURSE_DELETE.getValue();
+        String expectedMessage = UsageMessage.LOCALCOURSE_DELETE.toString();
 
         // all arguments missing
         assertParseFailure(parser, commandActionWord, expectedMessage);
@@ -72,7 +72,7 @@ public class LocalCourseDeleteCommandParserTest {
         // invalid localCode
         assertParseFailure(parser, commandActionWord
                         + getSquareBracketWrappedArgument(INVALID_LOCAL_COURSE_CODE),
-                ConstraintMessage.LOCALCOURSE_CODE.getValue());
+                ConstraintMessage.LOCALCOURSE_CODE.toString());
     }
 
     @Test

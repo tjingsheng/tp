@@ -35,7 +35,7 @@ public class LocalCourseAddCommandParser implements Parser<LocalCourseAddCommand
         ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
                 areValuesEnclosedAndNonEmpty(args);
         if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
-            throw new ParseException(UsageMessage.LOCALCOURSE_ADD.getValue());
+            throw new ParseException(UsageMessage.LOCALCOURSE_ADD.toString());
         } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
             throw new ParseException(UsageMessage.LOCALCOURSE_ADD.getValueWithEmptyArgs());
         }
@@ -46,7 +46,7 @@ public class LocalCourseAddCommandParser implements Parser<LocalCourseAddCommand
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_LOCALCODE, PARAMETER_LOCALNAME,
                 PARAMETER_LOCALUNIT, PARAMETER_LOCALDESCRIPTION)) {
-            throw new ParseException(UsageMessage.LOCALCOURSE_ADD.getValue());
+            throw new ParseException(UsageMessage.LOCALCOURSE_ADD.toString());
         }
 
         // All arguments should be a non-empty {@code Optional}

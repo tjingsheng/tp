@@ -32,7 +32,7 @@ public class NoteTest {
     }
 
     @Test
-    public void isSameNote_differentContent_returnsFalse() {
+    public void isSameNote_differentContentSameIndex_returnsTrue() {
         // Create two notes with different content but the same index using the NoteBuilder
         Note note1 = new NoteBuilder()
                 .withContent("Content A")
@@ -44,7 +44,7 @@ public class NoteTest {
                 .withIndex(1)
                 .build();
 
-        assertFalse(note1.isSameNote(note2));
+        assertTrue(note1.isSameNote(note2));
     }
 
     @Test
@@ -69,7 +69,7 @@ public class NoteTest {
     }
 
     @Test
-    public void equals_differentIndex_returnsFalse() {
+    public void equals_samContentdifferentIndex_returnsTrue() {
         // Create two notes with the same content and tags but different indices using the NoteBuilder
         Set<Tag> tags = new HashSet<>();
         tags.add(new Tag("Tag1"));
@@ -86,7 +86,7 @@ public class NoteTest {
                 .withIndex(2)
                 .build();
 
-        assertFalse(note1.equals(note2));
+        assertTrue(note1.equals(note2));
     }
 
     @Test

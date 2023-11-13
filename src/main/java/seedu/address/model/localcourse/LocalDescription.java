@@ -26,7 +26,7 @@ public class LocalDescription {
     public LocalDescription(String localDescription) {
         localDescription = localDescription.trim();
         requireNonNull(localDescription);
-        checkArgument(isValidLocalDescription(localDescription), ConstraintMessage.LOCALCOURSE_DESCRIPTION.getValue());
+        checkArgument(isValidLocalDescription(localDescription), ConstraintMessage.LOCALCOURSE_DESCRIPTION.toString());
         value = localDescription;
     }
 

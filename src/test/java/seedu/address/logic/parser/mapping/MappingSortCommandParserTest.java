@@ -55,7 +55,7 @@ public class MappingSortCommandParserTest {
 
     @Test
     public void parse_argumentNotClosedOrEmpty_failure() {
-        String expectedMessage = UsageMessage.MAPPING_SORT.getValue();
+        String expectedMessage = UsageMessage.MAPPING_SORT.toString();
         // missing open bracket
         assertParseFailure(parser, commandActionWord
                 + MappingUtil.getMappingArgumentsForSortCommand(
@@ -73,7 +73,7 @@ public class MappingSortCommandParserTest {
         // invalid attribute
         assertParseFailure(parser, commandActionWord
                         + getSquareBracketWrappedArgument(INVALID_MAPPING_ATTRIBUTE),
-                ConstraintMessage.MAPPING_ATTRIBUTE_SORT.getValue());
+                ConstraintMessage.MAPPING_ATTRIBUTE_SORT.toString());
     }
 
     @Test

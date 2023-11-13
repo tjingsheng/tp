@@ -86,7 +86,7 @@ public class SeplendidLogicManagerTest {
     public void execute_invalidCommandFormat_throwsParseException() {
         String invalidCommand = "uicfhmowqewca";
         assertParseException(invalidCommand,
-                             UsageMessage.HELP.getValue());
+                             UsageMessage.HELP.toString());
     }
 
     @Test

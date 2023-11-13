@@ -25,7 +25,7 @@ public class LocalCode {
     public LocalCode(String localCode) {
         localCode = localCode.trim();
         requireNonNull(localCode);
-        checkArgument(isValidLocalCode(localCode), ConstraintMessage.LOCALCOURSE_CODE.getValue());
+        checkArgument(isValidLocalCode(localCode), ConstraintMessage.LOCALCOURSE_CODE.toString());
         value = localCode;
     }
 

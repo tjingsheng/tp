@@ -67,20 +67,20 @@ The sections below give more details of each component.
 
 ### UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+**API** : [`Ui.java`](https://github.com/AY2324S1-CS2103T-W10-2/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
 <puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `ItemListPanel`, `ItemDetailPanel` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2324S1-CS2103T-W10-2/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2324S1-CS2103T-W10-2/tp/blob/master/src/main/resources/seplendidview/MainWindow.fxml)
 
 The `UI` component,
 
-* executes user commands using the `Logic` component.
+* executes user commands using the `SeplendidLogic` component.
 * listens for changes to `Model` data so that the UI can be updated with the modified data.
-* keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
-* depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
+* keeps a reference to the `SeplendidLogic` component, because the `UI` relies on the `SeplendidLogic` to execute commands.
+* depends on some classes in the `Model` component, as it displays `LocalCourse`, `PartnerCourse`, `University`, `Mapping`, and `Note` objects residing in the `Model`.
 
 ### SeplendidLogic component
 
@@ -334,6 +334,27 @@ _{Explain here how the data archiving feature will be implemented}_
 * [Logging guide](Logging.md)
 * [Configuration guide](Configuration.md)
 * [DevOps guide](DevOps.md)
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Effort
+
+The implementation of SEPlendid proved to be a challenging endeavor. Below is the highlights of the extensive effort our
+team dedicated to developing SEPlendid, along with a mention of some of the challenges we encountered along the way.
+
+### Morphing of AB3 to SEPlendid
+
+A large portion of code had to be refactored to morph AB3 to SEPlendid.
+
+### Redesigning the UI
+
+In recognising the significance of minimalism for achieving simplicity, we embarked on the task of redesigning the
+original AB3 UI into our custom SEPlendid interface. The endeavor underscored the essential balance between simplicity
+and functionality. The effort invested in the redesigning process was substantial, requiring meticulous design
+considerations. Striving to meet both aesthetic standards and high functionality, we faced a steep learning curve with
+JavaFX. Despite the initial challenges, our team persevered, overcoming obstacles and ultimately producing a UI that not
+only met our design goals but also offered a visually appealing and highly functional experience tailored to the
+requirements of a student exchange program mapping tool.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -797,38 +818,457 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder
+  1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample courses. The window size may not be 
-   optimum.
+  1. Double-click the jar file <br>
+     Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
-### Adding and delete a mapping
+### Local Course
 
-1. Add a mapping while all mappings are being shown)
+#### List all local courses
 
-   1. Prerequisites: List all mappings using the `mapping list` command. Multiple mappings in the list.
+Prerequisite: 
+- There is at least 1 local course stored in SEPlendid.
 
-   1. Ensure your scroll to the bottom.
+`localcourse list`
 
-   1. Test case: `mapping add [IS4231] [Lund University] [INFC40] [Sem 1 only.]`<br>
-      Expected: A new mapping is added, and will appear at the bottom of the list.
+Expected Output: All local courses stored in SEPlendid will be shown in the Item List Box.
 
-   1. Test case: `mapping delete [IS4231] [Lund University] [INFC40] [Sem 1 only.]`<br>
-      Expected: The mapping is deleted, and disappears from the list. 
+Expected Output in the Command Output Box: Listed all local courses
 
-   1. Other incorrect delete commands to try: `mapping ad`, `mapping add []`, `...` <br>
-      Expected: An error message will appear.
+<box type="info" seamless>
 
-### Saving data
+**Note:** If there is no local course, the item list box will just be an empty box.
 
-1. Dealing with missing/corrupted data files
-- If any of the `.json` files found under the `data/` directory created is edited to have invalid data. SEPlendid 
-will reset to the default data, which has been programmatically added.
-- Therefore, it is recommended to make a copy and keep a backup of existing data before making any changes to any of 
-the files under `data/*.json`.
-- One corrupted file will lead to a full reset of the application.
+</box> 
 
-2. To simulate a missing/corrupted data file, delete the `data/` directory.
-- A new director will be created in its place, with the default seed data.
-- To corrupt the data, open any of the `.json` files under `data/` and edit the data in it. For instance, you may 
-change a `localCode` to the empty string `""`. Restart the application, and observe that the data has been reset.
+#### Add a local course
+
+`localcourse add [CS1111] [Test module] [4] [test]`
+
+Expected Output: The new local course will be added to the list of local courses.
+
+Expected Output in the Command Output Box: New local course added message.
+
+`localcourse add [test]`
+
+Expected Output in the Command Output Box: Error for invalid command format.
+
+#### Delete a local course
+
+Prerequisite: 
+- A local course with local code of `CS1111` currently exists in the local course list.
+- The local course specified should not be present in any of the current mappings.
+
+`localcourse delete [CS1111]`
+
+Expected Output: The local course will be deleted from the list of local courses.
+
+Expected Output in the Command Output Box: Local course deleted message.
+
+#### Update a local course
+
+Prerequisites: 
+- A local course with local code of `BT1101` currently exists in the local course list.
+
+`localcourse update [BT1101] [unit] [3]`
+
+Expected Output: The specified local course will be updated.
+
+Expected Output in the Command Output Box: Local course updated message.
+
+#### Search a local course by attributes
+
+Prerequisite:
+- There is at least 1 local course that have a localcode that contains the word `cs` stored in SEPlendid.
+
+`localcourse search [localcode] [cs]`
+
+Expected Output: A list of local courses that have a localcode of `cs`.
+
+Expected Output in the Command Output Box: Local course searched message.
+
+Prerequisite:
+- There is no local course that have a localcode that contains the letter `z` stored in SEPlendid.
+
+`localcourse search [localcode] [z]`
+
+Expected Output: No result.
+
+Expected Output in the Command Output Box: Local course searched message.
+
+<box type="info" seamless>
+
+**Note:** The query cannot start with a number. It must start with an alphabet.
+
+</box> 
+
+#### Sort local courses by attributes
+
+Prerequisite:
+- There is at least 1 local course stored in SEPlendid.
+
+`localcourse sort [localname]`
+
+Expected Output: All local courses stored in SEPlendid will be shown in the Item List Box sorted according to the localname in ascending order.
+
+Expected Output in the Command Output Box: Sorted all local courses 
+
+<box type="info" seamless>
+
+**Note:** If there is no local course, the item list box will just be an empty box.
+
+</box> 
+
+### Partner Course
+
+#### List all partner courses
+
+Prerequisite: 
+- There is at least 1 partner course stored in SEPlendid.
+
+`partnercourse list`
+
+Expected Output: All partner courses stored in SEPlendid will be shown in the Item List Box.
+
+Expected Output in the Command Output Box: Listed all partner courses
+
+<box type="info" seamless>
+
+**Note:** If there is no partner course, the item list box will just be an empty box.
+
+</box> 
+
+#### Add a partner course
+
+Prerequisite: 
+- The university of the partner course should be added to the university list.
+
+`partnercourse add [The Hong Kong Polytechnic University] [CS1111] [Test module] [4] [test]`
+
+Expected Output: The new partner course will be added to the list of partner courses.
+
+Expected Output in the Command Output Box: New partner course added message.
+
+`partnercourse add [University of] [test]`
+
+Expected Output in the Command Output Box: Error for invalid command format.
+
+#### Delete a partner course
+
+Prerequisite: 
+- A partner course with partner code of `CS1111` and university of `The Hong Kong Polytechnic University` currently exists in the partner course list.
+- The partner course specified should not be present in any of the current mappings.
+
+`partnercourse delete [The Hong Kong Polytechnic University] [CS1111]`
+
+Expected Output: The partner course will be deleted from the list of partner courses.
+
+Expected Output in the Command Output Box: Partner course deleted message.
+
+#### Update a partner course
+
+Prerequisites:
+- A partner course with partner code of `CSE469` and university of `Arizona State University` currently exists in the partner course list.
+
+`partnercourse update [Arizona State University] [CSE469] [unit] [1]`
+
+Expected Output: The specified partner course will be updated.
+
+Expected Output in the Command Output Box: Partner course updated message.
+
+#### Search a partner course by attributes
+
+Prerequisite:
+- There is at least 1 partner course that have a partnercode that contains the word `cs` stored in SEPlendid.
+
+`partnercourse search [partnercode] [cs]`
+
+Expected Output: A list of partner courses that have a partnercode of `cs`.
+
+Expected Output in the Command Output Box: Partner course searched message.
+
+Prerequisite:
+- There is no partner course that have a partnercode that contains the letter `zz` stored in SEPlendid.
+
+`partnercourse search [partnercode] [zz]`
+
+Expected Output: No result.
+
+Expected Output in the Command Output Box: Partner course searched message.
+
+<box type="info" seamless>
+
+**Note:** The query cannot start with a number. It must start with an alphabet.
+
+</box> 
+
+#### Sort partner courses by attributes
+
+Prerequisite:
+- There is at least 1 partner course stored in SEPlendid.
+
+`partnercourse sort [university]`
+
+Expected Output: All partner courses stored in SEPlendid will be shown in the Item List Box sorted according to the university in ascending order.
+
+Expected Output in the Command Output Box: Sorted all partner courses
+
+<box type="info" seamless>
+
+**Note:** If there is no partner course, the item list box will just be an empty box.
+
+</box> 
+
+### University
+
+#### List all universities
+
+Prerequisite: 
+- There is at least 1 university stored in SEPlendid.
+
+`university list`
+
+Expected Output: All universities stored in SEPlendid will be shown in the Item List Box.
+
+Expected Output in the Command Output Box: Listed all universities
+
+<box type="info" seamless>
+
+**Note:** If there is no university, the item list box will just be an empty box.
+
+</box> 
+
+#### Search a university by attributes
+
+Prerequisite:
+- There is at least 1 university that have a name that contains the word `hong kong` stored in SEPlendid.
+
+`university search [hong kong]`
+
+Expected Output: A list of universities that have a name that contains `hong kong`.
+
+Expected Output in the Command Output Box: University searched message.
+
+Prerequisite:
+- There is no university that have a name that contains the word `hk` stored in SEPlendid.
+
+`university search [hk]`
+
+Expected Output: No result.
+
+Expected Output in the Command Output Box: University searched message.
+
+#### Sort universities
+
+Prerequisite:
+- There is at least 1 university stored in SEPlendid.
+
+`university sort`
+
+Expected Output: All universities stored in SEPlendid will be shown in the Item List Box sorted according to the name in ascending order.
+
+Expected Output in the Command Output Box: Sorted all universities
+
+<box type="info" seamless>
+
+**Note:** If there is no university, the item list box will just be an empty box.
+
+</box> 
+
+### Mapping
+
+#### List all mappings
+
+Prerequisite: 
+- There is at least 1 mapping stored in SEPlendid.
+
+`mapping list`
+
+Expected Output: All mappings stored in SEPlendid will be shown in the Item List Box.
+
+Expected Output in the Command Output Box: Listed all mappings
+
+<box type="info" seamless>
+
+**Note:** If there is no mapping, the item list box will just be an empty box.
+
+</box> 
+
+#### Add a mapping
+
+Prerequisite: 
+- The university of the partner course should be added to the university list.
+- The local course with local code specified should be added to the local course list.
+- The partner course with partner code specified should be added to the partner course list.
+
+`mapping add [CS3230] [Arizona State University] [CSE469] [mapping]`
+
+Expected Output: The new mapping will be added to the list of mappings.
+
+Expected Output in the Command Output Box: New mapping added message.
+
+`mapping add [University of] [test]`
+
+Expected Output in the Command Output Box: Error for invalid command format.
+
+#### Delete a mapping
+
+Prerequisite:
+- A mapping with local code of `CS3244`, partner code of `CSE494` and university of `Arizona State University` currently exists in the mapping list.
+
+`mapping delete [CS3244] [Arizona State University] [CSE494]`
+
+Expected Output: The mapping will be deleted from the list of mappings.
+
+Expected Output in the Command Output Box: Mapping deleted message.
+
+#### Search a mapping by attributes
+
+Prerequisite:
+- There is at least 1 mapping that have a localcode that contains the word `cs3230` stored in SEPlendid.
+
+`mapping search [localcode] [cs3230]`
+
+Expected Output: A list of mappings that have a localcode that contains the word `cs3230`.
+
+Expected Output in the Command Output Box: Mapping searched message.
+
+Prerequisite:
+- There is no mapping that have a localcode that contains the word `z` stored in SEPlendid.
+
+`mapping search [localcode] [z]`
+
+Expected Output: No result.
+
+Expected Output in the Command Output Box: Mapping searched message.
+
+#### Sort mappings by attributes
+
+Prerequisite:
+- There is at least 1 mapping stored in SEPlendid.
+
+`mapping sort [localcode]`
+
+Expected Output: All mappings stored in SEPlendid will be shown in the Item List Box sorted according to the localcode in ascending order.
+
+Expected Output in the Command Output Box: Sorted all mappings
+
+<box type="info" seamless>
+
+**Note:** If there is no mapping, the item list box will just be an empty box.
+
+</box> 
+
+
+### Note
+
+#### List all notes
+
+Prerequisite: There is at least 1 note stored in SEPlendid.
+
+`note list`
+
+Expected Output: All notes stored in SEPlendid will be shown in the Item List Box.
+
+Expected Output in the Command Output Box: Listed all notes
+
+<box type="info" seamless>
+
+**Note:** If there is no note, the item list box will just be an empty box.
+
+</box> 
+
+#### Add a note
+
+`note add [This is the content of the note] [tag]`
+
+Expected Output: The new note will be added to the list of notes.
+
+Expected Output in the Command Output Box: New note added message.
+
+`note add [This note cannot be added] [test_]`
+
+Expected Output in the Command Output Box: Error for invalid command format.
+
+<box type="info" seamless>
+
+**Note:** Note tag should consist of only alphanumeric characters and should not contain any whitespaces.
+
+</box> 
+
+#### Delete a note
+
+Prerequisite:
+- A note with index 1 currently exists in the note list. 
+
+`note delete [1]`
+
+Expected Output: The note will be deleted from the list of notes.
+
+Expected Output in the Command Output Box: Note deleted message.
+
+#### Update a note
+
+Prerequisite:
+- A note with index 1 currently exists in the note list.
+
+`note update [1] [The new content]`
+
+Expected Output: The specified note will be updated.
+
+Expected Output in the Command Output Box: Note updated message.
+
+#### Tag a note
+
+Prerequisite:
+- A note with index 1 currently exists in the note list.
+
+`note tag [1] [newtag]`
+
+Expected Output: The specified note will be updated.
+
+Expected Output in the Command Output Box: Note tagged message.
+
+<box type="info" seamless>
+
+**Note:** Note tag should consist of only alphanumeric characters and should not contain any whitespaces.
+
+</box> 
+
+#### Clear tag a note
+
+Prerequisite:
+- A note with index 1 currently exists in the note list.
+
+`note cleartag [1]`
+
+Expected Output: The specified note will be updated.
+
+Expected Output in the Command Output Box: Note cleartag message.
+
+#### Search a note by tag
+
+Prerequisite:
+- There is at least 1 note that have a tag that contains the word `tag` stored in SEPlendid.
+
+`note search [tag]`
+
+Expected Output: A list of notes that have a tag that contains `tag`.
+
+Expected Output in the Command Output Box: Note searched message.
+
+Prerequisite:
+- There is no note that have a tag that contains the word `test` stored in SEPlendid.
+
+`note search [test]`
+
+Expected Output: No result.
+
+Expected Output in the Command Output Box: Note searched message.
+
+<box type="info" seamless>
+
+**Note:** The query should consist of only alphanumeric characters and should not contain any whitespaces.
+
+</box>

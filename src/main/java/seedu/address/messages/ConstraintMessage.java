@@ -113,11 +113,17 @@ public enum ConstraintMessage {
     UNIVERSITY_ATTRIBUTE_SORT(
         "There is only 1 available for university sort:\n"
         + "university\n"),
-
     // Note messages
     NOTE_CONTENT(
-       "content:\n"
-           + "Must be non-empty\n");
+        "content:\n"
+        + "Must only contain alphanumeric characters or spaces\n"
+        + "Must be non-empty"),
+
+    // Tag messages
+    TAG_NAME(
+        "tag:\n"
+        + "Must only contain alphanumeric characters\n"
+        + "Must not contain whitespaces");
 
     private final String value;
 
@@ -135,7 +141,8 @@ public enum ConstraintMessage {
      *
      * @return The usage message value.
      */
-    public String getValue() {
+    @Override
+    public String toString() {
         return value;
     }
 }

@@ -62,6 +62,10 @@ public class NoteDeleteCommand extends NoteCommand {
         return noteIndexToDelete.equals(otherNoteDeleteCommand.noteIndexToDelete);
     }
 
+    public Integer getNoteIndexToDelete() {
+        return noteIndexToDelete;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this)

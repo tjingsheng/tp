@@ -30,7 +30,7 @@ public class MappingSortCommandParser implements Parser<MappingSortCommand> {
         ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
                 areValuesEnclosedAndNonEmpty(args);
         if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
-            throw new ParseException(UsageMessage.MAPPING_SORT.getValue());
+            throw new ParseException(UsageMessage.MAPPING_SORT.toString());
         } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
             throw new ParseException(UsageMessage.MAPPING_SORT.getValueWithEmptyArgs());
         }
@@ -40,7 +40,7 @@ public class MappingSortCommandParser implements Parser<MappingSortCommand> {
 
 
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap, PARAMETER_MAPPINGATTRIBUTE)) {
-            throw new ParseException(UsageMessage.MAPPING_SORT.getValue());
+            throw new ParseException(UsageMessage.MAPPING_SORT.toString());
         }
 
         // All arguments should be a non-empty {@code Optional}

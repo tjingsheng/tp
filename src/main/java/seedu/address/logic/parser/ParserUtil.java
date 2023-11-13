@@ -67,7 +67,7 @@ public class ParserUtil {
         requireNonNull(tag);
         String trimmedTag = tag.trim();
         if (!Tag.isValidTagName(trimmedTag)) {
-            throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.TAG_NAME.toString());
         }
         return new Tag(trimmedTag);
     }
@@ -94,7 +94,7 @@ public class ParserUtil {
         requireNonNull(localCode);
         String trimmedLocalCode = localCode.trim();
         if (!LocalCode.isValidLocalCode(trimmedLocalCode)) {
-            throw new ParseException(ConstraintMessage.LOCALCOURSE_CODE.getValue());
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_CODE.toString());
         }
         return new LocalCode(localCode);
     }
@@ -109,7 +109,7 @@ public class ParserUtil {
         requireNonNull(localName);
         String trimmedLocalName = localName.trim();
         if (!LocalName.isValidLocalName(trimmedLocalName)) {
-            throw new ParseException(ConstraintMessage.LOCALCOURSE_NAME.getValue());
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_NAME.toString());
         }
         return new LocalName(localName);
     }
@@ -124,7 +124,7 @@ public class ParserUtil {
         requireNonNull(localUnit);
         String trimmedLocalUnit = localUnit.trim();
         if (!LocalUnit.isValidLocalUnit(trimmedLocalUnit)) {
-            throw new ParseException(ConstraintMessage.LOCALCOURSE_UNIT.getValue());
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_UNIT.toString());
         }
         return new LocalUnit(localUnit);
     }
@@ -139,7 +139,7 @@ public class ParserUtil {
         requireNonNull(localDescription);
         String trimmedLocalDescription = localDescription.trim();
         if (!LocalDescription.isValidLocalDescription(trimmedLocalDescription)) {
-            throw new ParseException(ConstraintMessage.LOCALCOURSE_DESCRIPTION.getValue());
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_DESCRIPTION.toString());
         }
         return new LocalDescription(localDescription);
     }
@@ -151,7 +151,7 @@ public class ParserUtil {
      */
     public static LocalCourseAttribute parseLocalCourseAttributeForSearch(String attribute) throws ParseException {
         if (!LocalCourseAttribute.isValidAttributeForSearch(attribute)) {
-            throw new ParseException(ConstraintMessage.LOCALCOURSE_ATTRIBUTE_SEARCH.getValue());
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_ATTRIBUTE_SEARCH.toString());
         }
         return LocalCourseAttribute.fromString(attribute);
     }
@@ -163,7 +163,7 @@ public class ParserUtil {
      */
     public static LocalCourseAttribute parseLocalCourseAttributeForSort(String attribute) throws ParseException {
         if (!LocalCourseAttribute.isValidAttributeForSort(attribute)) {
-            throw new ParseException(ConstraintMessage.LOCALCOURSE_ATTRIBUTE_SORT.getValue());
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_ATTRIBUTE_SORT.toString());
         }
         return LocalCourseAttribute.fromString(attribute);
     }
@@ -176,7 +176,7 @@ public class ParserUtil {
      */
     public static LocalCourseAttribute parseLocalCourseAttributeForUpdate(String attribute) throws ParseException {
         if (!LocalCourseAttribute.isValidAttributeForUpdate(attribute)) {
-            throw new ParseException(ConstraintMessage.LOCALCOURSE_ATTRIBUTE_UPDATE.getValue());
+            throw new ParseException(ConstraintMessage.LOCALCOURSE_ATTRIBUTE_UPDATE.toString());
         }
         return LocalCourseAttribute.fromString(attribute);
     }
@@ -191,7 +191,7 @@ public class ParserUtil {
         requireNonNull(partnerCode);
         String trimmedPartnerCode = partnerCode.trim();
         if (!PartnerCode.isValidPartnerCode(trimmedPartnerCode)) {
-            throw new ParseException(PartnerCode.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_CODE.toString());
         }
         return new PartnerCode(partnerCode);
     }
@@ -206,7 +206,7 @@ public class ParserUtil {
         requireNonNull(partnerName);
         String trimmedPartnerName = partnerName.trim();
         if (!PartnerName.isValidPartnerName(trimmedPartnerName)) {
-            throw new ParseException(PartnerName.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_NAME.toString());
         }
         return new PartnerName(partnerName);
     }
@@ -221,7 +221,7 @@ public class ParserUtil {
         requireNonNull(partnerUnit);
         String trimmedPartnerUnit = partnerUnit.trim();
         if (!PartnerUnit.isValidPartnerUnit(trimmedPartnerUnit)) {
-            throw new ParseException(PartnerUnit.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_UNIT.toString());
         }
         return new PartnerUnit(partnerUnit);
     }
@@ -236,7 +236,7 @@ public class ParserUtil {
         requireNonNull(partnerDescription);
         String trimmedPartnerDescription = partnerDescription.trim();
         if (!PartnerDescription.isValidPartnerDescription(trimmedPartnerDescription)) {
-            throw new ParseException(PartnerDescription.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_DESCRIPTION.toString());
         }
         return new PartnerDescription(partnerDescription);
     }
@@ -248,7 +248,7 @@ public class ParserUtil {
      */
     public static PartnerCourseAttribute parsePartnerCourseAttributeForSearch(String attribute) throws ParseException {
         if (!PartnerCourseAttribute.isValidAttributeForSearch(attribute)) {
-            throw new ParseException(ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_SEARCH.getValue());
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_SEARCH.toString());
         }
         return PartnerCourseAttribute.fromString(attribute);
     }
@@ -260,7 +260,7 @@ public class ParserUtil {
      */
     public static PartnerCourseAttribute parsePartnerCourseAttributeForSort(String attribute) throws ParseException {
         if (!PartnerCourseAttribute.isValidAttributeForSort(attribute)) {
-            throw new ParseException(ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_SORT.getValue());
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_SORT.toString());
         }
         return PartnerCourseAttribute.fromString(attribute);
     }
@@ -273,7 +273,7 @@ public class ParserUtil {
      */
     public static PartnerCourseAttribute parsePartnerCourseAttributeForUpdate(String attribute) throws ParseException {
         if (!PartnerCourseAttribute.isValidAttributeForUpdate(attribute)) {
-            throw new ParseException(ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_UPDATE.getValue());
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_ATTRIBUTE_UPDATE.toString());
         }
         return PartnerCourseAttribute.fromString(attribute);
     }
@@ -287,7 +287,7 @@ public class ParserUtil {
         requireNonNull(universityName);
         String trimmedUniversityName = universityName.trim();
         if (!UniversityName.isValidUniversityName(trimmedUniversityName)) {
-            throw new ParseException(ConstraintMessage.UNIVERSITY_NAME.getValue());
+            throw new ParseException(ConstraintMessage.UNIVERSITY_NAME.toString());
         }
         return new UniversityName(universityName);
     }
@@ -299,7 +299,7 @@ public class ParserUtil {
      */
     public static UniversityAttribute parseUniversityAttributeForSearch(String attribute) throws ParseException {
         if (!UniversityAttribute.isValidAttributeForSearch(attribute)) {
-            throw new ParseException(ConstraintMessage.UNIVERSITY_ATTRIBUTE_SEARCH.getValue());
+            throw new ParseException(ConstraintMessage.UNIVERSITY_ATTRIBUTE_SEARCH.toString());
         }
         return UniversityAttribute.fromString(attribute);
     }
@@ -311,7 +311,7 @@ public class ParserUtil {
      */
     public static UniversityAttribute parseUniversityAttributeForSort(String attribute) throws ParseException {
         if (!UniversityAttribute.isValidAttributeForSort(attribute)) {
-            throw new ParseException(ConstraintMessage.UNIVERSITY_ATTRIBUTE_SORT.getValue());
+            throw new ParseException(ConstraintMessage.UNIVERSITY_ATTRIBUTE_SORT.toString());
         }
         return UniversityAttribute.fromString(attribute);
     }
@@ -360,7 +360,7 @@ public class ParserUtil {
      */
     public static MappingAttribute parseMappingAttributeForSearch(String attribute) throws ParseException {
         if (!MappingAttribute.isValidAttributeForSearch(attribute)) {
-            throw new ParseException(ConstraintMessage.MAPPING_ATTRIBUTE_SEARCH.getValue());
+            throw new ParseException(ConstraintMessage.MAPPING_ATTRIBUTE_SEARCH.toString());
         }
         return MappingAttribute.fromString(attribute);
     }
@@ -372,7 +372,7 @@ public class ParserUtil {
      */
     public static MappingAttribute parseMappingAttributeForSort(String attribute) throws ParseException {
         if (!MappingAttribute.isValidAttributeForSearch(attribute)) {
-            throw new ParseException(ConstraintMessage.MAPPING_ATTRIBUTE_SORT.getValue());
+            throw new ParseException(ConstraintMessage.MAPPING_ATTRIBUTE_SORT.toString());
         }
         return MappingAttribute.fromString(attribute);
     }

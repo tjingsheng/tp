@@ -47,7 +47,7 @@ public class LocalCourseSortCommandParserTest {
 
     @Test
     public void parse_argumentNotClosedOrEmpty_failure() {
-        String expectedMessage = UsageMessage.LOCALCOURSE_SORT.getValue();
+        String expectedMessage = UsageMessage.LOCALCOURSE_SORT.toString();
         // missing open bracket
         assertParseFailure(parser, commandActionWord
                 + LocalCourseUtil.getLocalCourseArgumentsForSortCommand(new LocalCourseComparatorByLocalCode())
@@ -64,7 +64,7 @@ public class LocalCourseSortCommandParserTest {
         // invalid attribute
         assertParseFailure(parser, commandActionWord
                         + getSquareBracketWrappedArgument(INVALID_LOCAL_COURSE_ATTRIBUTE),
-                ConstraintMessage.LOCALCOURSE_ATTRIBUTE_SORT.getValue());
+                ConstraintMessage.LOCALCOURSE_ATTRIBUTE_SORT.toString());
     }
 
     @Test

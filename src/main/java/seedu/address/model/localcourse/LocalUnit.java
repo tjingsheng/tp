@@ -19,7 +19,7 @@ public class LocalUnit {
      */
     public LocalUnit(String localUnit) {
         requireNonNull(localUnit);
-        checkArgument(isValidLocalUnit(localUnit), ConstraintMessage.LOCALCOURSE_UNIT.getValue());
+        checkArgument(isValidLocalUnit(localUnit), ConstraintMessage.LOCALCOURSE_UNIT.toString());
         value = Double.parseDouble(localUnit);
     }
 
@@ -30,7 +30,7 @@ public class LocalUnit {
      */
     public LocalUnit(Double localUnit) {
         requireNonNull(localUnit);
-        checkArgument(isValidLocalUnit(localUnit), ConstraintMessage.LOCALCOURSE_UNIT.getValue());
+        checkArgument(isValidLocalUnit(localUnit), ConstraintMessage.LOCALCOURSE_UNIT.toString());
         value = localUnit;
     }
 

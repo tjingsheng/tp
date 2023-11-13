@@ -69,6 +69,14 @@ public class NoteTagCommand extends NoteCommand {
                 && addTag.equals(otherNoteTagCommand.addTag);
     }
 
+    public Integer getNoteIndexToUpdate() {
+        return noteIndexToUpdate;
+    }
+
+    public Tag getAddTag() {
+        return addTag;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this)

@@ -59,6 +59,10 @@ public class NoteClearTagCommand extends NoteCommand {
         return noteIndexToUpdate.equals(otherNoteClearTagCommand.noteIndexToUpdate);
     }
 
+    public Integer getNoteIndexToUpdate() {
+        return noteIndexToUpdate;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this)

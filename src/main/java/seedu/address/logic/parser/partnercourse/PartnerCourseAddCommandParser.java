@@ -39,7 +39,7 @@ public class PartnerCourseAddCommandParser implements Parser<PartnerCourseAddCom
         ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
                 areValuesEnclosedAndNonEmpty(args);
         if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
-            throw new ParseException(UsageMessage.PARTNERCOURSE_ADD.getValue());
+            throw new ParseException(UsageMessage.PARTNERCOURSE_ADD.toString());
         } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
             throw new ParseException(UsageMessage.PARTNERCOURSE_ADD.getValueWithEmptyArgs());
         }
@@ -57,7 +57,7 @@ public class PartnerCourseAddCommandParser implements Parser<PartnerCourseAddCom
                 PARAMETER_PARTNERNAME,
                 PARAMETER_PARTNERUNIT,
                 PARAMETER_PARTNERDESCRIPTION)) {
-            throw new ParseException(UsageMessage.PARTNERCOURSE_ADD.getValue());
+            throw new ParseException(UsageMessage.PARTNERCOURSE_ADD.toString());
         }
 
         UniversityName universityName = ParserUtil.parseUniversityName(parameterToArgMap.getValue(PARAMETER_UNIVERSITY)

@@ -33,7 +33,7 @@ public class LocalCourseSearchCommandParser implements Parser<LocalCourseSearchC
         ParserUtil.AreValuesEnclosedAndNonEmptyResult areValuesEnclosedAndNonEmptyResult =
                 areValuesEnclosedAndNonEmpty(args);
         if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.FAILURE) {
-            throw new ParseException(UsageMessage.LOCALCOURSE_SEARCH.getValue());
+            throw new ParseException(UsageMessage.LOCALCOURSE_SEARCH.toString());
         } else if (areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.EMPTY) {
             throw new ParseException(UsageMessage.LOCALCOURSE_SEARCH.getValueWithEmptyArgs());
         }
@@ -44,7 +44,7 @@ public class LocalCourseSearchCommandParser implements Parser<LocalCourseSearchC
         if (!ParserUtil.areArgumentsPresent(parameterToArgMap,
                 PARAMETER_LOCALATTRIBUTE, PARAMETER_QUERY)) {
             throw new ParseException(
-                    UsageMessage.LOCALCOURSE_SEARCH.getValue());
+                    UsageMessage.LOCALCOURSE_SEARCH.toString());
         }
 
         LocalCourseAttribute localCourseAttribute = ParserUtil.parseLocalCourseAttributeForSearch(
@@ -61,17 +61,17 @@ public class LocalCourseSearchCommandParser implements Parser<LocalCourseSearchC
         switch (localCourseAttribute) {
         case LOCALCODE:
             if (!LocalCode.isValidLocalCode(trimmedQuery)) {
-                throw new ParseException(ConstraintMessage.LOCALCOURSE_CODE.getValue());
+                throw new ParseException(ConstraintMessage.LOCALCOURSE_CODE.toString());
             }
             break;
         case LOCALNAME:
             if (!LocalName.isValidLocalName(trimmedQuery)) {
-                throw new ParseException(ConstraintMessage.LOCALCOURSE_NAME.getValue());
+                throw new ParseException(ConstraintMessage.LOCALCOURSE_NAME.toString());
             }
             break;
         case LOCALDESCRIPTION:
             if (!LocalDescription.isValidLocalDescription(trimmedQuery)) {
-                throw new ParseException(ConstraintMessage.LOCALCOURSE_DESCRIPTION.getValue());
+                throw new ParseException(ConstraintMessage.LOCALCOURSE_DESCRIPTION.toString());
             }
             break;
         default:

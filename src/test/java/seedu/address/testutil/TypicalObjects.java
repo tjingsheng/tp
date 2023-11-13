@@ -2,7 +2,10 @@ package seedu.address.testutil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import seedu.address.model.LocalCourseCatalogue;
 import seedu.address.model.MappingCatalogue;
@@ -81,12 +84,28 @@ public class TypicalObjects {
     public static final String INVALID_PARTNER_COURSE_CODE = "$H23Y1";
     public static final String INVALID_PARTNER_COURSE_NAME = " ";
     public static final String INVALID_UNIVERSITY_NAME = " ";
+
+    public static final String INVALID_UNIVERSITY = "!!!";
     public static final Double INVALID_PARTNER_COURSE_UNIT = -1.0;
     public static final String INVALID_PARTNER_COURSE_DESCRIPTION = " ";
 
     public static final String INVALID_MAPPING_ATTRIBUTE = "index";
 
     public static final LocalCourse CS2040S = new LocalCourseBuilder().withLocalCode("CS2040S").withLocalName(
+
+        "Data Structures & Algorithms").withLocalUnit(4.0).withLocalDescription(
+        "This course introduces students to the "
+            + "design and implementation of "
+            + "fundamental data structures and "
+            + "algorithms. The course covers basic "
+            + "data structures (linked lists, "
+            + "stacks, queues, hash tables, binary "
+            + "heaps, trees, and graphs), searching"
+            + " and sorting algorithms, and basic "
+            + "analysis of algorithms.").build();
+
+    public static final LocalCourse CS2041S = new LocalCourseBuilder().withLocalCode("CS2041S").withLocalName(
+
             "Data Structures & Algorithms").withLocalUnit(4.0).withLocalDescription(
             "This course introduces students to the "
                     + "design and implementation of "
@@ -97,6 +116,45 @@ public class TypicalObjects {
                     + "heaps, trees, and graphs), searching"
                     + " and sorting algorithms, and basic "
                     + "analysis of algorithms.").build();
+
+    public static final LocalCourse CS2042S = new LocalCourseBuilder().withLocalCode("CS2042S").withLocalName(
+            "Data Structures & Algorithms").withLocalUnit(4.0).withLocalDescription(
+            "This course introduces students to the "
+                    + "design and implementation of "
+                    + "fundamental data structures and "
+                    + "algorithms. The course covers basic "
+                    + "data structures (linked lists, "
+                    + "stacks, queues, hash tables, binary "
+                    + "heaps, trees, and graphs), searching"
+                    + " and sorting algorithms, and basic "
+                    + "analysis of algorithms.").build();
+
+    public static final LocalCourse CS1231S = new LocalCourseBuilder().withLocalCode("CS1231S").withLocalName(
+        "Discrete Structures").withLocalUnit(4.0).withLocalDescription("This course introduces mathematical tools "
+        + "required in the study of computer "
+        + "science. Topics include: (1) Logic "
+        + "and proof techniques: propositions, "
+        + "conditionals, quantifications. (2) "
+        + "Relations and Functions: Equivalence"
+        + " relations and partitions. Partially"
+        + " ordered sets. Well-Ordering "
+        + "Principle. Function equality. "
+        + "Boolean/identity/inverse functions. "
+        + "Bijection. (3) Mathematical "
+        + "formulation of data models (linear "
+        + "model, trees, graphs). (4) Counting "
+        + "and Combinatoric: Pigeonhole "
+        + "Principle. Inclusion-Exclusion "
+        + "Principle. Number of relations on a "
+        + "set, number of injections from one "
+        + "finite set to another, "
+        + "Diagonalization proof: An infinite "
+        + "countable set has an uncountable "
+        + "power set; Algorithmic proof: An "
+        + "infinite set has a countably "
+        + "infinite subset. Subsets of "
+        + "countable sets are countable.").build();
+
     public static final LocalCourse CS3230 = new LocalCourseBuilder().withLocalCode("CS3230").withLocalName(
             "Design & Analysis of Algorithms").withLocalUnit(4.0).withLocalDescription(
             "This course introduces different techniques"
@@ -121,31 +179,7 @@ public class TypicalObjects {
                     + "and randomised approaches), amortized"
                     + " analysis, NP-completeness, and some "
                     + "selected advanced topics.").build();
-    public static final LocalCourse CS1231S = new LocalCourseBuilder().withLocalCode("CS1231S").withLocalName(
-            "Discrete Structures").withLocalUnit(4.0).withLocalDescription("This course introduces mathematical tools "
-            + "required in the study of computer "
-            + "science. Topics include: (1) Logic "
-            + "and proof techniques: propositions, "
-            + "conditionals, quantifications. (2) "
-            + "Relations and Functions: Equivalence"
-            + " relations and partitions. Partially"
-            + " ordered sets. Well-Ordering "
-            + "Principle. Function equality. "
-            + "Boolean/identity/inverse functions. "
-            + "Bijection. (3) Mathematical "
-            + "formulation of data models (linear "
-            + "model, trees, graphs). (4) Counting "
-            + "and Combinatoric: Pigeonhole "
-            + "Principle. Inclusion-Exclusion "
-            + "Principle. Number of relations on a "
-            + "set, number of injections from one "
-            + "finite set to another, "
-            + "Diagonalization proof: An infinite "
-            + "countable set has an uncountable "
-            + "power set; Algorithmic proof: An "
-            + "infinite set has a countably "
-            + "infinite subset. Subsets of "
-            + "countable sets are countable.").build();
+
     public static final LocalCourse CS2030S = new LocalCourseBuilder().withLocalCode("CS2030S").withLocalName(
             "Programming Methodology II").withLocalUnit(4.0).build();
     public static final LocalCourse MA2001 = new LocalCourseBuilder().withLocalCode("MA2001").withLocalName(
@@ -256,12 +290,27 @@ public class TypicalObjects {
     public static final University WATERLOO = new University(new UniversityName("University of Waterloo"));
     public static final University SNU = new University(new UniversityName("Seoul National University"));
     public static final University YONSEI = new University(new UniversityName("Yonsei University"));
+    public static final University HYUN = new University(new UniversityName("Hyun University"));
+
     public static final University EDINBURGH = new University(new UniversityName("University of Edinburgh"));
     public static final University ZURICH = new University(new UniversityName("University of Zurich"));
 
     // Note
-    public static final Note NOTE1 = new Note(new Content("Nanyang Technological University"), new Tag("university"));
-    public static final Note NOTE2 = new Note(new Content("Application Deadline 1 December 2023"), new Tag("deadline"));
+    public static final Note NOTE1 = new Note(new Content("Exchange Application Deadline: 25 September 2023"),
+            new HashSet<>(List.of()), 100);
+    public static final Note NOTE2 = new Note(new Content("SEP Country Choices: Canada, Australia"),
+            new HashSet<>(List.of(new Tag("plans"))), 200);
+    public static final Note NOTE3 = new Note(new Content("Reminder: Submit Health Insurance Form by 10 October 2023"),
+            new HashSet<>(List.of(new Tag("deadline"))), 300);
+    public static final Note NOTE4 = new Note(new Content("Orientation Day: 2 November 2023, Main Auditorium"),
+            new HashSet<>(List.of(new Tag("event"))), 400);
+    public static final Note NOTE5 = new Note(new Content("Important: Visa Documents Verification on 15 October 2023"),
+            new HashSet<>(List.of(new Tag("visa"), new Tag("deadline"))), 500);
+    public static final Note NOTE6 = new Note(new Content("Housing Options Available: Check Your Email for Details"),
+            new HashSet<>(List.of(new Tag("accommodation"))), 600);
+    public static final Note NOTE7 = new Note(new Content("Language Proficiency Test: Schedule Your Exam by 5 "
+            + "November 2023"), new HashSet<>(List.of(new Tag("test"), new Tag("language"))),
+            700);
 
     // Mapping
     public static final Mapping CS2040S_TO_NTU_S0402SC = new Mapping(CS2040S.getLocalCode(),
@@ -395,7 +444,8 @@ public class TypicalObjects {
     }
 
     public static List<Note> getTypicalNotes() {
-        return new ArrayList<>(Arrays.asList(NOTE1, NOTE2));
+        return Stream.of(NOTE1, NOTE2, NOTE3, NOTE4, NOTE5, NOTE6, NOTE7).map(Note::getCopy)
+                .collect(Collectors.toList());
     }
 
     public static List<LocalCourse> getTypicalLocalCoursesForMappingTests() {

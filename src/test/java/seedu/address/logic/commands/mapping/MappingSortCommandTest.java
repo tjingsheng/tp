@@ -1,6 +1,7 @@
 package seedu.address.logic.commands.mapping;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static seedu.address.logic.commands.CommandTestUtil.assertSeplendidCommandSuccess;
 import static seedu.address.testutil.TypicalObjects.CS1231S_TO_EDINBURGH_COMP1000;
@@ -258,5 +259,19 @@ public class MappingSortCommandTest {
         assertNotEquals(mappingSortCommandByPartnerCode, mappingSortCommandByPartnerName);
         assertNotEquals(mappingSortCommandByPartnerName, mappingSortCommandByUniversity);
         assertNotEquals(mappingSortCommandByUniversity, mappingSortCommandByInformation);
+
+        // different command -> returns false
+        assertFalse(new MappingSortCommand(new MappingComparatorByAttribute(MappingAttribute.LOCALCODE))
+                .equals(new MappingListCommand()));
+    }
+
+    @Test
+    public void toStringMethod() {
+        MappingComparatorByAttribute comparator = new
+                MappingComparatorByAttribute(MappingAttribute.LOCALCODE);
+        MappingSortCommand mappingSearchCommand = new MappingSortCommand(comparator);
+        String expected = MappingSortCommand.class.getCanonicalName()
+                + "{mappingComparator=" + comparator + "}";
+        assertEquals(expected, mappingSearchCommand.toString());
     }
 }

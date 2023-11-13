@@ -35,6 +35,8 @@ public class MappingSortCommandParser implements Parser<MappingSortCommand> {
             throw new ParseException(UsageMessage.MAPPING_SORT.getValueWithEmptyArgs());
         }
 
+        assert areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.SUCCESS;
+
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_MAPPINGATTRIBUTE);
 

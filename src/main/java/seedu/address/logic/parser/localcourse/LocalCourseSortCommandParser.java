@@ -38,6 +38,8 @@ public class LocalCourseSortCommandParser implements Parser<LocalCourseSortComma
             throw new ParseException(UsageMessage.LOCALCOURSE_SORT.getValueWithEmptyArgs());
         }
 
+        assert areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.SUCCESS;
+
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_LOCALATTRIBUTE);
 
@@ -53,7 +55,7 @@ public class LocalCourseSortCommandParser implements Parser<LocalCourseSortComma
 
     private Comparator<LocalCourse> parseLocalCourseComparator(String args) throws ParseException {
         LocalCourseAttribute localCourseAttribute = ParserUtil.parseLocalCourseAttributeForSort(args);
-        switch(localCourseAttribute) {
+        switch (localCourseAttribute) {
         case LOCALCODE:
             return new LocalCourseComparatorByLocalCode();
         case LOCALNAME:

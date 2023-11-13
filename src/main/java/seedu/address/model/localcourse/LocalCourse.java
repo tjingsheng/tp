@@ -87,9 +87,9 @@ public class LocalCourse implements SeplendidDataType {
 
         LocalCourse otherLocalCourse = (LocalCourse) other;
         return localCode.equals(otherLocalCourse.localCode)
-            && localName.equals(otherLocalCourse.localName)
-            && localUnit.equals(otherLocalCourse.localUnit)
-            && localDescription.equals(otherLocalCourse.localDescription);
+                && localName.equals(otherLocalCourse.localName)
+                && localUnit.equals(otherLocalCourse.localUnit)
+                && localDescription.equals(otherLocalCourse.localDescription);
     }
 
     @Override
@@ -101,9 +101,9 @@ public class LocalCourse implements SeplendidDataType {
     @Override
     public String toString() {
         return new ToStringBuilder(this).add("localCode", localCode)
-                                        .add("localName", localName)
-                                        .add("localUnit", localUnit)
-                                        .add("localDescription", localDescription)
-                                        .toString();
+                .add("localName", localName)
+                .add("localUnit", localUnit)
+                .add("localDescription", localDescription)
+                .toString();
     }
 }

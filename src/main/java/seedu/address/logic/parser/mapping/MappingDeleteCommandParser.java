@@ -37,6 +37,8 @@ public class MappingDeleteCommandParser implements Parser<MappingDeleteCommand> 
             throw new ParseException(UsageMessage.MAPPING_DELETE.getValueWithEmptyArgs());
         }
 
+        assert areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.SUCCESS;
+
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_LOCALCODE, PARAMETER_UNIVERSITY,
                         PARAMETER_PARTNERCODE);

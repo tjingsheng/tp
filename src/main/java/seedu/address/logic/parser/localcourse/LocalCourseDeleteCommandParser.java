@@ -33,6 +33,8 @@ public class LocalCourseDeleteCommandParser implements Parser<LocalCourseDeleteC
             throw new ParseException(UsageMessage.LOCALCOURSE_DELETE.getValueWithEmptyArgs());
         }
 
+        assert areValuesEnclosedAndNonEmptyResult == ParserUtil.AreValuesEnclosedAndNonEmptyResult.SUCCESS;
+
         SeplendidArgumentMap parameterToArgMap =
                 SeplendidArgumentTokenizer.tokenize(args, PARAMETER_LOCALCODE);
 

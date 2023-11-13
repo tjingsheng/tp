@@ -77,11 +77,14 @@ public class SeplendidArgumentTokenizer {
                                                          List<ParameterPosition> parameterPositions) {
         SeplendidArgumentMap parameterToArgMap = new SeplendidArgumentMap();
         parameterPositions.forEach(parameterPosition -> {
+            assert ParserUtil.areValuesEnclosedAndNonEmpty(argsString) == ParserUtil
+                    .AreValuesEnclosedAndNonEmptyResult.SUCCESS;
             // We hold the assumption that arguments are non-empty and enclosed.
             // Assumes: areValuesEnclosedAndNonEmpty()
             int startPosition = parameterPosition.getStartPosition();
             SeplendidParameter param = parameterPosition.getParameter();
             if (startPosition == -1) {
+                // Defensive programming
                 parameterToArgMap.put(param, "");
             } else {
                 int closingSquareBracketPosition = argsString.indexOf("]", startPosition);

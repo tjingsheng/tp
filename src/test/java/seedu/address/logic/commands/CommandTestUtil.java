@@ -121,7 +121,7 @@ public class CommandTestUtil {
     }
 
     /**
-     * Convenience wrapper to {@link #assertSeplendidCommandSuccess(Command, SeplendidModel, CommandResult,
+     * Convenience wrapper to {@link #assertSeplendidCommandSuccess(Command, SeplendidModel, String,
      * SeplendidModel)} that takes a string {@code expectedMessage}.
      */
     public static void assertSeplendidCommandSuccess(Command command, SeplendidModel actualModel,

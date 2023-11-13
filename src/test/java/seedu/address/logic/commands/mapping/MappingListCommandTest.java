@@ -1,5 +1,8 @@
 package seedu.address.logic.commands.mapping;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertSeplendidCommandSuccess;
 import static seedu.address.testutil.TypicalObjects.getTypicalLocalCourseCatalogue;
 import static seedu.address.testutil.TypicalObjects.getTypicalMappingCatalogueForMappingTests;
@@ -55,5 +58,23 @@ public class MappingListCommandTest {
                 model,
                 MappingListCommand.MESSAGE_SUCCESS,
                 expectedModel);
+    }
+
+    @Test
+    public void equal() {
+        MappingListCommand mappingListCommand = new MappingListCommand();
+        // same object -> returns true
+        assertTrue(mappingListCommand.equals(mappingListCommand));
+
+        // different types -> returns false
+        assertFalse(mappingListCommand.equals(1));
+
+        // null -> returns false
+        assertFalse(mappingListCommand.equals(null));
+    }
+
+    @Test
+    public void toStringMethod() {
+        assertEquals(MappingListCommand.class.getCanonicalName() + "{}", new MappingListCommand().toString());
     }
 }

@@ -50,9 +50,6 @@ deactivate SeplendidParser
 SeplendidLogicManager -> LocalCourseListCommand : execute()
 activate LocalCourseListCommand
 
-LocalCourseUpdateCommand -> SeplendidModel : updateFilteredLocalCourseList(SeplendidModel.PREDICATE_SHOW_ALL_LOCAL_COURSES)
-activate SeplendidModel
-
 SeplendidModel --> LocalCourseUpdateCommand : Optional.of(localCourse)
 deactivate SeplendidModel
 
@@ -63,21 +60,21 @@ activate LocalCourse
 LocalCourse -> LocalCourseUpdateCommand
 deactivate LocalCourse
 
-LocalCourseUpdateCommand -> SeplendidModel : setLocalCourse(localCourse, updatedLocalCourse)
+LocalCourseUpdateCommand -> SeplendidModel : updateFilteredLocalCourseList(SeplendidModel.PREDICATE_SHOW_ALL_LOCAL_COURSES)
 activate SeplendidModel
 
-SeplendidModel --> LocalCourseUpdateCommand
+SeplendidModel --> LocalCourseListCommand
 deactivate SeplendidModel
 
 create CommandResult
-LocalCourseUpdateCommand -> CommandResult
+LocalCourseListCommand -> CommandResult
 activate CommandResult
 
-CommandResult --> LocalCourseUpdateCommand
+CommandResult --> LocalCourseListCommand
 deactivate CommandResult
 
-LocalCourseUpdateCommand --> SeplendidLogicManager : result
-deactivate LocalCourseUpdateCommand
+LocalCourseListCommand --> SeplendidLogicManager : result
+deactivate LocalCourseListCommand
 
 [<--SeplendidLogicManager
 deactivate SeplendidLogicManager

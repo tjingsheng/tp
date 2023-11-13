@@ -171,6 +171,45 @@ The `list` command generates a list of courses and universities' sample data. Th
 courses.
 
 The activity diagram is as such:
+<puml src="diagrams/ListActivityDiagram.puml" width="300" />
+
+**Feature Details**
+1. The user specifies the command word. Possible command words include `localcourse`, `partnercourse`, `university`,
+   `mapping` and `note`.
+2. If the command word is not specified, or invalid command arguments are provided, the user will be prompted 
+   to enter the command correctly via an error message.
+3. If Step 2 completes without any exceptions, then the `list` of sample data depending on the datatype will be 
+   successfully generated.
+
+### Adding of courses, universities and notes
+
+**Overview**
+The `add` command allows for the adding of new courses, universities and notes. This allows the creation of new 
+datatypes.
+
+The activity diagram is as such:
+
+<br>
+
+**Feature Details**
+1. The user specifies the command word. Possible command words include `localcourse`, `partnercourse`,
+   and `note`.
+2. If the command word is not specified, or invalid command arguments are provided, the user will be promopted
+   to enter the command correctly via an error message.
+3. The course is cross-referenced in `SEPlendidModel` to check if the course already exist based on the `localcode` or
+   `partnercode`. If there are duplicates found in the data, an error message will be raised to informt the user.
+4. If Step 3 completes without any exceptions, then the new course or note is successfully created and stored in 
+   SEPlendid's database.
+
+<br>
+
+**Feature Considerations**
+
+It should be noted that when checking for duplicates in the `UniqueLocalCourseList` and `UniquePartnerCourseList` inside
+`SEPlendidModel`, `localcourse` cannot have the same `localcode` and `partnercourse` cannot have the same `partnercode` 
+and `universityname`. This is because courses have unique course codes and is specific to the university, having this 
+check would also prevent confusion for users if they have mistakenly added courses that are already in the database. 
+Furthermore, this would confuse the user on which is the most accurate information available as well. 
 
 
 ### Mapping feature

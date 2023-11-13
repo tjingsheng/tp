@@ -28,7 +28,7 @@ SEP. It includes:
 - SEPlendid's myriad of features and commands
 - **Key parameters** to run SEPlendid smoothly
 
-If you are a new user, please head over to  [How to navigate this User Guide?](#2-how-to-navigate-this-user-guide) to
+If you are a new user, please head over to  [How to navigate this User Guide?](#1-how-to-navigate-this-user-guide) to
 start planning for your study
 guide!
 
@@ -42,7 +42,7 @@ guide!
 
 <div class= "toc">
 
-1. [How to navigate this User Guide?](#1-navigate-this-user-guide)
+1. [How to navigate this User Guide?](#1-how-to-navigate-this-user-guide)
 2. [Icons used in this User Guide](#2-icons-used-in-this-user-guide)
 3. [Installation](#3-installation)
 4. [Quick Reference Guide](#4-quick-reference-guide)
@@ -55,34 +55,34 @@ guide!
         - 5.1.2 [Add a local course: `localcourse add`](#5-1-2-add-a-local-course-localcourse-add)
         - 5.1.3 [Delete a local course: `localcourse delete`](#5-1-3-delete-a-local-course-localcourse-delete)
         - 5.1.4 [Update a local course: `localcourse update`](#5-1-4-update-a-local-course-localcourse-update)
-        - 5.1.5 [Search a local course by attributes: `localcourse search`](#5-1-5-search-a-localcourse-by-attributes-localcourse-search)
-        - 5.1.6 [Sort a local course by attributes: `localcourse sort`](#5-1-6-sort-local-courses-by-attributes-localcourse-sort)
+        - 5.1.5 [Search for local courses by an attribute: `localcourse search`](#5-1-5-search-for-local-courses-by-an-attribute-localcourse-search)
+        - 5.1.6 [Sort all local courses by an attribute: `localcourse sort`](#5-1-6-sort-all-local-courses-by-an-attribute-localcourse-sort)
     - 5.2 [Commands for partner courses](#5-2-commands-for-partner-courses)
         - 5.2.1 [List all partner courses: `partnercourse list`](#5-2-1-list-all-partner-courses-partnercourse-list)
         - 5.2.2 [Add a partner course: `partnercourse add`](#5-2-2-add-a-partner-course-partnercourse-add)
         - 5.2.3 [Delete a partner course: `partnercourse delete`](#5-2-3-delete-a-partner-course-partnercourse-delete)
         - 5.2.4 [Update a partner course: `partnercourse update`](#5-2-4-update-a-partner-course-partnercourse-update)
-        - 5.2.5 [Search a partner course by attributes: `partnercourse search`](#5-2-4-update-a-partner-course-partnercourse-update)
-        - 5.2.6 [Sort a partner course by attributes: `partnercourse sort`](#5-2-6-sort-partner-courses-by-attributes-partnercourse-sort)
+        - 5.2.5 [Search for partner courses by an attribute: `partnercourse search`](#5-2-5-search-for-partner-courses-by-an-attribute-partnercourse-search)
+        - 5.2.6 [Sort all partner courses by an attribute: `partnercourse sort`](#5-2-6-sort-all-partner-courses-by-an-attribute-partnercourse-sort)
     - 5.3 [Commands for universities](#5-3-commands-for-universities)
         - 5.3.1 [List all universities: `university list`](#5-3-1-list-all-universities-university-list)
-        - 5.3.2 [Search a university by attributes: `university search`](#5-3-2-search-a-university-by-attributes-university-search)
-        - 5.3.3 [Sort a university by attributes: `university sort`](#5-3-3-sort-universities-by-attributes-university-sort)
+        - 5.3.2 [Search for universities by an attribute: `university search`](#5-3-2-search-for-universities-by-an-attribute-university-search)
+        - 5.3.3 [Sort all universities by an attribute: `university sort`](#5-3-3-sort-all-universities-by-an-attribute-university-sort)
     - 5.4 [Commands for mappings](#5-4-commands-for-mappings)
         - 5.4.1 [List all mappings: `mapping list`](#5-4-1-list-all-mappings-mapping-list)
         - 5.4.2 [Add a mapping: `mapping add`](#5-4-2-add-a-mapping-mapping-add)
         - 5.4.3 [Delete a mapping: `mapping delete`](#5-4-3-delete-a-mapping-mapping-delete)
-        - 5.4.4 [Search a mapping by attributes: `mapping search`](#5-4-4-search-a-mapping-by-attributes-mapping-search)
-        - 5.4.5 [Sort a mapping by attributes: `mapping sort`](#5-4-5-sort-a-mapping-by-attributes-mapping-sort)
+        - 5.4.4 [Search for mappings by an attribute: `mapping search`](#5-4-4-search-for-mappings-by-an-attribute-mapping-search)
+        - 5.4.5 [Sort all mappings by an attribute: `mapping sort`](#5-4-5-sort-all-mappings-by-an-attribute-mapping-sort)
     - 5.5 [Commands for notes](#5-5-commands-for-notes)
         - 5.5.1 [List all notes: `note list`](#5-5-1-list-all-notes-note-list)
         - 5.5.2 [Add a note: `note add`](#5-5-2-add-a-note-note-add)
         - 5.5.3 [Delete a note: `note delete`](#5-5-3-delete-a-note-note-delete)
         - 5.5.4 [Update a note: `note update`](#5-5-4-update-a-note-note-update)
         - 5.5.5 [Tag a note: `note tag`](#5-5-5-tag-a-note-note-tag)
-        - 5.5.6 [Clear tag a note: `note cleartag`](#5-5-6-clear-tags-of-a-note-note-cleartag)
-    - 5.6 [View help : `help`](#5-6-view-help--help-)
-    - 5.7 [Exit SEPlendid: `exit`](#5-7-exit-seplendid--exit)
+        - 5.5.6 [Clear all tags from a note: `note cleartag`](#5-5-6-clear-all-tags-from-a-note-note-cleartag)
+    - 5.6 [View help : `help`](#5-6-view-help-help)
+    - 5.7 [Exit SEPlendid: `exit`](#5-7-exit-seplendid-exit)
     - 5.8 [Save the data](#5-8-save-the-data)
 6. [FAQ](#6-faq)
 7. [Command summary](#7-command-summary)
@@ -102,12 +102,12 @@ commands in SEPlendid, utilising SEPlendid to it's fullest potential!
 
 Here is a step-by-step instruction in navigating this user guide for **new** users:
 
-1. Download SEPlendid by heading over to the [installation](#) section which provides a guided tour for you to get
+1. Download SEPlendid by heading over to the [installation](#3-installation) section which provides a guided tour for you to get
    started with SEPlendid.
-2. Get familiar with SEPlendid by heading over to the [Quick Reference Guide](#) section which shows you how to use
+2. Get familiar with SEPlendid by heading over to the [Quick Reference Guide](#4-quick-reference-guide) section which shows you how to use
    navigate SEPlendid efficiently.
 
-If you are an **experienced** user, you can head over to the [Command Summary](#) section for a well-curated overview
+If you are an **experienced** user, you can head over to the [Command Summary](#7-command-summary) section for a well-curated overview
 of the commands available in SEPlendid.
 
 <br>
@@ -474,7 +474,7 @@ These local course attributes include localcode, localname, unit and localdescri
 <br>
 <br>
 
-#### 5.1.5 Search a localcourse by attributes: `localcourse search`
+#### 5.1.5 Search for local courses by an attribute: `localcourse search`
 
 Searches localcourses using specified attributes such as localcode, localname, localunit, and localdescription.
 This is useful when:
@@ -498,7 +498,7 @@ This is useful when:
 <br>
 <br>
 
-#### 5.1.6 Sort local courses by attributes: `localcourse sort`
+#### 5.1.6 Sort all local courses by an attribute: `localcourse sort`
 
 Sorts local courses according to attributes such as localname and localcode. This is useful when:
 
@@ -595,7 +595,7 @@ These partner course attributes include partnercode, partnername, unit and descr
 <br>
 <br>
 
-#### 5.2.5 Search a partner course by attributes: `partnercourse search`
+#### 5.2.5 Search for partner courses by an attribute: `partnercourse search`
 
 Searches partnercourse using specified attributes such as partnercode, partnername, partnerunit, and partnerdescription.
 This is useful when:
@@ -614,7 +614,7 @@ This is useful when:
 <br>
 <br>
 
-#### 5.2.6 Sort partner courses by attributes: `partnercourse sort`
+#### 5.2.6 Sort all partner courses by an attribute: `partnercourse sort`
 
 Sorts local courses according to attributes such as partnername and partnercode. This is useful when:
 
@@ -654,7 +654,7 @@ Refer to the figure below to view the outcome of the execution of the command:
 <br>
 <br>
 
-#### 5.3.2 Search a university by attributes: `university search`
+#### 5.3.2 Search for universities by an attribute: `university search`
 
 Searches universities that matches the keyword of the university name. This is useful when:
 
@@ -673,7 +673,7 @@ Searches universities that matches the keyword of the university name. This is u
 <br>
 <br>
 
-#### 5.3.3 Sort universities by attributes: `university sort`
+#### 5.3.3 Sort all universities by an attribute: `university sort`
 
 Sorts universities by the university name, alphabetically. This is useful when:
 
@@ -781,7 +781,7 @@ Refer to the figure below to view the outcome of the execution of the command:
 <br>
 <br>
 
-#### 5.4.4 Search a mapping by attributes: `mapping search`
+#### 5.4.4 Search for mappings by an attribute: `mapping search`
 
 Searches for mappings using specified attribute such as `localcode`, `localname`, `partnercode`, `partnername`,
 `university`, `information`. This is useful when:
@@ -806,7 +806,7 @@ Refer to the figure below to view the outcome of the execution of the command:
 <br>
 <br>
 
-#### 5.4.5 Sort a mapping by attributes: `mapping sort`
+#### 5.4.5 Sort all mappings by an attribute: `mapping sort`
 
 Sorts mappings according to attributes such as `localcode`, `localname`, `partnercode`, `partnername`, `university`,
 `information`) in ascending order. This is useful when:
@@ -975,7 +975,7 @@ Refer to Figure 5.5.5 to view the outcome of the execution of the command:
 <br>
 <br>
 
-#### 5.5.6 Clear tags of a note: `note cleartag`
+#### 5.5.6 Clear all tags from a note: `note cleartag`
 
 Clears all tags for the specified note according to its index. This is useful when:
 

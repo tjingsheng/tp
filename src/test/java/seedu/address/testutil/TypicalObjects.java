@@ -84,12 +84,28 @@ public class TypicalObjects {
     public static final String INVALID_PARTNER_COURSE_CODE = "$H23Y1";
     public static final String INVALID_PARTNER_COURSE_NAME = " ";
     public static final String INVALID_UNIVERSITY_NAME = " ";
+
+    public static final String INVALID_UNIVERSITY = "!!!";
     public static final Double INVALID_PARTNER_COURSE_UNIT = -1.0;
     public static final String INVALID_PARTNER_COURSE_DESCRIPTION = " ";
 
     public static final String INVALID_MAPPING_ATTRIBUTE = "index";
 
     public static final LocalCourse CS2040S = new LocalCourseBuilder().withLocalCode("CS2040S").withLocalName(
+
+        "Data Structures & Algorithms").withLocalUnit(4.0).withLocalDescription(
+        "This course introduces students to the "
+            + "design and implementation of "
+            + "fundamental data structures and "
+            + "algorithms. The course covers basic "
+            + "data structures (linked lists, "
+            + "stacks, queues, hash tables, binary "
+            + "heaps, trees, and graphs), searching"
+            + " and sorting algorithms, and basic "
+            + "analysis of algorithms.").build();
+
+    public static final LocalCourse CS2041S = new LocalCourseBuilder().withLocalCode("CS2041S").withLocalName(
+
             "Data Structures & Algorithms").withLocalUnit(4.0).withLocalDescription(
             "This course introduces students to the "
                     + "design and implementation of "
@@ -100,6 +116,45 @@ public class TypicalObjects {
                     + "heaps, trees, and graphs), searching"
                     + " and sorting algorithms, and basic "
                     + "analysis of algorithms.").build();
+
+    public static final LocalCourse CS2042S = new LocalCourseBuilder().withLocalCode("CS2042S").withLocalName(
+            "Data Structures & Algorithms").withLocalUnit(4.0).withLocalDescription(
+            "This course introduces students to the "
+                    + "design and implementation of "
+                    + "fundamental data structures and "
+                    + "algorithms. The course covers basic "
+                    + "data structures (linked lists, "
+                    + "stacks, queues, hash tables, binary "
+                    + "heaps, trees, and graphs), searching"
+                    + " and sorting algorithms, and basic "
+                    + "analysis of algorithms.").build();
+
+    public static final LocalCourse CS1231S = new LocalCourseBuilder().withLocalCode("CS1231S").withLocalName(
+        "Discrete Structures").withLocalUnit(4.0).withLocalDescription("This course introduces mathematical tools "
+        + "required in the study of computer "
+        + "science. Topics include: (1) Logic "
+        + "and proof techniques: propositions, "
+        + "conditionals, quantifications. (2) "
+        + "Relations and Functions: Equivalence"
+        + " relations and partitions. Partially"
+        + " ordered sets. Well-Ordering "
+        + "Principle. Function equality. "
+        + "Boolean/identity/inverse functions. "
+        + "Bijection. (3) Mathematical "
+        + "formulation of data models (linear "
+        + "model, trees, graphs). (4) Counting "
+        + "and Combinatoric: Pigeonhole "
+        + "Principle. Inclusion-Exclusion "
+        + "Principle. Number of relations on a "
+        + "set, number of injections from one "
+        + "finite set to another, "
+        + "Diagonalization proof: An infinite "
+        + "countable set has an uncountable "
+        + "power set; Algorithmic proof: An "
+        + "infinite set has a countably "
+        + "infinite subset. Subsets of "
+        + "countable sets are countable.").build();
+
     public static final LocalCourse CS3230 = new LocalCourseBuilder().withLocalCode("CS3230").withLocalName(
             "Design & Analysis of Algorithms").withLocalUnit(4.0).withLocalDescription(
             "This course introduces different techniques"
@@ -124,31 +179,7 @@ public class TypicalObjects {
                     + "and randomised approaches), amortized"
                     + " analysis, NP-completeness, and some "
                     + "selected advanced topics.").build();
-    public static final LocalCourse CS1231S = new LocalCourseBuilder().withLocalCode("CS1231S").withLocalName(
-            "Discrete Structures").withLocalUnit(4.0).withLocalDescription("This course introduces mathematical tools "
-            + "required in the study of computer "
-            + "science. Topics include: (1) Logic "
-            + "and proof techniques: propositions, "
-            + "conditionals, quantifications. (2) "
-            + "Relations and Functions: Equivalence"
-            + " relations and partitions. Partially"
-            + " ordered sets. Well-Ordering "
-            + "Principle. Function equality. "
-            + "Boolean/identity/inverse functions. "
-            + "Bijection. (3) Mathematical "
-            + "formulation of data models (linear "
-            + "model, trees, graphs). (4) Counting "
-            + "and Combinatoric: Pigeonhole "
-            + "Principle. Inclusion-Exclusion "
-            + "Principle. Number of relations on a "
-            + "set, number of injections from one "
-            + "finite set to another, "
-            + "Diagonalization proof: An infinite "
-            + "countable set has an uncountable "
-            + "power set; Algorithmic proof: An "
-            + "infinite set has a countably "
-            + "infinite subset. Subsets of "
-            + "countable sets are countable.").build();
+
     public static final LocalCourse CS2030S = new LocalCourseBuilder().withLocalCode("CS2030S").withLocalName(
             "Programming Methodology II").withLocalUnit(4.0).build();
     public static final LocalCourse MA2001 = new LocalCourseBuilder().withLocalCode("MA2001").withLocalName(
@@ -259,6 +290,8 @@ public class TypicalObjects {
     public static final University WATERLOO = new University(new UniversityName("University of Waterloo"));
     public static final University SNU = new University(new UniversityName("Seoul National University"));
     public static final University YONSEI = new University(new UniversityName("Yonsei University"));
+    public static final University HYUN = new University(new UniversityName("Hyun University"));
+
     public static final University EDINBURGH = new University(new UniversityName("University of Edinburgh"));
     public static final University ZURICH = new University(new UniversityName("University of Zurich"));
 

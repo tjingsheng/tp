@@ -11,6 +11,7 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.SeplendidArgumentMap;
 import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.messages.ConstraintMessage;
 import seedu.address.messages.UsageMessage;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
@@ -59,12 +60,12 @@ public class PartnerCourseSearchCommandParser implements Parser<PartnerCourseSea
         switch (partnerCourseAttribute) {
         case PARTNERCODE:
             if (!PartnerCode.isValidPartnerCode(trimmedQuery)) {
-                throw new ParseException(PartnerCode.MESSAGE_CONSTRAINTS);
+                throw new ParseException(ConstraintMessage.PARTNERCOURSE_CODE.getValue());
             }
             break;
         case PARTNERNAME:
             if (!PartnerName.isValidPartnerName(trimmedQuery)) {
-                throw new ParseException(PartnerName.MESSAGE_CONSTRAINTS);
+                throw new ParseException(ConstraintMessage.PARTNERCOURSE_NAME.getValue());
             }
             break;
         default:

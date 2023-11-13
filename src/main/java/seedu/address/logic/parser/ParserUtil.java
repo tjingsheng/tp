@@ -130,7 +130,7 @@ public class ParserUtil {
         requireNonNull(tag);
         String trimmedTag = tag.trim();
         if (!Tag.isValidTagName(trimmedTag)) {
-            throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.TAG_NAME.getValue());
         }
         return new Tag(trimmedTag);
     }
@@ -254,7 +254,7 @@ public class ParserUtil {
         requireNonNull(partnerCode);
         String trimmedPartnerCode = partnerCode.trim();
         if (!PartnerCode.isValidPartnerCode(trimmedPartnerCode)) {
-            throw new ParseException(PartnerCode.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_CODE.getValue());
         }
         return new PartnerCode(partnerCode);
     }
@@ -269,7 +269,7 @@ public class ParserUtil {
         requireNonNull(partnerName);
         String trimmedPartnerName = partnerName.trim();
         if (!PartnerName.isValidPartnerName(trimmedPartnerName)) {
-            throw new ParseException(PartnerName.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_NAME.getValue());
         }
         return new PartnerName(partnerName);
     }
@@ -284,7 +284,7 @@ public class ParserUtil {
         requireNonNull(partnerUnit);
         String trimmedPartnerUnit = partnerUnit.trim();
         if (!PartnerUnit.isValidPartnerUnit(trimmedPartnerUnit)) {
-            throw new ParseException(PartnerUnit.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_UNIT.getValue());
         }
         return new PartnerUnit(partnerUnit);
     }
@@ -299,7 +299,7 @@ public class ParserUtil {
         requireNonNull(partnerDescription);
         String trimmedPartnerDescription = partnerDescription.trim();
         if (!PartnerDescription.isValidPartnerDescription(trimmedPartnerDescription)) {
-            throw new ParseException(PartnerDescription.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ConstraintMessage.PARTNERCOURSE_DESCRIPTION.getValue());
         }
         return new PartnerDescription(partnerDescription);
     }

@@ -3,15 +3,13 @@ package seedu.address.model.partnercourse;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import seedu.address.messages.ConstraintMessage;
+
 /**
  * Represents a Partner Course's partner description in SEPlendid.
  * Guarantees: immutable; is valid as declared in {@link #isValidPartnerDescription(String)}
  */
 public class PartnerDescription {
-    // Used in AppUtil#checkArgument and ParserUtil, JsonAdaptedXXX exceptions
-    public static final String MESSAGE_CONSTRAINTS = "PartnerDescription can take any values, given it starts with a "
-        + "whitespace, and it should not be blank";
-
     /*
      * This matches a string that starts with a non-whitespace character.
      */
@@ -28,7 +26,8 @@ public class PartnerDescription {
     public PartnerDescription(String partnerDescription) {
         partnerDescription = partnerDescription.trim();
         requireNonNull(partnerDescription);
-        checkArgument(isValidPartnerDescription(partnerDescription), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidPartnerDescription(partnerDescription),
+                      ConstraintMessage.PARTNERCOURSE_DESCRIPTION.getValue());
         value = partnerDescription;
     }
 

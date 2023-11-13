@@ -78,7 +78,7 @@ class JsonAdaptedMapping {
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, PartnerCode.class.getSimpleName()));
         }
         if (!PartnerCode.isValidPartnerCode(partnerCode)) {
-            throw new IllegalValueException(PartnerCode.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(ConstraintMessage.PARTNERCOURSE_CODE.getValue());
         }
         final PartnerCode modelPartnerCode = new PartnerCode(partnerCode);
 

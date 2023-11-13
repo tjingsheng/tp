@@ -3,14 +3,13 @@ package seedu.address.model.partnercourse;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import seedu.address.messages.ConstraintMessage;
+
 /**
  * Represents a Partner Course's partner name in SEPlendid.
  * Guarantees: immutable; is valid as declared in {@link #isValidPartnerName(String)}
  */
 public class PartnerName {
-
-    public static final String MESSAGE_CONSTRAINTS = "PartnerName can take any values, and it should not be blank";
-
     public static final String VALIDATION_REGEX = "[^\\s].{0,75}";
 
     private final String value;
@@ -24,7 +23,7 @@ public class PartnerName {
     public PartnerName(String partnerName) {
         partnerName = partnerName.trim();
         requireNonNull(partnerName);
-        checkArgument(isValidPartnerName(partnerName), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidPartnerName(partnerName), ConstraintMessage.PARTNERCOURSE_NAME.getValue());
         value = partnerName;
     }
 

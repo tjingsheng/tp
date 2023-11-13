@@ -13,6 +13,7 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.SeplendidArgumentMap;
 import seedu.address.logic.parser.SeplendidArgumentTokenizer;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.messages.ConstraintMessage;
 import seedu.address.messages.UsageMessage;
 import seedu.address.model.partnercourse.PartnerCode;
 import seedu.address.model.partnercourse.PartnerCourseAttribute;
@@ -73,22 +74,22 @@ public class PartnerCourseUpdateCommandParser implements Parser<PartnerCourseUpd
         switch (partnerCourseAttribute) {
         case PARTNERCODE:
             if (!PartnerCode.isValidPartnerCode(trimmedUpdatedValue)) {
-                throw new ParseException(PartnerCode.MESSAGE_CONSTRAINTS);
+                throw new ParseException(ConstraintMessage.PARTNERCOURSE_CODE.getValue());
             }
             break;
         case PARTNERNAME:
             if (!PartnerName.isValidPartnerName(trimmedUpdatedValue)) {
-                throw new ParseException(PartnerName.MESSAGE_CONSTRAINTS);
+                throw new ParseException(ConstraintMessage.PARTNERCOURSE_NAME.getValue());
             }
             break;
         case PARTNERUNIT:
             if (!PartnerUnit.isValidPartnerUnit(trimmedUpdatedValue)) {
-                throw new ParseException(PartnerUnit.MESSAGE_CONSTRAINTS);
+                throw new ParseException(ConstraintMessage.PARTNERCOURSE_UNIT.getValue());
             }
             break;
         case PARTNERDESCRIPTION:
             if (!PartnerDescription.isValidPartnerDescription(trimmedUpdatedValue)) {
-                throw new ParseException(PartnerDescription.MESSAGE_CONSTRAINTS);
+                throw new ParseException(ConstraintMessage.PARTNERCOURSE_DESCRIPTION.getValue());
             }
             break;
         default:

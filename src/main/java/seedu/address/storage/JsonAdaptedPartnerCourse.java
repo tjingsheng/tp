@@ -76,7 +76,7 @@ public class JsonAdaptedPartnerCourse {
                 PartnerCode.class.getSimpleName()));
         }
         if (!PartnerCode.isValidPartnerCode(partnerCode)) {
-            throw new IllegalValueException(PartnerCode.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(ConstraintMessage.PARTNERCOURSE_CODE.getValue());
         }
         final PartnerCode modelPartnerCode = new PartnerCode(partnerCode);
 
@@ -86,7 +86,7 @@ public class JsonAdaptedPartnerCourse {
                 PartnerName.class.getSimpleName()));
         }
         if (!PartnerName.isValidPartnerName(partnerName)) {
-            throw new IllegalValueException(PartnerName.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(ConstraintMessage.PARTNERCOURSE_NAME.getValue());
         }
         final PartnerName modelPartnerName = new PartnerName(partnerName);
 
@@ -96,7 +96,7 @@ public class JsonAdaptedPartnerCourse {
                 PartnerUnit.class.getSimpleName()));
         }
         if (!PartnerUnit.isValidPartnerUnit(partnerUnit)) {
-            throw new IllegalValueException(PartnerUnit.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(ConstraintMessage.PARTNERCOURSE_UNIT.getValue());
         }
         final PartnerUnit modelPartnerUnit = new PartnerUnit(partnerUnit);
 
@@ -106,7 +106,7 @@ public class JsonAdaptedPartnerCourse {
                 PartnerDescription.class.getSimpleName()));
         }
         if (!PartnerDescription.isValidPartnerDescription(partnerDescription)) {
-            throw new IllegalValueException(PartnerUnit.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(ConstraintMessage.PARTNERCOURSE_UNIT.getValue());
         }
         final PartnerDescription modelPartnerDescription = new PartnerDescription(partnerDescription);
 

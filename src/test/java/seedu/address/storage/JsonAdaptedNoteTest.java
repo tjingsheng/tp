@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.messages.ConstraintMessage;
 import seedu.address.model.note.Content;
 import seedu.address.model.note.Note;
 import seedu.address.testutil.TypicalObjects;
@@ -67,7 +68,7 @@ public class JsonAdaptedNoteTest {
     @Test
     public void toModelType_invalidContent_returnsNote() {
         JsonAdaptedNote note1 = new JsonAdaptedNote("", VALID_TAGS1, VALID_INDEX1);
-        String expectedMessage = Content.MESSAGE_CONSTRAINTS;
+        String expectedMessage = ConstraintMessage.NOTE_CONTENT.getValue();
         assertThrows(IllegalValueException.class, expectedMessage, note1::toModelType);
     }
 

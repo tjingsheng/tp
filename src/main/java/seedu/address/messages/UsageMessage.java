@@ -14,6 +14,7 @@ import seedu.address.logic.commands.mapping.MappingCommand;
 import seedu.address.logic.commands.mapping.MappingDeleteCommand;
 import seedu.address.logic.commands.mapping.MappingListCommand;
 import seedu.address.logic.commands.mapping.MappingSearchCommand;
+import seedu.address.logic.commands.mapping.MappingSortCommand;
 import seedu.address.logic.commands.note.NoteAddCommand;
 import seedu.address.logic.commands.note.NoteClearTagCommand;
 import seedu.address.logic.commands.note.NoteCommand;
@@ -102,8 +103,8 @@ public enum UsageMessage {
                     + "localcode\nlocalname\npartnercode\npartnername\nuniversity\ninformation"),
     MAPPING_SORT(
             MappingCommand.COMMAND_WORD,
-            MappingSearchCommand.ACTION_WORD,
-            "[attribute]",
+            MappingSortCommand.ACTION_WORD,
+        "[attribute]",
             "Sorts local courses by the selected attribute\nAttributes:\n"
                     + "localcode\nlocalname\npartnercode\npartnername\nuniversity\ninformation"),
     MAPPING(String.join("\n",

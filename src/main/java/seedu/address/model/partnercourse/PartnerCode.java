@@ -3,14 +3,13 @@ package seedu.address.model.partnercourse;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import seedu.address.messages.ConstraintMessage;
+
 /**
  * Represents a Partner Course's partner code in SEPlendid.
  * Guarantees: immutable; is valid as declared in {@link #isValidPartnerCode(String)}
  */
 public class PartnerCode {
-    public static final String MESSAGE_CONSTRAINTS = "PartnerCode must start with an alphabet, and be no more than "
-            + "10 alphanumeric characters";
-
     public static final String VALIDATION_REGEX = "[a-zA-Z][a-zA-Z0-9]{0,9}";
 
     private final String value;
@@ -23,7 +22,7 @@ public class PartnerCode {
     public PartnerCode(String partnerCode) {
         partnerCode = partnerCode.trim();
         requireNonNull(partnerCode);
-        checkArgument(isValidPartnerCode(partnerCode), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidPartnerCode(partnerCode), ConstraintMessage.PARTNERCOURSE_CODE.getValue());
         value = partnerCode;
     }
 

@@ -103,7 +103,7 @@ public enum ConstraintMessage {
 
     // University messages
     UNIVERSITY_NAME(
-        "UniversityName:"
+        "UniversityName:\n"
         + "Must be non-empty"),
 
     UNIVERSITY_ATTRIBUTE_SEARCH(
@@ -112,7 +112,19 @@ public enum ConstraintMessage {
 
     UNIVERSITY_ATTRIBUTE_SORT(
         "There is only 1 available for university sort:\n"
-        + "university\n");
+        + "university\n"),
+
+    // Note messages
+    NOTE_CONTENT(
+        "Content:\n"
+        + "Must only contain alphanumeric characters or spaces\n"
+        + "Must be non-empty"),
+
+    // Tag messages
+    TAG_NAME(
+        "Tag:\n"
+        + "Must only contain alphanumeric characters\n"
+        + "Must not contain whitespaces");
 
     private final String value;
 

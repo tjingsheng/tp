@@ -39,7 +39,7 @@ public enum ConstraintMessage {
         "There are only 4 attributes available for localcourse update:\n"
         + "localcode\n"
         + "localname\n"
-        + "localunit\n"
+        + "unit\n"
         + "localdescription\n"),
 
     // PartnerCourse messages
@@ -79,7 +79,7 @@ public enum ConstraintMessage {
         "There are only 4 attributes available for partnercourse update:\n"
         + "partnercode\n"
         + "partnername\n"
-        + "partnerunit\n"
+        + "unit\n"
         + "description\n"),
 
     // Mapping messages

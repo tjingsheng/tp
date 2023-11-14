@@ -27,9 +27,10 @@ public class NoteUpdateCommand extends NoteCommand {
      * @param noteIndexToUpdate The Index of Note to be updated into Storage.
      * @param updateContent     The updated content of the note
      */
-    public NoteUpdateCommand(int noteIndexToUpdate, Content updateContent) {
+    public NoteUpdateCommand(Integer noteIndexToUpdate, Content updateContent) {
         super();
         requireNonNull(noteIndexToUpdate);
+        requireNonNull(updateContent);
         this.noteIndexToUpdate = noteIndexToUpdate;
         this.updateContent = updateContent;
     }

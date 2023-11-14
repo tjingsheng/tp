@@ -8,8 +8,8 @@ public enum ConstraintMessage {
     LOCALCOURSE_CODE(
         "localcode:\n"
         + "Must be non-empty\n"
-        + "Must only contain alphanumeric characters\n"
-        + "Be no more than 10 characters long\n"),
+        + "Must start with an alphabet\n"
+        + "Be no more than 10 alphanumeric characters\n"),
 
     LOCALCOURSE_NAME(
        "localname:\n"
@@ -39,15 +39,15 @@ public enum ConstraintMessage {
         "There are only 4 attributes available for localcourse update:\n"
         + "localcode\n"
         + "localname\n"
-        + "localunit\n"
+        + "unit\n"
         + "localdescription\n"),
 
     // PartnerCourse messages
     PARTNERCOURSE_CODE(
         "partnercode:\n"
         + "Must be non-empty\n"
-        + "Must only contain alphanumeric characters\n"
-        + "Be no more than 10 characters long\n"),
+        + "Must start with an alphabet\n"
+        + "Be no more than 10 alphanumeric characters\n"),
 
     PARTNERCOURSE_NAME(
         "partnername:\n"
@@ -79,7 +79,7 @@ public enum ConstraintMessage {
         "There are only 4 attributes available for partnercourse update:\n"
         + "partnercode\n"
         + "partnername\n"
-        + "partnerunit\n"
+        + "unit\n"
         + "description\n"),
 
     // Mapping messages

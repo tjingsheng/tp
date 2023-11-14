@@ -58,10 +58,11 @@ note-taking system will assist you in organising your important information you 
    - 8.5 [Mapping](#8-5-mapping)
    - 8.6 [Note](#8-6-note)
    - 8.7 [Saving Data](#8-7-saving-data)
-9. [Effort](#9-effort)
-    - 9.1 [Morphing of AB3 to SEPlendid](#9-1-morphing-of-ab3-to-seplendid)
-    - 9.2 [Redesigning the UI](#9-2-redesigning-the-ui)
-10. [Acknowledgements](#10-acknowledgements)
+9. [Planned Enhancements](#9-planned-enhancements)
+10. [Effort](#10-effort)
+    - 10.1 [Morphing of AB3 to SEPlendid](#10-1-morphing-of-ab3-to-seplendid)
+    - 10.2 [Redesigning the UI](#10-2-redesigning-the-ui)
+11. [Acknowledgements](#11-acknowledgements)
 
 <br>
 
@@ -197,16 +198,17 @@ The `SeplendidModel` component,
 * stores the local course, partner course, university, mapping and note data. `SeplendidModelManager` also serves as
   the facade class, for other components to access the data. It stores all the data, which the UI can access to
   display. Commands also take in the `SeplendidModel` object to perform their operations on the data.
-* Local course are represented by `LocalCourse` objects, which are stored in a `UniqueLocalCourseList` object. Each
-  `LocalCourse` has `LocalCode`, `LocalName`, `LocalDescription` and `LocalUnit` objects. `PartnerCourse` follows
-  similarly, and `Mapping` depends on `LocalCode`, `PartnerCode` and `UniversityName` objects (on top of its own
-  `MappingMiscInformation`).
 * stores the currently 'searched for' `LocalCourse`, `PartnerCourse`, `University`, `Mapping` objects as separate
   filtered lists, exposed to outsiders as unmodifiable `ObservableList<LocalCourse>`, `ObservableList<PartnerCourse>`,
   `ObservableList<University>` and `ObservableList<Mapping>` objects respectively (e.g. the UI can be bound to one of
   these lists so that the UI automatically updates when the data in the list changes).
 * does not depend on any of the other three components (as the `SeplendidModel` represents data entities of the domain,
   they should make sense on their own without depending on other components)
+* Local course are represented by `LocalCourse` objects, which are stored in a `UniqueLocalCourseList` object. Each
+  `LocalCourse` has `LocalCode`, `LocalName`, `LocalDescription` and `LocalUnit` objects. `PartnerCourse` follows
+  similarly, and `Mapping` depends on `LocalCode`, `PartnerCode` and `UniversityName` objects (on top of its own
+  `MappingMiscInformation`).
+* Information on `Note` model components are omitted in the above diagram for brevity.
 
 <br>
 
@@ -215,7 +217,7 @@ The `SeplendidModel` component,
 ### 4.5 Storage Component
 
 **API
-** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+** : [`Storage.java`](https://github.com/AY2324S1-CS2103T-W10-2/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
 <puml src="diagrams/StorageClassDiagram.puml" width="100%" />
 
@@ -228,6 +230,7 @@ The `Storage` component,
   , which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `SeplendidModel` component (because the `Storage` component's job is to save/retrieve
   objects that belong to the `SeplendidModel`).
+* `NoteCatalogueStorage` and `UserPrefStorage` are omitted from the above diagram for brevity.
 
 <br>
 
@@ -1559,7 +1562,17 @@ Expected Output in the Command Output Box: Note searched message.
 
 ---
 
-## 9. Effort
+## 9. Planned enhancements
+
+This section describes the planned enhancements for SEPlendid.
+
+- [ ] Add the ability to allow update of mappings, to complement the existing mapping feature. This was not prioritised
+  due to time constraints.
+- [ ] Add memory for resizing of windows. The application should remember the window size from the latest run.
+
+---
+
+## 10. Effort
 
 The implementation of SEPlendid proved to be a challenging endeavor. Below is the highlights of the extensive effort our
 team dedicated to developing SEPlendid, along with a mention of some of the challenges we encountered along the way.
@@ -1568,7 +1581,8 @@ team dedicated to developing SEPlendid, along with a mention of some of the chal
 
 ---
 
-### 9.1 Morphing of AB3 to SEPlendid
+### 10.1 Morphing of AB3 to SEPlendid
+
 
 As mappings was the core feature of SEPlendid, we decided to morph AB3 into SEPlendid. We identified the need for
 several data types, minimally `LocalCourse`, `PartnerCourse`, `University` and `Mapping`. We also identified the
@@ -1592,7 +1606,7 @@ A large portion of code had to be refactored to morph AB3 to SEPlendid.
 
 ---
 
-### 9.2 Redesigning the UI
+### 10.2 Redesigning the UI
 
 In recognising the significance of minimalism for achieving simplicity, we embarked on the task of redesigning the
 original AB3 UI into our custom SEPlendid interface. The endeavor underscored the essential balance between simplicity
@@ -1606,6 +1620,6 @@ requirements of a student exchange program mapping tool.
 
 ---
 
-## 10. Acknowledgements
+## 11. Acknowledgements
 
 * Libraries used: [JavaFX](https://openjfx.io/), [Jackson](https://github.com/FasterXML/jackson), [JUnit5](https://github.com/junit-team/junit5)

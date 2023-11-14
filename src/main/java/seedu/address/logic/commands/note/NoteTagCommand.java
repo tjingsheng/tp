@@ -28,9 +28,10 @@ public class NoteTagCommand extends NoteCommand {
      * @param noteIndexToUpdate The index of Note to be updated into Storage.
      * @param addTag The tag to be added to the note.
      */
-    public NoteTagCommand(int noteIndexToUpdate, Tag addTag) {
+    public NoteTagCommand(Integer noteIndexToUpdate, Tag addTag) {
         super();
         requireNonNull(noteIndexToUpdate);
+        requireNonNull(addTag);
         this.noteIndexToUpdate = noteIndexToUpdate;
         this.addTag = addTag;
     }

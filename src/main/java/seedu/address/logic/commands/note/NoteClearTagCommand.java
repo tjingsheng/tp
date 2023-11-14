@@ -23,7 +23,7 @@ public class NoteClearTagCommand extends NoteCommand {
      *
      * @param noteIndexToUpdate The index of Note to be updated into Storage.
      */
-    public NoteClearTagCommand(int noteIndexToUpdate) {
+    public NoteClearTagCommand(Integer noteIndexToUpdate) {
         super();
         requireNonNull(noteIndexToUpdate);
         this.noteIndexToUpdate = noteIndexToUpdate;

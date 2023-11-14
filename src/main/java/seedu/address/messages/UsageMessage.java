@@ -58,19 +58,19 @@ public enum UsageMessage {
             LocalCourseCommand.COMMAND_WORD,
             LocalCourseSearchCommand.ACTION_WORD,
             "[attribute] [query]",
-            "Searches for a local course where query is found in the selected attribute\nAttributes:\n"
+            "Searches local courses by attributes.\nAttributes:\n"
                     + "localcode\nlocalname\nlocaldescription"),
     LOCALCOURSE_SORT(
             LocalCourseCommand.COMMAND_WORD,
             LocalCourseSortCommand.ACTION_WORD,
             "[attribute]",
-            "Sorts local courses by the selected attribute\nAttributes:\n"
+            "Sorts all local courses by attributes\nAttributes:\n"
                     + "localcode\nlocalname"),
     LOCALCOURSE_UPDATE(
             LocalCourseCommand.COMMAND_WORD,
             LocalCourseUpdateCommand.ACTION_WORD,
             "[localcode] [attribute] [newvalue]",
-            "Updates the attribute of the local course with a new value.\nAttributes:\n"
+            "Updates a local course for a particular attribute.\nAttributes:\n"
                     + "localcode\nlocalname\nunit\nlocaldescription'"),
     LOCALCOURSE(String.join("\n",
             "Local Courses Commands:\n",
@@ -99,13 +99,13 @@ public enum UsageMessage {
             MappingCommand.COMMAND_WORD,
             MappingSearchCommand.ACTION_WORD,
             "[attribute] [query]",
-            "Searches for a mapping where query is found in the selected attribute\nAttributes:\n"
+            "Lists all mappings based on queried value for the specified attribute\nAttributes:\n"
                     + "localcode\nlocalname\npartnercode\npartnername\nuniversity\ninformation"),
     MAPPING_SORT(
             MappingCommand.COMMAND_WORD,
             MappingSortCommand.ACTION_WORD,
         "[attribute]",
-            "Sorts local courses by the selected attribute\nAttributes:\n"
+            "Sorts all mappings based on the specified attribute\nAttributes:\n"
                     + "localcode\nlocalname\npartnercode\npartnername\nuniversity\ninformation"),
     MAPPING(String.join("\n",
             "Mapping Commands:\n",
@@ -132,8 +132,8 @@ public enum UsageMessage {
     NOTE_SEARCH(
             NoteCommand.COMMAND_WORD,
             NoteSearchCommand.ACTION_WORD,
-            "[query]",
-            "Searches for notes with query is found in the note tag"),
+            "[note_tag_keyword]",
+            "Search notes with the same tag keyword"),
     NOTE_TAG(
             NoteCommand.COMMAND_WORD,
             NoteTagCommand.ACTION_WORD,
@@ -161,7 +161,7 @@ public enum UsageMessage {
     PARTNERCOURSE_ADD(
             PartnerCourseCommand.COMMAND_WORD,
             PartnerCourseAddCommand.ACTION_WORD,
-            "[university] [partnercode] [partnername] [unit] [description]",
+            "[university] [partnercode] [partnername] [partnerunit] [partnerdescription]",
             "Adds a partner course"),
     PARTNERCOURSE_DELETE(
             PartnerCourseCommand.COMMAND_WORD,
@@ -177,19 +177,19 @@ public enum UsageMessage {
             PartnerCourseCommand.COMMAND_WORD,
             PartnerCourseSearchCommand.ACTION_WORD,
             "[attribute] [query]",
-            "Searches for a partner course where query is found in the selected attribute\nAttributes:\n"
+            "Searches partner courses by attributes\nAttributes:\n"
                     + "partnercode\npartnername\ndescription\nuniversity"),
     PARTNERCOURSE_SORT(
             PartnerCourseCommand.COMMAND_WORD,
             PartnerCourseSortCommand.ACTION_WORD,
             "[attribute]",
-            "Sorts partner courses by the selected attribute\nAttributes:\n"
+            "Sorts all partner courses by attributes.\nAttributes:\n"
                     + "partnercode\npartnername\nuniversity"),
     PARTNERCOURSE_UPDATE(
             PartnerCourseCommand.COMMAND_WORD,
             PartnerCourseUpdateCommand.ACTION_WORD,
             "[university] [partnercode] [attribute] [newvalue]",
-            "Updates the attribute of the partner course with a new value.\nAttributes:\n"
+            "Updates a partner course for a particular attribute.\nAttributes:\n"
                     + "partnercode\npartnername\nunit\ndescription"),
     PARTNERCOURSE(String.join("\n",
             "Partner Course Commands:\n",
@@ -207,13 +207,13 @@ public enum UsageMessage {
     UNIVERSITY_SEARCH(
             UniversityCommand.COMMAND_WORD,
             UniversitySearchCommand.ACTION_WORD,
-            "[query]",
-            "Searches for a university where query is found in the university name"),
+            "[university_keyword]",
+            "Search universities with the same keyword"),
     UNIVERSITY_SORT(
             UniversityCommand.COMMAND_WORD,
             UniversitySortCommand.ACTION_WORD,
             "",
-            "Sorts the universities by the university name"),
+            "Sorts all universities in alphabetical order"),
     UNIVERSITY(String.join("\n",
             "University Commands:\n",
             UNIVERSITY_LIST.toString(),

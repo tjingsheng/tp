@@ -19,7 +19,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/lamchenghou.md)]
 
 * Role: Team Lead
-* Responsibilities: Deliverables and Deadlines, Parsing
+* Responsibilities: Deliverables and Deadlines, Mapping, Parsing
 
 ### Yim Sohyun
 
@@ -31,11 +31,11 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: UI
 
-### Alyssa Ong 
+### Alyssa Ong
 
 <img src="images/alyssaongyx.png" width="200px">
 
-[[github](http://github.com/alyssaongyx)] 
+[[github](http://github.com/alyssaongyx)]
 [[portfolio](team/alyssaongyx.md)]
 
 * Role: Developer

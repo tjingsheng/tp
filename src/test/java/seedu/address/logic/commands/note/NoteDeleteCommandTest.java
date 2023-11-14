@@ -14,28 +14,6 @@ public class NoteDeleteCommandTest {
     }
 
     @Test
-    public void execute_validNoteIndex_success() {
-        // Replace the following lines with your test logic
-        int validNoteIndex = 1;
-        NoteDeleteCommand noteDeleteCommand = new NoteDeleteCommand(validNoteIndex);
-
-        // Execute the command and check the result
-        // Note: You need to mock the SeplendidModel or create a test double
-        // to execute this command and verify the result.
-    }
-
-    @Test
-    public void execute_invalidNoteIndex_throwsCommandException() {
-        // Replace the following lines with your test logic
-        int invalidNoteIndex = 0;
-        NoteDeleteCommand noteDeleteCommand = new NoteDeleteCommand(invalidNoteIndex);
-
-        // Execute the command and check that it throws a CommandException
-        // Note: You need to mock the SeplendidModel or create a test double
-        // to execute this command and verify that it throws a CommandException.
-    }
-
-    @Test
     public void equals() {
         int noteIndex1 = 1;
         int noteIndex2 = 2;

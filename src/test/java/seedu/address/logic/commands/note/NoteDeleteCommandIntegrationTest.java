@@ -64,4 +64,12 @@ public class NoteDeleteCommandIntegrationTest {
         NoteDeleteCommand noteDeleteCommand = new NoteDeleteCommand(invalidNoteIndex);
         assertThrows(NoteNotFoundException.class, () -> noteDeleteCommand.execute(model));
     }
+
+    @Test
+    public void execute_invalidNegativeNoteIndex_throwsNoteNotFoundException() {
+        int invalidNoteIndex = -1; // Invalid index
+
+        NoteDeleteCommand noteDeleteCommand = new NoteDeleteCommand(invalidNoteIndex);
+        assertThrows(CommandException.class, () -> noteDeleteCommand.execute(model));
+    }
 }

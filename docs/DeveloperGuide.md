@@ -36,11 +36,11 @@ note-taking system will assist you in organising your important information you 
    - 4.6 [Common Classes](#4-6-common-classes)
 5. [Implementation](#5-implementation)
    - 5.1 [Parser to Handle Commands with Optional Arguments](#5-1-parser-to-handle-commands-with-optional-arguments)
-   - 5.2 [Listing of Courses, Universities and Notes](#5-2-listing-of-courses-universities-and-notes)
-   - 5.3 [Adding of Courses, Universities and Notes](#5-3-adding-of-courses-universities-and-notes)
+   - 5.2 [List Feature](#5-2-list-feature)
+   - 5.3 [Add Feature](#5-3-add-feature)
    - 5.4 [Delete Feature](#5-4-delete-feature)
    - 5.5 [Update Feature](#5-5-update-feature)
-   - 5.6 [Searching of Courses](#5-6-searching-of-courses-universities-and-notes)
+   - 5.6 [Search Feature](#5-6-search-feature)
    - 5.7 [Sort Feature](#5-7-sort-feature)
    - 5.8 [Mapping Feature](#5-8-mapping-feature)
 6. [Other Helpful Guides](#6-other-helpful-guides)
@@ -248,11 +248,12 @@ The below diagram gives a high-level overview on how the `SeplendidParser` parse
 
 ---
 
-### 5.2 Listing of Courses, Universities and Notes
+### 5.2 List Feature
 
 **Overview**
-The `list` command generates a list of courses and universities' sample data. This allows the viewing of all the
-courses.
+<br>
+The `list` command generates a list of SEPlendid data. The data can be in the for of a `localcourse`, `partnercourse`, 
+`university`, `mapping`, or `note`. This allows the viewing of all the data type that is listed.
 
 The activity diagram is as such:
 <puml src="diagrams/ListActivityDiagram.puml" width="100%" />
@@ -282,11 +283,12 @@ Each data type has to be specified to ensure organisation of sample data.
 
 ---
 
-### 5.3 Adding of Courses, Universities and Notes
+### 5.3 Add Feature
 
 **Overview**
-The `add` command allows for the adding of new courses, universities and notes. This allows the creation of new
-datatypes.
+<br>
+The `add` command allows for the adding of `localcourse`, `partnercourse`, `mapping` and `notes`. This allows the 
+addition of new data into SEPlendid.
 
 The activity diagram is as such:
 <puml src="diagrams/AddActivityDiagram.puml" width="100%" />
@@ -379,9 +381,10 @@ Each data type has different attributes that can be used for updating.
 
 ---
 
-### 5.6 Searching of Courses, Universities and Notes
+### 5.6 Search Feature
 
 **Overview**
+<br>
 The `search` command allows users find specific courses or universities they are interested in. This allows for faster
 querying of courses, universities and notes.
 

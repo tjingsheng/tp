@@ -1057,7 +1057,7 @@ Format: `exit`
 <br />
 <br />
 
-#### 5.8 Save the data
+### 5.8 Save the data
 
 SEPlendid's data are saved in the hard disk automatically after any command that changes the data. There is no need to
 save manually.

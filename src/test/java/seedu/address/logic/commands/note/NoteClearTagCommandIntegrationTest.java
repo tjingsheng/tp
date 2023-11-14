@@ -18,7 +18,6 @@ import seedu.address.model.SeplendidModel;
 import seedu.address.model.SeplendidModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.note.Note;
-import seedu.address.model.tag.Tag;
 import seedu.address.testutil.NoteBuilder;
 
 /**

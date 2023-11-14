@@ -53,7 +53,7 @@ public class NoteSearchCommandIntegrationTest {
         CommandResult commandResult = noteSearchCommand.execute(model);
 
         // Verify the result message
-        assertEquals(String.format(NoteSearchCommand.MESSAGE_SUCCESS,  Messages.format(model.getFilteredNoteList())),
+        assertEquals(String.format(NoteSearchCommand.MESSAGE_SUCCESS, Messages.format(model.getFilteredNoteList())),
                 commandResult.getFeedbackToUser());
 
         // Verify that the filtered note list in the model is as expected

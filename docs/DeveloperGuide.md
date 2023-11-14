@@ -36,11 +36,11 @@ note-taking system will assist you in organising your important information you 
    - 4.6 [Common Classes](#4-6-common-classes)
 5. [Implementation](#5-implementation)
    - 5.1 [Parser to Handle Commands with Optional Arguments](#5-1-parser-to-handle-commands-with-optional-arguments)
-   - 5.2 [Listing of Courses, Universities and Notes](#5-2-listing-of-courses-universities-and-notes)
-   - 5.3 [Adding of Courses, Universities and Notes](#5-3-adding-of-courses-universities-and-notes)
+   - 5.2 [List Feature](#5-2-list-feature)
+   - 5.3 [Add Feature](#5-3-add-feature)
    - 5.4 [Delete Feature](#5-4-delete-feature)
    - 5.5 [Update Feature](#5-5-update-feature)
-   - 5.6 [Searching of Courses](#5-6-searching-of-courses-universities-and-notes)
+   - 5.6 [Search Feature](#5-6-search-feature)
    - 5.7 [Sort Feature](#5-7-sort-feature)
    - 5.8 [Mapping Feature](#5-8-mapping-feature)
 6. [Other Helpful Guides](#6-other-helpful-guides)
@@ -77,6 +77,12 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 ---
 
 ## 4. Design
+
+This section highlight the design considerations for SEPlendid.
+
+<br>
+
+---
 
 ### 4.1 Architecture
 
@@ -242,6 +248,9 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+<br>
+
+---
 ### 5.1 Parser to Handle Commands with Optional Arguments
 
 The below diagram gives a high-level overview on how the `SeplendidParser` parses a command from our command set:
@@ -251,11 +260,12 @@ The below diagram gives a high-level overview on how the `SeplendidParser` parse
 
 ---
 
-### 5.2 Listing of Courses, Universities and Notes
+### 5.2 List Feature
 
-**Overview**
-The `list` command generates a list of courses and universities' sample data. This allows the viewing of all the
-courses.
+#### Overview
+<br>
+The `list` command generates a list of SEPlendid data. The data can be in the for of a `localcourse`, `partnercourse`, 
+`university`, `mapping`, or `note`. This allows the viewing of all the data type that is listed.
 
 The activity diagram is as such:
 <puml src="diagrams/ListActivityDiagram.puml" width="100%" />
@@ -266,7 +276,7 @@ Here is a sequence diagram for `localcourse list`:
 <br>
 <br>
 
-**Feature Details**
+#### Feature Details
 
 1. The user specifies a data object with its required command word.
 2. If invalid command arguments are provided, the user will be prompted to enter the command correctly via an
@@ -277,7 +287,7 @@ Here is a sequence diagram for `localcourse list`:
 <br>
 <br>
 
-**Feature Considerations**
+#### Feature Considerations
 
 Each data type has to be specified to ensure organisation of sample data.
 
@@ -285,11 +295,12 @@ Each data type has to be specified to ensure organisation of sample data.
 
 ---
 
-### 5.3 Adding of Courses, Universities and Notes
+### 5.3 Add Feature
 
-**Overview**
-The `add` command allows for the adding of new courses, universities and notes. This allows the creation of new
-datatypes.
+#### Overview
+<br>
+The `add` command allows for the adding of `localcourse`, `partnercourse`, `mapping` and `notes`. This allows the 
+addition of new data into SEPlendid.
 
 The activity diagram is as such:
 <puml src="diagrams/AddActivityDiagram.puml" width="100%" />
@@ -305,7 +316,7 @@ Here is a sequence diagram for `partnercourse add`:
 <br>
 <br>
 
-**Feature Details**
+#### Feature Details
 
 1. The user is required to fill up all the attributes require to add the data object.
 2. If not all the identity attributes are provided, the user will be prompted to enter the command correctly via an
@@ -382,9 +393,10 @@ Each data type has different attributes that can be used for updating.
 
 ---
 
-### 5.6 Searching of Courses, Universities and Notes
+### 5.6 Search Feature
 
-**Overview**
+#### Overview
+<br>
 The `search` command allows users find specific courses or universities they are interested in. This allows for faster
 querying of courses, universities and notes.
 
@@ -397,7 +409,7 @@ Here is a sequence diagram for `partnercourse search`:
 <br>
 <br>
 
-**Feature Details**
+#### Feature Details
 
 1. The user specifies a data object with its unique identity attribute, attribute that they are querying and the
    keyword for the query.
@@ -412,7 +424,7 @@ Here is a sequence diagram for `partnercourse search`:
 <br>
 <br>
 
-**Feature Considerations**
+#### Feature Considerations
 The data object is only searched when all the specified identity attributes are identical to the existing data object.
 Each data type has different attributes that can be used for searching.
 
@@ -520,7 +532,6 @@ non-empty, the deletion will be performed, otherwise a `CommandException` will b
     * Cons: We must ensure that deletion cascades, in order to maintain data integrity. This can introduce bugs if not
       done correctly.
 
-
 <br>
 
 ---
@@ -538,6 +549,12 @@ non-empty, the deletion will be performed, otherwise a `CommandException` will b
 ---
 
 ## 7. Requirements
+
+This section highlight the requirements that were considered when creating SEPlendid.
+
+<br>
+
+---
 
 ### 7.1 Product Scope
 
@@ -1560,7 +1577,12 @@ This section describes the planned enhancements for SEPlendid.
 The implementation of SEPlendid proved to be a challenging endeavor. Below is the highlights of the extensive effort our
 team dedicated to developing SEPlendid, along with a mention of some of the challenges we encountered along the way.
 
+<br>
+
+---
+
 ### 10.1 Morphing of AB3 to SEPlendid
+
 
 As mappings was the core feature of SEPlendid, we decided to morph AB3 into SEPlendid. We identified the need for
 several data types, minimally `LocalCourse`, `PartnerCourse`, `University` and `Mapping`. We also identified the

@@ -1,7 +1,7 @@
 ---
-  layout: default.md
-  title: "Developer Guide"
-  pageNav: 3
+layout: default.md
+title: "Developer Guide"
+pageNav: 3
 ---
 <bottom-head>
     <link rel="stylesheet" href="stylesheets/userguide.css">
@@ -64,6 +64,7 @@ note-taking system will assist you in organising your important information you 
     - 10.2 [Redesigning the UI](#10-2-redesigning-the-ui)
 11. [Acknowledgements](#11-acknowledgements)
 
+</div>
 <br>
 
 ---
@@ -216,8 +217,7 @@ The `SeplendidModel` component,
 
 ### 4.5 Storage Component
 
-**API
-** : [`Storage.java`](https://github.com/AY2324S1-CS2103T-W10-2/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2324S1-CS2103T-W10-2/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
 <puml src="diagrams/StorageClassDiagram.puml" width="100%" />
 
@@ -262,7 +262,7 @@ The below diagram gives a high-level overview on how the `SeplendidParser` parse
 
 ### 5.2 List Feature
 
-#### Overview
+#### Overview \
 <br>
 The `list` command generates a list of SEPlendid data. The data can be in the for of a `localcourse`, `partnercourse`, 
 `university`, `mapping`, or `note`. This allows the viewing of all the data type that is listed.
@@ -295,6 +295,11 @@ Each data type has to be specified to ensure organisation of sample data.
 
 ---
 
+### 5.3 Add Feature
+
+**Overview** \
+The `add` command allows for the adding of new courses, universities and notes. This allows the creation of new
+datatypes.
 ### 5.3 Add Feature
 
 #### Overview
@@ -532,6 +537,7 @@ non-empty, the deletion will be performed, otherwise a `CommandException` will b
     * Cons: We must ensure that deletion cascades, in order to maintain data integrity. This can introduce bugs if not
       done correctly.
 
+
 <br>
 
 ---
@@ -574,7 +580,7 @@ The following further describes our target users:
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**
+**Value proposition:** \
 SEPlendid aims to provide an advanced search, allowing users to search for mappings by various attributes such
 as partner universities' course names, and NUS course codes. We aim to also include features such as the ability to
 contribute course mappings, and note-taking.
@@ -613,8 +619,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | student | delete my notes                                                       | remove my note                                             |
 | `* `     | student | update the list of my notes                                           | edit any mistakes or update new information                |
 | `* `     | student | tag my notes                                                          | to organise my notes                                       |
-
-*{More to be added}*
+| `* `     | student | search for my notes based on the tag                                  | to find my notes based on the tag                          |
+| `* `     | student | clear the tags for my notes                                           | to organise my notes based on tags                         |
 
 <br>
 

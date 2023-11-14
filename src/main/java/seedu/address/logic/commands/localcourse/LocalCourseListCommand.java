@@ -15,6 +15,13 @@ public class LocalCourseListCommand extends LocalCourseCommand {
 
     public static final String MESSAGE_SUCCESS = "Listed all local courses";
 
+    /**
+     * Lists all local courses in the LocalCourseCatalogue, by applying a show-all predicate.
+     *
+     * @param seplendidModel {@code SeplendidModel} which the command should operate on.
+     * @return CommandResult indicating success of execution.
+     * @throws CommandException On error.
+     */
     @Override
     public CommandResult execute(SeplendidModel seplendidModel) throws CommandException {
         requireNonNull(seplendidModel);

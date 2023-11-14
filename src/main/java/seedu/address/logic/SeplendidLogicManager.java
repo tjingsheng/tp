@@ -39,7 +39,6 @@ public class SeplendidLogicManager implements SeplendidLogic {
 
     // Note, during morphing Storage handles both ab3 and SEPlendid.
     // On the other hand, SEPlendid has its own LogicManager.
-    // TBD: remove this developer's note.
     private final SeplendidModel model;
     private final Storage storage;
     private final SeplendidParser seplendidParser;

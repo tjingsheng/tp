@@ -79,8 +79,5 @@ public class UniversitySortCommandTest {
         // null -> returns false
         assertFalse(universitySortCommandByUniversityName.equals(null));
 
-        // different task -> returns false
-        // TBD when country for university is ready.
-
     }
 }

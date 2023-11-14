@@ -29,6 +29,13 @@ public class MappingSortCommand extends MappingCommand {
         this.mappingComparator = mappingComparator;
     }
 
+    /**
+     * Sorts the mapping list and returns a CommandResult.
+     *
+     * @param seplendidModel {@code SeplendidModel} which the command should operate on.
+     * @return {@code CommandResult} that describes changes made when command execute runs successfully.
+     * @throws CommandException If an error occurs during command execution.
+     */
     @Override
     public CommandResult execute(SeplendidModel seplendidModel) throws CommandException {
         requireNonNull(seplendidModel);

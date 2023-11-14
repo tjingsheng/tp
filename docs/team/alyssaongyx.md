@@ -23,20 +23,22 @@ Given below are my contributions to the project.
     organising the large number of sample data.
 
 * * **New Feature**: Added the ability to list universities [#79](https://github.com/AY2324S1-CS2103T-W10-2/tp/pull/79)
-* What it does: This feature allows the user to retrieve all the information of universities.
-* Justification: This feature allows the user to view all the universities offered by NUS Computing, allowing them to 
-  choose and research on the universities they are interested in.
+  * What it does: This feature allows the user to retrieve all the information of universities.
+  * Justification: This feature allows the user to view all the universities offered by NUS Computing, allowing them to 
+    choose and research on the universities they are interested in.
 
 
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=alyssaongyx&breakdown=false&sort=groupTitle%20dsc&sortWithin=title&since=2023-09-22&timeframe=commit&mergegroup=&groupSelect=groupByRepos)
 
 * **Project management**:
   * Managed releases `v1.2` (1 release) on GitHub
-  * Closed milestone `v1.3` and `v1.3b` (2 milstones)
+  * Closed milestone `v1.3`,`v1.3b` and `v1.4`(3 milstones)
   * Review and merge PRs
 
 * **Enhancements to existing features**:
-  * Wrote additional tests for existing features to increase coverage from 76% to 81% (Pull requests [\#36](), [\#38]())
+  * Wrote additional tests for existing features to increase coverage from 78% to 81% (Pull requests [#268](https://github.com/AY2324S1-CS2103T-W10-2/tp/pull/268))
+  * Add testings for localcourse, partnercourse and university search commands 
+  * Add testings for localcourse update command (Pull requests [#268](https://github.com/AY2324S1-CS2103T-W10-2/tp/pull/268))
 
 * **Documentation**:
   * User Guide:
@@ -61,5 +63,4 @@ Given below are my contributions to the project.
     [\#157](https://github.com/AY2324S1-CS2103T-W10-2/tp/pull/157)
   * Reported bugs and suggestions for other teams in the class (examples: [15](https://github.com/alyssaongyx/ped/issues/15)
   
-
-* _{you can add/remove categories in the list above}_
+  

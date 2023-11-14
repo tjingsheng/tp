@@ -365,7 +365,8 @@ public class SeplendidModelStub implements SeplendidModel {
     }
 
     @Override
-    public boolean hasMappingWithPartnerCode(PartnerCode partnerCode) {
+    public boolean hasMappingWithPartnerCodeAndUniversityName(PartnerCode partnerCode,
+                                                              UniversityName universityName) {
         throw new AssertionError("This method should not be called.");
     }
 

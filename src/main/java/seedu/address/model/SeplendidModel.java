@@ -119,7 +119,7 @@ public interface SeplendidModel {
      * The localCourse of {@code editedLocalCourse} must not be the same as another
      * existing localCourse in the LocalCourseCatalogue.
      */
-    void setLocalCourse(LocalCourse localCourse, LocalCourse editedLocalCourse);
+    void setLocalCourse(LocalCourse localCourse, LocalCourse editedLocalCourse) throws CommandException;
 
     //=========== Filtered/SortedLocalCourseList Accessors =============================================================
 
@@ -174,7 +174,7 @@ public interface SeplendidModel {
      */
     void addPartnerCourse(PartnerCourse partnerCourse);
 
-    void setPartnerCourse(PartnerCourse target, PartnerCourse editedPartnerCourse);
+    void setPartnerCourse(PartnerCourse target, PartnerCourse editedPartnerCourse) throws CommandException;
 
     /**
      * Deletes the given PartnerCourse.
@@ -330,7 +330,7 @@ public interface SeplendidModel {
     /**
      * Returns true is a mapping with {@code partnerCode} exists in the MappingCatalogue.
      */
-    boolean hasMappingWithPartnerCode(PartnerCode partnerCode);
+    boolean hasMappingWithPartnerCodeAndUniversityName(PartnerCode partnerCode, UniversityName universityName);
 
     /**
      * Deletes the given mapping.

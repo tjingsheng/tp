@@ -27,6 +27,8 @@ public class LocalCourseUpdateCommand extends LocalCourseCommand {
     public static final String MESSAGE_NONEXISTENT_LOCAL_COURSE = "This local course does not exist in SEPlendid.";
     public static final String MESSAGE_DUPLICATE_LOCAL_COURSE =
             "This updated partner course already exists in SEPlendid.";
+    public static final String MESSAGE_MAPPING_DEPENDENT_ON_LOCAL_COURSE = "This local course is mapped to a partner "
+            + "course. Please delete the mapping first.";
     private LocalCourse localCourseToUpdate;
     private LocalCourse updatedLocalCourse;
     private LocalCode localCode;
@@ -103,6 +105,7 @@ public class LocalCourseUpdateCommand extends LocalCourseCommand {
                         Messages.format(localCourseToUpdate), Messages.format(updatedLocalCourse)),
                 UiUtil.ListViewModel.LOCAL_COURSE_LIST);
     }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {

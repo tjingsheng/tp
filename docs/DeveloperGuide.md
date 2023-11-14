@@ -250,7 +250,7 @@ The below diagram gives a high-level overview on how the `SeplendidParser` parse
 
 ### 5.2 List Feature
 
-**Overview**
+#### Overview
 <br>
 The `list` command generates a list of SEPlendid data. The data can be in the for of a `localcourse`, `partnercourse`, 
 `university`, `mapping`, or `note`. This allows the viewing of all the data type that is listed.
@@ -264,7 +264,7 @@ Here is a sequence diagram for `localcourse list`:
 <br>
 <br>
 
-**Feature Details**
+#### Feature Details
 
 1. The user specifies a data object with its required command word.
 2. If invalid command arguments are provided, the user will be prompted to enter the command correctly via an
@@ -275,7 +275,7 @@ Here is a sequence diagram for `localcourse list`:
 <br>
 <br>
 
-**Feature Considerations**
+#### Feature Considerations
 
 Each data type has to be specified to ensure organisation of sample data.
 
@@ -285,7 +285,7 @@ Each data type has to be specified to ensure organisation of sample data.
 
 ### 5.3 Add Feature
 
-**Overview**
+#### Overview
 <br>
 The `add` command allows for the adding of `localcourse`, `partnercourse`, `mapping` and `notes`. This allows the 
 addition of new data into SEPlendid.
@@ -304,7 +304,7 @@ Here is a sequence diagram for `partnercourse add`:
 <br>
 <br>
 
-**Feature Details**
+#### Feature Details
 
 1. The user is required to fill up all the attributes require to add the data object.
 2. If not all the identity attributes are provided, the user will be prompted to enter the command correctly via an
@@ -383,7 +383,7 @@ Each data type has different attributes that can be used for updating.
 
 ### 5.6 Search Feature
 
-**Overview**
+#### Overview
 <br>
 The `search` command allows users find specific courses or universities they are interested in. This allows for faster
 querying of courses, universities and notes.
@@ -397,7 +397,7 @@ Here is a sequence diagram for `partnercourse search`:
 <br>
 <br>
 
-**Feature Details**
+#### Feature Details
 
 1. The user specifies a data object with its unique identity attribute, attribute that they are querying and the
    keyword for the query.
@@ -412,7 +412,7 @@ Here is a sequence diagram for `partnercourse search`:
 <br>
 <br>
 
-**Feature Considerations**
+#### Feature Considerations
 The data object is only searched when all the specified identity attributes are identical to the existing data object.
 Each data type has different attributes that can be used for searching.
 
@@ -519,7 +519,6 @@ non-empty, the deletion will be performed, otherwise a `CommandException` will b
     * Pros: Will use fewer actions to delete a course, if there exists mappings it is tied to.
     * Cons: We must ensure that deletion cascades, in order to maintain data integrity. This can introduce bugs if not
       done correctly.
-
 
 <br>
 

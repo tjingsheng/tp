@@ -77,6 +77,12 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 ## 4. Design
 
+This section highlight the design considerations for SEPlendid.
+
+<br>
+
+---
+
 ### 4.1 Architecture
 
 <puml src="diagrams/ArchitectureDiagram.puml" width="280" />
@@ -239,6 +245,9 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+<br>
+
+---
 ### 5.1 Parser to Handle Commands with Optional Arguments
 
 The below diagram gives a high-level overview on how the `SeplendidParser` parses a command from our command set:
@@ -537,6 +546,12 @@ non-empty, the deletion will be performed, otherwise a `CommandException` will b
 ---
 
 ## 7. Requirements
+
+This section highlight the requirements that were considered when creating SEPlendid.
+
+<br>
+
+---
 
 ### 7.1 Product Scope
 
@@ -1548,6 +1563,10 @@ Expected Output in the Command Output Box: Note searched message.
 
 The implementation of SEPlendid proved to be a challenging endeavor. Below is the highlights of the extensive effort our
 team dedicated to developing SEPlendid, along with a mention of some of the challenges we encountered along the way.
+
+<br>
+
+---
 
 ### 9.1 Morphing of AB3 to SEPlendid
 

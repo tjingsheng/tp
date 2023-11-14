@@ -57,7 +57,7 @@ guide!
         - 5.2.2 [Add a partner course: `partnercourse add`](#5-2-2-add-a-partner-course-partnercourse-add)
         - 5.2.3 [Delete a partner course: `partnercourse delete`](#5-2-3-delete-a-partner-course-partnercourse-delete)
         - 5.2.4 [Update a partner course: `partnercourse update`](#5-2-4-update-a-partner-course-partnercourse-update)
-        - 5.2.5 [Search a partner course by attributes: `partnercourse search`](#5-2-4-update-a-partner-course-partnercourse-update)
+        - 5.2.5 [Search a partner course by attributes: `partnercourse search`](#5-2-5-search-a-partner-course-by-attributes-partnercourse-search)
         - 5.2.6 [Sort a partner course by attributes: `partnercourse sort`](#5-2-6-sort-partner-courses-by-attributes-partnercourse-sort)
     - 5.3 [Commands for universities](#5-3-commands-for-universities)
         - 5.3.1 [List all universities: `university list`](#5-3-1-list-all-universities-university-list)
@@ -76,7 +76,7 @@ guide!
         - 5.5.4 [Update a note: `note update`](#5-5-4-update-a-note-note-update)
         - 5.5.5 [Tag a note: `note tag`](#5-5-5-tag-a-note-note-tag)
         - 5.5.6 [Clear tag a note: `note cleartag`](#5-5-6-clear-tags-of-a-note-note-cleartag)
-        - 5.5.7 [Search notes by tag: `note search`](#557-search-notes-by-tag--note-search)
+        - 5.5.7 [Search notes by tag: `note search`](#5-5-7-search-notes-by-tag-note-search)
     - 5.6 [View help: `help`](#5-6-view-help-help)
     - 5.7 [Exit SEPlendid: `exit`](#5-7-exit-seplendid-exit)
     - 5.8 [Save the data](#5-8-save-the-data)
@@ -873,7 +873,7 @@ Adds a note with the content you wish to add and the tag you wish your note to h
 **Format:** `note add [content] [tag]`
 
 
-<box type="info" icon=":information_source">
+<box type="info" icon=":information-source">
     Tag must only be a single word with no whitespaces and only contain alphabets and numbers. You can only add 1 tag
     for your note with this command. 
     If you wish to have more tags for your note, you can do so with the command <code>note tag</code>.

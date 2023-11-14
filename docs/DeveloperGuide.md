@@ -17,6 +17,10 @@ to plan for your overseas studies without the hassle of creating complex Excel s
 mapping function in order to quickly find possible mappings for certain courses you want to map. Finally, SEPlendid's
 note-taking system will assist you in organising your important information you will need for planning for your courses.
 
+<br>
+
+---
+
 ## 2. Table of Contents
 <div class= "toc">
 
@@ -58,15 +62,17 @@ note-taking system will assist you in organising your important information you 
     - 9.2 [Redesigning the UI](#9-2-redesigning-the-ui)
 10. [Acknowledgements](#10-acknowledgements)
 
-</div>
+<br>
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## 3. Setting up, Getting Started
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
---------------------------------------------------------------------------------------------------------------------
+<br>
+
+---
 
 ## 4. Design
 
@@ -204,7 +210,9 @@ The `Storage` component,
 
 Classes used by multiple components are in the `seedu.addressbook.commons` package.
 
---------------------------------------------------------------------------------------------------------------------
+<br>
+
+---
 
 ## 5. Implementation
 
@@ -465,6 +473,11 @@ non-empty, the deletion will be performed, otherwise a `CommandException` will b
     * Cons: We must ensure that deletion cascades, in order to maintain data integrity. This can introduce bugs if not
       done correctly.
 
+
+<br>
+
+---
+
 ## 6. Other Helpful Guides
 
 * [Documentation guide](Documentation.md)
@@ -473,7 +486,9 @@ non-empty, the deletion will be performed, otherwise a `CommandException` will b
 * [Configuration guide](Configuration.md)
 * [DevOps guide](DevOps.md)
 
---------------------------------------------------------------------------------------------------------------------
+<br>
+
+---
 
 ## 7. Requirements
 
@@ -925,7 +940,9 @@ Use case ends
 * **CLI**: Command-Line Interface is a means of interacting with a computer program b inputting lines of text called
   command-lines.
 
---------------------------------------------------------------------------------------------------------------------
+<br>
+
+---
 
 ## 8. Instructions for Manual Testing
 
@@ -1435,7 +1452,9 @@ Expected Output in the Command Output Box: Note searched message.
 - To corrupt the data, open any of the `.json` files under `data/` and edit the data in it. For instance, you may
   change a `localCode` to the empty string `""`. Restart the application, and observe that the data has been reset.
 
---------------------------------------------------------------------------------------------------------------------
+<br>
+
+---
 
 ## 9. Effort
 
@@ -1471,6 +1490,10 @@ considerations. Striving to meet both aesthetic standards and high functionality
 JavaFX. Despite the initial challenges, our team persevered, overcoming obstacles and ultimately producing a UI that not
 only met our design goals but also offered a visually appealing and highly functional experience tailored to the
 requirements of a student exchange program mapping tool.
+
+<br>
+
+---
 
 ## 10. Acknowledgements
 

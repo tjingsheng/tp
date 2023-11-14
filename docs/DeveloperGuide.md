@@ -53,6 +53,7 @@ note-taking system will assist you in organising your important information you 
    - 9.4 [University](#9-4-university)
    - 9.5 [Mapping](#9-5-mapping)
    - 9.6 [Note](#9-6-note)
+10. [Acknowledgements](#10-acknowledgements)
 
 </div>
 
@@ -1439,4 +1440,8 @@ which is not part of the unique identifier, for the purpose of searching and sor
 `LocalName` object, as it would lead to data redundancy. This challenge was solved with passing only the method
 reference of a model method `getLocalCourseIfExists` to the comparators and predicates used. This follows for
 partner courses.
- 
+
+## 10. Acknowledgements
+
+* Libraries used: [JavaFX](https://openjfx.io/), [Jackson](https://github.com/FasterXML/jackson), [JUnit5](https://github.com/junit-team/junit5)
+

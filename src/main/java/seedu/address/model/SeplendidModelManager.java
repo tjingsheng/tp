@@ -222,9 +222,20 @@ public class SeplendidModelManager implements SeplendidModel {
     @Override
     public void setLocalCourse(LocalCourse target, LocalCourse editedLocalCourse) throws CommandException {
         requireAllNonNull(target, editedLocalCourse);
-        if (mappingCatalogue.hasMappingWithLocalCode(target.getLocalCode())) {
+
+        LocalCourse targetCourseWithEditedCourseCopy = new LocalCourse(
+                editedLocalCourse.getLocalCode(),
+                target.getLocalName(),
+                target.getLocalUnit(),
+                target.getLocalDescription()
+        );
+        // LocalCode is to be modified
+        if (!targetCourseWithEditedCourseCopy.equals(target)
+                && targetCourseWithEditedCourseCopy.equals(editedLocalCourse)
+                && mappingCatalogue.hasMappingWithLocalCode(target.getLocalCode())) {
             throw new CommandException(LocalCourseUpdateCommand.MESSAGE_MAPPING_DEPENDENT_ON_LOCAL_COURSE);
         }
+
         localCourseCatalogue.setLocalCourse(target, editedLocalCourse);
     }
 
@@ -326,7 +337,7 @@ public class SeplendidModelManager implements SeplendidModel {
                 target.getPartnerUnit(),
                 target.getPartnerDescription()
         );
-        // One of localcode or university is to be modified
+        // One of partnercode or university is to be modified
         if (!targetCourseWithEditedCourseCopy.equals(target)
                 && targetCourseWithEditedCourseCopy.equals(editedPartnerCourse)
                 && mappingCatalogue.hasMappingWithPartnerCodeAndUniversityName(target.getPartnerCode(),

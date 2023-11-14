@@ -44,7 +44,7 @@ note-taking system will assist you in organising your important information you 
    - 5.7 [Sort Feature](#5-7-sort-feature)
    - 5.8 [Mapping Feature](#5-8-mapping-feature)
 6. [Other Helpful Guides](#6-other-helpful-guides)
-7. [Requirements](#8-requirements)
+7. [Requirements](#7-requirements)
    - 7.1 [Product Scope](#7-1-product-scope)
    - 7.2 [User Stories](#7-2-user-stories)
    - 7.3 [Use Cases](#7-3-use-cases)

@@ -92,4 +92,5 @@ allowing quick and efficient retrieval of information.
     [\#171](https://github.com/AY2324S1-CS2103T-W10-2/tp/pull/171)
     [\#173](https://github.com/AY2324S1-CS2103T-W10-2/tp/pull/173)
     [\#249](https://github.com/AY2324S1-CS2103T-W10-2/tp/pull/249)
+  * Reported bugs for other teams: [PED repo](https://github.com/dlathyun/ped/issues)
 

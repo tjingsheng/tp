@@ -37,23 +37,23 @@ note-taking system will assist you in organising your important information you 
    - 5.4 [University Feature](#5-4-university-feature)
    - 5.5 [[Proposed] Data Archiving](#5-5-proposed-data-archiving)
 6. [Other Helpful Guides](#6-other-helpful-guides)
-7. [Effort](#7-effort)
-   - 7.1 [Morphing of AB3 to SEPlendid](#7-1-morphing-of-ab3-to-seplendid)
-   - 7.2 [Redesigning the UI](#7-2-redesigning-the-ui)
-8. [Requirements](#8-requirements)
-   - 8.1 [Product Scope](#8-1-product-scope)
-   - 8.2 [User Stories](#8-2-user-stories)
-   - 8.3 [Use Cases](#8-3-use-cases)
-   - 8.4 [Non-Functional Requirements](#8-4-non-functional-requirements)
-   - 8.5 [Glossary](#8-5-glossary)
-9. [Instructions for Manual Testing](#9-instructions-for-manual-testing)
-   - 9.1 [Launch and Shutdown](#9-1-launch-and-shutdown)
-   - 9.2 [Local Course](#9-2-local-course)
-   - 9.3 [Partner Course](#9-3-partner-course)
-   - 9.4 [University](#9-4-university)
-   - 9.5 [Mapping](#9-5-mapping)
-   - 9.6 [Note](#9-6-note)
-10. [Acknowledgements](#10-acknowledgements)
+7. [Requirements](#8-requirements)
+   - 7.1 [Product Scope](#7-1-product-scope)
+   - 7.2 [User Stories](#7-2-user-stories)
+   - 7.3 [Use Cases](#7-3-use-cases)
+   - 7.4 [Non-Functional Requirements](#7-4-non-functional-requirements)
+   - 7.5 [Glossary](#7-5-glossary)
+8. [Instructions for Manual Testing](#8-instructions-for-manual-testing)
+   - 8.1 [Launch and Shutdown](#8-1-launch-and-shutdown)
+   - 8.2 [Local Course](#8-2-local-course)
+   - 8.3 [Partner Course](#8-3-partner-course)
+   - 8.4 [University](#8-4-university)
+   - 8.5 [Mapping](#8-5-mapping)
+   - 8.6 [Note](#8-6-note)
+9. [Effort](#9-effort)
+    - 9.1 [Morphing of AB3 to SEPlendid](#9-1-morphing-of-ab3-to-seplendid)
+    - 9.2 [Redesigning the UI](#9-2-redesigning-the-ui)
+10. [Acknowledgements](#11-acknowledgements)
 
 </div>
 
@@ -563,30 +563,9 @@ _{Explain here how the data archiving feature will be implemented}_
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 7. Effort
+## 7. Requirements
 
-The implementation of SEPlendid proved to be a challenging endeavor. Below is the highlights of the extensive effort our
-team dedicated to developing SEPlendid, along with a mention of some of the challenges we encountered along the way.
-
-### 7.1 Morphing of AB3 to SEPlendid
-
-A large portion of code had to be refactored to morph AB3 to SEPlendid.
-
-### 7.2 Redesigning the UI
-
-In recognising the significance of minimalism for achieving simplicity, we embarked on the task of redesigning the
-original AB3 UI into our custom SEPlendid interface. The endeavor underscored the essential balance between simplicity
-and functionality. The effort invested in the redesigning process was substantial, requiring meticulous design
-considerations. Striving to meet both aesthetic standards and high functionality, we faced a steep learning curve with
-JavaFX. Despite the initial challenges, our team persevered, overcoming obstacles and ultimately producing a UI that not
-only met our design goals but also offered a visually appealing and highly functional experience tailored to the
-requirements of a student exchange program mapping tool.
-
---------------------------------------------------------------------------------------------------------------------
-
-## 8. Requirements
-
-### 8.1 Product Scope
+### 7.1 Product Scope
 
 **Target user profile**:
 
@@ -609,7 +588,7 @@ SEPlendid aims to provide an advanced search, allowing users to search for mappi
 as partner universities' course names, and NUS course codes. We aim to also include features such as the ability to
 contribute course mappings, and note-taking.
 
-### 8.2 User Stories
+### 7.2 User Stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
@@ -642,7 +621,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 *{More to be added}*
 
-### 8.3 Use Cases
+### 7.3 Use Cases
 
 (For all use cases below, the **System** is the `SEPlendid` and the **Actor** is the `user`, unless specified otherwise)
 
@@ -1015,7 +994,7 @@ Use case ends
   Use case resumes at step 2.
 
 
-### 8.4 Non-Functional Requirements
+### 7.4 Non-Functional Requirements
 
 1. Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
 2. Should be able to hold up to 1000 course mappings, along with its dependent data such as local courses, without a
@@ -1026,7 +1005,7 @@ Use case ends
 5. The user interface should be intuitive enough for users who are not IT-savvy.
 6. The application should be designed to handle a growing database of course mappings and related data.
 
-### 8.5 Glossary
+### 7.5 Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X.
 * **Course Mapping**: A course offered by a partner university, which NUS Computing students going on exchange can
@@ -1036,7 +1015,7 @@ Use case ends
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 9. Instructions for Manual Testing
+## 8. Instructions for Manual Testing
 
 Given below are instructions to test the app manually.
 
@@ -1047,7 +1026,7 @@ testers are expected to do more *exploratory* testing.
 
 </box>
 
-### 9.1 Launch and Shutdown
+### 8.1 Launch and Shutdown
 
 1. Initial launch
 
@@ -1058,7 +1037,7 @@ testers are expected to do more *exploratory* testing.
   1. Double-click the jar file <br>
      Expected: Shows the GUI with a set of sample local course. The window size may not be optimum.
 
-### 9.2 Local Course
+### 8.2 Local Course
 
 #### List all local courses
 
@@ -1155,7 +1134,7 @@ Expected Output in the Command Output Box: Sorted all local courses
 
 </box> 
 
-### 9.3 Partner Course
+### 8.3 Partner Course
 
 #### List all partner courses
 
@@ -1275,7 +1254,7 @@ Expected Output in the Command Output Box: Sorted all partner courses
 
 </box> 
 
-### 9.4 University
+### 8.4 University
 
 #### List all universities
 
@@ -1331,7 +1310,7 @@ Expected Output in the Command Output Box: Sorted all universities
 
 </box> 
 
-### 9.5 Mapping
+### 8.5 Mapping
 
 #### List all mappings
 
@@ -1416,7 +1395,7 @@ Expected Output in the Command Output Box: Sorted all mappings
 </box> 
 
 
-### 9.6 Note
+### 8.6 Note
 
 #### List all notes
 
@@ -1544,9 +1523,14 @@ Expected Output in the Command Output Box: Note searched message.
 - To corrupt the data, open any of the `.json` files under `data/` and edit the data in it. For instance, you may
   change a `localCode` to the empty string `""`. Restart the application, and observe that the data has been reset.
 
-## Effort
+--------------------------------------------------------------------------------------------------------------------
 
-### Morphing of AB3 to SEPlendid
+## 9. Effort
+
+The implementation of SEPlendid proved to be a challenging endeavor. Below is the highlights of the extensive effort our
+team dedicated to developing SEPlendid, along with a mention of some of the challenges we encountered along the way.
+
+### 9.1 Morphing of AB3 to SEPlendid
 
 As mappings was the core feature of SEPlendid, we decided to morph AB3 into SEPlendid. We identified the need for
 several data types, minimally `LocalCourse`, `PartnerCourse`, `University` and `Mapping`. We also identified the
@@ -1563,6 +1547,18 @@ which is not part of the unique identifier, for the purpose of searching and sor
 `LocalName` object, as it would lead to data redundancy. This challenge was solved with passing only the method
 reference of a model method `getLocalCourseIfExists` to the comparators and predicates used. This follows for
 partner courses.
+
+A large portion of code had to be refactored to morph AB3 to SEPlendid.
+
+### 9.2 Redesigning the UI
+
+In recognising the significance of minimalism for achieving simplicity, we embarked on the task of redesigning the
+original AB3 UI into our custom SEPlendid interface. The endeavor underscored the essential balance between simplicity
+and functionality. The effort invested in the redesigning process was substantial, requiring meticulous design
+considerations. Striving to meet both aesthetic standards and high functionality, we faced a steep learning curve with
+JavaFX. Despite the initial challenges, our team persevered, overcoming obstacles and ultimately producing a UI that not
+only met our design goals but also offered a visually appealing and highly functional experience tailored to the
+requirements of a student exchange program mapping tool.
 
 ## 10. Acknowledgements
 

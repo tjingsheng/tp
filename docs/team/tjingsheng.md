@@ -31,6 +31,35 @@ AB3 UI into a custom-made minimalist SEPlendid interface would be the best cours
 challenges, obstacles were overcomed and a UI was produced not only met our design goals but also offered a visually
 appealing and highly functional experience tailored to the requirements of SEPlendid.
 
+**Before :**
+<div style="text-align: center;">
+
+![AB3Ui.png](..%2Fimages%2FAB3Ui.png)
+
+</div>
+
+<div style="text-align: center;">
+
+Address Book 3 User Interface
+
+</div>
+
+**After :**
+
+<div style="text-align: center;">
+
+![Ui.png](..%2Fimages%2FUi.png)
+
+</div>
+
+<div style="text-align: center;">
+
+SEPlendid User Interface
+
+</div>
+
+
+
 ##### Scraped data from NUSmods and Edurec to create sample data
 
 Pull Request Link: [139](https://github.com/AY2324S1-CS2103T-W10-2/tp/pull/139)
@@ -229,7 +258,7 @@ Pull Request Link: [263](https://github.com/AY2324S1-CS2103T-W10-2/tp/pull/263)
 
 The user guide had some inconsistencies that should be fixed
 
-Here are the Fixes:
+Here are some fixes:
 
 - Ran document through automatic formatting for consistency
 - Standardized page separators and accompanying line breaks across sections
@@ -273,6 +302,18 @@ particularly those related to UI components, had become outdated. To uphold accu
 initiative to thoroughly revise and update these diagrams. This proactive measure ensures that the developer guide
 remains current and accurately reflects the latest changes and improvements introduced during the transition to
 SEPlendid.
+
+#### Afterword
+
+The journey with SEPlendid has been a profound learning experience, emphasising the transformative power of
+collaborative development. Redesigning the UI from AB3 underscored the importance of prioritising user experience and
+simplicity. Integrating data from NUSmods and eduRec taught valuable lessons about data processing and enhancing
+application functionality. Code contributions and bug fixes honed my skills in software development, emphasising the
+significance of reliability and user-centric design. Documentation improvements highlighted the importance of clear
+communication. As we chart the future, the lessons learned in innovation, responsiveness to feedback, and dedication to
+excellence stand as a testament to personal and collective growth in software development.
+
+It was a pleasure being part of SEPlendid.
 
 <br>
 <br>

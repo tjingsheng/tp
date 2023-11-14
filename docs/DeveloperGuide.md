@@ -57,6 +57,7 @@ note-taking system will assist you in organising your important information you 
    - 8.4 [University](#8-4-university)
    - 8.5 [Mapping](#8-5-mapping)
    - 8.6 [Note](#8-6-note)
+   - 8.7 [Saving Data](#8-7-saving-data)
 9. [Effort](#9-effort)
     - 9.1 [Morphing of AB3 to SEPlendid](#9-1-morphing-of-ab3-to-seplendid)
     - 9.2 [Redesigning the UI](#9-2-redesigning-the-ui)
@@ -117,6 +118,10 @@ For example, the `SeplendidLogic` component defines its API in the `SeplendidLog
 
 The sections below give more details of each component.
 
+<br>
+
+---
+
 ### 4.2 UI Component
 
 **API** : [`Ui.java`](https://github.com/AY2324S1-CS2103T-W10-2/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
@@ -133,6 +138,10 @@ The `UI` component,
 * listens for changes to `Model` data so that the UI can be updated with the modified data.
 * keeps a reference to the `SeplendidLogic` component, because the `UI` relies on the `SeplendidLogic` to execute commands.
 * depends on some classes in the `Model` component, as it displays `LocalCourse`, `PartnerCourse`, `University`, `Mapping`, and `Note` objects residing in the `Model`.
+
+<br>
+
+---
 
 ### 4.3 SeplendidLogic Component
 
@@ -166,6 +175,10 @@ How the parsing works:
 * When called upon to parse a user command, the `SeplendidParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `LocalCourseAddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `LocalCourseAddCommand`) which the `SeplendidParser` returns back as a `Command` object.
 * All `XYZCommandParser` classes (e.g., `LocalCourseAddCommandParser`, `NoteDeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
+<br>
+
+---
+
 ### 4.4 Model Component
 
 **API** : [`SeplendidModel.java`](https://github.com/AY2324S1-CS2103T-W10-2/tp/blob/master/src/main/java/seedu/address/model/SeplendidModel.java)
@@ -189,6 +202,10 @@ The `SeplendidModel` component,
 * does not depend on any of the other three components (as the `SeplendidModel` represents data entities of the domain,
   they should make sense on their own without depending on other components)
 
+<br>
+
+---
+
 ### 4.5 Storage Component
 
 **API
@@ -206,6 +223,10 @@ The `Storage` component,
 * depends on some classes in the `SeplendidModel` component (because the `Storage` component's job is to save/retrieve
   objects that belong to the `SeplendidModel`).
 
+<br>
+
+---
+
 ### 4.6 Common Classes
 
 Classes used by multiple components are in the `seedu.addressbook.commons` package.
@@ -222,6 +243,10 @@ This section describes some noteworthy details on how certain features are imple
 
 The below diagram gives a high-level overview on how the `SeplendidParser` parses a command from our command set:
 <puml src="diagrams/SeplendidParserActivityDiagram.puml" alt="SeplendidParserActivityDiagram" />
+
+<br>
+
+---
 
 ### 5.2 Listing of Courses, Universities and Notes
 
@@ -254,6 +279,8 @@ Here is a sequence diagram for `localcourse list`:
 Each data type has to be specified to ensure organisation of sample data.
 
 <br>
+
+---
 
 ### 5.3 Adding of Courses, Universities and Notes
 
@@ -297,7 +324,8 @@ check would also prevent confusion for users if they have mistakenly added cours
 Furthermore, this would confuse the user on which is the most accurate information available as well.
 
 <br>
-<br>
+
+---
 
 ### 5.4 Delete Feature
 
@@ -319,6 +347,10 @@ Here is a sequence diagram for `delete`:
 #### Feature Considerations
 
 The data object is only deleted when all the specified identity attributes are identical to an existing data object.
+
+<br>
+
+---
 
 ### 5.5 Update Feature
 #### Overview
@@ -342,6 +374,10 @@ Here is a sequence diagram for `update`:
 
 The data object is only updated when all the specified identity attributes are identical to an existing data object.
 Each data type has different attributes that can be used for updating.
+
+<br>
+
+---
 
 ### 5.6 Searching of Courses, Universities and Notes
 
@@ -377,6 +413,10 @@ Here is a sequence diagram for `partnercourse search`:
 The data object is only searched when all the specified identity attributes are identical to the existing data object.
 Each data type has different attributes that can be used for searching.
 
+<br>
+
+---
+
 ### 5.7 Sort Feature
 #### Overview
 The `sort` command sorts specified data objects by specified attributes.
@@ -395,6 +435,10 @@ Here is an sequence diagram for `sort`:
 #### Feature Considerations
 
 Each data type has different attributes that can be used for sorting.
+
+<br>
+
+---
 
 ### 5.8 Mapping Feature
 
@@ -515,6 +559,10 @@ SEPlendid aims to provide an advanced search, allowing users to search for mappi
 as partner universities' course names, and NUS course codes. We aim to also include features such as the ability to
 contribute course mappings, and note-taking.
 
+<br>
+
+---
+
 ### 7.2 User Stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
@@ -547,6 +595,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* `     | student | tag my notes                                                          | to organise my notes                                       |
 
 *{More to be added}*
+
+<br>
+
+---
 
 ### 7.3 Use Cases
 
@@ -920,6 +972,9 @@ Use case ends
   
   Use case resumes at step 2.
 
+<br>
+
+---
 
 ### 7.4 Non-Functional Requirements
 
@@ -931,6 +986,10 @@ Use case ends
 4. The response to any use action should become visible within 5 seconds.
 5. The user interface should be intuitive enough for users who are not IT-savvy.
 6. The application should be designed to handle a growing database of course mappings and related data.
+
+<br>
+
+---
 
 ### 7.5 Glossary
 
@@ -955,6 +1014,10 @@ testers are expected to do more *exploratory* testing.
 
 </box>
 
+<br>
+
+---
+
 ### 8.1 Launch and Shutdown
 
 1. Initial launch
@@ -965,6 +1028,10 @@ testers are expected to do more *exploratory* testing.
        optimum.
   1. Double-click the jar file <br>
      Expected: Shows the GUI with a set of sample local course. The window size may not be optimum.
+
+<br>
+
+---
 
 ### 8.2 Local Course
 
@@ -1062,6 +1129,10 @@ Expected Output in the Command Output Box: Sorted all local courses
 **Note:** If there is no local course, the item list box will just be an empty box.
 
 </box> 
+
+<br>
+
+---
 
 ### 8.3 Partner Course
 
@@ -1183,6 +1254,10 @@ Expected Output in the Command Output Box: Sorted all partner courses
 
 </box> 
 
+<br>
+
+---
+
 ### 8.4 University
 
 #### List all universities
@@ -1238,6 +1313,10 @@ Expected Output in the Command Output Box: Sorted all universities
 **Note:** If there is no university, the item list box will just be an empty box.
 
 </box> 
+
+<br>
+
+---
 
 ### 8.5 Mapping
 
@@ -1323,6 +1402,9 @@ Expected Output in the Command Output Box: Sorted all mappings
 
 </box> 
 
+<br>
+
+---
 
 ### 8.6 Note
 
@@ -1436,7 +1518,11 @@ Expected Output in the Command Output Box: Note searched message.
 
 </box>
 
-### Saving data
+<br>
+
+---
+
+### 8.7 Saving Data
 
 1. Dealing with missing/corrupted data files
 
@@ -1481,6 +1567,10 @@ partner courses.
 
 A large portion of code had to be refactored to morph AB3 to SEPlendid.
 
+<br>
+
+---
+
 ### 9.2 Redesigning the UI
 
 In recognising the significance of minimalism for achieving simplicity, we embarked on the task of redesigning the
@@ -1498,4 +1588,3 @@ requirements of a student exchange program mapping tool.
 ## 10. Acknowledgements
 
 * Libraries used: [JavaFX](https://openjfx.io/), [Jackson](https://github.com/FasterXML/jackson), [JUnit5](https://github.com/junit-team/junit5)
-

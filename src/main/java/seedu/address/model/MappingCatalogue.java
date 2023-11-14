@@ -82,11 +82,13 @@ public class MappingCatalogue implements ReadOnlyMappingCatalogue {
     }
 
     /**
-     * Returns true is a mapping with {@code partnerCode} exists in the MappingCatalogue.
+     * Returns true is a mapping with {@code partnerCode} and {@code universityName}
+     * exists in the MappingCatalogue.
      */
-    public boolean hasMappingWithPartnerCode(PartnerCode partnerCode) {
-        requireNonNull(partnerCode);
-        return mappings.hasMappingWithPartnerCode(partnerCode);
+    public boolean hasMappingWithPartnerCodeAndUniversityName(PartnerCode partnerCode,
+                                                              UniversityName universityName) {
+        requireAllNonNull(partnerCode, universityName);
+        return mappings.hasMappingWithPartnerCodeAndUniversityName(partnerCode, universityName);
     }
 
     /**

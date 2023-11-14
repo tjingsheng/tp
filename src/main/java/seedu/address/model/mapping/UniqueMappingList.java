@@ -69,9 +69,11 @@ public class UniqueMappingList implements Iterable<Mapping> {
     /**
      * Returns true is a mapping with {@code partnerCode} exists in the MappingCatalogue.
      */
-    public boolean hasMappingWithPartnerCode(PartnerCode partnerCode) {
-        requireNonNull(partnerCode);
-        return internalList.stream().anyMatch(m -> m.getPartnerCode().equals(partnerCode));
+    public boolean hasMappingWithPartnerCodeAndUniversityName(PartnerCode partnerCode,
+                                                              UniversityName universityName) {
+        requireAllNonNull(partnerCode, universityName);
+        return internalList.stream().anyMatch(m -> m.getPartnerCode().equals(partnerCode)
+                && m.getUniversityName().equals(universityName));
     }
 
     /**

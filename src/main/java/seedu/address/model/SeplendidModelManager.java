@@ -2,8 +2,6 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.logic.commands.localcourse.LocalCourseDeleteCommand.MESSAGE_MAPPING_DEPENDENT_ON_LOCAL_COURSE;
-import static seedu.address.logic.commands.partnercourse.PartnerCourseDeleteCommand.MESSAGE_MAPPING_DEPENDENT_ON_PARTNER_COURSE;
 
 import java.nio.file.Path;
 import java.util.Comparator;
@@ -17,6 +15,10 @@ import javafx.collections.transformation.SortedList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.SeplendidLogsCenter;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.localcourse.LocalCourseDeleteCommand;
+import seedu.address.logic.commands.localcourse.LocalCourseUpdateCommand;
+import seedu.address.logic.commands.partnercourse.PartnerCourseDeleteCommand;
+import seedu.address.logic.commands.partnercourse.PartnerCourseUpdateCommand;
 import seedu.address.model.localcourse.LocalCode;
 import seedu.address.model.localcourse.LocalCourse;
 import seedu.address.model.localcourse.LocalCourseAttribute;
@@ -205,7 +207,7 @@ public class SeplendidModelManager implements SeplendidModel {
     public void deleteLocalCourse(LocalCourse target) throws CommandException {
         // Block delete if it exists in a mapping
         if (mappingCatalogue.hasMappingWithLocalCode(target.getLocalCode())) {
-            throw new CommandException(MESSAGE_MAPPING_DEPENDENT_ON_LOCAL_COURSE);
+            throw new CommandException(LocalCourseDeleteCommand.MESSAGE_MAPPING_DEPENDENT_ON_LOCAL_COURSE);
         }
         localCourseCatalogue.removeLocalCourse(target);
         updateFilteredLocalCourseList(PREDICATE_SHOW_ALL_LOCAL_COURSES);
@@ -218,9 +220,11 @@ public class SeplendidModelManager implements SeplendidModel {
     }
 
     @Override
-    public void setLocalCourse(LocalCourse target, LocalCourse editedLocalCourse) {
+    public void setLocalCourse(LocalCourse target, LocalCourse editedLocalCourse) throws CommandException {
         requireAllNonNull(target, editedLocalCourse);
-
+        if (mappingCatalogue.hasMappingWithLocalCode(target.getLocalCode())) {
+            throw new CommandException(LocalCourseUpdateCommand.MESSAGE_MAPPING_DEPENDENT_ON_LOCAL_COURSE);
+        }
         localCourseCatalogue.setLocalCourse(target, editedLocalCourse);
     }
 
@@ -313,16 +317,31 @@ public class SeplendidModelManager implements SeplendidModel {
     }
 
     @Override
-    public void setPartnerCourse(PartnerCourse target, PartnerCourse editedPartnerCourse) {
+    public void setPartnerCourse(PartnerCourse target, PartnerCourse editedPartnerCourse) throws CommandException {
         requireAllNonNull(target, editedPartnerCourse);
+        PartnerCourse targetCourseWithEditedCourseCopy = new PartnerCourse(
+                editedPartnerCourse.getPartnerUniversity(),
+                editedPartnerCourse.getPartnerCode(),
+                target.getPartnerName(),
+                target.getPartnerUnit(),
+                target.getPartnerDescription()
+        );
+        // One of localcode or university is to be modified
+        if (!targetCourseWithEditedCourseCopy.equals(target)
+                && targetCourseWithEditedCourseCopy.equals(editedPartnerCourse)
+                && mappingCatalogue.hasMappingWithPartnerCodeAndUniversityName(target.getPartnerCode(),
+                target.getPartnerUniversity().getUniversityName())) {
+            throw new CommandException(PartnerCourseUpdateCommand.MESSAGE_MAPPING_DEPENDENT_ON_PARTNER_COURSE);
+        }
         partnerCourseCatalogue.setPartnerCourse(target, editedPartnerCourse);
     }
 
     @Override
     public void deletePartnerCourse(PartnerCourse partnerCourse) throws CommandException {
         // Block delete if it exists in a mapping
-        if (mappingCatalogue.hasMappingWithPartnerCode(partnerCourse.getPartnerCode())) {
-            throw new CommandException(MESSAGE_MAPPING_DEPENDENT_ON_PARTNER_COURSE);
+        if (mappingCatalogue.hasMappingWithPartnerCodeAndUniversityName(partnerCourse.getPartnerCode(),
+                partnerCourse.getPartnerUniversity().getUniversityName())) {
+            throw new CommandException(PartnerCourseDeleteCommand.MESSAGE_MAPPING_DEPENDENT_ON_PARTNER_COURSE);
         }
 
         partnerCourseCatalogue.removePartnerCourse(partnerCourse);
@@ -588,12 +607,14 @@ public class SeplendidModelManager implements SeplendidModel {
     }
 
     /**
-     * Returns true is a mapping with {@code partnerCode} exists in the MappingCatalogue.
+     * Returns true is a mapping with {@code partnerCode}  and {@code universityName}
+     * exists in the MappingCatalogue.
      */
     @Override
-    public boolean hasMappingWithPartnerCode(PartnerCode partnerCode) {
-        requireNonNull(partnerCode);
-        return mappingCatalogue.hasMappingWithPartnerCode(partnerCode);
+    public boolean hasMappingWithPartnerCodeAndUniversityName(PartnerCode partnerCode,
+                                                              UniversityName universityName) {
+        requireAllNonNull(partnerCode, universityName);
+        return mappingCatalogue.hasMappingWithPartnerCodeAndUniversityName(partnerCode, universityName);
     }
 
     /**

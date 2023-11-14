@@ -25,7 +25,7 @@ SEP. It includes:
 - SEPlendid's myriad of features and commands
 - **Key parameters** to run SEPlendid smoothly
 
-If you are a new user, please head over to  [How to navigate this User Guide?](#2-how-to-navigate-this-user-guide) to
+If you are a new user, please head over to  [How to navigate this User Guide](#2-how-to-navigate-this-user-guide) to
 start planning for your study
 guide!
 
@@ -37,38 +37,32 @@ guide!
 
 <div class= "toc">
 
-1. [How to navigate this User Guide?](#1-navigate-this-user-guide)
+1. [How to navigate this User Guide](#1-navigate-this-user-guide)
 2. [Icons used in this User Guide](#2-icons-used-in-this-user-guide)
 3. [Installation](#3-installation)
 4. [Quick Reference Guide](#4-quick-reference-guide)
     - 4.1 [Graphical User Interface (GUI)](#4-1-graphical-user-interface-gui)
     - 4.2 [Command format](#4-2-command-format)
-    - 4.3 [Your first command](#4-3-your-first-command)
+    - 4.3 [Try Out Your first command](#4-3-your-first-command)
 5. [Commands](#5-commands)
     - 5.1 [Commands for local courses](#5-1-commands-for-local-courses)
         - 5.1.1 [List all local courses: `localcourse list`](#5-1-1-list-all-local-courses-localcourse-list)
         - 5.1.2 [Add a local course: `localcourse add`](#5-1-2-add-a-local-course-localcourse-add)
         - 5.1.3 [Delete a local course: `localcourse delete`](#5-1-3-delete-a-local-course-localcourse-delete)
         - 5.1.4 [Update a local course: `localcourse update`](#5-1-4-update-a-local-course-localcourse-update)
-        -
-      5.1.5 [Search a local course by attributes: `localcourse search`](#5-1-5-search-a-localcourse-by-attributes-localcourse-search)
-      -
-      5.1.6 [Sort a local course by attributes: `localcourse sort`](#5-1-6-sort-local-courses-by-attributes-localcourse-sort)
+        - 5.1.5 [Search a local course by attributes: `localcourse search`](#5-1-5-search-a-localcourse-by-attributes-localcourse-search)
+        - 5.1.6 [Sort a local course by attributes: `localcourse sort`](#5-1-6-sort-local-courses-by-attributes-localcourse-sort)
     - 5.2 [Commands for partner courses](#5-2-commands-for-partner-courses)
         - 5.2.1 [List all partner courses: `partnercourse list`](#5-2-1-list-all-partner-courses-partnercourse-list)
         - 5.2.2 [Add a partner course: `partnercourse add`](#5-2-2-add-a-partner-course-partnercourse-add)
         - 5.2.3 [Delete a partner course: `partnercourse delete`](#5-2-3-delete-a-partner-course-partnercourse-delete)
         - 5.2.4 [Update a partner course: `partnercourse update`](#5-2-4-update-a-partner-course-partnercourse-update)
-        -
-      5.2.5 [Search a partner course by attributes: `partnercourse search`](#5-2-4-update-a-partner-course-partnercourse-update)
-      -
-      5.2.6 [Sort a partner course by attributes: `partnercourse sort`](#5-2-6-sort-partner-courses-by-attributes-partnercourse-sort)
+        - 5.2.5 [Search a partner course by attributes: `partnercourse search`](#5-2-4-update-a-partner-course-partnercourse-update)
+        - 5.2.6 [Sort a partner course by attributes: `partnercourse sort`](#5-2-6-sort-partner-courses-by-attributes-partnercourse-sort)
     - 5.3 [Commands for universities](#5-3-commands-for-universities)
         - 5.3.1 [List all universities: `university list`](#5-3-1-list-all-universities-university-list)
-        -
-      5.3.2 [Search a university by attributes: `university search`](#5-3-2-search-a-university-by-attributes-university-search)
-      -
-      5.3.3 [Sort a university by attributes: `university sort`](#5-3-3-sort-universities-by-attributes-university-sort)
+        - 5.3.2 [Search a university by attributes: `university search`](#5-3-2-search-a-university-by-attributes-university-search)
+        - 5.3.3 [Sort a university by attributes: `university sort`](#5-3-3-sort-universities-by-attributes-university-sort)
     - 5.4 [Commands for mappings](#5-4-commands-for-mappings)
         - 5.4.1 [List all mappings: `mapping list`](#5-4-1-list-all-mappings-mapping-list)
         - 5.4.2 [Add a mapping: `mapping add`](#5-4-2-add-a-mapping-mapping-add)
@@ -82,7 +76,8 @@ guide!
         - 5.5.4 [Update a note: `note update`](#5-5-4-update-a-note-note-update)
         - 5.5.5 [Tag a note: `note tag`](#5-5-5-tag-a-note-note-tag)
         - 5.5.6 [Clear tag a note: `note cleartag`](#5-5-6-clear-tags-of-a-note-note-cleartag)
-    - 5.6 [View help : `help`](#5-6-view-help--help-)
+        - 5.5.7 [Search notes by tag: `note search`](#557-search-notes-by-tag--note-search)
+    - 5.6 [View help: `help`](#5-6-view-help--help)
     - 5.7 [Exit SEPlendid: `exit`](#5-7-exit-seplendid--exit)
     - 5.8 [Save the data](#5-8-save-the-data)
 6. [FAQ](#6-faq)
@@ -98,12 +93,12 @@ As a new user in SEPlendid, this user guide serves as an easy-to-follow guide in
 commands in SEPlendid, utilising SEPlendid to it's fullest potential!
 
 Here is a step-by-step instruction in navigating this user guide for **new** users:
-1. Download SEPlendid by heading over to the [installation](#) section which provides a guided tour for you to get
+1. Download SEPlendid by heading over to the [installation](#3-installation) section which provides a guided tour for you to get
    started with SEPlendid.
-2. Get familiar with SEPlendid by heading over to the [Quick Reference Guide](#) section which shows you how to use 
+2. Get familiar with SEPlendid by heading over to the [Quick Reference Guide](#4-quick-reference-guide) section which shows you how to use 
 navigate SEPlendid efficiently.
 
-If you are an **experienced** user, you can head over to the [Command Summary](#) section for a well-curated overview
+If you are an **experienced** user, you can head over to the [Command Summary](#7-command-summary) section for a well-curated overview
 of the commands available in SEPlendid.
 
 <br>
@@ -197,18 +192,21 @@ Refer to the annotated diagram of SEPlendid's GUI which is numbered accordingly:
 
 ### 4.2 Command Format
 
-We will be using SEPlendid's commands throughout this User Guide. The following figure provides a visual example on
-what a command consist of:
+We will be using SEPlendid's commands throughout this User Guide. This section will share with you more about 
+SEPlendid's commands:
+<br>
 
+<box type="info" icon=":information_source:" header="#### Notes about SEPlendid's command format" icon-size="2x">
 
-
-<box type="info" seamless>
-
-**Notes about the data and command format:**<br>
-
-* Within SEPlendid, there are five main types of data. Each also represents a 'Command Word'. Each 'Command Word'
-  begins a command, which can be coupled with an attribute, to narrow down to a specific functionality. \
-  e.g. `localcourse sort [localname]` will sort the list of local courses by their `localname`.
+In SEPlendid, there are five data types: `localcourse`, `partnercourse`, `university`, `mapping` and `note`.
+Each 'Command Word' begins a command, which can be coupled with an attribute, to narrow down to a specific 
+functionality.
+  <box type="tip" icon=":bulb:" header="You may find this annotated image on SEPlendis's command format useful!" >
+      <img src="images/Command.png" alt="Command UI" class="resized-image">
+        </div>
+  </box>
+     
+  <box type="tip" icon=":bulb:" header="Command words available in SEPlendid" >
 
 | Command Word    | Description                                        |
 |-----------------|----------------------------------------------------|
@@ -217,11 +215,8 @@ what a command consist of:
 | `mapping`       | Mappings between local courses and partner courses |
 | `university`    | NUS’ partner universities                          |
 | `note`          | Your own notes                                     |
-
-Each of these data types have certain attributes. These are the columns or data that will be displayed for each
-command group:
-
-`localcourse`:
+  </box>  
+  <box type="tip" icon=":bulb:" header="Attributes for local course" >
 
 | Attribute          | Description                          |
 |--------------------|--------------------------------------|
@@ -229,8 +224,8 @@ command group:
 | `localname`        | Name of the local course             |
 | `localunit`        | Number of units  of the local course |
 | `localdescription` | Description of the local course      |
-
-`partnercourse`:
+  </box> 
+  <box type="tip" icon=":bulb:" header="Attributes for partner course" >
 
 | Attribute            | Description                                        |
 |----------------------|----------------------------------------------------|
@@ -239,8 +234,8 @@ command group:
 | `university`         | The partner university offering the partner course |
 | `partnerunit`        | Number of units  of the partner course             |
 | `partnerdescription` | Description of the partner course                  |
-
-`mapping`:
+  </box>
+  <box type="tip" icon=":bulb:" header="Attributes for mapping" >
 
 | Attribute     | Description                                        |
 |---------------|----------------------------------------------------|
@@ -249,37 +244,39 @@ command group:
 | `partnercode` | Course code for the partner course                 |
 | `partnername` | Name of the partner course                         |
 | `university`  | The partner university offering the partner course |
-
-`note`:
+  </box>
+<box type="tip" icon=":bulb:" header="Attributes for notes" >
 
 | Attribute | Description         |
 |-----------|---------------------|
 | `index`   | Index of the note   |
 | `content` | Content of the note |
 | `tag`     | Tag of the note     |
+  </box>
+</box>
+
+**Extra Notes on our Command Format:**
 
 * The command format is `command-word action-word [parameters]`. <br /> `action-word`s include `sort`, `search`, `add`,
-  `delete`,
-  `update`, `tag`, but not all `action-word`s can be used after each `command-word`. Refer to the [Command Summary]
-  (#command-summary)
-  for a quick overview of which `action-word`s can follow a `command-word`.
+  `delete`, `update`, `tag`, but not all `action-word`s can be used after each `command-word`. 
+* Refer to the [Command Summary](#command-summary)for a quick overview of which `action-word`s can follow a `command-word`.
 
 * `[parameters]` refer to any number of parameters which can follow an `action-word`. For instance, for the
-  `localcourse add` command, the full format is `localcourse add [localcode] [localname]`, which signifies that we
-  have two parameters (`localcode` and `localname`) to fill. <br />
+  `localcourse delete` command, the full format is `localcourse delete [localcode]`, which signifies that we
+  have a parameter (`localcode`) to fill. <br />
+
   An invocation of the command is exemplified by:
-  > `localcourse add [CS1010] [Programming Methodology]`.
+  > `localcourse delete [localcode]`.
 
 * The following characters do not exist in our datasets and are not accepted in our input: `[` and `]`.
 
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `exit`) will be
   ignored.<br>
-  e.g. if the command specifies `help 123`, it will be interpreted as `help` `[coming soon]`.
+  e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines
   as space characters surrounding line-breaks may be omitted when copied over to the application.
 
-</box>
 
 ### 4.3 Try Out Your first command
 
@@ -300,8 +297,6 @@ The first word of each command specifies the different core features with its ow
     <b>Tip:</b> All the attributes for local course needs to be added.
 </box>
 
-
-**Example**
 Let's imagine this scenario, there is a newly offered course by NUS Computing, CS2105. Interested with this course, you 
 want to add this localcourse in SEPlendid.
 
@@ -337,7 +332,7 @@ Lastly, you should take note of invalid formats:
     I know the datatype that would like to query e.g. local course, partner course, university.
   </q-option>
   <q-option correct>
-    I know the required paramters for each command.
+    I know the required parameters for each command.
   </q-option>
   <q-option correct>
     I know "[ ]" are compulsory for wrapping each attribute.
@@ -572,7 +567,7 @@ Deletes partner course with attributes such as university and partnercode respec
 
 **Example:** `partnercourse delete [University of Toronto] [ROB311]`
 - This deletes a partner course with the course code 'ROB311' in the 'University of Toronto'.
-- 
+
 **Expected Outcome:** SEPlendid's GUI will show the deleted partner course. 
 
 <br>
@@ -698,6 +693,7 @@ Refer to the Figure 5.3.3 to view the outcome of the execution of the command:
 <br>
 <br>
 
+//@@author lamchenghou 
 ### 5.4 Commands for mappings
 <br />
 
@@ -710,7 +706,7 @@ university. This is useful when:
 * you wish to view mappings in greater detail.
 * you wish to verify that a mapping has been added, deleted or updated successfully.
 
-<box type="tip">
+<box type="tip" icon=":bulb:">
     Click on a mapping in the list to bring up a detailed view.
 </box>
 
@@ -804,7 +800,7 @@ Refer to the figure below to view the outcome of the execution of the command:
   <img src="images/MappingSearchUi.png" alt="Mapping Search UI" class="resized-image">
 </div>
 <div class="centered-content" >
-  <p class="image-caption"> Figure 3.4 Shows the search for mappings of local course CS3230.
+  <p class="image-caption"> Figure 3.4 This shows the search for mappings of local course CS3230.
 </div>
 
 <br />
@@ -830,11 +826,12 @@ Refer to the figure below to view the outcome of the execution of the command:
   <img src="images/MappingSortUi.png" alt="Mapping Sort UI" class="resized-image">
 </div>
 <div class="centered-content" >
-  <p class="image-caption"> Figure 3.5 shows the sorting of mappings by their local course codes in ascending order.
+  <p class="image-caption"> Figure 5.4.5 This shows the sorting of mappings by their local course codes in ascending order.
 </div>
 
 <br />
 <br />
+//@@author lamchenghou 
 
 ### 5.5 Commands for notes
 <br />
@@ -847,9 +844,10 @@ Lists all notes that you have recorded in SEPlendid. This is useful when:
 - you wish to verify that your note has been deleted successfully.
 - you wish to verify that your note has been updated successfully.
 
-<box type="tip">
-    Click on a note in the list to bring up a detailed view.
+<box type="tip" icon=":bulb:" >
+    <b>Tip:</b> Click on a note in the list to bring up a detailed view.
 </box>
+
 
 **Format:** `note list`
 * This results in the displaying of all notes, sorted by their index number in ascending order. 
@@ -860,7 +858,7 @@ Refer to Figure 5.5.1 to view the outcome of the execution of the command:
   <img src="images/NoteListUi.png" alt="Note List UI" class="resized-image">
 </div>
 <div class = "centered-content" >
-  <p class = "image-caption"> Figure 5.5.1 Shows the list of notes that you have.
+  <p class = "image-caption"> Figure 5.5.1 This shows the list of notes that you have.
 </div>
 
 <br />
@@ -874,7 +872,8 @@ Adds a note with the content you wish to add and the tag you wish your note to h
 
 **Format:** `note add [content] [tag]`
 
-<box type="info">
+
+<box type="info" icon=":information_source">
     Tag must only be a single word with no whitespaces and only contain alphabets and numbers. You can only add 1 tag
     for your note with this command. 
     If you wish to have more tags for your note, you can do so with the command <code>note tag</code>.
@@ -884,11 +883,12 @@ Adds a note with the content you wish to add and the tag you wish your note to h
 - This adds a note with a content of "You can do this!" and tags the note with "motivation". 
 
 Refer to Figure 5.5.2 to view the outcome of the execution of the command:
+
 <div class="centered-container">
   <img src="images/NoteAddUi.png" alt="Note Add UI" class="resized-image">
 </div>
 <div class = "centered-content" >
-  <p class = "image-caption"> Figure 5.5.2 Shows the note you have added.
+  <p class = "image-caption"> Figure 5.5.2 This shows the note you have added.
 </div>
 
 <br />
@@ -909,11 +909,12 @@ Deletes specified index of the note. This is useful when:
 - This deletes the note with index 3.
 
 Refer to Figure 5.5.3 to view the outcome of the execution of the command:
+
 <div class="centered-container">
   <img src="images/NoteDeleteUi.png" alt="Note Delete UI" class="resized-image">
 </div>
 <div class = "centered-content" >
-  <p class = "image-caption"> Figure 5.5.3 Shows the note you have deleted and the updated note list.
+  <p class = "image-caption"> Figure 5.5.3 This shows the note you have deleted and the updated note list.
 </div>
 
 <br />
@@ -935,6 +936,7 @@ Updates specified note according to the index and updates the content of the not
 - This updates the content of the note with index 1 to "Exchange Application Deadline: 25 September 2023". 
 
 Refer to Figure 5.5.4 to view the outcome of the execution of the command:
+
 <div class="centered-container">
   <img src="images/NoteUpdateUi.png" alt="Note Update UI" class="resized-image">
 </div>
@@ -942,8 +944,8 @@ Refer to Figure 5.5.4 to view the outcome of the execution of the command:
   <p class = "image-caption"> Figure 5.5.4 Shows the note you updated and the updated note list.
 </div>
 
-<br />
-<br />
+<br>
+<br>
 
 #### 5.5.5 Tag a note: `note tag`
 
@@ -952,6 +954,10 @@ Adds a tag to the specified note according to the index. This is useful when:
 - you wish to easily view the different key points of the note.
 
 **Format:** `note tag [index] [tag]`
+
+<box type="warning" icon=":exclamation:" icon-color="red">
+    <b>Warning:</b> Duplicate tags are not allowed. 
+</box>
 
 **Example:** `note tag [1] [important]`
 - This adds "important" tag to the note with index 1. 
@@ -962,11 +968,11 @@ Refer to Figure 5.5.5 to view the outcome of the execution of the command:
   <img src="images/NoteTagUi.png" alt="Note Tag UI" class="resized-image">
 </div>
 <div class = "centered-content" >
-  <p class = "image-caption"> Figure 5.5.5 Shows the notes updated with a tag you have specified.
+  <p class = "image-caption"> Figure 5.5.5 This shows the notes updated with a tag you have specified.
 </div>
 
-<br />
-<br />
+<br>
+<br>
 
 #### 5.5.6 Clear tags of a note: `note cleartag`
 
@@ -988,11 +994,11 @@ Refer to Figure 5.5.6 to view the outcome of the execution of the command:
   <img src="images/NoteClearTagUi.png" alt="Note Tag UI" class="resized-image">
 </div>
 <div class = "centered-content" >
-  <p class = "image-caption"> Figure 5.5.6 Shows the note where all the tags have been removed.
+  <p class = "image-caption"> Figure 5.5.6 This shows the note where all the tags have been removed.
 </div>
 
-<br />
-<br />
+<br>
+<br>
 
 #### 5.5.7 Search notes by tag: `note search`
 
@@ -1001,8 +1007,12 @@ Searches for notes which tag contains the value `tagKeyword`. This is useful whe
 
 **Format:** `note search [tagKeyword]`
 
-<box type="info">
+<box type="info" icon=":information_source:">
 <code>tagKeyword</code> is case-insensitive.
+</box>
+
+<box type="warning" icon=":exclamation:" icon-color="red">
+<b>Warning:</b> Search note tag cannot have white spaces. 
 </box>
 
 **Example:** `note search [plans]`
@@ -1014,13 +1024,13 @@ Refer to Figure 5.5.7 to view the outcome of the execution of the command:
   <img src="images/NoteSearchUi.png" alt="Note Search UI" class="resized-image">
 </div>
 <div class = "centered-content" >
-  <p class = "image-caption"> Figure 5.5.7 Shows the note with the tags that contains the tagKeyword.
+  <p class = "image-caption"> Figure 5.5.7 This shows the note with the tags that contains the tagKeyword.
 </div>
 
-<br />
-<br />
+<br>
+<br>
 
-#### 5.6 View help : `help` 
+### 5.6 View help: `help`
 
 Results in a pop-up window for you to copy the URL into an external browser to view SEPlendid's user guide.
 
@@ -1032,13 +1042,13 @@ Refer to Figure 5.6 to view the outcome of the execution of the command:
   <img src="images/Help.jpg" alt="Help" class="resized-image">
 </div>
 <div class = "centered-content" >
-  <p class = "image-caption"> Figure 5.6 Shows the exit pop up window.
+  <p class = "image-caption"> Figure 5.6 This shows the exit pop up window.
 </div>
 
-<br />
-<br />
+<br>
+<br>
 
-#### 5.7 Exit SEPlendid : `exit`
+### 5.7 Exit SEPlendid: `exit`
 
 Exits SEPlendid app.
 
@@ -1078,8 +1088,8 @@ contains the data of your previous SEPlendid home folder.
 **A**: The attributes used for local course search is restricted. To search the local course, you must use this command:
 - `localcourse search [localdescription] [description_keyword]`
 
-<br />
-<br />
+<br>
+<br>
 
 --------------------------------------------------------------------------------------------------------------------
 ## 7. Command summary

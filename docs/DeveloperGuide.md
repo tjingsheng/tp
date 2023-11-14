@@ -237,6 +237,126 @@ Each data type has different attributes
 that can be used for sorting.
 --------------------------------------------------------------------------------------------------------------------
 
+## Implementation
+
+<br>
+
+### Listing of courses, universities and notes
+
+**Overview**
+The `list` command generates a list of courses and universities' sample data. This allows the viewing of all the
+courses.
+
+The activity diagram is as such:
+<puml src="diagrams/ListActivityDiagram.puml" width="100%" />
+
+Here is a sequence diagram for `localcourse list`:
+<puml src="diagrams/ListSequenceDiagram.puml" width="100%" />
+
+<br>
+<br>
+
+**Feature Details**
+
+1. The user specifies a data object with its required command word.
+2. If invalid command arguments are provided, the user will be prompted to enter the command correctly via an
+   error message.
+3. If all the above steps are completed without exceptions, then the sample data of the specific data type will be
+   displayed.
+
+<br>
+<br>
+
+**Feature Considerations**
+
+Each data type has to be specified to ensure organisation of sample data.
+
+<br>
+
+--------------------------------------------------------------------------------------------------------------------
+
+### Adding of courses, universities and notes
+
+**Overview**
+The `add` command allows for the adding of new courses, universities and notes. This allows the creation of new
+datatypes.
+
+The activity diagram is as such:
+<puml src="diagrams/AddActivityDiagram.puml" width="100%" />
+
+<br>
+
+Here is a sequence diagram for `note add`:
+<puml src="diagrams/NoteAddSequenceDiagram.puml" width="100%" />
+
+Here is a sequence diagram for `partnercourse add`:
+<puml src="diagrams/PartnercourseAddSequenceDiagram.puml" width="100%" />
+
+<br>
+<br>
+
+**Feature Details**
+
+1. The user is required to fill up all the attributes require to add the data object.
+2. If not all the identity attributes are provided, the user will be prompted to enter the command correctly via an
+   error message.
+3. If the attribute is not applicable for `add`, the user will be prompted to enter the attribute correctly via an
+   error message.
+4. If there exist the same identifying attributes, SEPlendid will raise an error message to the user.
+4. If all the above steps are completed without exceptions, then the data object is successfully queried.
+
+<br>
+<br>
+
+**Feature Considerations**
+
+It should be noted that when checking for duplicates in the `UniqueLocalCourseList` and `UniquePartnerCourseList` inside
+`SEPlendidModel`, `localcourse` cannot have the same `localcode` and `partnercourse` cannot have the same `partnercode`
+and `universityname`. This is because courses have unique course codes and is specific to the university, having this
+check would also prevent confusion for users if they have mistakenly added courses that are already in the database.
+Furthermore, this would confuse the user on which is the most accurate information available as well.
+
+<br>
+<br>
+
+--------------------------------------------------------------------------------------------------------------------
+
+### Searching of courses, universities and notes
+
+**Overview**
+The `search` command allows users find specific courses or universities they are interested in. This allows for faster
+querying of courses, universities and notes.
+
+The activity diagram is as such:
+<puml src="diagrams/SearchActivityDiagram.puml" width="100%" />
+
+Here is a sequence diagram for `partnercourse search`:
+<puml src="diagrams/SearchSequenceDiagram.puml" width="100%" />
+
+<br>
+<br>
+
+**Feature Details**
+
+1. The user specifies a data object with its unique identity attribute, attribute that they are querying and the
+   keyword for the query.
+2. If the data object is non-existent, the user will be prompted to enter the identity attributes correctly via an
+   error message.
+3. If not all the identity attributes are provided, the user will be prompted to enter the command correctly via an
+   error message.
+4. If the attribute is not applicable for `search`, the user will be prompted to enter the attribute correctly via an
+   error message.
+5. If all the above steps are completed without exceptions, then the data object is successfully queried.
+
+<br>
+<br>
+
+**Feature Considerations**
+The data object is only searched when all the specified identity attributes are identical to the existing data object.
+Each data type has different attributes that can be used for searching.
+
+
+--------------------------------------------------------------------------------------------------------------------
 ### Mapping feature
 
 The mapping `list/add/delete` mechanism is facilitated by `MappingCatalogue`. It stores `Mapping` objects which

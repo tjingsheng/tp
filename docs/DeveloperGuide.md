@@ -17,6 +17,10 @@ to plan for your overseas studies without the hassle of creating complex Excel s
 mapping function in order to quickly find possible mappings for certain courses you want to map. Finally, SEPlendid's
 note-taking system will assist you in organising your important information you will need for planning for your courses.
 
+<br>
+
+---
+
 ## 2. Table of Contents
 <div class= "toc">
 
@@ -32,38 +36,44 @@ note-taking system will assist you in organising your important information you 
    - 4.6 [Common Classes](#4-6-common-classes)
 5. [Implementation](#5-implementation)
    - 5.1 [Parser to Handle Commands with Optional Arguments](#5-1-parser-to-handle-commands-with-optional-arguments)
-   - 5.2 [Mapping Feature](#5-2-mapping-feature)
-   - 5.3 [Sorting Feature](#5-3-sorting-feature)
-   - 5.4 [University Feature](#5-4-university-feature)
-   - 5.5 [[Proposed] Data Archiving](#5-5-proposed-data-archiving)
+   - 5.2 [Listing of Courses, Universities and Notes](#5-2-listing-of-courses-universities-and-notes)
+   - 5.3 [Adding of Courses, Universities and Notes](#5-3-adding-of-courses-universities-and-notes)
+   - 5.4 [Delete Feature](#5-4-delete-feature)
+   - 5.5 [Update Feature](#5-5-update-feature)
+   - 5.6 [Searching of Courses](#5-6-searching-of-courses-universities-and-notes)
+   - 5.7 [Sort Feature](#5-7-sort-feature)
+   - 5.8 [Mapping Feature](#5-8-mapping-feature)
 6. [Other Helpful Guides](#6-other-helpful-guides)
-7. [Effort](#7-effort)
-   - 7.1 [Morphing of AB3 to SEPlendid](#7-1-morphing-of-ab3-to-seplendid)
-   - 7.2 [Redesigning the UI](#7-2-redesigning-the-ui)
-8. [Requirements](#8-requirements)
-   - 8.1 [Product Scope](#8-1-product-scope)
-   - 8.2 [User Stories](#8-2-user-stories)
-   - 8.3 [Use Cases](#8-3-use-cases)
-   - 8.4 [Non-Functional Requirements](#8-4-non-functional-requirements)
-   - 8.5 [Glossary](#8-5-glossary)
-9. [Instructions for Manual Testing](#9-instructions-for-manual-testing)
-   - 9.1 [Launch and Shutdown](#9-1-launch-and-shutdown)
-   - 9.2 [Local Course](#9-2-local-course)
-   - 9.3 [Partner Course](#9-3-partner-course)
-   - 9.4 [University](#9-4-university)
-   - 9.5 [Mapping](#9-5-mapping)
-   - 9.6 [Note](#9-6-note)
+7. [Requirements](#8-requirements)
+   - 7.1 [Product Scope](#7-1-product-scope)
+   - 7.2 [User Stories](#7-2-user-stories)
+   - 7.3 [Use Cases](#7-3-use-cases)
+   - 7.4 [Non-Functional Requirements](#7-4-non-functional-requirements)
+   - 7.5 [Glossary](#7-5-glossary)
+8. [Instructions for Manual Testing](#8-instructions-for-manual-testing)
+   - 8.1 [Launch and Shutdown](#8-1-launch-and-shutdown)
+   - 8.2 [Local Course](#8-2-local-course)
+   - 8.3 [Partner Course](#8-3-partner-course)
+   - 8.4 [University](#8-4-university)
+   - 8.5 [Mapping](#8-5-mapping)
+   - 8.6 [Note](#8-6-note)
+   - 8.7 [Saving Data](#8-7-saving-data)
+9. [Effort](#9-effort)
+    - 9.1 [Morphing of AB3 to SEPlendid](#9-1-morphing-of-ab3-to-seplendid)
+    - 9.2 [Redesigning the UI](#9-2-redesigning-the-ui)
 10. [Acknowledgements](#10-acknowledgements)
 
-</div>
+<br>
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## 3. Setting up, Getting Started
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
---------------------------------------------------------------------------------------------------------------------
+<br>
+
+---
 
 ## 4. Design
 
@@ -108,6 +118,10 @@ For example, the `SeplendidLogic` component defines its API in the `SeplendidLog
 
 The sections below give more details of each component.
 
+<br>
+
+---
+
 ### 4.2 UI Component
 
 **API** : [`Ui.java`](https://github.com/AY2324S1-CS2103T-W10-2/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
@@ -124,6 +138,10 @@ The `UI` component,
 * listens for changes to `Model` data so that the UI can be updated with the modified data.
 * keeps a reference to the `SeplendidLogic` component, because the `UI` relies on the `SeplendidLogic` to execute commands.
 * depends on some classes in the `Model` component, as it displays `LocalCourse`, `PartnerCourse`, `University`, `Mapping`, and `Note` objects residing in the `Model`.
+
+<br>
+
+---
 
 ### 4.3 SeplendidLogic Component
 
@@ -157,6 +175,10 @@ How the parsing works:
 * When called upon to parse a user command, the `SeplendidParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `LocalCourseAddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `LocalCourseAddCommand`) which the `SeplendidParser` returns back as a `Command` object.
 * All `XYZCommandParser` classes (e.g., `LocalCourseAddCommandParser`, `NoteDeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
+<br>
+
+---
+
 ### 4.4 Model Component
 
 **API** : [`SeplendidModel.java`](https://github.com/AY2324S1-CS2103T-W10-2/tp/blob/master/src/main/java/seedu/address/model/SeplendidModel.java)
@@ -180,6 +202,10 @@ The `SeplendidModel` component,
 * does not depend on any of the other three components (as the `SeplendidModel` represents data entities of the domain,
   they should make sense on their own without depending on other components)
 
+<br>
+
+---
+
 ### 4.5 Storage Component
 
 **API
@@ -197,91 +223,32 @@ The `Storage` component,
 * depends on some classes in the `SeplendidModel` component (because the `Storage` component's job is to save/retrieve
   objects that belong to the `SeplendidModel`).
 
+<br>
+
+---
+
 ### 4.6 Common Classes
 
 Classes used by multiple components are in the `seedu.addressbook.commons` package.
 
---------------------------------------------------------------------------------------------------------------------
+<br>
+
+---
 
 ## 5. Implementation
 
 This section describes some noteworthy details on how certain features are implemented.
+
 ### 5.1 Parser to Handle Commands with Optional Arguments
 
 The below diagram gives a high-level overview on how the `SeplendidParser` parses a command from our command set:
 <puml src="diagrams/SeplendidParserActivityDiagram.puml" alt="SeplendidParserActivityDiagram" />
 
---------------------------------------------------------------------------------------------------------------------
-### Delete feature
-#### Overview
-The `delete` command deletes specified data object in SEPlendid, specified by their unique identity attributes.
-
-Here is an activity diagram for `delete localcourse`:
-<puml src="diagrams/DeleteActivityDiagram.puml" alt="DeleteActivityDiagram" />
-
-Here is a sequence diagram for `delete`:
-<puml src="diagrams/DeleteSequenceDiagram.puml" alt="DeleteSequenceDiagram" />
-
-#### Feature details
-1. The user specifies a data object with its unique identity attribute(s).
-2. If the data object is non-existent, the user will be prompted to enter the identity attributes correctly via an error message.
-3. If not all the identity attributes are provided, the user will be prompted to enter the command correctly via an error message.
-4. If all the above steps complete without any exceptions, then the data object is successfully deleted.
-
-#### Feature considerations
-
-The data object is only deleted when all the specified identity attributes are identical to an existing data object.
-
---------------------------------------------------------------------------------------------------------------------
-### Update feature
-#### Overview
-The `update` command updates specified attribute of a data object with updated value.
-
-Here is an activity diagram for `update localcourse`:
-<puml src="diagrams/UpdateActivityDiagram.puml" alt="UpdateActivityDiagram" />
-
-Here is a sequence diagram for `update`:
-<puml src="diagrams/UpdateSequenceDiagram.puml" alt="UpdateSequenceDiagram" />
-
-#### Feature details
-1. The user specifies a data object with its unique identity attribute, attribute to be updated, and new value.
-2. If the data object is non-existent, the user will be prompted to enter the identity attributes correctly via an error message.
-3. If not all the identity attributes are provided, the user will be prompted to enter the command correctly via an error message.
-4. If the attribute is not applicable for `update`, the user will be prompted to enter the attribute correctly via an error message.
-5. If the updated data object exists in SEPlendid, an error is raised to inform the user.
-6. If all the above steps complete without any exceptions, then the data object is successfully updated.
-
-#### Feature considerations
-
-The data object is only updated when all the specified identity attributes are identical to an existing data object.
-Each data type has different attributes that can be used for updating.
-
---------------------------------------------------------------------------------------------------------------------
-### Sort feature
-#### Overview
-The `sort` command sorts specified data objects by specified attributes.
-
-Here is an activity diagram for `sort localcourse`:
-<puml src="diagrams/SortActivityDiagram.puml" alt="SortActivityDiagram" />
-
-Here is an sequence diagram for `sort`:
-<puml src="diagrams/SortSequenceDiagram.puml" alt="SortSequenceDiagram" />
-
-#### Feature details
-1. The user specifies a data object and its attribute to sort.
-2. If the attribute is not applicable for `sort`, the user will be prompted to enter the attribute correctly via an error message.
-3. If all the above steps complete without any exceptions, then the data objects will be sorted by specified attribute.
-
-#### Feature considerations
-Each data type has different attributes 
-that can be used for sorting.
---------------------------------------------------------------------------------------------------------------------
-
-## Implementation
-
 <br>
 
-### Listing of courses, universities and notes
+---
+
+### 5.2 Listing of Courses, Universities and Notes
 
 **Overview**
 The `list` command generates a list of courses and universities' sample data. This allows the viewing of all the
@@ -313,9 +280,9 @@ Each data type has to be specified to ensure organisation of sample data.
 
 <br>
 
---------------------------------------------------------------------------------------------------------------------
+---
 
-### Adding of courses, universities and notes
+### 5.3 Adding of Courses, Universities and Notes
 
 **Overview**
 The `add` command allows for the adding of new courses, universities and notes. This allows the creation of new
@@ -357,11 +324,62 @@ check would also prevent confusion for users if they have mistakenly added cours
 Furthermore, this would confuse the user on which is the most accurate information available as well.
 
 <br>
+
+---
+
+### 5.4 Delete Feature
+
+#### Overview
+The `delete` command deletes specified data object in SEPlendid, specified by their unique identity attributes.
+
+Here is an activity diagram for `delete localcourse`:
+<puml src="diagrams/DeleteActivityDiagram.puml" alt="DeleteActivityDiagram" />
+
+Here is a sequence diagram for `delete`:
+<puml src="diagrams/DeleteSequenceDiagram.puml" alt="DeleteSequenceDiagram" />
+
+#### Feature Details
+1. The user specifies a data object with its unique identity attribute(s).
+2. If the data object is non-existent, the user will be prompted to enter the identity attributes correctly via an error message.
+3. If not all the identity attributes are provided, the user will be prompted to enter the command correctly via an error message.
+4. If all the above steps complete without any exceptions, then the data object is successfully deleted.
+
+#### Feature Considerations
+
+The data object is only deleted when all the specified identity attributes are identical to an existing data object.
+
 <br>
 
---------------------------------------------------------------------------------------------------------------------
+---
 
-### Searching of courses, universities and notes
+### 5.5 Update Feature
+#### Overview
+The `update` command updates specified attribute of a data object with updated value.
+
+Here is an activity diagram for `update localcourse`:
+<puml src="diagrams/UpdateActivityDiagram.puml" alt="UpdateActivityDiagram" />
+
+Here is a sequence diagram for `update`:
+<puml src="diagrams/UpdateSequenceDiagram.puml" alt="UpdateSequenceDiagram" />
+
+#### Feature Details
+1. The user specifies a data object with its unique identity attribute, attribute to be updated, and new value.
+2. If the data object is non-existent, the user will be prompted to enter the identity attributes correctly via an error message.
+3. If not all the identity attributes are provided, the user will be prompted to enter the command correctly via an error message.
+4. If the attribute is not applicable for `update`, the user will be prompted to enter the attribute correctly via an error message.
+5. If the updated data object exists in SEPlendid, an error is raised to inform the user.
+6. If all the above steps complete without any exceptions, then the data object is successfully updated.
+
+#### Feature Considerations
+
+The data object is only updated when all the specified identity attributes are identical to an existing data object.
+Each data type has different attributes that can be used for updating.
+
+<br>
+
+---
+
+### 5.6 Searching of Courses, Universities and Notes
 
 **Overview**
 The `search` command allows users find specific courses or universities they are interested in. This allows for faster
@@ -395,9 +413,34 @@ Here is a sequence diagram for `partnercourse search`:
 The data object is only searched when all the specified identity attributes are identical to the existing data object.
 Each data type has different attributes that can be used for searching.
 
+<br>
 
---------------------------------------------------------------------------------------------------------------------
-### 5.2 Mapping Feature
+---
+
+### 5.7 Sort Feature
+#### Overview
+The `sort` command sorts specified data objects by specified attributes.
+
+Here is an activity diagram for `sort localcourse`:
+<puml src="diagrams/SortActivityDiagram.puml" alt="SortActivityDiagram" />
+
+Here is an sequence diagram for `sort`:
+<puml src="diagrams/SortSequenceDiagram.puml" alt="SortSequenceDiagram" />
+
+#### Feature Details
+1. The user specifies a data object and its attribute to sort.
+2. If the attribute is not applicable for `sort`, the user will be prompted to enter the attribute correctly via an error message.
+3. If all the above steps complete without any exceptions, then the data objects will be sorted by specified attribute.
+
+#### Feature Considerations
+
+Each data type has different attributes that can be used for sorting.
+
+<br>
+
+---
+
+### 5.8 Mapping Feature
 
 The mapping `list/add/delete` mechanism is facilitated by `MappingCatalogue`. It stores `Mapping` objects which
 contain the `LocalCode`, `UniversityName`, `PartnerCode` and `MappingMiscInformation` objects. This means that
@@ -458,7 +501,7 @@ exists, before deletion. Given below is an example usage scenario and how the `d
 `MappingDeleteCommand` will call `SeplendidModel#getMessageIfExists` which returns an `Optional<Mapping>`. If it is
 non-empty, the deletion will be performed, otherwise a `CommandException` will be thrown.
 
-#### Design considerations:
+#### Design Considerations:
 
 **Aspect: How the dependency of `Mapping` on `LocalCourse`, `PartnerCourse` and `University` should be managed:**
 
@@ -474,84 +517,10 @@ non-empty, the deletion will be performed, otherwise a `CommandException` will b
     * Cons: We must ensure that deletion cascades, in order to maintain data integrity. This can introduce bugs if not
       done correctly.
 
---------------------------------------------------------------------------------------------------------------------
-### 5.3 Sorting Feature
-#### Implementation
 
-#### Design considerations
+<br>
 
-**Aspect: Usage of enum class for attributes**
-
-* **Alternative 1 (implemented choice)**: Use enum class for LocalCourse, PartnerCourse, and Mapping to store the
-  attributes of each data types.
-    * Pros: Easy to store constraint messages, easier to keep track of the attributes, can use for other commands such
-      as ```search```.
-    * Cons: Need to create new enum classes for each data types.
-* **Alternative 2**: Use String to check
-    * Pros: Don't need to create new enum classes
-    * Cons: Hard to keep track of attributes of each data types.
-
-
---------------------------------------------------------------------------------------------------------------------
-### 5.4 University Feature
-
-The university `list/search/sort` mechanism is facilitated by `UniversityCatalogue`. It stores `University` objects
-which contain the `UniversityName` object. This means that `University` is dependent on `University` class.
-
-A `UniqueUniversityList` is stored internally in `UniversityCatalogue`. Additionally, it implements the following
-operations:
-- `UniversityCatalogue#hasUniversity(University)`  —  Checks whether a university exists in the university
-  catalogue, to use to prevent duplicate insertion.
-.
-These operations are exposed in the `SeplendidModel` interface as `SeplendidModel#hasUniversity(University).
-
-When the user launches the application for the first time. All relevant data catalogues: `UniversityCatalogue` are
-initialised with the initial state, containing the seed data (list of partner universities) for SEP.
-
-Given below is an examples usage scenario and how the `hasUniversity` mechanism works
-[//]: # (I'll leave some of the ab3 implementation here so you can refer, please remove if you're the last person)
-
-The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the address book to that state.
-
-<box type="info" seamless>
-
-**Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest address book state, then there are no undone AddressBook states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-
-</box>
-
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the address book, such as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`. Thus, the `addressBookStateList` remains unchanged.
-
-<puml src="diagrams/UndoRedoState4.puml" alt="UndoRedoState4" />
-
-Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not pointing at the end of the `addressBookStateList`, all address book states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
-
-<puml src="diagrams/UndoRedoState5.puml" alt="UndoRedoState5" />
-
-The following activity diagram summarizes what happens when a user executes a new command:
-
-<puml src="diagrams/CommitActivityDiagram.puml" width="250" />
-
-#### Design considerations:
-
-**Aspect: How undo & redo executes:**
-
-* **Alternative 1 (current choice):** Saves the entire address book.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
-
-* **Alternative 2:** Individual command knows how to undo/redo by
-  itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
-
-_{more aspects and alternatives to be added}_
-
-### 5.5 \[Proposed\] Data Archiving
-
-_{Explain here how the data archiving feature will be implemented}_
-
-
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## 6. Other Helpful Guides
 
@@ -561,32 +530,13 @@ _{Explain here how the data archiving feature will be implemented}_
 * [Configuration guide](Configuration.md)
 * [DevOps guide](DevOps.md)
 
---------------------------------------------------------------------------------------------------------------------
+<br>
 
-## 7. Effort
+---
 
-The implementation of SEPlendid proved to be a challenging endeavor. Below is the highlights of the extensive effort our
-team dedicated to developing SEPlendid, along with a mention of some of the challenges we encountered along the way.
+## 7. Requirements
 
-### 7.1 Morphing of AB3 to SEPlendid
-
-A large portion of code had to be refactored to morph AB3 to SEPlendid.
-
-### 7.2 Redesigning the UI
-
-In recognising the significance of minimalism for achieving simplicity, we embarked on the task of redesigning the
-original AB3 UI into our custom SEPlendid interface. The endeavor underscored the essential balance between simplicity
-and functionality. The effort invested in the redesigning process was substantial, requiring meticulous design
-considerations. Striving to meet both aesthetic standards and high functionality, we faced a steep learning curve with
-JavaFX. Despite the initial challenges, our team persevered, overcoming obstacles and ultimately producing a UI that not
-only met our design goals but also offered a visually appealing and highly functional experience tailored to the
-requirements of a student exchange program mapping tool.
-
---------------------------------------------------------------------------------------------------------------------
-
-## 8. Requirements
-
-### 8.1 Product Scope
+### 7.1 Product Scope
 
 **Target user profile**:
 
@@ -609,11 +559,15 @@ SEPlendid aims to provide an advanced search, allowing users to search for mappi
 as partner universities' course names, and NUS course codes. We aim to also include features such as the ability to
 contribute course mappings, and note-taking.
 
-### 8.2 User Stories
+<br>
+
+---
+
+### 7.2 User Stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​ | I want to …​                                                          | So that I can…​                                            |
+| Priority | As a …  | I want to …                                                           | So that I can…                                             |
 |----------|---------|-----------------------------------------------------------------------|------------------------------------------------------------|
 | `* * *`  | student | view the list of local courses offered by NUS                         | plan my study guide to map my local courses for exchange   |
 | `* * *`  | student | view the list of partner courses offered by NUS' partner universities | plan my study guide to map to partner courses for exchange |
@@ -642,7 +596,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 *{More to be added}*
 
-### 8.3 Use Cases
+<br>
+
+---
+
+### 7.3 Use Cases
 
 (For all use cases below, the **System** is the `SEPlendid` and the **Actor** is the `user`, unless specified otherwise)
 
@@ -1014,8 +972,11 @@ Use case ends
   
   Use case resumes at step 2.
 
+<br>
 
-### 8.4 Non-Functional Requirements
+---
+
+### 7.4 Non-Functional Requirements
 
 1. Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
 2. Should be able to hold up to 1000 course mappings, along with its dependent data such as local courses, without a
@@ -1026,7 +987,11 @@ Use case ends
 5. The user interface should be intuitive enough for users who are not IT-savvy.
 6. The application should be designed to handle a growing database of course mappings and related data.
 
-### 8.5 Glossary
+<br>
+
+---
+
+### 7.5 Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X.
 * **Course Mapping**: A course offered by a partner university, which NUS Computing students going on exchange can
@@ -1034,9 +999,11 @@ Use case ends
 * **CLI**: Command-Line Interface is a means of interacting with a computer program b inputting lines of text called
   command-lines.
 
---------------------------------------------------------------------------------------------------------------------
+<br>
 
-## 9. Instructions for Manual Testing
+---
+
+## 8. Instructions for Manual Testing
 
 Given below are instructions to test the app manually.
 
@@ -1047,7 +1014,11 @@ testers are expected to do more *exploratory* testing.
 
 </box>
 
-### 9.1 Launch and Shutdown
+<br>
+
+---
+
+### 8.1 Launch and Shutdown
 
 1. Initial launch
 
@@ -1058,7 +1029,11 @@ testers are expected to do more *exploratory* testing.
   1. Double-click the jar file <br>
      Expected: Shows the GUI with a set of sample local course. The window size may not be optimum.
 
-### 9.2 Local Course
+<br>
+
+---
+
+### 8.2 Local Course
 
 #### List all local courses
 
@@ -1155,7 +1130,11 @@ Expected Output in the Command Output Box: Sorted all local courses
 
 </box> 
 
-### 9.3 Partner Course
+<br>
+
+---
+
+### 8.3 Partner Course
 
 #### List all partner courses
 
@@ -1275,7 +1254,11 @@ Expected Output in the Command Output Box: Sorted all partner courses
 
 </box> 
 
-### 9.4 University
+<br>
+
+---
+
+### 8.4 University
 
 #### List all universities
 
@@ -1331,7 +1314,11 @@ Expected Output in the Command Output Box: Sorted all universities
 
 </box> 
 
-### 9.5 Mapping
+<br>
+
+---
+
+### 8.5 Mapping
 
 #### List all mappings
 
@@ -1415,8 +1402,11 @@ Expected Output in the Command Output Box: Sorted all mappings
 
 </box> 
 
+<br>
 
-### 9.6 Note
+---
+
+### 8.6 Note
 
 #### List all notes
 
@@ -1528,7 +1518,11 @@ Expected Output in the Command Output Box: Note searched message.
 
 </box>
 
-### Saving data
+<br>
+
+---
+
+### 8.7 Saving Data
 
 1. Dealing with missing/corrupted data files
 
@@ -1544,9 +1538,16 @@ Expected Output in the Command Output Box: Note searched message.
 - To corrupt the data, open any of the `.json` files under `data/` and edit the data in it. For instance, you may
   change a `localCode` to the empty string `""`. Restart the application, and observe that the data has been reset.
 
-## Effort
+<br>
 
-### Morphing of AB3 to SEPlendid
+---
+
+## 9. Effort
+
+The implementation of SEPlendid proved to be a challenging endeavor. Below is the highlights of the extensive effort our
+team dedicated to developing SEPlendid, along with a mention of some of the challenges we encountered along the way.
+
+### 9.1 Morphing of AB3 to SEPlendid
 
 As mappings was the core feature of SEPlendid, we decided to morph AB3 into SEPlendid. We identified the need for
 several data types, minimally `LocalCourse`, `PartnerCourse`, `University` and `Mapping`. We also identified the
@@ -1564,7 +1565,26 @@ which is not part of the unique identifier, for the purpose of searching and sor
 reference of a model method `getLocalCourseIfExists` to the comparators and predicates used. This follows for
 partner courses.
 
+A large portion of code had to be refactored to morph AB3 to SEPlendid.
+
+<br>
+
+---
+
+### 9.2 Redesigning the UI
+
+In recognising the significance of minimalism for achieving simplicity, we embarked on the task of redesigning the
+original AB3 UI into our custom SEPlendid interface. The endeavor underscored the essential balance between simplicity
+and functionality. The effort invested in the redesigning process was substantial, requiring meticulous design
+considerations. Striving to meet both aesthetic standards and high functionality, we faced a steep learning curve with
+JavaFX. Despite the initial challenges, our team persevered, overcoming obstacles and ultimately producing a UI that not
+only met our design goals but also offered a visually appealing and highly functional experience tailored to the
+requirements of a student exchange program mapping tool.
+
+<br>
+
+---
+
 ## 10. Acknowledgements
 
 * Libraries used: [JavaFX](https://openjfx.io/), [Jackson](https://github.com/FasterXML/jackson), [JUnit5](https://github.com/junit-team/junit5)
-

@@ -64,7 +64,7 @@ public class CommandTestUtil {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
 
-        // TBD: To other developers: please add on other data types appropriately
+        // To other developers: please add on other data types appropriately
         LocalCourseCatalogue expectedLocalCourseCatalogue =
                 new LocalCourseCatalogue(actualModel.getLocalCourseCatalogue());
         List<LocalCourse> expectedFilteredLocalCourseList = new ArrayList<>(actualModel.getFilteredLocalCourseList());

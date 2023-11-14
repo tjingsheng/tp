@@ -36,6 +36,13 @@ public class LocalCourseDeleteCommand extends LocalCourseCommand {
         this.localCodeToDelete = localCode;
     }
 
+    /**
+     * Perfoms the deletion of the local course.
+     *
+     * @param seplendidModel {@code SeplendidModel} which the command should operate on.
+     * @return {@code CommandResult} that describes the result of the deletion.
+     * @throws CommandException If an error occurs during the deletion.
+     */
     @Override
     public CommandResult execute(SeplendidModel seplendidModel) throws CommandException {
         requireNonNull(seplendidModel);

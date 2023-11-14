@@ -68,7 +68,6 @@ import seedu.address.model.university.comparator.UniversityComparatorByUniversit
 /**
  * Parses user input into the SEPlendid CLI.
  * <p>
- * TBD: Add parsing for help command
  */
 public class SeplendidParser {
     /**
@@ -78,17 +77,17 @@ public class SeplendidParser {
     private static final String REGEX_GROUP_ACTION_WORD = "actionWord";
     private static final String REGEX_GROUP_ARGUMENTS = "arguments";
     private static final Pattern COMMAND_FORMAT_COMMAND = Pattern.compile(String.format(
-        "(?<%s>\\S+)",
-        REGEX_GROUP_COMMAND_WORD));
+            "(?<%s>\\S+)",
+            REGEX_GROUP_COMMAND_WORD));
     private static final Pattern COMMAND_FORMAT_COMMAND_ACTION = Pattern.compile(String.format(
-        "(?<%s>\\S+)\\s(?<%s>\\S+)",
-        REGEX_GROUP_COMMAND_WORD,
-        REGEX_GROUP_ACTION_WORD));
+            "(?<%s>\\S+)\\s(?<%s>\\S+)",
+            REGEX_GROUP_COMMAND_WORD,
+            REGEX_GROUP_ACTION_WORD));
     private static final Pattern COMMAND_FORMAT_COMMAND_ACTION_ARG = Pattern.compile(String.format(
-        "(?<%s>\\S+)\\s(?<%s>\\S+)\\s(?<%s>.*)",
-        REGEX_GROUP_COMMAND_WORD,
-        REGEX_GROUP_ACTION_WORD,
-        REGEX_GROUP_ARGUMENTS));
+            "(?<%s>\\S+)\\s(?<%s>\\S+)\\s(?<%s>.*)",
+            REGEX_GROUP_COMMAND_WORD,
+            REGEX_GROUP_ACTION_WORD,
+            REGEX_GROUP_ARGUMENTS));
     private static final Logger logger = SeplendidLogsCenter.getLogger(SeplendidParser.class);
 
     /**
@@ -142,22 +141,22 @@ public class SeplendidParser {
         switch (commandWord) {
         case LocalCourseCommand.COMMAND_WORD:
             throw new ParseException(
-                UsageMessage.LOCALCOURSE.toString());
+                    UsageMessage.LOCALCOURSE.toString());
         case PartnerCourseCommand.COMMAND_WORD:
             throw new ParseException(
-                UsageMessage.PARTNERCOURSE.toString());
+                    UsageMessage.PARTNERCOURSE.toString());
         case NoteCommand.COMMAND_WORD:
             throw new ParseException(
-                UsageMessage.NOTE.toString());
+                    UsageMessage.NOTE.toString());
         case UniversityCommand.COMMAND_WORD:
             throw new ParseException(
-                UsageMessage.UNIVERSITY.toString());
+                    UsageMessage.UNIVERSITY.toString());
         case MappingCommand.COMMAND_WORD:
             throw new ParseException(
-                UsageMessage.MAPPING.toString());
+                    UsageMessage.MAPPING.toString());
         default:
             throw new ParseException(
-                UsageMessage.HELP.toString());
+                    UsageMessage.HELP.toString());
         }
     }
 
@@ -246,7 +245,7 @@ public class SeplendidParser {
     }
 
     private LocalCourseCommand getLocalCourseCommandWithArg(String userInput, String actionWord, String arguments)
-                throws ParseException {
+            throws ParseException {
         switch (actionWord) {
         case LocalCourseAddCommand.ACTION_WORD:
             return new LocalCourseAddCommandParser().parse(arguments);
@@ -269,7 +268,7 @@ public class SeplendidParser {
     }
 
     private LocalCourseCommand getLocalCourseCommandWithoutArg(String userInput, String actionWord)
-                throws ParseException {
+            throws ParseException {
         if (actionWord.equals(LocalCourseListCommand.ACTION_WORD)) {
             return new LocalCourseListCommand();
         }
@@ -292,7 +291,7 @@ public class SeplendidParser {
     }
 
     private PartnerCourseCommand getPartnerCourseCommandWithArg(String userInput, String actionWord, String arguments)
-                throws ParseException {
+            throws ParseException {
         switch (actionWord) {
         case PartnerCourseAddCommand.ACTION_WORD:
             return new PartnerCourseAddCommandParser().parse(arguments);
@@ -315,7 +314,7 @@ public class SeplendidParser {
     }
 
     private PartnerCourseCommand getPartnerCourseCommandWithoutArg(String userInput, String actionWord)
-                throws ParseException {
+            throws ParseException {
         if (actionWord.equals(PartnerCourseListCommand.ACTION_WORD)) {
             return new PartnerCourseListCommand();
         }
@@ -355,7 +354,7 @@ public class SeplendidParser {
     }
 
     private UniversityCommand getUniversityCommandWithArg(String userInput, String actionWord, String arguments)
-                throws ParseException {
+            throws ParseException {
         if (actionWord.equals(UniversitySearchCommand.ACTION_WORD)) {
             return new UniversitySearchCommandParser().parse(arguments);
         }
@@ -412,7 +411,7 @@ public class SeplendidParser {
     }
 
     private NoteCommand getNoteCommandWithArg(String userInput, String actionWord, String arguments)
-                throws ParseException {
+            throws ParseException {
         switch (actionWord) {
         case NoteAddCommand.ACTION_WORD:
             return new NoteAddCommandParser().parse(arguments);

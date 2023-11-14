@@ -203,7 +203,6 @@ Each 'Command Word' begins a command, which can be coupled with an attribute, to
 functionality.
   <box type="tip" icon=":bulb:" header="You may find this annotated image on SEPlendis's command format useful!" >
       <img src="images/Command.png" alt="Command UI" class="resized-image">
-        </div>
   </box>
      
   <box type="tip" icon=":bulb:" header="Command words available in SEPlendid" >
@@ -270,7 +269,7 @@ functionality.
 
 * The following characters do not exist in our datasets and are not accepted in our input: `[` and `]`.
 
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `exit`) will be
+* Extraneous parameters for all commands will be
   ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 

@@ -32,10 +32,13 @@ note-taking system will assist you in organising your important information you 
    - 4.6 [Common Classes](#4-6-common-classes)
 5. [Implementation](#5-implementation)
    - 5.1 [Parser to Handle Commands with Optional Arguments](#5-1-parser-to-handle-commands-with-optional-arguments)
-   - 5.2 [Mapping Feature](#5-2-mapping-feature)
-   - 5.3 [Sorting Feature](#5-3-sorting-feature)
-   - 5.4 [University Feature](#5-4-university-feature)
-   - 5.5 [[Proposed] Data Archiving](#5-5-proposed-data-archiving)
+   - 5.2 [Listing of Courses, Universities and Notes](#5-2-listing-of-courses-universities-and-notes)
+   - 5.3 [Adding of Courses, Universities and Notes](#5-3-adding-of-courses-universities-and-notes)
+   - 5.4 [Delete Feature](#5-4-delete-feature)
+   - 5.5 [Update Feature](#5-5-update-feature)
+   - 5.6 [Searching of Courses](#5-6-searching-of-courses-universities-and-notes)
+   - 5.7 [Sort Feature](#5-7-sort-feature)
+   - 5.8 [Mapping Feature](#5-8-mapping-feature)
 6. [Other Helpful Guides](#6-other-helpful-guides)
 7. [Requirements](#8-requirements)
    - 7.1 [Product Scope](#7-1-product-scope)
@@ -53,7 +56,7 @@ note-taking system will assist you in organising your important information you 
 9. [Effort](#9-effort)
     - 9.1 [Morphing of AB3 to SEPlendid](#9-1-morphing-of-ab3-to-seplendid)
     - 9.2 [Redesigning the UI](#9-2-redesigning-the-ui)
-10. [Acknowledgements](#11-acknowledgements)
+10. [Acknowledgements](#10-acknowledgements)
 
 </div>
 
@@ -206,82 +209,13 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 ## 5. Implementation
 
 This section describes some noteworthy details on how certain features are implemented.
+
 ### 5.1 Parser to Handle Commands with Optional Arguments
 
 The below diagram gives a high-level overview on how the `SeplendidParser` parses a command from our command set:
 <puml src="diagrams/SeplendidParserActivityDiagram.puml" alt="SeplendidParserActivityDiagram" />
 
---------------------------------------------------------------------------------------------------------------------
-### Delete feature
-#### Overview
-The `delete` command deletes specified data object in SEPlendid, specified by their unique identity attributes.
-
-Here is an activity diagram for `delete localcourse`:
-<puml src="diagrams/DeleteActivityDiagram.puml" alt="DeleteActivityDiagram" />
-
-Here is a sequence diagram for `delete`:
-<puml src="diagrams/DeleteSequenceDiagram.puml" alt="DeleteSequenceDiagram" />
-
-#### Feature details
-1. The user specifies a data object with its unique identity attribute(s).
-2. If the data object is non-existent, the user will be prompted to enter the identity attributes correctly via an error message.
-3. If not all the identity attributes are provided, the user will be prompted to enter the command correctly via an error message.
-4. If all the above steps complete without any exceptions, then the data object is successfully deleted.
-
-#### Feature considerations
-
-The data object is only deleted when all the specified identity attributes are identical to an existing data object.
-
---------------------------------------------------------------------------------------------------------------------
-### Update feature
-#### Overview
-The `update` command updates specified attribute of a data object with updated value.
-
-Here is an activity diagram for `update localcourse`:
-<puml src="diagrams/UpdateActivityDiagram.puml" alt="UpdateActivityDiagram" />
-
-Here is a sequence diagram for `update`:
-<puml src="diagrams/UpdateSequenceDiagram.puml" alt="UpdateSequenceDiagram" />
-
-#### Feature details
-1. The user specifies a data object with its unique identity attribute, attribute to be updated, and new value.
-2. If the data object is non-existent, the user will be prompted to enter the identity attributes correctly via an error message.
-3. If not all the identity attributes are provided, the user will be prompted to enter the command correctly via an error message.
-4. If the attribute is not applicable for `update`, the user will be prompted to enter the attribute correctly via an error message.
-5. If the updated data object exists in SEPlendid, an error is raised to inform the user.
-6. If all the above steps complete without any exceptions, then the data object is successfully updated.
-
-#### Feature considerations
-
-The data object is only updated when all the specified identity attributes are identical to an existing data object.
-Each data type has different attributes that can be used for updating.
-
---------------------------------------------------------------------------------------------------------------------
-### Sort feature
-#### Overview
-The `sort` command sorts specified data objects by specified attributes.
-
-Here is an activity diagram for `sort localcourse`:
-<puml src="diagrams/SortActivityDiagram.puml" alt="SortActivityDiagram" />
-
-Here is an sequence diagram for `sort`:
-<puml src="diagrams/SortSequenceDiagram.puml" alt="SortSequenceDiagram" />
-
-#### Feature details
-1. The user specifies a data object and its attribute to sort.
-2. If the attribute is not applicable for `sort`, the user will be prompted to enter the attribute correctly via an error message.
-3. If all the above steps complete without any exceptions, then the data objects will be sorted by specified attribute.
-
-#### Feature considerations
-Each data type has different attributes 
-that can be used for sorting.
---------------------------------------------------------------------------------------------------------------------
-
-## Implementation
-
-<br>
-
-### Listing of courses, universities and notes
+### 5.2 Listing of Courses, Universities and Notes
 
 **Overview**
 The `list` command generates a list of courses and universities' sample data. This allows the viewing of all the
@@ -313,9 +247,7 @@ Each data type has to be specified to ensure organisation of sample data.
 
 <br>
 
---------------------------------------------------------------------------------------------------------------------
-
-### Adding of courses, universities and notes
+### 5.3 Adding of Courses, Universities and Notes
 
 **Overview**
 The `add` command allows for the adding of new courses, universities and notes. This allows the creation of new
@@ -359,9 +291,51 @@ Furthermore, this would confuse the user on which is the most accurate informati
 <br>
 <br>
 
---------------------------------------------------------------------------------------------------------------------
+### 5.4 Delete Feature
 
-### Searching of courses, universities and notes
+#### Overview
+The `delete` command deletes specified data object in SEPlendid, specified by their unique identity attributes.
+
+Here is an activity diagram for `delete localcourse`:
+<puml src="diagrams/DeleteActivityDiagram.puml" alt="DeleteActivityDiagram" />
+
+Here is a sequence diagram for `delete`:
+<puml src="diagrams/DeleteSequenceDiagram.puml" alt="DeleteSequenceDiagram" />
+
+#### Feature Details
+1. The user specifies a data object with its unique identity attribute(s).
+2. If the data object is non-existent, the user will be prompted to enter the identity attributes correctly via an error message.
+3. If not all the identity attributes are provided, the user will be prompted to enter the command correctly via an error message.
+4. If all the above steps complete without any exceptions, then the data object is successfully deleted.
+
+#### Feature Considerations
+
+The data object is only deleted when all the specified identity attributes are identical to an existing data object.
+
+### 5.5 Update Feature
+#### Overview
+The `update` command updates specified attribute of a data object with updated value.
+
+Here is an activity diagram for `update localcourse`:
+<puml src="diagrams/UpdateActivityDiagram.puml" alt="UpdateActivityDiagram" />
+
+Here is a sequence diagram for `update`:
+<puml src="diagrams/UpdateSequenceDiagram.puml" alt="UpdateSequenceDiagram" />
+
+#### Feature Details
+1. The user specifies a data object with its unique identity attribute, attribute to be updated, and new value.
+2. If the data object is non-existent, the user will be prompted to enter the identity attributes correctly via an error message.
+3. If not all the identity attributes are provided, the user will be prompted to enter the command correctly via an error message.
+4. If the attribute is not applicable for `update`, the user will be prompted to enter the attribute correctly via an error message.
+5. If the updated data object exists in SEPlendid, an error is raised to inform the user.
+6. If all the above steps complete without any exceptions, then the data object is successfully updated.
+
+#### Feature Considerations
+
+The data object is only updated when all the specified identity attributes are identical to an existing data object.
+Each data type has different attributes that can be used for updating.
+
+### 5.6 Searching of Courses, Universities and Notes
 
 **Overview**
 The `search` command allows users find specific courses or universities they are interested in. This allows for faster
@@ -395,9 +369,26 @@ Here is a sequence diagram for `partnercourse search`:
 The data object is only searched when all the specified identity attributes are identical to the existing data object.
 Each data type has different attributes that can be used for searching.
 
+### 5.7 Sort Feature
+#### Overview
+The `sort` command sorts specified data objects by specified attributes.
 
---------------------------------------------------------------------------------------------------------------------
-### 5.2 Mapping Feature
+Here is an activity diagram for `sort localcourse`:
+<puml src="diagrams/SortActivityDiagram.puml" alt="SortActivityDiagram" />
+
+Here is an sequence diagram for `sort`:
+<puml src="diagrams/SortSequenceDiagram.puml" alt="SortSequenceDiagram" />
+
+#### Feature Details
+1. The user specifies a data object and its attribute to sort.
+2. If the attribute is not applicable for `sort`, the user will be prompted to enter the attribute correctly via an error message.
+3. If all the above steps complete without any exceptions, then the data objects will be sorted by specified attribute.
+
+#### Feature Considerations
+
+Each data type has different attributes that can be used for sorting.
+
+### 5.8 Mapping Feature
 
 The mapping `list/add/delete` mechanism is facilitated by `MappingCatalogue`. It stores `Mapping` objects which
 contain the `LocalCode`, `UniversityName`, `PartnerCode` and `MappingMiscInformation` objects. This means that
@@ -458,7 +449,7 @@ exists, before deletion. Given below is an example usage scenario and how the `d
 `MappingDeleteCommand` will call `SeplendidModel#getMessageIfExists` which returns an `Optional<Mapping>`. If it is
 non-empty, the deletion will be performed, otherwise a `CommandException` will be thrown.
 
-#### Design considerations:
+#### Design Considerations:
 
 **Aspect: How the dependency of `Mapping` on `LocalCourse`, `PartnerCourse` and `University` should be managed:**
 
@@ -473,85 +464,6 @@ non-empty, the deletion will be performed, otherwise a `CommandException` will b
     * Pros: Will use fewer actions to delete a course, if there exists mappings it is tied to.
     * Cons: We must ensure that deletion cascades, in order to maintain data integrity. This can introduce bugs if not
       done correctly.
-
---------------------------------------------------------------------------------------------------------------------
-### 5.3 Sorting Feature
-#### Implementation
-
-#### Design considerations
-
-**Aspect: Usage of enum class for attributes**
-
-* **Alternative 1 (implemented choice)**: Use enum class for LocalCourse, PartnerCourse, and Mapping to store the
-  attributes of each data types.
-    * Pros: Easy to store constraint messages, easier to keep track of the attributes, can use for other commands such
-      as ```search```.
-    * Cons: Need to create new enum classes for each data types.
-* **Alternative 2**: Use String to check
-    * Pros: Don't need to create new enum classes
-    * Cons: Hard to keep track of attributes of each data types.
-
-
---------------------------------------------------------------------------------------------------------------------
-### 5.4 University Feature
-
-The university `list/search/sort` mechanism is facilitated by `UniversityCatalogue`. It stores `University` objects
-which contain the `UniversityName` object. This means that `University` is dependent on `University` class.
-
-A `UniqueUniversityList` is stored internally in `UniversityCatalogue`. Additionally, it implements the following
-operations:
-- `UniversityCatalogue#hasUniversity(University)`  —  Checks whether a university exists in the university
-  catalogue, to use to prevent duplicate insertion.
-.
-These operations are exposed in the `SeplendidModel` interface as `SeplendidModel#hasUniversity(University).
-
-When the user launches the application for the first time. All relevant data catalogues: `UniversityCatalogue` are
-initialised with the initial state, containing the seed data (list of partner universities) for SEP.
-
-Given below is an examples usage scenario and how the `hasUniversity` mechanism works
-[//]: # (I'll leave some of the ab3 implementation here so you can refer, please remove if you're the last person)
-
-The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the address book to that state.
-
-<box type="info" seamless>
-
-**Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest address book state, then there are no undone AddressBook states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-
-</box>
-
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the address book, such as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`. Thus, the `addressBookStateList` remains unchanged.
-
-<puml src="diagrams/UndoRedoState4.puml" alt="UndoRedoState4" />
-
-Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not pointing at the end of the `addressBookStateList`, all address book states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
-
-<puml src="diagrams/UndoRedoState5.puml" alt="UndoRedoState5" />
-
-The following activity diagram summarizes what happens when a user executes a new command:
-
-<puml src="diagrams/CommitActivityDiagram.puml" width="250" />
-
-#### Design considerations:
-
-**Aspect: How undo & redo executes:**
-
-* **Alternative 1 (current choice):** Saves the entire address book.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
-
-* **Alternative 2:** Individual command knows how to undo/redo by
-  itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
-
-_{more aspects and alternatives to be added}_
-
-### 5.5 \[Proposed\] Data Archiving
-
-_{Explain here how the data archiving feature will be implemented}_
-
-
---------------------------------------------------------------------------------------------------------------------
 
 ## 6. Other Helpful Guides
 
@@ -592,7 +504,7 @@ contribute course mappings, and note-taking.
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​ | I want to …​                                                          | So that I can…​                                            |
+| Priority | As a …  | I want to …                                                           | So that I can…                                             |
 |----------|---------|-----------------------------------------------------------------------|------------------------------------------------------------|
 | `* * *`  | student | view the list of local courses offered by NUS                         | plan my study guide to map my local courses for exchange   |
 | `* * *`  | student | view the list of partner courses offered by NUS' partner universities | plan my study guide to map to partner courses for exchange |

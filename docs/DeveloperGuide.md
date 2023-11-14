@@ -628,13 +628,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### 7.3 Use Cases
 
-(For all use cases below, the **System** is the `SEPlendid` and the **Actor** is the `user`, unless specified otherwise)
+<box type="info" seamless>
+
+For all use cases below, the **System** is the `SEPlendid` and the **Actor** is the `user`, unless specified otherwise
+
+</box>
 
 #### Local Course
 
 **Use case: List local course**
 
-**MSS**
+**MSS:**
 1. User requests to list local courses.
 2. SEPlendid shows all available local courses.
 Use case ends.
@@ -661,6 +665,7 @@ Use case ends.
 **MSS:**
 1. User requests to delete a local course.
 2. SEPlendid deletes and shows the local course deleted.
+
 Use case ends.
 
 **Extension:**
@@ -816,7 +821,6 @@ Use case ends.
   Use case resumes at step 1.
 
 **Use case: Sort mappings** \
-Actor: User \
 **MSS:**
 
 1. User requests to sort the list of mappings based on an attribute.
@@ -839,7 +843,6 @@ Actor: User \
       Use case ends.
 
 **Use case: Search mappings** \
-Actor: User \
 **MSS:**
 
 1. User requests to search the list of mappings based on an attribute, and given query.
@@ -899,12 +902,12 @@ Use case ends.
 
 **Use case: Add a note**
 
-**MSS**
+**MSS:**
 
 1. User requests to add a note.
 2. SEPlendid adds and shows the note.
 
-Use case ends
+Use case ends.
 
 **Extension:**
 
@@ -915,23 +918,23 @@ Use case ends
 
 **Use case: List notes**
 
-**MSS**
+**MSS:**
 
 1. User requests to list notes.
 2. SEPlendid shows all available notes.
 
-Use case ends
+Use case ends.
 
 **Use case: Update a note**
 
-**MSS**
+**MSS:**
 
 1. User requests to list notes.
 2. SEPlendid shows all available notes.
 3. User requests to update a specific note in the list
 4. SEPlendid updates and shows the note.
 
-Use case ends
+Use case ends.
 
 **Extension:**
 
@@ -949,14 +952,14 @@ Use case ends
 
 **Use case: Delete a note**
 
-**MSS**
+**MSS:**
 
 1. User requests to list notes.
 2. SEPlendid shows all available notes.
 3. User requests to delete a specific note in the list
 4. SEPlendid deletes the note.
 
-Use case ends
+Use case ends.
 
 **Extension:**
 
@@ -974,14 +977,14 @@ Use case ends.
 
 **Use case: Tag a note**
 
-**MSS**
+**MSS:**
 
 1. User requests to list notes.
 2. SEPlendid shows all available notes.
 3. User requests to tag a specific note in the list
 4. SEPlendid tags and shows the note.
 
-Use case ends
+Use case ends.
 
 **Extension:**
 
@@ -997,6 +1000,52 @@ Use case ends
   * 3b1. SEPlendid shows an error message.
   
   Use case resumes at step 2.
+
+Use case: Search a note.
+
+**MSS:**
+1. User requests to list notes.
+2. SEPlendid shows all available notes.
+3. User requests to filter notes based on tag.
+4. SEPlendid updates and shows the filtered notes.
+
+Use case ends.
+
+Extension:
+2a. The list is empty. Use case ends.
+
+3a. The command format is invalid.
+
+3a1. SEPlendid shows an error message.
+
+Use case resumes at step 2.
+
+Use case: Clear tag a note.
+
+**MSS:**
+
+1. User requests to list notes.
+2. SEPlendid shows all available notes.
+3. User requests to clear all tags a specific note in the list
+4. SEPlendid clears all the tags and shows the note.
+
+Use case ends.
+
+Extension:
+
+2a. The list is empty.
+
+Use case ends.
+
+3a. The command format is invalid.
+
+3a1. SEPlendid shows an error message.
+Use case resumes at step 2.
+
+3b. The task does not exist.
+
+3b1. SEPlendid shows an error message.
+Use case resumes at step 2.
 
 <br>
 

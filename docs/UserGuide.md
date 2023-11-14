@@ -92,7 +92,7 @@ guide!
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 1. How to navigate this User Guide?
+## 1. How to navigate this User Guide
 
 As a new user in SEPlendid, this user guide serves as an easy-to-follow guide in aiding you in executing your first 
 commands in SEPlendid, utilising SEPlendid to it's fullest potential!
@@ -106,21 +106,21 @@ navigate SEPlendid efficiently.
 If you are an **experienced** user, you can head over to the [Command Summary](#) section for a well-curated overview
 of the commands available in SEPlendid.
 
-<br />
-<br />
+<br>
+<br>
 
 ## 2. Icons used in this User Guide
 
 Throughout this guide, icons are used to highlight important information, so do pay **special** attention to them:
 
-| Icon                     | Meaning                                  |
-|--------------------------|------------------------------------------|
-| :information_source: Info | Information you should keep in mind      | 
-| :bulb: Tip               | Information you might find useful        |
-| :exclamation: Warning    | Information you should be cautious about | 
+| Icon                       | Meaning                                  |
+|----------------------------|------------------------------------------|
+| :information_source: Info  | Information you should keep in mind      | 
+| :bulb: Tip                 | Information you might find useful        |
+| :exclamation: Warning      | Information you should be cautious about | 
 
-<br/>
-<br/>
+<br>
+<br>
 
 ## 3. Installation
 
@@ -180,11 +180,20 @@ Refer to the annotated diagram of SEPlendid's GUI which is numbered accordingly:
   <img src="images/AnnotatedUi.png" alt="Annotated GUI" class="resized-image">
 </div>
 <div class = "centered-content" >
-  <p class = "image-caption"> Figure 1.2 Shows the SEPlendid's Starting GUI.
+  <p class = "image-caption"> Figure 1.2 This shows SEPlendid's Starting GUI.
 </div>
 
-<br />
-<br />
+<br>
+
+| Number | Component          | Meaning                                                                                                              |
+|--------|--------------------|----------------------------------------------------------------------------------------------------------------------|
+| 1      | Command Input Box  | This box is where you can type your commands you want to execute in SEPlendid.                                       |
+| 2      | Command Result Box | This box is where you can view the successfully executed messages or error messages to guide you in using SEPlendid. | 
+| 3      | List Panel         | This panel provides you with an overview of the sample data depending on the datatype.                               |
+| 4      | Display Panel      | This panel provides you with an in-depth insight of the selected from the list panel.                                |
+
+<br>
+<br>
 
 ### 4.2 Command Format
 
@@ -272,7 +281,7 @@ command group:
 
 </box>
 
-### 4.3 Your first command
+### 4.3 Try Out Your first command
 
 In order to get you started with SEPlendid's commands, we should try out a command together!
 
@@ -281,14 +290,14 @@ Let's start with the most basic command `add` command. `add` command allows you 
 One of the available commands for `add` is the command to add a localcourse into your storage.
 
 
-**Format:** `localcourse add [localcode] [localname] [localunit] [localdescription]`
+**Format:** `localcourse add [localcode] [localname] [unit] [localdescription]`
 
 The first word of each command specifies the different core features with its own unique sets of functionalities.
 - `localcourse` tells SEPlendid that this command word would execute actions only for local courses
 - Attributes such as `localcode` and `localname` shows you what you should place in each portion of the command
 
 <box type="tip" icon=":bulb:" >
-    Tip: All the attributes for localcourse needs to be added.
+    <b>Tip:</b> All the attributes for local course needs to be added.
 </box>
 
 
@@ -300,7 +309,7 @@ want to add this localcourse in SEPlendid.
 
 **So how can you add CS2105 to SEPlendid?**
 
-Firstly, you would need to input this command:
+Firstly, you would need to input this command: \
 `localcourse add [CS2105] [Introduction to Computer Networks] [4.0] [Web and Web applications]`
 
 Secondly, you would need to take note of the parameters that are required to be added:
@@ -311,23 +320,36 @@ Secondly, you would need to take note of the parameters that are required to be 
 
 Lastly, you should take note of invalid formats:
 - `localcourse add [CS2105]`
-  The attributes such as localname and units are compulsory.
+  The attributes such as local name and units are compulsory.
 - `localcourse add CS2105 Introduction to Computer Networks 4.0`
   The brackets ("[ ]") wrapping each attribute is compulsory.
 - `localcourse add`
-  There is insufficient information on what localcourse to add.
+  There is insufficient information on what local course to add.
 
-You should conduct these checks before executing the commands:
-- [ ] I know what I would like to query e.g. localcourse, partnercourse, university etc.
-- [ ] I know the restrictions of each command
-- [ ] I know "[ ]" are compulsory for wrapping each attribute
+<br>
+
+<question type="checkbox">
+
+##### Have you conducted these checks before executing commands in SEPlendid?
+
+  <br>
+  <q-option correct>
+    I know the datatype that would like to query e.g. local course, partner course, university.
+  </q-option>
+  <q-option correct>
+    I know the required paramters for each command.
+  </q-option>
+  <q-option correct>
+    I know "[ ]" are compulsory for wrapping each attribute.
+  </q-option>
+</question>
 
 Conducting these checks would prevent error messages and result in more efficient querying of results!
 
 Now, you are equipped with the basics to start using SEPlendid!
 
-<br />
-<br />
+<br>
+<br>
 
 ## 5. Commands
 
@@ -339,8 +361,8 @@ Overview of SEPlendid's commands:
 - Behaviour of the command (for both valid and invalid inputs)
 - Examples of valid and invalid inputs
 
-<br />
-<br />
+<br>
+<br>
 
 ### 5.1 Commands for local courses
 
@@ -355,23 +377,23 @@ Lists all possible local courses that can be mapped, offered by NUS Computing. T
 - you wish to verify that a local course has been updated successfully.
 
 **Format**: `localcourse list`
-- This results in the displaying of all the available localcourses provided by NUS Computing.
+- This results in the displaying of all the available local courses provided by NUS Computing.
 
-Refer to the figure below to view the outcome of the execution of the command:
+Refer to the Figure 5.1.1 to view the outcome of the execution of the command:
 
 <div class="centered-container">
   <img src="images/LocalcourseListUi.png" alt="Localcourse List UI" class="resized-image">
 </div>
 <div class = "centered-content" >
-  <p class = "image-caption"> Figure 1.1 Shows the entire list of local courses available in NUS Computing.
+  <p class = "image-caption"> Figure 5.1.1 This shows the entire list of local courses available in NUS Computing.
 </div>
 
-<br/>
-<br />
+<br>
+<br>
 
 #### 5.1.2 Add a local course: `localcourse add`
 
-Adds a local course using attributes such as localcode, localname, localunit and localdescription in this order. This is useful
+Adds a local course using attributes such as localcode, localname, unit and description in this order. This is useful
 when:
 - you are adding a new local course offered by NUS Computing.
 - you wish to add a local course that is not preloaded in SEPlendid.
@@ -379,20 +401,20 @@ when:
 **Format:** `localcourse add [localcode] [localname] [unit] [description]`
 
 **Example**: `localcourse add [CS1234] [ProgrammingFun] [4.0] [fun mod]`
-- This adds a localcourse with the course code 'CS1234' with the localname 'ProgrammingFun' which fulfils '4.0' units 
-and has a description of a 'fun mod'
+- This adds a local course with the course code 'CS1234' with the local name 'ProgrammingFun' which fulfils '4.0' units 
+and has a description of a 'fun mod'.
 
-Refer to the figure below to view the outcome of the execution of the command:
+Refer to the Figure 5.1.2 to view the outcome of the execution of the command:
 
 <div class="centered-container">
   <img src="images/LocalcourseAddUi.png" alt="Localcourse Add UI" class="resized-image">
 </div>
 <div class = "centered-content" >
-  <p class = "image-caption"> Figure 1.2 Shows the added local course with the course code: CS1234.
+  <p class = "image-caption"> Figure 5.1.2 This shows the added local course with the course code: CS1234.
 </div>
 
-<br/>
-<br/>
+<br>
+<br>
 
 #### 5.1.3 Delete a local course: `localcourse delete`
 
@@ -406,22 +428,24 @@ Deletes local course with course code identified by `localcode`. This is useful 
 **Format:** `localcourse delete [localcode]`
 
 **Example:** `localcourse delete [CS1234]`
-- This deletes a localcourse with the course code 'CS1234'
+- This deletes a local course with the course code 'CS1234'.
+
+Refer to the Figure 5.1.3 to view the outcome of the execution of the command:
 
 <div class="centered-container">
   <img src="images/LocalcourseDeleteUi.png" alt="Localcourse Delete UI" class="resized-image">
 </div>
 <div class = "centered-content" >
-  <p class = "image-caption"> Figure 1.3 Shows the deleted local course with the course code: CS1234.
+  <p class = "image-caption"> Figure 5.1.3 This shows the deleted local course with the course code: CS1234.
 </div>
 
-<br/>
-<br/>
+<br>
+<br>
 
 #### 5.1.4 Update a local course: `localcourse update`
 
 Updates specified attributes of a local course, with course code identified by `localcode`.
-These local course attributes include localcode, localname, unit and localdescription. This is useful when:
+These local course attributes include `localcode`, `localname`, `unit` and `localdescription`. This is useful when:
 - you wish to update a localcourse if there are changes made by NUS Computing.
 
 <box type="tip" icon=":bulb:" >
@@ -431,21 +455,23 @@ These local course attributes include localcode, localname, unit and localdescri
 **Format:** `localcourse update [localcode] [localcourseattribute] [updatedValue]`
 
 **Example:** `localcourse update [BT1101] [localcode] [BT1102]`
-- This updates a localcourse with the course code 'BT1101' to 'BT1102'
+- This updates a local course with the course code 'BT1101' to 'BT1102'.
+
+Refer to the Figure 5.1.4 to view the outcome of the execution of the command:
 
 <div class="centered-container">
   <img src="images/LocalcourseUpdateUi.png" alt="Localcourse Update UI" class="resized-image">
 </div>
 <div class = "centered-content" >
-  <p class = "image-caption"> Figure 1.3 Shows the updated local course BT1101 to BT1102.
+  <p class = "image-caption"> Figure 5.1.4 This shows the updated local course BT1101 to BT1102.
 </div>
 
 <br />
 <br />
 
-#### 5.1.5 Search a localcourse by attributes: `localcourse search`
+#### 5.1.5 Search a local course by attributes: `localcourse search`
 
-Searches localcourses using specified attributes such as localcode, localname, localunit, and localdescription.
+Searches local courses using specified attributes such as localcode, localname, unit, and localdescription.
 This is useful when:
 - you wish to find a specific local course you are interested in.
 - you wish to find local courses that matches with your credits required.
@@ -455,38 +481,45 @@ This is useful when:
             `localcourse search [localname] [keyword]`
 
 **Example:** `localcourse search [localcode] [BT2101]`
+- This searches a local course with the local code 'BT2101'.
+
+Refer to the Figure 5.1.5 to view the outcome of the execution of the command:
 
 <div class="centered-container">
   <img src="images/LocalcourseSearchUi.png" alt="Localcourse Search UI" class="resized-image">
 </div>
 <div class = "centered-content" >
-  <p class = "image-caption"> Figure 1.3 Shows the searched local course BT2102.
+  <p class = "image-caption"> Figure 5.1.5 This shows the searched local course BT2102.
 </div>
 
-<br />
-<br />
+<br>
+<br>
 
 #### 5.1.6 Sort local courses by attributes: `localcourse sort`
-Sorts local courses according to attributes such as localname and localcode. This is useful when:
-- you wish to view local courses sorted by specific attributes.
+Sorts local courses according to attributes such as `localname` and `localcode`. This is useful when:
+- you wish to view local courses sorted alphabetically.
+- you wish to view local courses in order.
 
 **Format:** `localcourse sort [localcourseattribute]` 
 
 **Example:** `localcourse sort [localname]`
+- This sorts the local courses alphabetically according to its local name.
+
+Refer to the Figure 5.1.6 to view the outcome of the execution of the command:
 
 <div class="centered-container">
   <img src="images/LocalcourseSortUi.png" alt="Localcourse Sort UI" class="resized-image">
 </div>
 <div class = "centered-content" >
-  <p class = "image-caption"> Figure 1.3 Shows the sorted local courses by localname.
+  <p class = "image-caption"> Figure 5.1.6 This shows the sorted local courses by localname.
 </div>
 
-<br />
-<br />
+<br>
+<br>
 
 ### 5.2 Commands for partner courses
 
-<br />
+<br>
 
 #### 5.2.1 List all partner courses: `partnercourse list`
 
@@ -501,8 +534,8 @@ Lists all available partner courses, offered by every partner university. This i
 
 **Expected Outcome:** SEPlendid's GUI will show the list of partner courses available.
 
-<br />
-<br />
+<br>
+<br>
 
 #### 5.2.2 Add a partner course: `partnercourse add`
 
@@ -518,11 +551,13 @@ Adds a partner course with the specified partner course attributes. This is usef
 
 **Example:** `partnercourse add [University of Toronto] [ROB311] [Artificial Intelligence] [5.0] 
 [Introduction module to AI]`
-                                                          
+- This adds a partner course with the course code 'ROB311' with the partner name 'Artificial Intelligence' which 
+  fulfils '5.0' units and has a description of a 'Introduction module to AI' in the 'University of Toronto'.
+
 **Expected Outcome:** SEPlendid's GUI will show you the added partner course.
 
-<br />
-<br />
+<br>
+<br>
 
 #### 5.2.3 Delete a partner course: `partnercourse delete`
 
@@ -536,11 +571,12 @@ Deletes partner course with attributes such as university and partnercode respec
 **Format:** `partnercourse delete [university] [partnercode]`
 
 **Example:** `partnercourse delete [University of Toronto] [ROB311]`
-
+- This deletes a partner course with the course code 'ROB311' in the 'University of Toronto'.
+- 
 **Expected Outcome:** SEPlendid's GUI will show the deleted partner course. 
 
-<br />
-<br />
+<br>
+<br>
 
 #### 5.2.4 Update a partner course: `partnercourse update`
 
@@ -552,11 +588,12 @@ These partner course attributes include partnercode, partnername, unit and descr
 **Format**: `partnercourse update [universityname] [partnercode] [partnercourseattribute] [updatedValue]`
 
 **Example:** `partnercourse update [University of Toronto] [ROB311] [unit] [10.0]`
+- This updates a partner course's units to '10.0' units with the course code 'ROB311' in the 'University of Toronto'.
 
 **Expected Outcome:** SEPlendid's GUI will show the updated partner course.
 
-<br />
-<br />
+<br>
+<br>
 
 #### 5.2.5 Search a partner course by attributes: `partnercourse search`
 
@@ -570,27 +607,30 @@ This is useful when:
 `partnercourse search [partnername] [keyword]`
 
 **Example:** `partnercourse search [partnercode] [CSE469]` 
+- This searches a partner course with the partner code 'CSE469'.
 
 **Expected Outcome:** SEPlendid's GUI will show you the searched partner course, CSE469.
 
-<br />
-<br />
+<br>
+<br>
 
 #### 5.2.6 Sort partner courses by attributes: `partnercourse sort`
 Sorts partner courses according to attributes such as partnername, partnercode and university. This is useful when:
-- you wish to view partner courses sorted by specific attributes.
+- you wish to view partner courses alphabetically.
+- you wish to view partner courses in order.
 
 **Format:** `partnercourse sort [partnercourseattribute]`
 
-**Example:** `partnercourse sort [partnercode]`
+**Example:** `partnercourse sort [partnername]`
+- This sorts the partner courses alphabetically according to its partner name.
 
 **Expected Outcome:** SEPlendid's GUI will show you the sorted partner courses according to partnercode. 
 
-<br />
-<br />
+<br>
+<br>
 
 ### 5.3 Commands for universities
-<br />
+<br>
 
 #### 5.3.1 List all universities: `university list`
 
@@ -600,54 +640,63 @@ Lists all available partner universities that NUS Computing students are able to
 **Format:** `university list`
 
 **Example:**
-Refer to the figure below to view the outcome of the execution of the command:
+
+Refer to the Figure 5.3.1 to view the outcome of the execution of the command:
 
 <div class="centered-container">
   <img src="images/UniversityListUi.png" alt="University List UI" class="resized-image">
 </div>
 <div class = "centered-content" >
-  <p class = "image-caption"> Figure 1.3 Shows the list of partner universities available for NUS Computing students.
+  <p class = "image-caption"> Figure 5.3.1 This shows the list of partner universities available for NUS Computing students.
 </div>
 
-<br />
-<br />
+<br>
+<br>
 
 #### 5.3.2 Search a university by attributes: `university search`
 
 Searches universities that matches the keyword of the university name. This is useful when:
 - you wish to find a specific university you are interested in.
 
-**Format:** `university search [university]`
+**Format:** `university search [universityKeywords]`
 
-**Example:**
+**Example:** `university search [College]`
+- This searches the universities with the name 'College'.
+
+Refer to the Figure 5.3.2 to view the outcome of the execution of the command:
+
 <div class="centered-container">
   <img src="images/UniversitySearchUi.png" alt="University Search UI" class="resized-image">
 </div>
 <div class = "centered-content" >
-  <p class = "image-caption"> Figure 1.3 Shows the searched university, Imperial College of London.
+  <p class = "image-caption"> Figure 5.3.2 This shows the searched university, Imperial College of London.
 </div>
 
-<br />
-<br />
+<br>
+<br>
 
 #### 5.3.3 Sort universities by attributes: `university sort`
 
 Sorts universities by the university name, alphabetically. This is useful when:
 - you wish to view universities alphabetically.
+- you wish to view universities in order.
 
 **Format:** `university sort [universityname]`
 
 **Example:** `university sort [universityname]` 
+- This sorts the universities alphabetically according to its university name.
+
+Refer to the Figure 5.3.3 to view the outcome of the execution of the command:
 
 <div class="centered-container">
   <img src="images/UniversitySortUi.png" alt="University Sort UI" class="resized-image">
 </div>
 <div class = "centered-content" >
-  <p class = "image-caption"> Figure 1.3 Shows the sorted university list.
+  <p class = "image-caption"> Figure 5.3.3 This shows the sorted university list.
 </div>
 
-<br />
-<br />
+<br>
+<br>
 
 ### 5.4 Commands for mappings
 <br />
@@ -1018,7 +1067,7 @@ file at the next run.  Hence, it is recommended to take a backup of the file bef
 
 ## 6. FAQ
 
-**Q**: How do I transfer my data to another Computer?<br>
+**Q**: How do I transfer my data to another computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that 
 contains the data of your previous SEPlendid home folder.
 

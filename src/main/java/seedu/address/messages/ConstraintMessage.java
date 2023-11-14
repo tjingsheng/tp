@@ -8,8 +8,8 @@ public enum ConstraintMessage {
     LOCALCOURSE_CODE(
         "localcode:\n"
         + "Must be non-empty\n"
-        + "Must only contain alphanumeric characters\n"
-        + "Be no more than 10 characters long\n"),
+        + "Must start with an alphabet\n"
+        + "Be no more than 10 alphanumeric characters\n"),
 
     LOCALCOURSE_NAME(
        "localname:\n"
@@ -46,8 +46,8 @@ public enum ConstraintMessage {
     PARTNERCOURSE_CODE(
         "partnercode:\n"
         + "Must be non-empty\n"
-        + "Must only contain alphanumeric characters\n"
-        + "Be no more than 10 characters long\n"),
+        + "Must start with an alphabet\n"
+        + "Be no more than 10 alphanumeric characters\n"),
 
     PARTNERCOURSE_NAME(
         "partnername:\n"

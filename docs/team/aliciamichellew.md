@@ -99,10 +99,14 @@ planned out by me.
           PR: [\#56](https://github.com/AY2324S1-CS2103T-W10-2/tp/pull/56/files)
         * Add user stores in the developer guide
           PR: [\#55](https://github.com/AY2324S1-CS2103T-W10-2/tp/pull/55)
+        * Add Architecture, SeplendidLogic component
+          PR: [\#264](https://github.com/AY2324S1-CS2103T-W10-2/tp/pull/264)
+        * Add instructions for manual testing
+          PR: [\#274](https://github.com/AY2324S1-CS2103T-W10-2/tp/pull/274)
       
 
 * **Community**:
-    * PRs reviewed (with non-trivial review comments): [\#80](https://github.com/AY2324S1-CS2103T-W10-2/tp/pull/80),
+    * Examples PRs reviewed (with non-trivial review comments): [\#80](https://github.com/AY2324S1-CS2103T-W10-2/tp/pull/80),
       [\#73](https://github.com/AY2324S1-CS2103T-W10-2/tp/pull/73), 
       [\#68](https://github.com/AY2324S1-CS2103T-W10-2/tp/pull/68)
     * Contributed to forum discussions: Refer to the 

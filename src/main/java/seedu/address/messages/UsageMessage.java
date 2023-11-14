@@ -58,7 +58,7 @@ public enum UsageMessage {
             LocalCourseCommand.COMMAND_WORD,
             LocalCourseSearchCommand.ACTION_WORD,
             "[attribute] [query]",
-            "Searche local courses by attributes.\nAttributes:\n"
+            "Searches local courses by attributes.\nAttributes:\n"
                     + "localcode\nlocalname\nlocaldescription"),
     LOCALCOURSE_SORT(
             LocalCourseCommand.COMMAND_WORD,
